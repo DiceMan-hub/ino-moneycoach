@@ -533,6 +533,12 @@
             color: #1a1a1a;
         }
 
+        .card-badge.ana {
+            background: linear-gradient(135deg, #E60012, #CC0000);
+            color: white;
+            font-weight: 700;
+        }
+
         /* フッター */
         .footer {
             background: var(--text-primary);
@@ -786,7 +792,9 @@
                     <span class="benefit-tag">デラックスルーム</span>
                 </div>
                 <div class="hotel-cards">
-                    <div class="card-badge platinum">プラチナ</div>
+                    <div class="card-badge platinum">プラチナ（個人）</div>
+                    <div class="card-badge platinum">プラチナ（ビジネス）</div>
+                    <div class="card-badge ana">ANAアメックスプレミアム</div>
                     <div class="card-badge gold">ゴールドプリファード</div>
                 </div>
             </div>
@@ -837,7 +845,9 @@
                     <span class="benefit-tag">レイトチェックアウト</span>
                 </div>
                 <div class="hotel-cards">
-                    <div class="card-badge platinum">プラチナ</div>
+                    <div class="card-badge platinum">プラチナ（個人）</div>
+                    <div class="card-badge platinum">プラチナ（ビジネス）</div>
+                    <div class="card-badge ana">ANAアメックスプレミアム</div>
                     <div class="card-badge gold">ゴールドプリファード</div>
                 </div>
             </div>
@@ -888,7 +898,9 @@
                     <span class="benefit-tag">レイトチェックアウト</span>
                 </div>
                 <div class="hotel-cards">
-                    <div class="card-badge platinum">プラチナ</div>
+                    <div class="card-badge platinum">プラチナ（個人）</div>
+                    <div class="card-badge platinum">プラチナ（ビジネス）</div>
+                    <div class="card-badge ana">ANAアメックスプレミアム</div>
                 </div>
             </div>
 
@@ -942,7 +954,9 @@
                     <span class="offer-text">The Hotel Collection特別オファー</span>
                 </div>
                 <div class="hotel-cards">
-                    <div class="card-badge platinum">プラチナ</div>
+                    <div class="card-badge platinum">プラチナ（個人）</div>
+                    <div class="card-badge platinum">プラチナ（ビジネス）</div>
+                    <div class="card-badge ana">ANAアメックスプレミアム</div>
                 </div>
             </div>
         </div>
