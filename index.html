@@ -582,10 +582,32 @@
             margin: 0 auto;
         }
 
-        .footer-note {
+        .footer-info {
+            margin-bottom: 20px;
+        }
+
+        .footer-date {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 8px;
+        }
+
+        .footer-copyright {
             font-size: 16px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .footer-disclaimer {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+        }
+
+        .footer-note {
+            font-size: 14px;
             opacity: 0.8;
-            line-height: 1.8;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
         }
 
         /* アニメーション */
@@ -1018,14 +1040,16 @@
     <!-- フッター -->
     <footer class="footer">
         <div class="footer-content">
-            <p class="text-sm text-gray-500 mb-2">作成日: 2025年10月24日</p>
-            <p class="footer-note">
-                ※ フリーステイギフトは年に1度ご利用いただける特典です。<br>
-                ※ ザ・ホテル・コレクションの特典は2泊以上のご宿泊で適用されます。<br>
-                ※ ヒルトン・ゴールド会員特典はプラチナカード会員様限定です。<br>
-                ※ 特典の詳細および利用条件は各ホテルにより異なる場合があります。
-            </p>
-            <p class="text-sm text-gray-500 mt-4">&copy; 2025 @ino-moneycoach. この内容は公開情報に基づきAIを活用して作成されたまとめです。</p>
+            <div class="footer-info">
+                <p class="footer-date">作成日: 2025年10月24日</p>
+                <p class="footer-copyright">&copy; 2025 @ino-moneycoach</p>
+            </div>
+            <div class="footer-disclaimer">
+                <p class="footer-note">
+                    この内容は公開情報に基づきAIを活用して作成されたまとめです。<br>
+                    特典の詳細および利用条件は各ホテル・カード会社により異なる場合があります。
+                </p>
+            </div>
         </div>
     </footer>
 
