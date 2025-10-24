@@ -1025,13 +1025,20 @@
 
     <!-- 重要なお知らせ -->
     <section class="container mx-auto max-w-5xl p-4 md:p-8">
-        <div class="bg-gray-50 border border-gray-200 p-6 rounded-lg">
-            <h3 class="text-lg font-semibold text-gray-800 mb-4">重要なお知らせ</h3>
-                <div class="text-gray-700 space-y-3 px-4">
-                    <p class="font-medium">このサイトは速報まとめとして実験的に公開しています。</p>
-                    <p>情報の正確性については最大限の注意を払っておりますが、間違いや不正確な情報が含まれる可能性があります。ご利用の際は、必ず公式情報をご確認いただき、ご了承の上でご活用ください。</p>
-                    <p>ご意見、ご要望、誤りのご指摘などがございましたら、<a href="https://www.instagram.com/ino_moneycoach/" target="_blank" class="text-blue-600 hover:text-blue-800 underline font-medium">InstagramのDM</a>でお待ちしております。</p>
+        <div class="bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-200 p-8 rounded-xl shadow-lg">
+            <div class="text-center mb-6">
+                <h3 class="text-2xl font-bold text-red-800 mb-2">重要なお知らせ</h3>
+                <div class="w-16 h-1 bg-red-400 mx-auto rounded-full"></div>
+            </div>
+            <div class="bg-white p-6 rounded-lg border border-red-100 shadow-sm">
+                <div class="text-gray-800 space-y-4 text-center">
+                    <p class="text-lg font-semibold text-red-700">このサイトは速報まとめとして実験的に公開しています。</p>
+                    <p class="text-gray-700 leading-relaxed">情報の正確性については最大限の注意を払っておりますが、間違いや不正確な情報が含まれる可能性があります。ご利用の際は、必ず公式情報をご確認いただき、ご了承の上でご活用ください。</p>
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <p class="text-gray-700">ご意見、ご要望、誤りのご指摘などがございましたら、<a href="https://www.instagram.com/ino_moneycoach/" target="_blank" class="text-blue-600 hover:text-blue-800 underline font-medium">InstagramのDM</a>でお待ちしております。</p>
+                    </div>
                 </div>
+            </div>
         </div>
     </section>
 
