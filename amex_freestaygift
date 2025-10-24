@@ -30,6 +30,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', sans-serif;
+            font-size: 18px;
             line-height: 1.6;
             background: var(--bg-secondary);
             color: var(--text-primary);
@@ -66,7 +67,7 @@
         }
 
         .logo {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 700;
             background: var(--primary-gradient);
             -webkit-background-clip: text;
@@ -127,7 +128,7 @@
         }
 
         .hero .description {
-            font-size: 16px;
+            font-size: 18px;
             opacity: 0.8;
             line-height: 1.6;
             margin-bottom: 32px;
@@ -170,7 +171,7 @@
         }
 
         .section-title p {
-            font-size: 18px;
+            font-size: 20px;
             color: var(--text-secondary);
             max-width: 600px;
             margin: 0 auto;
@@ -230,7 +231,7 @@
         }
 
         .benefit-description {
-            font-size: 15px;
+            font-size: 17px;
             color: var(--text-secondary);
             line-height: 1.6;
         }
@@ -300,14 +301,14 @@
         }
 
         .hotel-name {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 700;
             margin-bottom: 4px;
             color: var(--text-primary);
         }
 
         .hotel-location {
-            font-size: 14px;
+            font-size: 16px;
             color: var(--text-secondary);
             display: flex;
             align-items: center;
@@ -315,7 +316,7 @@
         }
 
         .hotel-features {
-            font-size: 13px;
+            font-size: 15px;
             color: var(--text-muted);
             margin-top: 8px;
             line-height: 1.4;
@@ -334,7 +335,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 8px;
-            font-size: 14px;
+            font-size: 16px;
         }
 
         .detail-row:last-child {
@@ -367,7 +368,7 @@
         }
 
         .description-text {
-            font-size: 14px;
+            font-size: 16px;
             line-height: 1.6;
             color: var(--text-primary);
             margin-bottom: 16px;
@@ -403,7 +404,7 @@
             padding: 12px 20px;
             border-radius: 30px;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 16px;
             margin-top: 16px;
             box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
         }
@@ -434,7 +435,7 @@
         }
 
         .dual-benefit-icon {
-            font-size: 14px;
+            font-size: 16px;
         }
 
         .dual-benefit-label {
@@ -461,7 +462,7 @@
             border-radius: 12px;
             margin: 12px 0;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 16px;
             box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
         }
 
@@ -561,7 +562,7 @@
         }
 
         .hilton-icon {
-            font-size: 14px;
+            font-size: 16px;
         }
 
         .hilton-text {
@@ -582,7 +583,7 @@
         }
 
         .footer-note {
-            font-size: 14px;
+            font-size: 16px;
             opacity: 0.8;
             line-height: 1.8;
         }
@@ -696,12 +697,12 @@
             }
 
             .hero .description {
-                font-size: 14px;
+                font-size: 16px;
             }
 
             .cta-button {
                 padding: 14px 28px;
-                font-size: 14px;
+                font-size: 16px;
             }
 
             .benefit-card {
