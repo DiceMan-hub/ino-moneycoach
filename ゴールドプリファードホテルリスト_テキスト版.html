@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゴールドプリファード ホテルリスト</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f7;
+            color: #1d1d1f;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .square-container {
+            width: 90vmin;
+            height: 90vmin;
+            max-width: 800px;
+            max-height: 800px;
+            background: #ffffff;
+            border-radius: 18px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            display: grid;
+            grid-template-rows: auto 1fr;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .header {
+            background: #1d1d1f;
+            color: white;
+            padding: 24px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            font-size: 1rem;
+            opacity: 0.8;
+            font-weight: 400;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+            backdrop-filter: blur(20px);
+        }
+
+        .stat-number {
+            font-size: 1.4rem;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            font-weight: 400;
+        }
+
+        .content {
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .chain-section {
+            background: #f2f2f7;
+            border-radius: 12px;
+            padding: 16px;
+            border-left: 4px solid;
+        }
+
+        .chain-section.marriott {
+            border-left-color: #007AFF;
+            background: #f2f2f7;
+        }
+
+        .chain-section.prince {
+            border-left-color: #007AFF;
+            background: #f2f2f7;
+        }
+
+        .chain-section.okura {
+            border-left-color: #007AFF;
+            background: #f2f2f7;
+        }
+
+        .chain-section.hyatt {
+            border-left-color: #007AFF;
+            background: #f2f2f7;
+        }
+
+        .chain-section.newotani {
+            border-left-color: #007AFF;
+            background: #f2f2f7;
+        }
+
+        .chain-section.royalpark {
+            border-left-color: #007AFF;
+            background: #f2f2f7;
+        }
+
+        .chain-section.hilton {
+            border-left-color: #007AFF;
+            background: #f2f2f7;
+        }
+
+        .chain-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #1d1d1f;
+        }
+
+        .chain-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .chain-icon.marriott { background: #007AFF; }
+        .chain-icon.prince { background: #007AFF; }
+        .chain-icon.okura { background: #007AFF; }
+        .chain-icon.hyatt { background: #007AFF; }
+        .chain-icon.newotani { background: #007AFF; }
+        .chain-icon.royalpark { background: #007AFF; }
+        .chain-icon.hilton { background: #007AFF; }
+
+        .hotel-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 8px;
+        }
+
+        .hotel-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .hotel-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .hotel-item.marriott { border-left-color: #007AFF; }
+        .hotel-item.prince { border-left-color: #007AFF; }
+        .hotel-item.okura { border-left-color: #007AFF; }
+        .hotel-item.hyatt { border-left-color: #007AFF; }
+        .hotel-item.newotani { border-left-color: #007AFF; }
+        .hotel-item.royalpark { border-left-color: #007AFF; }
+        .hotel-item.hilton { border-left-color: #007AFF; }
+
+        .hotel-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            flex: 1;
+            margin-right: 8px;
+        }
+
+        .hotel-location {
+            font-size: 0.7rem;
+            color: #6e6e73;
+            background: #f2f2f7;
+            padding: 4px 8px;
+            border-radius: 6px;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+
+        .room-type {
+            font-size: 0.65rem;
+            color: #86868b;
+            margin-top: 2px;
+            display: block;
+            font-weight: 400;
+        }
+
+        .credit-badge {
+            background: #34C759;
+            color: white;
+            font-size: 0.6rem;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 8px;
+            white-space: nowrap;
+        }
+
+        /* スクロールバー */
+        .content::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .content::-webkit-scrollbar-thumb {
+            background: #d1d1d6;
+            border-radius: 2px;
+        }
+
+        .content::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a6;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .hotel-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .hotel-item {
+                padding: 6px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .square-container {
+                width: 95vmin;
+                height: 95vmin;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="square-container">
+        <div class="header">
+            <h1>ゴールドプリファード</h1>
+            <p>厳選ホテルコレクション</p>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">54</span>
+                    <span class="stat-label">ホテル</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">7</span>
+                    <span class="stat-label">チェーン</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">15</span>
+                    <span class="stat-label">都道府県</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">国内</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <!-- マリオット系 -->
+            <div class="chain-section marriott">
+                <div class="chain-title">
+                    <div class="chain-icon marriott">M</div>
+                    マリオット・インターナショナル
+                </div>
+                <div class="hotel-list">
+                    <div class="hotel-item marriott">
+                        <div>
+                            <div class="hotel-name">ウェスティン ルスツリゾート</div>
+                            <div class="room-type">デラックス2シングルベッドルーム</div>
+                        </div>
+                        <div class="hotel-location">北海道</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item marriott">
+                        <div>
+                            <div class="hotel-name">コートヤード・バイ・マリオット札幌</div>
+                            <div class="room-type">スーペリアルーム</div>
+                        </div>
+                        <div class="hotel-location">北海道</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item marriott">
+                        <div>
+                            <div class="hotel-name">アロフト東京銀座</div>
+                            <div class="room-type">アロフト ツイン／キング</div>
+                        </div>
+                        <div class="hotel-location">東京</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item marriott">
+                        <div>
+                            <div class="hotel-name">ウェスティンホテル仙台</div>
+                            <div class="room-type">モデレートキング</div>
+                        </div>
+                        <div class="hotel-location">宮城</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item marriott">
+                        <div>
+                            <div class="hotel-name">東京マリオットホテル</div>
+                            <div class="room-type">デラックス キング／ツイン</div>
+                        </div>
+                        <div class="hotel-location">東京</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item marriott">
+                        <div>
+                            <div class="hotel-name">シェラトン・グランデ・トーキョーベイ</div>
+                            <div class="room-type">スタンダードルーム</div>
+                        </div>
+                        <div class="hotel-location">千葉</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item marriott">
+                        <div>
+                            <div class="hotel-name">琵琶湖マリオットホテル</div>
+                            <div class="room-type">スーペリアルーム</div>
+                        </div>
+                        <div class="hotel-location">滋賀</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item marriott">
+                        <div>
+                            <div class="hotel-name">ウェスティンホテル横浜</div>
+                            <div class="room-type">デラックス キング / ダブル2台</div>
+                        </div>
+                        <div class="hotel-location">神奈川</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item marriott">
+                        <div>
+                            <div class="hotel-name">軽井沢マリオットホテル</div>
+                            <div class="room-type">スーペリアルーム</div>
+                        </div>
+                        <div class="hotel-location">長野</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item marriott">
+                        <div>
+                            <div class="hotel-name">チャプター京都</div>
+                            <div class="room-type">スーペリアツイン</div>
+                        </div>
+                        <div class="hotel-location">京都</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item marriott">
+                        <div>
+                            <div class="hotel-name">シェラトン鹿児島</div>
+                            <div class="room-type">デラックスルーム 1キング／2ダブル</div>
+                        </div>
+                        <div class="hotel-location">鹿児島</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item marriott">
+                        <div>
+                            <div class="hotel-name">長崎マリオットホテル</div>
+                            <div class="room-type">デラックスキング</div>
+                        </div>
+                        <div class="hotel-location">長崎</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- プリンス系 -->
+            <div class="chain-section prince">
+                <div class="chain-title">
+                    <div class="chain-icon prince">P</div>
+                    西武プリンスホテルズ&リゾーツ
+                </div>
+                <div class="hotel-list">
+                    <div class="hotel-item prince">
+                        <div>
+                            <div class="hotel-name">札幌プリンスホテル</div>
+                            <div class="room-type">スーペリアツインルーム</div>
+                        </div>
+                        <div class="hotel-location">北海道</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item prince">
+                        <div>
+                            <div class="hotel-name">グランドプリンスホテル新高輪</div>
+                            <div class="room-type">スーペリアモダンツイン</div>
+                        </div>
+                        <div class="hotel-location">東京</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item prince">
+                        <div>
+                            <div class="hotel-name">ザ・プリンス 箱根芦ノ湖</div>
+                            <div class="room-type">本館ガーデンビューツインルーム</div>
+                        </div>
+                        <div class="hotel-location">神奈川</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item prince">
+                        <div>
+                            <div class="hotel-name">ザ・プリンス パークタワー東京</div>
+                            <div class="room-type">デラックスツインルーム</div>
+                        </div>
+                        <div class="hotel-location">東京</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item prince">
+                        <div>
+                            <div class="hotel-name">ザ・プリンス 軽井沢</div>
+                            <div class="room-type">ガーデンツインルーム / スーペリアツイン</div>
+                        </div>
+                        <div class="hotel-location">長野</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item prince">
+                        <div>
+                            <div class="hotel-name">箱根仙石原プリンスホテル</div>
+                            <div class="room-type">スーペリアツインルーム</div>
+                        </div>
+                        <div class="hotel-location">神奈川</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item prince">
+                        <div>
+                            <div class="hotel-name">名古屋プリンスホテル スカイタワー</div>
+                            <div class="room-type">スカイツインルーム / スカイキングルーム</div>
+                        </div>
+                        <div class="hotel-location">愛知</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item prince">
+                        <div>
+                            <div class="hotel-name">グランドプリンスホテル大阪ベイ</div>
+                            <div class="room-type">スタンダードルーム</div>
+                        </div>
+                        <div class="hotel-location">大阪</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item prince">
+                        <div>
+                            <div class="hotel-name">グランドプリンスホテル広島</div>
+                            <div class="room-type">スーペリアフロア ラグジュアリーファミリー</div>
+                        </div>
+                        <div class="hotel-location">広島</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- オークラ系 -->
+            <div class="chain-section okura">
+                <div class="chain-title">
+                    <div class="chain-icon okura">O</div>
+                    オークラ ニッコー ホテルズ
+                </div>
+                <div class="hotel-list">
+                    <div class="hotel-item okura">
+                        <div>
+                            <div class="hotel-name">ホテルオークラ東京ベイ</div>
+                            <div class="room-type">スーペリアルーム</div>
+                        </div>
+                        <div class="hotel-location">千葉</div>
+                    </div>
+                    <div class="hotel-item okura">
+                        <div>
+                            <div class="hotel-name">ホテル日航大阪</div>
+                            <div class="room-type">スタンダードツイン</div>
+                        </div>
+                        <div class="hotel-location">大阪</div>
+                    </div>
+                    <div class="hotel-item okura">
+                        <div>
+                            <div class="hotel-name">ホテルオークラJRハウステンボス</div>
+                            <div class="room-type">スーペリアパークビュールーム</div>
+                        </div>
+                        <div class="hotel-location">長崎</div>
+                    </div>
+                    <div class="hotel-item okura">
+                        <div>
+                            <div class="hotel-name">グランドニッコー東京 台場</div>
+                            <div class="room-type">レギュラーフロア スーペリアツイン／ダブル</div>
+                        </div>
+                        <div class="hotel-location">東京</div>
+                    </div>
+                    <div class="hotel-item okura">
+                        <div>
+                            <div class="hotel-name">ホテル日航金沢</div>
+                            <div class="room-type">リュクスツイン</div>
+                        </div>
+                        <div class="hotel-location">石川</div>
+                    </div>
+                    <div class="hotel-item okura">
+                        <div>
+                            <div class="hotel-name">ホテル日航アリビラ沖縄</div>
+                            <div class="room-type">スーペリアツイン</div>
+                        </div>
+                        <div class="hotel-location">沖縄</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ハイアット系 -->
+            <div class="chain-section hyatt">
+                <div class="chain-title">
+                    <div class="chain-icon hyatt">H</div>
+                    ハイアットホテルズアンドリゾーツ
+                </div>
+                <div class="hotel-list">
+                    <div class="hotel-item hyatt">
+                        <div>
+                            <div class="hotel-name">ハイアット セントリック 金沢</div>
+                            <div class="room-type">キング／ツイン</div>
+                        </div>
+                        <div class="hotel-location">石川</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item hyatt">
+                        <div>
+                            <div class="hotel-name">ハイアット リージェンシー 東京ベイ</div>
+                            <div class="room-type">キング／ツイン</div>
+                        </div>
+                        <div class="hotel-location">千葉</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item hyatt">
+                        <div>
+                            <div class="hotel-name">ハイアット リージェンシー 京都</div>
+                            <div class="room-type">ゲストルーム キング／ツイン</div>
+                        </div>
+                        <div class="hotel-location">京都</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item hyatt">
+                        <div>
+                            <div class="hotel-name">ハイアット リージェンシー 瀬良垣アイランド</div>
+                            <div class="room-type">スタンダードツイン</div>
+                        </div>
+                        <div class="hotel-location">沖縄</div>
+                    </div>
+                    <div class="hotel-item hyatt">
+                        <div>
+                            <div class="hotel-name">グランド ハイアット 福岡</div>
+                            <div class="room-type">スタンダードルーム ツイン／クイーン</div>
+                        </div>
+                        <div class="hotel-location">福岡</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item hyatt">
+                        <div>
+                            <div class="hotel-name">キャプション by Hyatt なんば 大阪</div>
+                            <div class="room-type">スタンダード (ツイン／クイーン)</div>
+                        </div>
+                        <div class="hotel-location">大阪</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ニューオータニ系 -->
+            <div class="chain-section newotani">
+                <div class="chain-title">
+                    <div class="chain-icon newotani">N</div>
+                    ニューオータニホテルズ
+                </div>
+                <div class="hotel-list">
+                    <div class="hotel-item newotani">
+                        <div>
+                            <div class="hotel-name">ホテルニューオータニ幕張</div>
+                            <div class="room-type">スーペリアルーム</div>
+                        </div>
+                        <div class="hotel-location">千葉</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item newotani">
+                        <div>
+                            <div class="hotel-name">ホテルニューオータニ博多</div>
+                            <div class="room-type">エグゼクティブツイン</div>
+                        </div>
+                        <div class="hotel-location">福岡</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item newotani">
+                        <div>
+                            <div class="hotel-name">ホテルニューオータニ佐賀</div>
+                            <div class="room-type">エグゼクティブツイン</div>
+                        </div>
+                        <div class="hotel-location">佐賀</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item newotani">
+                        <div>
+                            <div class="hotel-name">ホテルニューオータニ（東京）</div>
+                            <div class="room-type">ザ・メイン スタンダード</div>
+                        </div>
+                        <div class="hotel-location">東京</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item newotani">
+                        <div>
+                            <div class="hotel-name">ホテルニューオータニ大阪</div>
+                            <div class="room-type">スーペリアツインルーム</div>
+                        </div>
+                        <div class="hotel-location">大阪</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ロイヤルパーク系 -->
+            <div class="chain-section royalpark">
+                <div class="chain-title">
+                    <div class="chain-icon royalpark">R</div>
+                    ロイヤルパークホテルズ
+                </div>
+                <div class="hotel-list">
+                    <div class="hotel-item royalpark">
+                        <div>
+                            <div class="hotel-name">ザ ロイヤルパークホテル アイコニック 京都</div>
+                            <div class="room-type">デラックスフロアツイン</div>
+                        </div>
+                        <div class="hotel-location">京都</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item royalpark">
+                        <div>
+                            <div class="hotel-name">ザ ロイヤルパークホテル アイコニック 名古屋</div>
+                            <div class="room-type">スーペリアツイン</div>
+                        </div>
+                        <div class="hotel-location">愛知</div>
+                    </div>
+                    <div class="hotel-item royalpark">
+                        <div>
+                            <div class="hotel-name">ザ ロイヤルパークホテル アイコニック 大阪御堂筋</div>
+                            <div class="room-type">スタンダードツイン</div>
+                        </div>
+                        <div class="hotel-location">大阪</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ヒルトン系（プラチナカード対象） -->
+            <div class="chain-section hilton">
+                <div class="chain-title">
+                    <div class="chain-icon hilton">H</div>
+                    ヒルトン（プラチナカード対象）
+                </div>
+                <div class="hotel-list">
+                    <div class="hotel-item hilton">
+                        <div>
+                            <div class="hotel-name">ヒルトン東京</div>
+                            <div class="room-type">ヒルトン ツイン／ヒルトン キング</div>
+                        </div>
+                        <div class="hotel-location">東京</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item hilton">
+                        <div>
+                            <div class="hotel-name">ヒルトン東京お台場</div>
+                            <div class="room-type">スタンダード</div>
+                        </div>
+                        <div class="hotel-location">東京</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item hilton">
+                        <div>
+                            <div class="hotel-name">ヒルトン東京ベイ</div>
+                            <div class="room-type">ヒルトン ツイン／ダブル</div>
+                        </div>
+                        <div class="hotel-location">千葉</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item hilton">
+                        <div>
+                            <div class="hotel-name">ヒルトン小田原リゾート&スパ</div>
+                            <div class="room-type">ヒルトンスーペリアツイン</div>
+                        </div>
+                        <div class="hotel-location">神奈川</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item hilton">
+                        <div>
+                            <div class="hotel-name">ヒルトン名古屋</div>
+                            <div class="room-type">ヒルトン ツイン</div>
+                        </div>
+                        <div class="hotel-location">愛知</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item hilton">
+                        <div>
+                            <div class="hotel-name">ヒルトン京都</div>
+                            <div class="room-type">ゲストルーム</div>
+                        </div>
+                        <div class="hotel-location">京都</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item hilton">
+                        <div>
+                            <div class="hotel-name">ヒルトン大阪</div>
+                            <div class="room-type">ヒルトン ツイン</div>
+                        </div>
+                        <div class="hotel-location">大阪</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item hilton">
+                        <div>
+                            <div class="hotel-name">ヒルトン広島</div>
+                            <div class="room-type">スタンダード</div>
+                        </div>
+                        <div class="hotel-location">広島</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item hilton">
+                        <div>
+                            <div class="hotel-name">ヒルトン福岡シーホーク</div>
+                            <div class="room-type">ヒルトンツイン／ダブル</div>
+                        </div>
+                        <div class="hotel-location">福岡</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item hilton">
+                        <div>
+                            <div class="hotel-name">ヒルトン沖縄瀬底リゾート</div>
+                            <div class="room-type">ツインゲストルーム（オーシャンビュー）</div>
+                        </div>
+                        <div class="hotel-location">沖縄</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item hilton">
+                        <div>
+                            <div class="hotel-name">ヒルトン沖縄北谷リゾート</div>
+                            <div class="room-type">スタンダード オーシャンビュールーム</div>
+                        </div>
+                        <div class="hotel-location">沖縄</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                    <div class="hotel-item hilton">
+                        <div>
+                            <div class="hotel-name">ヒルトン沖縄宮古島リゾート</div>
+                            <div class="room-type">キングデラックスルーム</div>
+                        </div>
+                        <div class="hotel-location">沖縄</div>
+                        <div class="credit-badge">5,000円</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
