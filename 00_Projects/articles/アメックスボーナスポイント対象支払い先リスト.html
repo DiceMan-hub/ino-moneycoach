@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アメックス ボーナスポイント・パートナーズ 対象支払い先リスト</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1d1d1f;
+            background: #ffffff;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 22px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 0 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin-bottom: 60px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero .subtitle {
+            font-size: 21px;
+            font-weight: 400;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section h2 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #1d1d1f;
+            letter-spacing: -0.01em;
+        }
+
+        .section h3 {
+            font-size: 28px;
+            font-weight: 600;
+            margin: 40px 0 20px;
+            color: #1d1d1f;
+        }
+
+        .section h4 {
+            font-size: 21px;
+            font-weight: 600;
+            margin: 30px 0 15px;
+            color: #1d1d1f;
+        }
+
+        .info-box {
+            background: #f5f5f7;
+            border-radius: 18px;
+            padding: 30px;
+            margin: 30px 0;
+            border-left: 4px solid #007aff;
+        }
+
+        .info-box h4 {
+            color: #007aff;
+            margin-bottom: 15px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e5e5e7;
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .category-card h4 {
+            color: #1d1d1f;
+            margin-bottom: 20px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+        }
+
+        .category-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 20px;
+        }
+
+        .points-rate {
+            background: #007aff;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .merchant-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .merchant-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .merchant-list li:last-child {
+            border-bottom: none;
+        }
+
+        .merchant-name {
+            font-weight: 500;
+            color: #1d1d1f;
+        }
+
+        .merchant-points {
+            background: #f0f0f0;
+            color: #1d1d1f;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 30px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        table th {
+            background: #f5f5f7;
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+            color: #1d1d1f;
+            border-bottom: 1px solid #e5e5e7;
+        }
+
+        table td {
+            padding: 20px;
+            border-bottom: 1px solid #e5e5e7;
+            color: #424245;
+        }
+
+        table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .highlight-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 18px;
+            padding: 40px;
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .highlight-section h3 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .highlight-section p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+
+        .warning-box h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .warning-box p {
+            color: #856404;
+            margin: 0;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 60px 0;
+            background: #f5f5f7;
+            margin-top: 80px;
+        }
+
+        .footer h4 {
+            color: #1d1d1f;
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            color: #424245;
+            font-size: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .hero {
+                padding: 60px 0 40px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero .subtitle {
+                font-size: 18px;
+            }
+            
+            .section h2 {
+                font-size: 28px;
+            }
+            
+            .section h3 {
+                font-size: 24px;
+            }
+            
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+
+        .strong {
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>アメックス ボーナスポイント・パートナーズ<br>対象支払い先リスト</h1>
+            <p class="subtitle">事前登録不要で利用できる、高ポイント付与対象店舗の完全ガイド</p>
+        </div>
+
+        <section class="section">
+            <h2>📋 プログラム概要</h2>
+            
+            <div class="info-box">
+                <h4>ボーナスポイント・パートナーズとは？</h4>
+                <p>アメリカン・エキスプレスの「ボーナスポイント・パートナーズ」は、事前登録不要で利用できる高ポイント付与プログラムです。対象店舗でアメックスカードを利用するだけで、通常の100円=1ポイントに加えて、追加のボーナスポイントが自動付与されます。</p>
+                
+                <div style="background: #e3f2fd; border-left: 4px solid #2196f3; padding: 15px; margin: 15px 0; border-radius: 8px;">
+                    <h5 style="color: #1976d2; margin-bottom: 10px;">📅 キャンペーン期間</h5>
+                    <p style="margin: 0; color: #1976d2;"><strong>2025年6月1日 ～ 2026年8月31日</strong><br>（約15ヶ月間の期間限定プログラム）</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <h4>⚠️ 重要な注意事項</h4>
+                <p><strong>発行元による提供状況の違いがあります。</strong>エムアイカード発行のアメックスカード向けプログラムは2025年5月31日で終了予定です。アメリカン・エキスプレス・インターナショナル, Inc.発行のプロパーカード向けは2025年6月1日から2026年8月31日まで利用可能です。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏨 ホテル・リゾート</h2>
+            
+            <div class="category-grid">
+                <div class="category-card">
+                    <h4><span class="category-icon">🏨</span>ラグジュアリーホテル</h4>
+                    <div class="points-rate">100円=5ポイント</div>
+                    <ul class="merchant-list">
+                        <li>
+                            <span class="merchant-name">ブルガリ ホテル 東京</span>
+                            <span class="merchant-points">上限200,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">ROKU KYOTO, LXR Hotels & Resorts</span>
+                            <span class="merchant-points">上限200,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">ザ・リッツ・カールトン東京</span>
+                            <span class="merchant-points">上限200,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">ザ・リッツ・カールトン大阪</span>
+                            <span class="merchant-points">上限200,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">ザ・リッツ・カールトン沖縄</span>
+                            <span class="merchant-points">上限200,000pt</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="category-card">
+                    <h4><span class="category-icon">♨️</span>温泉・リゾート</h4>
+                    <div class="points-rate">100円=5ポイント</div>
+                    <ul class="merchant-list">
+                        <li>
+                            <span class="merchant-name">SONEKA（北海道・北広島）</span>
+                            <span class="merchant-points">上限1,600,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">星のや軽井沢</span>
+                            <span class="merchant-points">上限200,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">星のや京都</span>
+                            <span class="merchant-points">上限200,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">星のや竹富島</span>
+                            <span class="merchant-points">上限200,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">星のや富士</span>
+                            <span class="merchant-points">上限200,000pt</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🍽️ レストラン・ダイニング</h2>
+            
+            <div class="category-grid">
+                <div class="category-card">
+                    <h4><span class="category-icon">🍴</span>高級レストラン</h4>
+                    <div class="points-rate">100円=5ポイント</div>
+                    <ul class="merchant-list">
+                        <li>
+                            <span class="merchant-name">BALLY 銀座本店</span>
+                            <span class="merchant-points">上限200,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">ヴィンIX -Aging Beef-（元麻布）</span>
+                            <span class="merchant-points">上限200,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">ヌーヴェルエポック（ホテルオークラ京都）</span>
+                            <span class="merchant-points">上限200,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">THE THOUSAND KYOTO レストラン</span>
+                            <span class="merchant-points">上限100,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">セントレジスホテル 大阪（レストランとバー）</span>
+                            <span class="merchant-points">上限50,000pt</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="category-card">
+                    <h4><span class="category-icon">🍷</span>バー・ラウンジ</h4>
+                    <div class="points-rate">100円=3ポイント</div>
+                    <ul class="merchant-list">
+                        <li>
+                            <span class="merchant-name">フレンチレストラン フルーヴ（梅田）</span>
+                            <span class="merchant-points">上限100,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">エンバ・キョウト・グリル（東山）</span>
+                            <span class="merchant-points">上限50,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">バスク料理「IÑAKI」（パティーナ大阪内）</span>
+                            <span class="merchant-points">上限50,000pt</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🛍️ ショッピング・ファッション</h2>
+            
+            <div class="category-grid">
+                <div class="category-card">
+                    <h4><span class="category-icon">👔</span>高級ファッション</h4>
+                    <div class="points-rate">100円=5ポイント</div>
+                    <ul class="merchant-list">
+                        <li>
+                            <span class="merchant-name">BALLY 銀座本店</span>
+                            <span class="merchant-points">上限200,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">ブルガリ 銀座本店</span>
+                            <span class="merchant-points">上限200,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">ブルガリ 表参道店</span>
+                            <span class="merchant-points">上限200,000pt</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="category-card">
+                    <h4><span class="category-icon">🛍️</span>百貨店・デパート</h4>
+                    <div class="points-rate">100円=2ポイント</div>
+                    <ul class="merchant-list">
+                        <li>
+                            <span class="merchant-name">高島屋</span>
+                            <span class="merchant-points">上限100,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">三越伊勢丹</span>
+                            <span class="merchant-points">上限100,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">大丸松坂屋</span>
+                            <span class="merchant-points">上限100,000pt</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>✈️ 旅行・交通</h2>
+            
+            <div class="category-grid">
+                <div class="category-card">
+                    <h4><span class="category-icon">✈️</span>航空会社</h4>
+                    <div class="points-rate">100円=3ポイント</div>
+                    <ul class="merchant-list">
+                        <li>
+                            <span class="merchant-name">JAL（日本航空）</span>
+                            <span class="merchant-points">上限150,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">ANA（全日本空輸）</span>
+                            <span class="merchant-points">上限150,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">カタール航空</span>
+                            <span class="merchant-points">上限150,000pt</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="category-card">
+                    <h4><span class="category-icon">🚗</span>レンタカー・交通</h4>
+                    <div class="points-rate">100円=2ポイント</div>
+                    <ul class="merchant-list">
+                        <li>
+                            <span class="merchant-name">トヨタレンタリース</span>
+                            <span class="merchant-points">上限100,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">ニッポンレンタカー</span>
+                            <span class="merchant-points">上限100,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">オリックスレンタカー</span>
+                            <span class="merchant-points">上限100,000pt</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏥 医療・美容</h2>
+            
+            <div class="category-grid">
+                <div class="category-card">
+                    <h4><span class="category-icon">💄</span>美容・エステ</h4>
+                    <div class="points-rate">100円=3ポイント</div>
+                    <ul class="merchant-list">
+                        <li>
+                            <span class="merchant-name">資生堂サロン</span>
+                            <span class="merchant-points">上限100,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">エステティックTBC</span>
+                            <span class="merchant-points">上限100,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">湘南美容外科クリニック</span>
+                            <span class="merchant-points">上限100,000pt</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="category-card">
+                    <h4><span class="category-icon">🏥</span>医療・健康</h4>
+                    <div class="points-rate">100円=2ポイント</div>
+                    <ul class="merchant-list">
+                        <li>
+                            <span class="merchant-name">セントレジスホテル 大阪（スパ）</span>
+                            <span class="merchant-points">上限50,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">ホテルオークラ東京（スパ）</span>
+                            <span class="merchant-points">上限50,000pt</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🎯 エンターテイメント</h2>
+            
+            <div class="category-grid">
+                <div class="category-card">
+                    <h4><span class="category-icon">🎬</span>映画・エンタメ</h4>
+                    <div class="points-rate">100円=2ポイント</div>
+                    <ul class="merchant-list">
+                        <li>
+                            <span class="merchant-name">TOHOシネマズ</span>
+                            <span class="merchant-points">上限50,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">ユナイテッド・シネマ</span>
+                            <span class="merchant-points">上限50,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">イオンシネマ</span>
+                            <span class="merchant-points">上限50,000pt</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="category-card">
+                    <h4><span class="category-icon">🎵</span>音楽・ライブ</h4>
+                    <div class="points-rate">100円=2ポイント</div>
+                    <ul class="merchant-list">
+                        <li>
+                            <span class="merchant-name">チケットぴあ</span>
+                            <span class="merchant-points">上限50,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">ローソンチケット</span>
+                            <span class="merchant-points">上限50,000pt</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>📱 デジタル・サービス</h2>
+            
+            <div class="category-grid">
+                <div class="category-card">
+                    <h4><span class="category-icon">💻</span>IT・デジタル</h4>
+                    <div class="points-rate">100円=2ポイント</div>
+                    <ul class="merchant-list">
+                        <li>
+                            <span class="merchant-name">Apple Store</span>
+                            <span class="merchant-points">上限100,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">Microsoft Store</span>
+                            <span class="merchant-points">上限100,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">Google Play</span>
+                            <span class="merchant-points">上限50,000pt</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="category-card">
+                    <h4><span class="category-icon">📺</span>動画・配信</h4>
+                    <div class="points-rate">100円=2ポイント</div>
+                    <ul class="merchant-list">
+                        <li>
+                            <span class="merchant-name">Netflix</span>
+                            <span class="merchant-points">上限50,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">Amazon Prime Video</span>
+                            <span class="merchant-points">上限50,000pt</span>
+                        </li>
+                        <li>
+                            <span class="merchant-name">Disney+</span>
+                            <span class="merchant-points">上限50,000pt</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="highlight-section">
+            <h3>💡 活用のコツ</h3>
+            <p>ボーナスポイント・パートナーズは事前登録不要で利用できます。対象店舗でアメックスカードを利用するだけで、自動的に高ポイントが付与されます。上限ポイントを意識して、計画的に利用することで、最大の効果を得ることができます。</p>
+        </div>
+
+        <div class="footer">
+            <h4>📧 アメックス ボーナスポイント・パートナーズ 対象支払い先リスト</h4>
+            <p><em>事前登録不要で利用できる高ポイント付与対象店舗の完全ガイド</em></p>
+            <p><em>このリストを参考に、アメックスカードの価値を最大化してください。</em></p>
+        </div>
+    </div>
+</body>
+</html>

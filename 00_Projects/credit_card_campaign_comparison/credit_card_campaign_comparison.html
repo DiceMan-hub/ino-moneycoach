@@ -1,0 +1,2305 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>主要クレジットカード 入会キャンペーン比較</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+    
+
+    <!-- Chosen Palette: Warm Neutral (bg-slate-50, bg-white, text-slate-800, accent-blue-600) -->
+
+    <!-- Application Structure Plan: 
+
+        目的: ユーザーが現在の主要なクレジットカード入会キャンペーンの「価値」と「達成難易度（必要な利用金額）」を直感的に比較検討できるようにする。
+
+        構造: 
+
+        1. ヘッダーと概要: ページの目的を説明。
+
+        2. インタラクティブ・チャート: X軸に「達成に必要な利用金額」、Y軸に「キャンペーンの最大価値（円換算）」をとったバブルチャートを配置。これにより、「少ない手間で大きなリターン」が得られるカードが一目瞭然になる。
+
+        3. フィルタリングとソート機能: 「特典タイプ（マイル、ポイント等）」でのフィルタ、「最大価値順」「締切順」等でのソートを提供。
+
+        4. カードグリッド: 各キャンペーンの詳細（カード名、最大価値、条件、締切）を分かりやすく表示するカードをグリッドレイアウトで配置。
+
+        理由: 静的なリストでは、多角的な比較（価値 vs 手間）が困難。インタラクティブなチャートと、連動するフィルタ/ソート付きのグリッドを組み合わせることで、ユーザーは自身の利用スタイルに最適なキャンペーンを効率的に発見できる。このダッシュボード型アプローチが、情報探索と意思決定を最もよくサポートすると判断した。
+
+    -->
+
+    <!-- Visualization & Content Choices:
+
+        1. レポート情報: 各カードのキャンペーン（最大価値、必要利用額、期間）。
+
+           ゴール: 価値と難易度の関係性を視覚化する。
+
+           Viz/Method: バブルチャート (Chart.js / Canvas)。X軸: 必要利用額, Y軸: 最大価値(円換算), バブル: 各カード。
+
+           Interaction: ツールチップで詳細表示。フィルタと連動して動的に更新。
+
+           Justification: 価値とコスト（手間）のトレードオフを視覚化するのに最適。
+
+        2. レポート情報: キャンペーンのリスト全体。
+
+           ゴール: 詳細の比較と一覧性。
+
+           Viz/Method: カード型グリッド (HTML/Tailwind)。
+
+           Interaction: フィルタリング（特典タイプ）、ソート（価値、締切、利用額）。
+
+           Justification: ユーザーが特定の基準で情報を絞り込み、詳細を確認するのに適している。
+
+        3. レポート情報: 特典タイプ（マイル、ポイント等）。
+
+           ゴール: ユーザーの興味に応じた絞り込み。
+
+           Viz/Method: ドロップダウンメニュー (HTML/JS)。
+
+           Interaction: 選択に応じてチャートとグリッドを更新。
+
+           Justification: シンプルで標準的なインタラクション。
+
+    -->
+
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+
+
+    <style>
+
+        body {
+
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+
+            background-color: #f8fafc; /* bg-slate-50 */
+
+            color: #1e293b; /* text-slate-800 */
+
+        }
+
+        .chart-container {
+
+            position: relative;
+
+            width: 100%;
+
+            max-width: 900px;
+
+            margin-left: auto;
+
+            margin-right: auto;
+
+            height: 400px;
+
+            max-height: 450px;
+
+        }
+
+        @media (min-width: 768px) {
+
+            .chart-container {
+
+                height: 450px;
+
+            }
+
+        }
+
+        .card {
+
+            background-color: #ffffff;
+
+            border-radius: 1rem; /* rounded-2xl */
+
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+            border: 1px solid #f1f5f9; /* border-slate-100 */
+
+            overflow: hidden;
+
+        }
+
+        @media (min-width: 768px) {
+
+            #cardGrid {
+
+                max-width: 1200px;
+
+                margin: 0 auto;
+
+            }
+
+            .card {
+
+                height: 100%;
+
+                display: flex;
+
+                flex-direction: column;
+
+            }
+
+        }
+
+        .card:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.06);
+
+            border-color: #e2e8f0;
+
+        }
+
+        .card-header-accent {
+
+            height: 3px;
+
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+
+            margin: -1rem -1rem 1.5rem -1rem;
+
+        }
+
+        .issuer-badge {
+
+            font-size: 0.625rem; /* text-xs */
+
+            font-weight: 600;
+
+            letter-spacing: 0.05em;
+
+            text-transform: uppercase;
+
+            padding: 0.375rem 0.75rem;
+
+            border-radius: 9999px;
+
+            background-color: #f8fafc;
+
+            color: #64748b;
+
+            border: 1px solid #e2e8f0;
+
+        }
+
+        .value-display {
+
+            font-weight: 700;
+
+            letter-spacing: -0.02em;
+
+            color: #0f172a;
+
+        }
+
+        .value-subtitle {
+
+            font-size: 0.75rem;
+
+            color: #94a3b8;
+
+            font-weight: 400;
+
+            margin-top: 0.25rem;
+
+        }
+
+        .detail-label {
+
+            font-size: 0.6875rem;
+
+            font-weight: 600;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.05em;
+
+            color: #64748b;
+
+            margin-bottom: 0.25rem;
+
+            display: block;
+
+        }
+
+        .detail-text {
+
+            font-size: 0.875rem;
+
+            color: #334155;
+
+            line-height: 1.6;
+
+        }
+
+        .required-spend-badge {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            padding: 0.5rem 1rem;
+
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+
+            color: white;
+
+            border-radius: 0.5rem;
+
+            font-size: 1rem;
+
+            font-weight: 700;
+
+            letter-spacing: -0.01em;
+
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+
+        }
+
+        .deadline-badge {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            padding: 0.5rem 1rem;
+
+            background-color: #fef2f2;
+
+            color: #dc2626;
+
+            border-radius: 0.5rem;
+
+            font-size: 0.875rem;
+
+            font-weight: 700;
+
+            letter-spacing: 0.01em;
+
+        }
+
+        .condition-list {
+
+            list-style: none;
+
+            padding: 0;
+
+            margin: 0;
+
+        }
+
+        .condition-item {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            padding: 0.5rem 0;
+
+            font-size: 0.875rem;
+
+            color: #334155;
+
+            line-height: 1.6;
+
+            word-break: break-word;
+
+        }
+
+        .condition-item > span:last-child {
+
+            flex: 1;
+
+            min-width: 0;
+
+            word-break: break-word;
+
+            overflow-wrap: break-word;
+
+            /* カンマで改行しないように */
+
+            word-spacing: 0;
+
+        }
+
+        .condition-number {
+
+            white-space: nowrap !important;
+
+            display: inline !important;
+
+            word-break: keep-all !important;
+
+            overflow-wrap: normal !important;
+
+            hyphens: none !important;
+
+            flex-shrink: 0 !important;
+
+            unicode-bidi: embed !important;
+
+            /* カンマを含む数値が改行されないように */
+
+            font-feature-settings: "tnum" 1 !important;
+
+            /* カンマを改行禁止文字として扱う */
+
+            word-spacing: 0 !important;
+
+            letter-spacing: 0 !important;
+
+        }
+
+        .condition-item:not(:last-child) {
+
+            border-bottom: 1px solid #f1f5f9;
+
+        }
+
+        .condition-item.lottery-item {
+
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
+
+            border: 1.5px solid #fecaca;
+
+            border-radius: 0.5rem;
+
+            padding: 0.75rem 1rem;
+
+            margin-top: 0.75rem;
+
+            position: relative;
+
+        }
+
+
+        .condition-item.lottery-item .condition-bullet {
+
+            display: none;
+
+        }
+
+        .condition-item.lottery-item span:last-child {
+
+            color: #991b1b;
+
+            font-weight: 500;
+
+        }
+
+        .condition-section {
+
+            margin-bottom: 1.25rem;
+
+        }
+
+        .condition-section-title {
+
+            font-size: 0.6875rem;
+
+            font-weight: 600;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.05em;
+
+            color: #94a3b8;
+
+            margin-bottom: 0.5rem;
+
+            padding-left: 0.5rem;
+
+        }
+
+        .condition-section:first-child .condition-section-title {
+
+            display: none;
+
+        }
+
+        .condition-section-divider {
+
+            height: 1px;
+
+            background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+
+            margin: 1rem 0;
+
+        }
+
+        .condition-item.non-payment-item {
+
+            background-color: #f8fafc;
+
+            border-left: 3px solid #cbd5e1;
+
+            padding-left: 0.875rem;
+
+        }
+
+        .conditions-wrapper {
+
+            background-color: #f8fafc;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 0.5rem;
+
+            padding: 1rem;
+
+            margin-top: 0.5rem;
+
+        }
+
+        .period-badge {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            padding: 0.375rem 0.875rem;
+
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+            color: white;
+
+            border-radius: 0.5rem;
+
+            font-size: 0.75rem;
+
+            font-weight: 600;
+
+            letter-spacing: 0.02em;
+
+            margin-bottom: 1rem;
+
+            box-shadow: 0 2px 4px rgba(102, 126, 234, 0.2);
+
+        }
+
+        .period-badge-icon {
+
+            width: 0.875rem;
+
+            height: 0.875rem;
+
+            margin-right: 0.375rem;
+
+            opacity: 0.95;
+
+        }
+
+        .annual-fee-badge {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            padding: 0.25rem 0.625rem;
+
+            background-color: #f8fafc;
+
+            color: #64748b;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 0.375rem;
+
+            font-size: 0.75rem;
+
+            font-weight: 500;
+
+            margin-left: 0.5rem;
+
+        }
+
+        .condition-bullet {
+
+            flex-shrink: 0;
+
+            width: 6px;
+
+            height: 6px;
+
+            border-radius: 50%;
+
+            background-color: #3b82f6;
+
+            margin-top: 0.5rem;
+
+            margin-right: 0.75rem;
+
+        }
+
+        select {
+
+            -webkit-appearance: none;
+
+            -moz-appearance: none;
+
+            appearance: none;
+
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22currentColor%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E');
+
+            background-repeat: no-repeat;
+
+            background-position: right 0.75rem center;
+
+            background-size: 1.25em 1.25em;
+
+            padding-right: 2.5rem;
+
+        }
+
+    </style>
+
+</head>
+
+<body class="antialiased">
+
+
+
+    <div class="container mx-auto p-4 py-8 md:p-8">
+
+        
+
+        <header class="text-center mb-8">
+
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-2">
+
+                主要クレジットカード 入会キャンペーン比較
+
+            </h1>
+
+            <p class="text-lg text-slate-600">
+
+                開催中の主要な入会特典を「価値」と「難易度」で比較します。
+
+            </p>
+
+            <p class="text-sm text-slate-500 mt-2">
+
+                (2025年10月31日時点の情報に基づく)
+
+            </p>
+
+        </header>
+
+
+
+        <section class="mb-8 p-4 bg-white rounded-xl shadow-lg border border-slate-200">
+
+            <h2 class="text-2xl font-bold text-slate-800 mb-4 text-center">
+
+                価値 vs 達成難易度 (必要な利用金額)
+
+            </h2>
+
+            <p class="text-sm text-slate-600 text-center mb-4">
+
+                右上に位置するカードほど「ハイリターン」ですが、「達成条件（利用金額）が厳しい」ことを示します。左下は「ローリスク・ローリターン」です。
+
+            </p>
+
+            <div class="chart-container">
+
+                <canvas id="campaignChart"></canvas>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="mb-6">
+
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 p-4 bg-white rounded-xl shadow-md border border-slate-200">
+
+                <div class="flex flex-col sm:flex-row gap-4">
+
+                    <div>
+
+                        <label for="filterType" class="block text-sm font-medium text-slate-700 mb-1">特典タイプで絞り込み</label>
+
+                        <select id="filterType" class="w-full sm:w-auto rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+
+                            <option value="all">すべての特典</option>
+
+                            <option value="miles">マイル</option>
+
+                            <option value="points">ポイント・キャッシュバック</option>
+
+                            <option value="fee">年会費無料</option>
+
+                        </select>
+
+                    </div>
+
+                    <div>
+
+                        <label for="sortBy" class="block text-sm font-medium text-slate-700 mb-1">並び替え</label>
+
+                        <select id="sortBy" class="w-full sm:w-auto rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+
+                            <option value="yenValue_desc">最大価値 (高い順)</option>
+
+                            <option value="requiredSpend_asc">難易度 (低い順)</option>
+
+                            <option value="yenValue_asc">最大価値 (低い順)</option>
+
+                            <option value="requiredSpend_desc">難易度 (高い順)</option>
+
+                            <option value="deadline_asc">締切 (近い順)</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div id="resultCount" class="text-right text-slate-600 font-medium">
+
+                    
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <main class="max-w-7xl mx-auto">
+
+            <div id="cardGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            </div>
+
+        </main>
+
+
+
+    </div>
+
+
+
+    <script type="module">
+
+        
+
+        const cardData = [
+
+            {
+
+                id: 'jal-club-a-gold',
+
+                name: 'JALカード (CLUB-A Gold)',
+
+                issuer: 'JAL',
+
+                rewardType: 'miles',
+
+                maxValueText: '最大 22,000 マイル',
+
+                yenValue: 33000,
+
+                condition: 'JALカードショッピングマイル・プレミアム同時入会 ＋ 入会月の3ヶ月後末までに参加登録(MyJALCARD) ＋ 入会月の3ヶ月後末までに100万円利用で入会ボーナス7,000マイル ＋ 100万円利用でショッピングマイル10,000マイル ＋ 入会搭乗ボーナスで5,000マイル ＋ 通常還元分(100万円利用相当) ＋ 【別枠】JCB限定ボーナスで抽選500名様に5,000マイル',
+
+                requiredSpend: 1000000,
+
+                deadline: '2025-11-30',
+
+                annualFee: 17600,
+
+                highlightColor: 'bg-red-700',
+
+            },
+
+            {
+
+                id: 'ana-jcb-general',
+
+                name: 'ANA JCBカード (一般)',
+
+                issuer: 'ANA',
+
+                rewardType: 'miles',
+
+                maxValueText: '最大 98,000 マイル相当',
+
+                yenValue: 147000,
+
+                condition: '入会ボーナスで1,000マイル ＋ 入会後5ヶ月以内に参加登録 ＋ MyJCBアプリにログイン ＋ 入会後5ヶ月以内に150万円利用で18,000マイル相当(9,000マイル＋15,000pt) ＋ 通常還元分(150万円利用相当)',
+
+                requiredSpend: 1500000,
+
+                deadline: '2026-05-31',
+
+                annualFee: 0,
+
+                highlightColor: 'bg-blue-600',
+
+            },
+
+            {
+
+                id: 'ana-jcb-general-star-wars',
+
+                name: 'ANA JCBカード (一般・スター・ウォーズ デザイン)',
+
+                issuer: 'ANA',
+
+                rewardType: 'miles',
+
+                maxValueText: '最大 99,000 マイル相当',
+
+                yenValue: 148500,
+
+                condition: '入会ボーナスで1,000マイル ＋ 入会後5ヶ月以内に参加登録 ＋ MyJCBアプリにログイン ＋ 入会後5ヶ月以内に150万円利用で18,000マイル相当(9,000マイル＋15,000pt) ＋ 通常還元分(150万円利用相当) ＋ 【別枠】スター・ウォーズデザイン限定で入会申込期間(2025年11月1日〜11月30日)に10万円(税込)以上の利用で抽選でモデルプレーン(入会年月日2025年12月15日まで対象)',
+
+                requiredSpend: 1500000,
+
+                deadline: '2026-05-31',
+
+                annualFee: 0,
+
+                highlightColor: 'bg-blue-700',
+
+            },
+
+            {
+
+                id: 'ana-jcb-gold',
+
+                name: 'ANA JCB ワイドゴールドカード',
+
+                issuer: 'ANA',
+
+                rewardType: 'miles',
+
+                maxValueText: '最大 152,000 マイル相当',
+
+                yenValue: 228000,
+
+                condition: '入会ボーナスで2,000マイル ＋ 入会後5ヶ月以内に参加登録 ＋ MyJCBアプリにログイン ＋ 入会後5ヶ月以内に300万円利用で60,000マイル相当(30,000マイル＋50,000pt) ＋ 通常還元分(300万円利用相当) ＋ 【別枠】ゴールド限定で300万円(税込)以上の利用で抽選50名様に90,000マイル相当(150,000J-POINT)',
+
+                requiredSpend: 3000000,
+
+                deadline: '2026-02-28',
+
+                annualFee: 13200,
+
+                highlightColor: 'bg-yellow-500',
+
+            },
+
+            {
+
+                id: 'ana-jcb-gold-star-wars',
+
+                name: 'ANA JCB ワイドゴールドカード (スター・ウォーズ デザイン)',
+
+                issuer: 'ANA',
+
+                rewardType: 'miles',
+
+                maxValueText: '最大 152,000 マイル相当',
+
+                yenValue: 228000,
+
+                condition: '入会ボーナスで2,000マイル ＋ 入会後5ヶ月以内に参加登録 ＋ MyJCBアプリにログイン ＋ 入会後5ヶ月以内に300万円利用で60,000マイル相当(30,000マイル＋50,000pt) ＋ 通常還元分(300万円利用相当) ＋ 【別枠】ゴールド限定で300万円(税込)以上の利用で抽選50名様に90,000マイル相当(150,000J-POINT) ＋ 【別枠】スター・ウォーズデザイン限定で入会申込期間(2025年11月1日〜11月30日)に10万円(税込)以上の利用で抽選でモデルプレーン(入会年月日2025年12月15日まで対象)',
+
+                requiredSpend: 3000000,
+
+                deadline: '2026-02-28',
+
+                annualFee: 13200,
+
+                highlightColor: 'bg-yellow-600',
+
+            },
+
+            {
+
+                id: 'diners-club',
+
+                name: 'ダイナースクラブカード',
+
+                issuer: 'Diners',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 34,200 円相当',
+
+                yenValue: 34200,
+
+                condition: '初年度年会費無料(通常年会費24,200円相当) ＋ 入会後3ヶ月以内に20万円利用と公式アプリサインオンで10,000円CB',
+
+                requiredSpend: 200000,
+
+                deadline: '2025-12-31',
+
+                annualFee: 24200,
+
+                highlightColor: 'bg-cyan-800',
+
+            },
+
+            {
+
+                id: 'olive-general',
+
+                name: 'Olive 一般',
+
+                issuer: 'SMBC',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 26,000 円相当',
+
+                yenValue: 26000,
+
+                condition: 'Oliveアカウント入金/切替プランで1,000円 ＋ 給与受取プランで3,400円 ＋ スマホタッチ決済プランで3,000円 ＋ 利用金額の10%で最大2,000円 ＋ SBI証券口座開設で100円 ＋ SBI証券クレカ積立で最大2,500円 ＋ SBI証券各種取引で最大1.4万円',
+
+                requiredSpend: 1,
+
+                deadline: '2026-01-06',
+
+                annualFee: 0,
+
+                highlightColor: 'bg-gray-500',
+
+            },
+
+            {
+
+                id: 'olive-gold',
+
+                name: 'Olive ゴールド',
+
+                issuer: 'SMBC',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 28,000 円相当',
+
+                yenValue: 28000,
+
+                condition: 'Oliveアカウント入金/切替プランで1,000円 ＋ 給与受取プランで3,400円 ＋ スマホタッチ決済プランで5,000円 ＋ 利用金額の10%で最大2,000円 ＋ SBI証券口座開設で100円 ＋ SBI証券クレカ積立で最大2,500円 ＋ SBI証券各種取引で最大1.4万円',
+
+                requiredSpend: 1,
+
+                deadline: '2026-01-06',
+
+                annualFee: 5500,
+
+                highlightColor: 'bg-yellow-600',
+
+            },
+
+            {
+
+                id: 'olive-platinum-preferred',
+
+                name: 'Olive プラチナプリファード',
+
+                issuer: 'SMBC',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 30,000 円相当',
+
+                yenValue: 30000,
+
+                condition: 'Oliveアカウント入金/切替プランで1,000円 ＋ 給与受取プランで3,400円 ＋ スマホタッチ決済プランで7,000円 ＋ 利用金額の10%で最大2,000円 ＋ SBI証券口座開設で100円 ＋ SBI証券クレカ積立で最大2,500円 ＋ SBI証券各種取引で最大1.4万円',
+
+                requiredSpend: 1,
+
+                deadline: '2026-01-06',
+
+                annualFee: 33000,
+
+                highlightColor: 'bg-green-700',
+
+            },
+
+            {
+
+                id: 'ana-diners-new',
+
+                name: 'ANA ダイナースカード (Aコース)',
+
+                issuer: 'Diners',
+
+                rewardType: 'miles',
+
+                maxValueText: '最大 122,000 マイル相当',
+
+                yenValue: 183000, 
+
+                condition: '入会ボーナスで2,000マイル ＋ 入会後3ヶ月以内に80万円利用でボーナス2.1万pt ＋ 入会後3ヶ月以内に180万円利用でボーナス2.9万pt ＋ 入会後3ヶ月以内に180万円利用で5万マイル ＋ ビジネス・アカウントカード入会で2,000pt ＋ 通常還元分(180万円利用相当)',
+
+                requiredSpend: 1800000,
+
+                deadline: '2026-03-31',
+
+                annualFee: 29700,
+
+                highlightColor: 'bg-sky-700',
+
+            },
+
+            {
+
+                id: 'jcb-platinum-new',
+
+                name: 'JCBプラチナ',
+
+                issuer: 'JCB',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 89,500 円 CB',
+
+                yenValue: 89500,
+
+                condition: '入会後3ヶ月以内に50万円利用で年会費CB 2.75万円 ＋ Amazon.co.jp利用で最大3万円CB ＋ Apple製品購入で最大2万円CB ＋ サブスク/デリバリー/アプリ利用で最大5千円CB ＋ スマホ決済利用で最大3千円CB ＋ 家族カード入会で最大4千円CB',
+
+                requiredSpend: 500000,
+
+                deadline: '2026-01-12',
+
+                annualFee: 27500,
+
+                highlightColor: 'bg-gray-800',
+
+            },
+
+            {
+
+                id: 'jcb-card-w',
+
+                name: 'JCBカード W (39歳以下)',
+
+                issuer: 'JCB',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 29,000 円相当 CB',
+
+                yenValue: 29000,
+
+                condition: '入会後3ヶ月以内にサブスク/デリバリー(最大5千円) ＋ 入会後3ヶ月以内にAmazon利用(最大1.2万円) ＋ 入会後3ヶ月以内にスマホ決済(最大3千円) 等',
+
+                requiredSpend: 1, 
+
+                deadline: '2026-01-12',
+
+                annualFee: 0,
+
+                highlightColor: 'bg-blue-500',
+
+            },
+
+            {
+
+                id: 'jcb-card-s',
+
+                name: 'JCBカード S',
+
+                issuer: 'JCB',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 29,000 円相当 CB',
+
+                yenValue: 29000,
+
+                condition: '入会後3ヶ月以内にJCB Wと同様のCB (Amazon利用 最大1.5万円 等)',
+
+                requiredSpend: 1,
+
+                deadline: '2026-01-12',
+
+                annualFee: 0,
+
+                highlightColor: 'bg-blue-400',
+
+            },
+
+            {
+
+                id: 'ana-amex-premium-new',
+
+                name: 'ANA アメックス・プレミアム',
+
+                issuer: 'AMEX',
+
+                rewardType: 'miles',
+
+                maxValueText: '最大 180,000 マイル相当',
+
+                yenValue: 270000, 
+
+                condition: 'カード付帯特典で1万マイル ＋ 入会後3ヶ月以内に50万円利用でボーナス2万pt ＋ 入会後3ヶ月以内に180万円利用でボーナス2.5万pt ＋ 入会後3ヶ月以内に300万円利用でボーナス3.5万pt ＋ 入会後3ヶ月以内に400万円利用でボーナス5万pt ＋ 通常還元分(400万円利用相当)',
+
+                requiredSpend: 4000000,
+
+                deadline: '2025-11-05',
+
+                annualFee: 165000,
+
+                highlightColor: 'bg-blue-900',
+
+            },
+
+            {
+
+                id: 'ana-amex-gold-new',
+
+                name: 'ANA アメックス・ゴールド',
+
+                issuer: 'AMEX',
+
+                rewardType: 'miles',
+
+                maxValueText: '最大 100,000 マイル相当',
+
+                yenValue: 150000, 
+
+                condition: 'カード付帯特典で2,000マイル ＋ 入会後3ヶ月以内に60万円利用でボーナス1.6万pt ＋ 入会後3ヶ月以内に100万円利用でボーナス1.2万pt ＋ 入会後3ヶ月以内に180万円利用でボーナス2万pt ＋ 入会後3ヶ月以内に200万円利用でボーナス3万pt ＋ 通常還元分(200万円利用相当)',
+
+                requiredSpend: 2000000,
+
+                deadline: '2025-11-05',
+
+                annualFee: 34100,
+
+                highlightColor: 'bg-yellow-500',
+
+            },
+
+            {
+
+                id: 'ana-amex-general',
+
+                name: 'ANA アメックスカード (一般)',
+
+                issuer: 'AMEX',
+
+                rewardType: 'miles',
+
+                maxValueText: '最大 35,000 マイル相当',
+
+                yenValue: 52500, 
+
+                condition: 'カード付帯特典で1,000マイル ＋ 入会後3ヶ月以内に10万円利用でボーナス1,000pt ＋ 入会後3ヶ月以内に30万円利用でボーナス5,000pt ＋ 入会後3ヶ月以内に50万円利用でボーナス6,000pt ＋ 入会後3ヶ月以内に70万円利用でボーナス15,000pt ＋ 通常還元分(70万円利用相当)',
+
+                requiredSpend: 700000,
+
+                deadline: '2025-11-05',
+
+                annualFee: 7700,
+
+                highlightColor: 'bg-blue-300',
+
+            },
+
+            {
+
+                id: 'amex-platinum',
+
+                name: 'アメックス プラチナ・カード',
+
+                issuer: 'AMEX',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 19万 Pt + 3万円クレジット',
+
+                yenValue: 220000, 
+
+                condition: '入会後6ヶ月以内にトラベル対象加盟店で20万円利用でボーナス3万pt ＋ 入会後6ヶ月以内に150万円利用でボーナス4万pt ＋ 入会後6ヶ月以内に400万円利用でボーナス8万pt ＋ 通常還元分(400万円利用相当で4万pt) ＋ トラベルクレジット3万円(通常入会特典)',
+
+                requiredSpend: 4000000,
+
+                deadline: '未定',
+
+                annualFee: 165000,
+
+                highlightColor: 'bg-zinc-900',
+
+            },
+
+            {
+
+                id: 'amex-gold-preferred',
+
+                name: 'アメックス ゴールド・プリファード',
+
+                issuer: 'AMEX',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 65,000 ポイント',
+
+                yenValue: 65000,
+
+                condition: '入会＋6ヶ月以内に150万円利用',
+
+                requiredSpend: 1500000,
+
+                deadline: '未定',
+
+                annualFee: 39600,
+
+                highlightColor: 'bg-yellow-400',
+
+            },
+
+            {
+
+                id: 'amex-green',
+
+                name: 'アメックス グリーン・カード',
+
+                issuer: 'AMEX',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 40,000 ポイント',
+
+                yenValue: 40000,
+
+                condition: '入会＋6ヶ月以内に50万円利用 ＋ 対象加盟店利用',
+
+                requiredSpend: 500000,
+
+                deadline: '未定',
+
+                annualFee: 13200,
+
+                highlightColor: 'bg-green-500',
+
+            },
+
+            {
+
+                id: 'amex-biz-platinum',
+
+                name: 'アメックス ビジネス・プラチナ',
+
+                issuer: 'AMEX',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 260,000 ポイント',
+
+                yenValue: 260000,
+
+                condition: '入会後6ヶ月以内にAmazon対象サービスで100万円利用でボーナス14万pt ＋ 入会後6ヶ月以内に200万円利用でボーナス6万pt ＋ 入会後6ヶ月以内に400万円利用でボーナス2万pt ＋ 通常還元分(400万円利用相当)',
+
+                requiredSpend: 4000000,
+
+                deadline: '未定',
+
+                annualFee: 165000,
+
+                highlightColor: 'bg-zinc-800',
+
+            },
+
+            {
+
+                id: 'amex-biz-gold',
+
+                name: 'アメックス ビジネス・ゴールド',
+
+                issuer: 'AMEX',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 10万円 CB',
+
+                yenValue: 100000,
+
+                condition: '入会後6ヶ月以内に50万円利用でボーナス2.5万円CB ＋ 入会後6ヶ月以内に200万円利用でボーナス2.5万円CB ＋ 入会後6ヶ月以内に300万円利用でボーナス5万円CB',
+
+                requiredSpend: 3000000,
+
+                deadline: '未定',
+
+                annualFee: 49500,
+
+                highlightColor: 'bg-yellow-600',
+
+            },
+
+            {
+
+                id: 'amex-marriott',
+
+                name: 'Marriott Bonvoy アメックス',
+
+                issuer: 'AMEX',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 11,000 ポイント',
+
+                yenValue: 11000,
+
+                condition: 'カード付帯特典で入会後3ヶ月以内に30万円利用で5,000ポイント ＋ 通常ご利用で30万円利用で6,000ポイント',
+
+                requiredSpend: 300000,
+
+                deadline: '未定',
+
+                annualFee: 23100,
+
+                highlightColor: 'bg-purple-600',
+
+            },
+
+            {
+
+                id: 'amex-marriott-p',
+
+                name: 'Marriott Bonvoy アメックス プレミアム',
+
+                issuer: 'AMEX',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 19,000 ポイント',
+
+                yenValue: 19000,
+
+                condition: 'カード付帯特典で入会後3ヶ月以内に30万円利用で10,000ポイント ＋ 通常ご利用で30万円利用で9,000ポイント',
+
+                requiredSpend: 300000,
+
+                deadline: '未定',
+
+                annualFee: 82500,
+
+                highlightColor: 'bg-purple-700',
+
+            },
+
+            {
+
+                id: 'amex-hilton-p',
+
+                name: 'Hilton Honors アメックスプレミアム',
+
+                issuer: 'AMEX',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 39,000 ポイント',
+
+                yenValue: 39000,
+
+                condition: '入会＋3ヶ月以内に30万円利用',
+
+                requiredSpend: 300000,
+
+                deadline: '未定',
+
+                annualFee: 66000,
+
+                highlightColor: 'bg-gray-600',
+
+            },
+
+            {
+
+                id: 'amex-hilton',
+
+                name: 'Hilton Honors アメックス',
+
+                issuer: 'AMEX',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 16,000 ポイント',
+
+                yenValue: 16000,
+
+                condition: 'カード付帯特典で入会後3ヶ月以内に30万円利用で10,000ポイント ＋ 通常ご利用で30万円利用で6,000ポイント',
+
+                requiredSpend: 300000,
+
+                deadline: '未定',
+
+                annualFee: 16500,
+
+                highlightColor: 'bg-blue-600',
+
+            },
+
+            {
+
+                id: 'smbc-platinum-preferred',
+
+                name: '三井住友カード プラチナプリファード',
+
+                issuer: 'SMBC',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 65,600 円相当',
+
+                yenValue: 65600,
+
+                condition: '入会後3ヶ月以内に40万円利用でボーナス4万pt ＋ タッチ決済1回で7,000円 ＋ ご利用で最大2,000円相当 ＋ SBI証券デビュー応援で最大1.66万円相当',
+
+                requiredSpend: 400000,
+
+                deadline: '2026-03-31',
+
+                annualFee: 33000,
+
+                highlightColor: 'bg-gray-400',
+
+            },
+
+            {
+
+                id: 'smbc-nl-new',
+
+                name: '三井住友カード（NL）',
+
+                issuer: 'SMBC',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 21,600 円相当',
+
+                yenValue: 21600,
+
+                condition: '新規入会 ＋ 入会後3ヶ月以内にタッチ決済1回 ＋ SBI証券口座開設＆クレカ積立 等',
+
+                requiredSpend: 1,
+
+                deadline: '2026-03-31',
+
+                annualFee: 0,
+
+                highlightColor: 'bg-green-600',
+
+            },
+
+            {
+
+                id: 'recruit-card-jcb',
+
+                name: 'リクルートカード (JCB)',
+
+                issuer: 'JCB',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 6,000 円相当',
+
+                yenValue: 6000,
+
+                condition: '新規入会 ＋ 入会後3ヶ月以内に初回利用 ＋ 入会後3ヶ月以内に携帯電話料金支払',
+
+                requiredSpend: 1,
+
+                deadline: '2026-03-31',
+
+                annualFee: 0,
+
+                highlightColor: 'bg-orange-500',
+
+            },
+
+            {
+
+                id: 'mufg-card',
+
+                name: '三菱ＵＦＪカード',
+
+                issuer: 'MUFG',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 10,000 円相当',
+
+                yenValue: 10000,
+
+                condition: 'アプリログイン ＋ 1円以上で1,000円相当 ＋ 3万円以上で3,000円相当 ＋ 10万円以上で10,000円相当(入会から2か月後末まで)',
+
+                requiredSpend: 100000, 
+
+                deadline: '未定',
+
+                annualFee: 0,
+
+                highlightColor: 'bg-red-600',
+
+            },
+
+            {
+
+                id: 'mufg-gold-prestige',
+
+                name: '三菱ＵＦＪカード ゴールドプレステージ',
+
+                issuer: 'MUFG',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 12,000 円相当',
+
+                yenValue: 12000,
+
+                condition: 'アプリログイン ＋ 1円以上で1,000円相当 ＋ 3万円以上で3,000円相当 ＋ 10万円以上で12,000円相当(入会から2か月後末まで)',
+
+                requiredSpend: 100000, 
+
+                deadline: '未定',
+
+                annualFee: 11000,
+
+                highlightColor: 'bg-yellow-700',
+
+            },
+
+            {
+
+                id: 'mufg-platinum',
+
+                name: '三菱ＵＦＪカード・プラチナ',
+
+                issuer: 'MUFG',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 15,000 円相当',
+
+                yenValue: 15000,
+
+                condition: 'アプリログイン ＋ 1円以上で1,000円相当 ＋ 3万円以上で3,000円相当 ＋ 10万円以上で15,000円相当(入会から2か月後末まで)',
+
+                requiredSpend: 100000, 
+
+                deadline: '未定',
+
+                annualFee: 22000,
+
+                highlightColor: 'bg-gray-700',
+
+            },
+
+            {
+
+                id: 'rakuten-card-new',
+
+                name: '楽天カード',
+
+                issuer: 'Rakuten',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 5,000 ポイント',
+
+                yenValue: 5000,
+
+                condition: '新規入会 ＋ 入会後3ヶ月以内に3回利用',
+
+                requiredSpend: 3,
+
+                deadline: '2026-03-31',
+
+                annualFee: 0,
+
+                highlightColor: 'bg-pink-600',
+
+            },
+
+            {
+
+                id: 'au-pay-card',
+
+                name: 'au PAY カード',
+
+                issuer: 'au',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 3,000 ポイント',
+
+                yenValue: 3000,
+
+                condition: 'アプリDL＆ログイン ＋ 入会後3ヶ月以内にショッピング利用 (50,000円以上)',
+
+                requiredSpend: 50000,
+
+                deadline: '2026-03-31',
+
+                annualFee: 0,
+
+                highlightColor: 'bg-orange-400',
+
+            },
+
+            {
+
+                id: 'life-card',
+
+                name: 'ライフカード',
+
+                issuer: 'Life',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 15,000 円 CB',
+
+                yenValue: 15000,
+
+                condition: 'アプリログイン ＋ 入会後3ヶ月以内にショッピング利用 ＋ 入会後3ヶ月以内に水道光熱費支払 ＋ 入会後3ヶ月以内にサブスク利用 等',
+
+                requiredSpend: 1,
+
+                deadline: '2026-03-31',
+
+                annualFee: 0,
+
+                highlightColor: 'bg-teal-500',
+
+            },
+
+            {
+
+                id: 'saison-platinum-business',
+
+                name: 'セゾンプラチナ・ビジネス・アメリカン・エキスプレス',
+
+                issuer: 'Saison',
+
+                rewardType: 'points',
+
+                maxValueText: '最大 57,000 円相当',
+
+                yenValue: 57000,
+
+                condition: '初年度年会費無料(通常年会費33,000円相当) ＋ 入会後3ヶ月以内にショッピング利用で永久不滅ポイント2%還元(通常の4倍、1,000円ごとに4ポイント) ＋ 入会翌々月までに20万円利用で12,000円分のAmazonギフトカード',
+
+                requiredSpend: 200000,
+
+                deadline: '未定',
+
+                annualFee: 33000,
+
+                highlightColor: 'bg-purple-600',
+
+            }
+
+        ];
+
+
+
+        let myChart;
+
+        const chartCtx = document.getElementById('campaignChart').getContext('2d');
+
+        const filterEl = document.getElementById('filterType');
+
+        const sortEl = document.getElementById('sortBy');
+
+        const gridEl = document.getElementById('cardGrid');
+
+        const resultCountEl = document.getElementById('resultCount');
+
+
+
+        const formatYen = (value) => new Intl.NumberFormat('ja-JP').format(value);
+
+        const formatDeadline = (dateStr) => {
+
+            if (!dateStr || dateStr === '未定') {
+
+                return '未定';
+
+            }
+
+            const date = new Date(dateStr);
+
+            return `~ ${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+
+        };
+
+        const extractPeriod = (conditionText) => {
+
+            if (!conditionText) return null;
+
+            // 「○ヶ月以内」「○ヶ月後末まで」などのパターンを検出
+
+            const patterns = [
+
+                /(?:入会|ご入会)(?:後)?(\d+)ヶ月以内/g,
+
+                /(?:入会|ご入会)(?:後)?(\d+)ヶ月後(?:末|まで)/g,
+
+                /(?:入会|ご入会)(?:後)?(\d+)か月以内/g,
+
+            ];
+
+            for (const pattern of patterns) {
+
+                const match = conditionText.match(pattern);
+
+                if (match && match[1]) {
+
+                    return parseInt(match[1]);
+
+                }
+
+            }
+
+            return null;
+
+        };
+
+        const isPaymentRelated = (condition) => {
+
+            const nonPaymentKeywords = [
+
+                '証券', '口座開設', '口座', 'アカウント', '入金', '切替', '給与受取', 'クレカ積立',
+
+                '投資信託', '株式', '債券', 'デビュー応援', 'デビュー'
+
+            ];
+
+            return !nonPaymentKeywords.some(keyword => condition.includes(keyword));
+
+        };
+
+        const wrapNumbers = (text) => {
+
+            // シンプルな実装: カンマを含む数値と単位をspanで囲む
+
+            if (!text) return '';
+
+            let result = String(text);
+
+            // パターン1: カンマを含む数値 + 単位（マイル、pt、ポイント、円など）
+
+            result = result.replace(/(\d{1,3}(?:,\d{3})+)(マイル|pt|ポイント|円相当|円)/g, '<span class="condition-number">$1$2</span>');
+
+            // パターン2: カンマを含む数値 + 万/千/百
+
+            result = result.replace(/(\d{1,3}(?:,\d{3})+)([万千百])/g, '<span class="condition-number">$1$2</span>');
+
+            // パターン3: カンマを含む数値のみ
+
+            result = result.replace(/(\d{1,3}(?:,\d{3})+)/g, '<span class="condition-number">$1</span>');
+
+            return result;
+
+        };
+
+        const emphasizeKeywords = (text) => {
+
+            if (!text) return '';
+
+            let result = String(text);
+
+            // 金額パターン（○万円、○円など）- 数値と単位を強調
+
+            result = result.replace(/(\d+(?:\.\d+)?(?:,\d+)*(?:\.\d+)?)[万千百]?(円|pt|ポイント|マイル)/g, '<strong>$&</strong>');
+
+            // 数値のみ（大きな数値）
+
+            result = result.replace(/(\d{1,3}(?:,\d{3})+)/g, '<strong>$&</strong>');
+
+            // 期間パターン（○ヶ月以内など）
+
+            result = result.replace(/(\d+)ヶ月(以内|後末まで)/g, '<strong>$&</strong>');
+
+            // 重要キーワード
+
+            const keywords = ['ボーナス', '特典', '還元', 'キャッシュバック', 'CB', 'プレゼント', '無料'];
+
+            keywords.forEach(keyword => {
+
+                const regex = new RegExp(`(${keyword})`, 'g');
+
+                result = result.replace(regex, '<strong>$1</strong>');
+
+            });
+
+            return result;
+
+        };
+
+        const parseConditions = (conditionText) => {
+
+            if (!conditionText || typeof conditionText !== 'string') {
+
+                return [conditionText || ''];
+
+            }
+
+            try {
+
+                // 「＋」「+」で条件を分割
+
+                let conditions = conditionText
+
+                    .split(/[＋+]/)
+
+                    .map(c => c.trim())
+
+                    .filter(c => c.length > 0);
+
+                
+
+                if (conditions.length === 0) {
+
+                    return [conditionText];
+
+                }
+
+                // 「、」で分割（全角のみ、数値内のカンマは自然に除外される）
+
+                let finalConditions = [];
+
+                conditions.forEach(cond => {
+
+                    // 全角「、」「，」で分割
+
+                    const parts = cond.split(/[，、]/);
+
+                    parts.forEach(part => {
+
+                        const trimmed = part.trim();
+
+                        if (trimmed && trimmed.length > 0) {
+
+                            finalConditions.push(trimmed);
+
+                        }
+
+                    });
+
+                });
+
+                
+
+                // 「等」のみの項目を前の項目と結合
+
+                const cleaned = [];
+
+                for (let i = 0; i < finalConditions.length; i++) {
+
+                    const current = finalConditions[i];
+
+                    if (current && current.match(/^(等|など)$/) && cleaned.length > 0) {
+
+                        cleaned[cleaned.length - 1] += '等';
+
+                    } else if (current && !current.match(/^(等|など)$/)) {
+
+                        cleaned.push(current);
+
+                    }
+
+                }
+
+                
+
+                return cleaned.length > 0 ? cleaned : [conditionText];
+
+            } catch (e) {
+
+                console.error('Error parsing conditions:', e);
+
+                return [conditionText];
+
+            }
+
+        };
+
+
+
+        function renderCards(cards) {
+
+            if (cards.length === 0) {
+
+                gridEl.innerHTML = `<p class="text-slate-500 md:col-span-2 lg:col-span-3 text-center">該当するキャンペーンはありません。</p>`;
+
+                return;
+
+            }
+
+            
+
+            let html = '';
+
+            cards.forEach(card => {
+
+                try {
+
+                    // 条件を安全に処理
+
+                    let conditionsHtml = '';
+
+                    try {
+
+                        const conditions = parseConditions(card.condition || '');
+
+                        const paymentConditions = [];
+
+                        const nonPaymentConditions = [];
+
+                        conditions.filter(c => c && c.trim()).forEach(condition => {
+
+                            if (isPaymentRelated(condition)) {
+
+                                paymentConditions.push(condition);
+
+                            } else {
+
+                                nonPaymentConditions.push(condition);
+
+                            }
+
+                        });
+
+                        conditionsHtml = '';
+
+                        // 決済関連条件
+
+                        if (paymentConditions.length > 0) {
+
+                            conditionsHtml += '<div class="condition-section">';
+
+                            paymentConditions.forEach(condition => {
+
+                                const isLottery = condition.includes('【別枠】') || condition.includes('抽選');
+
+                                const cleanCondition = condition.replace('【別枠】', '').trim();
+
+                                const wrapped = wrapNumbers(String(cleanCondition));
+
+                                const emphasized = emphasizeKeywords(wrapped);
+
+                                const itemClass = isLottery ? 'condition-item lottery-item' : 'condition-item';
+
+                                conditionsHtml += `<li class="${itemClass}"><span class="condition-bullet"></span><span>${emphasized}</span></li>`;
+
+                            });
+
+                            conditionsHtml += '</div>';
+
+                        }
+
+                        // その他条件（証券開設など）
+
+                        if (nonPaymentConditions.length > 0) {
+
+                            if (paymentConditions.length > 0) {
+
+                                conditionsHtml += '<div class="condition-section-divider"></div>';
+
+                            }
+
+                            conditionsHtml += '<div class="condition-section">';
+
+                            conditionsHtml += '<div class="condition-section-title">その他の条件</div>';
+
+                            nonPaymentConditions.forEach(condition => {
+
+                                const isLottery = condition.includes('【別枠】') || condition.includes('抽選');
+
+                                const cleanCondition = condition.replace('【別枠】', '').trim();
+
+                                const wrapped = wrapNumbers(String(cleanCondition));
+
+                                const emphasized = emphasizeKeywords(wrapped);
+
+                                const itemClass = isLottery ? 'condition-item lottery-item non-payment-item' : 'condition-item non-payment-item';
+
+                                conditionsHtml += `<li class="${itemClass}"><span class="condition-bullet"></span><span>${emphasized}</span></li>`;
+
+                            });
+
+                            conditionsHtml += '</div>';
+
+                        }
+
+                    } catch (e) {
+
+                        conditionsHtml = `<li class="condition-item"><span class="condition-bullet"></span><span>${card.condition || ''}</span></li>`;
+
+                    }
+
+                html += `
+
+                    <div class="card flex flex-col p-6">
+
+                        <div class="card-header-accent"></div>
+
+                        <div class="flex-grow">
+
+                            <div class="flex justify-between items-start mb-4">
+
+                                <div class="flex-1">
+
+                                    <div class="flex items-center gap-2 flex-wrap">
+
+                                        <h3 class="text-lg font-semibold text-slate-900 leading-tight" style="letter-spacing: -0.01em;">${card.name}</h3>
+
+                                        ${card.annualFee !== undefined ? `<span class="annual-fee-badge">年会費 ${card.annualFee === 0 ? '無料' : formatYen(card.annualFee) + '円'}</span>` : ''}
+
+                                    </div>
+
+                                </div>
+
+                                <span class="issuer-badge flex-shrink-0">${card.issuer}</span>
+
+                            </div>
+
+                            <div class="mb-6 pb-6 border-b border-slate-100">
+
+                                <div class="value-display text-2xl mb-1">${card.maxValueText}</div>
+
+                            </div>
+
+                            <div class="space-y-4 mb-6">
+
+                                ${(() => {
+
+                                    const period = extractPeriod(card.condition || '');
+
+                                    return period ? `
+
+                                    <div class="period-badge">
+
+                                        <svg class="period-badge-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+
+                                        </svg>
+
+                                        入会後${period}ヶ月以内に達成
+
+                                    </div>
+
+                                    ` : '';
+
+                                })()}
+
+                                <div>
+
+                                    <span class="detail-label">達成条件</span>
+
+                                    <div class="conditions-wrapper">
+
+                                        <ul class="condition-list">
+
+                                            ${conditionsHtml}
+
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="mt-4">
+
+                                    <div class="required-spend-badge">必要利用額: ${formatYen(card.requiredSpend)}円</div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="mt-auto pt-4 border-t border-slate-100">
+
+                            <div class="deadline-badge">
+
+                                <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+
+                                </svg>
+
+                                締切 ${formatDeadline(card.deadline)}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+                } catch (e) {
+
+                    // 個別のカードでエラーが発生しても、他のカードは表示する
+
+                    console.error('Error rendering card:', card.name, e);
+
+                }
+
+            });
+
+            gridEl.innerHTML = html;
+
+        }
+
+
+
+        function updateChart(chartData) {
+
+            const data = {
+
+                datasets: chartData.map(card => ({
+
+                    label: card.name,
+
+                    data: [{
+
+                        x: card.requiredSpend,
+
+                        y: card.yenValue,
+
+                        r: 10
+
+                    }],
+
+                    backgroundColor: card.highlightColor.replace('bg-', 'bg-').replace('-','-') || 'rgba(59, 130, 246, 0.7)',
+
+                    borderColor: 'rgba(0,0,0,0.1)',
+
+                }))
+
+            };
+
+
+
+            if (myChart) {
+
+                myChart.data = data;
+
+                myChart.update();
+
+            }
+
+        }
+
+
+
+        function initChart() {
+
+            myChart = new Chart(chartCtx, {
+
+                type: 'bubble',
+
+                data: { datasets: [] },
+
+                options: {
+
+                    responsive: true,
+
+                    maintainAspectRatio: false,
+
+                    plugins: {
+
+                        legend: {
+
+                            display: false
+
+                        },
+
+                        tooltip: {
+
+                            callbacks: {
+
+                                label: function(context) {
+
+                                    const cardName = context.dataset.label;
+
+                                    const value = formatYen(context.parsed.y) + '円相当';
+
+                                    const spend = formatYen(context.parsed.x) + '円利用';
+
+                                    return `${cardName}: ${value} ( ${spend} )`;
+
+                                }
+
+                            }
+
+                        }
+
+                    },
+
+                    scales: {
+
+                        x: {
+
+                            title: {
+
+                                display: true,
+
+                                text: '達成に必要な利用金額 (円)',
+
+                                font: {
+
+                                    weight: 'bold'
+
+                                }
+
+                            },
+
+                            ticks: {
+
+                                callback: (value) => `${formatYen(value)}`
+
+                            }
+
+                        },
+
+                        y: {
+
+                            title: {
+
+                                display: true,
+
+                                text: '最大特典価値 (円換算)',
+
+                                font: {
+
+                                    weight: 'bold'
+
+                                }
+
+                            },
+
+                            ticks: {
+
+                                callback: (value) => `${formatYen(value)}`
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            });
+
+        }
+
+
+
+        function updateDisplay() {
+
+            const filterValue = filterEl.value;
+
+            const sortValue = sortEl.value;
+
+            
+
+            let processedData = [...cardData];
+
+
+
+            processedData = processedData.filter(card => {
+
+                if (filterValue === 'all') return true;
+
+                return card.rewardType === filterValue;
+
+            });
+
+
+
+            processedData.sort((a, b) => {
+
+                switch (sortValue) {
+
+                    case 'yenValue_desc':
+
+                        return b.yenValue - a.yenValue;
+
+                    case 'yenValue_asc':
+
+                        return a.yenValue - b.yenValue;
+
+                    case 'requiredSpend_asc':
+
+                        return a.requiredSpend - b.requiredSpend;
+
+                    case 'requiredSpend_desc':
+
+                        return b.requiredSpend - a.requiredSpend;
+
+                    case 'deadline_asc':
+
+                        return new Date(a.deadline) - new Date(b.deadline);
+
+                    default:
+
+                        return b.yenValue - a.yenValue;
+
+                }
+
+            });
+
+
+
+            renderCards(processedData);
+
+            updateChart(processedData);
+
+            resultCountEl.textContent = `${processedData.length}件 表示中`;
+
+        }
+
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            initChart();
+
+            updateDisplay();
+
+            
+
+            filterEl.addEventListener('change', updateDisplay);
+
+            sortEl.addEventListener('change', updateDisplay);
+
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>
+

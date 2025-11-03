@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ANA SFC修行 損益分岐点分析 - 完全版</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+<style>
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f7;
+}
+.page-container {
+    max-width: 1200px;
+    width: 100%;
+    min-height: auto;
+    margin: 0 auto;
+    background-color: #ffffff;
+    box-shadow: none;
+}
+.content-wrapper {
+    padding: 48px;
+}
+.page-title {
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    margin-bottom: 30px;
+    color: #000000;
+}
+.page-subtitle {
+    font-size: 22px;
+    font-weight: 500;
+    color: #86868b;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+.accent-line {
+    width: 80px;
+    height: 5px;
+    background: linear-gradient(90deg, #0066cc 0%, #00d4ff 100%);
+    margin-bottom: 40px;
+    border-radius: 3px;
+}
+.section-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1d1d1f;
+    margin: 30px 0 20px 0;
+}
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+.info-card {
+    padding: 20px;
+    background-color: #f5f5f7;
+    border-radius: 12px;
+    border-left: 4px solid #0066cc;
+}
+.info-card-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--text);
+}
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+.info-label {
+    color: #515154;
+}
+.info-value {
+    font-weight: 600;
+    color: #1d1d1f;
+}
+.chart-container {
+    width: 100%;
+    height: 300px;
+    margin: 30px 0;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+th {
+    background-color: #f5f5f7;
+    padding: 15px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 16px;
+    color: #1d1d1f;
+    border: 1px solid #e5e5ea;
+}
+td {
+    padding: 12px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid #e5e5ea;
+}
+.highlight { color: #0066cc; font-weight: 700; }
+.note { font-size: 14px; color: #86868b; font-style: italic; margin-top: 20px; padding: 15px; background-color: #f5f5f7; border-radius: 8px; }
+.matrix-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+}
+.matrix-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 15px;
+    text-align: center;
+}
+.legend-container {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin: 16px 0;
+    font-size: 14px;
+}
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.legend-color {
+    width: 25px;
+    height: 18px;
+    border-radius: 4px;
+}
+/* LP-style continuous pages */
+.page-container + .page-container {
+    border-top: 1px solid var(--border);
+}
+
+/* Media elements responsive */
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+}
+@media print {
+    .page-container {
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+    }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .content-wrapper {
+        padding: 32px;
+    }
+    .page-title {
+        font-size: 36px;
+        margin-bottom: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-wrapper {
+        padding: 20px;
+    }
+    .page-title {
+        font-size: 28px;
+        margin-bottom: 12px;
+    }
+    .section-title {
+        font-size: 20px;
+        margin: 16px 0 10px 0;
+    }
+    .info-grid, .matrix-container {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin: 12px 0;
+    }
+    table th, table td {
+        padding: 10px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 24px;
+    }
+    .page-subtitle {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- Page 1: カバーページ -->
+<div class="page-container">
+    <div class="content-wrapper" style="display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 600px; text-align: center;">
+        <div style="font-size: 64px; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 30px; color: #000000;">
+            ANA SFC修行<br/>損益分岐点分析
+        </div>
+        <div style="font-size: 24px; font-weight: 500; color: #86868b; margin-bottom: 20px; max-width: 800px; line-height: 1.6;">
+            初期投資と年間維持費の2軸で"いつ元が取れるか"を可視化
+        </div>
+        <div style="font-size: 18px; color: #86868b; margin-bottom: 40px;">
+            2025-10-25
+        </div>
+        <div style="width: 100px; height: 5px; background: linear-gradient(90deg, #0066cc 0%, #00d4ff 100%); border-radius: 3px;"></div>
+    </div>
+</div>
+
+<!-- Page 2: SFCカード年間維持費の概要 -->
+<div class="page-container">
+    <div class="content-wrapper">
+        <div class="page-title">SFCカード 年間維持費の概要</div>
+        <div class="accent-line"></div>
+        
+        <div class="section-title">年会費（税込）</div>
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-card-title">SFC一般カード</div>
+                <div class="info-value" style="font-size: 32px; color: #0066cc;">11,275円</div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-title">SFCゴールドカード</div>
+                <div class="info-item">
+                    <div class="info-label">JCB / VISA / MASTERCARD</div>
+                    <div class="info-value">16,500円</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Diners</div>
+                    <div class="info-value">24,200円</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">AMEX</div>
+                    <div class="info-value">34,100円</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-card-title">SFCプレミアムカード</div>
+                <div class="info-item">
+                    <div class="info-label">JCB</div>
+                    <div class="info-value">77,000円</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">VISA<br/><span style="font-size: 12px; color: #86868b;">2025年12月10日以降</span></div>
+                    <div class="info-value">96,800円</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Diners</div>
+                    <div class="info-value">170,500円</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">AMEX</div>
+                    <div class="info-value">165,000円</div>
+                </div>
+            </div>
+            <div class="info-card" style="border-left-color: #ff9500;">
+                <div class="info-card-title">ANAアメックスの特典</div>
+                <div style="font-size: 13px; color: #515154; line-height: 1.6;">
+                    ✓ 充実した海外旅行保険（最高1億円）<br/>
+                    ✓ アメックス提携ラウンジ利用可能<br/>
+                    ✓ ホテル・レストラン優待サービス<br/>
+                    ✓ アメックス専用コンシェルジュ
+                </div>
+            </div>
+        </div>
+        
+        <div class="note">
+            <strong>重要変更:</strong> アップグレードポイントは2026年度で終了（2027年4月発行分〜）。以降は年会費=純コストとなります。<br/><br/>
+            <strong>回収年数の計算について:</strong> 本資料の回収年数は<b>年会費控除前（グロス）</b>で算出しています。ご自身のカード構成に応じて、
+            「年間コスト = 本人カード年会費（選択カード） + 家族カード年会費（5,500円×枚数）」を差し引き、
+            「純利益 = 年間リターン - 年間コスト」で再計算してください。
+        </div>
+    </div>
+</div>
+
+<!-- Page 3: 年間リターンの構成要素 -->
+<div class="page-container">
+    <div class="content-wrapper">
+        <div class="page-title">年間リターンの構成要素</div>
+        <div class="accent-line"></div>
+        
+        <div class="section-title">固定価値（搭乗頻度に依存しない）</div>
+        <table>
+            <tr>
+                <th style="width: 60%;">項目</th>
+                <th>価値</th>
+            </tr>
+            <tr>
+                <td style="text-align: left; padding-left: 20px;">A. カード継続ボーナスマイル</td>
+                <td>3,000円/年</td>
+            </tr>
+            <tr>
+                <td style="text-align: left; padding-left: 20px;">B. SKYコイン交換レート優遇<br/><span style="font-size: 12px; color: #86868b;">※一般会員（1.2倍）との比較、年間15,000マイル程度の交換を想定</span></td>
+                <td>5,000円/年</td>
+            </tr>
+            <tr>
+                <td style="text-align: left; padding-left: 20px;">C. 海外旅行保険付帯</td>
+                <td>1,000円/年</td>
+            </tr>
+            <tr style="background-color: #f5f5f7;">
+                <td style="text-align: left; padding-left: 20px;"><strong>固定価値 合計</strong></td>
+                <td><strong style="color: #0066cc; font-size: 20px;">9,000円/年</strong></td>
+            </tr>
+        </table>
+        
+        <div class="section-title">可変価値（1往復あたり）</div>
+        <table>
+            <tr>
+                <th style="width: 60%;">項目</th>
+                <th>価値</th>
+            </tr>
+            <tr>
+                <td style="text-align: left; padding-left: 20px;">D. ラウンジ利用（往復2回×3,000円）</td>
+                <td>6,000円</td>
+            </tr>
+            <tr>
+                <td style="text-align: left; padding-left: 20px;">E. 優先サービス時間価値（往復2回×1,500円）</td>
+                <td>3,000円</td>
+            </tr>
+            <tr>
+                <td style="text-align: left; padding-left: 20px;">F. フライトボーナスマイル（平均的な国内線想定）</td>
+                <td>1,200円</td>
+            </tr>
+            <tr>
+                <td style="text-align: left; padding-left: 20px;">G. 利便性向上（往復2回×5,000円）</td>
+                <td>10,000円</td>
+            </tr>
+            <tr style="background-color: #f5f5f7;">
+                <td style="text-align: left; padding-left: 20px;"><strong>可変価値 合計</strong></td>
+                <td><strong style="color: #0066cc; font-size: 20px;">20,200円/往復</strong></td>
+            </tr>
+        </table>
+        
+        <div style="margin: 40px 0; padding: 30px; background: linear-gradient(135deg, #f5f5f7 0%, #e5e5ea 100%); border-radius: 16px; text-align: center;">
+            <div style="font-size: 18px; color: #515154; margin-bottom: 15px;">年間リターン計算式</div>
+            <div style="font-size: 32px; font-weight: 700; color: #000000;">
+                年間リターン = <span class="highlight">9,000円</span> + <span class="highlight">20,200円</span> × n往復
+            </div>
+            <div style="font-size: 18px; color: #515154; margin-top: 20px;">
+                年間コスト = SFCカード年会費 + 家族カード年会費 × 枚数
+            </div>
+            <div style="font-size: 20px; font-weight: 600; color: #ff9500; margin-top: 15px;">
+                純利益 = 年間リターン - 年間コスト
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page 4: 回収シミュレーション｜年2回・4回往復 -->
+<div class="page-container">
+    <div class="content-wrapper">
+        <div class="page-title">回収シミュレーション｜年2回・4回往復</div>
+        <div class="accent-line"></div>
+        
+        <div class="matrix-container">
+            <div>
+                <div class="matrix-title">パターンA: 全額自己負担（50万円）</div>
+                <table>
+                    <tr>
+                        <th>往復回数</th>
+                        <th>年間リターン</th>
+                        <th>回収年数</th>
+                    </tr>
+                    <tr>
+                        <td><strong>年2往復</strong></td>
+                        <td>49,400円</td>
+                        <td style="background-color: rgba(255,149,0,0.2);"><strong style="font-size: 20px;">10.1年</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>年4往復</strong></td>
+                        <td>89,800円</td>
+                        <td style="background-color: rgba(255,149,0,0.4);"><strong style="font-size: 20px;">5.6年</strong></td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div>
+                <div class="matrix-title">パターンB: 出張活用（20万円）</div>
+                <table>
+                    <tr>
+                        <th>往復回数</th>
+                        <th>年間リターン</th>
+                        <th>回収年数</th>
+                    </tr>
+                    <tr>
+                        <td><strong>年2往復</strong></td>
+                        <td>49,400円</td>
+                        <td style="background-color: rgba(52,199,89,0.3);"><strong style="font-size: 20px;">4.0年</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>年4往復</strong></td>
+                        <td>89,800円</td>
+                        <td style="background-color: rgba(52,199,89,0.6);"><strong style="font-size: 20px;">2.2年</strong></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="note">
+            往復回数が増えるほど、回収年数は短縮されます。<span class="highlight">年4往復（パターンB）なら2.2年で回収可能</span>です。<br/>
+            ※ 本表の回収年数は<b>年会費控除前（グロス）</b>です。ご自身のカード構成に応じて、年会費を差し引いた<b>純利益</b>で再計算してください。
+        </div>
+    </div>
+</div>
+
+<!-- Page 5: 回収シミュレーション｜全体比較 -->
+<div class="page-container">
+    <div class="content-wrapper">
+        <div class="page-title">回収シミュレーション｜年2回・4回・6回・8回・10回往復</div>
+        <div class="accent-line"></div>
+        
+        <!-- グラフ：回収年数の推移（年2〜10往復） -->
+        <div class="chart-container">
+            <canvas id="recoveryYearsChart"></canvas>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const canvas = document.getElementById('recoveryYearsChart');
+                if (!canvas || !window.Chart) return;
+                const ctx = canvas.getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['年2往復', '年4往復', '年6往復', '年8往復', '年10往復'],
+                        datasets: [
+                            {
+                                label: 'パターンA（500,000円）',
+                                data: [10.1, 5.6, 3.8, 2.9, 2.4],
+                                borderColor: '#0066cc',
+                                backgroundColor: 'rgba(0, 102, 204, 0.1)',
+                                borderWidth: 3,
+                                pointBackgroundColor: '#0066cc',
+                                pointRadius: 6,
+                                fill: true,
+                                tension: 0.2
+                            },
+                            {
+                                label: 'パターンB（200,000円）',
+                                data: [4.0, 2.2, 1.5, 1.2, 0.9],
+                                borderColor: '#5ac8fa',
+                                backgroundColor: 'rgba(90, 200, 250, 0.1)',
+                                borderWidth: 3,
+                                pointBackgroundColor: '#5ac8fa',
+                                pointRadius: 6,
+                                fill: true,
+                                tension: 0.2
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    font: { family: "'Noto Sans JP', sans-serif", size: 14 },
+                                    padding: 20
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return context.dataset.label + ': ' + context.raw + '年';
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                reverse: false,
+                                title: {
+                                    display: true,
+                                    text: '回収年数',
+                                    font: { family: "'Noto Sans JP', sans-serif", size: 14 }
+                                },
+                                ticks: {
+                                    font: { family: "'Noto Sans JP', sans-serif" },
+                                    callback: function(value) { return value + '年'; }
+                                }
+                            },
+                            x: {
+                                ticks: { font: { family: "'Noto Sans JP', sans-serif" } }
+                            }
+                        }
+                    }
+                });
+            });
+        </script>
+        
+        <table>
+            <tr>
+                <th rowspan="2">往復回数</th>
+                <th rowspan="2">年間リターン</th>
+                <th colspan="2">回収年数</th>
+            </tr>
+            <tr>
+                <th style="background-color: rgba(255,149,0,0.1);">パターンA<br/>(500,000円)</th>
+                <th style="background-color: rgba(52,199,89,0.1);">パターンB<br/>(200,000円)</th>
+            </tr>
+            <tr>
+                <td><strong>年2往復</strong></td>
+                <td>49,400円</td>
+                <td style="background-color: rgba(255,149,0,0.2);">10.1年</td>
+                <td style="background-color: rgba(52,199,89,0.3);">4.0年</td>
+            </tr>
+            <tr>
+                <td><strong>年4往復</strong></td>
+                <td>89,800円</td>
+                <td style="background-color: rgba(255,149,0,0.4);">5.6年</td>
+                <td style="background-color: rgba(52,199,89,0.6);">2.2年</td>
+            </tr>
+            <tr>
+                <td><strong>年6往復</strong></td>
+                <td>130,200円</td>
+                <td style="background-color: rgba(255,149,0,0.6);">3.8年</td>
+                <td style="background-color: rgba(52,199,89,0.8);">1.5年</td>
+            </tr>
+            <tr>
+                <td><strong>年8往復</strong></td>
+                <td>170,600円</td>
+                <td style="background-color: rgba(255,149,0,0.75);">2.9年</td>
+                <td style="background-color: rgba(52,199,89,0.9);">1.2年</td>
+            </tr>
+            <tr>
+                <td><strong>年10往復</strong></td>
+                <td>211,000円</td>
+                <td style="background-color: rgba(255,149,0,0.9);">2.4年</td>
+                <td style="background-color: rgba(52,199,89,1);">0.9年</td>
+            </tr>
+        </table>
+        
+        <div class="legend-container">
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: rgba(255,149,0,0.9);"></div>
+                <span>短期回収（パターンA）</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: rgba(255,149,0,0.2);"></div>
+                <span>長期回収（パターンA）</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: rgba(52,199,89,0.9);"></div>
+                <span>短期回収（パターンB）</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: rgba(52,199,89,0.3);"></div>
+                <span>長期回収（パターンB）</span>
+            </div>
+        </div>
+        
+        <div class="note">
+            <strong>重要ポイント:</strong> <span class="highlight">年6往復以上（パターンB）なら1.5年以内</span>、<span class="highlight">年10往復（パターンB）なら1年以内</span>で回収可能です。<br/>
+            ※ 本表の回収年数は<b>年会費控除前（グロス）</b>です。ご自身のカード構成に応じて、年会費を差し引いた<b>純利益</b>で再計算してください。
+        </div>
+    </div>
+</div>
+
+<!-- Page 6: 家族カード発行時のシミュレーション -->
+<div class="page-container">
+    <div class="content-wrapper">
+        <div class="page-title">家族カード発行時の損益分岐点</div>
+        <div class="accent-line"></div>
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-card-title">家族カードの費用と特典</div>
+                <div class="info-item">
+                    <div class="info-label">SFCゴールド家族カード年会費</div>
+                    <div class="info-value">5,500円/枚</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">家族会員1名あたりのリターン</div>
+                    <div class="info-value">21,000円/年</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">純増価値</div>
+                    <div class="info-value" style="color: #0066cc;">15,500円/年</div>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="info-card-title">年間リターン計算式</div>
+                <div style="font-size: 15px; line-height: 1.8; color: #1d1d1f;">
+                    <strong>年間リターン = </strong><br/>
+                    9,000円 + 20,200円×n往復<br/>
+                    + 15,500円×家族カード枚数
+                </div>
+            </div>
+        </div>
+        
+        <div class="matrix-container">
+            <div>
+                <div class="matrix-title">パターンA（50万円）の回収年数</div>
+                <table>
+                    <tr>
+                        <th>往復</th>
+                        <th>本人のみ</th>
+                        <th>家族1名</th>
+                        <th>家族2名</th>
+                        <th>家族3名</th>
+                    </tr>
+                    <tr>
+                        <td><strong>2往復</strong></td>
+                        <td style="background-color: rgba(255,149,0,0.1);">10.1年</td>
+                        <td style="background-color: rgba(255,149,0,0.2);">7.7年</td>
+                        <td style="background-color: rgba(255,149,0,0.3);">6.2年</td>
+                        <td style="background-color: rgba(255,149,0,0.4);">5.2年</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4往復</strong></td>
+                        <td style="background-color: rgba(255,149,0,0.3);">5.6年</td>
+                        <td style="background-color: rgba(255,149,0,0.4);">4.7年</td>
+                        <td style="background-color: rgba(255,149,0,0.5);">4.1年</td>
+                        <td style="background-color: rgba(255,149,0,0.6);">3.7年</td>
+                    </tr>
+                    <tr>
+                        <td><strong>6往復</strong></td>
+                        <td style="background-color: rgba(255,149,0,0.5);">3.8年</td>
+                        <td style="background-color: rgba(255,149,0,0.6);">3.4年</td>
+                        <td style="background-color: rgba(255,149,0,0.65);">3.1年</td>
+                        <td style="background-color: rgba(255,149,0,0.7);">2.8年</td>
+                    </tr>
+                    <tr>
+                        <td><strong>8往復</strong></td>
+                        <td style="background-color: rgba(255,149,0,0.65);">2.9年</td>
+                        <td style="background-color: rgba(255,149,0,0.7);">2.7年</td>
+                        <td style="background-color: rgba(255,149,0,0.75);">2.5年</td>
+                        <td style="background-color: rgba(255,149,0,0.8);">2.3年</td>
+                    </tr>
+                    <tr>
+                        <td><strong>10往復</strong></td>
+                        <td style="background-color: rgba(255,149,0,0.7);">2.4年</td>
+                        <td style="background-color: rgba(255,149,0,0.75);">2.2年</td>
+                        <td style="background-color: rgba(255,149,0,0.8);">2.1年</td>
+                        <td style="background-color: rgba(255,149,0,0.9);">1.9年</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div>
+                <div class="matrix-title">パターンB（20万円）の回収年数</div>
+                <table>
+                    <tr>
+                        <th>往復</th>
+                        <th>本人のみ</th>
+                        <th>家族1名</th>
+                        <th>家族2名</th>
+                        <th>家族3名</th>
+                    </tr>
+                    <tr>
+                        <td><strong>2往復</strong></td>
+                        <td style="background-color: rgba(52,199,89,0.3);">4.0年</td>
+                        <td style="background-color: rgba(52,199,89,0.4);">3.1年</td>
+                        <td style="background-color: rgba(52,199,89,0.5);">2.5年</td>
+                        <td style="background-color: rgba(52,199,89,0.6);">2.1年</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4往復</strong></td>
+                        <td style="background-color: rgba(52,199,89,0.5);">2.2年</td>
+                        <td style="background-color: rgba(52,199,89,0.6);">1.9年</td>
+                        <td style="background-color: rgba(52,199,89,0.7);">1.7年</td>
+                        <td style="background-color: rgba(52,199,89,0.75);">1.5年</td>
+                    </tr>
+                    <tr>
+                        <td><strong>6往復</strong></td>
+                        <td style="background-color: rgba(52,199,89,0.7);">1.5年</td>
+                        <td style="background-color: rgba(52,199,89,0.75);">1.4年</td>
+                        <td style="background-color: rgba(52,199,89,0.8);">1.2年</td>
+                        <td style="background-color: rgba(52,199,89,0.85);">1.1年</td>
+                    </tr>
+                    <tr>
+                        <td><strong>8往復</strong></td>
+                        <td style="background-color: rgba(52,199,89,0.8);">1.2年</td>
+                        <td style="background-color: rgba(52,199,89,0.85);">1.1年</td>
+                        <td style="background-color: rgba(52,199,89,0.9);">1.0年</td>
+                        <td style="background-color: rgba(52,199,89,0.95);">0.9年</td>
+                    </tr>
+                    <tr>
+                        <td><strong>10往復</strong></td>
+                        <td style="background-color: rgba(52,199,89,0.9);">0.9年</td>
+                        <td style="background-color: rgba(52,199,89,0.95);">0.9年</td>
+                        <td style="background-color: rgba(52,199,89,1);">0.8年</td>
+                        <td style="background-color: rgba(52,199,89,1);">0.8年</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="note">
+            <strong>最速回収:</strong> <span class="highlight">年8往復以上×家族3名（パターンB）では1年以内</span>で回収可能！家族での旅行が多い方にとって、家族カードは非常に価値の高い選択肢です。
+        </div>
+    </div>
+</div>
+
+<!-- Page 7: 戦略的結論と次アクション -->
+<div class="page-container">
+    <div class="content-wrapper">
+        <div class="page-title">戦略的結論と次アクション</div>
+        <div class="accent-line"></div>
+        
+        <div class="section-title">結論</div>
+        <div style="background-color: #f5f5f7; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+            <div style="margin-bottom: 20px;">
+                <div style="font-weight: 700; font-size: 18px; margin-bottom: 10px; color: #0066cc;">✓ 初期投資の圧縮が最重要</div>
+                <div style="font-size: 15px; color: #515154; line-height: 1.7;">
+                    出張の活用、マイル→SKYコイン、入会キャンペーンで自己負担を圧縮（目標: 20万円以下）
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <div style="font-weight: 700; font-size: 18px; margin-bottom: 10px; color: #0066cc;">✓ 利用頻度の確保</div>
+                <div style="font-size: 15px; color: #515154; line-height: 1.7;">
+                    年6回以上のANA搭乗で回収年数が現実的（パターンBなら1.5年以内）
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <div style="font-weight: 700; font-size: 18px; margin-bottom: 10px; color: #0066cc;">✓ 家族カードの活用</div>
+                <div style="font-size: 15px; color: #515154; line-height: 1.7;">
+                    家族での旅行が多い場合、家族カード発行で回収期間を劇的に短縮可能
+                </div>
+            </div>
+            
+            <div>
+                <div style="font-weight: 700; font-size: 18px; margin-bottom: 10px; color: #ff9500;">⚠ 2027年以降の年会費は純コスト</div>
+                <div style="font-size: 15px; color: #515154; line-height: 1.7;">
+                    無形価値（時短、快適性、家族メリット）と天秤にかけて継続判断が必要
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-title">次アクション</div>
+        <table>
+            <tr>
+                <th style="width: 40%;">アクション</th>
+                <th>詳細</th>
+            </tr>
+            <tr>
+                <td style="text-align: left; padding-left: 20px;"><strong>1. 年間搭乗計画の可視化</strong></td>
+                <td style="text-align: left;">自分の年間往復回数（n）を見積もる</td>
+            </tr>
+            <tr>
+                <td style="text-align: left; padding-left: 20px;"><strong>2. 初期費用の資金計画</strong></td>
+                <td style="text-align: left;">キャンペーン時期の活用、出張との組み合わせを検討</td>
+            </tr>
+            <tr>
+                <td style="text-align: left; padding-left: 20px;"><strong>3. 家族カード発行の検討</strong></td>
+                <td style="text-align: left;">家族での旅行頻度を確認し、費用対効果を計算</td>
+            </tr>
+            <tr>
+                <td style="text-align: left; padding-left: 20px;"><strong>4. 継続基準の設定</strong></td>
+                <td style="text-align: left;">「年会費 > 受益」と感じた年は見直しを検討</td>
+            </tr>
+        </table>
+        
+        <div class="note">
+            <strong>免責事項:</strong> 本資料は仮定に基づく概算であり、ANAの制度変更や価格変更により数値は変動します。最新の情報は公式サイトをご確認ください。
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SFC・JGC修行 完全ガイド（2025年版）</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.5;
+            color: #1d1d1f;
+            background: #f5f5f7;
+            font-size: 17px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img, video, iframe {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 22px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+            color: #1d1d1f;
+            padding: 48px 0 36px;
+            text-align: center;
+            border-bottom: 1px solid #e5e5ea;
+        }
+
+        .hero::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            margin: 20px auto 0;
+            background: linear-gradient(90deg, #0066cc 0%, #00d4ff 100%);
+            border-radius: 2px;
+        }
+
+        .hero h1 {
+            font-size: 48px; /* 損益分岐版のpage-titleに合わせる */
+            font-weight: 900;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+            line-height: 1.06;
+        }
+
+        .hero .subtitle {
+            font-size: 22px; /* 損益分岐版のsubtitle相当 */
+            font-weight: 500;
+            margin-bottom: 28px;
+            color: #86868b;
+        }
+
+        .hero .description {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #86868b;
+            font-weight: 400;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 40px 0;
+        }
+
+        .section-white {
+            background: #ffffff;
+        }
+
+        .section-gray {
+            background: #ffffff;
+        }
+
+        .section-black {
+            background: #ffffff;
+            color: #1d1d1f;
+            border-top: none;
+        }
+
+        /* LP-style continuous sections */
+        .section + .section {
+            border-top: none;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 24px;
+            letter-spacing: -0.003em;
+            line-height: 1.2;
+            position: relative;
+        }
+
+        /* Section title accent underline */
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 72px;
+            height: 3px;
+            margin: 10px auto 0;
+            background: linear-gradient(90deg, #0066cc 0%, #00d4ff 100%);
+            border-radius: 2px;
+        }
+
+        /* Optional title badge to classify section purpose */
+        .title-badge {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            color: #0066cc;
+            background: #eef3ff;
+            border: 1px solid #d6e6ff;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        .section-black .section-title {
+            color: inherit;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid #e5e5ea;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.003em;
+        }
+
+        .card-subtitle {
+            font-size: 17px;
+            color: #86868b;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .card-content {
+            font-size: 17px;
+            line-height: 1.47;
+        }
+
+        .card-content ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .card-content li {
+            padding: 6px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .card-content li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #007aff;
+            font-weight: bold;
+        }
+
+        /* Comparison Cards */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .comparison-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid #e5e5ea;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .comparison-card.ana {
+            border-left: 4px solid #ff3b30;
+        }
+
+        .comparison-card.jal {
+            border-left: 4px solid #30d158;
+        }
+
+        .comparison-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.003em;
+        }
+
+        .comparison-subtitle {
+            font-size: 17px;
+            color: #86868b;
+            margin-bottom: 20px;
+        }
+
+        /* Feature Cards */
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background: #f5f5f7;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #e5e5ea;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card.ana {
+            border-left: 3px solid #ff3b30;
+        }
+
+        .feature-card.jal {
+            border-left: 3px solid #30d158;
+        }
+
+        .feature-card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1d1d1f;
+        }
+
+        .feature-card-content {
+            font-size: 15px;
+            line-height: 1.4;
+            color: #666;
+        }
+
+        .feature-highlight {
+            background: #f5f5f7;
+            border: 1px solid #e5e5ea;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 12px;
+            font-size: 14px;
+            color: #1d1d1f;
+        }
+
+        .feature-highlight.ana {
+            background: #ffe6e6;
+            border-color: #ffb3b3;
+            color: #cc0000;
+        }
+
+        .feature-highlight.jal {
+            background: #e6ffe6;
+            border-color: #b3ffb3;
+            color: #006600;
+        }
+
+        /* Feature Lists */
+        .feature-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f5f5f7;
+            font-size: 17px;
+            line-height: 1.47;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list strong {
+            font-weight: 600;
+        }
+
+        /* Persona Cards */
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .persona-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 30px;
+            border: 1px solid #d2d2d7;
+        }
+
+        .persona-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.003em;
+        }
+
+        .persona-description {
+            font-size: 17px;
+            color: #86868b;
+            margin-bottom: 20px;
+        }
+
+        .recommendation {
+            background: #f5f5f7;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .recommendation-title {
+            font-size: 19px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .recommendation p {
+            font-size: 17px;
+            line-height: 1.47;
+            margin: 0;
+        }
+
+        /* Risk Cards */
+        .risk-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .risk-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 30px;
+            border: 1px solid #d2d2d7;
+        }
+
+        .risk-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: -0.003em;
+        }
+
+        .risk-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .risk-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f5f5f7;
+            font-size: 17px;
+            line-height: 1.47;
+        }
+
+        .risk-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Decision Steps */
+        .decision-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .decision-step {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .step-number {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #007aff;
+        }
+
+        .step-title {
+            font-size: 21px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .step-description {
+            font-size: 17px;
+            color: #a1a1a6;
+            line-height: 1.47;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: #f5f5f7;
+            border-radius: 18px;
+            padding: 40px;
+            text-align: center;
+            margin: 24px 0;
+        }
+
+        .highlight-box h3 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: -0.003em;
+        }
+
+        .highlight-box p {
+            font-size: 21px;
+            color: #1d1d1f;
+            line-height: 1.38;
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section {
+                padding: 40px 0;
+            }
+            .section-title {
+                font-size: 32px;
+                margin-bottom: 24px;
+            }
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 0 16px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero .subtitle {
+                font-size: 18px;
+            }
+
+            .hero .description {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .risk-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            .section {
+                padding: 28px 0;
+            }
+
+            .highlight-box {
+                padding: 24px;
+                margin: 16px 0;
+            }
+
+            .persona-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cards-grid,
+            .comparison-grid,
+            .risk-grid {
+                gap: 16px;
+            }
+
+            .card,
+            .comparison-card,
+            .persona-card {
+                padding: 20px;
+            }
+
+            .card-title {
+                font-size: 20px;
+            }
+            .comparison-title {
+                font-size: 24px;
+            }
+            .feature-card-title {
+                font-size: 16px;
+            }
+            .feature-card-content,
+            .recommendation p,
+            .persona-description,
+            .card-content,
+            .feature-list li,
+            .risk-list li {
+                font-size: 16px;
+            }
+
+            .decision-steps {
+                margin: 28px 0;
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+            .hero .subtitle {
+                font-size: 16px;
+            }
+            .section-title {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+            .hero {
+                padding: 36px 0 28px;
+            }
+            .highlight-box {
+                padding: 20px;
+            }
+        }
+
+        /* Typography */
+        .text-center {
+            text-align: center;
+        }
+
+        .font-semibold {
+            font-weight: 600;
+        }
+
+        .text-gray {
+            color: #86868b;
+        }
+
+        .text-blue {
+            color: #007aff;
+        }
+
+        .text-red {
+            color: #ff3b30;
+        }
+
+        .text-green {
+            color: #30d158;
+        }
+
+        /* Table (損益分岐版に準拠) */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        th {
+            background-color: #f5f5f7;
+            padding: 15px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 16px;
+            color: #1d1d1f;
+            border: 1px solid #e5e5ea;
+        }
+        td {
+            padding: 12px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 600;
+            border: 1px solid #e5e5ea;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>SFC・JGC修行<br>完全ガイド</h1>
+            <p class="subtitle">2025年版</p>
+            <p class="description">
+                ANA SFC vs JAL JGC：あなたはスプリント型？マラソン型？<br>
+                人生設計に最適な航空会社ステータス戦略を選ぼう
+            </p>
+        </div>
+    </section>
+
+    <!-- 基本比較：2025年戦略比較マスターチャート -->
+    <section class="section section-white">
+        <div class="container">
+            <h2 class="section-title"><span class="title-badge">基本比較</span>ANA SFCとJAL JGCの基本比較（2025年）</h2>
+            <p class="text-gray" style="text-align:center; margin-bottom:16px;">
+                2025年は、SFCが「短期決戦（スプリント）」、JGCが「生涯設計（マラソン）」へと大分岐した年。
+                取得プロセス（哲学）、維持特典、費用対効果の3軸で比較します。
+            </p>
+
+            <div style="overflow-x:auto;">
+                <table style="width:100%; border-collapse:collapse; border:1px solid #e5e5ea;">
+                    <thead>
+                        <tr>
+                            <th style="background:#f5f5f7; border:1px solid #e5e5ea; padding:12px;">項目</th>
+                            <th style="background:#f5f5f7; border:1px solid #e5e5ea; padding:12px;">ANA SFC（スーパーフライヤーズカード）</th>
+                            <th style="background:#f5f5f7; border:1px solid #e5e5ea; padding:12px;">JAL JGC（JALグローバルクラブ）</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="border:1px solid #e5e5ea; padding:12px; font-weight:600;">取得モデルの哲学</td>
+                            <td style="border:1px solid #e5e5ea; padding:12px;">スプリント型プロジェクト</td>
+                            <td style="border:1px solid #e5e5ea; padding:12px;">マラソン型ライフスタイル</td>
+                            
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #e5e5ea; padding:12px; font-weight:600;">取得指標</td>
+                            <td style="border:1px solid #e5e5ea; padding:12px;">プレミアムポイント（PP）</td>
+                            <td style="border:1px solid #e5e5ea; padding:12px;">Life Status ポイント（LSP）</td>
+                            
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #e5e5ea; padding:12px; font-weight:600;">入会資格</td>
+                            <td style="border:1px solid #e5e5ea; padding:12px;">年間 50,000 PP（プラチナ達成）</td>
+                            <td style="border:1px solid #e5e5ea; padding:12px;">生涯 1,500 LSP（JGC Three Star）</td>
+                            
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #e5e5ea; padding:12px; font-weight:600;">取得費用目安</td>
+                            <td style="border:1px solid #e5e5ea; padding:12px;">約50万〜60万円（修行費用）</td>
+                            <td style="border:1px solid #e5e5ea; padding:12px;">変動大（搭乗のみだと数百万円規模も）</td>
+                            
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #e5e5ea; padding:12px; font-weight:600;">取得手段</td>
+                            <td style="border:1px solid #e5e5ea; padding:12px;">主にフライト実績</td>
+                            <td style="border:1px solid #e5e5ea; padding:12px;">搭乗＋決済＋JALサービス利用</td>
+                            
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #e5e5ea; padding:12px; font-weight:600;">維持コスト</td>
+                            <td style="border:1px solid #e5e5ea; padding:12px;">最安 11,275円/年（一般）</td>
+                            <td style="border:1px solid #e5e5ea; padding:12px;">最安 11,000円/年（CLUB-A）</td>
+                            
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #e5e5ea; padding:12px; font-weight:600;">国際アライアンス資格</td>
+                            <td style="border:1px solid #e5e5ea; padding:12px;">スターアライアンス・ゴールド</td>
+                            <td style="border:1px solid #e5e5ea; padding:12px;">ワンワールド・サファイア（JGC Three Star）</td>
+                            
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #e5e5ea; padding:12px; font-weight:600;">アライアンスの特性</td>
+                            <td style="border:1px solid #e5e5ea; padding:12px;">世界最大のネットワーク（網羅性）</td>
+                            <td style="border:1px solid #e5e5ea; padding:12px;">質の高い加盟社（豪州・中東などに強み）</td>
+                            
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #e5e5ea; padding:12px; font-weight:600;">家族カードのコスト効率</td>
+                            <td style="border:1px solid #e5e5ea; padding:12px;">高い（例：ゴールド家族 8,250円）</td>
+                            <td style="border:1px solid #e5e5ea; padding:12px;">SFCより高め（CLUB-A等は家族も本会員同額）</td>
+                            
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #e5e5ea; padding:12px; font-weight:600;">家族向け最上位特典</td>
+                            <td style="border:1px solid #e5e5ea; padding:12px;">家族カードで特典享受</td>
+                            <td style="border:1px solid #e5e5ea; padding:12px;">JGC Five Starで家族をJGC本会員招待、同行無制限</td>
+                            
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #e5e5ea; padding:12px; font-weight:600;">独自特典（旧来の強み）</td>
+                            <td style="border:1px solid #e5e5ea; padding:12px;">アップグレードポイント（2026年度付与分で終了）</td>
+                            <td style="border:1px solid #e5e5ea; padding:12px;">マイル有効期限の無期限化（Four Star以上）</td>
+                            
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #e5e5ea; padding:12px; font-weight:600;">取得容易性</td>
+                            <td style="border:1px solid #e5e5ea; padding:12px;">集中的なフライトが可能なら高い</td>
+                            <td style="border:1px solid #e5e5ea; padding:12px;">短期達成は非現実的に困難</td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="highlight-box" style="margin-top:20px; text-align:left;">
+                <h3>両プログラムの戦略的・哲学的な違い</h3>
+                <ul class="feature-list">
+                    <li><strong>時間軸の衝突</strong><br> SFC（スプリント）：1年以内に時間と費用を集中し、迅速に「一生モノの権利」を確保。JGC（マラソン）：LSP導入により、数年〜十数年の長期コミットメントが前提。</li>
+                    <li><strong>価値の対象</strong><br> SFC：個人の移動品質を恒常的に底上げ（世界最大の網羅性）。 JGC：Five Star以上で家族単位の体験を恒久拡張（招待/同行無制限など）。</li>
+                    <li><strong>コストの性質</strong><br> SFCは約50万円の初期投資（回収年数で評価）。JGCは年会費＋JAL経済圏の優先利用という機会的投資（長期で積み上げ）。</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Quick Decision Section -->
+    <section class="section section-white">
+        <div class="container">
+            <h2 class="section-title">まずは「仮の答え」から：あなたはどっち型？</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3 class="card-title">スプリント型</h3>
+                    <p class="card-subtitle">ANA SFC寄り</p>
+                    <div class="card-content">
+                        <ul>
+                            <li>まとまった資金を一気に投下できる</li>
+                            <li>1年でまとめて飛ぶ予定がある</li>
+                            <li>スターアライアンスで世界中のラウンジ利用</li>
+                            <li>家族カードで配偶者も同待遇</li>
+                            <li>数年以内に海外旅行を楽しみたい</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">マラソン型</h3>
+                    <p class="card-subtitle">JAL JGC寄り</p>
+                    <div class="card-content">
+                        <ul>
+                            <li>5年〜10年スパンで積み上げる</li>
+                            <li>JAL便を安定して使い続ける</li>
+                            <li>JAL経済圏の日常サービス利用</li>
+                            <li>家族の将来のVIP待遇を目指す</li>
+                            <li>一生モノのステータスを重視</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">どっちでもない</h3>
+                    <p class="card-subtitle">今は修行しない候補</p>
+                    <div class="card-content">
+                        <ul>
+                            <li>飛行機にそこまで乗らない</li>
+                            <li>LCCで十分、ラウンジ興味なし</li>
+                            <li>高額決済は現実的じゃない</li>
+                            <li>特定の経済圏に縛られたくない</li>
+                            <li>今は若年向けカードで十分</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2025年の変化 -->
+    <section class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">2025年は"マイル修行の大分岐点"</h2>
+            <div class="comparison-grid">
+                <div class="comparison-card ana">
+                    <h3 class="comparison-title">ANA側の地殻変動</h3>
+                    <p class="comparison-subtitle">アップグレードポイント（UP）終了宣言</p>
+                    <ul class="feature-list">
+                        <li><strong>2026年度でUP配布終了</strong><br>
+                        座席アップグレードの"引換券"が消滅</li>
+                        <li><strong>2026年5月19日：国内線運賃制度変更</strong><br>
+                        PP獲得方法が変わり、修行コスト上昇の可能性</li>
+                        <li><strong>マイル統合へ移行</strong><br>
+                        国内線でもマイルでアップグレード可能に</li>
+                        <li><strong>維持コストの実質上昇</strong><br>
+                        "お金で回収できる価値"が薄れる</li>
+                    </ul>
+                </div>
+
+                <div class="comparison-card jal">
+                    <h3 class="comparison-title">JAL側の革命</h3>
+                    <p class="comparison-subtitle">FOP修行の終焉とLSP化</p>
+                    <ul class="feature-list">
+                        <li><strong>Life Status ポイント（LSP）導入</strong><br>
+                        生涯累積、有効期限なしのポイント</li>
+                        <li><strong>マラソン型への転換</strong><br>
+                        1年耐久レースから長期積み上げへ</li>
+                        <li><strong>生活圏でのポイント獲得</strong><br>
+                        搭乗以外でもLSPが貯まる</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ANA SFC詳細 -->
+    <section class="section section-white">
+        <div class="container">
+            <h2 class="section-title">ANA SFC：スプリント型「短期決戦」の全貌</h2>
+            
+            <div class="persona-grid">
+                <div class="persona-card">
+                    <h3 class="persona-title">目標：ANAプラチナ</h3>
+                    <p class="persona-description">SFC入会のゲートとなるプラチナステータス達成</p>
+                    <div class="recommendation">
+                        <div class="recommendation-title">ルートA：飛行機で稼ぐ</div>
+                        <p>暦年50,000PP（ANA便25,000PP以上）</p>
+                    </div>
+                    <div class="recommendation">
+                        <div class="recommendation-title">ルートB：ハイブリッド</div>
+                        <p>ANA便30,000PP + 7サービス利用 + 400万円決済</p>
+                    </div>
+                </div>
+
+                <div class="persona-card">
+                    <h3 class="persona-title">SFCで得るもの</h3>
+                    <p class="persona-description">スターアライアンス・ゴールド相当の権利</p>
+                    <ul class="feature-list">
+                        <li>ANA・スターアライアンスラウンジ利用</li>
+                        <li>優先チェックイン・搭乗</li>
+                        <li>手荷物優先扱い</li>
+                        <li>家族カードで配偶者も同待遇</li>
+                    </ul>
+                </div>
+
+                <div class="persona-card">
+                    <h3 class="persona-title">注意点</h3>
+                    <p class="persona-description">アップグレードポイント終了の影響</p>
+                    <ul class="feature-list">
+                        <li>2026年度でUP配布終了</li>
+                        <li>2026年5月19日：国内線運賃制度変更で修行コスト上昇の可能性</li>
+                        <li>2027年3月31日で関連サービス終了</li>
+                        <li>"年会費の元が取れる"理屈が弱体化</li>
+                        <li>純粋な「移動品質の永久ブースト」に特化</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JAL JGC詳細 -->
+    <section class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">JAL JGC：マラソン型「生涯ロイヤルティ設計」の全貌</h2>
+            
+            <div class="persona-grid">
+                <div class="persona-card">
+                    <h3 class="persona-title">JGC入会資格</h3>
+                    <p class="persona-description">1,500 LSP = JGC Three Star</p>
+                    <div class="recommendation">
+                        <div class="recommendation-title">LSPの稼ぎ方</div>
+                        <p>国内線：1搭乗 = 5 LSP（固定レート）<br>
+                        国際線：1,000区間マイル = 5 LSP<br>
+                        決済：JALカード2,000マイル = 5 LSP</p>
+                    </div>
+                </div>
+
+                <div class="persona-card">
+                    <h3 class="persona-title">Starグレード体系</h3>
+                    <p class="persona-description">6段階のStarグレード</p>
+                    <ul class="feature-list">
+                        <li>JMB elite：250 LSP</li>
+                        <li>JMB elite plus：500 LSP</li>
+                        <li>JGC Three Star：1,500 LSP</li>
+                        <li>JGC Four Star：3,000 LSP</li>
+                        <li>JGC Five Star：6,000 LSP</li>
+                        <li>JGC Six Star：12,000 LSP</li>
+                    </ul>
+                </div>
+
+                <div class="persona-card">
+                    <h3 class="persona-title">家族特典</h3>
+                    <p class="persona-description">JGC Five Star/Six Starの神特典</p>
+                    <ul class="feature-list">
+                        <li>家族をJGC本会員に招待</li>
+                        <li>家族同行ラウンジ人数無制限</li>
+                        <li>サクララウンジクーポン配布</li>
+                        <li>最上級ラウンジ・ファーストクラス待遇</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特典の詳細比較 -->
+    <section class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">特典の詳細比較：生涯続く快適な空の旅</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card ana">
+                    <h3 class="comparison-title">ANA SFC特典</h3>
+                    <p class="comparison-subtitle">スターアライアンス・ゴールド資格</p>
+                    
+                    <div class="feature-cards">
+                        <div class="feature-card ana">
+                            <div class="feature-card-title">🏛️ ラウンジアクセス</div>
+                            <div class="feature-card-content">
+                                世界1,000ヶ所以上のスターアライアンスラウンジ<br>
+                                同行者1名まで無料
+                            </div>
+                            <div class="feature-highlight ana">
+                                <strong>世界最大のネットワーク</strong><br>
+                                グローバルな網羅性と柔軟性
+                            </div>
+                        </div>
+
+                        <div class="feature-card ana">
+                            <div class="feature-card-title">⚡ 優先サービス</div>
+                            <div class="feature-card-content">
+                                優先チェックイン・搭乗・手荷物受け取り<br>
+                                手荷物許容量：重量制+20kg、個数制+1個
+                            </div>
+                        </div>
+
+                        <div class="feature-card ana">
+                            <div class="feature-card-title">💎 マイル特典</div>
+                            <div class="feature-card-content">
+                                フライトボーナスマイル：35%〜50%<br>
+                                マイル有効期限：36ヶ月（一部カードで無期限）
+                            </div>
+                        </div>
+
+                        <div class="feature-card ana">
+                            <div class="feature-card-title">👨‍👩‍👧‍👦 家族カード</div>
+                            <div class="feature-card-content">
+                                家族会員年会費：本会員の約半額<br>
+                                配偶者・両親・子ども（18歳以上）が対象
+                            </div>
+                            <div class="feature-highlight ana">
+                                <strong>コスト優位性</strong><br>
+                                低コストで家族全体に特典を拡張
+                                <br><span class="text-gray">注：ブランドごとに家族年会費/発行枚数規定が異なる（例：Amex Premium=家族4枚無料、Diners Premium=無料・枚数要確認、VISA/JCB=制限の可能性）</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-card jal">
+                    <h3 class="comparison-title">JAL JGC特典</h3>
+                    <p class="comparison-subtitle">ワンワールド・サファイア資格</p>
+                    
+                    <div class="feature-cards">
+                        <div class="feature-card jal">
+                            <div class="feature-card-title">🏛️ ラウンジアクセス</div>
+                            <div class="feature-card-content">
+                                世界600ヶ所以上のワンワールドラウンジ<br>
+                                同行者1名まで無料
+                            </div>
+                            <div class="feature-highlight jal">
+                                <strong>質の高いネットワーク</strong><br>
+                                カンタス、カタール航空など高品質な航空会社
+                            </div>
+                        </div>
+
+                        <div class="feature-card jal">
+                            <div class="feature-card-title">⚡ 優先サービス</div>
+                            <div class="feature-card-content">
+                                会員専用予約デスク・優先チェックイン<br>
+                                手荷物許容量：重量制+15kg、個数制+1個（最大2個）
+                            </div>
+                        </div>
+
+                        <div class="feature-card jal">
+                            <div class="feature-card-title">💎 マイル特典</div>
+                            <div class="feature-card-content">
+                                フライトボーナスマイル：+35%<br>
+                                初回搭乗ボーナス：年3,000マイル<br>
+                                マイル有効期限：60ヶ月（Four Star以上で無期限）
+                            </div>
+                        </div>
+
+                        <div class="feature-card jal">
+                            <div class="feature-card-title">⭐ Starグレード特典</div>
+                            <div class="feature-card-content">
+                                Five Star：家族JGC招待・ラウンジ同行無制限<br>
+                                Six Star：ワンワールド・エメラルド・最上級ラウンジ
+                            </div>
+                            <div class="feature-highlight jal">
+                                <strong>家族資産形成</strong><br>
+                                長期的な家族へのステータス継承
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- アライアンスの戦略的価値 -->
+    <section class="section section-white">
+        <div class="container">
+            <h2 class="section-title">アライアンスの戦略的価値</h2>
+            
+            <div class="persona-grid">
+                <div class="persona-card">
+                    <h3 class="persona-title">スターアライアンス</h3>
+                    <p class="persona-description">ANA SFCが提供する世界最大のネットワーク</p>
+                    <ul class="feature-list">
+                        <li><strong>世界最大の加盟航空会社数</strong><br>
+                        最大限のグローバル網羅性と柔軟性</li>
+                        <li><strong>主要航空会社</strong><br>
+                        ANA、シンガポール航空、ルフトハンザ、ユナイテッド航空など</li>
+                        <li><strong>特典の特徴</strong><br>
+                        アップグレードポイント（2026年度終了）<br>
+                        満席時の空席待ち優先</li>
+                    </ul>
+                </div>
+
+                <div class="persona-card">
+                    <h3 class="persona-title">ワンワールド</h3>
+                    <p class="persona-description">JAL JGCが提供する質の高いネットワーク</p>
+                    <ul class="feature-list">
+                        <li><strong>質の高い航空会社</strong><br>
+                        カンタス航空、カタール航空、ブリティッシュ・エアウェイズなど</li>
+                        <li><strong>地域特化の強み</strong><br>
+                        オーストラリア、中東、欧州での強力なネットワーク</li>
+                        <li><strong>特典の特徴</strong><br>
+                        優先座席指定・事前座席指定<br>
+                        満席時の優先キャンセル待ち</li>
+                    </ul>
+                </div>
+
+                <div class="persona-card">
+                    <h3 class="persona-title">デュアルステータス</h3>
+                    <p class="persona-description">両方を持つことの戦略的価値</p>
+                    <ul class="feature-list">
+                        <li><strong>ネットワークの柔軟性</strong><br>
+                        運賃・時刻・ルートに応じた最適選択</li>
+                        <li><strong>リスク分散</strong><br>
+                        一方の航空会社トラブル時の保険的価値</li>
+                        <li><strong>家族旅行の最適化</strong><br>
+                        家族構成・予算に応じた柔軟な航空会社選択</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ペルソナ別比較 -->
+    <section class="section section-white">
+        <div class="container">
+            <h2 class="section-title">あなたのタイプは？ペルソナ別比較</h2>
+            
+            <div class="persona-grid">
+                <div class="persona-card">
+                    <h3 class="persona-title">独身・都市圏会社員</h3>
+                    <p class="persona-description">国内出張あり・海外年1〜2回・決済200〜300万円</p>
+                    <div class="recommendation">
+                        <div class="recommendation-title">推奨：ANA SFC</div>
+                        <p>まとめて飛ぶチャンスがあればスプリント戦略が現実的。一度SFCを取れば、年1〜2回の海外旅行が快適に。</p>
+                    </div>
+                </div>
+
+                <div class="persona-card">
+                    <h3 class="persona-title">夫婦＋小さな子ども2人</h3>
+                    <p class="persona-description">年2回の家族旅行・子連れで空港が大変</p>
+                    <div class="recommendation">
+                        <div class="recommendation-title">選択肢：SFC vs JGC</div>
+                        <p><strong>今すぐラク＝SFC</strong>：家族カードで即座にVIP待遇<br>
+                        <strong>将来の家族資産＝JGC</strong>：長期的な家族特典を目指す</p>
+                    </div>
+                </div>
+
+                <div class="persona-card">
+                    <h3 class="persona-title">地方在住・国内移動中心</h3>
+                    <p class="persona-description">国際線はたまに・日常支出を特定サービスに集約可能</p>
+                    <div class="recommendation">
+                        <div class="recommendation-title">推奨：JAL JGC</div>
+                        <p>短距離フライトの積み上げ + 日常決済でLSPを貯める。400万円決済の壁がないので現実的。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 20代向け戦略 -->
+    <section class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">20代・学生向け「最初の翼」戦略</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card ana">
+                    <h3 class="comparison-title">ANA：「無料で囲い込む」戦略</h3>
+                    <ul class="feature-list">
+                        <li><strong>ANA JCB CARD FIRST</strong><br>
+                        29歳以下・年会費5年間無料<br>
+                        年間100万円利用で5,000マイルボーナス</li>
+                        <li><strong>ANAカード〈学生用〉</strong><br>
+                        在学中年会費無料・入会時1,000マイル<br>
+                        卒業時2,000マイル・スマートU25積算率100%</li>
+                        <li><strong>学生向け優遇</strong><br>
+                        スマートU25運賃でマイル積算率100％（通常50％）</li>
+                        <li><strong>将来のSFC修行準備</strong><br>
+                        今からガソリンを溜めておく</li>
+                    </ul>
+                </div>
+
+                <div class="comparison-card jal">
+                    <h3 class="comparison-title">JAL：「体験で惚れさせる」戦略</h3>
+                    <ul class="feature-list">
+                        <li><strong>JALカード navi（学生）</strong><br>
+                        在学中年会費無料・マイル有効期限なし<br>
+                        減額特典航空券・各種ボーナス（語学検定等）</li>
+                        <li><strong>JAL CLUB EST（20代限定）</strong><br>
+                        年会費7,700円・サクララウンジ年5回<br>
+                        マイル有効期限60ヶ月・毎年2,500マイル</li>
+                        <li><strong>VIP動線体験</strong><br>
+                        20代からラウンジの快適さを体感</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 費用対効果分析 -->
+    <section class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">費用対効果の長期的比較</h2>
+            
+            <div class="persona-grid">
+                <div class="persona-card">
+                    <h3 class="persona-title">取得プロセスの哲学</h3>
+                    <p class="persona-description">コストの性質と時間軸の違い</p>
+                    <div class="recommendation">
+                        <div class="recommendation-title">ANA SFC（スプリント型）</div>
+                        <p><strong>短期集中型プロジェクトへの初期投資</strong><br>
+                        取得期間：約1年<br>
+                        初期費用：約50万円〜60万円<br>
+                        回収年数：年2回利用で約7.6年、年10回利用で約3.0年</p>
+                    </div>
+                    <div class="recommendation">
+                        <div class="recommendation-title">JAL JGC（マラソン型）</div>
+                        <p><strong>長期的な金銭的・生活的コミットメント</strong><br>
+                        取得期間：数年〜十数年<br>
+                        初期費用：変動大（フライトのみだと非現実的な高額）<br>
+                        LSP単価：搭乗約1,200円、決済約20,000円</p>
+                    </div>
+                </div>
+
+                <div class="persona-card">
+                    <h3 class="persona-title">維持コストの実質回収</h3>
+                    <p class="persona-description">年会費と特典の相殺可能性</p>
+                    <ul class="feature-list">
+                        <li><strong>デュアルステータス維持費</strong><br>
+                        年間最低22,275円（SFC 11,275円 + JGC 11,000円）</li>
+                        <li><strong>SFCの回収基準崩壊</strong><br>
+                        アップグレードポイント終了で「実質回収」ロジックが成り立たず、年会費が純粋な維持コストに</li>
+                        <li><strong>JGCの長期コミット</strong><br>
+                        生涯累積LSPを低コストかつ持続的に確保するポートフォリオ構築が重要</li>
+                    </ul>
+                </div>
+
+                <div class="persona-card">
+                    <h3 class="persona-title">家族資産形成力</h3>
+                    <p class="persona-description">特典の生涯価値と家族への拡張性</p>
+                    <div class="recommendation">
+                        <div class="recommendation-title">ANA SFC</div>
+                        <p>家族カードで比較的安価にスターアライアンス・ゴールド資格を享受<br>
+                        <strong>世界最大のグローバル網羅性</strong>と柔軟性</p>
+                    </div>
+                    <div class="recommendation">
+                        <div class="recommendation-title">JAL JGC</div>
+                        <p>Starグレード達成（6,000 LSP以上）で家族をJGC本会員に招待可能<br>
+                        <strong>最上位特典の生涯価値</strong>と強力な顧客ロックイン</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- リスク分析 -->
+    <section class="section section-white">
+        <div class="container">
+            <h2 class="section-title">リスクと長期安定性</h2>
+            
+            <div class="risk-grid">
+                <div class="risk-card">
+                    <h3 class="risk-title">SFC側のリスク</h3>
+                    <ul class="risk-list">
+                        <li>アップグレードポイント終了で「年会費の元が取れる」理屈が弱体化</li>
+                        <li>2026年5月19日の国内線運賃制度変更で修行コスト上昇の可能性</li>
+                        <li>SFC人口増加によるラウンジ混雑</li>
+                        <li>高額決済者優遇の傾向</li>
+                        <li>スターアライアンス以外を使うと価値が薄れる</li>
+                        <li>家族カードの発行枚数・審査方針による計画未達リスク（VISA/JCBは「制限の可能性」表記）</li>
+                        <li>UP終了後は年会費が純コスト化。特典の実使用が伴わない年は回収が鈍化</li>
+                    </ul>
+                </div>
+
+                <div class="risk-card">
+                    <h3 class="risk-title">JGC側のリスク</h3>
+                    <ul class="risk-list">
+                        <li>JAL経済圏から離れるとLSPが止まる</li>
+                        <li>家族特典はかなり上のStarグレードで発動</li>
+                        <li>JAL経済圏ロックインのリスク</li>
+                        <li>家族がそこまで飛ぶライフスタイルか？</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>若年層の最適戦略</h3>
+                <p>
+                    <strong>学生の場合</strong>：ANA学生カード + JALカード navi の二刀流（コスト：無料）<br>
+                    <strong>社会人の場合</strong>：ANA JCB CARD FIRST + JAL CLUB EST（コスト：年間7,700円）<br>
+                    <strong>修行しない場合</strong>：若年向けカード + スポット課金ラウンジ + 減額特典航空券
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- デュアルステータス戦略 -->
+    <section class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">デュアルステータスの戦略的価値</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card ana">
+                    <h3 class="comparison-title">保険的価値</h3>
+                    <p class="comparison-subtitle">業務上のリスクヘッジ</p>
+                    <ul class="feature-list">
+                        <li><strong>システム障害時の切り替え</strong><br>
+                        JAL便の遅延・欠航時にANA便へシームレスに変更可能</li>
+                        <li><strong>運賃最適化</strong><br>
+                        常に最安値・最適時刻のアライアンスを選択できる柔軟性</li>
+                        <li><strong>ネットワークの分散投資</strong><br>
+                        単一アライアンス依存のリスクを軽減</li>
+                    </ul>
+                </div>
+
+                <div class="comparison-card jal">
+                    <h3 class="comparison-title">究極の柔軟性</h3>
+                    <p class="comparison-subtitle">旅の選択肢の最大化</p>
+                    <ul class="feature-list">
+                        <li><strong>グローバル網羅性</strong><br>
+                        スターアライアンス + ワンワールドで世界のほぼ全地域をカバー</li>
+                        <li><strong>特典の使い分け</strong><br>
+                        ルート・目的に応じて最適なラウンジ・優先サービスを選択</li>
+                        <li><strong>家族旅行の最適化</strong><br>
+                        家族構成・予算に応じた柔軟な航空会社選択</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>長期的な費用対効果の判断基準</h3>
+                <p>
+                    <strong>あなたはスプリント型（SFC）か、マラソン型（JGC）か？</strong><br>
+                    初期投資の回収年数が許容できるか？<br>
+                    個人のライフスタイル、価値観、将来的な人生設計への投資としての合理性
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Xの声：修行コミュニティの最新動向 -->
+    <section class="section section-white">
+        <div class="container">
+            <h2 class="section-title">Xの声：修行コミュニティの最新動向</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card ana">
+                    <h3 class="comparison-title">SFC修行の懸念</h3>
+                    <p class="comparison-subtitle">2025年11月頃の改悪予想</p>
+                    <ul class="feature-list">
+                        <li><strong>突然の改悪発表</strong><br>
+                        JALのLSP導入を受けてANAも追従改悪の可能性</li>
+                        <li><strong>実質改悪の懸念</strong><br>
+                        修行者急増によるラウンジ混雑・予約取りにくさ</li>
+                        <li><strong>既存特典の縮小</strong><br>
+                        ダイアリー配布終了・UP廃止など「改悪しすぎ」の声</li>
+                    </ul>
+                </div>
+
+                <div class="comparison-card jal">
+                    <h3 class="comparison-title">JGC修行の現実</h3>
+                    <p class="comparison-subtitle">LSP導入による長期化</p>
+                    <ul class="feature-list">
+                        <li><strong>修行の長期化</strong><br>
+                        生涯1,500 LSP・300レグ相当で短期集中が困難</li>
+                        <li><strong>費用対効果の薄さ</strong><br>
+                        決済中心なら年100万利用で50pt・10年以内達成可能</li>
+                        <li><strong>高額な費用</strong><br>
+                        SFC（50-100万円）と比べて1千万円以上の可能性</li>
+                        <li><strong>さらなる改悪リスク</strong><br>
+                        5年以内のルール再変更・取得要件厳格化の懸念</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>コミュニティの共通認識</h3>
+                <p>
+                    <strong>デュアルステータスの価値</strong>：両社ステータスの併用メリットは依然として残る<br>
+                    <strong>情報の性質</strong>：公式発表ではなく個人の憶測レベル・最新情報は公式サイトで確認を推奨<br>
+                    <strong>修行の本質</strong>：エンタメ要素が強いが、体力過信や無駄を避け楽しむことが重要
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最終判断 -->
+    <section class="section section-black">
+        <div class="container">
+            <h2 class="section-title">あなたはどっちへ行くべき？</h2>
+            
+            <div class="decision-steps">
+                <div class="decision-step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">スプリント型診断</div>
+                    <div class="step-description">
+                        今後1〜2年でまとめて飛ぶ予定がある？<br>
+                        短期でバーンとお金を使える？<br>
+                        今すぐラウンジ・優先導線が欲しい？
+                    </div>
+                </div>
+
+                <div class="decision-step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">マラソン型診断</div>
+                    <div class="step-description">
+                        5年〜10年かけて積み上げる覚悟がある？<br>
+                        JAL経済圏で生活できる？<br>
+                        家族の将来投資に価値を感じる？
+                    </div>
+                </div>
+
+                <div class="decision-step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">デュアル保有</div>
+                    <div class="step-description">
+                        海外出張で両アライアンスを使う？<br>
+                        家族旅行も頻繁にある？<br>
+                        旅のストレスを最小化したい？
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="background: #f5f5f7; color: #1d1d1f; border: 1px solid #e5e5ea;">
+                <h3 style="font-size: 28px; font-weight: 600; margin-bottom: 12px;">この時代の「正解」は、もう"カードの色"じゃない</h3>
+                <p style="font-size: 21px; line-height: 1.4;">
+                    今すぐストレスを減らしたい？ → ANA型スプリント（SFC）<br>
+                    家族の未来に投資したい？ → JAL型マラソン（JGC/LSP）<br>
+                    まだそこまで乗らない？ → 今は走らないのも超アリ
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // カードホバーエフェクト
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

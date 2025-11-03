@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>JAL Life Status プログラム評価</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f5f5f7;
+            color: #000000;
+        }
+        /* 各スライドの共通レイアウト（LP連結表示） */
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: auto;
+            display: flex;
+            flex-direction: column;
+            background-color: #FFFFFF;
+            overflow: hidden;
+            position: relative;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        /* モバイル最適化 */
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .slide-container { 
+                margin: 0 auto 15px auto; 
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                border-radius: 8px;
+            }
+            .content-wrapper { padding: 20px !important; }
+            .page-title { font-size: 32px !important; line-height: 1.3 !important; }
+            .main-title { font-size: 36px !important; line-height: 1.2 !important; }
+            .subtitle { font-size: 18px !important; }
+            .card-title { font-size: 18px !important; }
+            .body-text { font-size: 16px !important; }
+            .two-columns { flex-direction: column !important; gap: 20px !important; }
+            .left-column, .right-column { flex: none !important; }
+            .comparison-columns { flex-direction: column !important; gap: 20px !important; }
+            .comparison-column { flex: none !important; }
+            .value-table, .comparison-table, .cost-table { font-size: 14px !important; }
+            .value-table th, .value-table td, .comparison-table th, .comparison-table td, .cost-table th, .cost-table td { 
+                padding: 8px 6px !important; 
+            }
+            .chart-container { height: 200px !important; }
+            .info-card, .alert-card, .value-card, .benefit-card, .lounge-card, .bonus-card, .premium-card { 
+                padding: 16px !important; 
+                margin-bottom: 15px !important;
+            }
+            .list-item { font-size: 16px !important; }
+            .feature-item { font-size: 15px !important; }
+            .profile-card, .profile-card-optimized, .profile-item-compact { 
+                padding: 12px !important; 
+                margin-bottom: 10px !important;
+            }
+            .profile-title, .profile-title-optimized { font-size: 16px !important; }
+            .profile-description, .profile-description-optimized { font-size: 14px !important; }
+            .selected-value { font-size: 18px !important; padding: 8px !important; }
+            .value-amount { font-size: 20px !important; }
+            .price-tag { font-size: 20px !important; }
+            .accent-line { width: 60px !important; height: 4px !important; }
+            .jal-logo { top: 20px !important; right: 20px !important; width: 80px !important; }
+        }
+        @media (max-width: 480px) {
+            body { padding: 5px; }
+            .slide-container { margin: 0 auto 10px auto; }
+            .content-wrapper { padding: 15px !important; }
+            .page-title { font-size: 28px !important; }
+            .main-title { font-size: 32px !important; }
+            .subtitle { font-size: 16px !important; }
+            .card-title { font-size: 16px !important; }
+            .body-text { font-size: 15px !important; }
+            .info-card, .alert-card, .value-card, .benefit-card, .lounge-card, .bonus-card, .premium-card { 
+                padding: 12px !important; 
+            }
+            .value-table, .comparison-table, .cost-table { font-size: 12px !important; }
+            .value-table th, .value-table td, .comparison-table th, .comparison-table td, .cost-table th, .cost-table td { 
+                padding: 6px 4px !important; 
+            }
+            .chart-container { height: 150px !important; }
+            .selected-value { font-size: 16px !important; }
+            .value-amount { font-size: 18px !important; }
+            .price-tag { font-size: 18px !important; }
+        }
+        @media print {
+            body { padding: 0; background-color: #FFFFFF; }
+            .slide-container { margin: 0; box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1: Cover -->
+    <style>
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 60px; text-align: center; }
+        .main-title { font-size: 64px; font-weight: 900; line-height: 1.2; letter-spacing: -0.03em; color: #000000; margin-bottom: 24px; }
+        .subtitle { font-size: 24px; font-weight: 500; line-height: 1.5; color: #515154; margin-bottom: 40px; max-width: 800px; }
+        .date { font-size: 18px; font-weight: 400; color: #86868B; margin-bottom: 40px; }
+        .accent-line { width: 80px; height: 5px; background-color: #DC143C; border-radius: 3px; margin-top: 10px; margin-bottom: 10px; }
+        .jal-logo { position: absolute; top: 40px; right: 60px; width: 100px; height: auto; }
+    </style>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <div class="jal-logo">
+                <img alt="JAL" src="https://page.gensparksite.com/slides_images/675a75add6ce414817f6c194c023ae7e.webp" style="width: 100px; height: auto; object-fit: contain;"/>
+            </div>
+            <h1 class="main-title">JAL Life Status プログラム</h1>
+            <h1 class="main-title">上級会員資格特典の包括的経済価値評価</h1>
+            <div class="accent-line"></div>
+            <p class="subtitle">上級会員6グレードの価値を定量化し可視化するデータドリブン分析</p>
+            <p class="date">2025年10月25日</p>
+        </div>
+    </div>
+
+    <!-- Page 2: エグゼクティブサマリー -->
+    <style>
+        .page-title { font-size: 48px; font-weight: 900; line-height: 1.2; letter-spacing: -0.02em; color: #000000; margin-bottom: 10px; }
+        .body-text { font-size: 18px; font-weight: 400; line-height: 1.6; color: #1D1D1F; margin-bottom: 24px; }
+        .info-card { padding: 24px; background-color: #F5F5F7; border-radius: 12px; border-left: 4px solid #DC143C; margin-bottom: 24px; }
+        .alert-card { padding: 24px; background-color: #F5F5F7; border-radius: 12px; border-left: 4px solid #FFD700; margin-bottom: 24px; }
+        .card-title { font-size: 22px; font-weight: 700; color: #000000; margin-bottom: 12px; }
+        .list-item { font-size: 18px; line-height: 1.8; margin-bottom: 10px; display: flex; }
+        .list-bullet { color: #DC143C; margin-right: 10px; font-weight: 700; }
+        .highlight { font-weight: 700; color: #DC143C; }
+        .highlight-gold { font-weight: 700; color: #B8860B; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        .comparison-table th, .comparison-table td { padding: 8px 12px; border: 1px solid #E5E5EA; text-align: left; font-size: 16px; }
+        .comparison-table th { background-color: #F8F8FA; font-weight: 700; }
+        .accent-line { width: 80px; height: 5px; background-color: #DC143C; border-radius: 3px; margin-bottom: 40px; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; padding: 60px; }
+    </style>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">エグゼクティブサマリー（概要）</h1>
+            <div class="accent-line"></div>
+            <div class="body-text">
+                <p><span class="highlight">目的：</span> JAL Life Status 6グレードの特典を円換算で包括評価</p>
+            </div>
+            <div class="alert-card">
+                <h2 class="card-title">重要：2つのステイタスプログラムの併存</h2>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight-gold">FLY ON プログラム</span>（従来型・年間リセット）：毎年1月～12月の<span class="highlight-gold">1年間</span>の実績でステイタス判定</p></div>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight">JAL Life Status プログラム</span>（2024年開始・生涯累積型）：<span class="highlight">生涯にわたって累積</span>するポイントでグレード判定</p></div>
+                <table class="comparison-table">
+                    <tr><th>FLY ON プログラム</th><th>JAL Life Status プログラム</th></tr>
+                    <tr><td>JGCプレミア（80,000 FOP/年）</td><td>JGC Six Star（12,000 LSP/生涯）</td></tr>
+                    <tr><td>JMBダイヤモンド（100,000 FOP/年）</td><td>2025年4月～：Six Star会員に自動付与</td></tr>
+                </table>
+            </div>
+            <div class="info-card">
+                <h2 class="card-title">評価フレームワーク</h2>
+                <p class="body-text">直接/間接/状況的価値の3軸 + マイル単価(=2.0円) + 3利用者プロファイル</p>
+            </div>
+            <div class="info-card">
+                <h2 class="card-title">主な発見</h2>
+                <div class="list-item"><span class="list-bullet">•</span><p>価値の変曲点は<span class="highlight">JGC Three Star到達時</span>（ラウンジ無制限アクセス等）</p></div>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight">Four Star</span>でマイル有効期限無期限化 = 資産保全効果</p></div>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight">Six Star</span>で最上位ラウンジ + サービスセレクション（年6万円相当）</p></div>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight-gold">2025年4月～</span>：JGC Six Star会員は<span class="highlight-gold">JMBダイヤモンド資格が自動付与</span>（年間搭乗実績不問）</p></div>
+            </div>
+            <div class="info-card">
+                <h2 class="card-title">年間価値レンジ（概観）</h2>
+                <p class="body-text">最低約<span class="highlight">1.1万円</span>〜最大<span class="highlight">58万円超</span>（利用頻度依存）</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 3: 価値範囲サマリー（Chart） -->
+    <style>
+        .value-table { width: 100%; border-collapse: separate; border-spacing: 0; margin-bottom: 30px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .value-table th { background-color: #F5F5F7; padding: 15px; font-weight: 700; font-size: 16px; border: 1px solid #E5E5EA; text-align: left; }
+        .value-table td { padding: 12px 15px; font-size: 16px; border: 1px solid #E5E5EA; }
+        .value-range { font-weight: 700; font-size: 18px; }
+        .chart-container { width: 100%; height: 300px; margin-bottom: 30px; }
+    </style>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">エグゼクティブサマリー（価値範囲サマリー）</h1>
+            <div class="accent-line"></div>
+            <table class="value-table">
+                <thead>
+                    <tr><th>Starグレード</th><th>年間想定価値（円）</th><th>主要な価値向上要因</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>JMB elite (★)</td><td class="value-range">11,000 - 15,000</td><td>限定的なラウンジ利用クーポン</td></tr>
+                    <tr><td>JMB elite plus (★★)</td><td class="value-range">23,000 - 35,000</td><td>ラウンジ利用クーポンの増加</td></tr>
+                    <tr><td>JGC Three Star (★★★)</td><td class="value-range">120,000 - 350,000</td><td>JGC基本特典の全面的な有効化（ラウンジ、優先サービス等）</td></tr>
+                    <tr><td>JGC Four Star (★★★★)</td><td class="value-range">140,000 - 380,000</td><td>マイル有効期限の無期限化による資産保全</td></tr>
+                    <tr><td>JGC Five Star (★★★★★)</td><td class="value-range">170,000 - 450,000</td><td>家族向け特典の拡充（ラウンジ同行者無制限、JGC招待）</td></tr>
+                    <tr><td>JGC Six Star (★★★★★★)</td><td class="value-range">250,000 - 580,000+</td><td>最上位ラウンジ利用とJMBダイヤモンド資格特典</td></tr>
+                </tbody>
+            </table>
+            <div class="chart-container">
+                <canvas id="valueChart"></canvas>
+            </div>
+            <div class="info-card">
+                <h2 class="card-title">価値の飛躍点</h2>
+                <p class="body-text"><span class="highlight">JGC Three Star</span> → サクララウンジ無制限アクセス、優先チェックイン・搭乗などの基本特典全面有効化</p>
+                <p class="body-text"><span class="highlight">JGC Four Star</span> → マイル有効期限無期限化による資産としての価値保全</p>
+                <p class="body-text"><span class="highlight">JGC Six Star</span> → 最上位ラウンジアクセスとJMBダイヤモンド相当特典（年間6万円相当）</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 4: 評価フレームワーク（価値基準） -->
+    <style>
+        .two-columns { display: flex; flex: 1; gap: 40px; }
+        .left-column { flex: 1; }
+        .right-column { flex: 1; display: flex; justify-content: center; align-items: center; }
+        .value-card { padding: 24px; background-color: #F5F5F7; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid #DC143C; }
+        .card-title { font-size: 22px; font-weight: 700; color: #000000; margin-bottom: 12px; }
+        .example { font-size: 16px; font-style: italic; color: #515154; }
+        .note { font-size: 14px; color: #86868B; font-style: italic; margin-top: 20px; }
+        .chart-container { width: 100%; height: 400px; }
+    </style>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">評価フレームワーク（価値基準）</h1>
+            <div class="accent-line"></div>
+            <div class="two-columns">
+                <div class="left-column">
+                    <div class="value-card"><h2 class="card-title">直接的価値</h2><p class="body-text">市場において明確な価格が設定されている特典に適用される。最も保守的で、客観性の高い評価基準。</p><p class="example">例: サクララウンジの有料利用料金、超過手荷物料金、有料事前座席指定料金</p></div>
+                    <div class="value-card"><h2 class="card-title">間接的価値</h2><p class="body-text">直接的な市場価格は存在しないものの、一貫した代理指標を用いて合理的に価値を算出できる特典。</p><p class="example">例: ボーナスマイル（マイル単価を乗じる）、JALダイナミックパッケージ割引クーポン</p></div>
+                    <div class="value-card"><h2 class="card-title">状況的・無形的価値</h2><p class="body-text">その価値が特定の状況や利用者の特性に大きく依存する特典。時間節約効果や快適性向上など。</p><p class="example">例: 優先チェックイン、優先保安検査場、優先搭乗（時間価値モデルで算出）</p></div>
+                    <p class="note">本分析では、特典価値を過大評価することも過小評価することもないよう、<span class="highlight">保守的かつ現実的な評価基準</span>を一貫して適用しています。</p>
+                </div>
+                <div class="right-column"><div class="chart-container"><canvas id="valueFrameworkChart"></canvas></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 5: マイル単価・プロファイル -->
+    <style>
+        .selected-value { font-size: 24px; font-weight: 700; color: #DC143C; text-align: center; margin: 20px 0; padding: 10px; border: 2px solid #DC143C; border-radius: 8px; background-color: rgba(220, 20, 60, 0.05); }
+        .value-range { display: flex; align-items: center; margin-bottom: 10px; }
+        .value-label { width: 120px; font-weight: 500; font-size: 16px; }
+        .value-amount { font-size: 18px; font-weight: 700; }
+        .profile-card { padding: 20px; background-color: #F8F8FA; border-radius: 12px; margin-bottom: 15px; border-left: 4px solid #FFD700; }
+        .profile-title { font-size: 20px; font-weight: 700; color: #000000; margin-bottom: 8px; }
+        .profile-description { font-size: 16px; line-height: 1.5; color: #515154; }
+        .chart-container { width: 100%; height: 200px; margin-top: 20px; }
+        /* Page 5専用のコンパクトレイアウト */
+        .page5-compact { display: flex; gap: 20px; align-items: flex-start; }
+        .page5-left { flex: 1; }
+        .mile-value-compact { background-color: #F5F5F7; border-radius: 12px; padding: 20px; border-left: 4px solid #DC143C; margin-bottom: 20px; }
+        .mile-value-compact h2 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+        .mile-value-compact p { font-size: 14px; color: #515154; margin-bottom: 15px; line-height: 1.5; }
+        .mile-ranges-compact { display: flex; gap: 15px; margin-bottom: 15px; }
+        .mile-range-compact { flex: 1; text-align: center; padding: 12px; background-color: #FFFFFF; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .mile-range-compact.low { border-top: 3px solid #34C759; }
+        .mile-range-compact.medium { border-top: 3px solid #FF9500; }
+        .mile-range-compact.high { border-top: 3px solid #DC143C; }
+        .mile-range-value { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+        .mile-range-value.low { color: #34C759; }
+        .mile-range-value.medium { color: #FF9500; }
+        .mile-range-value.high { color: #DC143C; }
+        .mile-range-desc { font-size: 12px; color: #515154; line-height: 1.3; }
+        .profiles-compact { background-color: #F8F8FA; border-radius: 12px; padding: 20px; border-left: 4px solid #FFD700; }
+        .profiles-compact h2 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+        .profiles-compact p { font-size: 14px; color: #515154; margin-bottom: 15px; line-height: 1.5; }
+        .profile-list-compact { display: flex; flex-direction: column; gap: 12px; }
+        .profile-item-compact { padding: 12px; background-color: #FFFFFF; border-radius: 8px; border-left: 3px solid #FFD700; }
+        .profile-item-compact h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; color: #000000; }
+        .profile-item-compact p { font-size: 13px; color: #515154; line-height: 1.4; margin: 0; }
+        @media (max-width: 768px) {
+            .page5-compact { flex-direction: column; }
+            .mile-ranges-compact { flex-direction: column; }
+            .mile-value-compact, .profiles-compact { padding: 16px !important; }
+            .mile-value-compact h2, .profiles-compact h2 { font-size: 18px !important; }
+            .mile-value-compact p, .profiles-compact p { font-size: 14px !important; }
+            .mile-range-compact { padding: 10px !important; }
+            .mile-range-value { font-size: 14px !important; }
+            .mile-range-desc { font-size: 11px !important; }
+            .profile-item-compact { padding: 10px !important; }
+            .profile-item-compact h3 { font-size: 15px !important; }
+            .profile-item-compact p { font-size: 13px !important; }
+        }
+    </style>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">評価フレームワーク（マイル単価・プロファイル）</h1>
+            <div class="accent-line"></div>
+            <div class="page5-compact">
+                <div class="page5-left">
+                    <div class="mile-value-compact">
+                        <h2>JALマイルの円換算価値</h2>
+                        <p>マイル関連特典の価値評価に不可欠なJALマイル1マイルあたりの円換算価値（マイル単価）を定義します。</p>
+                        <div class="mile-ranges-compact">
+                            <div class="mile-range-compact low">
+                                <div class="mile-range-value low">1.0円〜1.2円</div>
+                                <div class="mile-range-desc">dポイント交換<br/>JALクーポン交換</div>
+                            </div>
+                            <div class="mile-range-compact medium">
+                                <div class="mile-range-value medium">2.0円〜3.0円</div>
+                                <div class="mile-range-desc">一般的交換価値<br/>国内線特典航空券</div>
+                            </div>
+                            <div class="mile-range-compact high">
+                                <div class="mile-range-value high">4.0円〜15.0円+</div>
+                                <div class="mile-range-desc">国際線ビジネス/<br/>ファーストクラス</div>
+                            </div>
+                        </div>
+                        <div class="selected-value">本分析の標準基準値：1マイル = 2.0円</div>
+                        <p class="note">この基準値は、特典価値を過大評価することも過小評価することもないよう、<span class="highlight">保守的かつ現実的な評価</span>として採用しています。</p>
+                    </div>
+                    <div class="profiles-compact">
+                        <h2>利用者プロファイル設定</h2>
+                        <p>上級会員資格の特典価値は、利用者の旅行頻度やスタイルによって大きく異なります。</p>
+                        <div class="profile-list-compact">
+                            <div class="profile-item-compact">
+                                <h3>プロファイルA：国内線中心のビジネスコンサルタント</h3>
+                                <p>年間24回の国内線往復（例：東京-大阪間を月2回）。主に普通席を利用。時間価値を重視し、空港での待ち時間短縮に高い価値を見出す。</p>
+                            </div>
+                            <div class="profile-item-compact">
+                                <h3>プロファイルB：国際線中心のエグゼクティブ</h3>
+                                <p>年間4回の長距離国際線ビジネスクラス往復、年間4回のアジア域内エコノミークラス往復。グローバルなラウンジネットワークを重視。常に2個の手荷物を預ける。</p>
+                            </div>
+                            <div class="profile-item-compact">
+                                <h3>プロファイルC：家族旅行者</h3>
+                                <p>年間1回の長距離国際線エコノミークラス往復、年間2回の国内線往復。配偶者と子供2人（小学生以上）の4人家族で旅行。家族全員分の手荷物優遇と快適な待機環境を重視。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 6: ラウンジ価値 -->
+    <style>
+        .lounge-card { padding: 24px; background-color: #F5F5F7; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid #DC143C; }
+        .price-tag { display: inline-block; font-size: 24px; font-weight: 700; color: #DC143C; margin-top: 8px; }
+        .feature-list { margin-top: 24px; }
+        .feature-item { display: flex; align-items: center; margin-bottom: 12px; }
+        .feature-dot { width: 8px; height: 8px; background-color: #FFD700; border-radius: 50%; margin-right: 12px; }
+        .chart-container { width: 100%; height: 400px; }
+    </style>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">中核特典分析：ラウンジ価値</h1>
+            <div class="accent-line"></div>
+            <div class="two-columns">
+                <div class="left-column">
+                    <div class="lounge-card"><h2 class="card-title">国内線サクララウンジ</h2><p class="body-text">JALは一般旅客向けに国内線サクララウンジの有料利用サービスを提供。これは明確な直接的価値を示す。</p><div class="price-tag">3,000円 / 回</div></div>
+                    <div class="lounge-card"><h2 class="card-title">国際線サクララウンジ</h2><p class="body-text">羽田空港および成田空港の国際線ラウンジの公式価格が直接的価値の基準となる。</p><div class="price-tag">8,250円 / 回</div></div>
+                    <div class="lounge-card"><h2 class="card-title">ダイヤモンド・プレミア / JALファーストクラスラウンジ</h2><p class="body-text">最上位ラウンジ。質の高い食事、より広くプライベート感のある空間、ビジネス利用に適した個室ブース。</p><div class="price-tag">16,500円 / 回</div></div>
+                    <div class="lounge-card"><h2 class="card-title">oneworld提携ラウンジ</h2><p class="body-text">世界600カ所以上のワンワールド加盟航空会社のラウンジを利用可能。広範なグローバルネットワークが価値。</p><div class="price-tag">8,000円 / 回</div></div>
+                    <div class="feature-list">
+                        <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 16px;">ラウンジの主な特徴</h3>
+                        <div class="feature-item"><div class="feature-dot"></div><p class="body-text" style="margin-bottom: 0;">一般エリアの混雑回避と静謐な空間</p></div>
+                        <div class="feature-item"><div class="feature-dot"></div><p class="body-text" style="margin-bottom: 0;">質の高い飲食・ドリンクの無料提供</p></div>
+                        <div class="feature-item"><div class="feature-dot"></div><p class="body-text" style="margin-bottom: 0;">作業スペース・Wi-Fi・充電環境</p></div>
+                    </div>
+                </div>
+                <div class="right-column"><div class="chart-container"><canvas id="loungeValueChart"></canvas></div></div>
+            </div>
+            <p class="note">注: ダイヤモンド・プレミアラウンジとJALファーストクラスラウンジは一般向け有料サービスがないため、サクララウンジに対して100%のプレミアム価値を設定し推計。</p>
+        </div>
+    </div>
+
+    <!-- Page 7: 優先手続き・手荷物・座席 -->
+    <style>
+        .benefit-card { padding: 24px; background-color: #F5F5F7; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid #DC143C; }
+        .sub-value { font-size: 16px; color: #515154; margin-top: 8px; }
+        .value-amount { font-size: 24px; font-weight: 700; color: #DC143C; }
+    </style>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">中核特典分析：優先手続き・手荷物・座席</h1>
+            <div class="accent-line"></div>
+            <div class="two-columns">
+                <div class="left-column">
+                    <div class="benefit-card"><h2 class="card-title">優先手続き（出発時）</h2><p class="body-text">優先チェックイン、保安検査、搭乗により、待ち時間を平均45分（0.75時間）短縮。ビジネスパーソンの時間価値（5,000円/時間）に基づき算出。</p><p class="value-amount">3,500円 / 出発</p><p class="sub-value">算出：0.75時間 × 5,000円/時間</p></div>
+                    <div class="benefit-card"><h2 class="card-title">プライオリティバッゲージ（到着時）</h2><p class="body-text">預けた手荷物が優先的に返却されるサービス。到着時の手荷物受取時間を平均15分短縮。</p><p class="value-amount">1,250円 / 到着</p><p class="sub-value">算出：0.25時間 × 5,000円/時間</p></div>
+                    <div class="benefit-card"><h2 class="card-title">受託手荷物許容量優待</h2><p class="body-text">国内線：通常20kgが40kgまで無料（+20kg）。例えば5kg超過の場合の節約額。</p><p class="value-amount">2,200円 / 搭乗</p><p class="sub-value">算出：5kg × 440円/kg</p><p class="body-text">国際線：エコノミークラスで3個目の手荷物が無料。</p><p class="value-amount">20,000円 / 回</p><p class="sub-value">日本-北米路線基準</p></div>
+                    <div class="benefit-card"><h2 class="card-title">国際線前方・足元座席指定</h2><p class="body-text">通常有料の前方座席や足元の広い座席を無料で指定可能。</p><p class="value-amount">5,000円 / 区間</p><p class="sub-value">国際線有料座席料金の平均値</p></div>
+                </div>
+                <div class="right-column"><div class="chart-container"><canvas id="benefitsChart"></canvas></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 8: ボーナスマイル -->
+    <style>
+        .bonus-card { padding: 24px; background-color: #F5F5F7; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid #DC143C; }
+        .example { font-size: 16px; font-style: italic; color: #515154; padding: 12px; background-color: rgba(255, 215, 0, 0.1); border-radius: 8px; margin-top: 12px; }
+        .value-chip { display: inline-block; background-color: #F5F5F7; border-radius: 16px; padding: 4px 12px; margin-left: 8px; font-weight: 700; }
+        .miles { color: #DC143C; }
+        .yen { color: #FFD700; }
+    </style>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">金銭的・マイル特典：ボーナスマイル</h1>
+            <div class="accent-line"></div>
+            <div class="two-columns">
+                <div class="left-column">
+                    <div class="bonus-card"><h2 class="card-title">初回搭乗ボーナス</h2><p class="body-text">JGC会員は、毎年最初のJALグループ便搭乗時に<span class="miles">3,000マイル</span>が付与されます。</p><p class="body-text">マイル単価（2.0円）で換算すると<span class="value-chip yen">6,000円/年</span>の価値があります。</p></div>
+                    <div class="bonus-card"><h2 class="card-title">搭乗ごとのボーナスマイル</h2><p class="body-text">JGC会員は、搭乗ごとに区間マイルに対して<span class="highlight">+35%のボーナスマイル</span>を獲得できます。</p><p class="body-text">この価値は搭乗距離と頻度に比例して増加します。</p><div class="example"><p class="body-text">【例】東京-ロンドン間の往復</p><p class="body-text">・基本区間マイル：約12,500マイル</p><p class="body-text">・35%ボーナス：<span class="miles">4,375マイル</span></p><p class="body-text">・円換算価値：<span class="value-chip yen">8,750円</span></p></div></div>
+                    <p class="note">長距離国際線を頻繁に利用する場合、年間のボーナスマイル価値は<span class="highlight">10万円を超える</span>こともあります。マイルは特典航空券や座席アップグレードに使用することで、さらに高い価値を実現できます。</p>
+                </div>
+                <div class="right-column"><div class="chart-container"><canvas id="bonusChart"></canvas></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 9: 資産保全・割引 -->
+    <style>
+        .premium-card { padding: 24px; background-color: #F8F8FA; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid #FFD700; }
+        .value-highlight { font-size: 20px; font-weight: 700; color: #DC143C; margin-top: 5px; margin-bottom: 5px; }
+        .calculation { font-size: 16px; color: #515154; font-style: italic; margin-top: 5px; margin-bottom: 5px; }
+        .feature-item { display: flex; align-items: center; margin-bottom: 10px; }
+        .feature-value { font-weight: 700; margin-left: auto; color: #1D1D1F; }
+        .gold-highlight { font-weight: 700; color: #B8860B; }
+        .red-highlight { font-weight: 700; color: #DC143C; }
+    </style>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">金銭的・マイル特典：資産保全・割引</h1>
+            <div class="accent-line"></div>
+            <div class="two-columns">
+                <div class="left-column">
+                    <div class="benefit-card"><h2 class="card-title">マイル有効期限無期限化（Four Star～）</h2><p class="body-text">通常36ヶ月で失効するマイルが無期限になることで、マイルは単なるポイントではなく、価値が減損しない「金融資産」としての性格を持ちます。</p><p class="calculation">想定保有残高：150,000マイル = 300,000円相当（@2.0円）</p><p class="calculation">年間リスク確率：5%（転職・病気・パンデミック等による利用停滞）</p><p class="value-highlight">年間保険価値：15,000円/年</p></div>
+                    <div class="benefit-card"><h2 class="card-title">割引・クーポン</h2>
+                        <div class="feature-item"><p class="body-text">JALダイナミックパッケージ割引クーポン</p><p class="feature-value">5,000円/年</p></div>
+                        <div class="feature-item"><p class="body-text">空港宅配サービス無料クーポン（2個）</p><p class="feature-value">5,000円/年</p></div>
+                        <div class="feature-item"><p class="body-text">モバイル通信データ無料提供</p><p class="feature-value">1,000円/国際渡航</p></div>
+                    </div>
+                    <div class="premium-card"><h2 class="card-title">上位グレード限定特典（Five Star/Six Star）</h2>
+                        <div class="feature-item"><p class="body-text">家族をJGC本会員へ招待（生涯で3名まで）</p><p class="feature-value">25,000円/年相当</p></div>
+                        <div class="feature-item"><p class="body-text">ラウンジ同行家族人数無制限</p><p class="feature-value">16,500円/国際渡航</p></div>
+                        <div class="feature-item"><p class="body-text">JMBダイヤモンド資格相当特典（サービスセレクション）</p><p class="feature-value">60,000円/年</p></div>
+                    </div>
+                    <p class="note">上位グレードほど<span class="red-highlight">保有資産の保全</span>と<span class="gold-highlight">家族への価値継承</span>という長期的な便益を提供します。</p>
+                </div>
+                <div class="right-column"><div class="chart-container"><canvas id="benefitsChart2"></canvas></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 10: 主要特典の価値評価サマリー -->
+    <style>
+        .table-container { width: 100%; overflow-x: auto; margin-bottom: 24px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        table { width: 100%; border-collapse: collapse; font-size: 16px; }
+        th { background-color: #F5F5F7; padding: 15px; font-weight: 700; font-size: 16px; border: 1px solid #E5E5EA; text-align: left; color: #000000; }
+        td { padding: 12px 15px; border: 1px solid #E5E5EA; vertical-align: top; }
+        .category-cell { font-weight: 700; background-color: #F8F8FA; }
+        .value-cell { font-weight: 700; color: #DC143C; text-align: right; }
+        .source-cell { font-size: 14px; color: #86868B; }
+    </style>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">主要特典の価値評価サマリー</h1>
+            <div class="accent-line"></div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">特典カテゴリー</th>
+                            <th style="width: 30%;">特典名</th>
+                            <th style="width: 20%;">評価基準</th>
+                            <th style="width: 15%;">単位あたり評価額（円）</th>
+                            <th style="width: 15%;">典拠</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="category-cell" rowspan="4">ラウンジ利用</td><td>国内線サクララウンジ</td><td>直接的価値（有料料金）</td><td class="value-cell">3,000 / 回</td><td class="source-cell">1</td></tr>
+                        <tr><td>国際線サクララウンジ</td><td>直接的価値（有料料金）</td><td class="value-cell">8,250 / 回</td><td class="source-cell">16</td></tr>
+                        <tr><td>ダイヤモンド・プレミアラウンジ</td><td>プレミアム価値</td><td class="value-cell">16,500 / 回</td><td class="source-cell">18</td></tr>
+                        <tr><td>ワンワールド提携ラウンジ</td><td>代理価値（市場価格参考）</td><td class="value-cell">8,000 / 回</td><td class="source-cell">23</td></tr>
+                        <tr><td class="category-cell" rowspan="2">優先サービス</td><td>優先チェックイン・保安検査・搭乗</td><td>状況的価値（時間価値）</td><td class="value-cell">3,500 / 出発</td><td class="source-cell">8</td></tr>
+                        <tr><td>プライオリティバッゲージ</td><td>状況的価値（時間価値）</td><td class="value-cell">1,250 / 到着</td><td class="source-cell">48</td></tr>
+                        <tr><td class="category-cell" rowspan="2">手荷物</td><td>国内線受託手荷物許容量優待</td><td>直接的価値（超過料金）</td><td class="value-cell">2,200 / フライト</td><td class="source-cell">3</td></tr>
+                        <tr><td>国際線受託手荷物許容量優待</td><td>直接的価値（超過料金）</td><td class="value-cell">20,000 / 回</td><td class="source-cell">4</td></tr>
+                        <tr><td class="category-cell">座席指定</td><td>国際線前方座席指定</td><td>直接的価値（有料料金）</td><td class="value-cell">5,000 / 区間</td><td class="source-cell">5</td></tr>
+                        <tr><td class="category-cell" rowspan="2">マイル関連</td><td>初回搭乗ボーナスマイル</td><td>間接的価値（マイル単価）</td><td class="value-cell">6,000 / 年</td><td class="source-cell">41</td></tr>
+                        <tr><td>搭乗ごとボーナスマイル</td><td>間接的価値（マイル単価）</td><td class="value-cell">渡航に依存</td><td class="source-cell">41</td></tr>
+                        <tr><td class="category-cell" rowspan="4">割引・クーポン</td><td>マイル有効期限無期限化</td><td>状況的価値（保険モデル）</td><td class="value-cell">15,000 / 年</td><td class="source-cell">7</td></tr>
+                        <tr><td>JALダイナミックパッケージクーポン</td><td>直接的価値（額面）</td><td class="value-cell">5,000 / 年</td><td class="source-cell">6</td></tr>
+                        <tr><td>空港宅配サービス</td><td>直接的価値（市場価格）</td><td class="value-cell">5,000 / 年</td><td class="source-cell">42</td></tr>
+                        <tr><td>モバイル通信データ</td><td>直接的価値（市場価格）</td><td class="value-cell">1,000 / 国際渡航</td><td class="source-cell">7</td></tr>
+                        <tr><td class="category-cell" rowspan="3">上位限定特典</td><td>家族のJGC本会員招待</td><td>代理価値（取得コスト）</td><td class="value-cell">25,000 / 年</td><td class="source-cell">41</td></tr>
+                        <tr><td>ラウンジ同行家族人数無制限</td><td>直接的価値（追加料金）</td><td class="value-cell">16,500 / 国際渡航</td><td class="source-cell">41</td></tr>
+                        <tr><td>JMBダイヤモンド資格相当特典</td><td>直接的価値（e JALポイント）</td><td class="value-cell">60,000 / 年</td><td class="source-cell">18</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="note">注記：各評価額は保守的かつ一貫した指標を用いて算出しており、実際の価値は利用パターンによって変動します。典拠番号は本レポートの出典・参考文献リストに対応しています。</div>
+        </div>
+    </div>
+
+    <!-- Page 11: JMB elite / elite plus -->
+    <style>
+        .comparison-columns { display: flex; gap: 30px; flex: 1; }
+        .comparison-column { flex: 1; background-color: #F8F8FA; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; }
+        .column-left { border-top: 4px solid #DC143C; }
+        .column-right { border-top: 4px solid #FFD700; }
+        .grade-title { font-size: 28px; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .grade-star { color: #FFD700; }
+        .section-title { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: #1D1D1F; }
+        .feature-list { padding-left: 20px; }
+        .feature-item { font-size: 18px; line-height: 1.5; margin-bottom: 8px; display: flex; align-items: flex-start; }
+        .feature-bullet { color: #DC143C; margin-right: 10px; flex-shrink: 0; }
+        .value-card { margin-top: auto; background-color: #F5F5F7; border-radius: 8px; padding: 16px; text-align: center; }
+        .value-label { font-size: 16px; font-weight: 500; margin-bottom: 8px; color: #515154; }
+        .value-amount { font-size: 32px; font-weight: 700; color: #DC143C; margin-bottom: 12px; }
+        .chart-container { height: 150px; margin-top: 10px; }
+        .note { font-size: 14px; color: #86868B; font-style: italic; margin-top: 20px; text-align: center; }
+    </style>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">グレード評価：JMB elite / elite plus</h1>
+            <div class="accent-line"></div>
+            <div class="comparison-columns">
+                <div class="comparison-column column-left">
+                    <h2 class="grade-title"><span class="grade-star">★</span> JMB elite</h2>
+                    <div class="feature-section">
+                        <h3 class="section-title">主要特典</h3>
+                        <div class="feature-list">
+                            <div class="feature-item"><span class="feature-bullet">•</span><p>国内サクララウンジクーポン（年2枚）</p></div>
+                            <div class="feature-item"><span class="feature-bullet">•</span><p>JALダイナミックパッケージ割引クーポン（5,000円）</p></div>
+                            <div class="feature-item"><span class="feature-bullet">•</span><p>モバイル通信データ無料提供</p></div>
+                        </div>
+                    </div>
+                    <div class="value-card">
+                        <p class="value-label">年間価値例</p>
+                        <p class="value-amount">≈11,000円</p>
+                        <p class="feature-item"><span class="feature-bullet">•</span><p>ラウンジ: 3,000円 × 2 = 6,000円</p></p>
+                        <p class="feature-item"><span class="feature-bullet">•</span><p>割引: 5,000円</p></p>
+                        <div class="chart-container"><canvas id="eliteValueChart"></canvas></div>
+                    </div>
+                </div>
+                <div class="comparison-column column-right">
+                    <h2 class="grade-title"><span class="grade-star">★★</span> JMB elite plus</h2>
+                    <div class="feature-section">
+                        <h3 class="section-title">主要特典</h3>
+                        <div class="feature-list">
+                            <div class="feature-item"><span class="feature-bullet">•</span><p>国内サクララウンジクーポン<span class="highlight">（年6枚に増強）</span></p></div>
+                            <div class="feature-item"><span class="feature-bullet">•</span><p>JALダイナミックパッケージ割引クーポン（5,000円）</p></div>
+                            <div class="feature-item"><span class="feature-bullet">•</span><p>モバイル通信データ無料提供</p></div>
+                        </div>
+                    </div>
+                    <div class="value-card">
+                        <p class="value-label">年間価値例</p>
+                        <p class="value-amount">≈23,000円</p>
+                        <p class="feature-item"><span class="feature-bullet">•</span><p>ラウンジ: 3,000円 × 6 = 18,000円</p></p>
+                        <p class="feature-item"><span class="feature-bullet">•</span><p>割引: 5,000円</p></p>
+                        <div class="chart-container"><canvas id="elitePlusValueChart"></canvas></div>
+                    </div>
+                </div>
+            </div>
+            <p class="note">※ CLUB-A以上の年会費11,000円（税込）の回収が容易</p>
+        </div>
+    </div>
+
+    <!-- Page 12: JGC Three/Four -->
+    <style>
+        .badge { display: inline-block; background-color: rgba(220, 20, 60, 0.1); color: #DC143C; padding: 4px 8px; border-radius: 4px; font-size: 14px; font-weight: 700; margin-top: 10px; }
+    </style>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">グレード評価：JGC Three Star / Four Star</h1>
+            <div class="accent-line"></div>
+            <div class="comparison-columns">
+                <div class="comparison-column column-left">
+                    <h2 class="grade-title"><span class="grade-star">★★★</span> JGC Three Star</h2>
+                    <div class="feature-section">
+                        <h3 class="section-title">主要特典</h3>
+                        <div class="feature-list">
+                            <div class="feature-item"><span class="feature-bullet">•</span><p>サクララウンジ・ワンワールドラウンジの<span class="highlight">無制限利用</span></p></div>
+                            <div class="feature-item"><span class="feature-bullet">•</span><p>優先チェックイン・保安検査・搭乗</p></div>
+                            <div class="feature-item"><span class="feature-bullet">•</span><p>受託手荷物許容量優待（国内+20kg、国際+1個）</p></div>
+                            <div class="feature-item"><span class="feature-bullet">•</span><p>国際線前方座席無料指定</p></div>
+                            <div class="feature-item"><span class="feature-bullet">•</span><p>ボーナスマイル（初回+搭乗ごと35%）</p></div>
+                        </div>
+                        <div class="badge">価値の飛躍点</div>
+                    </div>
+                    <div class="value-card">
+                        <p class="value-label">年間価値例（国内ビジネス利用者）</p>
+                        <p class="value-amount">≈268,200円</p>
+                        <p class="feature-item"><span class="feature-bullet">•</span><p>ラウンジ: 3,000円 × 48回 = 144,000円</p></p>
+                        <p class="feature-item"><span class="feature-bullet">•</span><p>優先手続き: 3,500円 × 24回 = 84,000円</p></p>
+                        <div class="chart-container"><canvas id="threeStarValueChart"></canvas></div>
+                    </div>
+                </div>
+                <div class="comparison-column column-right">
+                    <h2 class="grade-title"><span class="grade-star">★★★★</span> JGC Four Star</h2>
+                    <div class="feature-section">
+                        <h3 class="section-title">主要特典</h3>
+                        <div class="feature-list">
+                            <div class="feature-item"><span class="feature-bullet">•</span><p>Three Starの全特典に加え：</p></div>
+                            <div class="feature-item"><span class="feature-bullet">•</span><p><span class="highlight">マイル有効期限の無期限化</span></p></div>
+                            <div class="feature-item"><span class="feature-bullet">•</span><p>空港宅配サービス（年2個無料）</p></div>
+                        </div>
+                    </div>
+                    <div class="value-card">
+                        <p class="value-label">年間価値例（国内ビジネス利用者）</p>
+                        <p class="value-amount">≈288,200円</p>
+                        <p class="feature-item"><span class="feature-bullet">•</span><p>Three Star基本価値: 268,200円</p></p>
+                        <p class="feature-item"><span class="feature-bullet">•</span><p>マイル無期限化: 15,000円/年</p></p>
+                        <p class="feature-item"><span class="feature-bullet">•</span><p>空港宅配: 5,000円/年</p></p>
+                        <div class="chart-container"><canvas id="fourStarValueChart"></canvas></div>
+                    </div>
+                </div>
+            </div>
+            <p class="note">※ 代表インパクト: 出張者・アクティブ層で費用対効果最大化。マイル保有量が多い利用者は無期限化の価値が飛躍的に高まる。</p>
+        </div>
+    </div>
+
+    <!-- Page 13: JGC Five/Six -->
+    <style>
+        .premium-label { display: inline-block; background-color: #DC143C; color: white; font-size: 14px; font-weight: 700; padding: 3px 8px; border-radius: 4px; margin-left: 10px; }
+    </style>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">グレード評価：JGC Five Star / Six Star</h1>
+            <div class="accent-line"></div>
+            <div class="comparison-columns">
+                <div class="comparison-column column-left">
+                    <h2 class="grade-title"><span class="grade-star">★★★★★</span> JGC Five Star</h2>
+                    <div class="feature-section">
+                        <h3 class="section-title">家族価値の拡張</h3>
+                        <div class="feature-list">
+                            <div class="feature-item"><span class="feature-bullet">•</span><p>ラウンジ同行家族人数<span class="highlight">無制限</span>（+16,500円/国際渡航）</p></div>
+                            <div class="feature-item"><span class="feature-bullet">•</span><p>家族専用サクララウンジクーポン（年5枚）</p></div>
+                            <div class="feature-item"><span class="feature-bullet">•</span><p><span class="highlight">家族へのマイル継承</span>機能</p></div>
+                            <div class="feature-item"><span class="feature-bullet">•</span><p>家族のJGC本会員招待（25,000円/年相当）</p></div>
+                        </div>
+                    </div>
+                    <div class="value-card">
+                        <p class="value-label">プロファイルC（家族旅行者）年間価値</p>
+                        <p class="value-amount">≈183,000円</p>
+                        <p class="feature-item"><span class="feature-bullet">•</span><p>JGC Four Star比 約40,000円増</p></p>
+                        <p class="feature-item"><span class="feature-bullet">•</span><p>家族4人で年1回国際線利用時のみで約16,500円の特別価値</p></p>
+                        <div class="chart-container"><canvas id="fiveStarValueChart"></canvas></div>
+                    </div>
+                </div>
+                <div class="comparison-column column-right">
+                    <h2 class="grade-title"><span class="grade-star">★★★★★★</span> JGC Six Star <span class="premium-label">最上位</span></h2>
+                    <div class="feature-section">
+                        <h3 class="section-title">最上位特典</h3>
+                        <div class="feature-list">
+                            <div class="feature-item"><span class="feature-bullet">•</span><p><span class="highlight">ダイヤモンド・プレミアラウンジ</span>および<span class="highlight">JALファーストクラスラウンジ</span>利用</p></div>
+                            <div class="feature-item"><span class="feature-bullet">•</span><p><span class="highlight">ワンワールド エメラルド</span>資格（最上位）</p></div>
+                            <div class="feature-item"><span class="feature-bullet">•</span><p><span class="highlight">JMBダイヤモンド資格相当</span>の特典</p></div>
+                            <div class="feature-item"><span class="feature-bullet">•</span><p>サービスセレクション: <span class="highlight">60,000円/年</span></p></div>
+                            <div class="feature-item"><span class="feature-bullet">•</span><p>ラウンジ価値上乗せ: <span class="highlight">+8,250円/回</span></p></div>
+                        </div>
+                    </div>
+                    <div class="value-card">
+                        <p class="value-label">プロファイルB（国際エグゼクティブ）年間価値</p>
+                        <p class="value-amount">≈580,300円</p>
+                        <p class="feature-item"><span class="feature-bullet">•</span><p>JGC Five Star比 約160,000円増</p></p>
+                        <p class="feature-item"><span class="feature-bullet">•</span><p>サービスセレクション60,000円＋ラウンジ価値向上66,000円</p></p>
+                        <div class="chart-container"><canvas id="sixStarValueChart"></canvas></div>
+                    </div>
+                </div>
+            </div>
+            <p class="note">※ 最上位グレードの価値は利用頻度・パターンにより大きく変動します。国際線での利用が多いほど特典価値が飛躍的に向上します。</p>
+        </div>
+    </div>
+
+    <!-- Page 14: 利用者プロファイル別年間価値比較 -->
+    <style>
+        .value-table { width: 100%; border-collapse: collapse; box-shadow: 0 1px 3px rgba(0,0,0,0.1); font-size: 16px; margin-bottom: 20px; }
+        .value-table th { background-color: #F5F5F7; padding: 15px; font-weight: 700; font-size: 16px; border: 1px solid #E5E5EA; text-align: center; }
+        .value-table td { padding: 15px 12px; font-weight: 600; border: 1px solid #E5E5EA; text-align: center; }
+        .value-table tr th:first-child { text-align: left; width: 220px; }
+        .td-elite { background-color: rgba(52, 199, 89, 0.3); }
+        .td-elite-plus { background-color: rgba(52, 199, 89, 0.4); }
+        .td-three-star { background-color: rgba(52, 199, 89, 0.6); }
+        .td-four-star { background-color: rgba(52, 199, 89, 0.7); }
+        .td-five-star { background-color: rgba(52, 199, 89, 0.85); }
+        .td-six-star { background-color: rgba(52, 199, 89, 1.0); }
+        .td-highlight { color: #000000; font-weight: 700; }
+    </style>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">利用者プロファイル別：年間価値比較</h1>
+            <div class="accent-line"></div>
+            <div class="body-text"><p>各利用者プロファイルにおける、Starグレード別の年間想定価値（円）を比較します。この価値は、想定される渡航パターンに基づき、主要特典の価値を積算した概算値です。</p></div>
+            <table class="value-table">
+                <thead>
+                    <tr>
+                        <th>プロファイル</th>
+                        <th>JMB elite<br/>★</th>
+                        <th>JMB elite plus<br/>★★</th>
+                        <th>JGC Three Star<br/>★★★</th>
+                        <th>JGC Four Star<br/>★★★★</th>
+                        <th>JGC Five Star<br/>★★★★★</th>
+                        <th>JGC Six Star<br/>★★★★★★</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><th>プロファイルA<br/><span style="font-weight: 400; font-size: 14px;">国内線中心ビジネス</span></th><td class="td-elite">11,000</td><td class="td-elite-plus">23,000</td><td class="td-three-star td-highlight">268,200</td><td class="td-four-star">288,200</td><td class="td-five-star">313,200</td><td class="td-six-star">373,200</td></tr>
+                    <tr><th>プロファイルB<br/><span style="font-weight: 400; font-size: 14px;">国際線中心エグゼクティブ</span></th><td class="td-elite">14,250</td><td class="td-elite-plus">32,750</td><td class="td-three-star">344,800</td><td class="td-four-star">379,800</td><td class="td-five-star">421,300</td><td class="td-six-star td-highlight">580,300</td></tr>
+                    <tr><th>プロファイルC<br/><span style="font-weight: 400; font-size: 14px;">家族旅行者</span></th><td class="td-elite">11,000</td><td class="td-elite-plus">23,000</td><td class="td-three-star">121,500</td><td class="td-four-star">141,500</td><td class="td-five-star td-highlight">183,000</td><td class="td-six-star">243,000</td></tr>
+                </tbody>
+            </table>
+            <div class="info-card">
+                <p class="body-text"><span class="highlight">価値の変曲点：</span></p>
+                <p class="body-text">• JGC Three Star：全利用者プロファイルで価値が<span class="highlight">飛躍的に向上</span>（ラウンジ・優先手続き等の基本特典が解放）</p>
+                <p class="body-text">• JGC Five Star：特に<span class="highlight">家族旅行者</span>にとって価値が向上（ラウンジ同行者無制限、家族JGC招待）</p>
+                <p class="body-text">• JGC Six Star：特に<span class="highlight">国際線頻繁利用者</span>に最大価値（最上位ラウンジ、JMBダイヤモンド特典）</p>
+            </div>
+            <div class="note"><p>注記：搭乗距離・頻度、時間価値に対する意識、家族構成により大きく変動します。表の数値はあくまで代表的なシナリオに基づく試算です。</p></div>
+        </div>
+    </div>
+
+    <!-- Page 15: 戦略的結論（ROI） -->
+    <style>
+        .concept-card { padding: 24px; background-color: #F5F5F7; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid #DC143C; }
+        .bullet-list { list-style-type: none; padding-left: 0; margin-bottom: 16px; }
+        .bullet-item { position: relative; padding-left: 24px; font-size: 18px; margin-bottom: 10px; line-height: 1.6; }
+        .bullet-item:before { content: ""; position: absolute; left: 0; top: 8px; width: 8px; height: 8px; background-color: #DC143C; border-radius: 50%; }
+        .conclusion { margin-top: 20px; padding: 16px; background-color: #F8F8FA; border-radius: 8px; }
+    </style>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">戦略的結論（ROI）</h1>
+            <div class="accent-line"></div>
+            <div class="two-columns">
+                <div class="left-column">
+                    <div class="concept-card">
+                        <h2 class="card-title">LSP導入でROIの概念が転換</h2>
+                        <p class="body-text">JAL Life Status プログラムの導入により、上級会員資格のROI（投資対効果）の考え方は根本的に変化しました。</p>
+                        <ul class="bullet-list">
+                            <li class="bullet-item"><span class="highlight">短期集中→長期蓄積：</span> 従来の1年間で修行する短期集中型から、生涯にわたるJALグループのサービス利用を評価する長期的なロイヤルティモデルへ</li>
+                            <li class="bullet-item"><span class="highlight">投資：</span> 年会費（CLUB-A以上 最低11,000円/年）+ JAL/ワンワールドを優先選択する機会コスト</li>
+                            <li class="bullet-item"><span class="highlight">リターン：</span> JGC Three Star到達時点で年間特典価値は年会費を大幅に上回るのが通例（12万円〜35万円相当）</li>
+                        </ul>
+                    </div>
+                    <div class="conclusion"><p class="body-text"><span class="highlight">含意：</span> このプログラムは、短期的な利益追求者よりも、長年にわたりJALを利用し続ける真のロイヤルカスタマーに報いる設計となっています。長期的な関係性の中で持続的な便益を得られるビジネスモデルへの転換です。</p></div>
+                </div>
+                <div class="right-column"><div class="chart-container"><canvas id="roiChart"></canvas></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 16: 無形価値と推奨 -->
+    <style>
+        .action-card { padding: 24px; background-color: #F5F5F7; border-radius: 12px; border-left: 4px solid #FFD700; margin-top: 20px; }
+        .next-section-card { padding: 24px; background-color: #F5F5F7; border-radius: 12px; border-left: 4px solid #DC143C; margin-top: 20px; display: flex; align-items: center; justify-content: space-between; }
+        .next-icon { font-size: 24px; font-weight: 900; color: #DC143C; margin-left: 15px; }
+    </style>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">戦略的結論（無形価値と推奨）</h1>
+            <div class="accent-line"></div>
+            <div class="info-card">
+                <h2 class="card-title">無形価値：定量化困難な「ソフトな」便益</h2>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight">旅行フリクション低減</span>：行列回避、静かなラウンジ、迅速な手荷物返却による旅行ストレスの大幅削減。特に家族旅行時に貴重</p></div>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight">イレギュラー時の強み</span>：遅延・欠航・乗り継ぎ失敗時の専用デスク対応、優先振替。危機的状況を円滑に解決するツール</p></div>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight">一貫サービスと認知</span>：JALとワンワールド全体で、世界中の空港での一貫した質の高いサービスと上級会員としての認知</p></div>
+            </div>
+            <div class="info-card">
+                <h2 class="card-title">グレード別推奨：あなたのプロファイルに最適なステイタス</h2>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight">JMB elite/elite+</span>：年1～3回の旅行者に最適。ラウンジを手頃に体験、JGCを目指す第一歩</p></div>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight">JGC Three/Four Star</span>：頻繁に出張するビジネスパーソンや積極的旅行者に最もコスパの高い「スイートスポット」。特にFour Starのマイル無期限化は戦略的資産保全に</p></div>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight">JGC Five/Six Star</span>：世界中を飛び回るエグゼクティブや家族での快適な旅行体験重視の富裕層向け。Five Starの家族特典、Six StarはJAL最高サービスへの生涯アクセス</p></div>
+            </div>
+            <div class="action-card"><h2 class="card-title">次のアクション</h2><p class="body-text">自身の渡航パターンと価値観を本分析に照らし合わせ、最適な関与レベルを戦略的に判断することが可能です。LSPプログラムは長期的視点でのコミットメントを求める一方、それに見合う、あるいはそれ以上の多岐にわたる価値を提供します。</p></div>
+            <div class="next-section-card"><div><h2 class="card-title">次のセクション：JGC家族カード戦略</h2><p class="body-text" style="margin-bottom: 0;">JGC本会員として家族にも上級会員資格を拡大する戦略的オプション、カード別コスト比較、家族構成別の最適カード選定をご紹介します。</p></div><div class="next-icon">→</div></div>
+            <p class="note">※ 本分析は2025年10月時点のプログラム内容に基づくもので、将来的な変更の可能性があります。</p>
+        </div>
+    </div>
+
+    <!-- Page 17: JGC家族カード制度の理解 -->
+    <style>
+        .alert-card { padding: 24px; background-color: #F5F5F7; border-radius: 12px; border-left: 4px solid #FFD700; margin-bottom: 24px; }
+    </style>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">JGC家族カード制度の理解（概要）</h1>
+            <div class="accent-line"></div>
+            <div class="body-text"><p><span class="highlight">目的：</span> 家族にJGC特典を拡張し、旅行体験と経済価値を最大化する戦略的投資</p></div>
+            <div class="alert-card">
+                <h2 class="card-title">重要：2つの異なる制度を明確に区別</h2>
+                <table class="comparison-table">
+                    <tr><th width="50%">JGC家族会員カード</th><th width="50%">JALカード家族プログラム</th></tr>
+                    <tr><td><span class="highlight">物理的なクレジットカード</span>（年会費必要）</td><td><span class="highlight-gold">登録無料のサービス</span>（カードなし）</td></tr>
+                    <tr><td>目的：<span class="highlight">旅行体験の質の向上</span>（ステータス享受）</td><td>目的：<span class="highlight-gold">マイル活用の効率化</span>（特典交換）</td></tr>
+                    <tr><td>JGCステータス（ラウンジ/優先/手荷物）が付与される</td><td>家族がそれぞれ貯めたマイルを合算できる</td></tr>
+                </table>
+                <p class="body-text" style="margin-top: 12px;">※ この2つは別制度で、一方の登録が他方に自動的に適用されるわけではありません</p>
+            </div>
+            <div class="info-card">
+                <h2 class="card-title">JGC家族会員カード（有料・ステータス付与）</h2>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight">特典：</span> 本人単独旅行でも全てのJGC特典（ラウンジ/優先手続き/手荷物優待 等）を享受</p></div>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight">対象：</span> 生計同一の配偶者・両親・18歳以上の子（カードにより高校生除く場合あり）</p></div>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight">発行上限：</span> 多くは8枚（JALカード TOKYU POINT ClubQは4枚、<span class="highlight">Suicaは家族カード発行不可</span>）</p></div>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight">年会費構造：</span> <span class="highlight-gold">公式ルール</span> - JGC家族会員の年会費は<span class="highlight">原則として本会員と同額</span>（CLUB-A: 11,000円、ゴールド: 17,600円）</p></div>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight">例外カード：</span> ダイナース（26,400円）、プラチナ（27,500円）、プラチナ Pro（27,500円）は家族会員割引あり</p></div>
+            </div>
+            <div class="info-card">
+                <h2 class="card-title">JALカード家族プログラム（無料・マイル合算）</h2>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight-gold">機能：</span> 家族それぞれが貯めたマイルを特典交換時に合算（ステータスは付与されない）</p></div>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight-gold">条件：</span> JALカード会員限定。親会員（1名）、子会員（9名まで）の登録が可能</p></div>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight-gold">注意点：</span> JGC家族カードの有無に関わらず、<span class="highlight">別途登録が必要</span></p></div>
+            </div>
+            <div class="info-card">
+                <h2 class="card-title">推奨アーキテクチャ：デュアル投資戦略</h2>
+                <div class="list-item"><span class="list-bullet">1</span><p><span class="highlight">旅行体験の質向上：</span> JGC家族会員カードで"上級会員体験"を家族全員に</p></div>
+                <div class="list-item"><span class="list-bullet">2</span><p><span class="highlight-gold">経済合理性：</span> JALカード家族プログラムで、全員のマイルを集約・活用</p></div>
+                <div class="list-item"><span class="list-bullet">→</span><p><span class="highlight">最適解：</span> 旅行の快適性と経済的合理性を<span class="highlight">両立</span>する設計</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 18: JGC対応カード年会費比較表 -->
+    <style>
+        .comparison-card { padding: 24px; background-color: #FFF8E1; border-radius: 12px; border-left: 4px solid #FFD700; margin-bottom: 24px; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 15px 0 25px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .comparison-table th, .comparison-table td { padding: 12px 15px; border: 1px solid #E5E5EA; text-align: left; font-size: 16px; }
+        .comparison-table th { background-color: #F8F8FA; font-weight: 700; text-align: center; }
+        .comparison-table td { text-align: center; }
+        .comparison-table tr:nth-child(even) { background-color: #F8F8FA; }
+        .fee-low { background-color: rgba(220, 20, 60, 0.1); }
+        .fee-medium { background-color: rgba(220, 20, 60, 0.3); }
+        .fee-high { background-color: rgba(220, 20, 60, 0.5); }
+        .fee-veryhigh { background-color: rgba(220, 20, 60, 0.7); }
+        .fee-extreme { background-color: rgba(220, 20, 60, 0.9); color: white; }
+        .badge { display: inline-block; padding: 3px 8px; background-color: #FF3B30; color: white; border-radius: 10px; font-size: 14px; font-weight: 700; margin-left: 8px; }
+        .badge-warning { background-color: #FF9500; }
+        .badge-info { background-color: #007AFF; }
+        .fee-note { font-size: 14px; color: #777; font-style: italic; margin-top: 5px; }
+    </style>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">JGC対応カード年会費比較表（ヒートマップ）</h1>
+            <div class="accent-line"></div>
+            <div class="body-text"><p><span class="highlight">JGC資格維持</span>には、対象のJALカードが必要です。公式サイトより：「<span class="highlight-gold">JALグローバルクラブ家族会員の年会費は、本会員と同額です</span>（JALダイナースカード、プラチナ、プラチナ Proを除く）」。これは通常のJALカード家族会員（半額程度）と大きく異なります。</p></div>
+            <table class="comparison-table">
+                <tr><th>カードティア</th><th>カード名/提携ブランド</th><th>本会員年会費<br/>(税込)</th><th>JGC家族会員年会費<br/>(税込)</th><th>発行上限</th><th>特徴</th></tr>
+                <tr><td rowspan="1"><strong>CLUB-A</strong></td><td>JAL・JCB/Visa/Mastercard<br/>TOKYU POINT ClubQ等</td><td class="fee-low">11,000円</td><td class="fee-low">11,000円</td><td>8枚<br/><span class="fee-note">TOKYUは4枚</span></td><td>家族<span class="highlight">=本会員</span></td></tr>
+                <tr><td rowspan="2"><strong>CLUB-A<br/>ゴールド</strong></td><td>JAL・JCB/Visa/Mastercard<br/>TOKYU POINT ClubQ/OP</td><td class="fee-medium">17,600円</td><td class="fee-medium">17,600円</td><td>8枚<br/><span class="fee-note">TOKYUは4枚</span></td><td>家族<span class="highlight">=本会員</span></td></tr>
+                <tr><td>JALカードSuica<br/>JAL アメリカン・エキスプレス®</td><td class="fee-medium">20,900円</td><td class="fee-medium">20,900円</td><td><span class="badge badge-warning">発行不可</span></td><td>家族<span class="highlight">=本会員</span></td></tr>
+                <tr><td rowspan="1"><strong>ダイナース</strong></td><td>JALダイナースカード</td><td class="fee-high">30,800円<br/><span style="font-size:14px">（2025/10～：34,100円） <span class="badge">改定</span></span></td><td class="fee-medium">24,200円<br/><span style="font-size:14px">（2025/10～：26,400円）</span></td><td>8枚</td><td>家族<span class="highlight-gold">&lt;本会員</span></td></tr>
+                <tr><td rowspan="1"><strong>プラチナ</strong></td><td>JAL・JCBカード プラチナ<br/>JAL アメリカン・エキスプレス®</td><td class="fee-high">34,100円</td><td class="fee-high">27,500円</td><td>8枚</td><td>家族<span class="highlight-gold">&lt;本会員</span></td></tr>
+                <tr><td rowspan="1"><strong>プラチナ<br/>Pro</strong></td><td>JAL・JCBカード プラチナ Pro</td><td class="fee-extreme">77,000円</td><td class="fee-high">27,500円</td><td>8枚</td><td>家族<span class="highlight-gold">≪本会員</span></td></tr>
+            </table>
+            <div class="comparison-card">
+                <h2 class="card-title">通常JALカード vs JGC家族会員カードの年会費比較</h2>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight-gold">通常JALカード家族会員</span>：本会員年会費の<span class="highlight-gold">約半額</span>（例：CLUB-Aゴールド本会員17,600円→家族8,800円）</p></div>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight">JGC家族会員カード</span>：基本的に<span class="highlight">本会員と同額</span>（例外：ダイナース/プラチナ/プラチナ Pro）</p></div>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight">価格差の理由</span>：JGC家族会員カードは「クレジット機能のみの追加カード」ではなく、<span class="highlight">独立したJGC資格とステータスを付与する特別価値</span>に対する対価</p></div>
+            </div>
+            <div class="info-card">
+                <h2 class="card-title">2つの異なる年会費構造</h2>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight">同額ルール</span>：CLUB-A/ゴールドでは<span class="highlight">家族=本会員</span>と同額に設定。通常JALカード家族会員の約2倍の年会費となります。</p></div>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight-gold">プレミアム割引構造</span>：ダイナース/プラチナでは<span class="highlight-gold">家族&lt;本会員</span>と割引設定。高額な本会員費用を支払う顧客に対する心理的障壁低減効果があります。</p></div>
+            </div>
+            <div class="alert-card">
+                <h2 class="card-title">注意点</h2>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight">家族会員発行上限</span>：多くのカードでは最大8枚まで発行可能ですが、TOKYU POINT ClubQのみ4枚に制限。<span class="highlight">Suicaは家族カード発行不可。</span></p></div>
+                <div class="list-item"><span class="list-bullet">•</span><p><span class="highlight">改定情報</span>：JALダイナースカードは2025年10月から年会費が改定され、本会員（30,800円→34,100円）・JGC家族会員（24,200円→26,400円）ともに料金が引き上げられます。</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 19: 家族構成別年間総コストの可視化 -->
+    <style>
+        .info-card { padding: 24px; background-color: #F5F5F7; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid #DC143C; }
+        .alert-box { padding: 16px; background-color: #FFF5F5; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid #FF3B30; }
+        .section-title { font-size: 22px; font-weight: 700; color: #000000; margin-bottom: 12px; }
+        .cost-table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+        .cost-table th { text-align: left; padding: 8px 12px; background-color: #F5F5F7; font-weight: 700; font-size: 16px; border: 1px solid #E5E5EA; }
+        .cost-table td { padding: 8px 12px; font-size: 15px; border: 1px solid #E5E5EA; }
+        .badge { display: inline-block; background-color: #FF3B30; color: white; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-left: 6px; }
+    </style>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">家族構成別年間総コスト視覚化</h1>
+            <div class="accent-line"></div>
+            <div class="two-columns">
+                <div class="left-column">
+                    <div class="info-card">
+                        <h2 class="section-title">JGC家族会員カードの年会費構造</h2>
+                        <p class="body-text">公式サイト：「<span class="highlight">JALグローバルクラブ家族会員の年会費は、本会員と同額です（JALダイナースカード、プラチナ、プラチナ Proを除く）</span>」</p>
+                        <p class="body-text">年間総コスト = 本会員年会費 + 家族会員年会費×(人数-1)</p>
+                        <ul class="body-text">
+                            <li><strong>同額ルール</strong>: CLUB-A/ゴールドは本会員と<span class="highlight">同額</span>の年会費</li>
+                            <li><strong>プレミアム割引</strong>: ダイナース/プラチナは本会員より<span class="highlight">割引</span>された年会費</li>
+                            <li><strong>発行制限</strong>: Suicaは<span class="highlight">家族カード発行不可</span>（本会員のみ）</li>
+                        </ul>
+                    </div>
+                    <div class="alert-box">
+                        <h2 class="section-title">JALダイナースカード年会費改定<span class="badge">2025/10〜</span></h2>
+                        <p class="body-text">2025年10月から、JALダイナースカードの年会費が改定されます：</p>
+                        <p class="body-text">・本会員: 30,800円 → <span class="highlight">34,100円</span></p>
+                        <p class="body-text">・JGC家族会員: 24,200円 → <span class="highlight">26,400円</span> (JGCサービス付帯あり)</p>
+                        <p class="body-text">・通常家族会員: 9,900円 → <span class="highlight">12,100円</span> (JGCサービス付帯なし)</p>
+                    </div>
+                    <div>
+                        <h2 class="section-title">JGC家族会員の年間総コスト比較</h2>
+                        <table class="cost-table">
+                            <tr><th>カードティア</th><th>2名家族</th><th>3名家族</th><th>4名家族</th></tr>
+                            <tr><td>CLUB-A</td><td>22,000円</td><td>33,000円</td><td>44,000円</td></tr>
+                            <tr><td>ゴールド(JCB/Visa)</td><td>35,200円</td><td>52,800円</td><td>70,400円</td></tr>
+                            <tr><td>ゴールド(Suica)</td><td>20,900円</td><td>20,900円</td><td>20,900円</td></tr>
+                            <tr><td>ダイナース(現行)</td><td>55,000円</td><td>79,200円</td><td>103,400円</td></tr>
+                            <tr><td>ダイナース(2025〜)</td><td>60,500円</td><td>86,900円</td><td>113,300円</td></tr>
+                            <tr><td>プラチナ</td><td>61,600円</td><td>89,100円</td><td>116,600円</td></tr>
+                            <tr><td>プラチナ Pro</td><td>104,500円</td><td>132,000円</td><td>159,500円</td></tr>
+                        </table>
+                        <p class="note">※ Suicaカードは家族会員カードの発行ができないため、家族数が増えても総コストは変わりません</p>
+                        <p class="note">※ プラチナ Pro(本会員77,000円)も家族会員の年会費はプラチナと同じ(27,500円)です</p>
+                    </div>
+                </div>
+                <div class="right-column"><div class="chart-container" style="height: 450px;"><canvas id="costChart"></canvas></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 20: 投資対効果シミュレーション（推奨カード戦略） -->
+    <style>
+        .profile-container { margin-bottom: 24px; padding: 12px; background-color: #FFFFFF; border-radius: 8px; border-left: 3px solid #DC143C; }
+        .profile-container.premium { border-left: 3px solid #FFD700; }
+        .profile-title { font-size: 24px; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; color: #1D1D1F; }
+        .section-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: #1D1D1F; }
+        .feature-list { padding-left: 5px; margin-bottom: 10px; }
+        .feature-item { font-size: 16px; line-height: 1.4; margin-bottom: 6px; display: flex; align-items: flex-start; }
+        .feature-bullet { color: #DC143C; margin-right: 8px; flex-shrink: 0; }
+        .feature-bullet.gold { color: #FFD700; }
+        .value-card { background-color: #F5F5F7; border-radius: 8px; padding: 12px; margin-bottom: 12px; }
+        .value-label { font-size: 15px; font-weight: 500; margin-bottom: 6px; color: #515154; }
+        .value-amount { font-size: 22px; font-weight: 700; color: #DC143C; }
+        .value-amount.premium { color: #FFD700; }
+        .roi-box { background-color: #F0F0F2; border-radius: 8px; padding: 10px; text-align: center; margin-top: 8px; }
+        .roi-label { font-size: 14px; font-weight: 500; color: #515154; }
+        .roi-value { font-size: 20px; font-weight: 700; color: #DC143C; }
+        .roi-excellent { color: #34C759; }
+        .roi-good { color: #FF9500; }
+        .chart-container { height: 120px; margin-top: 8px; }
+        .recommended { display: inline-block; background-color: #DC143C; color: white; font-size: 13px; font-weight: 500; padding: 2px 8px; border-radius: 10px; margin-left: 8px; }
+        .break-even { background-color: #F0F0F2; border-radius: 8px; padding: 10px; margin-top: 14px; }
+        .break-even-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; color: #1D1D1F; }
+        .important-rule { background-color: #FFF3F3; border: 1px solid #FFCCCB; border-radius: 8px; padding: 8px; margin-top: 10px; font-size: 13px; }
+    </style>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">投資対効果シミュレーション（推奨カード戦略）</h1>
+            <div class="accent-line"></div>
+            <div class="comparison-columns">
+                <div class="comparison-column column-left">
+                    <div class="profile-container">
+                        <h2 class="profile-title">実利主義の夫婦（2名）</h2>
+                        <div class="feature-list"><div class="feature-item"><span class="feature-bullet">•</span><p>利用パターン：国内線年2往復/人、コスト重視</p></div></div>
+                        <div class="value-card">
+                            <p class="value-label">特典価値合計</p>
+                            <p class="value-amount">≈52,000円/年</p>
+                            <div class="feature-item"><span class="feature-bullet">•</span><p>ラウンジ: 3,000円×(2人×2往復×2出発)=24,000円</p></div>
+                            <div class="feature-item"><span class="feature-bullet">•</span><p>優先手続: 3,500円×8=28,000円</p></div>
+                        </div>
+                        <div class="feature-list">
+                            <div class="feature-item"><span class="feature-bullet">•</span><p>年間総コスト: <span class="highlight">CLUB-A 2名=22,000円</span><span class="recommended">推奨</span></p></div>
+                            <div class="feature-item"><span class="feature-bullet">•</span><p>内訳: 本会員11,000円 + 家族会員11,000円（同額）</p></div>
+                        </div>
+                        <div class="roi-box"><p class="roi-label">ROI（投資回収率）</p><p class="roi-value roi-excellent">2.4倍（52,000円÷22,000円）</p></div>
+                    </div>
+                    <div class="profile-container premium">
+                        <h2 class="profile-title">プレミアム志向の家族（3名）</h2>
+                        <div class="feature-list"><div class="feature-item"><span class="feature-bullet gold">•</span><p>利用パターン：国際線利用多、快適性・コンシェルジュ重視</p></div></div>
+                        <div class="value-card"><p class="value-label">特典価値合計</p><p class="value-amount premium">≈120,000円〜200,000円/年</p><div class="feature-item"><span class="feature-bullet gold">•</span><p>国際ラウンジ: 8,250円×3人×複数回</p></div><div class="feature-item"><span class="feature-bullet gold">•</span><p>コンシェルジュ/付帯保険/旅行・ショッピング特典</p></div></div>
+                        <div class="feature-list"><div class="feature-item"><span class="feature-bullet gold">•</span><p>年間総コスト: <span class="highlight">プラチナ 3名=89,100円</span><span class="recommended">推奨</span></p></div><div class="feature-item"><span class="feature-bullet gold">•</span><p>内訳: 本会員34,100円 + 家族会員27,500円×2名（割引あり）</p></div></div>
+                        <div class="roi-box"><p class="roi-label">ROI（投資回収率）</p><p class="roi-value roi-good">1.3〜2.2倍（高頻度国際線利用時）</p></div>
+                    </div>
+                    <div class="break-even"><p class="break-even-title">ブレークイーブン感度（目安）</p><div class="feature-item"><span class="feature-bullet">•</span><p>CLUB-A 1人当たり: 11,000円÷3,000円≒ラウンジ4回/年</p></div><div class="feature-item"><span class="feature-bullet">•</span><p>プラチナ 家族3名: 長距離国際線2〜3往復で回収可能</p></div></div>
+                    <div class="important-rule"><p><strong>重要:</strong> JGC家族会員カードの年会費は、原則として本会員と同額です（ダイナース、プラチナ、プラチナ Pro除く）。通常のJALカード家族会員とは異なる点に注意。</p></div>
+                </div>
+                <div class="comparison-column column-right">
+                    <h2 class="profile-title">価値最大化を目指す家族（4名）</h2>
+                    <div class="feature-list"><div class="feature-item"><span class="feature-bullet">•</span><p>利用パターン：年1回国際線（4名）+年1回国内線（4名）</p></div><div class="feature-item"><span class="feature-bullet">•</span><p>目的：家族全体の旅行体験の質の向上と経済合理性の両立</p></div></div>
+                    <div class="value-card"><p class="value-label">特典価値合計</p><p class="value-amount">≈90,000円〜120,000円/年</p><div class="feature-item"><span class="feature-bullet">•</span><p>国際ラウンジ: 8,250円×4人×2出発=66,000円</p></div><div class="feature-item"><span class="feature-bullet">•</span><p>国内ラウンジ: 3,000円×4人×2出発=24,000円</p></div><div class="feature-item"><span class="feature-bullet">•</span><p>優先サービス: ≈30,000円（家族全体）</p></div></div>
+                    <div class="chart-container"><canvas id="costComparisonChart"></canvas></div>
+                    <div class="feature-list"><div class="feature-item"><span class="feature-bullet">•</span><p>年間総コスト（カード別）:</p></div><div class="feature-item"><span class="feature-bullet">•</span><p><span class="highlight">CLUB-A 4名=44,000円</span><span class="recommended">最高ROI</span></p></div><div class="feature-item"><span class="feature-bullet">•</span><p>ゴールド(JCB/Visa/Master) 4名=70,400円</p></div><div class="feature-item"><span class="feature-bullet">•</span><p>ゴールド(Suica) 4名=83,600円（Suica家族カード発行不可）</p></div><div class="feature-item"><span class="feature-bullet">•</span><p>プラチナ 4名=116,600円（上級体験重視の場合）</p></div></div>
+                    <div class="roi-box"><p class="roi-label">ROI（CLUB-A選択時）</p><p class="roi-value roi-excellent">2.0〜2.7倍（90,000円〜120,000円÷44,000円）</p></div>
+                    <div class="break-even"><p class="break-even-title">投資回収分岐点</p><div class="feature-item"><span class="feature-bullet">•</span><p>CLUB-A vs ゴールド(JCB): 国際線2回/年または国内線9回/年</p></div><div class="feature-item"><span class="feature-bullet">•</span><p>ゴールド vs プラチナ: 海外高級ラウンジ利用+保険特典で差額回収</p></div></div>
+                    <div class="note"><p>※ 重要な区別：「JGC家族会員カード」はステータス付与（有料・本会員と同額）、「JALカード家族プログラム」はマイル合算（無料）。両方の活用がおすすめ。</p><p>※ 実際のROIは、渡航頻度、路線、同行者数により大きく変動します</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts Initialization Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const vctx = document.getElementById('valueChart');
+            if (vctx) {
+                const ctx = vctx.getContext('2d');
+                const gradeLabels = ['JMB elite (★)', 'JMB elite plus (★★)', 'JGC Three Star (★★★)', 'JGC Four Star (★★★★)', 'JGC Five Star (★★★★★)', 'JGC Six Star (★★★★★★)'];
+                const minValues = [11000, 23000, 120000, 140000, 170000, 250000];
+                const maxValues = [15000, 35000, 350000, 380000, 450000, 580000];
+                new Chart(ctx, { type: 'bar', data: { labels: gradeLabels, datasets: [ { label: '年間想定価値（下限）', data: minValues, backgroundColor: 'rgba(220, 20, 60, 0.7)', borderColor: 'rgba(220, 20, 60, 1)', borderWidth: 1 }, { label: '年間想定価値（上限）', data: maxValues, backgroundColor: 'rgba(255, 215, 0, 0.7)', borderColor: 'rgba(255, 215, 0, 1)', borderWidth: 1 } ] }, options: { maintainAspectRatio: false, plugins: { legend: { position: 'top' } }, scales: { y: { beginAtZero: true, title: { display: true, text: '価値（円）' } }, x: { grid: { display: false } } } } });
+            }
+
+            const rfctx = document.getElementById('valueFrameworkChart');
+            if (rfctx) {
+                new Chart(rfctx.getContext('2d'), { type: 'radar', data: { labels: ['客観性', '普遍性', '即時性', '可視性', '個別対応性'], datasets: [ { label: '直接的価値', data: [95, 90, 100, 90, 30], backgroundColor: 'rgba(220, 20, 60, 0.2)', borderColor: 'rgba(220, 20, 60, 0.8)', pointBackgroundColor: 'rgba(220, 20, 60, 1)', pointBorderColor: '#fff', pointHoverBackgroundColor: '#fff', pointHoverBorderColor: 'rgba(220, 20, 60, 1)' }, { label: '間接的価値', data: [70, 80, 75, 70, 60], backgroundColor: 'rgba(255, 215, 0, 0.2)', borderColor: 'rgba(255, 215, 0, 0.8)', pointBackgroundColor: 'rgba(255, 215, 0, 1)', pointBorderColor: '#fff', pointHoverBackgroundColor: '#fff', pointHoverBorderColor: 'rgba(255, 215, 0, 1)' }, { label: '状況的・無形的価値', data: [40, 30, 50, 60, 95], backgroundColor: 'rgba(70, 130, 180, 0.2)', borderColor: 'rgba(70, 130, 180, 0.8)', pointBackgroundColor: 'rgba(70, 130, 180, 1)', pointBorderColor: '#fff', pointHoverBackgroundColor: '#fff', pointHoverBorderColor: 'rgba(70, 130, 180, 1)' } ] }, options: { maintainAspectRatio: false, scales: { r: { angleLines: { display: true }, ticks: { display: false, beginAtZero: true, max: 100 } } }, plugins: { legend: { position: 'bottom', labels: { font: { family: 'Noto Sans JP', size: 14 }, padding: 20 } } } } });
+            }
+
+            const pvctx = document.getElementById('profileValueChart');
+            if (pvctx) {
+                new Chart(pvctx.getContext('2d'), { type: 'bar', data: { labels: ['プロファイルA', 'プロファイルB', 'プロファイルC'], datasets: [ { label: '年間フライト距離（万km）', data: [4.8, 12.5, 3.2], backgroundColor: 'rgba(220, 20, 60, 0.7)', borderColor: 'rgba(220, 20, 60, 1)', borderWidth: 1 } ] }, options: { maintainAspectRatio: false, scales: { y: { beginAtZero: true, title: { display: true, text: '距離（万km）', font: { family: 'Noto Sans JP', size: 14 } } }, x: { grid: { display: false } } }, plugins: { legend: { position: 'bottom', labels: { font: { family: 'Noto Sans JP', size: 14 }, padding: 15 } }, title: { display: true, text: 'プロファイル別の年間フライト距離比較', font: { family: 'Noto Sans JP', size: 16, weight: 'bold' }, padding: { bottom: 10 } } } } });
+            }
+
+            const lctx = document.getElementById('loungeValueChart');
+            if (lctx) {
+                new Chart(lctx.getContext('2d'), { type: 'bar', data: { labels: ['国内線サクララウンジ', '国際線サクララウンジ', 'ダイヤモンド・プレミア/F', 'oneworld提携ラウンジ'], datasets: [{ label: '1回あたりの評価額（円）', data: [3000, 8250, 16500, 8000], backgroundColor: ['rgba(220, 20, 60, 0.5)','rgba(220, 20, 60, 0.7)','rgba(255, 215, 0, 0.7)','rgba(70, 130, 180, 0.6)'], borderColor: ['rgba(220, 20, 60, 1)','rgba(220, 20, 60, 1)','rgba(255, 215, 0, 1)','rgba(70, 130, 180, 1)'], borderWidth: 1, borderRadius: 5 }] }, options: { maintainAspectRatio: false, scales: { y: { beginAtZero: true, title: { display: true, text: '評価額（円）', font: { family: 'Noto Sans JP', size: 14 } }, ticks: { font: { family: 'Noto Sans JP' } }, grid: { color: 'rgba(200, 200, 200, 0.2)' } }, x: { ticks: { font: { family: 'Noto Sans JP', size: 12 } }, grid: { display: false } } }, plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(context){ return context.raw.toLocaleString() + '円'; } } } } } });
+            }
+
+            const bctx = document.getElementById('benefitsChart');
+            if (bctx) {
+                new Chart(bctx.getContext('2d'), { type: 'bar', data: { labels: ['優先手続き', 'プライオリティバッゲージ', '国内手荷物優待', '国際手荷物優待', '国際線座席指定'], datasets: [ { label: '1回あたりの価値 (円)', data: [3500, 1250, 2200, 20000, 5000], backgroundColor: ['rgba(220, 20, 60, 0.7)','rgba(220, 20, 60, 0.5)','rgba(220, 20, 60, 0.6)','rgba(220, 20, 60, 0.9)','rgba(220, 20, 60, 0.75)'], borderColor: ['rgba(220, 20, 60, 1)','rgba(220, 20, 60, 1)','rgba(220, 20, 60, 1)','rgba(220, 20, 60, 1)','rgba(220, 20, 60, 1)'], borderWidth: 1 } ] }, options: { maintainAspectRatio: false, scales: { y: { beginAtZero: true, title: { display: true, text: '金額（円）', font: { family: 'Noto Sans JP', size: 14 } }, ticks: { font: { family: 'Noto Sans JP' } } }, x: { ticks: { font: { family: 'Noto Sans JP', size: 12 } } } }, plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(context){ return context.raw.toLocaleString() + ' 円'; } } } } } });
+            }
+
+            const bnctx = document.getElementById('bonusChart');
+            if (bnctx) {
+                new Chart(bnctx.getContext('2d'), { type: 'bar', data: { labels: ['東京-大阪', '東京-台北', '東京-香港', '東京-シンガポール', '東京-ロンドン', '東京-ニューヨーク'], datasets: [ { label: '基本区間マイル', data: [800,2100,2900,5200,12500,13600], backgroundColor: 'rgba(70, 130, 180, 0.7)' }, { label: 'ボーナスマイル(+35%)', data: [280,735,1015,1820,4375,4760], backgroundColor: 'rgba(220, 20, 60, 0.7)' } ] }, options: { maintainAspectRatio: false, scales: { x: { stacked: false, grid: { display: false } }, y: { stacked: false, beginAtZero: true, title: { display: true, text: 'マイル数', font: { family: 'Noto Sans JP', size: 14 } }, grid: { color: 'rgba(200, 200, 200, 0.2)' } } }, plugins: { legend: { position: 'bottom', labels: { font: { family: 'Noto Sans JP', size: 14 }, padding: 20 } }, tooltip: { callbacks: { afterLabel: function(context){ const miles = context.raw; const yen = miles * 2.0; return '円換算: ' + yen.toLocaleString() + ' 円'; } } } } } });
+            }
+
+            const b2ctx = document.getElementById('benefitsChart2');
+            if (b2ctx) {
+                new Chart(b2ctx.getContext('2d'), { type: 'bar', data: { labels: ['マイル無期限化', 'JDPクーポン', '空港宅配', 'モバイルデータ', '家族JGC招待', 'ラウンジ同行無制限', 'サービスセレクション'], datasets: [ { label: '年間価値（円）', data: [15000, 5000, 5000, 1000, 25000, 16500, 60000], backgroundColor: ['rgba(220, 20, 60, 0.6)','rgba(220, 20, 60, 0.6)','rgba(220, 20, 60, 0.6)','rgba(220, 20, 60, 0.6)','rgba(184, 134, 11, 0.7)','rgba(184, 134, 11, 0.7)','rgba(184, 134, 11, 0.7)'], borderColor: ['rgba(220, 20, 60, 1)','rgba(220, 20, 60, 1)','rgba(220, 20, 60, 1)','rgba(220, 20, 60, 1)','rgba(184, 134, 11, 1)','rgba(184, 134, 11, 1)','rgba(184, 134, 11, 1)'], borderWidth: 1 } ] }, options: { maintainAspectRatio: false, scales: { y: { beginAtZero: true, grid: { color: 'rgba(200, 200, 200, 0.2)' }, ticks: { font: { family: 'Noto Sans JP' }, callback: function(value){ return value.toLocaleString() + '円'; } } }, x: { grid: { display: false }, ticks: { font: { family: 'Noto Sans JP' } } } }, plugins: { legend: { display: false } } });
+            }
+
+            const evctx = document.getElementById('eliteValueChart');
+            if (evctx) {
+                new Chart(evctx.getContext('2d'), { type: 'bar', data: { labels: ['ラウンジ', '割引クーポン'], datasets: [{ label: '価値（円）', data: [6000, 5000], backgroundColor: ['rgba(220, 20, 60, 0.7)','rgba(220, 20, 60, 0.4)'], borderWidth: 0 }] }, options: { maintainAspectRatio: false, scales: { y: { beginAtZero: true, max: 20000, ticks: { font: { family: 'Noto Sans JP', size: 12 } } }, x: { ticks: { font: { family: 'Noto Sans JP', size: 12 } } } }, plugins: { legend: { display: false } } } });
+            }
+
+            const epctx = document.getElementById('elitePlusValueChart');
+            if (epctx) {
+                new Chart(epctx.getContext('2d'), { type: 'bar', data: { labels: ['ラウンジ', '割引クーポン'], datasets: [{ label: '価値（円）', data: [18000, 5000], backgroundColor: ['rgba(255, 215, 0, 0.7)','rgba(255, 215, 0, 0.4)'], borderWidth: 0 }] }, options: { maintainAspectRatio: false, scales: { y: { beginAtZero: true, max: 20000, ticks: { font: { family: 'Noto Sans JP', size: 12 } } }, x: { ticks: { font: { family: 'Noto Sans JP', size: 12 } } } }, plugins: { legend: { display: false } } } });
+            }
+
+            const tctx = document.getElementById('threeStarValueChart');
+            if (tctx) {
+                new Chart(tctx.getContext('2d'), { type: 'bar', data: { labels: ['ラウンジ', '優先手続き', 'その他特典'], datasets: [{ label: '価値（円）', data: [144000, 84000, 40200], backgroundColor: ['rgba(220, 20, 60, 0.8)','rgba(220, 20, 60, 0.6)','rgba(220, 20, 60, 0.4)'], borderWidth: 0 }] }, options: { maintainAspectRatio: false, scales: { y: { beginAtZero: true, max: 150000, ticks: { font: { family: 'Noto Sans JP', size: 12 } } }, x: { ticks: { font: { family: 'Noto Sans JP', size: 12 } } } }, plugins: { legend: { display: false } } } });
+            }
+
+            const frctx = document.getElementById('fourStarValueChart');
+            if (frctx) {
+                new Chart(frctx.getContext('2d'), { type: 'bar', data: { labels: ['Three Star基本', 'マイル無期限化', '空港宅配'], datasets: [{ label: '価値（円）', data: [268200, 15000, 5000], backgroundColor: ['rgba(255, 215, 0, 0.7)','rgba(255, 215, 0, 0.9)','rgba(255, 215, 0, 0.5)'], borderWidth: 0 }] }, options: { maintainAspectRatio: false, scales: { y: { beginAtZero: true, max: 280000, ticks: { font: { family: 'Noto Sans JP', size: 12 } } }, x: { ticks: { font: { family: 'Noto Sans JP', size: 12 } } } }, plugins: { legend: { display: false } } } });
+            }
+
+            const fivectx = document.getElementById('fiveStarValueChart');
+            if (fivectx) {
+                new Chart(fivectx.getContext('2d'), { type: 'bar', data: { labels: ['基本JGC特典', '家族向け拡張特典'], datasets: [{ label: '価値（円）', data: [141500, 41500], backgroundColor: ['rgba(255, 215, 0, 0.5)','rgba(255, 215, 0, 0.8)'], borderWidth: 0 }] }, options: { maintainAspectRatio: false, scales: { y: { beginAtZero: true, max: 200000, ticks: { font: { family: 'Noto Sans JP', size: 12 } } }, x: { ticks: { font: { family: 'Noto Sans JP', size: 12 } } } }, plugins: { legend: { display: false } } } });
+            }
+
+            const sixctx = document.getElementById('sixStarValueChart');
+            if (sixctx) {
+                new Chart(sixctx.getContext('2d'), { type: 'bar', data: { labels: ['基本JGC特典', 'ラウンジ上乗せ', 'サービスセレクション'], datasets: [{ label: '価値（円）', data: [421300, 99000, 60000], backgroundColor: ['rgba(220, 20, 60, 0.4)','rgba(220, 20, 60, 0.7)','rgba(220, 20, 60, 0.9)'], borderWidth: 0 }] }, options: { maintainAspectRatio: false, scales: { y: { beginAtZero: true, max: 600000, ticks: { font: { family: 'Noto Sans JP', size: 12 } } }, x: { ticks: { font: { family: 'Noto Sans JP', size: 12 } } } }, plugins: { legend: { display: false } } } });
+            }
+
+            const roictx = document.getElementById('roiChart');
+            if (roictx) {
+                new Chart(roictx.getContext('2d'), { type: 'bar', data: { labels: ['JMB elite', 'JMB elite plus', 'JGC Three Star', 'JGC Four Star', 'JGC Five Star', 'JGC Six Star'], datasets: [ { type: 'bar', label: '年間平均価値（円）', data: [13000, 28000, 240000, 270000, 320000, 420000], backgroundColor: 'rgba(220, 20, 60, 0.7)', borderColor: 'rgba(220, 20, 60, 1)', borderWidth: 1 }, { type: 'line', label: 'ROI倍率（価値÷年会費）', data: [1.2, 2.5, 22, 25, 29, 38], backgroundColor: 'rgba(255, 215, 0, 0.5)', borderColor: 'rgba(255, 215, 0, 1)', borderWidth: 2, fill: false, tension: 0.1, yAxisID: 'y1', pointRadius: 6, pointHoverRadius: 8 } ] }, options: { maintainAspectRatio: false, scales: { y: { type: 'linear', position: 'left', beginAtZero: true, title: { display: true, text: '年間価値（円）', font: { family: 'Noto Sans JP', size: 14, weight: 'bold' } }, ticks: { callback: function(value){ if (value >= 1000) { return value / 1000 + 'k'; } return value; }, font: { family: 'Noto Sans JP' } } }, y1: { type: 'linear', position: 'right', beginAtZero: true, title: { display: true, text: 'ROI倍率（x倍）', font: { family: 'Noto Sans JP', size: 14, weight: 'bold' } }, grid: { drawOnChartArea: false }, ticks: { font: { family: 'Noto Sans JP' } } }, x: { ticks: { font: { family: 'Noto Sans JP' } } } }, plugins: { legend: { position: 'bottom', labels: { font: { family: 'Noto Sans JP', size: 14 }, padding: 20 } } } });
+            }
+
+            const cctx = document.getElementById('costChart');
+            if (cctx) {
+                new Chart(cctx.getContext('2d'), { type: 'bar', data: { labels: ['CLUB-A', 'ゴールド (JCB/Visa)', 'ゴールド (Suica)', 'ダイナース (現行)', 'ダイナース (2025〜)', 'プラチナ', 'プラチナ Pro'], datasets: [ { label: '2名家族', data: [22000, 35200, 20900, 55000, 60500, 61600, 104500], backgroundColor: 'rgba(220, 20, 60, 0.4)', borderColor: 'rgba(220, 20, 60, 0.8)', borderWidth: 1 }, { label: '3名家族', data: [33000, 52800, 20900, 79200, 86900, 89100, 132000], backgroundColor: 'rgba(220, 20, 60, 0.65)', borderColor: 'rgba(220, 20, 60, 0.8)', borderWidth: 1 }, { label: '4名家族', data: [44000, 70400, 20900, 103400, 113300, 116600, 159500], backgroundColor: 'rgba(220, 20, 60, 0.9)', borderColor: 'rgba(220, 20, 60, 1)', borderWidth: 1 } ] }, options: { maintainAspectRatio: false, responsive: true, scales: { x: { grid: { display: false }, ticks: { font: { family: 'Noto Sans JP', size: 14 } } }, y: { beginAtZero: true, title: { display: true, text: '年間総コスト（円）', font: { family: 'Noto Sans JP', size: 14 } }, ticks: { callback: function(value){ return value.toLocaleString() + '円'; }, font: { family: 'Noto Sans JP', size: 14 } }, grid: { color: 'rgba(200, 200, 200, 0.2)' } } }, plugins: { legend: { position: 'top', labels: { font: { family: 'Noto Sans JP', size: 14 }, padding: 20 } }, tooltip: { callbacks: { label: function(context){ return context.dataset.label + ': ' + context.parsed.y.toLocaleString() + '円'; } } } } } });
+            }
+
+            const ccctx = document.getElementById('costComparisonChart');
+            if (ccctx) {
+                new Chart(ccctx.getContext('2d'), { type: 'bar', data: { labels: ['CLUB-A', 'ゴールド (JCB)', 'ゴールド (Suica)', 'プラチナ'], datasets: [{ label: '年間総コスト（4名家族）', data: [44000, 70400, 83600, 116600], backgroundColor: ['rgba(220, 20, 60, 0.7)','rgba(255, 215, 0, 0.5)','rgba(255, 215, 0, 0.7)','rgba(47, 79, 79, 0.7)'], borderWidth: 0 }] }, options: { maintainAspectRatio: false, scales: { y: { beginAtZero: true, max: 120000, ticks: { callback: function(value){ return value / 10000 + '万'; }, font: { family: 'Noto Sans JP', size: 11 } } }, x: { ticks: { font: { family: 'Noto Sans JP', size: 11 } } } }, plugins: { legend: { display: false } } } });
+            }
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priority Pass 利用可能施設 網羅的ディープリサーチ・レポート</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #0071E3;
+            --light-blue: #64B5F6;
+            --sky-blue: #E3F2FD;
+            --ocean-blue: #1E88E5;
+            --success-green: #4CAF50;
+            --warning-orange: #FF9800;
+            --danger-red: #F44336;
+            --text-primary: #1D1D1F;
+            --text-secondary: #6E6E73;
+            --text-light: #86868B;
+            --background: #F5F9FF;
+            --surface: #FFFFFF;
+            --border-light: #E8F1FF;
+            --border-medium: #C5D9F2;
+            --shadow-subtle: 0 2px 12px rgba(0, 113, 227, 0.08);
+            --shadow-medium: 0 4px 20px rgba(0, 113, 227, 0.12);
+            --shadow-strong: 0 8px 32px rgba(0, 113, 227, 0.16);
+            --radius: 20px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Display', 'Segoe UI', sans-serif;
+            background: linear-gradient(180deg, #E3F2FD 0%, #FFFFFF 100%);
+            min-height: 100vh;
+            padding: 24px;
+            color: var(--text-primary);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding: 48px 32px;
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-medium);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue) 0%, var(--light-blue) 50%, var(--ocean-blue) 100%);
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--ocean-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, var(--warning-orange) 0%, #FFB74D 100%);
+            color: white;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .section {
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-medium);
+            padding: 32px;
+            margin-bottom: 32px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid var(--border-light);
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--ocean-blue);
+            margin-top: 32px;
+            margin-bottom: 16px;
+        }
+
+        .alert-box {
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            border-left: 4px solid;
+        }
+
+        .alert-warning {
+            background: #FFF8E1;
+            border-color: var(--warning-orange);
+            color: #E65100;
+        }
+
+        .alert-danger {
+            background: #FFEBEE;
+            border-color: var(--danger-red);
+            color: #C62828;
+        }
+
+        .alert-info {
+            background: var(--sky-blue);
+            border-color: var(--primary-blue);
+            color: var(--ocean-blue);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 24px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--surface);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        thead {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--ocean-blue) 100%);
+            color: white;
+        }
+
+        th {
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        tr:hover {
+            background: var(--sky-blue);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-yes {
+            background: #E8F5E9;
+            color: #2E7D32;
+        }
+
+        .status-no {
+            background: #FFEBEE;
+            color: #C62828;
+        }
+
+        .status-partial {
+            background: #FFF8E1;
+            color: #E65100;
+        }
+
+        .airport-card {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            border: 2px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .airport-card:hover {
+            border-color: var(--primary-blue);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .airport-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .airport-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .airport-code {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--ocean-blue);
+            background: var(--sky-blue);
+            padding: 8px 16px;
+            border-radius: 8px;
+        }
+
+        .facility-list {
+            list-style: none;
+            margin-top: 16px;
+        }
+
+        .facility-item {
+            padding: 12px;
+            margin-bottom: 8px;
+            background: var(--sky-blue);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .facility-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .facility-type {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .facility-details {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .toc {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .toc-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .toc-list {
+            list-style: none;
+        }
+
+        .toc-item {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .toc-item:last-child {
+            border-bottom: none;
+        }
+
+        .toc-link {
+            color: var(--ocean-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .toc-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .divergence-highlight {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF9500 100%);
+            color: white;
+            padding: 24px;
+            border-radius: 12px;
+            margin: 24px 0;
+            font-weight: 600;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 32px;
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-subtle);
+            margin-top: 48px;
+        }
+
+        .footer p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* モバイル対応 */
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+
+            .airport-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        /* アニメーション */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Priority Pass 利用可能施設<br>網羅的ディープリサーチ・レポート</h1>
+            <p class="subtitle">発行体別制限と実用性分析</p>
+            <span class="badge">最終更新: 2025年11月4日</span>
+        </div>
+
+        <div class="toc">
+            <div class="toc-title">📑 目次</div>
+            <ul class="toc-list">
+                <li class="toc-item"><a href="#executive-summary" class="toc-link">第1部: エグゼクティブ・サマリーと「大分岐」</a></li>
+                <li class="toc-item"><a href="#issuer-matrix" class="toc-link">発行体別除外規定マトリクス</a></li>
+                <li class="toc-item"><a href="#airport-directory" class="toc-link">第2部: 空港別施設ディレクトリ</a></li>
+                <li class="toc-item"><a href="#japan-airports" class="toc-link">日本国内空港</a></li>
+                <li class="toc-item"><a href="#asia-airports" class="toc-link">アジア主要ハブ空港</a></li>
+                <li class="toc-item"><a href="#north-america" class="toc-link">北米空港</a></li>
+                <li class="toc-item"><a href="#europe" class="toc-link">ヨーロッパ空港</a></li>
+                <li class="toc-item"><a href="#oceania" class="toc-link">オセアニア空港</a></li>
+            </ul>
+        </div>
+
+        <!-- 第1部: エグゼクティブ・サマリー -->
+        <section id="executive-summary" class="section">
+            <h2 class="section-title">第1部: エグゼクティブ・サマリーと「大分岐」</h2>
+            
+            <div class="divergence-highlight">
+                🚨 Priority Passの価値は、もはやPP自体が決定するのではなく、その会員資格をどの金融機関（カード発行体）から得たかによって根本的に決定される時代に突入しました。「大分岐（The Great Divergence）」と呼ぶ現象です。
+            </div>
+
+            <div class="alert-box alert-info">
+                <strong>📌 重要な理解:</strong> PPの利用可否を判断する上で最も重要なマスターキーは、発行体別のNLE（非ラウンジ体験）除外規定です。同じPriority Passでも、カード発行体によって利用できる施設が根本的に異なります。
+            </div>
+
+            <h3 class="section-subtitle">1.1 ラウンジ vs 非ラウンジ体験（NLE）</h3>
+            <p>この分岐の中核には、「ラウンジ」と「非ラウンジ体験（Non-Lounge Experience、以下NLE）」という2つの異なる施設カテゴリが存在します。</p>
+            
+            <div style="margin: 24px 0;">
+                <h4 style="font-weight: 600; margin-bottom: 12px; color: var(--ocean-blue);">伝統的ラウンジ（Lounge）:</h4>
+                <p style="margin-bottom: 16px;">共有スペース、軽食、ドリンク、Wi-Fiを提供する従来の空港ラウンジ（例：Plaza Premium、航空会社ラウンジ、独立系ラウンジ）。</p>
+
+                <h4 style="font-weight: 600; margin-bottom: 12px; color: var(--ocean-blue);">非ラウンジ体験（NLE）:</h4>
+                <ul style="margin-left: 24px; margin-bottom: 16px;">
+                    <li><strong>飲食クレジット型（F&B Credit）:</strong> 空港内のレストランやバーで、一定金額（例：$28 USD、36 AUD、3,400円）の飲食クレジットを提供する形態</li>
+                    <li><strong>セットメニュー型（Set Menu）:</strong> 指定されたセットメニュー（食事とドリンク）を提供する形態（例：大阪伊丹のOsaka Airport Winery、香港のIntervals）</li>
+                    <li><strong>サービス体験型（Service）:</strong> スパ、マッサージ（例：LAXのBe Relax Spa）、仮眠室、睡眠ポッド（例：LHRのYotelAir）、ゲーミングラウンジ（例：LAXのGameway）など</li>
+                </ul>
+            </div>
+
+            <div class="alert-box alert-warning">
+                <strong>⚠️ コスト増大の問題:</strong> PP（運営会社コリンソン・グループ）は、混雑するラウンジの代替としてNLE提携を拡大しました。しかし、ラウンジ利用が発行体とPP間の不透明な交渉価格であるのに対し、NLE（特に飲食クレジット）は「$28」といった固定費として発行体に直接請求されます。このコスト増大が、発行体によるNLE特典の外科的な削除（＝大分岐）を引き起こした直接的な原因です。
+            </div>
+
+            <h3 class="section-subtitle">1.2 発行体別除外規定マトリクス（最重要）</h3>
+            <p style="margin-bottom: 16px;">PPの利用可否を判断する上で最も重要なマスターキーは、以下の発行体別NLE除外規定です。</p>
+        </section>
+
+        <!-- 発行体別マトリクス -->
+        <section id="issuer-matrix" class="section">
+            <h2 class="section-title">発行体別 非ラウンジ体験（NLE）アクセスルール</h2>
+            
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>発行国</th>
+                            <th>発行体</th>
+                            <th>主要カード / プログラム</th>
+                            <th>NLEアクセス可否</th>
+                            <th>公式規約・告知（要約）</th>
+                            <th>最終確認日</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>米国</td>
+                            <td>American Express</td>
+                            <td>Platinum, Centurion 等</td>
+                            <td><span class="status-badge status-no">利用不可</span></td>
+                            <td>「AMEX発行のPP会員は"非ラウンジ空港体験"の一般除外対象」。レストラン等の非ラウンジ施設は除外される</td>
+                            <td>2025-11-04</td>
+                        </tr>
+                        <tr>
+                            <td>米国</td>
+                            <td>Chase</td>
+                            <td>Sapphire Reserve</td>
+                            <td><span class="status-badge status-no">利用不可<br>(2024/7/1以降)</span></td>
+                            <td>「2024年7月1日以降、PP Selectネットワークに参加するレストラン、カフェ、マーケットへのアクセスはできなくなります」</td>
+                            <td>2025-11-04</td>
+                        </tr>
+                        <tr>
+                            <td>米国</td>
+                            <td>Capital One</td>
+                            <td>Venture X, Venture X Business</td>
+                            <td><span class="status-badge status-no">利用不可</span></td>
+                            <td>「...非ラウンジ空港体験（レストラン、バー、スパ、ゲーミング、カフェを含む）は、Venture Xカード保有者向けのPP特典プログラムの一部ではありません」</td>
+                            <td>2025-11-04</td>
+                        </tr>
+                        <tr>
+                            <td>日本</td>
+                            <td>楽天カード</td>
+                            <td>楽天プレミアムカード, ブラックカード</td>
+                            <td><span class="status-badge status-no">利用不可<br>(2025/1/2以降)</span></td>
+                            <td>「2025年1月2日から制限を設ける。...ラウンジ施設のみ利用できるようになる」</td>
+                            <td>2025-11-04</td>
+                        </tr>
+                        <tr>
+                            <td>日本</td>
+                            <td>三菱UFJニコス</td>
+                            <td>MUFGカード・プラチナ 等</td>
+                            <td><span class="status-badge status-no">利用不可<br>(2024/10/1以降)</span></td>
+                            <td>「10月1日から制限を設ける。...空港ラウンジを除くこれらの施設の利用を制限する」</td>
+                            <td>2025-11-04</td>
+                        </tr>
+                        <tr>
+                            <td>日本</td>
+                            <td>Diners Club</td>
+                            <td>すべてのカード</td>
+                            <td><span class="status-badge status-partial">国内：利用不可<br>国外：利用可</span></td>
+                            <td>「同日（2025年1月）からは国内の食事やリフレッシュ、休憩に該当施設を対象から除外し、国内ではラウンジ施設のみ...。国外ではこれまで通り、食事やリフレッシュ、ラウンジ施設の利用ができる」</td>
+                            <td>2025-11-04</td>
+                        </tr>
+                        <tr>
+                            <td>米国</td>
+                            <td>Citi</td>
+                            <td>Prestige (既存会員)</td>
+                            <td><span class="status-badge status-yes">利用可</span></td>
+                            <td>多くの発行体がNLEを除外する中、Citiは引き続き「ほとんどの非ラウンジPP体験へのアクセスを提供し続けている」。公式規約ではNLEの明示的な除外記載なし</td>
+                            <td>2025-11-04</td>
+                        </tr>
+                        <tr>
+                            <td>Global</td>
+                            <td>Priority Pass</td>
+                            <td>直接購入 (Standard, Plus, Prestige)</td>
+                            <td><span class="status-badge status-yes">利用可</span></td>
+                            <td>「1,800以上の空港ラウンジと体験」へのアクセスとして販売されており、ダイニングやスパは主要な特典として紹介されている</td>
+                            <td>2025-11-04</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert-box alert-danger">
+                <strong>🔴 重要な注意事項:</strong> サービス系NLE（スパ・睡眠ポッド）については曖昧さが存在します。AmexやCapital Oneは「レストラン」や「スパ」を明確に除外していますが、一部の情報源では「カプセルホテルやリラクゼーションポッドは利用できる」と示唆しています。安全策として、発行体の規約が「非ラウンジ施設」全般を除外している場合、これらサービス系NLEも「利用不可」として扱うことを推奨します。
+            </div>
+        </section>
+
+        <!-- 第2部: 空港別施設ディレクトリ -->
+        <section id="airport-directory" class="section">
+            <h2 class="section-title">第2部: 空港別施設ディレクトリと実用性分析</h2>
+            
+            <div class="alert-box alert-info">
+                <strong>📌 分析の前提:</strong> 本レポートはPRIMARY_LISTに基づき、空港ごとのPP対応施設を分析します。特に日本国内線利用における特有の制約について、詳細な分析を提供します。
+            </div>
+        </section>
+
+        <!-- 日本国内空港 -->
+        <section id="japan-airports" class="section">
+            <h2 class="section-title">2.1 日本 (HND, NRT, KIX, CTS, FUK, ITM)</h2>
+            
+            <div class="alert-box alert-warning">
+                <strong>⚠️ 特別分析：日本国内線利用における特有の制約</strong><br>
+                日本の空港におけるPP利用は、世界的に見ても特に複雑な制約が存在します。
+                <ul style="margin-left: 24px; margin-top: 12px;">
+                    <li><strong>国内発行カードのブロック（HND）:</strong> 羽田空港（HND）の「Power Lounge Central」（T2）は、「日本国内で発行されたPP会員カード」の利用を明確に禁止しています。これは海外発行のPPを持つ旅行者のみが利用できるという、特異なローカルルールです。</li>
+                    <li><strong>国内NLEの一斉ブロック（全発行体）:</strong> 2025年以降、楽天カード、MUFGカード、ダイナースクラブの国内発行PPは、日本国内のNLE（レストラン、スパ、休憩施設）をすべて利用不可とします。</li>
+                    <li><strong>動線による利用制限（NRT）:</strong> 成田空港（NRT）の「I.A.S.S Executive Lounge」（T1, T2）は、保安検査前のランドサイドに位置し、かつ「国内線旅客専用」とされています。これにより、国際線の出発・乗り継ぎ客は物理的に利用不可能です。</li>
+                </ul>
+            </div>
+
+            <!-- 羽田空港 -->
+            <div class="airport-card">
+                <div class="airport-header">
+                    <div class="airport-name">東京国際空港（羽田）</div>
+                    <div class="airport-code">HND</div>
+                </div>
+                <p><strong>PPアクセス状況:</strong> 限定的。特に国内線利用者の選択肢は乏しい。</p>
+                <p><strong>NLE施設:</strong> レポート対象の一次情報源では、レストランやスパ等のNLEは確認されなかった。</p>
+                <p><strong>主要施設:</strong> 国際線は第3ターミナル（T3）保安検査後の「TIAT Lounge」が唯一かつ主要な選択肢。</p>
+                <div class="alert-box alert-danger" style="margin-top: 16px;">
+                    <strong>🔴 重要注意事項（国内線）:</strong> 第2ターミナル（T2）保安検査前の「Power Lounge Central」は、「日本国内発行のPPカード」を名指しでブロックします。国内線利用者が国内発行カード（楽天、MUFG等）で利用しようとしても絶対に入室できないため、最重要の注意点です。
+                </div>
+            </div>
+
+            <!-- 成田空港 -->
+            <div class="airport-card">
+                <div class="airport-header">
+                    <div class="airport-name">成田国際空港</div>
+                    <div class="airport-code">NRT</div>
+                </div>
+                <p><strong>PPアクセス状況:</strong> ターミナルと動線が複雑に分離されている。T1/T2には「国内線専用・保安検査前」のラウンジと「国際線専用・保安検査後」のラウンジが混在。T3には保安検査前のNLEがある。</p>
+                <p><strong>NLE施設:</strong> 豊富。T3保安検査前の「ぼてぢゅう屋台 (Botejyu Express)」、T1保安検査前の「肉料理 やきすき やんま (Meat Dishes YAKISUKI YANMA)」、T1保安検査後（国際線）の「Japanese Grill & Craft Beer TATSU」があり、すべて3,400円相当のクレジットまたはセットメニューを提供。</p>
+                <div class="alert-box alert-warning" style="margin-top: 16px;">
+                    <strong>⚠️ 重要注意事項:</strong>
+                    <ul style="margin-left: 24px; margin-top: 8px;">
+                        <li><strong>NLEブロック（国内発行）:</strong> T3「ぼてぢゅう」とT1「やんま」（いずれも保安検査前）は「国内NLE」扱いとなるため、2025年以降、Amex, Chase, Capital One, 楽天, MUFG, およびダイナースクラブのPPでは利用不可。</li>
+                        <li><strong>NLEブロック（ダイナースの例外）:</strong> T1「TATSU」は保安検査後（国際線）のため、「国外NLE」扱いとなり、ダイナースクラブのPPは利用可能（Amex, 楽天, MUFG等は利用不可）。</li>
+                        <li><strong>動線ブロック:</strong> T1/T2の「I.A.S.S Executive Lounge」は国内線専用かつ保安検査前のため、国際線利用者は実質利用不可。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 関西国際空港 -->
+            <div class="airport-card">
+                <div class="airport-header">
+                    <div class="airport-name">関西国際空港</div>
+                    <div class="airport-code">KIX</div>
+                </div>
+                <p><strong>PPアクセス状況:</strong> 伝統的なラウンジは少なく、NLEが中心。</p>
+                <p><strong>NLE施設:</strong> 「KIX Airport Cafe Lounge NODOKA」（エアロプラザ、保安検査前）。24時間営業。</p>
+                <div class="alert-box alert-warning" style="margin-top: 16px;">
+                    <strong>⚠️ NLEブロック:</strong> 「NODOKA」は保安検査前にある「国内NLE」扱いとなるため、2025年以降、Amex, Chase, Capital One, 楽天, MUFG, およびダイナースクラブのPPでは利用不可となります。
+                </div>
+            </div>
+
+            <!-- その他の日本の空港 -->
+            <div class="airport-card">
+                <div class="airport-header">
+                    <div class="airport-name">新千歳空港（札幌）</div>
+                    <div class="airport-code">CTS</div>
+                </div>
+                <p><strong>PPアクセス状況:</strong> 限定的。ラウンジとNLEが混在。</p>
+                <p><strong>NLE施設:</strong> 「Cafe Sky-Library」がセットメニュー（食事＋ソフトドリンク＋アルコール1杯）を提供しており、NLEに該当。国内NLE扱いとなる可能性が高く、2025年以降、主要PPカードでは利用不可となる見込み。</p>
+            </div>
+
+            <div class="airport-card">
+                <div class="airport-header">
+                    <div class="airport-name">福岡空港</div>
+                    <div class="airport-code">FUK</div>
+                </div>
+                <p><strong>PPアクセス状況:</strong> 国際線ターミナルに標準的なラウンジが集中。</p>
+                <p><strong>NLE施設:</strong> 確認されなかった。</p>
+                <p><strong>重要注意事項:</strong> 国内線ターミナルと国際線ターミナルは離れており、バス移動が必要。PP施設は国際線側のみのため、国内線利用者は実質利用不可。</p>
+            </div>
+
+            <div class="airport-card">
+                <div class="airport-header">
+                    <div class="airport-name">大阪国際空港（伊丹）</div>
+                    <div class="airport-code">ITM</div>
+                </div>
+                <p><strong>PPアクセス状況:</strong> ITMは国内線専用空港である。PP施設はNLEが1件のみ。</p>
+                <p><strong>NLE施設:</strong> 「Osaka Airport Winery」（中央ブロック、保安検査前）。</p>
+                <div class="alert-box alert-danger" style="margin-top: 16px;">
+                    <strong>🔴 実質利用不可（国内NLE）:</strong> これは「国内NLE」であるため、2025年以降、Amex, Chase, Capital One, 楽天, MUFG, およびダイナースクラブのPPでは一切利用不可となります。
+                </div>
+            </div>
+        </section>
+
+        <!-- アジア主要ハブ空港 -->
+        <section id="asia-airports" class="section">
+            <h2 class="section-title">2.2 アジアの主要ハブ空港 (ICN, TPE, SIN, BKK, HKG)</h2>
+
+            <div class="airport-card">
+                <div class="airport-header">
+                    <div class="airport-name">ソウル・仁川国際空港</div>
+                    <div class="airport-code">ICN</div>
+                </div>
+                <p><strong>PPアクセス状況:</strong> 非常に良好。T1、T2共に複数の伝統的ラウンジが整備されている。</p>
+                <p><strong>NLE施設:</strong> レポート対象の一次情報源では、レストランやスパ等のNLEは確認されなかった。ネットワークはラウンジのみで構成されている。</p>
+            </div>
+
+            <div class="airport-card">
+                <div class="airport-header">
+                    <div class="airport-name">台北・桃園国際空港</div>
+                    <div class="airport-code">TPE</div>
+                </div>
+                <p><strong>PPアクセス状況:</strong> 非常に良好。T1、T2共にPlaza Premium Loungeが強力なネットワークを構築。</p>
+                <p><strong>NLE施設:</strong> T2（Zone A）の「Plaza Premium Lounge」は、通常のラウンジ機能に加え、「プライベート・リラクゼーション・スイート（仮眠室）」を提供。この「仮眠室」はNLEに該当するため、Capital One、Chase、日本発行カード（楽天・MUFG）は利用不可。Amexは曖昧さが残る。Diners Clubは国際線NLEのため利用可。</p>
+            </div>
+
+            <div class="airport-card">
+                <div class="airport-header">
+                    <div class="airport-name">シンガポール・チャンギ国際空港</div>
+                    <div class="airport-code">SIN</div>
+                </div>
+                <p><strong>PPアクセス状況:</strong> 非常に良好。ラウンジとNLEの両方が全ターミナルに多数存在。</p>
+                <p><strong>NLE施設:</strong> ネットワークは極めて豊富で、18以上のレストランと2つのスパが提携。特典は「セットメニュー」型と「固定クレジット」型がある。</p>
+                <div class="alert-box alert-warning" style="margin-top: 16px;">
+                    <strong>⚠️ 重要:</strong> この空港は、NLE利用不可カード（Amex, Chase, Capital One, 楽天, MUFG）にとって、失われる価値が最も大きい空港の一つです。NLE利用可能なカード（Diners Club, Citi, PP直接購入）保有者は、ラウンジとは別に高品質な食事やスパを享受できます。
+                </div>
+            </div>
+
+            <div class="airport-card">
+                <div class="airport-header">
+                    <div class="airport-name">バンコク・スワンナプーム国際空港</div>
+                    <div class="airport-code">BKK</div>
+                </div>
+                <p><strong>PPアクセス状況:</strong> 多数のラウンジ（航空会社系・独立系）が利用可能。</p>
+                <div class="alert-box alert-danger" style="margin-top: 16px;">
+                    <strong>🔴 最重要警告（ネットワーク崩壊）:</strong> バンコク（BKK）のPPネットワークは壊滅的な縮小が予定されています。2025年4月1日をもって、Air France-KLM Sky Lounge, Bangkok Airways Boutique Lounge, Blue Ribbon Club Lounge, Oman Air Lounge, Turkish Airlines Loungeなど、主要な航空会社ラウンジが一斉にPPネットワークから脱退します。これにより、BKKにおけるPPの価値は大幅に下落し、利用は混雑した独立系（Miracle）ラウンジに限定される可能性が極めて高いです。
+                </div>
+            </div>
+
+            <div class="airport-card">
+                <div class="airport-header">
+                    <div class="airport-name">香港国際空港</div>
+                    <div class="airport-code">HKG</div>
+                </div>
+                <p><strong>PPアクセス状況:</strong> 非常に良好。Plaza Premiumラウンジが多数展開しているほか、NLEや高品質な提携ラウンジも存在。</p>
+                <p><strong>NLE施設:</strong> 「Intervals Sky Bar & Restaurant」（セットメニュー）および「莆田 (Putien)」（セットメニュー）が利用可能。</p>
+                <div class="alert-box alert-info" style="margin-top: 16px;">
+                    <strong>💡 特別例外（Chaseラウンジ）:</strong> T1 ゲート40付近の「Chase Sapphire Lounge by The Club」は、例外的に Amex発行を含む全ての Priority Pass Select 会員に開放されているとの二次情報があります。これはAmex利用者にとって香港で最も価値のある選択肢となります。
+                </div>
+            </div>
+        </section>
+
+        <!-- 北米空港 -->
+        <section id="north-america" class="section">
+            <h2 class="section-title">2.3 北米 (LAX, SFO, JFK, HNL)</h2>
+
+            <div class="airport-card">
+                <div class="airport-header">
+                    <div class="airport-name">ロサンゼルス国際空港</div>
+                    <div class="airport-code">LAX</div>
+                </div>
+                <p><strong>PPアクセス状況:</strong> 伝統的ラウンジのアクセスは絶望的。PPネットワークはNLEのみで構成されている。</p>
+                <p><strong>NLE施設:</strong> 「Be Relax Spa」（T1, TBIT）および「Gameway Lounge」（ゲーミングラウンジ、T3, T6）が存在。</p>
+                <div class="alert-box alert-danger" style="margin-top: 16px;">
+                    <strong>🔴 実質利用不可:</strong> LAXは、NLEを除外する大半の米国発行カード（Amex, Chase, Capital One）にとって、PPが実質的に存在しない「ゴースト・ネットワーク」空港となっています。Capital Oneは規約で「スパ」と「ゲーミング」を名指しで除外しています。
+                </div>
+            </div>
+
+            <div class="airport-card">
+                <div class="airport-header">
+                    <div class="airport-name">サンフランシスコ国際空港</div>
+                    <div class="airport-code">SFO</div>
+                </div>
+                <p><strong>PPアクセス状況:</strong> ラウンジとNLEが混在する「ハイブリッド型」空港。</p>
+                <p><strong>NLE施設:</strong> 豊富。4つのレストランが $28 USD の飲食クレジットを提供。</p>
+                <div class="alert-box alert-warning" style="margin-top: 16px;">
+                    <strong>⚠️ 重要:</strong> NLE利用不可カード（Amex, Chase, Capital One）は、$28 x 4施設分の大幅な価値を失います。国際線AとT2/T3間の保安検査後の移動はできないため、利用ターミナルとラウンジのミスマッチに注意が必要です。
+                </div>
+            </div>
+
+            <div class="airport-card">
+                <div class="airport-header">
+                    <div class="airport-name">ニューヨーク・JFK国際空港</div>
+                    <div class="airport-code">JFK</div>
+                </div>
+                <p><strong>PPアクセス状況:</strong> ターミナルごとに施設が点在。</p>
+                <p><strong>重要注意事項（ターミナル・ロック）:</strong> JFKの各ターミナルは保安検査後に接続されていません。T1のラウンジはT1出発便の搭乗券がなければアクセス不可であり、他ターミナル（T4, T5, T7, T8等）の利用者にとっては「実質利用不可」です。</p>
+            </div>
+
+            <div class="airport-card">
+                <div class="airport-header">
+                    <div class="airport-name">ホノルル・ダニエル・K・イノウエ国際空港</div>
+                    <div class="airport-code">HNL</div>
+                </div>
+                <p><strong>PPアクセス状況:</strong> 限定的。</p>
+                <p><strong>主要施設:</strong> T2（旧国際線ターミナル）の「I.A.S.S Hawaii Lounge」が主要なPPラウンジ。</p>
+            </div>
+        </section>
+
+        <!-- ヨーロッパ空港 -->
+        <section id="europe" class="section">
+            <h2 class="section-title">2.4 ヨーロッパ (LHR, CDG, FRA, AMS)</h2>
+
+            <div class="airport-card">
+                <div class="airport-header">
+                    <div class="airport-name">ロンドン・ヒースロー空港</div>
+                    <div class="airport-code">LHR</div>
+                </div>
+                <p><strong>PPアクセス状況:</strong> T2, T3, T4, T5の各ターミナルにバランス良く施設が存在。</p>
+                <p><strong>NLE施設:</strong> T2（保安検査後）に「Big Smoke Taphouse & Kitchen」（£18 の飲食クレジット）、T4（保安検査前）に「YOTELAIR」（睡眠ポッド）がある。</p>
+                <div class="alert-box alert-warning" style="margin-top: 16px;">
+                    <strong>⚠️ NLEブロック:</strong> 「Big Smoke」はNLEのため、Amex, Chase, Capital One等では利用不可（Diners Clubは国際線NLEのため利用可）。YOTELAIRの特典: T4の「YOTELAIR」は保安検査前（ランドサイド）にあり、乗り継ぎ客は利用しにくい。
+                </div>
+            </div>
+
+            <div class="airport-card">
+                <div class="airport-header">
+                    <div class="airport-name">パリ・シャルル・ド・ゴール空港</div>
+                    <div class="airport-code">CDG</div>
+                </div>
+                <p><strong>PPアクセス状況:</strong> T1, T2に施設が点在。</p>
+                <p><strong>NLE施設:</strong> T2Eに「YotelAir Paris Charles de Gaulle」がある。</p>
+                <div class="alert-box alert-warning" style="margin-top: 16px;">
+                    <strong>⚠️ ゾーン・ブロック（YotelAir）:</strong> T2Eの「YotelAir」は、保安検査後（エアサイド）かつ非シェンゲン圏の出発・乗り継ぎ客専用です。シェンゲン圏のフライトやT1/T3の利用者は実質利用不可。さらに、PP会員への特典は「€10 のクレジット」のみと報告されており、PPの1回利用権（$35 USD相当）に対して価値が著しく低いです。
+                </div>
+            </div>
+
+            <div class="airport-card">
+                <div class="airport-header">
+                    <div class="airport-name">フランクフルト空港</div>
+                    <div class="airport-code">FRA</div>
+                </div>
+                <p><strong>PPアクセス状況:</strong> 良好だが、ターミナルとゾーン（シェンゲン/非シェンゲン）によって利用施設が完全に分離されている。</p>
+                <p><strong>NLE施設:</strong> T1に2ヶ所の「Be Relax Spa」が確認された。</p>
+                <div class="alert-box alert-warning" style="margin-top: 16px;">
+                    <strong>⚠️ ゾーン・トラップ:</strong> NLEブロック: 「Be Relax Spa」はNLEのため、Amex, Chase, Capital One等では利用不可。T2はPPラウンジが厳格に分離されています。「Air France Lounge」はシェンゲン圏専用、「Primeclass Lounge」と「Priority Lounge」は非シェンゲン圏専用。搭乗券の行き先と異なるゾーンのラウンジは利用不可。
+                </div>
+            </div>
+
+            <div class="airport-card">
+                <div class="airport-header">
+                    <div class="airport-name">アムステルダム・スキポール空港</div>
+                    <div class="airport-code">AMS</div>
+                </div>
+                <p><strong>PPアクセス状況:</strong> 単一ターミナルだが、施設は限定的。</p>
+                <p><strong>NLE施設:</strong> 「XpresSpa」が確認された。</p>
+                <p><strong>重要注意事項:</strong> 「XpresSpa」はNLEのため、Amex, Chase, Capital One等では利用不可。Aspireラウンジはシェンゲン圏側にあるため、非シェンゲン圏フライト利用者はアクセスが困難または不可。</p>
+            </div>
+        </section>
+
+        <!-- オセアニア空港 -->
+        <section id="oceania" class="section">
+            <h2 class="section-title">2.5 オセアニア (SYD, MEL)</h2>
+
+            <div class="alert-box alert-info">
+                <strong>📌 特別分析：オセアニアのNLE（レストラン）:</strong> オーストラリアの主要空港（SYD, MEL）は、SFOやSINと並び、PPのNLE（レストラン）が非常に充実している地域です。両空港ともに、複数のレストランが $36 AUD という高額な飲食クレジットを提供しています。これは、NLE利用不可カード（Amex, Chase, Capital One, 楽天, MUFG）の保有者が最も大きな不利益を被る地域の一つであることを意味します。
+            </div>
+
+            <div class="airport-card">
+                <div class="airport-header">
+                    <div class="airport-name">シドニー・キングスフォード・スミス空港</div>
+                    <div class="airport-code">SYD</div>
+                </div>
+                <p><strong>PPアクセス状況:</strong> 非常に良好。NLE（レストラン）のネットワークが充実。</p>
+                <p><strong>NLE施設:</strong> T1（国際線）に「Mach2」「Peroni Bar」「Benny Burger」、T2（国内線）に「MoVida」「The Fat Yak」など多数。すべて $36 AUD の飲食クレジットを提供。</p>
+                <div class="alert-box alert-warning" style="margin-top: 16px;">
+                    <strong>⚠️ 重要:</strong> NLE利用不可カードは、1回の訪問あたり $36 AUD の価値を享受できません。
+                </div>
+            </div>
+
+            <div class="airport-card">
+                <div class="airport-header">
+                    <div class="airport-name">メルボルン空港</div>
+                    <div class="airport-code">MEL</div>
+                </div>
+                <p><strong>PPアクセス状況:</strong> NLEネットワークが非常に強力。</p>
+                <p><strong>NLE施設:</strong> T2（国際線）に「Bar Pulpo by MoVida」「Cafe Vue」「Urban Providore」、T3（国内線）に「Biggie Smalls」があり、すべて $36 AUD の飲食クレジットを提供。</p>
+                <div class="alert-box alert-warning" style="margin-top: 16px;">
+                    <strong>⚠️ 重要:</strong> 上記レストランはすべてNLEのため、Amex, Chase, Capital One, 楽天, MUFG のPPでは利用不可（Diners Clubは国際線NLEは利用可、国内NLEは不可）。ラウンジの追加料金: T2のラウンジ「The House」は、PP会員がプレミアムアルコール、アラカルトメニュー、シャワーを利用する場合、追加で $20 AUD のアップグレード料金をラウンジに直接支払う必要があります。
+                </div>
+            </div>
+        </section>
+
+        <!-- まとめ -->
+        <section class="section">
+            <h2 class="section-title">まとめ</h2>
+            <div class="alert-box alert-info">
+                <strong>📋 重要なポイント:</strong>
+                <ul style="margin-left: 24px; margin-top: 12px;">
+                    <li>Priority Passの価値は、カード発行体によって根本的に異なる「大分岐」の時代に突入</li>
+                    <li>NLE（非ラウンジ体験）へのアクセス可否が、PPの実用性を大きく左右する</li>
+                    <li>日本国内のNLEは、ほぼ全ての主要PPカードで利用不可</li>
+                    <li>オセアニアとシンガポールは、NLE利用不可カードにとって最も価値を失う地域</li>
+                    <li>バンコク（BKK）は2025年4月1日以降、PPネットワークの崩壊が予定されている</li>
+                </ul>
+            </div>
+            <p style="margin-top: 24px; color: var(--text-secondary); font-size: 14px;">
+                <strong>注記:</strong> 本レポートは2025年11月4日時点の情報に基づいています。規約や施設の変更は常に発生する可能性があるため、実際の利用前に各カード発行体やPriority Passの公式サイトで最新情報を確認することを強く推奨します。
+            </p>
+        </section>
+
+        <div class="footer">
+            <p>© 2025 Priority Pass 利用可能施設 網羅的ディープリサーチ・レポート</p>
+            <p style="margin-top: 8px; font-size: 12px; opacity: 0.8;">
+                このレポートは提供された情報に基づき作成された非公式の分析レポートです。情報の正確性については保証いたしません。実際の利用前に必ず公式情報をご確認ください。
+            </p>
+        </div>
+    </div>
+</body>
+</html>

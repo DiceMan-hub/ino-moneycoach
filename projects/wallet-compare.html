@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>海外決済 比較</title>
+    <style>
+      :root {
+        --bg: #0b0b0c;
+        --panel: #111214;
+        --ink: #ffffff;
+        --muted: #9aa0a6;
+        --line: #222326;
+        --accent: #e5e7eb;
+      }
+      html, body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* 9:16 キャンバス（1080x1920想定） */
+      .frame {
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+      }
+      .canvas {
+        width: min(92vw, 1080px);
+        aspect-ratio: 9 / 16;
+        background: linear-gradient(180deg, #0d0e10 0%, #0a0a0b 100%);
+        border-radius: 32px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.45), inset 0 0 0 1px rgba(255,255,255,0.04);
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        padding: clamp(24px, 3.6vw, 48px);
+      }
+
+      .heading {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 8px;
+      }
+      .title {
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        font-size: clamp(28px, 4.6vw, 56px);
+      }
+      .subtitle {
+        color: var(--muted);
+        font-size: clamp(12px, 1.4vw, 16px);
+      }
+
+      .table {
+        margin-top: clamp(12px, 1.8vw, 20px);
+        border-radius: 24px;
+        overflow: hidden;
+        background: var(--panel);
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+        display: grid;
+        grid-template-columns: 1.2fr repeat(4, 1fr);
+      }
+      .cell {
+        padding: clamp(10px, 1.6vw, 18px) clamp(10px, 1.8vw, 20px);
+        border-bottom: 1px solid var(--line);
+        border-right: 1px solid var(--line);
+        font-size: clamp(12px, 1.8vw, 20px);
+        line-height: 1.2;
+      }
+      .cell:last-child { border-right: none; }
+      .row:last-child .cell { border-bottom: none; }
+      .head {
+        font-weight: 700;
+        background: rgba(255,255,255,0.02);
+        text-align: center;
+        font-size: clamp(13px, 1.9vw, 22px);
+        letter-spacing: -0.01em;
+      }
+      .stub {
+        color: var(--muted);
+        font-weight: 600;
+        letter-spacing: 0.01em;
+      }
+      .em {
+        font-weight: 700;
+        color: var(--accent);
+      }
+      .small { font-size: 0.9em; color: var(--muted); font-weight: 500; }
+
+      .footer {
+        margin-top: clamp(12px, 1.6vw, 16px);
+        color: var(--muted);
+        font-size: clamp(10px, 1.2vw, 14px);
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      @media (max-width: 540px) {
+        .table { grid-template-columns: 1.1fr repeat(4, 1fr); }
+        .cell { padding: 10px 8px; }
+        .stub { font-size: 0.9em; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="frame">
+      <div class="canvas">
+        <div class="heading">
+          <div class="title">海外決済 比較</div>
+          <div class="subtitle">2025 | ミニマル版</div>
+        </div>
+
+        <div class="table" role="table" aria-label="海外決済比較">
+          <div class="row" role="row" style="display: contents;">
+            <div class="cell head" role="columnheader">項目</div>
+            <div class="cell head" role="columnheader">Revolut</div>
+            <div class="cell head" role="columnheader">IDARE</div>
+            <div class="cell head" role="columnheader">Sony</div>
+            <div class="cell head" role="columnheader">Wise</div>
+          </div>
+
+          <div class="row" role="row" style="display: contents;">
+            <div class="cell stub" role="rowheader">種別</div>
+            <div class="cell">金融アプリ</div>
+            <div class="cell">Visaプリペ</div>
+            <div class="cell">Visaデビ</div>
+            <div class="cell">マルチ通貨</div>
+          </div>
+
+          <div class="row" role="row" style="display: contents;">
+            <div class="cell stub" role="rowheader">ブランド</div>
+            <div class="cell">Visa</div>
+            <div class="cell">Visa</div>
+            <div class="cell">Visa</div>
+            <div class="cell">Mastercard</div>
+          </div>
+
+          <div class="row" role="row" style="display: contents;">
+            <div class="cell stub" role="rowheader">年会費</div>
+            <div class="cell em">無料<span class="small">（有料プラン有）</span></div>
+            <div class="cell em">無料</div>
+            <div class="cell em">無料</div>
+            <div class="cell em">無料</div>
+          </div>
+
+          <div class="row" role="row" style="display: contents;">
+            <div class="cell stub" role="rowheader">発行</div>
+            <div class="cell">無料<span class="small">（配送料場合有）</span></div>
+            <div class="cell">900円<span class="small">（CP時 無料有）</span></div>
+            <div class="cell">無料<span class="small">（再発行1,650円）</span></div>
+            <div class="cell">1,200円</div>
+          </div>
+
+          <div class="row" role="row" style="display: contents;">
+            <div class="cell stub" role="rowheader">国内還元</div>
+            <div class="cell">プラン次第<span class="small">（Metal等）</span></div>
+            <div class="cell em">0.2%〜1.0%</div>
+            <div class="cell em">0.5–2.0%</div>
+            <div class="cell">なし</div>
+          </div>
+
+          <div class="row" role="row" style="display: contents;">
+            <div class="cell stub" role="rowheader">強み</div>
+            <div class="cell">両替・送金・予算</div>
+            <div class="cell">残高2%/二重取</div>
+            <div class="cell">外貨口座直結</div>
+            <div class="cell">送金/多通貨</div>
+          </div>
+
+          <div class="row" role="row" style="display: contents;">
+            <div class="cell stub" role="rowheader">海外事務</div>
+            <div class="cell em">0%</div>
+            <div class="cell em">0%</div>
+            <div class="cell">10通貨0%<span class="small">/他1.79%</span></div>
+            <div class="cell">0%<span class="small">（同通貨）</span></div>
+          </div>
+
+          <div class="row" role="row" style="display: contents;">
+            <div class="cell stub" role="rowheader">為替</div>
+            <div class="cell">市場レート<span class="small">（枠有/週末+1%）</span></div>
+            <div class="cell">Visaレート</div>
+            <div class="cell">銀行コスト</div>
+            <div class="cell">市場+低手数料</div>
+          </div>
+
+          <div class="row" role="row" style="display: contents;">
+            <div class="cell stub" role="rowheader">海外ATM</div>
+            <div class="cell">月2.5万 無料</div>
+            <div class="cell">非対応</div>
+            <div class="cell">1.79% + 220円</div>
+            <div class="cell">月2回/3万 無料</div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <div>情報は変更の可能性。最新条件をご確認ください。</div>
+          <div>© 2025</div>
+        </div>
+      </div>
+    </div>
+  </body>
+  </html>
+
+

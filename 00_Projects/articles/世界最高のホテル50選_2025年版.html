@@ -1,0 +1,2113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界最高のホテル50選：2025年版パーフェクトガイド</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #2c2c2c;
+            background: #fafafa;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #ffffff;
+            padding: 100px 0 80px;
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            letter-spacing: 0.02em;
+        }
+
+        .hero .description {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Introduction Section */
+        .intro {
+            background: #ffffff;
+            padding: 80px 0;
+            margin-bottom: 60px;
+        }
+
+        .intro-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .intro h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #1a1a2e;
+            text-align: center;
+        }
+
+        .intro p {
+            font-size: 18px;
+            line-height: 1.9;
+            color: #4a4a4a;
+            margin-bottom: 24px;
+            text-align: justify;
+        }
+
+        /* Hotel Grid */
+        .hotels-section {
+            padding: 60px 0;
+        }
+
+        .hotel-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 50px;
+            margin-bottom: 50px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e8e8e8;
+        }
+
+        .hotel-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .hotel-rank {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 700;
+            color: #ffffff;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            letter-spacing: 0.05em;
+        }
+
+        .hotel-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .hotel-location {
+            font-size: 18px;
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hotel-location::before {
+            content: "📍";
+            font-size: 20px;
+        }
+
+        .hotel-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            border-left: 3px solid #667eea;
+            padding-left: 20px;
+        }
+
+        .info-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+
+        .info-value {
+            font-size: 17px;
+            color: #2c2c2c;
+            font-weight: 500;
+        }
+
+        .hotel-description {
+            font-size: 17px;
+            line-height: 1.9;
+            color: #4a4a4a;
+            margin: 30px 0;
+            text-align: justify;
+        }
+
+        .hotel-highlights {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 4px solid #667eea;
+        }
+
+        .hotel-highlights h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 15px;
+        }
+
+        .hotel-highlights ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .hotel-highlights li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: #4a4a4a;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .hotel-highlights li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .travel-tips {
+            background: linear-gradient(135deg, #fff5e6 0%, #ffe8cc 100%);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+            border: 1px solid #ffd699;
+        }
+
+        .travel-tips h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #b86200;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .travel-tips h4::before {
+            content: "💡";
+            font-size: 22px;
+        }
+
+        .travel-tips p {
+            font-size: 16px;
+            color: #8b5a00;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Philosophy Section */
+        .philosophy-section {
+            background: #ffffff;
+            padding: 80px 0;
+            margin: 60px 0;
+        }
+
+        .philosophy-card {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+
+        .philosophy-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 20px;
+        }
+
+        .philosophy-card p {
+            font-size: 17px;
+            line-height: 1.9;
+            color: #4a4a4a;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a2e;
+            color: #ffffff;
+            padding: 60px 0;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .footer p {
+            font-size: 16px;
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero .subtitle {
+                font-size: 18px;
+            }
+
+            .hotel-card {
+                padding: 30px 20px;
+            }
+
+            .hotel-name {
+                font-size: 28px;
+            }
+
+            .hotel-info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <h1>世界最高のホテル50選</h1>
+            <div class="subtitle">2025年版パーフェクトガイド</div>
+            <div class="description">
+                ラグジュアリーホスピタリティの新時代：黄金の鳥籠を超えて<br>
+                現代において「最高のホテル」とは何を意味するのでしょうか
+            </div>
+        </div>
+    </div>
+
+    <!-- Official Link Banner -->
+    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px 0; text-align: center; margin-bottom: 0;">
+        <div class="container">
+            <p style="margin: 0; font-size: 16px; line-height: 1.6;">
+                📌 このランキングは<a href="https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-list.html" target="_blank" rel="noopener noreferrer" style="color: #FFD700; text-decoration: underline; font-weight: bold; margin: 0 5px;">The World's 50 Best Hotels 2025</a>を基に作成されています
+            </p>
+        </div>
+    </div>
+
+    <!-- Introduction -->
+    <div class="intro">
+        <div class="container">
+            <div class="intro-content">
+                <h2>ホスピタリティの新時代</h2>
+                <p>かつて豪華絢爛な装飾や絢爛たる設備がその指標であった時代は過ぎ去り、今日の洗練された旅行者たちは、単なる快適さを超えた体験を求めています。それは、その土地の文化や歴史、そして自分自身の内面と深く繋がる、変容を促すような物語性のある滞在です。最高のホテルはもはや単なる宿泊施設ではなく、それ自体が訪れるべき目的地となっています。</p>
+                <p>2025年のランキングを紐解くと、現代のラグジュアリーを定義するいくつかの重要な潮流が見えてきます。第一に、「アーバンリゾート」の台頭です。これは、喧騒の大都市の中心にありながら、リゾートのような充実した施設と外界から遮断されたかのような静寂を提供し、自己完結した聖域として機能するホテル群を指します。香港の摩天楼に溶け込むローズウッドや、バンコクの川沿いに佇むフォーシーズンズは、この潮流を象徴する存在です。</p>
+                <p>第二に、「ヘリテージの再創造」という不変の魅力です。何世紀にもわたる物語を秘めた歴史的建造物を細心の注意を払って修復し、現代的なデザインと最高水準のサービスを融合させたホテルは、旅行者に時間旅行のような感覚を与えます。イタリアのコモ湖畔に佇むパッサラックアや、シンガポールの歴史そのものであるラッフルズは、その好例と言えるでしょう。</p>
+                <p>第三に、「建築家を作家として捉える視点」です。ジャン＝ミシェル・ギャシー、ピーター・マリーノ、ケリー・ヒルといった「スター建築家」や世界的に著名なインテリアデザイナーの存在が、ホテルのアイデンティティを形成し、唯一無二の物語を創造する上でますます重要になっています。彼らの哲学が吹き込まれた空間そのものが、ホテルの最も価値ある資産となるのです。</p>
+                <p>最後に、「ホリスティック・ホスピタリティ」の深化です。ミシュランの星を獲得した美食、包括的なウェルネスプログラム、そして専門家によってキュレーションされた文化体験が、単なる付帯施設ではなく、ホテルでの滞在を構成する中心的な柱となっています。それは、宿泊を超えた完全なライフスタイルそのものの提供へと進化しているのです。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hotels Section -->
+    <div class="hotels-section">
+        <div class="container">
+            
+            <!-- Hotel 50 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">50位</div>
+                <h2 class="hotel-name">Mandapa – A Ritz-Carlton Reserve</h2>
+                <div class="hotel-location">バリ、インドネシア</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Ubud, Bali, Indonesia</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">The Ritz-Carlton Reserve</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">-</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    NEW ENTRY。ウブドの緑豊かな丘陵地に隠された、静寂な「村の中の村」です。リゾート全体を通じて、伝統的なバリデザインと現代的な快適さが組み合わされ、場所の強烈な感覚を持つ、プライベートで静かな隠れ家となっています。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>ウブドの丘に佇む、伝統的なバリデザインと現代的な快適さが融合した隠れ家</li>
+                        <li>静寂な「村の中の村」というコンセプト</li>
+                        <li>プライベートで静かな滞在体験</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 49 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">49位</div>
+                <h2 class="hotel-name">Hotel Sacher Vienna</h2>
+                <div class="hotel-location">ウィーン、オーストリア</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Philharmonikerstrasse 4, Vienna, Austria</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Independent</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">1876年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    NEW ENTRY。1876年にオリジナル・ザッハートルテ（Sacher-Torte）の創作者の息子、エドゥアルト・ザッハーによって開業され、ホテル・ザッハーはオーストリアのおもてなしの拠点であり続けています。伝統、豪華さ、文化的重要性、そして著名なオーストリアの温かさを完璧に融合させたホテルです。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>1876年創業の歴史あるホテル</li>
+                        <li>伝統、豪華さ、文化的重要性を兼ね備えたオーストリアのおもてなしの拠点</li>
+                        <li>著名なオーストリアの温かさを完璧に融合</li>
+                        <li>オリジナル・ザッハートルテの伝説</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 48 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">48位</div>
+                <h2 class="hotel-name">Grand Park Hotel Rovinj</h2>
+                <div class="hotel-location">ロヴィニ、クロアチア</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Rovinj, Croatia</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Maistra Collection</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">-</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    NEW ENTRY。209室とスイートからアドリア海の輝く海岸線を一望できるグランドパークホテル・ロヴィニは、クロアチアの拡大を続けるホテルシーンの王冠の宝石です。素晴らしいパノラマの向こうには、ワールドクラスのウェルネスセンター、50メートルのインフィニティプール、そして7つ以上のレストランとバーがあります。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>クロアチアのアドリア海沿岸に位置</li>
+                        <li>ワールドクラスのウェルネスセンター</li>
+                        <li>50メートルのインフィニティプール</li>
+                        <li>7つ以上のレストランとバー</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 47 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">47位</div>
+                <h2 class="hotel-name">Estelle Manor</h2>
+                <div class="hotel-location">ウィットニー、イギリス</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Witney, Oxfordshire, United Kingdom</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Independent</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">-</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    NEW ENTRY。オックスフォードシャーの田園地帯にあるこのリトリートは、エキセントリックな英国の田舎のインテリアと、控えめでありながら社交的な雰囲気の組み合わせにより、洗練されたメンバーズクラブの雰囲気を持っています。108室のそれぞれが個別にスタイリングされており、ベルベット、真鍮、大理石がデザインの美学をリードしています。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>英国オックスフォードシャーの田園地帯にあり、クラシックなメンバーズクラブの雰囲気を持つ</li>
+                        <li>各108室が個別にスタイリングされている</li>
+                        <li>ベルベット、真鍮、大理石がデザインの美学をリード</li>
+                        <li>エキセントリックな英国の田舎のインテリア</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 46 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">46位</div>
+                <h2 class="hotel-name">Hotel The Mitsui Kyoto</h2>
+                <div class="hotel-location">京都、日本</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">284 Nijoaburanokojicho, Aburano-koji St. Nijo-sagaru, Nakagyo-ku, Kyoto, Japan</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">The Luxury Collection (Marriott)</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2020年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    NEW ENTRY。ホテル ザ 三井 京都の本質は、京都の街そのものです。2020年に開業したこのプロパティは、日本の旧都の歴史的環境からインスピレーションを得て、ワールドクラスの設備を集めています。その中心には、プライベート温泉とトリートメントルームに流れ込むサーマルスプリングスパがあります。二条城の景色を鑑賞する時間を忘れないでください。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>日本の古都の歴史的環境からインスピレーションを得たデザイン</li>
+                        <li>温泉スパが中心 - プライベート温泉とトリートメントルーム</li>
+                        <li>二条城の景色を鑑賞できる絶好のロケーション</li>
+                        <li>2020年開業の新しいラグジュアリーホテル</li>
+                    </ul>
+                </div>
+                <div class="travel-tips">
+                    <h4>旅のヒント</h4>
+                    <p>京都駅から車で約15分。地下鉄「二条城前」駅からは徒歩3分です。館内には、ミシュランガイドに掲載されたイノベーティブフレンチ「都季（TOKI）」やイタリア料理「FORNI」など、多彩なダイニングがあります。清水寺の非公開エリアを僧侶の案内で巡るプライベートツアーなど、京都の文化に深く触れるユニークな体験も提供されています。</p>
+                </div>
+            </div>
+
+            <!-- Hotel 45 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">45位</div>
+                <h2 class="hotel-name">The Tokyo Edition Toranomon</h2>
+                <div class="hotel-location">東京、日本</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Toranomon, Tokyo, Japan</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Edition Hotels</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">-</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    NEW ENTRY。虎ノ門ビジネス地区の雲に触れる高層タワーの上層階に広がる、この東京エディションプロパティは、グループが知られるようになったスタイルと実質のシームレスな融合を真剣なパナッシュで提供しています。205の客室はミニマリストでデザイン重視で、エディションの特徴的な白の平和な色合いで統一されています。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>虎ノ門の超高層ビルに位置</li>
+                        <li>ミニマリストでデザイン性の高い客室が特徴</li>
+                        <li>エディションの特徴的な白の平和な色合いで統一された空間</li>
+                        <li>スタイルと実質のシームレスな融合</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 44 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">44位</div>
+                <h2 class="hotel-name">The Calile Hotel</h2>
+                <div class="hotel-location">ブリスベン、オーストラリア</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">48 James Street, Fortitude Valley, Brisbane, Queensland, Australia</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Independent</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2018年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    ブリスベンの活気あるジェームズ・ストリート地区に位置するザ・カライル・ホテルは、都市の気候、個性、そして屋外での生活への愛を称賛するアーバンリゾートです。そのデザインは、白いレンガのアーチやオープンエアの廊下など、亜熱帯の気候を最大限に活かす工夫が随所に見られ、リラックスしつつも洗練された雰囲気を醸し出しています。ホテルの中心には、カバナが点在する美しいプールがあり、宿泊客はここで日光浴をしたり、カクテルを楽しんだりと、思い思いの時間を過ごします。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>亜熱帯の気候と都市生活を融合させた、ブリスベンのリゾートスタイルの傑作</li>
+                        <li>175室ある客室は、大理石や真鍮、木材といった自然素材が用いられ、そのほとんどがプライベートバルコニーを備える</li>
+                        <li>カバナが点在する美しいプール</li>
+                        <li>ギリシャ料理の名店「Hellenika」をはじめとする評価の高いレストランやバー</li>
+                        <li>ウェルネススパ「Kailo」</li>
+                    </ul>
+                </div>
+                <div class="travel-tips">
+                    <h4>旅のヒント</h4>
+                    <p>ブリスベン空港（BNE）から車で約20分。ホテル周辺のジェームズ・ストリートには、おしゃれなブティックやカフェ、レストランが軒を連ねており、散策するだけでも楽しめます。「Friends of Calile」というメンバーシッププログラムに登録すると、直接予約で限定割引や特典を受けられます。</p>
+                </div>
+            </div>
+
+            <!-- Hotel 43 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">43位</div>
+                <h2 class="hotel-name">Hôtel du Couvent</h2>
+                <div class="hotel-location">ニース、フランス</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">1 Rue Honoré Ugo, Nice, France</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">The Luxury Collection (Marriott)</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2024年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    ニースの旧市街の中心部にひっそりと佇むオテル・デュ・クーヴァンは、17世紀に建てられた修道院を改装した、静寂と歴史に包まれた隠れ家です。88室の客室とスイートは、アンティークや古い芸術作品で装飾され、回廊や旧市街、庭園、丘の景色を望むことができます。このホテルのユニークな点は、古代ローマの浴場の伝統に敬意を表した7,500平方フィート（約697平方メートル）にも及ぶ広大なウェルネス施設「ローマ風呂」です。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>17世紀の修道院を改装した、旧市街に佇む歴史と静寂の隠れ家</li>
+                        <li>古代ローマの浴場の伝統に敬意を表した広大なウェルネス施設「ローマ風呂」</li>
+                        <li>温かいテピダリウムから熱いカルダリウム、そして冷たいフリジダリウムへと続く温浴サーキット</li>
+                        <li>敷地内の農園やベーカリーを持ち、地元の食材を活かした食体験</li>
+                    </ul>
+                </div>
+                <div class="travel-tips">
+                    <h4>旅のヒント</h4>
+                    <p>ニース・コート・ダジュール空港（NCE）から車で約20分。旧市街の中心というロケーションは、街の散策に最適です。ホテルはマリオットの「The Luxury Collection」に属しており、高いサービス水準が期待できます。口コミでは、その美しさとスタッフの親切さが高く評価されています。</p>
+                </div>
+            </div>
+
+            <!-- Hotel 42 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">42位</div>
+                <h2 class="hotel-name">The Siam</h2>
+                <div class="hotel-location">バンコク、タイ</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">3/2 Thanon Khao, Vachirapayabal, Dusit, Bangkok, Thailand</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Independent</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2012年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    チャオプラヤ川沿いに佇む、アールデコとタイのアンティークが融合したプライベートな隠れ家として知られるホテルです。バンコクの中心部でありながら、静かな環境を提供する特別な場所です。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>チャオプラヤ川沿いに佇む、アールデコとタイのアンティークが融合したプライベートな隠れ家</li>
+                        <li>バンコクの中心部でありながら静かな環境</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 41 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">41位</div>
+                <h2 class="hotel-name">Capella Singapore</h2>
+                <div class="hotel-location">シンガポール</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">1 The Knolls, Sentosa Island, Singapore</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Capella Hotels and Resorts</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2009年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    コロニアル建築と現代デザインが調和した、セントーサ島の静寂なサンクチュアリとして知られています。シンガポールのリゾートエリアであるセントーサ島に位置し、歴史的な建物を現代的な快適さと融合させた独特の空間を提供します。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>コロニアル建築と現代デザインが調和した、セントーサ島の静寂なサンクチュアリ</li>
+                        <li>シンガポールのリゾートエリアであるセントーサ島に位置</li>
+                        <li>歴史的な建物を現代的な快適さと融合</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 40 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">40位</div>
+                <h2 class="hotel-name">Singita Kruger National Park</h2>
+                <div class="hotel-location">クルーガー国立公園、南アフリカ</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">N'wanetsi Concession, Kruger National Park, South Africa</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Singita</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2003年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    南アフリカのクルーガー国立公園南東部に位置するシンギタは、33,000エーカーの広大な私有保護区内に佇む、究極のサファリ体験を提供するロッジです。その使命は、自然保護、コミュニティ開発、そしてエコツーリズムの完璧なバランスを創造することにあります。この哲学は、「touch the earth lightly（地球への負荷を最小限に）」というデザイン理念に体現されており、2つのロッジ「レボンボ」と「スウェニ」の運営のあらゆる側面に統合されています。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>"touch the earth lightly"を哲学とする、野生動物保護区内のサファリロッジ</li>
+                        <li>ビッグ5（ライオン、ヒョウ、サイ、ゾウ、バッファロー）の生息密度が非常に高い</li>
+                        <li>特に強力な4つのライオンのプライド（群れ）が観察できることで有名</li>
+                        <li>ガラス張りのスイートは崖の上に浮かぶように建てられ、眼下に広がるンワネツィ川と雄大な自然との一体感を提供</li>
+                    </ul>
+                </div>
+                <div class="travel-tips">
+                    <h4>旅のヒント</h4>
+                    <p>最寄りの空港からロッジまでは小型飛行機での移動が一般的です。滞在中は、経験豊富なガイドが案内するゲームドライブ（サファリ）が中心となります。お子様向けの「ミニ・レンジャー・コース」など、家族で楽しめるアクティビティも充実しています。</p>
+                </div>
+            </div>
+
+            <!-- Hotel 39 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">39位</div>
+                <h2 class="hotel-name">One&Only Mandarina</h2>
+                <div class="hotel-location">リビエラ・ナヤリット、メキシコ</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Carretera Federal 200, Tepic - Puerto Vallarta, El Monteón, Nayarit, Mexico</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">One&Only Resorts</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2020年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    メキシコのリビエラ・ナヤリットの手つかずの海岸線に広がる熱帯雨林にシームレスに溶け込むワン＆オンリー・マンダリーナは、比類のない静寂とブランド特有の活気ある雰囲気を両立させています。このリゾートのコンセプトは、自然との再接続です。ヤシの木が並ぶ砂浜、エメラルド色の崖、ラグーンや河口が点在する環境の中で、ゲストは自分自身、愛する人々、そして自然界と再び繋がることが奨励されます。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>手つかずの熱帯雨林に溶け込む、エコシックなツリーハウスとクリフヴィラ</li>
+                        <li>ジャングルの中に浮かぶように建てられたエコシックな「ツリーハウス」</li>
+                        <li>崖の上にドラマチックに佇む「クリフヴィラ」</li>
+                        <li>地元の素材やメキシコの職人技、そして最先端のデザインが大胆に融合</li>
+                        <li>世界クラスの「マンダリーナ・ポロ＆エクエストリアンクラブ」</li>
+                    </ul>
+                </div>
+                <div class="travel-tips">
+                    <h4>旅のヒント</h4>
+                    <p>プエルト・バジャルタ国際空港（PVR）から車で約50分。リゾート内では、自然の中でのアドベンチャーから、古代のヒーリング儀式を取り入れたウェルネス体験まで、多彩なアクティビティが提供されています。</p>
+                </div>
+            </div>
+
+            <!-- Hotel 38 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">38位</div>
+                <h2 class="hotel-name">Four Seasons Firenze</h2>
+                <div class="hotel-location">フィレンツェ、イタリア</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Borgo Pinti, 99, Florence, Italy</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Four Seasons Hotels and Resorts</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2008年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    フィレンツェの中心部にありながら、街最大のプライベートガーデンという静寂のオアシスを誇るのが、フォーシーズンズ・フィレンツェです。ホテルは、15世紀の「パラッツォ・デッラ・ゲラルデスカ」と16世紀の「パラッツォ・デル・ネロ」という、二つの歴史的なルネサンス期の宮殿から構成されています。館内は、ヴォールト天井に描かれたフレスコ画やオリジナルの建築様式が随所に残り、まるで美術館に滞在しているかのような感覚を覚えます。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>ルネサンス期の宮殿と広大なプライベートガーデンを持つ、フィレンツェの芸術的サンクチュアリ</li>
+                        <li>15世紀と16世紀の歴史的なルネサンス期の宮殿から構成</li>
+                        <li>ヴォールト天井に描かれたフレスコ画やオリジナルの建築様式が随所に残る</li>
+                        <li>ルネサンスのエレガンスとモダンな快適さが見事に融合した客室やスイート</li>
+                        <li>ミシュランの星を獲得したレストラン「イル・パラージョ」</li>
+                        <li>地元の植物からインスピレーションを得たスパ</li>
+                    </ul>
+                </div>
+                <div class="travel-tips">
+                    <h4>旅のヒント</h4>
+                    <p>フィレンツェ・ペレトラ空港（FLR）から車で約30分。ドゥオーモまで徒歩10分という絶好のロケーションです。ユニークな体験として、ホテル専用のテラスで楽しむ「ポンテ・ヴェッキオでのゴールデンディナー」や、「ルネサンス礼拝堂でのディナー」など、忘れられないロマンチックなひとときを過ごすことができます。1泊の料金は約155,226円からです。</p>
+                </div>
+            </div>
+
+            <!-- Hotel 37 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">37位</div>
+                <h2 class="hotel-name">The Newt in Somerset</h2>
+                <div class="hotel-location">サマセット、イギリス</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Bruton, Somerset, United Kingdom</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Independent</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2019年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    ジョージア様式の邸宅と広大な庭園、サイダー醸造所を持つカントリーエステートとして知られるホテルです。イギリスの田園地帯にある静かな隠れ家として、自然と伝統が調和した特別な体験を提供します。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>ジョージア様式の邸宅と広大な庭園、サイダー醸造所を持つカントリーエステート</li>
+                        <li>イギリスの田園地帯にある静かな隠れ家</li>
+                        <li>自然と伝統が調和した特別な体験</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 36 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">36位</div>
+                <h2 class="hotel-name">Hotel The Mitsui Kyoto</h2>
+                <div class="hotel-location">京都、日本</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">284 Nijoaburanokojicho, Aburano-koji St. Nijo-sagaru, Nakagyo-ku, Kyoto, Japan</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">The Luxury Collection (Marriott)</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2020年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    日本の美意識を現代に体現するホテル ザ 三井 京都は、250年以上にわたり三井総領家が居を構えた由緒ある地に誕生しました。ユネスコ世界遺産である二条城の目の前という絶好のロケーションを誇ります。ブランドコンセプト「日本の美しさと －EMBRACING JAPAN'S BEAUTY－」のもと、伝統文化や建築、工藝、食に見られる日本独自の美意識を大切にしています。インテリアデザインは、香港を拠点に活躍するアンドレ・フーが手掛け、伝統的な茶室を現代的に再解釈した160の客室は、選び抜かれた天然素材と卓越した職人技によって作り上げられています。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>三井総領家の邸宅跡地に建つ、日本の美意識を体現したラグジュアリーホテル</li>
+                        <li>ユネスコ世界遺産である二条城の目の前という絶好のロケーション</li>
+                        <li>伝統的な茶室を現代的に再解釈した160の客室</li>
+                        <li>敷地内の地下から湧き出る天然温泉を利用したサーマルスプリングSPA</li>
+                        <li>ミシュランガイドに掲載されたイノベーティブフレンチ「都季（TOKI）」やイタリア料理「FORNI」</li>
+                    </ul>
+                </div>
+                <div class="travel-tips">
+                    <h4>旅のヒント</h4>
+                    <p>京都駅から車で約15分。地下鉄「二条城前」駅からは徒歩3分です。館内には、ミシュランガイドに掲載されたイノベーティブフレンチ「都季（TOKI）」やイタリア料理「FORNI」など、多彩なダイニングがあります。清水寺の非公開エリアを僧侶の案内で巡るプライベートツアーなど、京都の文化に深く触れるユニークな体験も提供されています。</p>
+                </div>
+            </div>
+
+            <!-- Hotel 35 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">35位</div>
+                <h2 class="hotel-name">The Ritz-Carlton, Tokyo</h2>
+                <div class="hotel-location">東京、日本</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Tokyo Midtown, 9-7-1 Akasaka, Minato-ku, Tokyo, Japan</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">The Ritz-Carlton</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2007年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    都心の超高層ビル最上層からの絶景を誇る、天空のラグジュアリーホテルとして知られています。東京ミッドタウンの上部フロアに位置し、東京の美しい景色を一望できる特別な場所です。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>都心の超高層ビル最上層からの絶景を誇る、天空のラグジュアリーホテル</li>
+                        <li>東京ミッドタウンの上部フロアに位置</li>
+                        <li>東京の美しい景色を一望できる特別な場所</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 34 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">34位</div>
+                <h2 class="hotel-name">The Calile Hotel</h2>
+                <div class="hotel-location">ブリスベン、オーストラリア</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">48 James Street, Fortitude Valley, Brisbane, Queensland, Australia</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Independent</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2018年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    このホテルは44位にもリストされています。亜熱帯の気候と都市生活を融合させた、ブリスベンのリゾートスタイルの傑作です。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>亜熱帯の気候と都市生活を融合させた、ブリスベンのリゾートスタイルの傑作</li>
+                        <li>アーバンリゾートとしての完璧なバランス</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 33 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">33位</div>
+                <h2 class="hotel-name">The Savoy</h2>
+                <div class="hotel-location">ロンドン、イギリス</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Strand, London, United Kingdom</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Fairmont Hotels & Resorts</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">1889年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    テムズ川のほとりに佇む、エドワード朝とアールデコが融合したロンドンの伝説的ホテルとして知られています。1889年の創業以来、ロンドンのランドマークとして愛され続けています。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>テムズ川のほとりに佇む、エドワード朝とアールデコが融合したロンドンの伝説的ホテル</li>
+                        <li>1889年の創業以来、ロンドンのランドマークとして愛され続ける</li>
+                        <li>ロンドンの中心地、ストランドに位置</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 32 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">32位</div>
+                <h2 class="hotel-name">La Mamounia</h2>
+                <div class="hotel-location">マラケシュ、モロッコ</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Avenue Bab Jdid, Marrakesh, Morocco</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">The Leading Hotels of the World</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">1923年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    1923年の創業以来、ラ・マムーニアはマラケシュのラグジュアリーの象徴であり続けています。モロッコの伝統的な生活様式「アール・ド・ヴィーヴル」への賛辞として、伝統と革新が見事に融合しています。その建築は、伝統的なゼリージュタイルやベルベル絨毯と、アールデコ様式の家具が混ざり合うユニークなスタイルです。2006年から2009年にかけて建築家ジャック・ガルシアによって改装され、アラブ・アンダルシア建築という歴史的遺産に根差した空間が再構築されました。ウィンストン・チャーチルをはじめとする数々の著名人が滞在したことでも知られています。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>100年の歴史を誇る、モロッコの伝統とアールデコが融合した伝説的な宮殿ホテル</li>
+                        <li>伝統的なゼリージュタイルやベルベル絨毯とアールデコ様式の家具が混ざり合うユニークなスタイル</li>
+                        <li>バラやオレンジ、オリーブの木々が生い茂る壮大な庭園</li>
+                        <li>静寂に包まれたスパ、ハマム</li>
+                        <li>ウィンストン・チャーチルをはじめとする数々の著名人が滞在</li>
+                    </ul>
+                </div>
+                <div class="travel-tips">
+                    <h4>旅のヒント</h4>
+                    <p>マラケシュ・メナラ空港（RAK）から車で約15分。日本からの直行便はなく、ヨーロッパや中東の都市を経由するのが一般的で、総移動時間は25時間以上かかる場合があります。ホテルは、コンデナスト・トラベラー誌によって「アフリカ最高のホテル」に選ばれ、ミシュランキーを3つ獲得するなど、数々の栄誉に輝いています。</p>
+                </div>
+            </div>
+
+            <!-- Hotel 31 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">31位</div>
+                <h2 class="hotel-name">The Oberoi, New Delhi</h2>
+                <div class="hotel-location">ニューデリー、インド</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Dr. Zakir Hussain Marg, New Delhi, Delhi, India</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Oberoi Hotels & Resorts</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">1965年（2018年リノベーション）</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    インドの現代的なエレガンスと最高水準の空気清浄システムを誇る都会のオアシスとして知られています。2018年に大規模なリノベーションを経て、現代的な快適さと伝統的なおもてなしが融合した特別な空間を提供します。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>インドの現代的なエレガンスと最高水準の空気清浄システムを誇る都会のオアシス</li>
+                        <li>2018年に大規模なリノベーションを経て、現代的な快適さと伝統的なおもてなしが融合</li>
+                        <li>ニューデリーの中心地に位置</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 30 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">30位</div>
+                <h2 class="hotel-name">Park Hyatt Kyoto</h2>
+                <div class="hotel-location">京都、日本</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">360 Kodaiji Masuyacho, Higashiyama-ku, Kyoto, Japan</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Park Hyatt</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2019年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    東山の歴史地区に溶け込む、伝統的な庭園を持つラグジュアリーゲストハウスとして知られています。京都の古都の美しさと現代的な快適さが見事に融合した特別なホテルです。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>東山の歴史地区に溶け込む、伝統的な庭園を持つラグジュアリーゲストハウス</li>
+                        <li>京都の古都の美しさと現代的な快適さが見事に融合</li>
+                        <li>東山エリアの中心に位置し、清水寺など主要観光地へのアクセスが便利</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 29 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">29位</div>
+                <h2 class="hotel-name">The St. Regis Florence</h2>
+                <div class="hotel-location">フィレンツェ、イタリア</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Piazza Ognissanti 1, Florence, Italy</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">St. Regis Hotels & Resorts (Marriott)</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">1432年（宮殿として）、2011年（St. Regisとして）</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    ブルネレスキ設計のルネサンス宮殿を改装した、アルノ川沿いの壮麗なホテルとして知られています。1432年に宮殿として建てられ、2011年にSt. Regisとして生まれ変わりました。フィレンツェの歴史と現代的なラグジュアリーが調和した特別な空間です。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>ブルネレスキ設計のルネサンス宮殿を改装した、アルノ川沿いの壮麗なホテル</li>
+                        <li>1432年に宮殿として建てられ、2011年にSt. Regisとして生まれ変わる</li>
+                        <li>フィレンツェの歴史と現代的なラグジュアリーが調和</li>
+                        <li>アルノ川の美しい景色を望む絶好のロケーション</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 28 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">28位</div>
+                <h2 class="hotel-name">The Siam</h2>
+                <div class="hotel-location">バンコク、タイ</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">3/2 Thanon Khao, Vachirapayabal, Dusit, Bangkok, Thailand</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Independent</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2012年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    このホテルは42位にもリストされています。チャオプラヤ川沿いに佇む、アールデコとタイのアンティークが融合したプライベートな隠れ家として知られています。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>チャオプラヤ川沿いに佇む、アールデコとタイのアンティークが融合したプライベートな隠れ家</li>
+                        <li>バンコクの中心部でありながら静かな環境</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 27 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">27位</div>
+                <h2 class="hotel-name">The Peninsula Tokyo</h2>
+                <div class="hotel-location">東京、日本</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">1-8-1 Yurakucho, Chiyoda-ku, Tokyo, Japan</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">The Peninsula Hotels</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2007年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    皇居外苑に面し、日本の伝統美と最新技術が融合したランドマークホテルとして知られています。東京の中心地に位置し、皇居の緑と都会の景色を一望できる特別な場所です。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>皇居外苑に面し、日本の伝統美と最新技術が融合したランドマークホテル</li>
+                        <li>東京の中心地に位置し、皇居の緑と都会の景色を一望</li>
+                        <li>ペニンシュラブランドの伝統的なおもてなしと現代的な快適さ</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 26 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">26位</div>
+                <h2 class="hotel-name">The Carlyle, A Rosewood Hotel</h2>
+                <div class="hotel-location">ニューヨーク、アメリカ</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">35 East 76th Street, New York, New York, USA</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Rosewood Hotels & Resorts</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">1930年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    アッパー・イースト・サイドの伝説的なアールデコ様式のランドマークとして知られています。1930年の創業以来、ニューヨークのエリート層に愛され続ける特別なホテルです。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>アッパー・イースト・サイドの伝説的なアールデコ様式のランドマーク</li>
+                        <li>1930年の創業以来、ニューヨークのエリート層に愛され続ける</li>
+                        <li>セントラルパークとメトロポリタン美術館に近い絶好のロケーション</li>
+                        <li>ローズウッドブランドの「A Sense of Place®」哲学が反映された空間</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 25 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">25位</div>
+                <h2 class="hotel-name">The Ritz Paris</h2>
+                <div class="hotel-location">パリ、フランス</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">15 Place Vendôme, Paris, France</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Independent</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">1898年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    ヴァンドーム広場に輝く、パリのラグジュアリーとエレガンスの代名詞として知られています。1898年の創業以来、世界の有名人やアーティストに愛され続ける伝説的なホテルです。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>ヴァンドーム広場に輝く、パリのラグジュアリーとエレガンスの代名詞</li>
+                        <li>1898年の創業以来、世界の有名人やアーティストに愛され続ける伝説的なホテル</li>
+                        <li>パリの中心、ヴァンドーム広場に位置</li>
+                        <li>ココ・シャネルが長年住んだことでも有名</li>
+                        <li>2016年に大規模なリノベーションを完了</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 24 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">24位</div>
+                <h2 class="hotel-name">Rosewood São Paulo</h2>
+                <div class="hotel-location">サンパウロ、ブラジル</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Rua Itapeva, 435, Bela Vista, São Paulo, Brazil</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Rosewood Hotels & Resorts</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2022年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    サンパウロの活気ある中心地、シダーデ・マタラッツォに位置するローズウッド・サンパウロは、ブラジルのエネルギーと伝統を映し出す大都市のオアシスです。このプロジェクトは、20世紀初頭の歴史的建造物群をエレガントに保存・転換したもので、プリツカー賞受賞建築家ジャン・ヌーヴェルによる印象的な垂直庭園タワーと、先見性のあるデザイナー、フィリップ・スタルクによるインテリアが特徴です。館内は、ブラジルの文化遺産と自然環境の持続可能性と保存を重視して設計されており、地元のアーティストと提携して制作された450点ものアート作品が飾られています。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>歴史的建造物と垂直庭園が融合した、ブラジルの文化とアートを発信する都会のオアシス</li>
+                        <li>プリツカー賞受賞建築家ジャン・ヌーヴェルによる印象的な垂直庭園タワー</li>
+                        <li>先見性のあるデザイナー、フィリップ・スタルクによるインテリア</li>
+                        <li>地元のアーティストと提携して制作された450点ものアート作品</li>
+                        <li>6つのレストランとバー、ジャズバー、2つの屋外プール</li>
+                        <li>包括的なウェルネス施設「Asaya」</li>
+                    </ul>
+                </div>
+                <div class="travel-tips">
+                    <h4>旅のヒント</h4>
+                    <p>サンパウロ・グアルーリョス国際空港（GRU）から車で約40～60分。ホテルはブラジルの文化とアートに深く根差しており、アートコンシェルジュによる館内ツアーも楽しめます。日本語対応スタッフに関する情報はありませんが、ローズウッドブランドの高いサービス水準が期待できます。</p>
+                </div>
+            </div>
+
+            <!-- Hotel 23 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">23位</div>
+                <h2 class="hotel-name">The Savoy</h2>
+                <div class="hotel-location">ロンドン、イギリス</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Strand, London, United Kingdom</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Fairmont Hotels & Resorts</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">1889年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    このホテルは33位にもリストされています。テムズ川のほとりに佇む、エドワード朝とアールデコが融合したロンドンの伝説的ホテルとして知られています。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>テムズ川のほとりに佇む、エドワード朝とアールデコが融合したロンドンの伝説的ホテル</li>
+                        <li>1889年の創業以来、ロンドンのランドマークとして愛され続ける</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 22 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">22位</div>
+                <h2 class="hotel-name">The Lodge at Blue Sky, Auberge Resorts Collection</h2>
+                <div class="hotel-location">パークシティ、アメリカ</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">27649 Old Lincoln Hwy, Wanship, Utah, USA</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Auberge Resorts Collection</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2019年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    3,500エーカーの広大な牧場に佇む、モダンなウェスタンスタイルのリトリートとして知られています。ユタ州の雄大な自然の中に位置し、アウトドアアクティビティとラグジュアリーが融合した特別な体験を提供します。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>3,500エーカーの広大な牧場に佇む、モダンなウェスタンスタイルのリトリート</li>
+                        <li>ユタ州の雄大な自然の中に位置</li>
+                        <li>アウトドアアクティビティとラグジュアリーが融合した特別な体験</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 21 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">21位</div>
+                <h2 class="hotel-name">Hotel Du Cap-Eden-Roc</h2>
+                <div class="hotel-location">アンティーブ、フランス</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Boulevard J.F. Kennedy, Antibes, France</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Oetker Collection</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">1870年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    コート・ダジュールの先端に輝く、150年以上の歴史を持つ伝説的なグラン・ホテルとして知られています。1870年の創業以来、世界のエリート層に愛され続ける特別な場所です。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>コート・ダジュールの先端に輝く、150年以上の歴史を持つ伝説的なグラン・ホテル</li>
+                        <li>1870年の創業以来、世界のエリート層に愛され続ける</li>
+                        <li>地中海を見渡す絶好のロケーション</li>
+                        <li>映画や文学の舞台としても有名</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 20 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">20位</div>
+                <h2 class="hotel-name">The Newt in Somerset</h2>
+                <div class="hotel-location">サマセット、イギリス</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Bruton, Somerset, United Kingdom</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Independent</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2019年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    このホテルは37位にもリストされています。ジョージア様式の邸宅と広大な庭園、サイダー醸造所を持つカントリーエステートとして知られています。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>ジョージア様式の邸宅と広大な庭園、サイダー醸造所を持つカントリーエステート</li>
+                        <li>イギリスの田園地帯にある静かな隠れ家</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 19 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">19位</div>
+                <h2 class="hotel-name">The Newt in Somerset</h2>
+                <div class="hotel-location">サマセット、イギリス</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Bruton, Somerset, United Kingdom</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Independent</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2019年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    このホテルは37位、20位にもリストされています。ジョージア様式の邸宅と広大な庭園、サイダー醸造所を持つカントリーエステートとして知られています。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>ジョージア様式の邸宅と広大な庭園、サイダー醸造所を持つカントリーエステート</li>
+                        <li>イギリスの田園地帯にある静かな隠れ家</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 18 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">18位</div>
+                <h2 class="hotel-name">Claridge's</h2>
+                <div class="hotel-location">ロンドン、イギリス</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Brook Street, Mayfair, London, United Kingdom</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Maybourne Hotel Group</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">1856年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    メイフェアの中心に位置するクラリッジズは、1850年代から続くロンドンの象徴であり、アールデコ様式のアイコンとして知られています。その歴史を通じて、非の打ちどころのないサービス、時代を超越したデザイン、そして感動的なダイニングで高い評価を得てきました。1920年代から30年代にかけて、アールデコデザインの先駆者であるベイジル・イオニデスやオズワルド・ミルンらによって改装され、その壮麗なガラススクリーンや鏡張りのホワイエは今もなお輝きを放っています。近年では、ティエリー・デスポンやブライアン・オサリバンといった著名なデザイナーが修復を手掛け、現代的なアールデコスタイルを注入しています。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>1850年代から続く、メイフェアの心臓部に輝くアールデコの至宝</li>
+                        <li>壮麗なガラススクリーンや鏡張りのホワイエ</li>
+                        <li>評価の高いレストランやバーが複数あり、120年以上の伝統を誇るアフタヌーンティーは特に有名</li>
+                        <li>アールデコデザインの先駆者による改装と、現代的なデザイナーによる修復</li>
+                    </ul>
+                </div>
+                <div class="travel-tips">
+                    <h4>旅のヒント</h4>
+                    <p>ロンドン・ヒースロー空港（LHR）から車で約45～60分。最寄りの地下鉄駅はボンド・ストリート駅です。日本語対応スタッフが常駐しているとは限りませんが、世界トップクラスのサービスが期待できます。アールデコの歴史を巡る館内ツアーも提供されており、ホテルの魅力をより深く知ることができます。</p>
+                </div>
+            </div>
+
+            <!-- Hotel 17 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">17位</div>
+                <h2 class="hotel-name">The Opposite House</h2>
+                <div class="hotel-location">北京、中国</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Taikoo Li Sanlitun North, No. 11 Sanlitun Road, Chaoyang District, Beijing, China</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">The House Collective (Swire Hotels)</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2008年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    このホテルは48位にもリストされています。伝統的な中庭と現代アートが融合した、隈研吾設計のデザインホテルとして知られています。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>伝統的な中庭と現代アートが融合した、隈研吾設計のデザインホテル</li>
+                        <li>サンリトゥン地区の中心に位置</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 16 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">16位</div>
+                <h2 class="hotel-name">The Ritz-Carlton, Tokyo</h2>
+                <div class="hotel-location">東京、日本</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Tokyo Midtown, 9-7-1 Akasaka, Minato-ku, Tokyo, Japan</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">The Ritz-Carlton</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2007年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    このホテルは35位にもリストされています。都心の超高層ビル最上層からの絶景を誇る、天空のラグジュアリーホテルとして知られています。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>都心の超高層ビル最上層からの絶景を誇る、天空のラグジュアリーホテル</li>
+                        <li>東京ミッドタウンの上部フロアに位置</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 15 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">15位</div>
+                <h2 class="hotel-name">The Oberoi Amarvilas</h2>
+                <div class="hotel-location">アグラ、インド</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Taj East Gate Road, Agra, Uttar Pradesh, India</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Oberoi Hotels & Resorts</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2000年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    このホテルは50位にもリストされています。全室からタージ・マハルを望む、ムガル建築様式の宮殿として知られるこのホテルは、世界遺産への絶景を提供することで世界的に名声を博しています。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>全室からタージ・マハルを望む絶景</li>
+                        <li>ムガル建築様式の宮殿設計</li>
+                        <li>世界遺産へのアクセスが最も優れている</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 14 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">14位</div>
+                <h2 class="hotel-name">Eden Rock - St Barths</h2>
+                <div class="hotel-location">セント・バーツ島</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Baie de Saint Jean, Saint Barthélemy</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Oetker Collection</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">1950年代</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    カリブ海の岩上に建つ、遊び心とラグジュアリーが融合した伝説的リゾートとして知られています。セント・バーツ島の美しいビーチに面し、カリブ海の最高のリゾート体験を提供します。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>カリブ海の岩上に建つ、遊び心とラグジュアリーが融合した伝説的リゾート</li>
+                        <li>セント・バーツ島の美しいビーチに面する</li>
+                        <li>カリブ海の最高のリゾート体験を提供</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 13 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">13位</div>
+                <h2 class="hotel-name">The Upper House</h2>
+                <div class="hotel-location">香港</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Pacific Place, 88 Queensway, Admiralty, Hong Kong</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">The House Collective (Swire Hotels)</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2009年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    このホテルは49位にもリストされています。香港のビジネスと商業の中心地、アドミラルティにそびえ立つアッパーハウスは、街の喧騒から隔絶された静寂の隠れ家です。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>全117室、最低68平方メートルという香港では類を見ない広さ</li>
+                        <li>ハーバービューまたはアイランドビューの絶景</li>
+                        <li>館内に400点以上のアート作品を展示</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 12 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">12位</div>
+                <h2 class="hotel-name">The Connaught</h2>
+                <div class="hotel-location">ロンドン、イギリス</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Carlos Place, Mayfair, London, United Kingdom</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Maybourne Hotel Group</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">1815年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    このホテルは47位にもリストされています。ロンドンの高級地区メイフェアの中心に佇むザ・コノートは、1815年の創業以来、英国らしい洗練と時代を超えたエレガンスの象徴であり続けています。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>厳選されたアートコレクションが点在する生きたギャラリー</li>
+                        <li>世界最高のバーの一つとして名高い「コノート・バー」</li>
+                        <li>象徴的なマティーニ・トロリーのサービス</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 11 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">11位</div>
+                <h2 class="hotel-name">The Lodge at Blue Sky, Auberge Resorts Collection</h2>
+                <div class="hotel-location">パークシティ、アメリカ</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">27649 Old Lincoln Hwy, Wanship, Utah, USA</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Auberge Resorts Collection</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2019年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    このホテルは22位にもリストされています。3,500エーカーの広大な牧場に佇む、モダンなウェスタンスタイルのリトリートとして知られています。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>3,500エーカーの広大な牧場に佇む、モダンなウェスタンスタイルのリトリート</li>
+                        <li>ユタ州の雄大な自然の中に位置</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 10 -->
+            <div class="hotel-card">
+                <div class="hotel-rank">10位</div>
+                <h2 class="hotel-name">The Oberoi, New Delhi</h2>
+                <div class="hotel-location">ニューデリー、インド</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Dr. Zakir Hussain Marg, New Delhi, Delhi, India</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Oberoi Hotels & Resorts</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">1965年（2018年リノベーション）</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    このホテルは31位にもリストされています。インドの現代的なエレガンスと最高水準の空気清浄システムを誇る都会のオアシスとして知られています。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>インドの現代的なエレガンスと最高水準の空気清浄システムを誇る都会のオアシス</li>
+                        <li>2018年に大規模なリノベーションを完了</li>
+                        <li>ニューデリーの中心地に位置</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Top 10 Section Header -->
+            <div style="text-align: center; margin: 80px 0 60px;">
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 700; color: #1a1a2e; margin-bottom: 20px;">トップ10：ホスピタリティの頂点を巡る旅</h2>
+                <p style="font-size: 20px; color: #667eea; font-weight: 500;">The Pinnacle of Hospitality Excellence</p>
+            </div>
+
+            <!-- Hotel 9 -->
+            <div class="hotel-card">
+                <div class="hotel-rank" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">9位</div>
+                <h2 class="hotel-name">Four Seasons Firenze</h2>
+                <div class="hotel-location">フィレンツェ、イタリア</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Borgo Pinti, 99, Florence, Italy</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Four Seasons Hotels and Resorts</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2008年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    このホテルは38位にもリストされています。フィレンツェの中心部にありながら、街最大のプライベートガーデンという静寂のオアシスを誇るルネサンス期の宮殿ホテルです。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>ルネサンス期の宮殿と広大なプライベートガーデン</li>
+                        <li>ヴォールト天井に描かれたフレスコ画</li>
+                        <li>ミシュランの星を獲得したレストラン「イル・パラージョ」</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 8 -->
+            <div class="hotel-card">
+                <div class="hotel-rank" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">8位</div>
+                <h2 class="hotel-name">The Upper House</h2>
+                <div class="hotel-location">香港</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Pacific Place, 88 Queensway, Admiralty, Hong Kong</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">The House Collective (Swire Hotels)</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2009年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    このホテルは49位、13位にもリストされています。香港の喧騒から隔絶された静寂の隠れ家として、設計哲学「上昇する旅」を体現した特別な空間です。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>全117室、最低68平方メートルという香港では類を見ない広さ</li>
+                        <li>壮大な石灰岩のバスタブから眺めるパノラマビュー</li>
+                        <li>400点以上のアート作品を展示</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 7 -->
+            <div class="hotel-card">
+                <div class="hotel-rank" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">7位</div>
+                <h2 class="hotel-name">Soneva Fushi</h2>
+                <div class="hotel-location">モルディブ</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Kunfunadhoo Island, Baa Atoll, Maldives</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Soneva</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">1995年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    このホテルは45位にもリストされています。「ベアフット・ラグジュアリー（裸足の贅沢）」という概念を世界に広めてきた先駆者として、「No News, No Shoes」の哲学を体現しています。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>「No News, No Shoes」を掲げる、サステナブルな裸足のラグジュアリーリゾート</li>
+                        <li>海へと続くウォータースライダー</li>
+                        <li>星空を観察できる天文台</li>
+                        <li>海洋生物に配慮した屋外シネマ「シネマ・パラディソ」</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 6 -->
+            <div class="hotel-card">
+                <div class="hotel-rank" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">6位</div>
+                <h2 class="hotel-name">The Connaught</h2>
+                <div class="hotel-location">ロンドン、イギリス</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Carlos Place, Mayfair, London, United Kingdom</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Maybourne Hotel Group</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">1815年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    このホテルは47位、12位にもリストされています。ロンドンの高級地区メイフェアの中心に佇む、1815年創業の英国らしい洗練と時代を超えたエレガンスの象徴です。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>世界最高のバーの一つとして名高い「コノート・バー」</li>
+                        <li>象徴的なマティーニ・トロリーのサービス</li>
+                        <li>アマン・スパ</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 5 -->
+            <div class="hotel-card">
+                <div class="hotel-rank" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">5位</div>
+                <h2 class="hotel-name">The Opposite House</h2>
+                <div class="hotel-location">北京、中国</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Taikoo Li Sanlitun North, No. 11 Sanlitun Road, Chaoyang District, Beijing, China</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">The House Collective (Swire Hotels)</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2008年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    伝統的な中庭と現代アートが融合した、隈研吾設計のデザインホテルとして知られています。北京のサンリトゥン地区の中心に位置し、伝統的な中国建築の美しさと現代的なデザインが見事に調和した独特の空間を提供します。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>隈研吾による建築設計</li>
+                        <li>伝統的な中庭と現代アートの融合</li>
+                        <li>サンリトゥン地区の中心に位置</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hotel 4 -->
+            <div class="hotel-card">
+                <div class="hotel-rank" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">4位</div>
+                <h2 class="hotel-name">Passalacqua</h2>
+                <div class="hotel-location">コモ湖、イタリア</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Via Besana, 59, 22010 Moltrasio, Como, Italy</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Independent (De Santis Family)</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">1787年（ヴィラとして）、2022年（ホテルとして）</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    コモ湖のほとり、モルトラージオの村を見下ろす丘に佇むパッサラックアは、単なるホテルではなく、親しい友人の壮麗な私邸に招かれたかのような、親密で特別な体験を提供します。この場所は、かつて教皇インノケンティウス11世が所有した土地に建てられ、18世紀末に貴族アンドレア・ルチーニ＝パッサラックア伯爵のために建てられた歴史的なヴィラでした。ナポレオンやチャーチルも滞在し、作曲家ヴィンチェンツォ・ベッリーニがオペラ『夢遊病の女』を作曲した場所としても知られています。2018年、コモ湖の象徴であるグランド・ホテル・トレメッツォを所有するデ・サンティス家がこのヴィラを取得し、3年にもわたる情熱的な修復作業の末、2022年6月に世界に向けてその扉を開きました。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>18世紀の貴族の邸宅を蘇らせた、コモ湖畔のプライベートな楽園</li>
+                        <li>わずか24室のスイートは、メインヴィラ、旧厩舎、そして湖畔の建物の3棟に分かれる</li>
+                        <li>オリジナルのフレスコ画、ムラーノガラスのシャンデリア、金箔の鏡、19世紀の肖像画など、豪華絢爛なバロック様式の装飾</li>
+                        <li>ユニークな「ホームスタイル」ダイニング - オープンキッチンに自由に出入りし、シェフと会話を交わしながら食事の場所を選ぶことができる</li>
+                        <li>段々畑状の壮麗な庭園</li>
+                        <li>ベッペ船長の操るヴィンテージのリーヴァ製ボートで湖上クルーズ</li>
+                        <li>ホテルの鮮やかなオレンジ色のフィアット500でドライブ</li>
+                    </ul>
+                </div>
+                <div class="travel-tips">
+                    <h4>旅のヒント</h4>
+                    <p>ミラノ・マルペンサ空港（MXP）から車で約1時間です。その親密さとエクスクルーシブな性質から、予約は1年以上前から行うことが強く推奨されます。言語は主にイタリア語と英語ですが、極めてパーソナルなサービスが、言葉の壁を越えた普遍的なホスピタリティを保証します。2023年に世界最高のホテルの栄冠に輝いたその伝説は、今もなお色褪せることはありません。</p>
+                </div>
+            </div>
+
+            <!-- Hotel 1 -->
+            <div class="hotel-card" style="border: 3px solid #ffd700; box-shadow: 0 8px 40px rgba(255, 215, 0, 0.3);">
+                <div class="hotel-rank" style="background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); font-size: 18px; padding: 10px 24px;">1位 🥇 世界最高のホテル</div>
+                <h2 class="hotel-name" style="color: #1a1a2e; font-size: 42px;">Rosewood Hong Kong</h2>
+                <div class="hotel-location">香港</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">Victoria Dockside, 18 Salisbury Road, Tsim Sha Tsui, Kowloon, Hong Kong</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Rosewood Hotels & Resorts</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2019年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    2025年の世界最高のホテルの栄冠に輝いたのは、ローズウッド香港です。香港・九龍のウォーターフロントに新たな重力中心としてそびえ立つローズウッド香港は、単なるホテルではなく、街のスカイラインを再定義する「垂直の邸宅」です。建築事務所Kohn Pedersen Fox（KPF）による洗練された超高層タワーは、ヴィクトリア・ハーバーのパノラマビューを最大限に引き出すように設計されています。一歩足を踏み入れると、著名なデザイナー、トニー・チーが手掛けた、邸宅のような温かみと贅沢さを兼ね備えた空間が広がります。このホテルは、アートとデザインの複合施設「ヴィクトリア・ドックサイド」の中核をなしており、単なる宿泊施設を超えた文化的なハブとしての役割を担っています。2年連続で表彰台に立った後、ローズウッド香港は今年の第1位を獲得し、「世界最高のホテル2025」の称号を授かりました。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>ヴィクトリア・ハーバーの摩天楼にそびえる「垂直の邸宅」</li>
+                        <li>ヴィクトリア・ハーバーのパノラマビューを最大限に引き出す設計</li>
+                        <li>著名なデザイナー、トニー・チーによる邸宅のような温かみと贅沢さ</li>
+                        <li>アートとデザインの複合施設「ヴィクトリア・ドックサイド」の中核</li>
+                        <li>包括的なウェルネス施設「Asaya」 - スパやフィットネス、栄養学や心理学の専門家によるプログラム</li>
+                        <li>ミシュランの星を獲得したインド料理「CHAAT」や広東料理「The Legacy House」</li>
+                        <li>フォーブス・トラベルガイドでホテルとスパの両方が5つ星を繰り返し獲得</li>
+                    </ul>
+                </div>
+                <div class="travel-tips">
+                    <h4>旅のヒント</h4>
+                    <p>香港国際空港（HKG）からは、エアポート・エクスプレスで九龍駅まで行き、そこからタクシーを利用するのがスムーズです（合計約30～40分）。ホテルスタッフは英語と中国語が主ですが、国際的なホテルであるため、日本人ゲストへの対応もきめ細やかです。一部日本語対応可能なスタッフもいます。香港の象徴的なスカイラインを心ゆくまで堪能するには、ハーバービューの客室の予約が不可欠です。1泊の料金は約117,519円からです。</p>
+                </div>
+            </div>
+
+            <!-- Hotel 2 -->
+            <div class="hotel-card">
+                <div class="hotel-rank" style="background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 100%); font-size: 16px; padding: 8px 20px;">2位 🥈</div>
+                <h2 class="hotel-name">Four Seasons Hotel Bangkok at Chao Phraya River</h2>
+                <div class="hotel-location">バンコク、タイ</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">300/1 Charoen Krung Road, Sathorn, Bangkok, Thailand</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Four Seasons Hotels and Resorts</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2020年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    フォーシーズンズホテル・バンコク・アット・チャオプラヤ・リバーは、「アーバンリゾート」という概念を新たな高みへと引き上げた傑作です。チャオプラヤ川の雄大な流れに沿って広がるこのホテルは、著名なデザイナー、ジャン＝ミシェル・ギャシーのビジョンによって生み出されました。彼のデザインは、幾重にも重なる緑豊かな中庭、流れる水、そして屋内と屋外をシームレスに繋ぐ空間を特徴とし、川の流れと呼応するようなダイナミックでありながらも静謐な環境を創り出しています。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>チャオプラヤ川沿いに広がる、アートと緑が融合した都会のサンクチュアリ</li>
+                        <li>著名なデザイナー、ジャン＝ミシェル・ギャシーによるビジョン</li>
+                        <li>幾重にも重なる緑豊かな中庭、流れる水、そして屋内と屋外をシームレスに繋ぐ空間</li>
+                        <li>curatedされたアートコレクションが点在し、専用のアートスペースも設けられる</li>
+                        <li>ミシュランの星を獲得した広東料理「Yu Ting Yuan」</li>
+                        <li>アジアのベストバーに常に名を連ねる伝説的なバー「BKK Social Club」</li>
+                        <li>最高級のプライベートレジデンスも併設</li>
+                    </ul>
+                </div>
+                <div class="travel-tips">
+                    <h4>旅のヒント</h4>
+                    <p>スワンナプーム国際空港（BKK）から車で約40分です。ホテル専用の無料ボートが、巨大ショッピングモール「ICONSIAM」やBTSスカイトレインのサトーン駅に接続するサトーン船着場まで運行しており、市内の移動に非常に便利です。日本人スタッフが常駐しているとは限りませんが、世界的に評価の高いフォーシーズンズのサービスが、言語の壁を感じさせない快適な滞在を保証します。このホテルのユニークな立地を最大限に楽しむためには、リバービューの客室を予約することを強くお勧めします。1泊の料金は約93,571円からです。</p>
+                </div>
+            </div>
+
+            <!-- Hotel 3 -->
+            <div class="hotel-card">
+                <div class="hotel-rank" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); font-size: 16px; padding: 8px 20px;">3位 🥉</div>
+                <h2 class="hotel-name">Capella Bangkok</h2>
+                <div class="hotel-location">バンコク、タイ</div>
+                <div class="hotel-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value">300/2 Charoenkrung Road, Yannawa, Sathorn, Bangkok, Thailand</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ホテルチェーン</div>
+                        <div class="info-value">Capella Hotels and Resorts</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">開業年</div>
+                        <div class="info-value">2020年</div>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    カペラ・バンコクは、「アーバンリゾート」のトレンドを完璧に体現し、チャオプラヤ川のほとりで都会の喧騒から逃れる静寂の聖域を提供します。建築事務所ハミルトンズ・インターナショナルとインテリアデザイン事務所BAMOの協業によって生まれた空間は、歴史あるチャルンクルン地区の「文化のコラージュ」を、重層的なテクスチャーと地元の職人技を通して見事に捉えています。
+                </div>
+                <div class="hotel-highlights">
+                    <h4>主な特徴</h4>
+                    <ul>
+                        <li>チャオプラヤ川の魂と繋がる、全室リバービューの都会的リトリート</li>
+                        <li>全101室のスイートとヴィラは、すべてが川に面しており、プライベートバルコニーやプランジプール付きのベランダからパノラマビューを望むことができる</li>
+                        <li>単なる客室ではなく、ゲスト一人ひとりのためのプライベートなサンクチュアリ</li>
+                        <li>ミシュラン二つ星を獲得したマウロ・コラグレコ監修の「Côte」 - それ自体が訪れるべき目的地</li>
+                        <li>「カペラ・カルチャリスト」の存在 - 滞在前からゲストに寄り添い、パーソナライズされた旅を創造</li>
+                        <li>単なる宿泊を、深く個人的な発見の旅へと昇華させるホリスティックなアプローチ</li>
+                        <li>フォーブス・トラベルガイドの5つ星評価を複数回獲得</li>
+                    </ul>
+                </div>
+                <div class="travel-tips">
+                    <h4>旅のヒント</h4>
+                    <p>スワンナプーム国際空港（BKK）から約40～50分。BTSスカイトレインへのアクセスは、ホテルのプライベート船着場からサトーン船着場への無料シャトルボートが最も便利です。カペラ・カルチャリストによる極めてパーソナルなサービスが、言葉の壁を感じさせない、深く没入できる快適な滞在を保証します。1泊の料金は約156,778円からです。</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Philosophy Section -->
+    <div class="philosophy-section">
+        <div class="container">
+            <h2 style="text-align: center; font-family: 'Playfair Display', serif; font-size: 42px; margin-bottom: 50px; color: #1a1a2e;">世界を牽引するホテルブランドの哲学</h2>
+            
+            <div class="philosophy-card">
+                <h3>ローズウッド：「A Sense of Place®」—文化を映し出す鏡としてのホテル</h3>
+                <p>ローズウッド・ホテルズ＆リゾーツの根幹をなすのは、「A Sense of Place®（場所の感覚）」という哲学です。これは、それぞれのホテルが画一的なブランドイメージを押し付けるのではなく、その土地固有の歴史、文化、地理的景観を深く反映し、そこからアイデンティティを引き出すべきだという考え方です。このアプローチにより、ローズウッドのホテルは一つとして同じものはなく、それぞれがその土地ならではの物語を語る唯一無二の存在となります。</p>
+            </div>
+
+            <div class="philosophy-card">
+                <h3>フォーシーズンズ：「ゴールデンルール」—サービスの絶対的優位性</h3>
+                <p>フォーシーズンズ ホテル アンド リゾートの成功は、創業者イザドア・シャープが掲げたシンプルな行動規範「ゴールデンルール」に集約されます。それは、「自分がしてもらいたいように、人にも接する」という普遍的な原則です。この哲学は、ラグジュアリーを豪華さや贅沢品ではなく、「心からの配慮」や「意義ある帰属意識」として定義します。</p>
+            </div>
+
+            <div class="philosophy-card">
+                <h3>カペラ：「クラフトマンシップ」—カルチャリストと創造される旅</h3>
+                <p>カペラ ホテルズ＆リゾーツは、「ホスピタリティという工芸（クラフト）における卓越性」を追求しています。その哲学を最も象徴するのが、「カペラ・カルチャリスト」という独自の存在です。彼らは単なるコンシェルジュではなく、地域の専門家であり、物語の語り部として、ゲスト一人ひとりのためにパーソナライズされた文化的な旅を創造します。</p>
+            </div>
+
+            <div class="philosophy-card">
+                <h3>ラッフルズ：「伝説のサービス」—生き続ける歴史</h3>
+                <p>1887年の創業以来、ラッフルズ ホテルズ＆リゾーツは、その深い歴史的ルーツをブランドの核とし、時代を超えた魅力と魔法のような雰囲気を醸し出してきました。ラッフルズは自らを「コミュニティの管理者」であり「文化の擁護者」と位置づけています。この哲学を具体的に体現しているのが、創業以来の伝統である伝説的な「ラッフルズ・バトラー」サービスです。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <p>このガイドは、単なるランキングではありません。それは、世界中の卓越したホスピタリティを巡る旅への招待状です。<br>
+            それぞれのホテルが紡ぎ出す物語を通じて、皆様の次の旅へのインスピレーションが湧き上がることを願っています。</p>
+            
+            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                <p style="font-size: 14px; opacity: 0.9; line-height: 1.8; max-width: 800px; margin: 0 auto;">
+                    <strong>📝 ご注意</strong><br>
+                    この内容は<a href="https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-list.html" target="_blank" rel="noopener noreferrer" style="color: #FFD700; text-decoration: underline;">The World's 50 Best Hotels 2025</a>のランキングを日本語で編集したもので、<br>
+                    あくまでこのランキングを理解しやすくすることと、楽しんで読めるようにすることを目的としています。<br>
+                    公式情報や詳細については、公式ウェブサイトをご確認ください。
+                </p>
+            </div>
+            
+            <p style="margin-top: 30px; opacity: 0.6; font-size: 14px;">© 2025 世界最高のホテル50選ガイド</p>
+        </div>
+    </div>
+
+</body>
+</html>

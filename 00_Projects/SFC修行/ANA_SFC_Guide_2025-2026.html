@@ -116,12 +116,15 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
+            align-items: stretch;
             background-color: transparent;
             position: relative;
             overflow: visible;
             box-shadow: none;
             border-radius: 0;
             padding: 0;
+            width: 100%;
+            box-sizing: border-box;
         }
         
         @media (max-width: 768px) {
@@ -235,6 +238,46 @@
             .bullet-item {
                 font-size: var(--font-size-bullet-item-mobile);
                 margin-bottom: 16px;
+                align-items: baseline !important;
+            }
+            
+            /* 通常の箇条書き（ul/li）のモバイル対応 */
+            /* インラインスタイルでpadding-leftが指定されているul/liはドットなし */
+            .slide ul[style*="padding-left"] li,
+            .slide ul[style*="margin-left"] li {
+                line-height: 1.6 !important;
+                margin-bottom: 8px !important;
+                display: list-item !important;
+                list-style: none !important;
+            }
+            
+            .slide ul[style*="padding-left"] li:last-child,
+            .slide ul[style*="margin-left"] li:last-child {
+                margin-bottom: 0 !important;
+            }
+            
+            /* 目次もドットなし */
+            .toc-list,
+            .toc-items {
+                list-style: none !important;
+            }
+            
+            .toc-list li,
+            .toc-items li {
+                list-style: none !important;
+            }
+            
+            /* 通常のul/ol（インラインスタイルがない場合）のみドットあり */
+            .slide ul:not(.bullet-list):not(.toc-list):not(.toc-items):not([style*="padding-left"]):not([style*="margin-left"]) li,
+            .slide ol li {
+                line-height: 1.6 !important;
+                margin-bottom: 8px !important;
+                display: list-item !important;
+            }
+            
+            .slide ul:not(.bullet-list):not(.toc-list):not(.toc-items):not([style*="padding-left"]):not([style*="margin-left"]) li:last-child,
+            .slide ol li:last-child {
+                margin-bottom: 0 !important;
             }
             
             .slide-container {
@@ -507,8 +550,8 @@
             font-weight: 500;
             margin-bottom: 20px;
             display: flex;
-            align-items: flex-start;
-            line-height: 1.4;
+            align-items: baseline;
+            line-height: 1.6;
             width: 100%;
             box-sizing: border-box;
         }
@@ -520,6 +563,7 @@
             box-sizing: border-box;
             word-wrap: break-word;
             overflow-wrap: break-word;
+            line-height: 1.6;
         }
         
         .bullet-item-wrapper {
@@ -536,10 +580,60 @@
             box-sizing: border-box;
         }
 
-        .bullet-marker {
-            color: #0071e3;
-            margin-right: 16px;
-            font-weight: bold;
+        /* 通常の箇条書き（ul/li）のスタイル統一 */
+        /* インラインスタイルでpadding-leftが指定されているul/liはドットなし */
+        .slide ul[style*="padding-left"],
+        .slide ul[style*="margin-left"] {
+            margin: 0;
+            padding-left: 24px;
+            line-height: 1.6;
+            list-style: none !important;
+        }
+        
+        .slide ul[style*="padding-left"] li,
+        .slide ul[style*="margin-left"] li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+            display: list-item;
+            list-style: none !important;
+        }
+        
+        .slide ul[style*="padding-left"] li:last-child,
+        .slide ul[style*="margin-left"] li:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* 目次もドットなし */
+        .toc-list,
+        .toc-items {
+            list-style: none !important;
+        }
+        
+        .toc-list li,
+        .toc-items li {
+            list-style: none !important;
+        }
+        
+        /* 通常のul/ol（インラインスタイルがない場合）のみドットあり */
+        .slide ul:not(.bullet-list):not(.toc-list):not(.toc-items):not([style*="padding-left"]):not([style*="margin-left"]),
+        .slide ol {
+            margin: 0;
+            padding-left: 24px;
+            line-height: 1.6;
+            list-style-position: outside;
+        }
+        
+        .slide ul:not(.bullet-list):not(.toc-list):not(.toc-items):not([style*="padding-left"]):not([style*="margin-left"]) li,
+        .slide ol li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+            display: list-item;
+            list-style-type: disc;
+        }
+        
+        .slide ul:not(.bullet-list):not(.toc-list):not(.toc-items):not([style*="padding-left"]):not([style*="margin-left"]) li:last-child,
+        .slide ol li:last-child {
+            margin-bottom: 0;
         }
 
         .highlight {
@@ -556,10 +650,11 @@
 
         .card-options {
             display: flex;
-            flex-wrap: wrap;
-            margin-left: 32px;
+            flex-direction: column;
+            margin-left: 0;
             margin-top: 12px;
-            width: calc(100% - 32px);
+            width: 100%;
+            gap: 8px;
         }
         
         @media (max-width: 768px) {
@@ -567,14 +662,48 @@
                 margin-left: 0 !important;
                 width: 100% !important;
             }
+            
+            .card-option {
+                font-size: var(--font-size-body) !important;
+                margin-right: 0 !important;
+                margin-bottom: 12px !important;
+                width: 100% !important;
+            }
+            
+            .card-option p {
+                font-size: var(--font-size-body) !important;
+                line-height: 1.6 !important;
+            }
+            
+            .card-option .date {
+                font-size: var(--font-size-tiny-text) !important;
+            }
         }
 
         .card-option {
             font-size: 22px;
             margin-right: 20px;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
+            list-style: none !important;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        
+        .card-option p {
+            margin: 0;
+            flex: 1;
+            min-width: 0;
+            word-wrap: break-word;
+            line-height: 1.6;
+        }
+        
+        .card-option .date {
+            font-size: var(--font-size-tiny-text);
+            color: #86868b;
+            font-weight: 400;
+            margin-left: 4px;
         }
 
         .card-option-marker {
@@ -797,11 +926,20 @@
                 overflow-wrap: break-word !important;
                 padding-right: 0 !important;
                 margin-right: 0 !important;
+                align-items: flex-start !important;
             }
             
             .bullet-item .bullet-marker {
                 flex-shrink: 0 !important;
                 margin-right: 12px !important;
+                line-height: 1.6 !important;
+                display: inline-block !important;
+                margin-top: 0.1em !important;
+            }
+            
+            .bullet-item > p {
+                line-height: 1.6 !important;
+                margin: 0 !important;
             }
             
             .bullet-item-content {
@@ -1132,6 +1270,10 @@
             padding: 0;
             margin: 0 0 12px 0;
         }
+        
+        .feature-list li {
+            list-style: none !important;
+        }
 
         .feature-item {
             font-size: 18px;
@@ -1140,6 +1282,7 @@
             display: flex;
             align-items: flex-start;
             line-height: 1.3;
+            list-style: none !important;
         }
 
         .feature-marker {
@@ -1436,6 +1579,11 @@
             padding-left: 8px;
             margin: 0;
         }
+        
+        .pros-list li,
+        .cons-list li {
+            list-style: none !important;
+        }
 
         .pros-item, .cons-item {
             font-size: 18px;
@@ -1443,6 +1591,7 @@
             display: flex;
             align-items: flex-start;
             line-height: 1.4;
+            list-style: none !important;
         }
 
         .pros-item p, .cons-item p {
@@ -1890,6 +2039,10 @@
             padding: 0;
             margin: 0;
         }
+        
+        .failure-list li {
+            list-style: none !important;
+        }
 
         .failure-item {
             font-size: 28px;
@@ -1898,6 +2051,7 @@
             display: flex;
             align-items: flex-start;
             line-height: 1.4;
+            list-style: none !important;
         }
 
         .warning-icon-red {
@@ -2129,6 +2283,179 @@
             margin-left: 10px;
         }
         
+        /* SFC切替手続き以降のセクション：レイアウト統一 */
+        /* slide-11と同じレイアウトにするため、slide-titleのpadding-leftとborder-leftを維持 */
+        #slide-12 .slide-title,
+        [id="slide-12.4"] .slide-title,
+        [id="slide-12.5"] .slide-title,
+        #slide-13 .slide-title,
+        #slide-14 .slide-title,
+        #slide-15 .slide-title,
+        #slide-16 .slide-title,
+        #slide-17 .slide-title,
+        #slide-19 .slide-title {
+            padding-left: 24px;
+            border-left: 4px solid #0071e3;
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        #slide-12 .slide-container,
+        [id="slide-12.4"] .slide-container,
+        [id="slide-12.5"] .slide-container,
+        #slide-13 .slide-container,
+        #slide-14 .slide-container,
+        #slide-15 .slide-container,
+        #slide-16 .slide-container,
+        #slide-17 .slide-container,
+        #slide-19 .slide-container {
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
+        }
+        
+        #slide-12 .content-wrapper,
+        [id="slide-12.4"] .content-wrapper,
+        [id="slide-12.5"] .content-wrapper,
+        #slide-13 .content-wrapper,
+        #slide-14 .content-wrapper,
+        #slide-15 .content-wrapper,
+        #slide-16 .content-wrapper,
+        #slide-17 .content-wrapper,
+        #slide-19 .content-wrapper {
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
+        }
+        
+        #slide-12 .content-area,
+        [id="slide-12.4"] .content-area,
+        [id="slide-12.5"] .content-area,
+        #slide-13 .content-area,
+        #slide-14 .content-area,
+        #slide-15 .content-area,
+        #slide-16 .content-area,
+        #slide-17 .content-area,
+        #slide-19 .content-area {
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
+        }
+        
+        /* SFC切替手続き以降のセクション：モバイル対応 */
+        @media (max-width: 768px) {
+            #slide-12,
+            [id="slide-12.4"],
+            [id="slide-12.5"],
+            #slide-13,
+            #slide-14,
+            #slide-15,
+            #slide-16,
+            #slide-17,
+            #slide-19 {
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+                margin-left: 16px !important;
+                margin-right: 16px !important;
+            }
+            
+            #slide-12 .slide-title,
+            [id="slide-12.4"] .slide-title,
+            [id="slide-12.5"] .slide-title,
+            #slide-13 .slide-title,
+            #slide-14 .slide-title,
+            #slide-15 .slide-title,
+            #slide-16 .slide-title,
+            #slide-17 .slide-title,
+            #slide-19 .slide-title {
+                padding-left: 0 !important;
+                border-left: none !important;
+                width: 100% !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+            
+            #slide-12 .slide-container,
+            [id="slide-12.4"] .slide-container,
+            [id="slide-12.5"] .slide-container,
+            #slide-13 .slide-container,
+            #slide-14 .slide-container,
+            #slide-15 .slide-container,
+            #slide-16 .slide-container,
+            #slide-17 .slide-container,
+            #slide-19 .slide-container {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                width: 100% !important;
+            }
+            
+            #slide-12 .content-wrapper,
+            [id="slide-12.4"] .content-wrapper,
+            [id="slide-12.5"] .content-wrapper,
+            #slide-13 .content-wrapper,
+            #slide-14 .content-wrapper,
+            #slide-15 .content-wrapper,
+            #slide-16 .content-wrapper,
+            #slide-17 .content-wrapper,
+            #slide-19 .content-wrapper {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                width: 100% !important;
+            }
+            
+            #slide-12 .content-area,
+            [id="slide-12.4"] .content-area,
+            [id="slide-12.5"] .content-area,
+            #slide-13 .content-area,
+            #slide-14 .content-area,
+            #slide-15 .content-area,
+            #slide-16 .content-area,
+            #slide-17 .content-area,
+            #slide-19 .content-area {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            
+            /* SFC切替手続きのflow-containerの調整 */
+            #slide-12 .flow-container {
+                width: 100% !important;
+                padding: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                box-sizing: border-box !important;
+            }
+            
+            #slide-12 .flow-steps {
+                padding: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            
+            #slide-12 .flow-line,
+            #slide-12 .arrows {
+                left: 0 !important;
+                right: 0 !important;
+            }
+        }
+        
         /* 11つ目のスライド用スタイル（SFC切替手続き） */
         .flow-container {
             flex: 1;
@@ -2147,7 +2474,7 @@
             justify-content: space-between;
             position: relative;
             margin-bottom: 30px;
-            padding: 0 40px;
+            padding: 0;
             z-index: 2;
             width: 100%;
             box-sizing: border-box;
@@ -2156,8 +2483,8 @@
         .flow-line {
             position: absolute;
             top: 40px;
-            left: 40px;
-            right: 40px;
+            left: 0;
+            right: 0;
             height: 3px;
             background-color: #e5e5e5;
             z-index: 1;
@@ -2215,8 +2542,8 @@
         .arrows {
             position: absolute;
             top: 0;
-            left: 40px;
-            right: 40px;
+            left: 0;
+            right: 0;
             height: 80px;
             z-index: 1;
             pointer-events: none;
@@ -2339,13 +2666,18 @@
             padding: 0;
             margin: 0;
         }
-
+        
+        .recommendation-list li {
+            list-style: none !important;
+        }
+        
         .recommendation-item {
             font-size: 22px;
             margin-bottom: 12px;
             display: flex;
             align-items: flex-start;
             line-height: 1.4;
+            list-style: none !important;
         }
 
         .recommendation-item p {
@@ -2440,10 +2772,12 @@
         
         .toc-item-number {
             display: inline-block;
-            min-width: 32px;
+            min-width: 36px;
             font-weight: 700;
             color: #86868b;
             font-size: 16px;
+            text-align: right;
+            flex-shrink: 0;
         }
         
         .toc-item a:hover .toc-item-number {
@@ -2887,11 +3221,9 @@
                         <div class="content-area">
                             <ul class="bullet-list">
                                 <li class="bullet-item">
-                                    <span class="bullet-marker">•</span>
                                     <p>カードは「<span class="accent">ANA VISA/マスター/JCB/AMEX/Diners</span>」から目的別に選択</p>
                                 </li>
                                 <li class="bullet-item">
-                                    <span class="bullet-marker">•</span>
                                     <div class="bullet-item-content">
                                         <p>各カードの<span class="highlight">強み別</span>の最適選択：</p>
                                         <div class="card-options">
@@ -2901,37 +3233,32 @@
                                             </div>
                                             <div class="card-option">
                                                 <span class="card-option-marker"></span>
-                                                <p>JCB：62,000マイル。90,000マイル当たる抽選あり</p>
+                                                <p>JCB：62,000マイル。90,000マイル当たる抽選あり<span class="date">（〜2026/2/28）</span></p>
                                             </div>
                                             <div class="card-option">
                                                 <span class="card-option-marker"></span>
-                                                <p>AMEX：最大100,000マイル、航空券購入3%還元</p>
+                                                <p>AMEX：最大100,000マイル<span class="date">（紹介経由で+15,000マイル）</span><span class="date">（〜<span style="color: #ff3b30; font-weight: 700;">2025/11/5</span>）</span></p>
                                             </div>
                                             <div class="card-option">
                                                 <span class="card-option-marker"></span>
-                                                <p>Diners：最大122,000マイル、ラウンジ無制限</p>
+                                                <p>Diners：最大122,000マイル<span class="date">（〜2026/3/31）</span></p>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
                                 <li class="bullet-item">
-                                    <span class="bullet-marker">•</span>
                                     <p><span class="accent">ANAマイ友プログラム</span>登録で追加マイル獲得（一般カード500マイル、ワイドゴールド2,000マイル、プレミアム5,400マイル。カード申込前に要登録）</p>
                                 </li>
                                 <li class="bullet-item">
-                                    <span class="bullet-marker">•</span>
                                     <p>修行前に発行し、SFC切替は<span class="highlight">"審査なし"で安全に</span></p>
                                 </li>
                                 <li class="bullet-item">
-                                    <span class="bullet-marker">•</span>
                                     <p>2026年5月19日までの搭乗分を目標に、計画的に修行を進める</p>
                                 </li>
                                 <li class="bullet-item">
-                                    <span class="bullet-marker">•</span>
                                     <p>家族カードで特典をシェア（配偶者の単独搭乗対策）</p>
                                 </li>
                                 <li class="bullet-item">
-                                    <span class="bullet-marker">•</span>
                                     <p>リスクは「未所持での新規審査」→ <span class="accent">事前発行で回避</span></p>
                                 </li>
                             </ul>
@@ -2959,12 +3286,12 @@
                                         <li class="toc-item"><a href="#slide-9"><span class="toc-item-number">9</span><span>家族カード活用戦略</span></a></li>
                                         <li class="toc-item"><a href="#slide-10"><span class="toc-item-number">10</span><span>よくある失敗パターンと回避策</span></a></li>
                                         <li class="toc-item"><a href="#slide-11"><span class="toc-item-number">11</span><span>オプション：ダイヤモンド達成のライフソリューション戦略</span></a></li>
-                                        <li class="toc-item"><a href="#slide-14"><span class="toc-item-number">14</span><span>アクションプラン：今すぐやるべきこと</span></a></li>
                                     </ul>
                                 </li>
                                 <li class="toc-section">
                                     <h2 class="toc-section-title">実践編：SFC申込</h2>
                                     <ul class="toc-items">
+                                        <li class="toc-item"><a href="#slide-14"><span class="toc-item-number">14</span><span>アクションプラン：今すぐやるべきこと</span></a></li>
                                         <li class="toc-item"><a href="#slide-12"><span class="toc-item-number">12</span><span>SFC切替手続き（5ステップ）</span></a></li>
                                         <li class="toc-item"><a href="#slide-12.4"><span class="toc-item-number">12.4</span><span>SFCカード対応と家族カード年会費一覧</span></a></li>
                                         <li class="toc-item"><a href="#slide-12.5"><span class="toc-item-number">12.5</span><span>SFC取得後のカード戦略とリスク管理</span></a></li>
@@ -3003,15 +3330,12 @@
                                 <h2 class="section-title">カードの役割</h2>
                                 <ul class="bullet-list margin-bottom">
                                     <li class="bullet-item">
-                                        <span class="bullet-marker">•</span>
                                         <p>修行中の<span class="accent">マイル効率を最大化</span>（フライトボーナス/決済還元）</p>
                                     </li>
                                     <li class="bullet-item">
-                                        <span class="bullet-marker">•</span>
                                         <p>プラチナ達成後の<span class="highlight">SFC切替"母体"</span>になる</p>
                                     </li>
                                     <li class="bullet-item">
-                                        <span class="bullet-marker">•</span>
                                         <p>新規発行なら<span class="accent">入会特典</span>が<span class="highlight">修行費用の一部に</span>（実質費用削減が可能）</p>
                                     </li>
                                 </ul>
@@ -3020,11 +3344,9 @@
                                 <h2 class="section-title">選定基準</h2>
                                 <ul class="bullet-list margin-bottom">
                                     <li class="bullet-item">
-                                        <span class="bullet-marker">•</span>
                                         <p><span class="accent">SFC切替対象</span>であること</p>
                                     </li>
                                     <li class="bullet-item">
-                                        <span class="bullet-marker">•</span>
                                         <p><span class="highlight">ご自身の優先事項</span>に最適なカードを選択</p>
                                     </li>
                                 </ul>
@@ -3200,7 +3522,6 @@
                                 </div>
                                 <ul class="bullet-list">
                                     <li class="bullet-item">
-                                        <span class="bullet-marker">•</span>
                                         <p><span class="highlight">重要</span>：<span class="accent">ANAマイ友プログラム</span>登録でANAゴールドカードなら<span class="accent">+2,000マイル</span>（申込前に要登録・過去にマイ友プログラムを利用した場合は対象外）</p>
                                     </li>
                                 </ul>
@@ -3519,15 +3840,12 @@
                                 <div class="pattern-content">
                                     <ul class="recommendation-list">
                                         <li class="recommendation-item">
-                                            <span class="bullet-marker">•</span>
                                             <p><span class="accent">ANAワイドゴールド（VISA/Master/JCB）</span>を新規発行</p>
                                         </li>
                                         <li class="recommendation-item">
-                                            <span class="bullet-marker">•</span>
                                             <p>現在のキャンペーンを活用：<span class="highlight">JCB 62,000マイル</span>。90,000マイル当たる抽選あり、〜2026/2/28</p>
                                         </li>
                                         <li class="recommendation-item">
-                                            <span class="bullet-marker">•</span>
                                             <p>「マイ・ペイすリボ＋Web明細」設定で年会費を約1万円台に</p>
                                         </li>
                                     </ul>
@@ -3540,15 +3858,12 @@
                                 <div class="pattern-content">
                                     <ul class="recommendation-list">
                                         <li class="recommendation-item">
-                                            <span class="bullet-marker">•</span>
                                             <p><span class="accent">一般カード保有：</span>ワイドゴールド（VISA/JCB）へアップグレード</p>
                                         </li>
                                         <li class="recommendation-item">
-                                            <span class="bullet-marker">•</span>
                                             <p><span class="accent">ワイドゴールド保有：</span>そのまま修行開始（割引設定確認）</p>
                                         </li>
                                         <li class="recommendation-item">
-                                            <span class="bullet-marker">•</span>
                                             <p><span class="accent">Suica/PASMO等：</span><span class="highlight">SFC対象外</span>ため別途ワイドゴールド新規発行必須</p>
                                         </li>
                                     </ul>
@@ -3564,15 +3879,12 @@
                                             <h3 class="card-title-small">コスパ重視なら VISA/マスター</h3>
                                             <ul class="recommendation-list">
                                                 <li class="recommendation-item">
-                                                    <span class="bullet-marker">•</span>
                                                     <p>年会費割引設定で実質<span class="highlight">約10,450円</span>（業界最安水準）</p>
                                                 </li>
                                                 <li class="recommendation-item">
-                                                    <span class="bullet-marker">•</span>
                                                     <p>シンプルな設計でわかりやすい</p>
                                                 </li>
                                                 <li class="recommendation-item">
-                                                    <span class="bullet-marker">•</span>
                                                     <p><span style="color: #0071e3; font-weight: 600;">ルートA推奨</span>（ルートB選択時はVISA/マスターは非推奨）</p>
                                                 </li>
                                             </ul>
@@ -3581,11 +3893,9 @@
                                             <h3 class="card-title-small">大量マイル・特典重視なら JCB</h3>
                                             <ul class="recommendation-list">
                                                 <li class="recommendation-item">
-                                                    <span class="bullet-marker">•</span>
                                                     <p>現在<span class="highlight">62,000マイル</span>。90,000マイル当たる抽選あり</p>
                                                 </li>
                                                 <li class="recommendation-item">
-                                                    <span class="bullet-marker">•</span>
                                                     <p>ラウンジ・キー付帯（世界1,400ヶ所以上）</p>
                                                 </li>
                                             </ul>
@@ -3594,11 +3904,9 @@
                                             <h3 class="card-title-small">プレミアムサービス重視なら AMEX</h3>
                                             <ul class="recommendation-list">
                                                 <li class="recommendation-item">
-                                                    <span class="bullet-marker">•</span>
                                                     <p>最大<span class="highlight">100,000マイル</span>キャンペーン（〜<span style="color: #ff3b30; font-weight: 700;">11/5</span>）</p>
                                                 </li>
                                                 <li class="recommendation-item">
-                                                    <span class="bullet-marker">•</span>
                                                     <p>ANA航空券購入時<span class="highlight">マイル還元率3.0%</span></p>
                                                 </li>
                                             </ul>
@@ -3607,11 +3915,9 @@
                                             <h3 class="card-title-small">ビジネス利用者向け Diners</h3>
                                             <ul class="recommendation-list">
                                                 <li class="recommendation-item">
-                                                    <span class="bullet-marker">•</span>
                                                     <p>最大<span class="highlight">122,000マイル</span>キャンペーン（〜2026/3/31）</p>
                                                 </li>
                                                 <li class="recommendation-item">
-                                                    <span class="bullet-marker">•</span>
                                                     <p>空港ラウンジ<span class="highlight">無制限利用</span>、利用枠制限なし</p>
                                                 </li>
                                             </ul>
@@ -3636,23 +3942,18 @@
                                     <h2 class="section-title">キャンペーン活用の基本戦略</h2>
                                     <ul class="bullet-list">
                                         <li class="bullet-item">
-                                            <span class="bullet-marker">•</span>
                                             <p><span class="accent">目的に合ったカードを選択</span>：マイル重視ならJCB、コスト重視ならVISA/マスター</p>
                                         </li>
                                         <li class="bullet-item">
-                                            <span class="bullet-marker">•</span>
                                             <p>申込〜発行〜利用の<span class="highlight">各期間をエントリー</span>（各キャンペーンで必須）</p>
                                         </li>
                                         <li class="bullet-item">
-                                            <span class="bullet-marker">•</span>
                                             <p>航空券・宿泊・交通など<span class="accent">修行関連費用を集約決済</span>し利用額条件達成</p>
                                         </li>
                                         <li class="bullet-item">
-                                            <span class="bullet-marker">•</span>
                                             <p>家族カードは<span class="highlight">同時申込で追加ボーナス</span>（カード会社により異なる）</p>
                                         </li>
                                         <li class="bullet-item">
-                                            <span class="bullet-marker">•</span>
                                             <p>条件達成するまで<span class="accent">他カードへの浮気禁止</span>で獲得マイルを最大化</p>
                                         </li>
                                     </ul>
@@ -3842,23 +4143,18 @@
                                 <div class="left-content">
                                     <ul class="bullet-list">
                                         <li class="bullet-item">
-                                            <span class="bullet-marker">•</span>
                                             <p>配偶者が<span class="accent">単独搭乗する機会がある</span>なら家族カード発行がおすすめ</p>
                                         </li>
                                         <li class="bullet-item">
-                                            <span class="bullet-marker">•</span>
                                             <p>家族カード所持者にも<span class="highlight">ANAプラチナ相当の上級会員特典</span>が付与</p>
                                         </li>
                                         <li class="bullet-item">
-                                            <span class="bullet-marker">•</span>
                                             <p>ラウンジ利用・優先搭乗・手荷物優先を<span class="accent">本会員と同様に享受</span></p>
                                         </li>
                                         <li class="bullet-item">
-                                            <span class="bullet-marker">•</span>
                                             <p>家族カード2枚で<span class="highlight">計4名まで</span>ラウンジに無料で入室可能</p>
                                         </li>
                                         <li class="bullet-item">
-                                            <span class="bullet-marker">•</span>
                                             <p>本会員SFC到着後すぐに申込可能（本会員と別住所でもOK）</p>
                                         </li>
                                     </ul>
@@ -4467,23 +4763,18 @@
                         <div class="content-area">
                             <ul class="bullet-list">
                                 <li class="bullet-item">
-                                    <span class="bullet-marker">•</span>
                                     <p><span class="warning">SFC到着"前"にカードを解約しない</span><br/><span style="font-size: var(--font-size-h3-large); color: #666;">→ 資格を失います（再度50,000PP貯め直しが必要）</span></p>
                                 </li>
                                 <li class="bullet-item">
-                                    <span class="bullet-marker">•</span>
                                     <p>未所持でプラチナ到達＝<span class="warning-bg">新規審査一発勝負</span><br/><span style="font-size: var(--font-size-h3-large); color: #666;">→ 審査落ちで修行が水の泡に</span></p>
                                 </li>
                                 <li class="bullet-item">
-                                    <span class="bullet-marker">•</span>
                                     <p>国際ブランド変更時：<span class="accent">番号/AMCの統合に注意</span><br/><span style="font-size: var(--font-size-h3-large); color: #666;">→ VISA→JCB切替は要確認</span></p>
                                 </li>
                                 <li class="bullet-item">
-                                    <span class="bullet-marker">•</span>
                                     <p>年会費未払い＝資格停止リスク<br/><span style="font-size: var(--font-size-h3-large); color: #666;">→ 自動引落設定を確認</span></p>
                                 </li>
                                 <li class="bullet-item">
-                                    <span class="bullet-marker">•</span>
                                     <p>住所不一致＝申込書未着の遅延<br/><span style="font-size: var(--font-size-h3-large); color: #666;">→ 申込前にAMC会員情報を更新</span></p>
                                 </li>
                             </ul>
@@ -5017,11 +5308,9 @@
                         <div class="content-area">
                             <ul class="bullet-list">
                                 <li class="bullet-item">
-                                    <span class="bullet-marker">•</span>
                                     <p>成功の鍵＝<span class="accent">修行前のカード準備</span>と目的に合ったカード選択</p>
                                 </li>
                                 <li class="bullet-item">
-                                    <span class="bullet-marker">•</span>
                                     <div class="bullet-item-content">
                                     <p>目的別ベストカード：</p>
                                 <div class="card-options">
@@ -5045,15 +5334,12 @@
                                     </div>
                                 </li>
                                 <li class="bullet-item">
-                                    <span class="bullet-marker">•</span>
                                     <p><span class="accent">ANAマイ友プログラム</span>で追加マイル獲得（一般カード500マイル、ワイドゴールド2,000マイル、プレミアム5,400マイル）（カード申込前必須）</p>
                                 </li>
                                 <li class="bullet-item">
-                                    <span class="bullet-marker">•</span>
                                     <p>家族カードで満足度最大化（VISA/JCB：4,400円、AMEX：17,050円、Diners：11,550円）</p>
                                 </li>
                                 <li class="bullet-item">
-                                    <span class="bullet-marker">•</span>
                                     <p>リスクは事前対策で<span class="accent">"ゼロ"</span>に（SFC到着前のカード解約厳禁）</p>
                                 </li>
                             </ul>

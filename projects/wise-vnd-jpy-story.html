@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VND/JPY 比較（Instagram Stories）</title>
+    <style>
+      /* 固定サイズキャンバス: Instagram Stories 推奨 1080x1920 */
+      :root {
+        --canvas-w: 1080px;
+        --canvas-h: 1920px;
+        --bg: #ffffff;
+        --fg: #111111;
+        --muted: #666666;
+        --border: #e5e7eb; /* 明るいグレー */
+      }
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: #f5f5f5;
+        font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+        color: var(--fg);
+      }
+
+      .stage {
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        box-sizing: border-box;
+      }
+
+      .canvas {
+        width: var(--canvas-w);
+        height: var(--canvas-h);
+        background: var(--bg);
+        box-sizing: border-box;
+        border-radius: 24px;
+        box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+        display: flex;
+        flex-direction: column;
+        padding: 48px 48px 40px;
+        overflow: hidden;
+      }
+
+      header {
+        margin-bottom: 28px;
+      }
+
+      .title {
+        font-size: 40px;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+        margin: 0 0 6px;
+      }
+
+      .subtitle {
+        font-size: 20px;
+        color: var(--muted);
+        margin: 0;
+      }
+
+      .note {
+        font-size: 16px;
+        color: var(--muted);
+        margin: 8px 0 0;
+      }
+
+      .table-wrap {
+        width: 100%;
+        flex: 1 1 auto;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+        background: #fff;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: auto; /* ブラウザに最適幅を計算させる */
+      }
+
+      thead th {
+        background: #fafafa;
+        font-weight: 700;
+        font-size: 19px;
+        border-bottom: 1px solid var(--border);
+        padding: 12px 8px 10px; /* 横パディングを微減 */
+        text-align: left;
+        vertical-align: bottom;
+        line-height: 1.15;
+      }
+
+      thead th .sub {
+        display: block;
+        font-weight: 600;
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.2;
+        margin-top: 2px;
+      }
+
+      tbody td {
+        font-size: 17px;
+        border-bottom: 1px solid var(--border);
+        padding: 12px 8px; /* 横パディングを微減 */
+        vertical-align: top;
+        line-height: 1.5;
+        word-break: keep-all;
+        overflow-wrap: anywhere; /* 長い語を折り返し */
+      }
+
+      /* 数値を右寄せ */
+      .num { text-align: right; }
+      .center { text-align: center; }
+
+      .badge {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: #f0f2f5;
+        color: #111;
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 1;
+        white-space: nowrap;
+      }
+
+      /* 列幅の調整（合計100%） */
+      colgroup col:nth-child(1) { width: 6%; }   /* No. */
+      colgroup col:nth-child(2) { width: 10%; }  /* 日付 */
+      colgroup col:nth-child(3) { width: 9%; }   /* カード */
+      colgroup col:nth-child(4) { width: 14%; }  /* 店舗／用途 */
+      colgroup col:nth-child(5) { width: 17%; }  /* 海外通貨額 */
+      colgroup col:nth-child(6) { width: 14%; }  /* 請求額 */
+      colgroup col:nth-child(7) { width: 8%; }   /* 手数料率 */
+      colgroup col:nth-child(8) { width: 22%; }  /* 備考 */
+
+      footer {
+        margin-top: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--muted);
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stage">
+      <div class="canvas" role="img" aria-label="VND/JPY比較表">
+        <header>
+          <h1 class="title">VND ⇄ JPY 比較</h1>
+          <p class="subtitle">カード請求 vs Wise基準換算（2025-09〜10）</p>
+          <p class="note">Instagram Stories 1080×1920 レイアウト（シンプル）</p>
+        </header>
+
+        <div class="table-wrap">
+          <table>
+            <colgroup>
+              <col /><col /><col /><col /><col /><col /><col /><col />
+            </colgroup>
+            <thead>
+              <tr>
+                <th class="center">No.</th>
+                <th>日付</th>
+                <th>カード</th>
+                <th>店舗／用途</th>
+                <th class="num">海外通貨額<span class="sub">(VND)</span></th>
+                <th class="num">請求額<span class="sub">(JPY)</span></th>
+                <th class="num">実質手数料率</th>
+                <th>備考</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="center">①</td>
+                <td>2025-09</td>
+                <td><span class="badge">IDARE</span></td>
+                <td>ホテル</td>
+                <td class="num">1,660,176</td>
+                <td class="num">9,395</td>
+                <td class="num">−0.005 %</td>
+                <td>ほぼ完全にミッドレート一致</td>
+              </tr>
+              <tr>
+                <td class="center">②</td>
+                <td>2025-10</td>
+                <td><span class="badge">IDARE</span></td>
+                <td>ホテル</td>
+                <td class="num">9,803,430</td>
+                <td class="num">54,882</td>
+                <td class="num">−1.30 %</td>
+                <td>実際のレートの方が1.3%有利</td>
+              </tr>
+              <tr>
+                <td class="center">③</td>
+                <td>2025-10</td>
+                <td><span class="badge">AMEX</span></td>
+                <td>ホテル</td>
+                <td class="num">8,079,750</td>
+                <td class="num">48,605</td>
+                <td class="num">+3.41 %</td>
+                <td>カードが約3.4 %不利（手数料発生）／1%ポイント還元</td>
+              </tr>
+              <tr>
+                <td class="center">④</td>
+                <td>2025-10</td>
+                <td><span class="badge">SONY BANK</span></td>
+                <td>スーパー</td>
+                <td class="num">258,696</td>
+                <td class="num">1,529</td>
+                <td class="num">+2.96 %</td>
+                <td>約3 %の為替マージン</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <footer>
+          <div>1080×1920 / シンプル表</div>
+          <div>作成: Wise比較</div>
+        </footer>
+      </div>
+    </div>
+  </body>
+  </html>
+
+
