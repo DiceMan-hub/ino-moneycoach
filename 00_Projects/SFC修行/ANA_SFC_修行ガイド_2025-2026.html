@@ -9,6 +9,59 @@
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     <style>
+        :root {
+            /* フォントサイズ変数定義 */
+            --font-size-main-title: 64px;
+            --font-size-subtitle: 28px;
+            --font-size-slide-title: 48px;
+            --font-size-slide-title-compact: 44px;
+            --font-size-section-title: 36px;
+            --font-size-subsection-title: 20px;
+            --font-size-body: 16px;
+            --font-size-body-small: 15px;
+            --font-size-description: 14px;
+            --font-size-small: 14px;
+            --font-size-tiny: 12px;
+            --font-size-site-header: 14px;
+            --font-size-bullet-item: 28px;
+            --font-size-h3-default: 18px;
+            --font-size-h3-small: 17px;
+            --font-size-h3-large: 22px;
+            --font-size-timeline-title: 24px;
+            --font-size-tiny-text: 13px;
+            --font-size-large-value: 32px;
+            --font-size-extra-tiny: 11px;
+            
+            /* モバイル用フォントサイズ変数 */
+            --font-size-main-title-mobile: 36px;
+            --font-size-subtitle-mobile: 18px;
+            --font-size-slide-title-mobile: 28px;
+            --font-size-section-title-mobile: 24px;
+            --font-size-subsection-title-mobile: 18px;
+            --font-size-body-mobile: 15px;
+            --font-size-body-small-mobile: 14px;
+            --font-size-description-mobile: 13px;
+            --font-size-small-mobile: 12px;
+            --font-size-site-header-mobile: 12px;
+            --font-size-bullet-item-mobile: 20px;
+            --font-size-h3-default-mobile: 18px;
+        }
+        
+        /* ユーティリティクラス：フォントサイズ */
+        .text-size-body { font-size: var(--font-size-body); }
+        .text-size-body-small { font-size: var(--font-size-body-small); }
+        .text-size-description { font-size: var(--font-size-description); }
+        .text-size-small { font-size: var(--font-size-small); }
+        .text-size-subsection { font-size: var(--font-size-subsection-title); }
+        
+        @media (max-width: 768px) {
+            .text-size-body { font-size: var(--font-size-body-mobile); }
+            .text-size-body-small { font-size: var(--font-size-body-small-mobile); }
+            .text-size-description { font-size: var(--font-size-description-mobile); }
+            .text-size-small { font-size: var(--font-size-small-mobile); }
+            .text-size-subsection { font-size: var(--font-size-subsection-title-mobile); }
+        }
+        
         html {
             scroll-behavior: smooth;
         }
@@ -84,12 +137,34 @@
             }
             
             .main-title {
-                font-size: 36px;
+                font-size: var(--font-size-main-title-mobile);
+                margin-bottom: 16px;
+                letter-spacing: -0.01em;
+            }
+            
+            .main-title::after {
+                width: 60px;
+                height: 3px;
+                margin: 16px auto 0;
+            }
+            
+            .site-header {
+                font-size: var(--font-size-site-header-mobile);
                 margin-bottom: 24px;
+                letter-spacing: 1.5px;
+            }
+            
+            .subtitle {
+                font-size: var(--font-size-subtitle-mobile);
+            }
+            
+            .date {
+                margin-top: 24px;
+                padding-top: 20px;
             }
             
             .slide-title {
-                font-size: 28px;
+                font-size: var(--font-size-slide-title-mobile);
                 margin-bottom: 32px;
                 padding-left: 12px;
                 border-left-width: 3px;
@@ -98,7 +173,7 @@
             .slide-title.compact {
                 padding-left: 0;
                 border-left: none;
-                font-size: 28px;
+                font-size: var(--font-size-slide-title-mobile);
                 margin-bottom: 24px;
             }
             
@@ -120,23 +195,9 @@
                 font-size: 14px !important;
             }
             
-            .main-title {
-                font-size: 36px;
-                margin-bottom: 24px;
-            }
-            
             .site-header {
                 font-size: 12px;
                 margin-bottom: 16px;
-            }
-            
-            .subtitle {
-                font-size: 18px;
-            }
-            
-            .date {
-                font-size: 14px;
-                margin-top: 24px;
             }
             
             .description {
@@ -144,7 +205,7 @@
             }
             
             .section-title {
-                font-size: 24px;
+                font-size: var(--font-size-section-title-mobile);
                 margin: 32px 0 20px;
             }
             
@@ -172,7 +233,7 @@
             }
             
             .bullet-item {
-                font-size: 20px;
+                font-size: var(--font-size-bullet-item-mobile);
                 margin-bottom: 16px;
             }
             
@@ -227,28 +288,55 @@
         }
 
         .main-title {
-            font-size: 64px;
-            font-weight: 700;
+            font-size: var(--font-size-main-title);
+            font-weight: 800;
             text-align: center;
-            margin-bottom: 32px;
+            margin-bottom: 16px;
             margin-top: 0;
-            color: #1d1d1f;
-            line-height: 1.2;
+            color: #0071e3; /* フォールバック */
+            background: linear-gradient(135deg, #0071e3 0%, #5ac8fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
             width: 100%;
+            letter-spacing: -0.02em;
+            position: relative;
+        }
+        
+        .main-title .no-break {
+            white-space: nowrap;
+        }
+        
+        @supports (-webkit-background-clip: text) or (background-clip: text) {
+            .main-title {
+                color: transparent;
+            }
+        }
+        
+        .main-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #0071e3, #5ac8fa);
+            margin: 24px auto 0;
+            border-radius: 2px;
         }
 
         .subtitle {
-            font-size: 28px;
+            font-size: var(--font-size-subtitle);
             font-weight: 500;
             text-align: center;
             margin-bottom: 20px;
             margin-top: 0;
-            color: #1d1d1f;
-            line-height: 1.4;
+            color: #515154;
+            line-height: 1.5;
+            letter-spacing: 0.02em;
         }
 
         .description {
-            font-size: 20px;
+            font-size: var(--font-size-subsection-title);
             font-weight: 400;
             text-align: center;
             margin-bottom: 20px;
@@ -257,23 +345,26 @@
         }
 
         .date {
-            font-size: 16px;
-            font-weight: 300;
-            text-align: center;
-            color: #86868b;
-            margin-top: 40px;
-            width: 100%;
-        }
-
-        .site-header {
-            font-size: 14px;
+            font-size: var(--font-size-body);
             font-weight: 400;
             text-align: center;
             color: #86868b;
-            margin-bottom: 24px;
+            margin-top: 32px;
             width: 100%;
-            text-transform: none;
-            letter-spacing: 0.5px;
+            padding-top: 24px;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .site-header {
+            font-size: var(--font-size-site-header);
+            font-weight: 600;
+            text-align: center;
+            color: #86868b;
+            margin-bottom: 32px;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.8;
         }
 
         .accent {
@@ -282,7 +373,7 @@
         
         /* 2つ目のスライド用スタイル */
         .slide-title {
-            font-size: 48px;
+            font-size: var(--font-size-slide-title);
             font-weight: 700;
             margin-bottom: 48px;
             margin-top: 0;
@@ -301,7 +392,7 @@
         .slide-title.compact {
             border-left: none;
             padding-left: 0;
-            font-size: 44px;
+            font-size: var(--font-size-slide-title-compact);
             margin-bottom: 20px;
         }
 
@@ -321,7 +412,7 @@
         }
 
         .bullet-item {
-            font-size: 28px;
+            font-size: var(--font-size-bullet-item);
             font-weight: 500;
             margin-bottom: 20px;
             display: flex;
@@ -358,7 +449,7 @@
         }
 
         .note {
-            font-size: 16px;
+            font-size: var(--font-size-body);
             color: #86868b;
             margin-top: 24px;
             margin-bottom: 0;
@@ -390,7 +481,7 @@
         
         /* 3つ目のスライド用スタイル */
         .section-title {
-            font-size: 36px;
+            font-size: var(--font-size-section-title);
             font-weight: 600;
             margin: 48px 0 24px;
             color: #0071e3;
@@ -570,7 +661,7 @@
             }
             
             .card-title-small {
-                font-size: 18px !important;
+                font-size: var(--font-size-subsection-title-mobile) !important;
             }
             
             /* 戦略カード：モバイル対応 */
@@ -593,6 +684,65 @@
             .left-content,
             .right-content {
                 width: 100% !important;
+            }
+            
+            .right-content {
+                margin-left: 0 !important;
+                margin-top: 20px !important;
+            }
+            
+            /* 家族カード活用戦略：モバイル対応 */
+            .base-card-comparison,
+            .card-comparison {
+                padding: 16px !important;
+                margin-bottom: 16px !important;
+            }
+            
+            .card-row {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 8px !important;
+            }
+            
+            .card-name {
+                font-size: var(--font-size-body) !important;
+                width: 100% !important;
+            }
+            
+            .card-fee {
+                font-size: var(--font-size-subsection-title-mobile) !important;
+                width: 100% !important;
+            }
+            
+            .card-comparison .card-type {
+                font-size: var(--font-size-body) !important;
+                margin-bottom: 8px !important;
+            }
+            
+            .card-comparison .card-cost {
+                font-size: var(--font-size-subsection-title-mobile) !important;
+                margin-bottom: 12px !important;
+            }
+            
+            .mytomo-cta-card {
+                padding: 20px !important;
+                margin-top: 20px !important;
+            }
+            
+            .mytomo-cta-card .cta-title {
+                font-size: var(--font-size-body) !important;
+            }
+            
+            .mytomo-cta-card .cta-text {
+                font-size: var(--font-size-body-small) !important;
+                margin-bottom: 16px !important;
+            }
+            
+            .mytomo-cta-card .cta-button {
+                font-size: var(--font-size-body) !important;
+                padding: 12px 24px !important;
+                width: 100% !important;
+                justify-content: center !important;
             }
             
             .mytomo-steps {
@@ -753,7 +903,7 @@
         }
 
         .card-title {
-            font-size: 24px;
+            font-size: var(--font-size-section-title-mobile);
             font-weight: 600;
             color: #0071e3;
             margin-bottom: 10px;
@@ -766,7 +916,7 @@
         }
 
         .card-subtitle {
-            font-size: 16px;
+            font-size: var(--font-size-body);
             color: #86868b;
             text-align: center;
             margin-bottom: 12px;
@@ -1414,6 +1564,69 @@
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 16px;
+        }
+        
+        .card-comparison .card-type {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 8px;
+        }
+        
+        .card-comparison .card-cost {
+            font-size: 18px;
+            font-weight: 600;
+            color: #0071e3;
+            margin-bottom: 16px;
+        }
+        
+        /* マイ友プログラムCTA */
+        .mytomo-cta-card {
+            background: linear-gradient(135deg, #0071e3 0%, #5ac8fa 100%);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 24px;
+            box-shadow: 0 4px 12px rgba(0, 113, 227, 0.2);
+            text-align: center;
+        }
+        
+        .mytomo-cta-card .cta-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+        
+        .mytomo-cta-card .cta-text {
+            font-size: 15px;
+            color: #ffffff;
+            opacity: 0.95;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .mytomo-cta-card .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #ffffff;
+            color: #0071e3;
+            font-size: 16px;
+            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .mytomo-cta-card .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .mytomo-cta-card .cta-button i {
+            font-size: 18px;
         }
 
         .base-card-comparison {
@@ -2164,6 +2377,120 @@
                 margin-top: 8px;
             }
         }
+        
+        /* 関連情報リンク：ボタン風デザイン */
+        .related-info-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #0071e3 0%, #5ac8fa 100%);
+            color: #ffffff !important;
+            font-weight: 700;
+            font-size: var(--font-size-body) !important;
+            padding: 16px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 113, 227, 0.25);
+            width: 100%;
+            justify-content: center;
+            margin-top: 12px;
+        }
+        
+        .related-info-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 113, 227, 0.35);
+            background: linear-gradient(135deg, #005bb5 0%, #4ab8ea 100%);
+        }
+        
+        .related-info-link:active {
+            transform: translateY(0);
+        }
+        
+        .related-info-link i {
+            font-size: var(--font-size-h3-default);
+        }
+        
+        .related-info-link span {
+            flex: 1;
+            line-height: 1.5;
+        }
+        
+        .related-info-description {
+            font-size: var(--font-size-description);
+            color: #86868b;
+            margin-top: 12px;
+            line-height: 1.6;
+            text-align: left;
+        }
+        
+        @media (max-width: 768px) {
+            .related-info-link {
+                padding: 14px 20px;
+                font-size: var(--font-size-body-small) !important;
+                flex-direction: row;
+                align-items: center;
+            }
+            
+            .related-info-link i {
+                font-size: var(--font-size-body) !important;
+            }
+            
+            .related-info-description {
+                font-size: var(--font-size-tiny-text);
+                margin-top: 10px;
+            }
+        }
+        
+        /* フローティングスクロールボタン */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #0071e3 0%, #5ac8fa 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 16px rgba(0, 113, 227, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        
+        .scroll-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .scroll-to-top:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0, 113, 227, 0.4);
+            background: linear-gradient(135deg, #005bb5 0%, #4ab8ea 100%);
+        }
+        
+        .scroll-to-top:active {
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .scroll-to-top {
+                width: 48px;
+                height: 48px;
+                bottom: 24px;
+                right: 24px;
+                font-size: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2174,7 +2501,7 @@
                 <div class="slide-container">
                     <div class="content-wrapper">
                         <p class="site-header">いのマネーコーチ・速報まとめ(beta)</p>
-                        <h1 class="main-title">ANA SFC修行ガイド</h1>
+                        <h1 class="main-title">ANA SFC<span class="no-break">修行ガイド</span></h1>
                         <h2 class="subtitle">カード選択・発行タイミング・SFC切替の完全戦略</h2>
                         <p class="date">作成日: 2025年11月</p>
                     </div>
@@ -2188,10 +2515,10 @@
                         <h1 class="slide-title" style="color: #ff9500; border-left-color: #ff9500;">⚠️ 重要：2026年5月19日以降のルール改定について</h1>
                         <div class="content-area">
                             <div style="background-color: #ffffff; padding: 24px; border-radius: 12px; margin-bottom: 24px; border: 2px solid #ff9500;">
-                                <p style="font-size: 18px; font-weight: 700; color: #1d1d1f; margin-bottom: 16px; line-height: 1.6;">
+                                <p style="font-size: var(--font-size-h3-default); font-weight: 700; color: #1d1d1f; margin-bottom: 16px; line-height: 1.6;">
                                     こちらが All Nippon Airways（ANA）の「Super Flyers Card (SFC)修行」において、<span style="color: #ff3b30; font-weight: 700;">2026年5月19日以降（搭乗分）</span>に適用されるルール改定によって、「難易度が上がる」と言われている背景の簡単な整理です。
                                 </p>
-                                <p style="font-size: 16px; color: #515154; line-height: 1.8; margin-bottom: 0;">
+                                <p style="font-size: var(--font-size-body); color: #515154; line-height: 1.8; margin-bottom: 0;">
                                     <span style="font-weight: 700; color: #ff9500;">改定前の駆け込み修行を検討されている方</span>は、このガイドを参考に、<span style="color: #ff3b30; font-weight: 600;">2026年5月19日以前の搭乗分</span>での修行計画を立てることを強く推奨します。
                                 </p>
                             </div>
@@ -2200,16 +2527,16 @@
                             
                             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 24px;">
                                 <div style="background-color: #f5f5f7; padding: 20px; border-radius: 12px; border-left: 4px solid #0071e3;">
-                                    <h3 style="font-size: 18px; font-weight: 700; color: #1d1d1f; margin-bottom: 12px;">1. 国内線運賃体系の全面改定</h3>
-                                    <p style="font-size: 15px; line-height: 1.7; color: #515154; margin-bottom: 0;">
+                                    <h3 style="font-size: var(--font-size-h3-default); font-weight: 700; color: #1d1d1f; margin-bottom: 12px;">1. 国内線運賃体系の全面改定</h3>
+                                    <p style="font-size: var(--font-size-body-small); line-height: 1.7; color: #515154; margin-bottom: 0;">
                                         旧来の「スーパーバリュー」などの早期割引運賃が廃止・整理され、「シンプル」「スタンダード」「フレックス」の基本3タイプへ再編。<br/>
                                         <span style="color: #ff3b30; font-weight: 600;">→ 格安運賃を使った効率的なPP稼ぎが難しくなる可能性</span>
                                     </p>
                                 </div>
                                 
                                 <div style="background-color: #f5f5f7; padding: 20px; border-radius: 12px; border-left: 4px solid #ff9500;">
-                                    <h3 style="font-size: 18px; font-weight: 700; color: #1d1d1f; margin-bottom: 12px;">2. アップグレード制度の変更・値上げ</h3>
-                                    <p style="font-size: 15px; line-height: 1.7; color: #515154; margin-bottom: 0;">
+                                    <h3 style="font-size: var(--font-size-h3-default); font-weight: 700; color: #1d1d1f; margin-bottom: 12px;">2. アップグレード制度の変更・値上げ</h3>
+                                    <p style="font-size: var(--font-size-body-small); line-height: 1.7; color: #515154; margin-bottom: 0;">
                                         エコノミー→プレミアムクラスのアップグレード料金が値上げ（例：東京〜沖縄・石垣線で18,000円に）。<br/>
                                         <span style="color: #ff3b30; font-weight: 600;">→ プレミアムクラス搭乗戦略のコストが上昇</span>
                                     </p>
@@ -2218,16 +2545,16 @@
                             
                             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 24px;">
                                 <div style="background-color: #f5f5f7; padding: 20px; border-radius: 12px; border-left: 4px solid #0071e3;">
-                                    <h3 style="font-size: 18px; font-weight: 700; color: #1d1d1f; margin-bottom: 12px;">3. ステータス獲得条件の見直し</h3>
-                                    <p style="font-size: 15px; line-height: 1.7; color: #515154; margin-bottom: 0;">
+                                    <h3 style="font-size: var(--font-size-h3-default); font-weight: 700; color: #1d1d1f; margin-bottom: 12px;">3. ステータス獲得条件の見直し</h3>
+                                    <p style="font-size: var(--font-size-body-small); line-height: 1.7; color: #515154; margin-bottom: 0;">
                                         ライフソリューションサービスで「ANA Mall」「ANA Travelers」が必須サービスに。<br/>
                                         <span style="color: #ff3b30; font-weight: 600;">→ 搭乗だけでなく、サービス利用・決済額も必須に</span>
                                     </p>
                                 </div>
                                 
                                 <div style="background-color: #f5f5f7; padding: 20px; border-radius: 12px; border-left: 4px solid #ff9500;">
-                                    <h3 style="font-size: 18px; font-weight: 700; color: #1d1d1f; margin-bottom: 12px;">4. マイル・特典条件の改定</h3>
-                                    <p style="font-size: 15px; line-height: 1.7; color: #515154; margin-bottom: 0;">
+                                    <h3 style="font-size: var(--font-size-h3-default); font-weight: 700; color: #1d1d1f; margin-bottom: 12px;">4. マイル・特典条件の改定</h3>
+                                    <p style="font-size: var(--font-size-body-small); line-height: 1.7; color: #515154; margin-bottom: 0;">
                                         AMC規約改定により、マイル積算方法、家族アカウント条件、特典航空券対象運賃などが変更。<br/>
                                         <span style="color: #ff3b30; font-weight: 600;">→ 修行中のマイル積算・特典活用に影響の可能性</span>
                                     </p>
@@ -2235,8 +2562,8 @@
                             </div>
                             
                             <div style="background-color: #ffe6e6; padding: 24px; border-radius: 12px; border-left: 6px solid #ff3b30; margin-top: 24px;">
-                                <h3 style="font-size: 20px; font-weight: 700; color: #ff3b30; margin-bottom: 16px;">✅ なぜ「難易度が上がる」と言われているか</h3>
-                                <ul style="margin: 0; padding-left: 24px; font-size: 15px; line-height: 1.8; color: #1d1d1f;">
+                                <h3 style="font-size: var(--font-size-subsection-title); font-weight: 700; color: #ff3b30; margin-bottom: 16px;">✅ なぜ「難易度が上がる」と言われているか</h3>
+                                <ul style="margin: 0; padding-left: 24px; font-size: var(--font-size-body-small); line-height: 1.8; color: #1d1d1f;">
                                     <li style="margin-bottom: 10px;">早割など運賃バリエーションが整理され、<strong>安く・効率的に搭乗回数を重ねる手法が減る</strong></li>
                                     <li style="margin-bottom: 10px;">アップグレード料金値上げにより、<strong>プレミアムクラス搭乗戦略のコストが上昇</strong></li>
                                     <li style="margin-bottom: 10px;">サービス利用・決済額など「搭乗以外の要素」が必須となり、<strong>準備が複雑化</strong></li>
@@ -2245,8 +2572,8 @@
                             </div>
                             
                             <div style="background-color: #e8f4fd; padding: 24px; border-radius: 12px; border-left: 6px solid #0071e3; margin-top: 24px;">
-                                <h3 style="font-size: 20px; font-weight: 700; color: #0071e3; margin-bottom: 16px;">💡 改定前の駆け込み修行を検討されている方へ</h3>
-                                <div style="font-size: 16px; line-height: 1.8; color: #1d1d1f;">
+                                <h3 style="font-size: var(--font-size-subsection-title); font-weight: 700; color: #0071e3; margin-bottom: 16px;">💡 改定前の駆け込み修行を検討されている方へ</h3>
+                                <div style="font-size: var(--font-size-body); line-height: 1.8; color: #1d1d1f;">
                                     <p style="margin-bottom: 12px; font-weight: 600;">
                                         このガイドは、<span style="color: #ff3b30; font-weight: 700;">2026年5月19日以前の搭乗分</span>で修行を完了することを前提とした戦略です。
                                     </p>
@@ -2261,21 +2588,19 @@
                             
                             <!-- 関連情報 -->
                             <div style="background-color: #e8f4fd; padding: 24px; border-radius: 12px; margin-top: 24px; border-left: 4px solid #0071e3;">
-                                <h3 style="font-size: 18px; font-weight: 700; color: #0071e3; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                                <h3 style="font-size: var(--font-size-h3-default); font-weight: 700; color: #0071e3; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
                                     <i class="fas fa-link"></i> 関連情報：アップグレードポイントサービス変更
                                 </h3>
-                                <p style="font-size: 15px; line-height: 1.6; color: #1d1d1f; margin-bottom: 12px;">
+                                <p style="font-size: var(--font-size-body-small); line-height: 1.6; color: #1d1d1f; margin-bottom: 16px;">
                                     このルール改定と合わせて、ANAのアップグレードポイントサービスも2026年度をもって終了します。詳しい分析は以下のページでご確認いただけます：
                                 </p>
-                                <div style="background-color: #ffffff; padding: 16px; border-radius: 8px; border: 1px solid #d2d2d7;">
-                                    <a href="https://diceman-hub.github.io/ino-moneycoach/ana-upgrade-analysis.html" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #0071e3; font-weight: 600; font-size: 16px; transition: color 0.2s;">
-                                        <i class="fas fa-external-link-alt" style="font-size: 18px;"></i>
-                                        <span>ANAアップグレードポイントサービス変更：上級会員資格とSFC修行への影響をインタラクティブに分析</span>
-                                    </a>
-                                    <p style="font-size: 14px; color: #86868b; margin-top: 8px; margin-left: 30px; line-height: 1.5;">
-                                        アップグレードポイントの終了とマイル中心のプログラムへの移行が、SFC修行や上級会員資格にどのような影響を与えるかを詳しく解説しています。
-                                    </p>
-                                </div>
+                                <a href="https://diceman-hub.github.io/ino-moneycoach/ana-upgrade-analysis.html" target="_blank" rel="noopener noreferrer" class="related-info-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span>ANAアップグレードポイントサービス変更：上級会員資格とSFC修行への影響をインタラクティブに分析</span>
+                                </a>
+                                <p class="related-info-description">
+                                    アップグレードポイントの終了とマイル中心のプログラムへの移行が、SFC修行や上級会員資格にどのような影響を与えるかを詳しく解説しています。
+                                </p>
                             </div>
                             
                             <p class="note" style="margin-top: 24px;">
@@ -2293,10 +2618,10 @@
                         <h1 class="slide-title large-margin">SFC対象カードと対象外カードの比較</h1>
                         <div class="content-area">
                             <div style="background-color: #ffe6e6; padding: 20px; border-radius: 12px; border-left: 6px solid #ff3b30; margin-bottom: 24px;">
-                                <p style="font-size: 17px; font-weight: 700; color: #ff3b30; margin-bottom: 8px; line-height: 1.6;">
+                                <p style="font-size: var(--font-size-h3-small); font-weight: 700; color: #ff3b30; margin-bottom: 8px; line-height: 1.6;">
                                     ⚠️ 最重要：プラチナ達成前に適切なカードを選ばないと、SFCに切り替えられません
                                 </p>
-                                <p style="font-size: 15px; color: #1d1d1f; line-height: 1.7; margin-bottom: 0;">
+                                <p style="font-size: var(--font-size-body-small); color: #1d1d1f; line-height: 1.7; margin-bottom: 0;">
                                     <strong>「ANAプロパーカード（一般・ゴールド・プレミアム）」</strong>はSFC切替可能。<br/>
                                     <strong>「交通系IC提携カード（ソラチカなど）」</strong>はSFC切替不可。
                                 </p>
@@ -2304,8 +2629,8 @@
                             
                             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 30px;">
                                 <div style="background-color: #e8f4fd; padding: 20px; border-radius: 12px; border-left: 4px solid #0071e3;">
-                                    <h3 style="font-size: 18px; font-weight: 700; color: #0071e3; margin-bottom: 16px;">✅ SFC切替可能</h3>
-                                    <ul style="margin: 0; padding-left: 20px; font-size: 15px; line-height: 1.8; color: #1d1d1f;">
+                                    <h3 style="font-size: var(--font-size-h3-default); font-weight: 700; color: #0071e3; margin-bottom: 16px;">✅ SFC切替可能</h3>
+                                    <ul style="margin: 0; padding-left: 20px; font-size: var(--font-size-body-small); line-height: 1.8; color: #1d1d1f;">
                                         <li style="margin-bottom: 8px;">ANAカード 一般（VISA/Master/JCB）</li>
                                         <li style="margin-bottom: 8px;">ANAワイドゴールドカード</li>
                                         <li style="margin-bottom: 8px;">ANA AMEXゴールド・プレミアム</li>
@@ -2315,8 +2640,8 @@
                                 </div>
                                 
                                 <div style="background-color: #fff4e6; padding: 20px; border-radius: 12px; border-left: 4px solid #ff9500;">
-                                    <h3 style="font-size: 18px; font-weight: 700; color: #ff9500; margin-bottom: 16px;">❌ SFC切替不可</h3>
-                                    <ul style="margin: 0; padding-left: 20px; font-size: 15px; line-height: 1.8; color: #1d1d1f;">
+                                    <h3 style="font-size: var(--font-size-h3-default); font-weight: 700; color: #ff9500; margin-bottom: 16px;">❌ SFC切替不可</h3>
+                                    <ul style="margin: 0; padding-left: 20px; font-size: var(--font-size-body-small); line-height: 1.8; color: #1d1d1f;">
                                         <li style="margin-bottom: 8px;">ソラチカカード</li>
                                         <li style="margin-bottom: 8px;">ANA VISA Suicaカード</li>
                                         <li style="margin-bottom: 8px;">東急カード（PASMO付き）</li>
@@ -2527,11 +2852,11 @@
                                     </div>
                                 </div>
                                 <div class="route-timeline-comparison" style="margin-top: 30px; padding: 24px; background-color: #f5f5f7; border-radius: 12px; border-left: 4px solid #0071e3;">
-                                    <h3 style="font-size: 22px; font-weight: 700; color: #1d1d1f; margin-bottom: 20px;">⚡ プレミアムメンバー事前サービス：最重要の違い</h3>
+                                    <h3 style="font-size: var(--font-size-h3-large); font-weight: 700; color: #1d1d1f; margin-bottom: 20px;">⚡ プレミアムメンバー事前サービス：最重要の違い</h3>
                                     <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;">
                                         <div style="background-color: #ffffff; padding: 20px; border-radius: 8px;">
-                                            <h4 style="font-size: 18px; font-weight: 700; color: #0071e3; margin-bottom: 16px;">ルートA（50k PP集中型）</h4>
-                                            <div style="font-size: 16px; line-height: 1.8;">
+                                            <h4 style="font-size: var(--font-size-h3-default); font-weight: 700; color: #0071e3; margin-bottom: 16px;">ルートA（50k PP集中型）</h4>
+                                            <div style="font-size: var(--font-size-body); line-height: 1.8;">
                                                 <p style="margin-bottom: 12px;"><span style="font-weight: 600; color: #1d1d1f;">ステータス反映：</span><br/>50,000 PP達成後 <span style="color: #0071e3; font-weight: 700;">約2〜3日</span>で事前サービス適用</p>
                                                 <p style="margin-bottom: 12px;"><span style="font-weight: 600; color: #1d1d1f;">SFC申込可能時期：</span><br/>達成後 <span style="color: #0071e3; font-weight: 700;">即座に</span>申込書請求可能</p>
                                                 <p style="margin-bottom: 12px;"><span style="font-weight: 600; color: #1d1d1f;">ベネフィット享受：</span><br/>ANAラウンジ、優先チェックインなどが<span style="color: #0071e3; font-weight: 700;">即時利用可能</span></p>
@@ -2541,8 +2866,8 @@
                                             </div>
                                         </div>
                                         <div style="background-color: #ffffff; padding: 20px; border-radius: 8px;">
-                                            <h4 style="font-size: 18px; font-weight: 700; color: #ff9500; margin-bottom: 16px;">ルートB（30k PP + LSS併用型）</h4>
-                                            <div style="font-size: 16px; line-height: 1.8;">
+                                            <h4 style="font-size: var(--font-size-h3-default); font-weight: 700; color: #ff9500; margin-bottom: 16px;">ルートB（30k PP + LSS併用型）</h4>
+                                            <div style="font-size: var(--font-size-body); line-height: 1.8;">
                                                 <p style="margin-bottom: 12px;"><span style="font-weight: 600; color: #1d1d1f;">ステータス反映：</span><br/>全条件達成しても <span style="color: #ff3b30; font-weight: 700;">翌年4月まで遅延</span></p>
                                                 <p style="margin-bottom: 12px;"><span style="font-weight: 600; color: #1d1d1f;">SFC申込可能時期：</span><br/><span style="color: #ff3b30; font-weight: 700;">翌年4月以降</span>のみ</p>
                                                 <p style="margin-bottom: 12px;"><span style="font-weight: 600; color: #1d1d1f;">事前サービス：</span><br/><span style="color: #ff3b30; font-weight: 700;">対象外</span>（達成後も即時ベネフィット不可）</p>
@@ -2552,7 +2877,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <p style="margin-top: 20px; padding: 16px; background-color: #fff4e6; border-radius: 8px; font-size: 16px; line-height: 1.6;">
+                                    <p style="margin-top: 20px; padding: 16px; background-color: #fff4e6; border-radius: 8px; font-size: var(--font-size-body); line-height: 1.6;">
                                         <span style="font-weight: 700; color: #1d1d1f;">💡 戦略的結論：</span><br/>
                                         「即時性」を重視するならルートA、フライト負担を軽減したいならルートB。ただし、ルートBは<span style="color: #ff3b30; font-weight: 700;">翌年4月までの待機期間</span>を許容できることが前提です。
                                     </p>
@@ -2562,7 +2887,7 @@
                             <div>
                                 <h2 class="section-title">ANAアメックス 一般 vs ゴールド：戦略的比較（参考例）</h2>
                                 <div style="background-color: #f5f5f7; padding: 24px; border-radius: 12px; border-left: 4px solid #006fcf; margin-bottom: 30px;">
-                                    <p style="font-size: 15px; line-height: 1.7; color: #515154; margin-bottom: 20px;">
+                                    <p style="font-size: var(--font-size-body-small); line-height: 1.7; color: #515154; margin-bottom: 20px;">
                                         以下は<span style="font-weight: 700; color: #1d1d1f;">参考例</span>として、SFC修行において事前にカードを発行する必要がありますが、<span style="font-weight: 700; color: #1d1d1f;">ANAアメックス一般カードから始めるか、ゴールドカードから始めるか</span>で、獲得マイル数に大きな差が生じることを示すシミュレーションです。
                                     </p>
                                     <div class="table-container" style="margin-bottom: 20px;">
@@ -2577,8 +2902,8 @@
                                             <tbody>
                                                 <tr>
                                                     <td style="font-weight: 700; color: #1d1d1f;">年会費</td>
-                                                    <td>7,700円<br/><span style="font-size: 13px; color: #666;">（マイル移行手数料：6,600円別途）</span></td>
-                                                    <td style="background-color: rgba(0, 113, 227, 0.1);"><strong>34,100円</strong><br/><span style="font-size: 13px; color: #666;">（マイル移行手数料：無料）</span></td>
+                                                    <td>7,700円<br/><span style="font-size: var(--font-size-tiny-text); color: #666;">（マイル移行手数料：6,600円別途）</span></td>
+                                                    <td style="background-color: rgba(0, 113, 227, 0.1);"><strong>34,100円</strong><br/><span style="font-size: var(--font-size-tiny-text); color: #666;">（マイル移行手数料：無料）</span></td>
                                                 </tr>
                                                 <tr>
                                                     <td style="font-weight: 700; color: #1d1d1f;">決済還元率</td>
@@ -2594,7 +2919,7 @@
                                         </table>
                                     </div>
                                     <div style="background-color: #ffffff; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-                                        <h3 style="font-size: 18px; font-weight: 700; color: #1d1d1f; margin-bottom: 16px; text-align: center;">SFC修行での獲得マイル比較（HND-OKA SVT75、50,000PP達成時）</h3>
+                                        <h3 style="font-size: var(--font-size-h3-default); font-weight: 700; color: #1d1d1f; margin-bottom: 16px; text-align: center;">SFC修行での獲得マイル比較（HND-OKA SVT75、50,000PP達成時）</h3>
                                         <div class="table-container">
                                             <table>
                                                 <thead>
@@ -2616,25 +2941,25 @@
                                                         <td style="font-weight: 700; color: #006fcf;">ゴールドカード</td>
                                                         <td><strong style="color: #006fcf;">14,188マイル</strong></td>
                                                         <td><strong style="color: #006fcf;">31,365マイル</strong></td>
-                                                        <td><strong style="color: #006fcf; font-size: 18px;">45,553マイル</strong></td>
+                                                        <td><strong style="color: #006fcf; font-size: var(--font-size-h3-default);">45,553マイル</strong></td>
                                                     </tr>
                                                     <tr style="background-color: #fff4e6; border-top: 2px solid #ff9500;">
                                                         <td style="font-weight: 700; color: #ff9500;">差額（純増）</td>
                                                         <td style="color: #ff9500; font-weight: 600;">+7,094マイル</td>
                                                         <td style="color: #ff9500; font-weight: 600;">+3,764マイル</td>
-                                                        <td style="color: #ff9500; font-weight: 700; font-size: 18px;">+10,858マイル</td>
+                                                        <td style="color: #ff9500; font-weight: 700; font-size: var(--font-size-h3-default);">+10,858マイル</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                     <div style="background-color: #e8f4fd; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-                                        <h3 style="font-size: 18px; font-weight: 700; color: #0071e3; margin-bottom: 12px;">💰 マイル取得単価</h3>
-                                        <div style="font-size: 15px; line-height: 1.8;">
+                                        <h3 style="font-size: var(--font-size-h3-default); font-weight: 700; color: #0071e3; margin-bottom: 12px;">💰 マイル取得単価</h3>
+                                        <div style="font-size: var(--font-size-body-small); line-height: 1.8;">
                                             <p style="margin-bottom: 12px;">
                                                 年会費差額：<strong>26,400円</strong>（34,100円 - 7,700円）<br/>
                                                 純増マイル：<strong>10,858マイル</strong><br/>
-                                                マイル取得単価：<strong style="font-size: 18px; color: #0071e3;">2.43円/マイル</strong>
+                                                マイル取得単価：<strong style="font-size: var(--font-size-h3-default); color: #0071e3;">2.43円/マイル</strong>
                                             </p>
                                             <p style="margin-bottom: 0; padding: 12px; background-color: #ffffff; border-radius: 6px;">
                                                 <span style="font-weight: 700; color: #1d1d1f;">💡 判断基準：</span><br/>
@@ -2645,7 +2970,7 @@
                                         </div>
                                     </div>
                                     <div style="background-color: #fff4e6; padding: 16px; border-radius: 8px;">
-                                        <p style="font-size: 14px; color: #515154; margin-bottom: 0; line-height: 1.6;">
+                                        <p style="font-size: var(--font-size-description); color: #515154; margin-bottom: 0; line-height: 1.6;">
                                             <strong>※ シミュレーション条件：</strong>羽田-那覇（HND-OKA）SVT75運賃で50,000PP達成まで34フライト、総費用472,940円を想定。決済マイルの65.4%は決済還元率の差、34.6%はフライトボーナスの差から生じています。
                                         </p>
                                     </div>
@@ -3272,21 +3597,29 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="mytomo-cta-card">
+                                <div class="cta-title">📧 マイ友プログラムの紹介を受けたい方へ</div>
+                                <div class="cta-text">紹介者番号をお持ちでない方は、<a href="https://www.instagram.com/ino_moneycoach/" target="_blank" rel="noopener noreferrer" style="color: #ffffff; text-decoration: underline; font-weight: 600;">InstagramのDM</a>でお気軽にお問い合わせください。</div>
+                                <a href="https://www.instagram.com/ino_moneycoach/" target="_blank" rel="noopener noreferrer" class="cta-button">
+                                    <i class="fab fa-instagram"></i>
+                                    InstagramでDMする
+                                </a>
+                            </div>
                             <div class="note-cta-card" style="margin-top: 32px; background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border: 2px solid #41C9B4; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(65, 201, 180, 0.15); transition: all 0.3s ease;">
                                 <a href="https://note.com/ino_moneycoach/n/n38a50b92d1f2" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; gap: 16px; text-decoration: none; color: inherit;">
                                     <div style="flex-shrink: 0; width: 56px; height: 56px; background: linear-gradient(135deg, #41C9B4 0%, #35B8A3 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                                        <span style="color: #ffffff; font-size: 20px; font-weight: 700; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">note</span>
+                                        <span style="color: #ffffff; font-size: var(--font-size-subsection-title); font-weight: 700; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">note</span>
                         </div>
                                     <div style="flex: 1;">
-                                        <p style="margin: 0 0 6px 0; font-size: 14px; font-weight: 600; color: #41C9B4; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px;">
+                                        <p style="margin: 0 0 6px 0; font-size: var(--font-size-description); font-weight: 600; color: #41C9B4; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px;">
                                             <span style="width: 6px; height: 6px; background-color: #41C9B4; border-radius: 50%; display: inline-block;"></span>
                                             note記事
                                         </p>
-                                        <p style="margin: 0; font-size: 18px; font-weight: 700; color: #1d1d1f; line-height: 1.4;">ANAマイ友プログラム完全ガイド</p>
-                                        <p style="margin: 8px 0 0 0; font-size: 14px; color: #86868b; line-height: 1.5;">登録手順から注意点まで、詳しく解説しています</p>
+                                        <p style="margin: 0; font-size: var(--font-size-h3-default); font-weight: 700; color: #1d1d1f; line-height: 1.4;">ANAマイ友プログラム完全ガイド</p>
+                                        <p style="margin: 8px 0 0 0; font-size: var(--font-size-description); color: #86868b; line-height: 1.5;">登録手順から注意点まで、詳しく解説しています</p>
                     </div>
                                     <div style="flex-shrink: 0; color: #41C9B4;">
-                                        <i class="fas fa-chevron-right" style="font-size: 18px;"></i>
+                                        <i class="fas fa-chevron-right" style="font-size: var(--font-size-h3-default);"></i>
                                     </div>
                                 </a>
                             </div>
@@ -3372,6 +3705,9 @@
                                     <div class="failure-content">
                                         <p class="failure-title"><span class="warning-red">マイ友プログラム未登録</span>で追加マイル損失（ワイドゴールドなら2,000マイル損失）</p>
                                         <p class="solution">→ <span class="highlight-blue">カード申込前にマイ友プログラムに必ず登録する</span></p>
+                                        <p style="margin-top: 12px; padding: 12px; background-color: #e8f4fd; border-radius: 8px; border-left: 4px solid #0071e3;">
+                                            <span style="font-weight: 600; color: #0071e3;">💡 紹介者番号をお持ちでない方は、</span><a href="https://www.instagram.com/ino_moneycoach/" target="_blank" rel="noopener noreferrer" style="color: #0071e3; text-decoration: underline; font-weight: 600; margin-left: 4px;">InstagramのDM</a>でお気軽にお問い合わせください。
+                                        </p>
                                     </div>
                                 </li>
                                 <li class="failure-item">
@@ -3419,7 +3755,7 @@
             <div class="slide" id="slide-11">
                 <div class="slide-container">
                     <div class="content-wrapper content-left">
-                        <h1 class="slide-title" style="font-size: 42px; margin-bottom: 30px;">オプション：ダイヤモンド達成のライフソリューション戦略<span class="optional-badge">上級者向け</span></h1>
+                        <h1 class="slide-title" style="font-size: var(--font-size-slide-title-compact); margin-bottom: 30px;">オプション：ダイヤモンド達成のライフソリューション戦略<span class="optional-badge">上級者向け</span></h1>
                         <div class="content-area">
                             <div class="content-area" style="display: flex;">
                                 <div class="left-column">
@@ -3481,10 +3817,10 @@
                                 </div>
                                 <div class="right-column">
                                     <h2 class="section-title"><i class="fas fa-yen-sign section-icon"></i>決済400/500万円の達成戦略</h2>
-                                    <p style="font-size:16px; margin-bottom:12px;">家計/事業の固定費を集約（家賃・通信・保険・サブスク等）</p>
+                                    <p style="font-size: var(--font-size-body); margin-bottom: 12px;">家計/事業の固定費を集約（家賃・通信・保険・サブスク等）</p>
                                     <div class="requirement-card" style="margin-bottom:20px; background-color:#e8f4fd; border-left: 4px solid #0071e3;">
-                                        <p class="requirement-title" style="color: #0071e3; font-weight: 700; font-size: 18px;"><i class="fas fa-sync-alt requirement-icon"></i>マイルサイクル戦略：LSSルートの核心</p>
-                                        <div style="font-size: 15px; line-height: 1.8; margin-top: 12px;">
+                                        <p class="requirement-title" style="color: #0071e3; font-weight: 700; font-size: var(--font-size-h3-default);"><i class="fas fa-sync-alt requirement-icon"></i>マイルサイクル戦略：LSSルートの核心</p>
+                                        <div style="font-size: var(--font-size-body-small); line-height: 1.8; margin-top: 12px;">
                                             <p style="margin-bottom: 12px; font-weight: 600; color: #1d1d1f;">🔄 戦略の仕組み：</p>
                                             <ol style="margin-left: 20px; margin-bottom: 12px;">
                                                 <li style="margin-bottom: 8px;">高還元率ANAカード（プレミアム推奨）で決済→マイル獲得</li>
@@ -3502,11 +3838,11 @@
                                             </p>
                                             
                                             <div style="margin-top: 20px; padding: 16px; background-color: #ffe6e6; border-radius: 8px; border-left: 4px solid #ff3b30;">
-                                                <p style="font-weight: 700; color: #ff3b30; margin-bottom: 12px; font-size: 16px;">🚨 重要：楽天バリアブルカード（ギフトカード）の販売終了について</p>
-                                                <p style="font-size: 14px; line-height: 1.7; color: #1d1d1f; margin-bottom: 12px;">
+                                                <p style="font-weight: 700; color: #ff3b30; margin-bottom: 12px; font-size: var(--font-size-body);">🚨 重要：楽天バリアブルカード（ギフトカード）の販売終了について</p>
+                                                <p style="font-size: var(--font-size-description); line-height: 1.7; color: #1d1d1f; margin-bottom: 12px;">
                                                     <strong style="color: #ff3b30;">ミニストップ店頭での販売が2025年11月18日（火）までで終了</strong>します。今後、決済修行でミニストップでのWAONチャージをすることができなくなるため、要注意です。
                                                 </p>
-                                                <p style="font-size: 14px; line-height: 1.7; color: #1d1d1f; margin-bottom: 0;">
+                                                <p style="font-size: var(--font-size-description); line-height: 1.7; color: #1d1d1f; margin-bottom: 0;">
                                                     <strong style="color: #0071e3;">代替案：</strong>セブンイレブンのnanacoへのチャージでセブンイレブンで楽天バリアブルカードを購入する代替ルートは引き続き利用できます。
                                                 </p>
                                             </div>
@@ -3547,88 +3883,91 @@
                         <div class="content-area">
                             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px;">
                                 <div class="timeline-section" style="background-color: #ffffff; border-radius: 12px; padding: 24px; border-left: 4px solid #0071e3; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);">
-                                    <h2 class="timeline-title" style="font-size: 24px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid #e5e5e5;">今週</h2>
+                                    <h2 class="timeline-title" style="font-size: var(--font-size-timeline-title); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid #e5e5e5;">今週</h2>
                                     <ul class="bullet-list" style="margin: 0;">
-                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: 15px; line-height: 1.6;">
+                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: var(--font-size-body-small); line-height: 1.6;">
                                             <span class="bullet-marker" style="color: #0071e3; font-weight: 700;">1.</span>
-                                            <p style="margin: 0;"><span class="accent" style="font-weight: 600;">修行ルートの選択判断</span><br/><small style="color: #86868b; font-size: 13px;">50k PP集中型 vs 30k PP + LSS併用型</small></p>
+                                            <p style="margin: 0;"><span class="accent" style="font-weight: 600;">修行ルートの選択判断</span><br/><small style="color: #86868b; font-size: var(--font-size-tiny-text);">50k PP集中型 vs 30k PP + LSS併用型</small></p>
                                         </li>
-                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: 15px; line-height: 1.6;">
+                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: var(--font-size-body-small); line-height: 1.6;">
                                             <span class="bullet-marker" style="color: #0071e3; font-weight: 700;">2.</span>
-                                            <p style="margin: 0;"><span class="accent" style="font-weight: 600;">ANAマイ友プログラム</span>登録<br/><small style="color: #ff3b30; font-size: 13px;">※カード申込前に必須</small></p>
+                                            <p style="margin: 0;"><span class="accent" style="font-weight: 600;">ANAマイ友プログラム</span>登録<br/><small style="color: #ff3b30; font-size: var(--font-size-tiny-text);">※カード申込前に必須</small></p>
                                         </li>
-                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: 15px; line-height: 1.6;">
+                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: var(--font-size-body-small); line-height: 1.6;">
                                             <span class="bullet-marker" style="color: #0071e3; font-weight: 700;">3.</span>
-                                            <p style="margin: 0;"><span class="accent" style="font-weight: 600;">カードブランド・ランクの選択</span><br/><small style="color: #86868b; font-size: 13px;">VISA/JCB/AMEX/Diners、一般/ゴールド/プレミアム</small></p>
+                                            <p style="margin: 0;"><span class="accent" style="font-weight: 600;">カードブランド・ランクの選択</span><br/><small style="color: #86868b; font-size: var(--font-size-tiny-text);">VISA/JCB/AMEX/Diners、一般/ゴールド/プレミアム</small></p>
                                         </li>
-                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: 15px; line-height: 1.6;">
+                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: var(--font-size-body-small); line-height: 1.6;">
                                             <span class="bullet-marker" style="color: #0071e3; font-weight: 700;">4.</span>
-                                            <p style="margin: 0;"><span class="accent" style="font-weight: 600;">発行タイミング戦略</span>の決定<br/><small style="color: #86868b; font-size: 13px;">修行直前/修行中/修行後発行</small></p>
+                                            <p style="margin: 0;"><span class="accent" style="font-weight: 600;">発行タイミング戦略</span>の決定<br/><small style="color: #86868b; font-size: var(--font-size-tiny-text);">修行直前/修行中/修行後発行</small></p>
                                         </li>
-                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: 15px; line-height: 1.6;">
+                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: var(--font-size-body-small); line-height: 1.6;">
                                             <span class="bullet-marker" style="color: #0071e3; font-weight: 700;">5.</span>
-                                            <p style="margin: 0;"><span class="accent" style="font-weight: 600;">AMC会員情報</span>の確認・更新<br/><small style="color: #86868b; font-size: 13px;">住所不一致リスク回避</small></p>
+                                            <p style="margin: 0;"><span class="accent" style="font-weight: 600;">AMC会員情報</span>の確認・更新<br/><small style="color: #86868b; font-size: var(--font-size-tiny-text);">住所不一致リスク回避</small></p>
                                         </li>
-                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: 15px; line-height: 1.6;">
+                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: var(--font-size-body-small); line-height: 1.6;">
                                             <span class="bullet-marker" style="color: #0071e3; font-weight: 700;">6.</span>
-                                            <p style="margin: 0;"><span class="accent" style="font-weight: 600;">キャンペーン期限</span>の確認<br/><small style="color: #86868b; font-size: 13px;">JCB:〜2026/2/28、AMEX:〜<span style="color: #ff3b30;">2025/11/5</span></small></p>
+                                            <p style="margin: 0;"><span class="accent" style="font-weight: 600;">キャンペーン期限</span>の確認<br/><small style="color: #86868b; font-size: var(--font-size-tiny-text);">JCB:〜2026/2/28、AMEX:〜<span style="color: #ff3b30;">2025/11/5</span></small></p>
                                         </li>
-                                        <li class="bullet-item" style="margin-bottom: 0; font-size: 15px; line-height: 1.6;">
+                                        <li class="bullet-item" style="margin-bottom: 0; font-size: var(--font-size-body-small); line-height: 1.6;">
                                             <span class="bullet-marker" style="color: #0071e3; font-weight: 700;">7.</span>
-                                            <p style="margin: 0;">選択したカードの<span class="accent" style="font-weight: 600;">申込準備</span><br/><small style="color: #86868b; font-size: 13px;">修行予定ルートの粗組み</small></p>
+                                            <p style="margin: 0;">選択したカードの<span class="accent" style="font-weight: 600;">申込準備</span><br/><small style="color: #86868b; font-size: var(--font-size-tiny-text);">修行予定ルートの粗組み</small></p>
                                         </li>
                                     </ul>
                     </div>
                                 <div class="timeline-section" style="background-color: #ffffff; border-radius: 12px; padding: 24px; border-left: 4px solid #5ac8fa; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);">
-                                    <h2 class="timeline-title" style="font-size: 24px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid #e5e5e5; color: #5ac8fa;">今月</h2>
+                                    <h2 class="timeline-title" style="font-size: var(--font-size-timeline-title); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid #e5e5e5; color: #5ac8fa;">今月</h2>
                                     <ul class="bullet-list" style="margin: 0;">
-                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: 15px; line-height: 1.6;">
+                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: var(--font-size-body-small); line-height: 1.6;">
                                             <span class="bullet-marker" style="color: #5ac8fa; font-weight: 700;">1.</span>
-                                            <p style="margin: 0;">選択したカードの<span class="accent" style="font-weight: 600;">申込・発行</span><br/><small style="color: #86868b; font-size: 13px;">キャンペーン期限に注意</small></p>
+                                            <p style="margin: 0;">選択したカードの<span class="accent" style="font-weight: 600;">申込・発行</span><br/><small style="color: #86868b; font-size: var(--font-size-tiny-text);">キャンペーン期限に注意</small></p>
                                         </li>
-                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: 15px; line-height: 1.6;">
+                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: var(--font-size-body-small); line-height: 1.6;">
                                             <span class="bullet-marker" style="color: #5ac8fa; font-weight: 700;">2.</span>
-                                            <p style="margin: 0;">ルートB選択時：<span class="accent" style="font-weight: 600;">決済戦略の計画</span><br/><small style="color: #86868b; font-size: 13px;">400万円達成、ANA Payチャージ戦略</small></p>
+                                            <p style="margin: 0;">ルートB選択時：<span class="accent" style="font-weight: 600;">決済戦略の計画</span><br/><small style="color: #86868b; font-size: var(--font-size-tiny-text);">400万円達成、ANA Payチャージ戦略</small></p>
                                         </li>
-                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: 15px; line-height: 1.6;">
+                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: var(--font-size-body-small); line-height: 1.6;">
                                             <span class="bullet-marker" style="color: #5ac8fa; font-weight: 700;">3.</span>
-                                            <p style="margin: 0;">航空券購入を<span class="accent" style="font-weight: 600;">集約決済</span><br/><small style="color: #86868b; font-size: 13px;">キャンペーン達成へ</small></p>
+                                            <p style="margin: 0;">航空券購入を<span class="accent" style="font-weight: 600;">集約決済</span><br/><small style="color: #86868b; font-size: var(--font-size-tiny-text);">キャンペーン達成へ</small></p>
                                         </li>
-                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: 15px; line-height: 1.6;">
+                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: var(--font-size-body-small); line-height: 1.6;">
                                             <span class="bullet-marker" style="color: #5ac8fa; font-weight: 700;">4.</span>
-                                            <p style="margin: 0;"><span class="accent" style="font-weight: 600;">SFC取得後のカード選択</span>の事前検討<br/><small style="color: #86868b; font-size: 13px;">SFCカード対応表を参照</small></p>
+                                            <p style="margin: 0;"><span class="accent" style="font-weight: 600;">SFC取得後のカード選択</span>の事前検討<br/><small style="color: #86868b; font-size: var(--font-size-tiny-text);">SFCカード対応表を参照</small></p>
                                         </li>
-                                        <li class="bullet-item" style="margin-bottom: 0; font-size: 15px; line-height: 1.6;">
+                                        <li class="bullet-item" style="margin-bottom: 0; font-size: var(--font-size-body-small); line-height: 1.6;">
                                             <span class="bullet-marker" style="color: #5ac8fa; font-weight: 700;">5.</span>
-                                            <p style="margin: 0;">家族カード発行検討<br/><small style="color: #86868b; font-size: 13px;">同時申込みでボーナス</small></p>
+                                            <p style="margin: 0;">家族カード発行検討<br/><small style="color: #86868b; font-size: var(--font-size-tiny-text);">同時申込みでボーナス</small></p>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="timeline-section" style="background-color: #ffffff; border-radius: 12px; padding: 24px; border-left: 4px solid #ff9500; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);">
-                                    <h2 class="timeline-title" style="font-size: 24px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid #e5e5e5; color: #ff9500;">今期</h2>
+                                    <h2 class="timeline-title" style="font-size: var(--font-size-timeline-title); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid #e5e5e5; color: #ff9500;">今期</h2>
                                     <ul class="bullet-list" style="margin: 0;">
-                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: 15px; line-height: 1.6;">
+                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: var(--font-size-body-small); line-height: 1.6;">
                                             <span class="bullet-marker" style="color: #ff9500; font-weight: 700;">1.</span>
                                             <p style="margin: 0;"><span style="font-weight: 600; color: #1d1d1f;">ルートAの場合：</span><br/><span class="accent" style="font-weight: 600;">50,000PP達成→即日</span>SFC申込書請求</p>
                                         </li>
-                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: 15px; line-height: 1.6;">
+                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: var(--font-size-body-small); line-height: 1.6;">
                                             <span class="bullet-marker" style="color: #ff9500; font-weight: 700;">2.</span>
                                             <p style="margin: 0;"><span style="font-weight: 600; color: #1d1d1f;">ルートBの場合：</span><br/><span class="accent" style="font-weight: 600;">全条件達成</span>→翌年4月ステータス反映</p>
                                         </li>
-                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: 15px; line-height: 1.6;">
+                                        <li class="bullet-item" style="margin-bottom: 14px; font-size: var(--font-size-body-small); line-height: 1.6;">
                                             <span class="bullet-marker" style="color: #ff9500; font-weight: 700;">3.</span>
-                                            <p style="margin: 0;">申込書記入・返送<br/><small style="color: #ff3b30; font-size: 13px;">新カード到着まで元カード保持（解約厳禁）</small></p>
+                                            <p style="margin: 0;">申込書記入・返送<br/><small style="color: #ff3b30; font-size: var(--font-size-tiny-text);">新カード到着まで元カード保持（解約厳禁）</small></p>
                                         </li>
-                                        <li class="bullet-item" style="margin-bottom: 0; font-size: 15px; line-height: 1.6;">
+                                        <li class="bullet-item" style="margin-bottom: 0; font-size: var(--font-size-body-small); line-height: 1.6;">
                                             <span class="bullet-marker" style="color: #ff9500; font-weight: 700;">4.</span>
-                                            <p style="margin: 0;"><span class="accent" style="font-weight: 600;">SFC取得後のカード戦略</span>実行<br/><small style="color: #86868b; font-size: 13px;">ダウングレード、ブランド変更の検討</small></p>
+                                            <p style="margin: 0;"><span class="accent" style="font-weight: 600;">SFC取得後のカード戦略</span>実行<br/><small style="color: #86868b; font-size: var(--font-size-tiny-text);">ダウングレード、ブランド変更の検討</small></p>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                             <div style="background-color: #fff4e6; padding: 20px; border-radius: 12px; border-left: 4px solid #ff9500; margin-top: 24px;">
-                                <p style="font-size: 15px; line-height: 1.8; margin: 0; color: #1d1d1f;">
+                                <p style="font-size: var(--font-size-body-small); line-height: 1.8; margin: 0; color: #1d1d1f;">
                                     <strong style="color: #ff9500;">⚠️ 重要：</strong>マイ友プログラムはカード申込み<span style="color: #ff3b30; font-weight: 700;">後</span>の登録では無効です。ワイドゴールドカードなら<span style="color: #0071e3; font-weight: 600;">2,000マイル</span>を確実に獲得しましょう。
+                                </p>
+                                <p style="font-size: var(--font-size-body-small); line-height: 1.8; margin-top: 12px; margin-bottom: 0; color: #1d1d1f;">
+                                    <span style="font-weight: 600; color: #0071e3;">💡 紹介者番号をお持ちでない方は、</span><a href="https://www.instagram.com/ino_moneycoach/" target="_blank" rel="noopener noreferrer" style="color: #0071e3; text-decoration: underline; font-weight: 600; margin-left: 4px;">InstagramのDM</a>でお気軽にお問い合わせください。
                                 </p>
                             </div>
                     </div>
@@ -3689,7 +4028,7 @@
                     <div class="content-wrapper content-left">
                         <h1 class="slide-title large-margin">SFCカード対応と家族カード年会費一覧</h1>
                         <div class="content-area">
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 24px; color: #515154;">
+                            <p style="font-size: var(--font-size-body); line-height: 1.8; margin-bottom: 24px; color: #515154;">
                                 SFC取得後、どのカードを選択するかは重要な判断です。以下は、ブランド×ランクごとのSFC発行可否、本会員年会費、家族カード年会費、発行上限をまとめた一覧表です（すべて税込、公式情報に基づく）。
                             </p>
                             <div class="table-container">
@@ -3713,7 +4052,7 @@
                                             <td style="text-align: center;">11,275円</td>
                                             <td style="text-align: center;">5,610円</td>
                                             <td style="text-align: center;">原則4枚まで</td>
-                                            <td style="font-size: 14px; color: #666;">ー</td>
+                                            <td style="font-size: var(--font-size-description); color: #666;">ー</td>
                                         </tr>
                                         <tr>
                                             <td style="font-weight: 600;">JCB</td>
@@ -3722,16 +4061,16 @@
                                             <td style="text-align: center;">16,500円</td>
                                             <td style="text-align: center;">8,250円</td>
                                             <td style="text-align: center;">原則4枚まで</td>
-                                            <td style="font-size: 14px; color: #666;">ー</td>
+                                            <td style="font-size: var(--font-size-description); color: #666;">ー</td>
                                         </tr>
                                         <tr>
                                             <td style="font-weight: 600;">JCB</td>
                                             <td>プレミアム</td>
-                                            <td style="text-align: center;"><span style="color: #0071e3; font-weight: 700;">〇</span><br/><small style="font-size: 12px; color: #666;">（JCBプレミアム）</small></td>
+                                            <td style="text-align: center;"><span style="color: #0071e3; font-weight: 700;">〇</span><br/><small style="font-size: var(--font-size-tiny); color: #666;">（JCBプレミアム）</small></td>
                                             <td style="text-align: center;">77,000円</td>
                                             <td style="text-align: center;">4,400円</td>
                                             <td style="text-align: center;">原則4枚まで</td>
-                                            <td style="font-size: 14px; color: #666;">家族カード年会費が最も安い</td>
+                                            <td style="font-size: var(--font-size-description); color: #666;">家族カード年会費が最も安い</td>
                                         </tr>
                                         <tr>
                                             <td style="font-weight: 600;">VISA</td>
@@ -3740,7 +4079,7 @@
                                             <td style="text-align: center;">11,275円</td>
                                             <td style="text-align: center;">5,610円</td>
                                             <td style="text-align: center;">原則4枚まで</td>
-                                            <td style="font-size: 14px; color: #666;">ー</td>
+                                            <td style="font-size: var(--font-size-description); color: #666;">ー</td>
                                         </tr>
                                         <tr>
                                             <td style="font-weight: 600;">VISA</td>
@@ -3749,16 +4088,16 @@
                                             <td style="text-align: center;">16,500円</td>
                                             <td style="text-align: center;">8,250円</td>
                                             <td style="text-align: center;">原則4枚まで</td>
-                                            <td style="font-size: 14px; color: #666;">ー</td>
+                                            <td style="font-size: var(--font-size-description); color: #666;">ー</td>
                                         </tr>
                                         <tr>
                                             <td style="font-weight: 600;">VISA</td>
                                             <td>プレミアム</td>
-                                            <td style="text-align: center;"><span style="color: #0071e3; font-weight: 700;">〇</span><br/><small style="font-size: 12px; color: #666;">（VISAプラチナSFCプレミアム）</small></td>
-                                            <td style="text-align: center;">96,800円<br/><small style="font-size: 11px; color: #666;">（2025年12月10日以降）</small></td>
+                                            <td style="text-align: center;"><span style="color: #0071e3; font-weight: 700;">〇</span><br/><small style="font-size: var(--font-size-tiny); color: #666;">（VISAプラチナSFCプレミアム）</small></td>
+                                            <td style="text-align: center;">96,800円<br/><small style="font-size: var(--font-size-tiny); color: #666;">（2025年12月10日以降）</small></td>
                                             <td style="text-align: center;">4,400円</td>
                                             <td style="text-align: center;">原則4枚まで</td>
-                                            <td style="font-size: 14px; color: #666;">家族カード年会費が最も安い</td>
+                                            <td style="font-size: var(--font-size-description); color: #666;">家族カード年会費が最も安い</td>
                                         </tr>
                                         <tr>
                                             <td style="font-weight: 600;">Mastercard</td>
@@ -3767,7 +4106,7 @@
                                             <td style="text-align: center;">11,275円</td>
                                             <td style="text-align: center;">5,610円</td>
                                             <td style="text-align: center;">原則4枚まで</td>
-                                            <td style="font-size: 14px; color: #666;">ー</td>
+                                            <td style="font-size: var(--font-size-description); color: #666;">ー</td>
                                         </tr>
                                         <tr>
                                             <td style="font-weight: 600;">Mastercard</td>
@@ -3776,77 +4115,50 @@
                                             <td style="text-align: center;">16,500円</td>
                                             <td style="text-align: center;">8,250円</td>
                                             <td style="text-align: center;">原則4枚まで</td>
-                                            <td style="font-size: 14px; color: #666;">ー</td>
-                                        </tr>
-                                        <tr style="background-color: #fff4e6;">
-                                            <td style="font-weight: 600;">Mastercard</td>
-                                            <td>プレミアム</td>
-                                            <td style="text-align: center;"><span style="color: #ff3b30; font-weight: 700;">×</span></td>
-                                            <td style="text-align: center;">―</td>
-                                            <td style="text-align: center;">―</td>
-                                            <td style="text-align: center;">―</td>
-                                            <td style="font-size: 14px; color: #666;">設定なし</td>
-                                        </tr>
-                                        <tr style="background-color: #fff4e6;">
-                                            <td style="font-weight: 600;">American Express</td>
-                                            <td>一般</td>
-                                            <td style="text-align: center;"><span style="color: #ff3b30; font-weight: 700;">×</span></td>
-                                            <td style="text-align: center;">―</td>
-                                            <td style="text-align: center;">―</td>
-                                            <td style="text-align: center;">―</td>
-                                            <td style="font-size: 14px; color: #666;">設定なし</td>
+                                            <td style="font-size: var(--font-size-description); color: #666;">ー</td>
                                         </tr>
                                         <tr>
                                             <td style="font-weight: 600;">American Express</td>
                                             <td>ゴールド</td>
-                                            <td style="text-align: center;"><span style="color: #0071e3; font-weight: 700;">〇</span><br/><small style="font-size: 12px; color: #666;">（SFCゴールド）</small></td>
+                                            <td style="text-align: center;"><span style="color: #0071e3; font-weight: 700;">〇</span><br/><small style="font-size: var(--font-size-tiny); color: #666;">（SFCゴールド）</small></td>
                                             <td style="text-align: center;">34,100円</td>
                                             <td style="text-align: center;">17,050円</td>
                                             <td style="text-align: center;">原則4枚まで</td>
-                                            <td style="font-size: 14px; color: #666;">家族カード年会費が最も高い</td>
+                                            <td style="font-size: var(--font-size-description); color: #666;">家族カード年会費が最も高い</td>
                                         </tr>
                                         <tr style="background-color: #e8f4fd;">
                                             <td style="font-weight: 600;">American Express</td>
                                             <td>プレミアム</td>
-                                            <td style="text-align: center;"><span style="color: #0071e3; font-weight: 700;">〇</span><br/><small style="font-size: 12px; color: #666;">（SFCプレミアム）</small></td>
+                                            <td style="text-align: center;"><span style="color: #0071e3; font-weight: 700;">〇</span><br/><small style="font-size: var(--font-size-tiny); color: #666;">（SFCプレミアム）</small></td>
                                             <td style="text-align: center;">165,000円</td>
                                             <td style="text-align: center;"><span style="color: #0071e3; font-weight: 700;">無料</span></td>
                                             <td style="text-align: center;">4枚まで（無料）</td>
-                                            <td style="font-size: 14px; color: #666;"><span style="color: #0071e3; font-weight: 600;">家族カード4枚まで無料</span></td>
-                                        </tr>
-                                        <tr style="background-color: #fff4e6;">
-                                            <td style="font-weight: 600;">Diners</td>
-                                            <td>一般</td>
-                                            <td style="text-align: center;"><span style="color: #ff3b30; font-weight: 700;">×</span></td>
-                                            <td style="text-align: center;">―</td>
-                                            <td style="text-align: center;">―</td>
-                                            <td style="text-align: center;">―</td>
-                                            <td style="font-size: 14px; color: #666;">設定なし</td>
+                                            <td style="font-size: var(--font-size-description); color: #666;"><span style="color: #0071e3; font-weight: 600;">家族カード4枚まで無料</span></td>
                                         </tr>
                                         <tr>
                                             <td style="font-weight: 600;">Diners</td>
-                                            <td>ゴールド相当<br/><small style="font-size: 12px; color: #666;">（通常ダイナース）</small></td>
+                                            <td>ゴールド相当<br/><small style="font-size: var(--font-size-tiny); color: #666;">（通常ダイナース）</small></td>
                                             <td style="text-align: center;"><span style="color: #0071e3; font-weight: 700;">〇</span></td>
                                             <td style="text-align: center;">24,200円</td>
                                             <td style="text-align: center;">11,550円</td>
                                             <td style="text-align: center;">原則4枚まで</td>
-                                            <td style="font-size: 14px; color: #666;">ー</td>
+                                            <td style="font-size: var(--font-size-description); color: #666;">ー</td>
                                         </tr>
                                         <tr style="background-color: #e8f4fd;">
                                             <td style="font-weight: 600;">Diners</td>
                                             <td>プレミアム</td>
-                                            <td style="text-align: center;"><span style="color: #0071e3; font-weight: 700;">〇</span><br/><small style="font-size: 12px; color: #666;">（ダイナースSFCプレミアム）</small></td>
+                                            <td style="text-align: center;"><span style="color: #0071e3; font-weight: 700;">〇</span><br/><small style="font-size: var(--font-size-tiny); color: #666;">（ダイナースSFCプレミアム）</small></td>
                                             <td style="text-align: center;">170,500円</td>
                                             <td style="text-align: center;"><span style="color: #0071e3; font-weight: 700;">無料</span></td>
                                             <td style="text-align: center;">原則4枚まで</td>
-                                            <td style="font-size: 14px; color: #666;"><span style="color: #0071e3; font-weight: 600;">家族カード無料</span></td>
+                                            <td style="font-size: var(--font-size-description); color: #666;"><span style="color: #0071e3; font-weight: 600;">家族カード無料</span></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <div style="background-color: #f5f5f7; padding: 20px; border-radius: 12px; border-left: 4px solid #0071e3; margin-top: 24px;">
-                                <h3 style="font-size: 18px; font-weight: 700; color: #1d1d1f; margin-bottom: 12px;">📋 重要なポイント</h3>
-                                <ul style="margin: 0; padding-left: 24px; font-size: 15px; line-height: 1.8; color: #515154;">
+                                <h3 style="font-size: var(--font-size-h3-default); font-weight: 700; color: #1d1d1f; margin-bottom: 12px;">📋 重要なポイント</h3>
+                                <ul style="margin: 0; padding-left: 24px; font-size: var(--font-size-body-small); line-height: 1.8; color: #515154;">
                                     <li style="margin-bottom: 8px;">家族カードは<span style="font-weight: 600; color: #1d1d1f;">原則4枚まで</span>発行可能（オンライン同時申込は2枚まで、追加発行は各カード会社サイトで可）</li>
                                     <li style="margin-bottom: 8px;">プレミアムカード（JCB/VISA/AMEX/Diners）は家族カード年会費が<span style="color: #0071e3; font-weight: 600;">4,400円または無料</span>と、ゴールドカードより安い「逆転現象」が発生</li>
                                     <li style="margin-bottom: 8px;">AMEXとDinersのプレミアムは<span style="color: #0071e3; font-weight: 600;">家族カード4枚まで無料</span>という大きなメリットがある</li>
@@ -3868,24 +4180,24 @@
                         <h1 class="slide-title large-margin">SFC取得後のカード戦略とリスク管理</h1>
                         <div class="content-area">
                             <div style="background-color: #e8f4fd; padding: 24px; border-radius: 12px; border-left: 6px solid #0071e3; margin-bottom: 32px;">
-                                <p style="font-size: 17px; font-weight: 600; color: #1d1d1f; margin-bottom: 12px; line-height: 1.6;">
+                                <p style="font-size: var(--font-size-h3-small); font-weight: 600; color: #1d1d1f; margin-bottom: 12px; line-height: 1.6;">
                                     💡 SFC取得後のカード選択の全体像
                                 </p>
-                                <p style="font-size: 15px; line-height: 1.8; color: #515154; margin-bottom: 0;">
+                                <p style="font-size: var(--font-size-body-small); line-height: 1.8; color: #515154; margin-bottom: 0;">
                                     前のスライド「<strong>SFCカード対応と家族カード年会費一覧</strong>」で、ブランド×ランクごとのSFC発行可否、本会員年会費、家族カード年会費を確認しました。SFC取得後は、<span style="color: #0071e3; font-weight: 600;">どのカードを選択するか</span>が、年間コストとリスク管理の両面で重要になります。
                                 </p>
-                                <p style="font-size: 15px; line-height: 1.8; color: #515154; margin-top: 12px; margin-bottom: 0;">
+                                <p style="font-size: var(--font-size-body-small); line-height: 1.8; color: #515154; margin-top: 12px; margin-bottom: 0;">
                                     このセクションでは、SFC取得後の具体的なカード戦略（ダウングレード戦略、ブランド変更のリスク）と、それに伴う信用情報への影響について詳しく解説します。
                                 </p>
                             </div>
                             <div style="margin-bottom: 40px;">
                                 <h2 class="section-title">高額年会費カードの「手仕舞い」：ダウングレード戦略</h2>
-                                <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
+                                <p style="font-size: var(--font-size-body); line-height: 1.8; margin-bottom: 20px;">
                                     SFC修行のためにANAカード プレミアム（年会費77,000円など）を発行した場合、SFC取得後に高額なカードを解約し、より安価なSFCゴールドカード（年会費16,500円）に切り替える戦略は、最も合理的かつ一般的な「出口戦略」です。
                                 </p>
                                 <div style="background-color: #f5f5f7; padding: 20px; border-radius: 12px; border-left: 4px solid #0071e3; margin-bottom: 30px;">
-                                    <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin-bottom: 16px;">💰 年会費返金（月割）の可能性</h3>
-                                    <div style="font-size: 15px; line-height: 1.8;">
+                                    <h3 style="font-size: var(--font-size-subsection-title); font-weight: 700; color: #1d1d1f; margin-bottom: 16px;">💰 年会費返金（月割）の可能性</h3>
+                                    <div style="font-size: var(--font-size-body-small); line-height: 1.8;">
                                         <p style="margin-bottom: 16px;">
                                             <span style="font-weight: 700; color: #1d1d1f;">よくある疑問：</span>支払った高額年会費の残存期間分は返金されるのか？
                                         </p>
@@ -3911,7 +4223,7 @@
                             </div>
                             <div style="background-color: #f5f5f7; padding: 20px; border-radius: 12px; border-left: 4px solid #ff9500;">
                                 <h2 class="section-title">信用情報（CIC/JICC）への影響と将来の審査リスク</h2>
-                                <div style="font-size: 15px; line-height: 1.8;">
+                                <div style="font-size: var(--font-size-body-small); line-height: 1.8;">
                                     <p style="margin-bottom: 16px;">
                                         SFC取得後に実行するダウングレードやブランド変更は、目先の年会費を最適化する一方で、個人の信用情報（CIC/JICC）およびカード発行会社の社内情報に明確な記録を残す行為です。
                                     </p>
@@ -3952,23 +4264,23 @@
                             <ul class="bullet-list">
                                 <li class="bullet-item">
                                     <span class="bullet-marker">•</span>
-                                    <p><span class="warning">SFC到着"前"にカードを解約しない</span><br/><span style="font-size: 22px; color: #666;">→ 資格を失います（再度50,000PP貯め直しが必要）</span></p>
+                                    <p><span class="warning">SFC到着"前"にカードを解約しない</span><br/><span style="font-size: var(--font-size-h3-large); color: #666;">→ 資格を失います（再度50,000PP貯め直しが必要）</span></p>
                                 </li>
                                 <li class="bullet-item">
                                     <span class="bullet-marker">•</span>
-                                    <p>未所持でプラチナ到達＝<span class="warning-bg">新規審査一発勝負</span><br/><span style="font-size: 22px; color: #666;">→ 審査落ちで修行が水の泡に</span></p>
+                                    <p>未所持でプラチナ到達＝<span class="warning-bg">新規審査一発勝負</span><br/><span style="font-size: var(--font-size-h3-large); color: #666;">→ 審査落ちで修行が水の泡に</span></p>
                                 </li>
                                 <li class="bullet-item">
                                     <span class="bullet-marker">•</span>
-                                    <p>国際ブランド変更時：<span class="accent">番号/AMCの統合に注意</span><br/><span style="font-size: 22px; color: #666;">→ VISA→JCB切替は要確認</span></p>
+                                    <p>国際ブランド変更時：<span class="accent">番号/AMCの統合に注意</span><br/><span style="font-size: var(--font-size-h3-large); color: #666;">→ VISA→JCB切替は要確認</span></p>
                                 </li>
                                 <li class="bullet-item">
                                     <span class="bullet-marker">•</span>
-                                    <p>年会費未払い＝資格停止リスク<br/><span style="font-size: 22px; color: #666;">→ 自動引落設定を確認</span></p>
+                                    <p>年会費未払い＝資格停止リスク<br/><span style="font-size: var(--font-size-h3-large); color: #666;">→ 自動引落設定を確認</span></p>
                                 </li>
                                 <li class="bullet-item">
                                     <span class="bullet-marker">•</span>
-                                    <p>住所不一致＝申込書未着の遅延<br/><span style="font-size: 22px; color: #666;">→ 申込前にAMC会員情報を更新</span></p>
+                                    <p>住所不一致＝申込書未着の遅延<br/><span style="font-size: var(--font-size-h3-large); color: #666;">→ 申込前にAMC会員情報を更新</span></p>
                                 </li>
                             </ul>
                             <p class="note">※ SFC入会手続きの詳細はANA公式ウェブサイトで最新情報をご確認ください</p>
@@ -3988,7 +4300,7 @@
                                 <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 24px;">
                                     <div class="break-even-card">
                                         <div class="break-even-card-title">SFC一般カード</div>
-                                        <div class="break-even-value" style="font-size: 32px; color: #0071e3;">11,275円</div>
+                                        <div class="break-even-value" style="font-size: var(--font-size-large-value); color: #0071e3;">11,275円</div>
                             </div>
                                     <div class="break-even-card">
                                         <div class="break-even-card-title">SFCゴールドカード</div>
@@ -4014,7 +4326,7 @@
                                             <div class="break-even-value">77,000円</div>
                                         </div>
                                         <div class="break-even-info-item">
-                                            <div class="break-even-label">VISA<br/><span style="font-size: 12px; color: #86868b;">2025年12月10日以降</span></div>
+                                            <div class="break-even-label">VISA<br/><span style="font-size: var(--font-size-tiny); color: #86868b;">2025年12月10日以降</span></div>
                                             <div class="break-even-value">96,800円</div>
                                         </div>
                                         <div class="break-even-info-item">
@@ -4061,7 +4373,7 @@
                                             <td>3,000円/年</td>
                                         </tr>
                                         <tr>
-                                            <td style="text-align: left; padding-left: 20px;">B. SKYコイン交換レート優遇<br/><span style="font-size: 12px; color: #86868b;">※一般会員（1.2倍）との比較、年間15,000マイル程度の交換を想定</span></td>
+                                            <td style="text-align: left; padding-left: 20px;">B. SKYコイン交換レート優遇<br/><span style="font-size: var(--font-size-tiny); color: #86868b;">※一般会員（1.2倍）との比較、年間15,000マイル程度の交換を想定</span></td>
                                             <td>5,000円/年</td>
                                         </tr>
                                         <tr>
@@ -4070,7 +4382,7 @@
                                         </tr>
                                         <tr style="background-color: #f5f5f7;">
                                             <td style="text-align: left; padding-left: 20px;"><strong>固定価値 合計</strong></td>
-                                            <td><strong style="color: #0071e3; font-size: 20px;">9,000円/年</strong></td>
+                                            <td><strong style="color: #0071e3; font-size: var(--font-size-subsection-title);">9,000円/年</strong></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -4104,7 +4416,7 @@
                                         </tr>
                                         <tr style="background-color: #f5f5f7;">
                                             <td style="text-align: left; padding-left: 20px;"><strong>可変価値 合計</strong></td>
-                                            <td><strong style="color: #0071e3; font-size: 20px;">20,200円/往復</strong></td>
+                                            <td><strong style="color: #0071e3; font-size: var(--font-size-subsection-title);">20,200円/往復</strong></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -4118,7 +4430,7 @@
                                 <div class="break-even-formula-sub">
                                     年間コスト = SFCカード年会費 + 家族カード年会費 × 枚数
                                 </div>
-                                <div style="font-size: 18px; font-weight: 600; color: #ff9500; margin-top: 12px;">
+                                <div style="font-size: var(--font-size-h3-default); font-weight: 600; color: #ff9500; margin-top: 12px;">
                                     純利益 = 年間リターン - 年間コスト
                                 </div>
                             </div>
@@ -4283,20 +4595,20 @@
                                         <div class="break-even-value">8,250円/枚</div>
                                     </div>
                                     <div class="break-even-info-item">
-                                        <div class="break-even-label">家族会員1名あたりのリターン<br/><small style="font-size: 11px; color: #86868b;">（年1往復相当の簡易計算）</small></div>
+                                        <div class="break-even-label">家族会員1名あたりのリターン<br/><small style="font-size: var(--font-size-extra-tiny); color: #86868b;">（年1往復相当の簡易計算）</small></div>
                                         <div class="break-even-value">約21,000円/年</div>
                                     </div>
                                     <div class="break-even-info-item">
-                                        <div class="break-even-label">純増価値<br/><small style="font-size: 11px; color: #86868b;">（年1往復相当の簡易計算）</small></div>
+                                        <div class="break-even-label">純増価値<br/><small style="font-size: var(--font-size-extra-tiny); color: #86868b;">（年1往復相当の簡易計算）</small></div>
                                         <div class="break-even-value" style="color: #0071e3;">約15,500円/年</div>
                                     </div>
-                                    <div style="font-size: 12px; color: #86868b; margin-top: 8px; padding-top: 8px; border-top: 1px solid #e5e5e5;">
+                                    <div style="font-size: var(--font-size-tiny); color: #86868b; margin-top: 8px; padding-top: 8px; border-top: 1px solid #e5e5e5;">
                                         ※家族カードのリターンは実際には往復回数に依存します（9,000円 + 20,200円×n往復）。本表では簡易計算のため、家族カードが年1往復相当の利用を想定しています。
                                     </div>
                                 </div>
                                 <div class="break-even-card">
                                     <div class="break-even-card-title">年間リターン計算式</div>
-                                    <div style="font-size: 15px; line-height: 1.8; color: #1d1d1f;">
+                                    <div style="font-size: var(--font-size-body-small); line-height: 1.8; color: #1d1d1f;">
                                         <strong>年間リターン = </strong><br/>
                                         9,000円 + 20,200円×n往復<br/>
                                         + 15,500円×家族カード枚数
@@ -4306,7 +4618,7 @@
                             
                             <div class="break-even-matrix-container">
                                 <div>
-                                    <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin-bottom: 15px; text-align: center;">パターンA（50万円）の回収年数</h3>
+                                    <h3 style="font-size: var(--font-size-subsection-title); font-weight: 700; color: #1d1d1f; margin-bottom: 15px; text-align: center;">パターンA（50万円）の回収年数</h3>
                                     <div class="table-container">
                                         <table>
                                             <thead>
@@ -4359,7 +4671,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin-bottom: 15px; text-align: center;">パターンB（20万円）の回収年数</h3>
+                                    <h3 style="font-size: var(--font-size-subsection-title); font-weight: 700; color: #1d1d1f; margin-bottom: 15px; text-align: center;">パターンB（20万円）の回収年数</h3>
                                     <div class="table-container">
                                         <table>
                                             <thead>
@@ -4430,26 +4742,26 @@
                             <h2 class="section-title">結論</h2>
                             <div style="background-color: #f5f5f7; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
                                 <div style="margin-bottom: 20px;">
-                                    <div style="font-weight: 700; font-size: 18px; margin-bottom: 10px; color: #0071e3;">✓ 初期投資の圧縮が最重要</div>
-                                    <div style="font-size: 15px; color: #515154; line-height: 1.7;">
+                                    <div style="font-weight: 700; font-size: var(--font-size-h3-default); margin-bottom: 10px; color: #0071e3;">✓ 初期投資の圧縮が最重要</div>
+                                    <div style="font-size: var(--font-size-body-small); color: #515154; line-height: 1.7;">
                                         出張の活用、マイル→SKYコイン、入会キャンペーンで自己負担を圧縮（目標: 20万円以下）
                                     </div>
                                 </div>
                                 <div style="margin-bottom: 20px;">
-                                    <div style="font-weight: 700; font-size: 18px; margin-bottom: 10px; color: #0071e3;">✓ 利用頻度の確保</div>
-                                    <div style="font-size: 15px; color: #515154; line-height: 1.7;">
+                                    <div style="font-weight: 700; font-size: var(--font-size-h3-default); margin-bottom: 10px; color: #0071e3;">✓ 利用頻度の確保</div>
+                                    <div style="font-size: var(--font-size-body-small); color: #515154; line-height: 1.7;">
                                         年6回以上のANA搭乗で回収年数が現実的（パターンBなら1.5年以内）
                                     </div>
                                 </div>
                                 <div style="margin-bottom: 20px;">
-                                    <div style="font-weight: 700; font-size: 18px; margin-bottom: 10px; color: #0071e3;">✓ 家族カードの活用</div>
-                                    <div style="font-size: 15px; color: #515154; line-height: 1.7;">
+                                    <div style="font-weight: 700; font-size: var(--font-size-h3-default); margin-bottom: 10px; color: #0071e3;">✓ 家族カードの活用</div>
+                                    <div style="font-size: var(--font-size-body-small); color: #515154; line-height: 1.7;">
                                         家族での旅行が多い場合、家族カード発行で回収期間を劇的に短縮可能
                                     </div>
                                 </div>
                                 <div>
-                                    <div style="font-weight: 700; font-size: 18px; margin-bottom: 10px; color: #ff9500;">⚠ 2027年以降の年会費は純コスト</div>
-                                    <div style="font-size: 15px; color: #515154; line-height: 1.7;">
+                                    <div style="font-weight: 700; font-size: var(--font-size-h3-default); margin-bottom: 10px; color: #ff9500;">⚠ 2027年以降の年会費は純コスト</div>
+                                    <div style="font-size: var(--font-size-body-small); color: #515154; line-height: 1.7;">
                                         無形価値（時短、快適性、家族メリット）と天秤にかけて継続判断が必要
                                     </div>
                                 </div>
@@ -4554,17 +4866,17 @@
                         <h1 class="slide-title" style="color: #ff9500; border-left-color: #ff9500;">⚠️ 重要なお知らせ</h1>
                         <div class="content-area">
                             <div style="background-color: #ffffff; padding: 24px; border-radius: 12px; margin-bottom: 24px; border: 2px solid #ff9500;">
-                                <p style="font-size: 16px; line-height: 1.8; color: #1d1d1f; margin-bottom: 16px;">
+                                <p style="font-size: var(--font-size-body); line-height: 1.8; color: #1d1d1f; margin-bottom: 16px;">
                                     このサイトは速報まとめとして実験的に公開しています。
                                 </p>
-                                <p style="font-size: 16px; line-height: 1.8; color: #1d1d1f; margin-bottom: 16px;">
+                                <p style="font-size: var(--font-size-body); line-height: 1.8; color: #1d1d1f; margin-bottom: 16px;">
                                     情報の正確性については最大限の注意を払っておりますが、間違いや不正確な情報が含まれる可能性があります。ご利用の際は、必ず公式情報をご確認いただき、ご了承の上でご活用ください。
                                 </p>
-                                <p style="font-size: 16px; line-height: 1.8; color: #1d1d1f; margin-bottom: 0;">
+                                <p style="font-size: var(--font-size-body); line-height: 1.8; color: #1d1d1f; margin-bottom: 0;">
                                     ご意見、ご要望、誤りのご指摘などがございましたら、<a href="https://www.instagram.com/ino_moneycoach/" target="_blank" rel="noopener noreferrer" style="color: #0071e3; text-decoration: underline; font-weight: 600;">InstagramのDM</a>でお待ちしております。
                                 </p>
         </div>
-                            <p style="font-size: 14px; color: #86868b; text-align: center; margin-top: 24px;">
+                            <p style="font-size: var(--font-size-description); color: #86868b; text-align: center; margin-top: 24px;">
                                 © 2025 @ino-moneycoach. この内容は公開情報に基づきAIを活用して作成されたまとめです。
                             </p>
                         </div>
@@ -4575,5 +4887,37 @@
             <!-- 追加のスライドはここに挿入されます -->
         </div>
     </div>
+    
+    <!-- フローティングスクロールボタン -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="ページトップに戻る">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script>
+        // フローティングボタンの表示/非表示制御
+        const scrollToTopButton = document.getElementById('scrollToTop');
+        
+        function toggleScrollButton() {
+            if (window.pageYOffset > 300) {
+                scrollToTopButton.classList.add('show');
+            } else {
+                scrollToTopButton.classList.remove('show');
+            }
+        }
+        
+        // スクロールイベントリスナー
+        window.addEventListener('scroll', toggleScrollButton);
+        
+        // ページトップに戻る機能
+        scrollToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // 初期状態のチェック
+        toggleScrollButton();
+    </script>
 </body>
 </html>
