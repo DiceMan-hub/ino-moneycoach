@@ -130,7 +130,7 @@
             }
             
             .slide {
-                padding: 50px 20px;
+                padding: 50px 16px;
                 margin: 0 16px 32px 16px;
                 border-radius: 12px;
                 box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
@@ -166,7 +166,7 @@
             .slide-title {
                 font-size: var(--font-size-slide-title-mobile);
                 margin-bottom: 32px;
-                padding-left: 12px;
+                padding-left: 0;
                 border-left-width: 3px;
             }
             
@@ -241,10 +241,90 @@
                 max-width: 100%;
             }
             
+            /* インラインスタイルのリスト要素の左パディングを統一 */
+            .slide ul[style*="padding-left"],
+            .slide ol[style*="padding-left"],
+            .slide ul[style*="margin-left"],
+            .slide ol[style*="margin-left"] {
+                padding-left: 20px !important;
+            }
+            
+            /* インラインスタイルのmargin-leftをリセット */
+            .slide div[style*="margin-left"],
+            .slide p[style*="margin-left"] {
+                margin-left: 0 !important;
+            }
+            
+            /* コンテンツエリア内の全要素の左右余白を統一 */
+            .content-area {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            
             /* SFCカード対応表のモバイル対応 */
             .table-container {
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
+                position: relative;
+                margin-bottom: 16px;
+            }
+            
+            /* スクロール可能インジケーター */
+            .table-container {
+                position: relative;
+            }
+            
+            /* 右側にグラデーションオーバーレイ */
+            .table-container.scrollable::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 60px;
+                background: linear-gradient(to left, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 50%, transparent 100%);
+                pointer-events: none;
+                z-index: 5;
+            }
+            
+            /* スクロール可能インジケーター（アイコンとテキスト） */
+            .table-container.scrollable::after {
+                content: '→';
+                position: absolute;
+                top: 50%;
+                right: 16px;
+                transform: translateY(-50%);
+                background-color: #0071e3;
+                color: #ffffff;
+                padding: 12px 16px;
+                border-radius: 50%;
+                font-size: 20px;
+                font-weight: bold;
+                pointer-events: none;
+                z-index: 10;
+                opacity: 1;
+                animation: scroll-bounce 1.5s infinite;
+                box-shadow: 0 4px 12px rgba(0, 113, 227, 0.4);
+            }
+            
+            @keyframes scroll-bounce {
+                0%, 100% {
+                    transform: translateY(-50%) translateX(0);
+                }
+                50% {
+                    transform: translateY(-50%) translateX(8px);
+                }
+            }
+            
+            /* スクロール中のフェードアウト */
+            .table-container.scrolling::after {
+                opacity: 0;
+                transition: opacity 0.5s ease;
+            }
+            
+            .table-container.scrolling::before {
+                opacity: 0;
+                transition: opacity 0.5s ease;
             }
             
             .table-container table {
@@ -269,7 +349,9 @@
             justify-content: flex-start;
             align-items: flex-start;
             padding: 0;
+            margin: 0;
             width: 100%;
+            box-sizing: border-box;
         }
         
         .content-wrapper:not(.content-left):not(.compact) {
@@ -281,10 +363,16 @@
             align-items: flex-start;
             justify-content: flex-start;
             padding: 0;
+            margin: 0;
+            width: 100%;
+            box-sizing: border-box;
         }
         
         .content-wrapper.compact {
             padding: 0;
+            margin: 0;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .main-title {
@@ -399,6 +487,9 @@
         .content-area {
             flex: 1;
             width: 100%;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
         }
 
         .bullet-list {
@@ -418,11 +509,17 @@
             display: flex;
             align-items: flex-start;
             line-height: 1.4;
+            width: 100%;
+            box-sizing: border-box;
         }
         
         .bullet-item > p {
             margin: 0;
-            flex: 1;
+            flex: 1 1 auto;
+            min-width: 0;
+            box-sizing: border-box;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         
         .bullet-item-wrapper {
@@ -435,6 +532,8 @@
             flex: 1;
             display: flex;
             flex-direction: column;
+            min-width: 0;
+            box-sizing: border-box;
         }
 
         .bullet-marker {
@@ -460,7 +559,14 @@
             flex-wrap: wrap;
             margin-left: 32px;
             margin-top: 12px;
-            width: 100%;
+            width: calc(100% - 32px);
+        }
+        
+        @media (max-width: 768px) {
+            .card-options {
+                margin-left: 0 !important;
+                width: 100% !important;
+            }
         }
 
         .card-option {
@@ -662,6 +768,105 @@
             
             .card-title-small {
                 font-size: var(--font-size-subsection-title-mobile) !important;
+            }
+            
+            /* エグゼクティブサマリー：モバイル対応 */
+            #slide-2 .content-area {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                max-width: 100% !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            
+            #slide-2 .bullet-list {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            
+            .bullet-item {
+                flex-wrap: wrap !important;
+                max-width: 100% !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                overflow-wrap: break-word !important;
+                padding-right: 0 !important;
+                margin-right: 0 !important;
+            }
+            
+            .bullet-item .bullet-marker {
+                flex-shrink: 0 !important;
+                margin-right: 12px !important;
+            }
+            
+            .bullet-item-content {
+                flex: 1 1 auto !important;
+                min-width: 0 !important;
+                max-width: 100% !important;
+                width: 100% !important;
+                margin-left: 0 !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                box-sizing: border-box !important;
+                overflow-wrap: break-word !important;
+                word-wrap: break-word !important;
+            }
+            
+            .bullet-item-content > p {
+                margin-bottom: 8px !important;
+                max-width: 100% !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+                box-sizing: border-box !important;
+            }
+            
+            .card-options {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                margin-top: 12px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                box-sizing: border-box !important;
+            }
+            
+            .card-option {
+                font-size: var(--font-size-body) !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                margin-bottom: 12px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                flex-wrap: wrap !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                box-sizing: border-box !important;
+            }
+            
+            .card-option-marker {
+                flex-shrink: 0 !important;
+                margin-right: 8px !important;
+            }
+            
+            .card-option p {
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+                hyphens: auto;
+                line-height: 1.6;
+                max-width: 100% !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                box-sizing: border-box !important;
             }
             
             /* 戦略カード：モバイル対応 */
@@ -1085,6 +1290,16 @@
             width: 100%;
             margin-bottom: 32px;
             margin-top: 24px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            position: relative;
+        }
+        
+        /* デスクトップ用：スクロール可能インジケーターは非表示 */
+        @media (min-width: 769px) {
+            .table-container::after {
+                display: none;
+            }
         }
 
         table {
@@ -1922,6 +2137,9 @@
             justify-content: center;
             margin-bottom: 20px;
             position: relative;
+            width: 100%;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         .flow-steps {
@@ -1931,6 +2149,8 @@
             margin-bottom: 30px;
             padding: 0 40px;
             z-index: 2;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .flow-line {
@@ -2621,9 +2841,12 @@
                                 <p style="font-size: var(--font-size-h3-small); font-weight: 700; color: #ff3b30; margin-bottom: 8px; line-height: 1.6;">
                                     ⚠️ 最重要：プラチナ達成前に適切なカードを選ばないと、SFCに切り替えられません
                                 </p>
-                                <p style="font-size: var(--font-size-body-small); color: #1d1d1f; line-height: 1.7; margin-bottom: 0;">
+                                <p style="font-size: var(--font-size-body-small); color: #1d1d1f; line-height: 1.7; margin-bottom: 8px;">
                                     <strong>「ANAプロパーカード（一般・ゴールド・プレミアム）」</strong>はSFC切替可能。<br/>
                                     <strong>「交通系IC提携カード（ソラチカなど）」</strong>はSFC切替不可。
+                                </p>
+                                <p style="font-size: var(--font-size-body-small); color: #ff3b30; line-height: 1.7; margin-bottom: 0; font-weight: 600;">
+                                    ⚠️ 注意：ANAアメックス一般カードはSFC対象外カードなのでANA AMEXゴールドからダウングレードするとSFCカードとして使えないのは要注意
                                 </p>
                             </div>
                             
@@ -2646,7 +2869,8 @@
                                         <li style="margin-bottom: 8px;">ANA VISA Suicaカード</li>
                                         <li style="margin-bottom: 8px;">東急カード（PASMO付き）</li>
                                         <li style="margin-bottom: 8px;">nimocaカード</li>
-                                        <li style="margin-bottom: 0;">学生カード・法人カード</li>
+                                        <li style="margin-bottom: 8px;">学生カード・法人カード</li>
+                                        <li style="margin-bottom: 0;">ANAアメックス一般カード</li>
                                     </ul>
                                 </div>
                             </div>
@@ -2656,7 +2880,7 @@
             </div>
             
             <!-- Slide 2: エグゼクティブサマリー（結論） -->
-            <div class="slide">
+            <div class="slide" id="slide-2">
                 <div class="slide-container">
                     <div class="content-wrapper content-left">
                         <h1 class="slide-title">エグゼクティブサマリー（結論）</h1>
@@ -2807,48 +3031,27 @@
                             </div>
                             <div>
                                 <h2 class="section-title">SFC達成ルートとカード選択の関係</h2>
-                                <div class="route-comparison">
-                                    <div class="route-item">
-                                        <h3 class="route-title">ルートA：50,000PP達成（王道）</h3>
-                                        <ul class="bullet-list">
-                                            <li class="bullet-item">
-                                                <span class="bullet-marker">•</span>
-                                                <p>カードブランドは<span class="accent">問わない</span>（VISA/Master/JCB/Amexどれでも可）</p>
-                                            </li>
-                                            <li class="bullet-item">
-                                                <span class="bullet-marker">•</span>
-                                                <p>PP獲得方法：<span class="highlight">ANA便25,000PP + スターアライアンス便25,000PP</span>の組み合わせが可能（ANA便のみでも可）</p>
-                                            </li>
-                                            <li class="bullet-item">
-                                                <span class="bullet-marker">•</span>
-                                                <p>重要なのは<span class="highlight">フライトマイル還元率</span>と<span class="highlight">搭乗ボーナスマイル</span></p>
-                                            </li>
-                                            <li class="bullet-item">
-                                                <span class="bullet-marker">•</span>
-                                                <p>プラチナ達成後、<span class="accent">事前サービスが迅速に適用</span>される</p>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="route-item">
-                                        <h3 class="route-title">ルートB：30,000PP + LSS併用（ハイブリッド）</h3>
-                                        <ul class="bullet-list">
-                                            <li class="bullet-item">
-                                                <span class="bullet-marker">•</span>
-                                                <p><span class="warning">Mastercard/JCB/Amexブランドが必須</span>（VISAは非推奨）</p>
-                                            </li>
-                                            <li class="bullet-item">
-                                                <span class="bullet-marker">•</span>
-                                                <p>PP獲得方法：<span class="warning">ANA便のみ</span>（スターアライアンス便は対象外）</p>
-                                            </li>
-                                            <li class="bullet-item">
-                                                <span class="bullet-marker">•</span>
-                                                <p>理由：400万円決済要件を効率化する<span class="highlight">ANA Payチャージ戦略</span>が使えるため</p>
-                                            </li>
-                                            <li class="bullet-item">
-                                                <span class="bullet-marker">•</span>
-                                                <p>注意：プラチナ事前サービスは<span class="warning">全条件達成まで遅延</span>する可能性あり</p>
-                                            </li>
-                                        </ul>
+                                <div class="route-timeline-comparison" style="margin-top: 30px; padding: 24px; background-color: #f5f5f7; border-radius: 12px; border-left: 4px solid #0071e3;">
+                                    <h3 style="font-size: var(--font-size-h3-large); font-weight: 700; color: #1d1d1f; margin-bottom: 20px;">ルートA vs ルートB：どちらを選ぶべきか</h3>
+                                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;">
+                                        <div style="background-color: #ffffff; padding: 20px; border-radius: 8px;">
+                                            <h4 style="font-size: var(--font-size-h3-default); font-weight: 700; color: #0071e3; margin-bottom: 16px;">ルートA：50,000PP達成（王道）</h4>
+                                            <div style="font-size: var(--font-size-body); line-height: 1.8;">
+                                                <p style="margin-bottom: 12px;">カードブランドは<span style="font-weight: 600; color: #1d1d1f;">問わない</span>（VISA/Master/JCB/Amexどれでも可）</p>
+                                                <p style="margin-bottom: 12px;">PP獲得方法：<span style="font-weight: 600; color: #1d1d1f;">ANA便25,000PP + スターアライアンス便25,000PP</span>の組み合わせが可能（ANA便のみでも可）</p>
+                                                <p style="margin-bottom: 12px;">重要なのは<span style="font-weight: 600; color: #1d1d1f;">フライトマイル還元率</span>と<span style="font-weight: 600; color: #1d1d1f;">搭乗ボーナスマイル</span></p>
+                                                <p style="margin-bottom: 0;">プラチナ達成後、<span style="color: #0071e3; font-weight: 700;">事前サービスが迅速に適用</span>される</p>
+                                            </div>
+                                        </div>
+                                        <div style="background-color: #ffffff; padding: 20px; border-radius: 8px;">
+                                            <h4 style="font-size: var(--font-size-h3-default); font-weight: 700; color: #ff9500; margin-bottom: 16px;">ルートB：30,000PP + LSS併用（ハイブリッド）</h4>
+                                            <div style="font-size: var(--font-size-body); line-height: 1.8;">
+                                                <p style="margin-bottom: 12px;"><span style="font-weight: 600; color: #ff3b30;">Mastercard/JCB/Amexブランドが必須</span>（<span style="color: #ff3b30; font-weight: 700;">VISAは非推奨</span>）</p>
+                                                <p style="margin-bottom: 12px;">PP獲得方法：<span style="font-weight: 600; color: #1d1d1f;">ANA便のみ</span>（スターアライアンス便は対象外）</p>
+                                                <p style="margin-bottom: 12px;">理由：400万円決済要件を効率化する<span style="font-weight: 600; color: #1d1d1f;">ANA Payチャージ戦略</span>が使えるため</p>
+                                                <p style="margin-bottom: 0;">注意：プラチナ事前サービスは<span style="color: #ff3b30; font-weight: 700;">全条件達成まで遅延</span>する可能性あり</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="route-timeline-comparison" style="margin-top: 30px; padding: 24px; background-color: #f5f5f7; border-radius: 12px; border-left: 4px solid #0071e3;">
@@ -2885,30 +3088,30 @@
                                 <p class="note" style="margin-top: 20px;">※ルートBを選択する場合は、修行開始前にMaster/JCB/AmexブランドのANAカード（ゴールド推奨）を準備することが絶対条件です。</p>
                             </div>
                             <div>
-                                <h2 class="section-title">ANAアメックス 一般 vs ゴールド：戦略的比較（参考例）</h2>
+                                <h2 class="section-title">ANA VISA/マスター 一般 vs ゴールド：戦略的比較（参考例）</h2>
                                 <div style="background-color: #f5f5f7; padding: 24px; border-radius: 12px; border-left: 4px solid #006fcf; margin-bottom: 30px;">
                                     <p style="font-size: var(--font-size-body-small); line-height: 1.7; color: #515154; margin-bottom: 20px;">
-                                        以下は<span style="font-weight: 700; color: #1d1d1f;">参考例</span>として、SFC修行において事前にカードを発行する必要がありますが、<span style="font-weight: 700; color: #1d1d1f;">ANAアメックス一般カードから始めるか、ゴールドカードから始めるか</span>で、獲得マイル数に大きな差が生じることを示すシミュレーションです。
+                                        以下は<span style="font-weight: 700; color: #1d1d1f;">参考例</span>として、SFC修行において事前にカードを発行する必要がありますが、<span style="font-weight: 700; color: #1d1d1f;">ANA VISA/マスター一般から始めるか、ゴールドカードから始めるか</span>で、獲得マイル数に大きな差が生じることを示すシミュレーションです。
                                     </p>
                                     <div class="table-container" style="margin-bottom: 20px;">
                                         <table>
                                             <thead>
                                                 <tr>
                                                     <th style="width: 25%;">項目</th>
-                                                    <th style="width: 37.5%;">ANAアメックス一般</th>
-                                                    <th style="width: 37.5%;">ANAアメックスゴールド</th>
+                                                    <th style="width: 37.5%;">ANA VISA/マスター一般</th>
+                                                    <th style="width: 37.5%;">ANA VISA/マスターゴールド</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
                                                     <td style="font-weight: 700; color: #1d1d1f;">年会費</td>
-                                                    <td>7,700円<br/><span style="font-size: var(--font-size-tiny-text); color: #666;">（マイル移行手数料：6,600円別途）</span></td>
-                                                    <td style="background-color: rgba(0, 113, 227, 0.1);"><strong>34,100円</strong><br/><span style="font-size: var(--font-size-tiny-text); color: #666;">（マイル移行手数料：無料）</span></td>
+                                                    <td>初年度無料〜7,700円<br/><span style="font-size: var(--font-size-tiny-text); color: #666;">（マイル移行手数料：6,600円別途）</span></td>
+                                                    <td style="background-color: rgba(0, 113, 227, 0.1);"><strong>実質約10,450円</strong><br/><span style="font-size: var(--font-size-tiny-text); color: #666;">（マイル移行手数料：無料）</span></td>
                                                 </tr>
                                                 <tr>
                                                     <td style="font-weight: 700; color: #1d1d1f;">決済還元率</td>
-                                                    <td>1.5%</td>
-                                                    <td style="background-color: rgba(0, 113, 227, 0.1);"><strong>3.0%</strong></td>
+                                                    <td>1.0%</td>
+                                                    <td style="background-color: rgba(0, 113, 227, 0.1);"><strong>1.0%</strong></td>
                                                 </tr>
                                                 <tr>
                                                     <td style="font-weight: 700; color: #1d1d1f;">フライトボーナス</td>
@@ -2932,22 +3135,22 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td style="font-weight: 700;">一般カード</td>
-                                                        <td>7,094マイル</td>
+                                                        <td style="font-weight: 700;">VISA/マスター一般</td>
+                                                        <td>4,729マイル</td>
                                                         <td>27,601マイル</td>
-                                                        <td><strong>34,695マイル</strong></td>
+                                                        <td><strong>32,330マイル</strong></td>
                                                     </tr>
                                                     <tr style="background-color: rgba(0, 113, 227, 0.1);">
-                                                        <td style="font-weight: 700; color: #006fcf;">ゴールドカード</td>
-                                                        <td><strong style="color: #006fcf;">14,188マイル</strong></td>
+                                                        <td style="font-weight: 700; color: #006fcf;">VISA/マスターゴールド</td>
+                                                        <td><strong style="color: #006fcf;">4,729マイル</strong></td>
                                                         <td><strong style="color: #006fcf;">31,365マイル</strong></td>
-                                                        <td><strong style="color: #006fcf; font-size: var(--font-size-h3-default);">45,553マイル</strong></td>
+                                                        <td><strong style="color: #006fcf; font-size: var(--font-size-h3-default);">36,094マイル</strong></td>
                                                     </tr>
                                                     <tr style="background-color: #fff4e6; border-top: 2px solid #ff9500;">
                                                         <td style="font-weight: 700; color: #ff9500;">差額（純増）</td>
-                                                        <td style="color: #ff9500; font-weight: 600;">+7,094マイル</td>
+                                                        <td style="color: #ff9500; font-weight: 600;">0マイル</td>
                                                         <td style="color: #ff9500; font-weight: 600;">+3,764マイル</td>
-                                                        <td style="color: #ff9500; font-weight: 700; font-size: var(--font-size-h3-default);">+10,858マイル</td>
+                                                        <td style="color: #ff9500; font-weight: 700; font-size: var(--font-size-h3-default);">+3,764マイル</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -2957,21 +3160,21 @@
                                         <h3 style="font-size: var(--font-size-h3-default); font-weight: 700; color: #0071e3; margin-bottom: 12px;">💰 マイル取得単価</h3>
                                         <div style="font-size: var(--font-size-body-small); line-height: 1.8;">
                                             <p style="margin-bottom: 12px;">
-                                                年会費差額：<strong>26,400円</strong>（34,100円 - 7,700円）<br/>
-                                                純増マイル：<strong>10,858マイル</strong><br/>
-                                                マイル取得単価：<strong style="font-size: var(--font-size-h3-default); color: #0071e3;">2.43円/マイル</strong>
+                                                年会費差額：<strong>約2,750円〜10,450円</strong>（実質約10,450円 - 7,700円、または初年度無料の場合）<br/>
+                                                純増マイル：<strong>3,764マイル</strong><br/>
+                                                マイル取得単価：<strong style="font-size: var(--font-size-h3-default); color: #0071e3;">約0.73円/マイル〜2.78円/マイル</strong>（初年度無料の場合、実質無料）
                                             </p>
                                             <p style="margin-bottom: 0; padding: 12px; background-color: #ffffff; border-radius: 6px;">
                                                 <span style="font-weight: 700; color: #1d1d1f;">💡 判断基準：</span><br/>
-                                                • 国際線ビジネス/ファーストクラス利用（1マイル=3円以上）なら<span style="color: #0071e3; font-weight: 600;">ゴールド推奨</span><br/>
-                                                • 国内線中心利用（1マイル=2円以下）なら<span style="color: #ff9500; font-weight: 600;">一般カードで十分</span><br/>
-                                                • SFC取得後も継続的にANA利用するなら<span style="color: #0071e3; font-weight: 600;">ゴールドの+25%ボーナスが有利</span>
+                                                • VISA/マスター一般とゴールドは決済還元率が同じ（1.0%）のため、主な差はフライトボーナス（+10% vs +25%）のみ<br/>
+                                                • 初年度無料を活用できる場合、一般カードのコスパが非常に高い<br/>
+                                                • 長期的にANA利用を継続するなら<span style="color: #0071e3; font-weight: 600;">ゴールドの+25%ボーナスが有利</span>
                                             </p>
                                         </div>
                                     </div>
                                     <div style="background-color: #fff4e6; padding: 16px; border-radius: 8px;">
                                         <p style="font-size: var(--font-size-description); color: #515154; margin-bottom: 0; line-height: 1.6;">
-                                            <strong>※ シミュレーション条件：</strong>羽田-那覇（HND-OKA）SVT75運賃で50,000PP達成まで34フライト、総費用472,940円を想定。決済マイルの65.4%は決済還元率の差、34.6%はフライトボーナスの差から生じています。
+                                            <strong>※ シミュレーション条件：</strong>羽田-那覇（HND-OKA）SVT75運賃で50,000PP達成まで34フライト、総費用472,940円を想定。VISA/マスター一般とゴールドは決済還元率が同じ（1.0%）のため、決済マイルに差はなく、純増マイルはフライトボーナスの差（+10% vs +25%）のみから生じています。
                                         </p>
                                     </div>
                                 </div>
@@ -2998,7 +3201,7 @@
                                 <ul class="bullet-list">
                                     <li class="bullet-item">
                                         <span class="bullet-marker">•</span>
-                                        <p><span class="highlight">重要</span>：<span class="accent">ANAマイ友プログラム</span>登録でワイドゴールドカードなら<span class="accent">+2,000マイル</span>（申込前に要登録）</p>
+                                        <p><span class="highlight">重要</span>：<span class="accent">ANAマイ友プログラム</span>登録でANAゴールドカードなら<span class="accent">+2,000マイル</span>（申込前に要登録・過去にマイ友プログラムを利用した場合は対象外）</p>
                                     </li>
                                 </ul>
                             </div>
@@ -3081,7 +3284,7 @@
                                     <ul class="feature-list">
                                         <li class="feature-item">
                                             <span class="feature-marker">✓</span>
-                                            <p><span class="amex-accent">キャンペーン</span>：<span class="highlight">最大100,000マイル</span></p>
+                                            <p><span class="amex-accent">キャンペーン</span>：<span class="highlight">最大100,000マイル（紹介経由で+15,000マイル）</span></p>
                                         </li>
                                         <li class="feature-item">
                                             <span class="feature-marker">✓</span>
@@ -3169,7 +3372,7 @@
                                             <td>ANA一般カード<br/><small>(VISA/Master/JCB)</small></td>
                                             <td>初年度無料〜7,700円<br/><small>(マイル移行手数料6,600円別途)</small></td>
                                             <td>1,375円〜</td>
-                                            <td>JCB：19,000マイル<br/><small>(一般限定抽選：79,000マイル相当)</small><br/>VISA/Master：少額</td>
+                                            <td>JCB：19,000マイル<br/><small>(一般限定抽選：79,000マイル相当)</small><br/>VISA/Master：キャンペーンは不定期</td>
                                             <td>・フライトボーナス+10%<br/>・マイル移行手数料6,600円（年間）<br/>・ANAマイ友プログラムで+500マイル</td>
                                         </tr>
                                         <tr>
@@ -3259,7 +3462,7 @@
                                             <p class="pros-title">メリット</p>
                                             <ul class="pros-list">
                                                 <li class="pros-item"><span class="pros-marker">✓</span><p>ANA JCBカード：62,000マイル。90,000マイル当たる抽選あり</p></li>
-                                                <li class="pros-item"><span class="pros-marker">✓</span><p>ANAアメックスゴールド：最大100,000マイル</p></li>
+                                                <li class="pros-item"><span class="pros-marker">✓</span><p>ANAアメックスゴールド：最大100,000マイル（紹介経由で+15,000マイル）</p></li>
                                             </ul>
                                         </div>
                                         <div class="cons">
@@ -3491,6 +3694,7 @@
                                             <p>• 3ヶ月以内に60万円利用：16,000pt</p>
                                             <p>• 3ヶ月以内に200万円利用：30,000pt</p>
                                             <p>• 年会費：34,100円</p>
+                                            <p>• 紹介経由で更に15,000マイルもらえる</p>
                                         </div>
                                         <div class="campaign-period">
                                             <span class="campaign-icon"><i class="fas fa-calendar-alt"></i></span>
@@ -3570,7 +3774,7 @@
                                             </div>
                                         </div>
                                         <p style="margin-top:12px; margin-bottom:12px">• 紹介者と入会者の<span class="accent">両方にマイル</span>がプレゼントされる</p>
-                                        <p style="color:#ff3b30; font-weight:600; display:flex; align-items:center;"><i class="fas fa-exclamation-triangle warning-icon"></i>必ず<span class="highlight">カード申込前</span>に登録！申込後の登録は無効です</p>
+                                        <p style="color:#ff3b30; font-weight:600; display:flex; align-items:center;"><i class="fas fa-exclamation-triangle warning-icon"></i>必ず<span class="highlight">カード申込前</span>に登録！申込後の登録は無効です。必要であればご連絡ください。</p>
                                     </div>
                                 </div>
                                 <div class="mytomo-steps">
@@ -3964,7 +4168,7 @@
                             </div>
                             <div style="background-color: #fff4e6; padding: 20px; border-radius: 12px; border-left: 4px solid #ff9500; margin-top: 24px;">
                                 <p style="font-size: var(--font-size-body-small); line-height: 1.8; margin: 0; color: #1d1d1f;">
-                                    <strong style="color: #ff9500;">⚠️ 重要：</strong>マイ友プログラムはカード申込み<span style="color: #ff3b30; font-weight: 700;">後</span>の登録では無効です。ワイドゴールドカードなら<span style="color: #0071e3; font-weight: 600;">2,000マイル</span>を確実に獲得しましょう。
+                                    <strong style="color: #ff9500;">⚠️ 重要：</strong>マイ友プログラムはカード申込み<span style="color: #ff3b30; font-weight: 700;">後</span>の登録では無効です。ANAゴールドカードなら<span style="color: #0071e3; font-weight: 600;">2,000マイル</span>を確実に獲得しましょう（過去にマイ友プログラムを利用した場合は対象外）。
                                 </p>
                                 <p style="font-size: var(--font-size-body-small); line-height: 1.8; margin-top: 12px; margin-bottom: 0; color: #1d1d1f;">
                                     <span style="font-weight: 600; color: #0071e3;">💡 紹介者番号をお持ちでない方は、</span><a href="https://www.instagram.com/ino_moneycoach/" target="_blank" rel="noopener noreferrer" style="color: #0071e3; text-decoration: underline; font-weight: 600; margin-left: 4px;">InstagramのDM</a>でお気軽にお問い合わせください。
@@ -4205,7 +4409,7 @@
                                             <p style="font-weight: 700; color: #ff9500; margin-bottom: 8px;">⚠️ 発行会社別の傾向</p>
                                             <ul style="margin-left: 20px; line-height: 1.8;">
                                                 <li style="margin-bottom: 8px;">
-                                                    <span style="font-weight: 600;">Amex（アメリカン・エキスプレス）：</span>月割返金が実行された事例が他の発行会社に比べて多いが、<span style="color: #ff3b30; font-weight: 600;">規約で保証された権利ではなく、運用上の対応である可能性が高い</span>
+                                                    <span style="font-weight: 600;">Amex（アメリカン・エキスプレス）：</span>月割返金が実行された事例が他の発行会社に比べて多いが、<span style="color: #ff3b30; font-weight: 600;">規約で保証された権利ではなく、運用上の対応である可能性が高い</span>。ANAアメックス一般にダウングレードするとSFCカードではなくなるため、他のSFCカードを発行する必要あり
                                                 </li>
                                                 <li style="margin-bottom: 8px;">
                                                     <span style="font-weight: 600;">JCB / SMBC (Visa/Master)：</span>規約上は「支払済みの年会費は返還しない」が一般的。年会費の「返金」ではなく、ダウングレード先の新カードの初年度年会費へ「充当」する可能性はゼロではないが、期待はできない
@@ -4831,7 +5035,7 @@
                                     </div>
                                     <div class="card-option">
                                         <span class="card-option-marker"></span>
-                                                <p>AMEX：<span class="highlight">最大100,000マイル</span><span class="date">（〜<span style="color: #ff3b30; font-weight: 700;">2025/11/5</span>）</span></p>
+                                                <p>AMEX：<span class="highlight">最大100,000マイル（紹介経由で+15,000マイル）</span><span class="date">（〜<span style="color: #ff3b30; font-weight: 700;">2025/11/5</span>）</span></p>
                                     </div>
                                     <div class="card-option">
                                         <span class="card-option-marker"></span>
@@ -4918,6 +5122,34 @@
         
         // 初期状態のチェック
         toggleScrollButton();
+        
+        // 横スクロール可能なテーブルの検出とインジケーター表示
+        function checkScrollableTables() {
+            const tableContainers = document.querySelectorAll('.table-container');
+            tableContainers.forEach(container => {
+                const table = container.querySelector('table');
+                if (table && container.scrollWidth > container.clientWidth) {
+                    container.classList.add('scrollable');
+                    
+                    // スクロール時にフェードアウト
+                    let scrollTimeout;
+                    container.addEventListener('scroll', () => {
+                        container.classList.add('scrolling');
+                        clearTimeout(scrollTimeout);
+                        scrollTimeout = setTimeout(() => {
+                            container.classList.remove('scrolling');
+                        }, 1500);
+                    });
+                } else {
+                    container.classList.remove('scrollable');
+                }
+            });
+        }
+        
+        // ページ読み込み時とリサイズ時にチェック
+        window.addEventListener('load', checkScrollableTables);
+        window.addEventListener('resize', checkScrollableTables);
+        setTimeout(checkScrollableTables, 100); // 少し遅延して確実にチェック
     </script>
 </body>
 </html>
