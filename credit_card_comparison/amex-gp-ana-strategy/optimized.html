@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>AMEX GP × ANAカード併用戦略 - 最適化版</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: 'Noto Sans JP', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f7;
+      }
+
+      /* =========================
+         ナビゲーション
+         ========================= */
+      .section-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(135deg, rgba(0, 102, 204, 0.95) 0%, rgba(0, 122, 255, 0.95) 100%);
+        padding: 15px 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .section-nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        padding: 8px 16px;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+      }
+      .section-nav a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+      }
+
+      /* =========================
+         基本セクション
+         ========================= */
+      .section {
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        padding: 100px 60px 60px;
+        box-sizing: border-box;
+      }
+      .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #f5f5f7;
+        z-index: -1;
+      }
+      .content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+        max-width: 1280px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      /* =========================
+         タイポグラフィ
+         ========================= */
+      .title {
+        font-size: 4rem;
+        font-weight: 800;
+        color: #1d1d1f;
+        margin-bottom: 24px;
+        text-align: center;
+        line-height: 1.1;
+      }
+      .subtitle {
+        font-size: 1.8rem;
+        font-weight: 500;
+        color: #6e6e73;
+        margin-bottom: 60px;
+        text-align: center;
+      }
+      .section-title {
+        font-size: 2.8rem;
+        font-weight: 800;
+        color: #1d1d1f;
+        margin-bottom: 40px;
+        text-align: center;
+      }
+      .section-title span {
+        color: #0066cc;
+      }
+
+      /* =========================
+         カード関連
+         ========================= */
+      .card-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 60px;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+      .card {
+        width: 200px;
+        height: 120px;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        color: #333;
+      }
+      .card.amex {
+        background-color: #016fcf;
+        color: white;
+      }
+      .card.ana {
+        background-color: #0a2972;
+        color: white;
+      }
+
+      /* =========================
+         ボックス・コンテナ
+         ========================= */
+      .info-box {
+        border-radius: 16px;
+        padding: 30px;
+        margin-bottom: 30px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .info-box--primary {
+        background: linear-gradient(135deg, rgba(0, 102, 204, 0.05) 0%, rgba(0, 102, 204, 0.1) 100%);
+        border: 2px solid rgba(0, 102, 204, 0.2);
+        box-shadow: 0 4px 20px rgba(0, 102, 204, 0.1);
+      }
+      .info-box--success {
+        background: linear-gradient(135deg, rgba(52, 199, 89, 0.1) 0%, rgba(0, 102, 204, 0.1) 100%);
+        border: 2px solid #34c759;
+      }
+      .info-box--warning {
+        background: linear-gradient(135deg, rgba(255, 152, 0, 0.1) 0%, rgba(255, 87, 34, 0.1) 100%);
+        border-left: 4px solid #ff9500;
+      }
+
+      .info-box__title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #0066cc;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .info-box__text {
+        font-size: 1.1rem;
+        color: #1d1d1f;
+        line-height: 1.8;
+      }
+
+      /* =========================
+         比較要素
+         ========================= */
+      .comparison-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-bottom: 40px;
+        width: 100%;
+      }
+      .comparison-item {
+        background-color: white;
+        border-radius: 16px;
+        padding: 30px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      }
+      .comparison-icon {
+        font-size: 2rem;
+        color: #0066cc;
+        margin-bottom: 15px;
+      }
+      .comparison-title {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #1d1d1f;
+        margin-bottom: 12px;
+      }
+      .comparison-rate {
+        font-size: 3rem;
+        font-weight: 800;
+        color: #0066cc;
+        margin-bottom: 12px;
+      }
+      .comparison-note {
+        font-size: 1.1rem;
+        color: #6e6e73;
+      }
+
+      /* =========================
+         キーポイント
+         ========================= */
+      .key-points {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        width: 100%;
+        margin-top: 40px;
+      }
+      .key-point {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .key-point-icon {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: #0066cc;
+        background-color: rgba(0, 102, 204, 0.1);
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .key-point-text {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #1d1d1f;
+      }
+
+      /* =========================
+         テーブル
+         ========================= */
+      .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        background-color: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+      .data-table th {
+        background: linear-gradient(135deg, rgba(0, 102, 204, 0.15) 0%, rgba(0, 102, 204, 0.08) 100%);
+        color: #1d1d1f;
+        font-weight: 700;
+        padding: 16px 12px;
+        text-align: center;
+        border-bottom: 2px solid rgba(0, 102, 204, 0.3);
+        font-size: 1rem;
+      }
+      .data-table td {
+        padding: 14px 12px;
+        text-align: center;
+        border-bottom: 1px solid #e8e8e8;
+        font-size: 0.95rem;
+      }
+      .data-table tbody tr:hover {
+        background-color: rgba(0, 102, 204, 0.05);
+        transition: background-color 0.2s ease;
+      }
+      .data-table tbody tr:last-child td {
+        border-bottom: none;
+      }
+      .highlight-cell {
+        background-color: rgba(0, 102, 204, 0.1);
+        font-weight: 700;
+        color: #0066cc;
+      }
+
+      /* =========================
+         リスト
+         ========================= */
+      .benefit-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .benefit-list li {
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(0, 102, 204, 0.1);
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .benefit-list li:last-child {
+        border-bottom: none;
+      }
+      .benefit-list i {
+        color: #34c759;
+        margin-top: 3px;
+        flex-shrink: 0;
+      }
+
+      /* =========================
+         グラフエリア
+         ========================= */
+      .chart-wrapper {
+        background-color: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        padding: 30px;
+        margin-bottom: 30px;
+        width: 100%;
+      }
+      .chart-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #1d1d1f;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      /* =========================
+         レスポンシブ対応
+         ========================= */
+      @media (max-width: 1024px) {
+        .section {
+          padding: 80px 40px 40px;
+        }
+        .title {
+          font-size: 3rem;
+        }
+        .subtitle {
+          font-size: 1.5rem;
+        }
+        .comparison-grid {
+          grid-template-columns: 1fr;
+        }
+        .key-points {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .section-nav {
+          flex-wrap: wrap;
+          gap: 10px;
+          padding: 10px 15px;
+        }
+        .section-nav a {
+          font-size: 0.85rem;
+          padding: 6px 12px;
+        }
+        .section {
+          padding: 70px 20px 30px;
+        }
+        .title {
+          font-size: 2.2rem;
+        }
+        .subtitle {
+          font-size: 1.2rem;
+        }
+        .card {
+          width: 150px;
+          height: 90px;
+        }
+        .data-table {
+          font-size: 0.85rem;
+        }
+        .data-table th,
+        .data-table td {
+          padding: 10px 8px;
+        }
+      }
+
+      /* =========================
+         ユーティリティクラス
+         ========================= */
+      .text-center { text-align: center; }
+      .text-primary { color: #0066cc; }
+      .text-success { color: #34c759; }
+      .text-warning { color: #ff9500; }
+      .text-danger { color: #ff3b30; }
+      .font-bold { font-weight: 700; }
+      .mb-20 { margin-bottom: 20px; }
+      .mb-30 { margin-bottom: 30px; }
+      .mt-20 { margin-top: 20px; }
+    </style>
+  </head>
+  <body>
+    <!-- ナビゲーション -->
+    <nav class="section-nav">
+      <a href="#title"><i class="fas fa-home"></i> ホーム</a>
+      <a href="#attack"><i class="fas fa-fire"></i> 攻撃</a>
+      <a href="#comparison"><i class="fas fa-balance-scale"></i> 比較</a>
+      <a href="#benefits"><i class="fas fa-star"></i> 特典</a>
+      <a href="#cards"><i class="fas fa-credit-card"></i> カード選び</a>
+      <a href="#simulation"><i class="fas fa-calculator"></i> シミュレーション</a>
+      <a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a>
+    </nav>
+
+    <!-- スライド1: タイトル -->
+    <section id="title" class="section">
+      <div class="background"></div>
+      <div class="content">
+        <div class="card-container">
+          <div class="card amex">
+            <p>アメックス<br />ゴールド<br />プリファード</p>
+          </div>
+          <div style="font-size: 2rem; display: flex; align-items: center; margin: 0 10px;">
+            <p>×</p>
+          </div>
+          <div class="card ana">
+            <p>ANAゴールド<br />カード</p>
+          </div>
+        </div>
+        <div class="title">
+          <p>AMEX GPユーザーがANAゴールドを持つ<br />「本当の理由」</p>
+        </div>
+        <div class="subtitle">
+          <p>9割が誤解している「最強の2枚持ち」戦術</p>
+        </div>
+
+        <!-- 核心メッセージ -->
+        <div class="info-box info-box--success">
+          <div class="info-box__title">
+            <i class="fas fa-lightbulb"></i>
+            2枚併用の真の価値
+          </div>
+          <div class="info-box__text">
+            <strong class="text-success">還元率の向上（+0.17〜0.38%）</strong>に加えて、<strong class="text-success">ANAゴールドカードの特典がほぼ追加コストなしで利用できる</strong>ことが最大のメリットです。フライトボーナス25%、移行上限突破、国際線ビジネスカウンター、IHGホテル朝食無料など、年会費（実質11,800円）を決済還元でカバーした上で、これらの特典を無料で享受できます。
+          </div>
+        </div>
+
+        <div class="key-points">
+          <div class="key-point">
+            <div class="key-point-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="key-point-text">
+              <p>マイル獲得の<br />最適化</p>
+            </div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-icon">
+              <i class="fas fa-unlock-alt"></i>
+            </div>
+            <div class="key-point-text">
+              <p>制約解除</p>
+            </div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="key-point-text">
+              <p>保険の<br />自動化</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- スライド2: 攻撃 -->
+    <section id="attack" class="section">
+      <div class="background"></div>
+      <div class="content">
+        <div class="section-title">
+          <p><span>【攻撃】</span>決済の使い分けで還元最大化</p>
+        </div>
+        <div class="comparison-grid">
+          <div class="comparison-item">
+            <div class="comparison-icon">
+              <i class="fas fa-plane"></i>
+            </div>
+            <div class="comparison-title">
+              <p>ANA航空券</p>
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 12px; font-size: 1.4rem; font-weight: 700;">
+              <div style="width: 30px; height: 30px; border-radius: 6px; background-color: #0a2972; color: white; display: flex; justify-content: center; align-items: center; margin-right: 10px; font-size: 0.9rem;">A</div>
+              <p>ANAゴールド</p>
+            </div>
+            <div class="comparison-rate">
+              <p>2<span style="font-size: 2rem">%</span></p>
+            </div>
+            <div class="comparison-note">
+              <p>
+                ANAカードはANA便決済で+1%上乗せ<br />カード所有で搭乗ボーナスも
+              </p>
+            </div>
+          </div>
+          <div class="comparison-item">
+            <div class="comparison-icon">
+              <i class="fas fa-plane-departure"></i>
+            </div>
+            <div class="comparison-title">
+              <p>JAL航空券</p>
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 12px; font-size: 1.4rem; font-weight: 700;">
+              <div style="width: 30px; height: 30px; border-radius: 6px; background-color: #016fcf; color: white; display: flex; justify-content: center; align-items: center; margin-right: 10px; font-size: 0.9rem;">A</div>
+              <p>AMEX GP</p>
+            </div>
+            <div class="comparison-rate">
+              <p>3<span style="font-size: 2rem">%</span></p>
+            </div>
+            <div class="comparison-note">
+              <p>
+                JALはAMEX GPの対象加盟店ボーナス<br />ポイントプログラム対象
+              </p>
+            </div>
+          </div>
+          <div class="comparison-item">
+            <div class="comparison-icon">
+              <i class="fas fa-shopping-cart"></i>
+            </div>
+            <div class="comparison-title">
+              <p>日常決済</p>
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 12px; font-size: 1.4rem; font-weight: 700;">
+              <div style="width: 30px; height: 30px; border-radius: 6px; background-color: #016fcf; color: white; display: flex; justify-content: center; align-items: center; margin-right: 10px; font-size: 0.9rem;">A</div>
+              <p>AMEX GP</p>
+            </div>
+            <div class="comparison-rate">
+              <p>
+                1<span style="font-size: 2rem">%</span
+                ><span style="font-size: 1.5rem">+ボーナス</span>
+              </p>
+            </div>
+            <div class="comparison-note">
+              <p>
+                年間200万円までの利用が最適<br />継続特典+ボーナスプログラム
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-box info-box--primary">
+          <div class="info-box__title">
+            <i class="fas fa-trophy"></i>
+            最強の使い分け戦術
+          </div>
+          <div class="info-box__text">
+            ANA便はANAゴールド、JAL便はAMEX GP（ANAマイルに3%）、日常はAMEX GP（年間200万円まで最適化）を使い分けることで、どの航空会社を利用しても高効率でANAマイルを貯められる
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- スライド3: 比較（統合版） -->
+    <section id="comparison" class="section">
+      <div class="background"></div>
+      <div class="content">
+        <div class="section-title">
+          <p><span>【比較】</span>2枚併用で獲得ポイント・還元率はどう変わる？</p>
+        </div>
+
+        <!-- 年間決済額別の比較表 -->
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            <i class="fas fa-chart-bar"></i> 年間決済額別の還元率比較
+          </div>
+          <p class="text-center mb-30" style="font-size: 0.95rem; color: #6e6e73;">
+            前提：ANA航空券50万円、JAL航空券50万円、日常決済は残り全額
+          </p>
+
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>年間決済額</th>
+                <th>AMEX GP単独</th>
+                <th>2枚併用</th>
+                <th>差額</th>
+                <th>還元率向上</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>300万円</strong></td>
+                <td>
+                  <span class="text-primary font-bold">3.33%</span><br />
+                  <small>100,000円相当</small>
+                </td>
+                <td class="highlight-cell">
+                  <span style="font-size: 1.1rem;">3.50%</span><br />
+                  <strong>105,000円相当</strong>
+                </td>
+                <td>
+                  <strong class="text-success">+5,000円</strong>
+                </td>
+                <td>
+                  <strong class="text-success">+0.17%</strong>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>400万円</strong></td>
+                <td>
+                  <span class="text-primary font-bold">2.50%</span><br />
+                  <small>100,000円相当</small><br />
+                  <small class="text-danger">※100万円分マイル化不可</small>
+                </td>
+                <td class="highlight-cell">
+                  <span style="font-size: 1.1rem;">2.875%</span><br />
+                  <strong>115,000円相当</strong><br />
+                  <small class="text-warning">移行上限突破</small>
+                </td>
+                <td>
+                  <strong class="text-success">+15,000円</strong>
+                </td>
+                <td>
+                  <strong class="text-success">+0.375%</strong>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ANAゴールド追加で得られる特典（概要） -->
+        <div class="info-box info-box--primary">
+          <div class="info-box__title">
+            <i class="fas fa-star"></i>
+            ANAゴールド追加で得られる特典（実質無料）
+          </div>
+          <ul class="benefit-list">
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <div><strong>フライトボーナス25%</strong>：ANA便搭乗で追加マイル獲得（例：沖縄往復で約738円相当）</div>
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <div><strong>移行上限突破</strong>：AMEX GPの4万マイル上限を突破（年間400万円決済時に+15,000円相当）</div>
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <div><strong>ANAカードマイルプラス</strong>：特約店で追加マイル獲得（セブン-イレブン、マツモトキヨシ、ENEOSなど）</div>
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <div><strong>SKYコイン交換優遇</strong>：交換レート約1.6倍</div>
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <div><strong>国際線ビジネスカウンター</strong>：国際線でビジネスクラス用カウンターを利用可能</div>
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <div><strong>IHGホテル朝食無料</strong>：特定プラン予約で1名無料</div>
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <div><strong>保険自動付帯</strong>：JCB系カードのみ（特典航空券利用時も適用）</div>
+            </li>
+          </ul>
+          <div class="mt-20" style="padding: 15px; background-color: rgba(52, 199, 89, 0.1); border-radius: 8px; border-left: 4px solid #34c759;">
+            <p class="font-bold text-success" style="margin: 0;">
+              <i class="fas fa-info-circle"></i>
+              これらの特典が、年会費（実質11,800円）を決済還元で回収した上で、実質無料で利用できます！
+            </p>
+          </div>
+        </div>
+
+        <!-- 実質利益の計算 -->
+        <div class="info-box info-box--warning">
+          <div class="info-box__title" style="color: #ff9500;">
+            <i class="fas fa-calculator"></i>
+            2枚併用の実質利益（年会費差し引き後）
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>年間決済額</th>
+                <th>獲得価値</th>
+                <th>ANAゴールド<br />実質年会費</th>
+                <th>実質利益</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>300万円</strong></td>
+                <td>105,000円相当</td>
+                <td>-11,800円</td>
+                <td class="highlight-cell"><strong class="text-success">+93,200円</strong></td>
+              </tr>
+              <tr>
+                <td><strong>400万円</strong></td>
+                <td>115,000円相当</td>
+                <td>-11,800円</td>
+                <td class="highlight-cell"><strong class="text-success">+103,200円</strong></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="mt-20" style="font-size: 0.9rem; color: #1d1d1f; padding-top: 15px; border-top: 1px solid rgba(255, 149, 0, 0.2);">
+            <p class="mb-20">
+              <strong>※決済還元だけでも年会費を大幅に上回る価値があり、</strong>さらにフライトボーナス、移行上限突破、保険の自動付帯などを考慮すると、年会費以上の価値が確実に出ます。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- スライド4: 特典詳細 -->
+    <section id="benefits" class="section">
+      <div class="background"></div>
+      <div class="content">
+        <div class="section-title">
+          <p><span>【特典】</span>ANAゴールドカードの特典詳細</p>
+        </div>
+
+        <!-- ANAカードマイルプラス詳細 -->
+        <div class="info-box info-box--warning">
+          <div class="info-box__title" style="color: #ff9500;">
+            <i class="fas fa-store"></i>
+            ANAカードマイルプラス（特約店プログラム）
+          </div>
+          <div class="info-box__text mb-20">
+            <strong>ANAカードマイルプラス</strong>は、全ANAカード共通の特約店プログラムです。特定の店舗でANAカードを利用すると、通常のショッピングマイル（1%）に加えて、<strong class="text-warning">追加のマイルが自動的に積算</strong>されます。
+          </div>
+
+          <div style="background-color: white; border-radius: 12px; padding: 20px;">
+            <h4 class="font-bold text-warning mb-20" style="font-size: 1.1rem;">
+              <i class="fas fa-list"></i>
+              主な特約店と追加マイル率
+            </h4>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; font-size: 0.9rem;">
+              <div style="padding: 10px; background-color: #f9f9f9; border-radius: 6px;">
+                <strong>セブン-イレブン</strong><br />
+                <span class="text-success">200円につき1マイル</span>
+              </div>
+              <div style="padding: 10px; background-color: #f9f9f9; border-radius: 6px;">
+                <strong>マツモトキヨシ</strong><br />
+                <span class="text-success">100円または200円につき1マイル</span>
+              </div>
+              <div style="padding: 10px; background-color: #f9f9f9; border-radius: 6px;">
+                <strong>イトーヨーカドー</strong><br />
+                <span class="text-success">200円につき1マイル</span>
+              </div>
+              <div style="padding: 10px; background-color: #f9f9f9; border-radius: 6px;">
+                <strong>ココカラファイン</strong><br />
+                <span class="text-success">100円につき1マイル</span>
+              </div>
+              <div style="padding: 10px; background-color: #f9f9f9; border-radius: 6px;">
+                <strong>大丸・松坂屋</strong><br />
+                <span class="text-success">200円につき1マイル</span>
+              </div>
+              <div style="padding: 10px; background-color: #f9f9f9; border-radius: 6px;">
+                <strong>高島屋</strong><br />
+                <span class="text-success">200円につき1マイル</span>
+              </div>
+              <div style="padding: 10px; background-color: #f9f9f9; border-radius: 6px;">
+                <strong>ENEOS</strong><br />
+                <span class="text-success">100円につき1マイル</span>
+              </div>
+              <div style="padding: 10px; background-color: #f9f9f9; border-radius: 6px;">
+                <strong>ANA航空券購入</strong><br />
+                <span class="text-success">100円につき1マイル</span>
+              </div>
+            </div>
+            <p class="mt-20" style="font-size: 0.85rem; color: #6e6e73; line-height: 1.6;">
+              ※ 特約店での利用時は、通常のショッピングマイル（1%）に加えて上記の追加マイルが積算されます。例：セブン-イレブンで200円利用 = 通常2マイル + 追加1マイル = 合計3マイル（実質還元率1.5%）
+            </p>
+          </div>
+        </div>
+
+        <!-- ブランド別特典 -->
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            <i class="fas fa-gift"></i>
+            選ぶカードによって異なるブランド特有特典
+          </div>
+          <p class="text-center mb-30" style="font-size: 0.9rem; color: #6e6e73;">
+            全ANAゴールドカード共通の特典に加えて、選択するブランドによって以下の特典が追加されます
+          </p>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div style="padding: 20px; background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(102, 126, 234, 0.05) 100%); border-radius: 12px; border-left: 4px solid #667eea;">
+              <h4 class="font-bold mb-20" style="color: #667eea; font-size: 1.1rem;">
+                <i class="fas fa-gem"></i> ANAダイナースクラブカード
+              </h4>
+              <ul class="benefit-list">
+                <li><i class="fas fa-check"></i> <div>エグゼクティブ・ダイニング（高級レストラン優待）</div></li>
+                <li><i class="fas fa-check"></i> <div>Priority Pass無制限利用</div></li>
+                <li><i class="fas fa-check"></i> <div>HoteLuxホテル優待</div></li>
+              </ul>
+            </div>
+            <div style="padding: 20px; background: linear-gradient(135deg, rgba(250, 112, 154, 0.1) 0%, rgba(250, 112, 154, 0.05) 100%); border-radius: 12px; border-left: 4px solid #fa709a;">
+              <h4 class="font-bold mb-20" style="color: #fa709a; font-size: 1.1rem;">
+                <i class="fas fa-star"></i> ANAアメックス・ゴールド
+              </h4>
+              <ul class="benefit-list">
+                <li><i class="fas fa-check"></i> <div>手荷物無料宅配サービス（往復）</div></li>
+                <li><i class="fas fa-check"></i> <div>スマートフォン・プロテクション</div></li>
+                <li><i class="fas fa-check"></i> <div>キャンセル・プロテクション</div></li>
+              </ul>
+            </div>
+            <div style="padding: 20px; background: linear-gradient(135deg, rgba(240, 147, 251, 0.1) 0%, rgba(240, 147, 251, 0.05) 100%); border-radius: 12px; border-left: 4px solid #f093fb;">
+              <h4 class="font-bold mb-20" style="color: #f093fb; font-size: 1.1rem;">
+                <i class="fas fa-train"></i> ANA JCBソラチカゴールド
+              </h4>
+              <ul class="benefit-list">
+                <li><i class="fas fa-check"></i> <div>東京メトロポイント連携</div></li>
+                <li><i class="fas fa-check"></i> <div>保険自動付帯（特典航空券でも適用）</div></li>
+                <li><i class="fas fa-check"></i> <div>家族カード年会費最安（2,200円）</div></li>
+              </ul>
+            </div>
+            <div style="padding: 20px; background: linear-gradient(135deg, rgba(79, 172, 254, 0.1) 0%, rgba(79, 172, 254, 0.05) 100%); border-radius: 12px; border-left: 4px solid #4facfe;">
+              <h4 class="font-bold mb-20" style="color: #4facfe; font-size: 1.1rem;">
+                <i class="fas fa-credit-card"></i> ANA JCBワイドゴールド
+              </h4>
+              <ul class="benefit-list">
+                <li><i class="fas fa-check"></i> <div>LoungeKey（国内外のラウンジ利用）</div></li>
+                <li><i class="fas fa-check"></i> <div>保険自動付帯（特典航空券でも適用）</div></li>
+                <li><i class="fas fa-check"></i> <div>航空機遅延保険特約</div></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- スライド5: カード選び -->
+    <section id="cards" class="section">
+      <div class="background"></div>
+      <div class="content">
+        <div class="section-title">
+          <p><span>【カード選び】</span>6大ANAゴールドカード比較</p>
+        </div>
+
+        <!-- エグゼクティブサマリー -->
+        <div class="info-box info-box--primary">
+          <div class="info-box__title">
+            <i class="fas fa-info-circle"></i>
+            結論：どのカードを選ぶべきか
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px;">
+            <div style="padding: 20px; background-color: white; border-radius: 12px; text-align: center;">
+              <div style="font-size: 2rem; margin-bottom: 10px;">🏆</div>
+              <h4 class="font-bold mb-20 text-warning">ラウンジ重視</h4>
+              <p style="font-size: 1.1rem; font-weight: 700; color: #1d1d1f;">ANAダイナース</p>
+              <p style="font-size: 0.9rem; color: #6e6e73;">Priority Pass無制限</p>
+            </div>
+            <div style="padding: 20px; background-color: white; border-radius: 12px; text-align: center;">
+              <div style="font-size: 2rem; margin-bottom: 10px;">✈️</div>
+              <h4 class="font-bold mb-20 text-primary">旅行快適性</h4>
+              <p style="font-size: 1.1rem; font-weight: 700; color: #1d1d1f;">ANAアメックス</p>
+              <p style="font-size: 0.9rem; color: #6e6e73;">手荷物宅配往復無料</p>
+            </div>
+            <div style="padding: 20px; background-color: white; border-radius: 12px; text-align: center;">
+              <div style="font-size: 2rem; margin-bottom: 10px;">💰</div>
+              <h4 class="font-bold mb-20 text-success">コスパ重視</h4>
+              <p style="font-size: 1.1rem; font-weight: 700; color: #1d1d1f;">ANA JCBワイド</p>
+              <p style="font-size: 0.9rem; color: #6e6e73;">年会費15,400円</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 比較表 -->
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            年会費とコスト構造の比較
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>カード名</th>
+                <th>本会員<br />年会費</th>
+                <th>家族カード<br />年会費</th>
+                <th>実質年会費<br />(1人)</th>
+                <th>実質年会費<br />(2人)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>ANA JCBソラチカゴールド</strong></td>
+                <td>15,400円</td>
+                <td class="highlight-cell">2,200円</td>
+                <td>11,400円</td>
+                <td class="highlight-cell"><strong class="text-success">13,600円</strong></td>
+              </tr>
+              <tr>
+                <td><strong>ANA JCBワイドゴールド</strong></td>
+                <td>15,400円</td>
+                <td>4,400円</td>
+                <td>11,400円</td>
+                <td>15,800円</td>
+              </tr>
+              <tr>
+                <td><strong>ANA VISAワイドゴールド</strong></td>
+                <td>15,400円</td>
+                <td>4,400円</td>
+                <td>11,400円</td>
+                <td>15,800円</td>
+              </tr>
+              <tr>
+                <td><strong>ANA Mastercardワイドゴールド</strong></td>
+                <td>15,400円</td>
+                <td>4,400円</td>
+                <td>11,400円</td>
+                <td>15,800円</td>
+              </tr>
+              <tr style="background-color: rgba(102, 126, 234, 0.05);">
+                <td><strong>ANAダイナース</strong><br /><small style="color: #ff3b30;">※来年春33,000円に値上げ予定</small></td>
+                <td>29,700円</td>
+                <td>8,800円</td>
+                <td>25,700円</td>
+                <td>34,500円</td>
+              </tr>
+              <tr style="background-color: rgba(250, 112, 154, 0.05);">
+                <td><strong>ANAアメックス・ゴールド</strong></td>
+                <td>34,100円</td>
+                <td>17,050円</td>
+                <td>30,100円</td>
+                <td class="text-danger"><strong>47,150円</strong></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="mt-20" style="font-size: 0.9rem; color: #6e6e73;">
+            ※実質年会費 = 年会費 - 継続ボーナス（2,000マイル = 4,000円相当）
+          </p>
+        </div>
+
+        <!-- 推奨カード -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;">
+          <div class="info-box info-box--success">
+            <div class="info-box__title">
+              <i class="fas fa-thumbs-up"></i>
+              首都圏在住者におすすめ
+            </div>
+            <h3 class="text-center" style="font-size: 1.5rem; font-weight: 700; color: #1d1d1f; margin: 20px 0;">ANA JCBソラチカゴールド</h3>
+            <ul class="benefit-list">
+              <li><i class="fas fa-check-circle"></i> <div><strong>家族カード年会費最安</strong>（2,200円）</div></li>
+              <li><i class="fas fa-check-circle"></i> <div><strong>東京メトロポイント連携</strong>で日常でもマイルを獲得</div></li>
+              <li><i class="fas fa-check-circle"></i> <div><strong>保険自動付帯</strong>で特典航空券でも安心</div></li>
+            </ul>
+          </div>
+          <div class="info-box info-box--primary">
+            <div class="info-box__title">
+              <i class="fas fa-star"></i>
+              コスパ重視の方におすすめ
+            </div>
+            <h3 class="text-center" style="font-size: 1.5rem; font-weight: 700; color: #1d1d1f; margin: 20px 0;">ANA JCBワイドゴールド</h3>
+            <ul class="benefit-list">
+              <li><i class="fas fa-check-circle"></i> <div><strong>実質年会費11,400円</strong>でゴールド特典</div></li>
+              <li><i class="fas fa-check-circle"></i> <div><strong>LoungeKey</strong>で国内外のラウンジ利用</div></li>
+              <li><i class="fas fa-check-circle"></i> <div><strong>航空機遅延保険</strong>付帯</div></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- スライド6: シミュレーション -->
+    <section id="simulation" class="section">
+      <div class="background"></div>
+      <div class="content">
+        <div class="section-title">
+          <p><span>【シミュレーション】</span>パターン別の価値分析</p>
+        </div>
+
+        <!-- 前提条件 -->
+        <div class="info-box info-box--primary">
+          <div class="info-box__title">
+            <i class="fas fa-info-circle"></i>
+            計算の前提
+          </div>
+          <div class="info-box__text">
+            <ul style="list-style: none; padding: 0; margin: 0;">
+              <li style="margin-bottom: 10px;"><strong>• 1マイルの価値：</strong>2円（特典航空券、SKYコイン換算）</li>
+              <li style="margin-bottom: 10px;"><strong>• 継続ボーナス：</strong>毎年2,000マイル = 4,000円相当</li>
+              <li style="margin-bottom: 10px;"><strong>• フライトボーナス：</strong>ANA便搭乗時に25%追加（本会員・家族カード会員のみ）</li>
+              <li><strong>• 実質年会費：</strong>年会費 - 継続ボーナス（4,000円）</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- パターン別分析 -->
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-top: 30px;">
+          <!-- パターンA -->
+          <div style="background-color: white; border-radius: 16px; padding: 25px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06); border: 2px solid #e0e0e0;">
+            <h3 style="font-size: 1.2rem; font-weight: 700; color: #1d1d1f; margin-bottom: 15px; padding-bottom: 12px; border-bottom: 2px solid #0066cc; display: flex; align-items: center; gap: 8px;">
+              <i class="fas fa-user"></i>
+              パターンA
+            </h3>
+            <div style="background-color: #f9f9f9; padding: 12px; border-radius: 8px; margin-bottom: 15px;">
+              <h4 class="font-bold mb-20" style="font-size: 0.9rem;">ANA便利用が少ない</h4>
+              <p style="font-size: 0.85rem; line-height: 1.6;">
+                年間決済200万円<br />
+                ANA便年2回（沖縄）<br />
+                家族2人
+              </p>
+            </div>
+            <div style="margin-bottom: 15px;">
+              <h4 class="font-bold mb-20 text-primary" style="font-size: 0.9rem;">追加価値</h4>
+              <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem;">
+                <li style="margin-bottom: 6px;">決済：+10,000円</li>
+                <li style="margin-bottom: 6px;">フライト：+2,952円</li>
+                <li style="margin-bottom: 6px;">継続：+4,000円</li>
+              </ul>
+            </div>
+            <div style="background-color: rgba(52, 199, 89, 0.1); padding: 12px; border-radius: 8px; text-align: center;">
+              <p style="font-size: 0.8rem; color: #6e6e73; margin-bottom: 3px;">合計</p>
+              <p style="font-size: 1.6rem; font-weight: 800; color: #34c759; margin-bottom: 3px;">+16,952円</p>
+              <p style="font-size: 0.85rem; color: #1d1d1f;">実質利益：<strong class="text-success">+5,152円</strong></p>
+            </div>
+          </div>
+
+          <!-- パターンB -->
+          <div style="background-color: white; border-radius: 16px; padding: 25px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06); border: 3px solid #0066cc; position: relative;">
+            <div style="position: absolute; top: -12px; right: 10px; background-color: #0066cc; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;">推奨</div>
+            <h3 style="font-size: 1.2rem; font-weight: 700; color: #1d1d1f; margin-bottom: 15px; padding-bottom: 12px; border-bottom: 2px solid #0066cc; display: flex; align-items: center; gap: 8px;">
+              <i class="fas fa-plane"></i>
+              パターンB
+            </h3>
+            <div style="background-color: #f9f9f9; padding: 12px; border-radius: 8px; margin-bottom: 15px;">
+              <h4 class="font-bold mb-20" style="font-size: 0.9rem;">ANA便頻繁に利用</h4>
+              <p style="font-size: 0.85rem; line-height: 1.6;">
+                年間決済200万円<br />
+                ANA便年4回（沖縄）<br />
+                家族2人
+              </p>
+            </div>
+            <div style="margin-bottom: 15px;">
+              <h4 class="font-bold mb-20 text-primary" style="font-size: 0.9rem;">追加価値</h4>
+              <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem;">
+                <li style="margin-bottom: 6px;">決済：+10,000円</li>
+                <li style="margin-bottom: 6px;">フライト：+5,904円</li>
+                <li style="margin-bottom: 6px;">継続：+4,000円</li>
+              </ul>
+            </div>
+            <div style="background-color: rgba(52, 199, 89, 0.1); padding: 12px; border-radius: 8px; text-align: center;">
+              <p style="font-size: 0.8rem; color: #6e6e73; margin-bottom: 3px;">合計</p>
+              <p style="font-size: 1.6rem; font-weight: 800; color: #34c759; margin-bottom: 3px;">+29,904円</p>
+              <p style="font-size: 0.85rem; color: #1d1d1f;">実質利益：<strong class="text-success">+18,104円</strong></p>
+            </div>
+          </div>
+
+          <!-- パターンC -->
+          <div style="background-color: white; border-radius: 16px; padding: 25px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06); border: 3px solid #ff9500; position: relative;">
+            <div style="position: absolute; top: -12px; right: 10px; background-color: #ff9500; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;">最強</div>
+            <h3 style="font-size: 1.2rem; font-weight: 700; color: #1d1d1f; margin-bottom: 15px; padding-bottom: 12px; border-bottom: 2px solid #ff9500; display: flex; align-items: center; gap: 8px;">
+              <i class="fas fa-crown"></i>
+              パターンC
+            </h3>
+            <div style="background-color: #f9f9f9; padding: 12px; border-radius: 8px; margin-bottom: 15px;">
+              <h4 class="font-bold mb-20" style="font-size: 0.9rem;">移行上限突破</h4>
+              <p style="font-size: 0.85rem; line-height: 1.6;">
+                年間決済400万円<br />
+                ANA便年2回（沖縄）<br />
+                家族2人
+              </p>
+            </div>
+            <div style="margin-bottom: 15px;">
+              <h4 class="font-bold mb-20 text-primary" style="font-size: 0.9rem;">追加価値</h4>
+              <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem;">
+                <li style="margin-bottom: 6px;">決済：+10,000円</li>
+                <li style="margin-bottom: 6px;">フライト：+2,952円</li>
+                <li style="margin-bottom: 6px;">継続：+4,000円</li>
+                <li style="margin-bottom: 6px;"><strong class="text-warning">移行突破：+20,000円</strong></li>
+              </ul>
+            </div>
+            <div style="background-color: rgba(52, 199, 89, 0.1); padding: 12px; border-radius: 8px; text-align: center;">
+              <p style="font-size: 0.8rem; color: #6e6e73; margin-bottom: 3px;">合計</p>
+              <p style="font-size: 1.6rem; font-weight: 800; color: #34c759; margin-bottom: 3px;">+36,952円</p>
+              <p style="font-size: 0.85rem; color: #1d1d1f;">実質利益：<strong class="text-success">+25,152円</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 考察 -->
+        <div class="info-box info-box--warning mt-20">
+          <div class="info-box__title" style="color: #ff9500;">
+            <i class="fas fa-lightbulb"></i>
+            シミュレーションからの結論
+          </div>
+          <div class="info-box__text">
+            <p class="mb-20">
+              <strong>パターンA（ANA便が少ない）</strong>でも、年会費以上の価値が出ます。フライトボーナスと決済還元を合わせると、実質+5,152円の利益となります。
+            </p>
+            <p class="mb-20">
+              <strong>パターンB（ANA便を頻繁に利用）</strong>では、フライトボーナスが倍増し、実質+18,104円の利益。年間4往復以上する方には非常に有利です。
+            </p>
+            <p style="padding: 15px; background-color: rgba(255, 149, 0, 0.15); border-radius: 8px; border-left: 4px solid #ff9500;">
+              <strong class="text-warning">パターンC（移行上限突破）</strong>が最も価値が高く、AMEX GP単独ではマイル化できない200万円超の決済分をANAゴールドでカバー。<strong class="text-success">実質+25,152円の利益</strong>となり、年会費の2倍以上の価値を生み出します。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- スライド7: FAQ -->
+    <section id="faq" class="section">
+      <div class="background"></div>
+      <div class="content">
+        <div class="section-title">
+          <p><span>【FAQ】</span>よくある質問</p>
+        </div>
+
+        <div style="display: grid; gap: 20px;">
+          <div class="info-box" style="background-color: white; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);">
+            <h3 class="font-bold text-primary mb-20" style="font-size: 1.3rem;">
+              <i class="fas fa-question-circle"></i>
+              Q1. 年会費は本当に元が取れますか？
+            </h3>
+            <p style="font-size: 1.05rem; color: #1d1d1f; line-height: 1.8;">
+              <strong class="text-success">はい、確実に元が取れます。</strong>年間200万円決済（ANA便50万円含む）でも、決済還元とフライトボーナスで約17,000円相当の価値があり、実質年会費11,800円を上回ります。さらに、保険の自動付帯、ANAカードマイルプラス、SKYコイン交換優遇などの特典を考慮すると、年会費以上の価値が確実に出ます。
+            </p>
+          </div>
+
+          <div class="info-box" style="background-color: white; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);">
+            <h3 class="font-bold text-primary mb-20" style="font-size: 1.3rem;">
+              <i class="fas fa-question-circle"></i>
+              Q2. ANAダイナースとJCBワイド、どちらを選ぶべき？
+            </h3>
+            <p style="font-size: 1.05rem; color: #1d1d1f; line-height: 1.8;">
+              <strong class="text-primary">コスパ重視ならJCBワイド、ラウンジ重視ならダイナースです。</strong>JCBワイドは年会費15,400円（実質11,400円）で基本機能が充実。ダイナースは29,700円ですが、Priority Pass無制限、エグゼクティブ・ダイニングなどプレミアム特典が魅力。年間200万円以上決済する方、頻繁に海外出張される方にはダイナースがおすすめです。
+            </p>
+          </div>
+
+          <div class="info-box" style="background-color: white; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);">
+            <h3 class="font-bold text-primary mb-20" style="font-size: 1.3rem;">
+              <i class="fas fa-question-circle"></i>
+              Q3. 移行上限突破とは何ですか？
+            </h3>
+            <p style="font-size: 1.05rem; color: #1d1d1f; line-height: 1.8;">
+              <strong class="text-warning">AMEX GPは年間4万マイルまでしかANAマイルに移行できません。</strong>年間200万円を超える決済をする場合、超過分はマイル化できず価値が失われます。ANAゴールドを併用することで、この制限を突破し、200万円超の決済分もANAゴールドで1%還元として獲得できます。年間400万円決済の場合、+15,000円相当の追加価値が生まれます。
+            </p>
+          </div>
+
+          <div class="info-box" style="background-color: white; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);">
+            <h3 class="font-bold text-primary mb-20" style="font-size: 1.3rem;">
+              <i class="fas fa-question-circle"></i>
+              Q4. ANAカードマイルプラスとは何ですか？
+            </h3>
+            <p style="font-size: 1.05rem; color: #1d1d1f; line-height: 1.8;">
+              <strong class="text-success">全ANAカード共通の特約店プログラムです。</strong>セブン-イレブン、マツモトキヨシ、ENEOS、イトーヨーカドーなど、特定の店舗でANAカードを利用すると、通常のショッピングマイル（1%）に加えて、追加のマイルが自動的に積算されます。日常の買い物で効率的にマイルを貯めることができる、非常に価値の高いプログラムです。
+            </p>
+          </div>
+
+          <div class="info-box" style="background-color: white; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);">
+            <h3 class="font-bold text-primary mb-20" style="font-size: 1.3rem;">
+              <i class="fas fa-question-circle"></i>
+              Q5. 家族カードは作るべきですか？
+            </h3>
+            <p style="font-size: 1.05rem; color: #1d1d1f; line-height: 1.8;">
+              <strong class="text-success">家族でANA便を利用する場合は、家族カードを作るべきです。</strong>家族カード会員もフライトボーナス25%の対象となり、家族全員で効率的にマイルを貯められます。ただし、ANAアメックスは家族カード年会費が17,050円と高額なので、JCB系（ソラチカ2,200円、ワイド4,400円）がおすすめです。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- フッター -->
+    <section class="section" style="min-height: 50vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+      <div class="background" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+      <div class="content">
+        <h2 style="font-size: 3rem; font-weight: 800; color: white; text-align: center; margin-bottom: 30px;">
+          まとめ
+        </h2>
+        <div style="background-color: rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 40px; max-width: 900px;">
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 1.15rem; line-height: 2;">
+            <li style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px;">
+              <span style="color: #34c759; font-size: 1.5rem; flex-shrink: 0;">✓</span>
+              <div><strong>AMEX GPとANAゴールドの2枚併用</strong>で、還元率が+0.17〜0.38%向上し、年間5,000〜15,000円相当の追加価値が生まれる</div>
+            </li>
+            <li style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px;">
+              <span style="color: #34c759; font-size: 1.5rem; flex-shrink: 0;">✓</span>
+              <div><strong>ANAゴールドの特典が実質無料</strong>で利用でき、フライトボーナス、移行上限突破、ANAカードマイルプラス、保険自動付帯など豊富な特典を享受できる</div>
+            </li>
+            <li style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px;">
+              <span style="color: #34c759; font-size: 1.5rem; flex-shrink: 0;">✓</span>
+              <div><strong>コスパ重視ならANA JCBワイド</strong>、首都圏在住者ならソラチカゴールド、ラウンジ重視ならダイナースを選択</div>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 15px;">
+              <span style="color: #34c759; font-size: 1.5rem; flex-shrink: 0;">✓</span>
+              <div><strong>年間400万円以上決済する方</strong>は、移行上限突破により最大+25,000円相当の追加価値が得られる最強の組み合わせ</div>
+            </li>
+          </ul>
+        </div>
+        <p style="text-align: center; margin-top: 40px; font-size: 0.9rem; color: white; opacity: 0.8;">
+          © 2025 AMEX GP × ANA Card Strategy Guide - 最適化版
+        </p>
+      </div>
+    </section>
+  </body>
+</html>
