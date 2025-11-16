@@ -547,6 +547,54 @@
         margin-top: 8px;
       }
 
+      /* Important Notice */
+      .important-notice {
+        background-color: #fff4e6;
+        border-left: 6px solid var(--warning-color);
+        border-radius: var(--radius-lg);
+        padding: 32px;
+        margin: 40px 0;
+      }
+
+      .important-notice-title {
+        color: var(--warning-color);
+        font-size: 21px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .important-notice-content {
+        background-color: #ffffff;
+        padding: 24px;
+        border-radius: var(--radius);
+        margin-bottom: 24px;
+        border: 2px solid var(--warning-color);
+      }
+
+      .important-notice-content p {
+        font-size: 17px;
+        line-height: 1.8;
+        color: var(--text-primary);
+        margin-bottom: 16px;
+      }
+
+      .important-notice-content p:last-child {
+        margin-bottom: 0;
+      }
+
+      .important-notice-link {
+        color: var(--primary-color);
+        text-decoration: underline;
+        font-weight: 600;
+      }
+
+      .important-notice-link:hover {
+        text-decoration: none;
+      }
+
       /* Print Styles */
       @media print {
         header {
@@ -1353,13 +1401,33 @@
     </main>
 
     <footer class="footer" role="contentinfo">
-      <div class="container footer-container">
-        <p class="footer-text">
-          JRE POINT活用戦略：価値最大化とビューカード徹底比較ガイド
-        </p>
-        <p class="footer-copyright">
-          © 2024 All rights reserved.
-        </p>
+      <div class="container">
+        <!-- 重要なお知らせ -->
+        <div class="important-notice">
+          <h2 class="important-notice-title">
+            ⚠️ 重要なお知らせ
+          </h2>
+          <div class="important-notice-content">
+            <p>
+              このサイトは速報まとめとして実験的に公開しています。
+            </p>
+            <p>
+              情報の正確性については最大限の注意を払っておりますが、間違いや不正確な情報が含まれる可能性があります。ご利用の際は、必ず公式情報をご確認いただき、ご了承の上でご活用ください。
+            </p>
+            <p>
+              ご意見、ご要望、誤りのご指摘などがございましたら、<a href="https://www.instagram.com/ino_moneycoach/" target="_blank" rel="noopener noreferrer" class="important-notice-link">InstagramのDM</a>でお待ちしております。
+            </p>
+          </div>
+        </div>
+        
+        <div class="footer-container">
+          <p class="footer-text">
+            JRE POINT活用戦略：価値最大化とビューカード徹底比較ガイド
+          </p>
+          <p class="footer-copyright">
+            © 2025 @ino-moneycoach. この内容は公開情報に基づきAIを活用して作成されたまとめです。
+          </p>
+        </div>
       </div>
     </footer>
   </body>
