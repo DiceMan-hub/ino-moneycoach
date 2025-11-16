@@ -553,6 +553,48 @@
           font-size: 20px;
         }
       }
+
+      /* Newsletter Section */
+      .newsletter-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 60px 20px;
+        margin: 60px 0;
+        border-radius: var(--radius-lg);
+        text-align: center;
+        color: white;
+      }
+
+      .newsletter-section h2 {
+        color: white;
+        font-size: 32px;
+        margin-bottom: 16px;
+      }
+
+      .newsletter-section p {
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 32px;
+        opacity: 0.95;
+      }
+
+      .newsletter-button {
+        display: inline-block;
+        background: white;
+        color: #667eea;
+        padding: 16px 48px;
+        border-radius: 50px;
+        font-size: 18px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .newsletter-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        background: #f8f9fa;
+      }
     </style>
   </head>
   <body>
@@ -1305,6 +1347,20 @@
         </section>
       </div>
     </main>
+
+    <!-- ニュースレター登録 -->
+    <section class="newsletter-section">
+      <div class="container">
+        <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">📬 最新情報をお届けします</h2>
+        <p style="font-size: 18px; margin-bottom: 32px; opacity: 0.95;">
+          マイル・ポイント・クレジットカード・旅行の最新情報やお得な活用術を定期的に配信しています。<br>
+          今すぐ登録して、賢い旅のヒントを手に入れましょう！
+        </p>
+        <a href="https://preview.mailerlite.io/forms/1381592/170565580825298182/share" target="_blank" rel="noopener noreferrer" class="newsletter-button">
+          ✨ ニュースレターに登録する
+        </a>
+      </div>
+    </section>
 
     <footer class="footer" role="contentinfo">
       <div class="container">
