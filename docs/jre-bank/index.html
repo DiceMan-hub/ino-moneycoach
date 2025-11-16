@@ -441,6 +441,118 @@
       html {
         scroll-behavior: smooth;
       }
+
+      /* Footer */
+      footer {
+        background: var(--bg-secondary);
+        padding: 60px 0;
+        margin-top: 120px;
+        border-top: 1px solid var(--border-color);
+      }
+
+      .footer-container {
+        text-align: center;
+      }
+
+      .footer-text {
+        color: var(--text-secondary);
+        font-size: 14px;
+      }
+
+      .footer-copyright {
+        color: var(--text-secondary);
+        font-size: 12px;
+        margin-top: 8px;
+      }
+
+      /* Important Notice */
+      .important-notice {
+        background-color: #fff4e6;
+        border-left: 6px solid var(--warning-color);
+        border-radius: var(--radius-lg);
+        padding: 32px;
+        margin: 40px 0;
+      }
+
+      .important-notice-title {
+        color: var(--warning-color);
+        font-size: 21px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .important-notice-content {
+        background-color: #ffffff;
+        padding: 24px;
+        border-radius: var(--radius);
+        margin-bottom: 24px;
+        border: 2px solid var(--warning-color);
+      }
+
+      .important-notice-content p {
+        font-size: 17px;
+        line-height: 1.8;
+        color: var(--text-primary);
+        margin-bottom: 16px;
+      }
+
+      .important-notice-content p:last-child {
+        margin-bottom: 0;
+      }
+
+      .important-notice-link {
+        color: var(--primary-color);
+        text-decoration: underline;
+        font-weight: 600;
+      }
+
+      .important-notice-link:hover {
+        text-decoration: none;
+      }
+
+      /* Scroll to Top Button */
+      #scrollToTop {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        font-size: 24px;
+        cursor: pointer;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+        transition: all 0.3s ease;
+        z-index: 1000;
+      }
+
+      #scrollToTop:hover {
+        background: var(--primary-color-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(0, 113, 227, 0.4);
+      }
+
+      #scrollToTop.show {
+        display: flex;
+      }
+
+      @media (max-width: 768px) {
+        #scrollToTop {
+          bottom: 20px;
+          right: 20px;
+          width: 45px;
+          height: 45px;
+          font-size: 20px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -1258,13 +1370,67 @@
       </div>
     </main>
 
-    <footer>
+    <footer class="footer" role="contentinfo">
       <div class="container">
-        <p>
-          【完全ガイド】ビューカード保有者のためのJRE BANK併用メリット徹底解析
-        </p>
-        <p style="margin-top: 8px; font-size: 13px">特典最大化の条件と戦略</p>
+        <!-- 重要なお知らせ -->
+        <div class="important-notice">
+          <h2 class="important-notice-title">⚠️ 重要なお知らせ</h2>
+          <div class="important-notice-content">
+            <p>このサイトは速報まとめとして実験的に公開しています。</p>
+            <p>
+              情報の正確性については最大限の注意を払っておりますが、間違いや不正確な情報が含まれる可能性があります。ご利用の際は、必ず公式情報をご確認いただき、ご了承の上でご活用ください。
+            </p>
+            <p>
+              ご意見、ご要望、誤りのご指摘などがございましたら、<a
+                href="https://www.instagram.com/ino_moneycoach/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="important-notice-link"
+                >InstagramのDM</a
+              >でお待ちしております。
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-container">
+          <p class="footer-text">
+            【完全ガイド】ビューカード保有者のためのJRE BANK併用メリット徹底解析
+          </p>
+          <p class="footer-copyright">
+            © 2025 @ino-moneycoach.
+            この内容は公開情報に基づきAIを活用して作成されたまとめです。
+          </p>
+        </div>
       </div>
     </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" aria-label="ページトップへ戻る" title="ページトップへ戻る">
+      ↑
+    </button>
+
+    <script>
+      // Scroll to Top Button機能
+      (function() {
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        // スクロール時の表示/非表示制御
+        window.addEventListener('scroll', function() {
+          if (window.pageYOffset > 300) {
+            scrollToTopBtn.classList.add('show');
+          } else {
+            scrollToTopBtn.classList.remove('show');
+          }
+        });
+
+        // ボタンクリック時の動作
+        scrollToTopBtn.addEventListener('click', function() {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      })();
+    </script>
   </body>
 </html>
