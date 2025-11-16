@@ -1,0 +1,46 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.wordWrap": "on"
+  },
+  "files.associations": {
+    "*.html": "html",
+    "*.xlsx": "excel",
+    "*.xls": "excel"
+  },
+  "files.encoding": "utf8",
+  "files.eol": "\n",
+  "html.format.indentInnerHtml": true,
+  "html.format.wrapLineLength": 120,
+  "prettier.tabWidth": 2,
+  "prettier.useTabs": false,
+  "prettier.semi": true,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "es5",
+  "excel.preview.mode": "edit",
+  "extensions.ignoreRecommendations": false,
+  "extensions.autoCheckUpdates": true,
+  "extensions.experimental.affinity": {
+    "Anthropic.claude-code": 1
+  }
+}
+
