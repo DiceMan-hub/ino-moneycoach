@@ -738,6 +738,47 @@
         text-decoration: none;
       }
 
+      /* Scroll to Top Button */
+      #scrollToTop {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        font-size: 24px;
+        cursor: pointer;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+        transition: all 0.3s ease;
+        z-index: 1000;
+      }
+
+      #scrollToTop:hover {
+        background: var(--primary-color-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(0, 113, 227, 0.4);
+      }
+
+      #scrollToTop.show {
+        display: flex;
+      }
+
+      @media (max-width: 768px) {
+        #scrollToTop {
+          bottom: 20px;
+          right: 20px;
+          width: 45px;
+          height: 45px;
+          font-size: 20px;
+        }
+      }
+
       /* Print Styles */
       @media print {
         header {
@@ -2129,11 +2170,16 @@
       </div>
     </footer>
 
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" aria-label="ページトップへ戻る" title="ページトップへ戻る">
+      ↑
+    </button>
+
     <script>
       // アコーディオンの自動スクロール機能
       document.addEventListener('DOMContentLoaded', function() {
         const accordions = document.querySelectorAll('.accordion');
-        
+
         accordions.forEach(function(accordion) {
           accordion.addEventListener('toggle', function() {
             if (accordion.open) {
@@ -2149,6 +2195,28 @@
           });
         });
       });
+
+      // Scroll to Top Button機能
+      (function() {
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        // スクロール時の表示/非表示制御
+        window.addEventListener('scroll', function() {
+          if (window.pageYOffset > 300) {
+            scrollToTopBtn.classList.add('show');
+          } else {
+            scrollToTopBtn.classList.remove('show');
+          }
+        });
+
+        // ボタンクリック時の動作
+        scrollToTopBtn.addEventListener('click', function() {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      })();
     </script>
   </body>
 </html>
