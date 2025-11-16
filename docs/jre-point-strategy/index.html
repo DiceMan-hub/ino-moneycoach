@@ -4,6 +4,50 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JRE POINT活用戦略：価値最大化とビューカード徹底比較ガイド</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="JRE POINTの価値最大化とビューカード徹底比較ガイド。1ポイントの価値を最大5.83円まで引き出す戦略を解説。ビューカード3種の徹底比較と最適なカード選択方法を詳しく説明します。" />
+    <meta name="keywords" content="JRE POINT,ビューカード,還元率,ポイント戦略,Suica,VIEWプラス,ゴールドカード,JRE CARD" />
+    <meta name="author" content="いのマネーコーチ" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="JRE POINT活用戦略：価値最大化とビューカード徹底比較ガイド" />
+    <meta property="og:description" content="JRE POINTの価値最大化とビューカード徹底比較ガイド。1ポイントの価値を最大5.83円まで引き出す戦略を解説。" />
+    <meta property="og:url" content="https://diceman-hub.github.io/ino-moneycoach/jre-point-strategy/" />
+    <meta property="og:site_name" content="いのマネーコーチ" />
+    <meta property="og:locale" content="ja_JP" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="JRE POINT活用戦略：価値最大化とビューカード徹底比較ガイド" />
+    <meta name="twitter:description" content="JRE POINTの価値最大化とビューカード徹底比較ガイド。1ポイントの価値を最大5.83円まで引き出す戦略を解説。" />
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "JRE POINT活用戦略：価値最大化とビューカード徹底比較ガイド",
+      "description": "JRE POINTの価値最大化とビューカード徹底比較ガイド。1ポイントの価値を最大5.83円まで引き出す戦略を解説。",
+      "author": {
+        "@type": "Person",
+        "name": "いのマネーコーチ"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "いのマネーコーチ"
+      },
+      "datePublished": "2024-11-16",
+      "dateModified": "2024-11-16",
+      "inLanguage": "ja-JP",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://diceman-hub.github.io/ino-moneycoach/jre-point-strategy/"
+      }
+    }
+    </script>
+    
     <style>
       * {
         margin: 0;
@@ -13,12 +57,15 @@
 
       :root {
         --primary-color: #0071e3;
+        --primary-color-dark: #0051d5;
         --secondary-color: #1d1d1f;
         --text-primary: #1d1d1f;
         --text-secondary: #86868b;
         --bg-primary: #ffffff;
         --bg-secondary: #f5f5f7;
         --bg-tertiary: #fbfbfd;
+        --header-bg-start: #fbfbfd;
+        --header-bg-end: #ffffff;
         --border-color: #d2d2d7;
         --accent-color: #0071e3;
         --success-color: #34c759;
@@ -46,9 +93,26 @@
         padding: 0 22px;
       }
 
+      /* Skip Link */
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background: var(--primary-color);
+        color: white;
+        padding: 8px 16px;
+        text-decoration: none;
+        z-index: 1000;
+        border-radius: 0 0 4px 0;
+      }
+
+      .skip-link:focus {
+        top: 0;
+      }
+
       /* Header */
       header {
-        background: linear-gradient(180deg, #fbfbfd 0%, #ffffff 100%);
+        background: linear-gradient(180deg, var(--header-bg-start) 0%, var(--header-bg-end) 100%);
         border-bottom: 1px solid var(--border-color);
         padding: 20px 0;
         position: sticky;
@@ -70,7 +134,7 @@
         background: linear-gradient(
           135deg,
           var(--primary-color) 0%,
-          #0051d5 100%
+          var(--primary-color-dark) 100%
         );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -138,7 +202,7 @@
 
       section {
         margin-bottom: 120px;
-        scroll-margin-top: 200px;
+        scroll-margin-top: 100px;
       }
 
       section:last-child {
@@ -211,7 +275,7 @@
         background: linear-gradient(
           135deg,
           var(--primary-color) 0%,
-          #0051d5 100%
+          var(--primary-color-dark) 100%
         );
         color: white;
       }
@@ -367,7 +431,7 @@
         background: linear-gradient(
           135deg,
           var(--primary-color) 0%,
-          #0051d5 100%
+          var(--primary-color-dark) 100%
         );
         color: white;
         border-radius: var(--radius-lg);
@@ -430,6 +494,7 @@
 
         section {
           margin-bottom: 60px;
+          scroll-margin-top: 80px;
         }
 
         .comparison-grid {
@@ -458,10 +523,59 @@
         border-radius: 4px;
         font-weight: 600;
       }
+
+      /* Footer */
+      .footer {
+        background: var(--bg-secondary);
+        padding: 60px 0;
+        margin-top: 120px;
+        border-top: 1px solid var(--border-color);
+      }
+
+      .footer-container {
+        text-align: center;
+      }
+
+      .footer-text {
+        color: var(--text-secondary);
+        font-size: 14px;
+      }
+
+      .footer-copyright {
+        color: var(--text-secondary);
+        font-size: 12px;
+        margin-top: 8px;
+      }
+
+      /* Print Styles */
+      @media print {
+        header {
+          position: static;
+          border-bottom: 2px solid #000;
+        }
+
+        nav {
+          display: none;
+        }
+
+        .card {
+          break-inside: avoid;
+          page-break-inside: avoid;
+        }
+
+        a[href^="#"]::after {
+          content: " (" attr(href) ")";
+        }
+
+        .footer {
+          margin-top: 40px;
+        }
+      }
     </style>
   </head>
   <body>
-    <header>
+    <a href="#main-content" class="skip-link">メインコンテンツへスキップ</a>
+    <header role="banner">
       <div class="container">
         <div class="header-content">
           <h1>JRE POINT活用戦略</h1>
@@ -470,19 +584,23 @@
       </div>
     </header>
 
-    <main>
+    <main id="main-content" role="main">
       <div class="container">
-        <nav>
+        <nav aria-label="目次">
           <div class="toc-title">目次</div>
           <ul class="nav-list">
             <li class="nav-item">
-              <a href="#part1">第1部：価値ポートフォリオ</a>
+              <a href="#part1" aria-label="第1部：価値ポートフォリオへ移動">第1部：価値ポートフォリオ</a>
             </li>
-            <li class="nav-item"><a href="#part2">第2部：最適な使い方</a></li>
             <li class="nav-item">
-              <a href="#part3">第3部：ビューカード比較</a>
+              <a href="#part2" aria-label="第2部：最適な使い方へ移動">第2部：最適な使い方</a>
             </li>
-            <li class="nav-item"><a href="#part4">第4部：最終提言</a></li>
+            <li class="nav-item">
+              <a href="#part3" aria-label="第3部：ビューカード比較へ移動">第3部：ビューカード比較</a>
+            </li>
+            <li class="nav-item">
+              <a href="#part4" aria-label="第4部：最終提言へ移動">第4部：最終提言</a>
+            </li>
           </ul>
         </nav>
         <!-- 第1部 -->
@@ -710,11 +828,12 @@
             </p>
 
             <table>
+              <caption>ルミネ商品券 交換レートと1ポイントあたり価値一覧</caption>
               <thead>
                 <tr>
-                  <th>必要なJRE POINT</th>
-                  <th>交換できる商品券の金額</th>
-                  <th>1ポイントあたりの価値（円/pt）</th>
+                  <th scope="col">必要なJRE POINT</th>
+                  <th scope="col">交換できる商品券の金額</th>
+                  <th scope="col">1ポイントあたりの価値（円/pt）</th>
                 </tr>
               </thead>
               <tbody>
@@ -792,11 +911,12 @@
             </ul>
 
             <table>
+              <caption>JRE POINTステージ別 Suicaグリーン券交換価値の試算（正規料金1,000円の場合）</caption>
               <thead>
                 <tr>
-                  <th>JRE POINTステージ</th>
-                  <th>交換必要ポイント数</th>
-                  <th>1ポイントあたりの価値（円/pt）</th>
+                  <th scope="col">JRE POINTステージ</th>
+                  <th scope="col">交換必要ポイント数</th>
+                  <th scope="col">1ポイントあたりの価値（円/pt）</th>
                 </tr>
               </thead>
               <tbody>
@@ -903,12 +1023,13 @@
           <h3>3.2. VIEWプラス対象サービス カード別還元率 徹底比較</h3>
 
           <table>
+            <caption>VIEWプラス対象サービス カード別還元率 徹底比較</caption>
             <thead>
               <tr>
-                <th>ポイント対象サービス</th>
-                <th>スタンダード / JRE CARD</th>
-                <th>ビューカード ゴールド</th>
-                <th>格差</th>
+                <th scope="col">ポイント対象サービス</th>
+                <th scope="col">スタンダード / JRE CARD</th>
+                <th scope="col">ビューカード ゴールド</th>
+                <th scope="col">格差</th>
               </tr>
             </thead>
             <tbody>
@@ -1095,12 +1216,13 @@
           <h3>4.1. ビューカード3種 総合比較</h3>
 
           <table>
+            <caption>ビューカード3種 総合比較（年会費・主要還元率・特典）</caption>
             <thead>
               <tr>
-                <th>項目</th>
-                <th>ビューカード（スタンダード）</th>
-                <th>JRE CARD</th>
-                <th>ビューカード ゴールド</th>
+                <th scope="col">項目</th>
+                <th scope="col">ビューカード（スタンダード）</th>
+                <th scope="col">JRE CARD</th>
+                <th scope="col">ビューカード ゴールド</th>
               </tr>
             </thead>
             <tbody>
@@ -1230,21 +1352,12 @@
       </div>
     </main>
 
-    <footer
-      style="
-        background: var(--bg-secondary);
-        padding: 60px 0;
-        margin-top: 120px;
-        border-top: 1px solid var(--border-color);
-      "
-    >
-      <div class="container" style="text-align: center">
-        <p style="color: var(--text-secondary); font-size: 14px">
+    <footer class="footer" role="contentinfo">
+      <div class="container footer-container">
+        <p class="footer-text">
           JRE POINT活用戦略：価値最大化とビューカード徹底比較ガイド
         </p>
-        <p
-          style="color: var(--text-secondary); font-size: 12px; margin-top: 8px"
-        >
+        <p class="footer-copyright">
           © 2024 All rights reserved.
         </p>
       </div>
