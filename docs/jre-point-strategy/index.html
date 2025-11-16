@@ -285,6 +285,89 @@
         border-left: 4px solid var(--primary-color);
       }
 
+      /* Accordion (折りたたみ) */
+      .accordion {
+        background: var(--bg-primary);
+        border-radius: var(--radius-lg);
+        margin: 32px 0;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--border-color);
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .accordion:hover {
+        box-shadow: var(--shadow-md);
+      }
+
+      .accordion summary {
+        padding: 24px 32px;
+        cursor: pointer;
+        font-size: 19px;
+        font-weight: 600;
+        color: var(--text-primary);
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        border-bottom: 2px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        list-style: none;
+        user-select: none;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .accordion summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .accordion summary::after {
+        content: '▼';
+        font-size: 14px;
+        color: var(--primary-color);
+        transition: transform 0.3s ease;
+        margin-left: 16px;
+        flex-shrink: 0;
+      }
+
+      .accordion[open] summary::after {
+        transform: rotate(180deg);
+      }
+
+      .accordion summary:hover {
+        background: linear-gradient(135deg, #e9ecef 0%, #f8f9fa 100%);
+        color: var(--primary-color);
+      }
+
+      .accordion summary::before {
+        content: '📖 詳細を見る';
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--text-secondary);
+        margin-right: auto;
+        margin-left: 0;
+      }
+
+      .accordion[open] summary::before {
+        content: '📕 詳細を閉じる';
+      }
+
+      .accordion-content {
+        padding: 32px;
+        animation: slideDown 0.3s ease;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
       /* Tables */
       table {
         width: 100%;
@@ -888,25 +971,27 @@
             </p>
           </div>
 
-          <div class="card">
-            <h4>「JR東日本管内の新幹線」について</h4>
-            <p>
-              「JR東日本管内の新幹線」には、<strong>フル規格新幹線</strong>と<strong>ミニ新幹線</strong>の2種類が含まれます。
-            </p>
-            <ul>
-              <li>
-                <strong>フル規格新幹線（法律上の新幹線）:</strong>
-                東北新幹線（東京～新青森）、上越新幹線（東京～新潟）、北陸新幹線（東京～敦賀のJR東日本管轄区間）
-              </li>
-              <li>
-                <strong>ミニ新幹線（法律上は在来線）:</strong>
-                山形新幹線（福島～新庄）、秋田新幹線（盛岡～秋田）。これらは新幹線と在来線を直通運転できるよう改軌された路線で、法律上は在来線として扱われますが、一般的には「新幹線」として案内されます。
-              </li>
-            </ul>
-            <p>
-              本ガイドで「JR東日本管内の新幹線」と記載している場合、一般的には<strong>フル規格新幹線とミニ新幹線の両方</strong>を含みます。
-            </p>
-          </div>
+          <details class="accordion">
+            <summary><span>「JR東日本管内の新幹線」について</span></summary>
+            <div class="accordion-content">
+              <p>
+                「JR東日本管内の新幹線」には、<strong>フル規格新幹線</strong>と<strong>ミニ新幹線</strong>の2種類が含まれます。
+              </p>
+              <ul>
+                <li>
+                  <strong>フル規格新幹線（法律上の新幹線）:</strong>
+                  東北新幹線（東京～新青森）、上越新幹線（東京～新潟）、北陸新幹線（東京～敦賀のJR東日本管轄区間）
+                </li>
+                <li>
+                  <strong>ミニ新幹線（法律上は在来線）:</strong>
+                  山形新幹線（福島～新庄）、秋田新幹線（盛岡～秋田）。これらは新幹線と在来線を直通運転できるよう改軌された路線で、法律上は在来線として扱われますが、一般的には「新幹線」として案内されます。
+                </li>
+              </ul>
+              <p>
+                本ガイドで「JR東日本管内の新幹線」と記載している場合、一般的には<strong>フル規格新幹線とミニ新幹線の両方</strong>を含みます。
+              </p>
+            </div>
+          </details>
 
           <div class="card">
             <h4>座席のアップグレード（グリーン車・グランクラス）</h4>
@@ -936,26 +1021,28 @@
             </p>
           </div>
 
-          <div class="card card-highlight">
-            <h4>【重要】グランクラスアップグレードの対象列車について</h4>
-            <p>
-              JRE
-              POINTによるグランクラスへのアップグレードには、<strong>重要な条件</strong>があります。このサービスは、グランクラスの中でも<strong>「飲料・軽食なし」</strong>のサービスとして運行されている列車のみが対象となります。
-            </p>
-            <p><strong>対象となる列車：</strong></p>
-            <ul>
-              <li>
-                <strong>東北新幹線:</strong> 「やまびこ」「なすの」の全列車
-              </li>
-              <li><strong>北陸新幹線:</strong> 「あさま」の全列車</li>
-              <li><strong>上越新幹線:</strong> 「たにがわ」の全列車</li>
-            </ul>
-            <p>
-              <strong>注意:</strong>
-              アテンダントによる軽食やドリンクのサービスが提供される「飲料・軽食あり」の列車（例：東北新幹線「はやぶさ」「はやて」、北陸新幹線「かがやき」「はくたか」、上越新幹線「とき」など）は、このJRE
-              POINTによるアップグレードサービスの<strong>対象外</strong>となります。
-            </p>
-          </div>
+          <details class="accordion">
+            <summary><span>【重要】グランクラスアップグレードの対象列車について</span></summary>
+            <div class="accordion-content">
+              <p>
+                JRE
+                POINTによるグランクラスへのアップグレードには、<strong>重要な条件</strong>があります。このサービスは、グランクラスの中でも<strong>「飲料・軽食なし」</strong>のサービスとして運行されている列車のみが対象となります。
+              </p>
+              <p><strong>対象となる列車：</strong></p>
+              <ul>
+                <li>
+                  <strong>東北新幹線:</strong> 「やまびこ」「なすの」の全列車
+                </li>
+                <li><strong>北陸新幹線:</strong> 「あさま」の全列車</li>
+                <li><strong>上越新幹線:</strong> 「たにがわ」の全列車</li>
+              </ul>
+              <p>
+                <strong>注意:</strong>
+                アテンダントによる軽食やドリンクのサービスが提供される「飲料・軽食あり」の列車（例：東北新幹線「はやぶさ」「はやて」、北陸新幹線「かがやき」「はくたか」、上越新幹線「とき」など）は、このJRE
+                POINTによるアップグレードサービスの<strong>対象外</strong>となります。
+              </p>
+            </div>
+          </details>
 
           <div class="card">
             <h4>在来線チケットレス特急券</h4>
@@ -994,9 +1081,7 @@
             「最もお得な使い方」は、あなたのライフスタイル、ポイントの保有量、そして許容できる不確実性のレベルによって変わります。このセクションでは、「最大価値」「堅実な高利回り」「利用実績に応じた高利回り」という3つの異なるシナリオに基づいて、最もお得な使い方を詳しく見ていきましょう。
           </p>
 
-          <h3>
-            2.1. 【最大価値】「どこかにビューーン！」の詳しい解説
-          </h3>
+          <h3>2.1. 【最大価値】「どこかにビューーン！」の詳しい解説</h3>
 
           <p>
             JRE
@@ -1033,29 +1118,31 @@
               これは、Suicaチャージの<strong>5.8倍以上</strong>という、他の追随を許さないすごい交換価値です。
             </p>
 
-            <div class="card" style="margin-top: 24px">
-              <h4>実際の候補地の例と期待値</h4>
-              <p>47駅から選ばれる4つの候補地の例：</p>
-              <ul>
-                <li>
-                  東京 ↔ 新青森（運賃約35,000円）→
-                  <strong>5.83円/pt</strong>（最大価値）
-                </li>
-                <li>
-                  東京 ↔ 新潟（運賃約10,210円）→ <strong>1.70円/pt</strong>
-                </li>
-                <li>
-                  東京 ↔ 長野（運賃約8,140円）→ <strong>1.36円/pt</strong>
-                </li>
-                <li>
-                  東京 ↔ 仙台（運賃約11,210円）→ <strong>1.87円/pt</strong>
-                </li>
-              </ul>
-              <p style="margin-top: 16px">
-                <strong>期待値：</strong
-                >4つの候補地の平均的な価値は約<strong>2.7円/pt</strong>程度と計算されます。最大価値（5.83円/pt）を獲得できる確率は約25%（4駅中1駅）です。
-              </p>
-            </div>
+            <details class="accordion" style="margin-top: 24px">
+              <summary><span>実際の候補地の例と期待値</span></summary>
+              <div class="accordion-content">
+                <p>47駅から選ばれる4つの候補地の例：</p>
+                <ul>
+                  <li>
+                    東京 ↔ 新青森（運賃約35,000円）→
+                    <strong>5.83円/pt</strong>（最大価値）
+                  </li>
+                  <li>
+                    東京 ↔ 新潟（運賃約10,210円）→ <strong>1.70円/pt</strong>
+                  </li>
+                  <li>
+                    東京 ↔ 長野（運賃約8,140円）→ <strong>1.36円/pt</strong>
+                  </li>
+                  <li>
+                    東京 ↔ 仙台（運賃約11,210円）→ <strong>1.87円/pt</strong>
+                  </li>
+                </ul>
+                <p style="margin-top: 16px">
+                  <strong>期待値：</strong
+                  >4つの候補地の平均的な価値は約<strong>2.7円/pt</strong>程度と計算されます。最大価値（5.83円/pt）を獲得できる確率は約25%（4駅中1駅）です。
+                </p>
+              </div>
+            </details>
           </div>
 
           <div class="card">
@@ -1103,6 +1190,9 @@
               >ルミネ・ニュウマンでは、ファッション、コスメ、雑貨、グルメなど、日常の買い物に使える商品が豊富です。ポイントをまとめて商品券に交換すれば、お得にショッピングを楽しめます。
             </p>
 
+            <details class="accordion">
+              <summary><span>ルミネ商品券 交換レートと1ポイントあたり価値一覧（詳細）</span></summary>
+              <div class="accordion-content">
             <table>
               <caption>
                 ルミネ商品券 交換レートと1ポイントあたり価値一覧
@@ -1154,7 +1244,8 @@
                 </tr>
               </tbody>
             </table>
-          </div>
+              </div>
+            </details>
 
           <div class="card">
             <h4>まとめると</h4>
@@ -1167,7 +1258,8 @@
           </div>
 
           <h3>
-            2.3. 【利用実績に応じた高利回り】「(JRE POINT用)Suicaグリーン券」への交換
+            2.3. 【利用実績に応じた高利回り】「(JRE
+            POINT用)Suicaグリーン券」への交換
           </h3>
 
           <p>
@@ -1191,8 +1283,9 @@
               </li>
             </ul>
 
-            <div class="card card-highlight" style="margin-top: 24px">
-              <h4>JRE POINTステージの詳細</h4>
+            <details class="accordion" style="margin-top: 24px">
+              <summary><span>JRE POINTステージの詳細</span></summary>
+              <div class="accordion-content">
               <p>
                 ステージは過去6ヶ月間のポイント獲得・利用実績に基づいて決まります。
               </p>
@@ -1267,7 +1360,8 @@
                 </tr>
               </tbody>
             </table>
-          </div>
+              </div>
+            </details>
 
           <div class="card">
             <h4>まとめると</h4>
@@ -1514,8 +1608,9 @@
             </ul>
           </div>
 
-          <div class="card">
-            <h4>年会費を回収する条件の計算</h4>
+          <details class="accordion">
+            <summary><span>年会費を回収する条件の計算（詳細）</span></summary>
+            <div class="accordion-content">
             <p>
               ゴールドカード（年会費11,000円）が、JRE
               CARD（年会費524円）と比較して、追加で支払う年会費（約10,500円）をポイントで回収できるかを計算してみましょう。
@@ -1547,7 +1642,8 @@
               年間のカード決済総額が<strong>100万円を超え</strong>、かつ、新幹線・グリーン券の利用が<strong>年間11万円を超える</strong>場合、JRE
               CARDよりも実質的なポイント獲得額が上回ります。
             </p>
-          </div>
+            </div>
+          </details>
 
           <div class="card">
             <h4>まとめると</h4>
@@ -1690,7 +1786,9 @@
             </p>
           </div>
 
-          <h3>4.3. JRE POINTの仕組みを最大限に活用する方法（利用実績の好循環）</h3>
+          <h3>
+            4.3. JRE POINTの仕組みを最大限に活用する方法（利用実績の好循環）
+          </h3>
 
           <div class="conclusion-box">
             <h3>利用実績の好循環</h3>
@@ -1908,5 +2006,27 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      // アコーディオンの自動スクロール機能
+      document.addEventListener('DOMContentLoaded', function() {
+        const accordions = document.querySelectorAll('.accordion');
+        
+        accordions.forEach(function(accordion) {
+          accordion.addEventListener('toggle', function() {
+            if (accordion.open) {
+              // アコーディオンが開かれたとき、スムーズにスクロール
+              setTimeout(function() {
+                accordion.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start',
+                  inline: 'nearest'
+                });
+              }, 100);
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>
