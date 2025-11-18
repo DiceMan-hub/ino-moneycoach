@@ -231,6 +231,69 @@
       .intro-box ol li {
         margin-bottom: 12px;
       }
+
+      /* Search Box */
+      .search-container {
+        max-width: 600px;
+        margin: 24px auto;
+        position: relative;
+      }
+
+      .search-box {
+        width: 100%;
+        padding: 14px 48px 14px 20px;
+        font-size: 17px;
+        border: 2px solid var(--border-color);
+        border-radius: 980px;
+        background-color: var(--bg-secondary);
+        transition: all 0.2s ease;
+        outline: none;
+        font-family: inherit;
+      }
+
+      .search-box:focus {
+        background-color: var(--bg-primary);
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+      }
+
+      .search-box::placeholder {
+        color: var(--text-secondary);
+      }
+
+      .search-icon {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-secondary);
+        pointer-events: none;
+      }
+
+      .search-results-count {
+        text-align: center;
+        margin-top: 12px;
+        font-size: 14px;
+        color: var(--text-secondary);
+        min-height: 20px;
+      }
+
+      .highlight {
+        background-color: #ffeb3b;
+        padding: 2px 0;
+        border-radius: 2px;
+      }
+
+      tr.hidden {
+        display: none;
+      }
+
+      .no-results {
+        text-align: center;
+        padding: 40px 20px;
+        color: var(--text-secondary);
+        font-size: 17px;
+      }
     </style>
   </head>
   <body>
@@ -241,6 +304,22 @@
         </h1>
         <p class="subtitle">旅行セクター深掘り分析 × 4大経済圏戦略</p>
         <p class="subtitle" style="font-size: 14px; margin-top: 8px;">最終更新日：2025年11月17日</p>
+
+        <!-- Search Box -->
+        <div class="search-container">
+          <input
+            type="text"
+            id="searchInput"
+            class="search-box"
+            placeholder="企業名、カテゴリ、キーワードで検索..."
+            autocomplete="off"
+          />
+          <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M13 13L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div id="searchResults" class="search-results-count"></div>
+        </div>
       </div>
     </header>
 
@@ -1027,5 +1106,81 @@
         <p style="margin-top: 8px; font-size: 13px">旅行セクター深掘り分析 × 4大経済圏戦略</p>
       </div>
     </footer>
+
+    <script>
+      // Search functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        const tables = document.querySelectorAll('table tbody');
+
+        searchInput.addEventListener('input', function(e) {
+          const searchTerm = e.target.value.toLowerCase().trim();
+
+          if (searchTerm === '') {
+            // Reset all rows
+            tables.forEach(table => {
+              const rows = table.querySelectorAll('tr');
+              rows.forEach(row => {
+                row.classList.remove('hidden');
+                // Remove highlights
+                row.innerHTML = row.innerHTML.replace(/<mark class="highlight">(.*?)<\/mark>/gi, '$1');
+              });
+            });
+            searchResults.textContent = '';
+            return;
+          }
+
+          let totalMatches = 0;
+
+          tables.forEach(table => {
+            const rows = table.querySelectorAll('tr');
+
+            rows.forEach(row => {
+              // Get original text without HTML tags for searching
+              const textContent = row.textContent.toLowerCase();
+
+              if (textContent.includes(searchTerm)) {
+                row.classList.remove('hidden');
+                totalMatches++;
+
+                // Highlight matching text
+                const cells = row.querySelectorAll('td');
+                cells.forEach(cell => {
+                  const cellHTML = cell.innerHTML;
+                  // Remove existing highlights first
+                  const cleanHTML = cellHTML.replace(/<mark class="highlight">(.*?)<\/mark>/gi, '$1');
+
+                  // Add new highlights (case-insensitive)
+                  const regex = new RegExp(`(${searchTerm})`, 'gi');
+                  const highlightedHTML = cleanHTML.replace(regex, '<mark class="highlight">$1</mark>');
+                  cell.innerHTML = highlightedHTML;
+                });
+              } else {
+                row.classList.add('hidden');
+              }
+            });
+          });
+
+          // Update results count
+          if (totalMatches > 0) {
+            searchResults.textContent = `${totalMatches}件の結果が見つかりました`;
+            searchResults.style.color = 'var(--success-color)';
+          } else {
+            searchResults.textContent = '該当する結果が見つかりませんでした';
+            searchResults.style.color = 'var(--text-secondary)';
+          }
+        });
+
+        // Clear search on Escape key
+        searchInput.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') {
+            searchInput.value = '';
+            searchInput.dispatchEvent(new Event('input'));
+            searchInput.blur();
+          }
+        });
+      });
+    </script>
   </body>
 </html>
