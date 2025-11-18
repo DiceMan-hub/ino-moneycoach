@@ -232,56 +232,116 @@
         margin-bottom: 12px;
       }
 
-      /* Search Box */
+      /* Search Box - Modern Glass Design */
       .search-container {
-        max-width: 600px;
-        margin: 24px auto;
+        max-width: 560px;
+        margin: 32px auto;
         position: relative;
       }
 
       .search-box {
         width: 100%;
-        padding: 14px 48px 14px 20px;
-        font-size: 17px;
-        border: 2px solid var(--border-color);
-        border-radius: 980px;
-        background-color: var(--bg-secondary);
-        transition: all 0.2s ease;
+        padding: 16px 52px 16px 48px;
+        font-size: 16px;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         outline: none;
         font-family: inherit;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 4px 24px rgba(0, 0, 0, 0.02);
+        color: var(--text-primary);
+        letter-spacing: -0.01em;
+      }
+
+      .search-box:hover {
+        border-color: rgba(0, 0, 0, 0.12);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 8px 32px rgba(0, 0, 0, 0.04);
       }
 
       .search-box:focus {
-        background-color: var(--bg-primary);
+        background: rgba(255, 255, 255, 0.95);
         border-color: var(--primary-color);
-        box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+        box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.12), 0 4px 16px rgba(0, 113, 227, 0.08);
+        transform: translateY(-1px);
       }
 
       .search-box::placeholder {
         color: var(--text-secondary);
+        opacity: 0.7;
       }
 
       .search-icon {
         position: absolute;
-        right: 20px;
+        left: 16px;
         top: 50%;
         transform: translateY(-50%);
         color: var(--text-secondary);
         pointer-events: none;
+        opacity: 0.6;
+        transition: all 0.3s ease;
+      }
+
+      .search-box:focus ~ .search-icon {
+        color: var(--primary-color);
+        opacity: 1;
+      }
+
+      .search-clear {
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        border: none;
+        background: rgba(0, 0, 0, 0.08);
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        padding: 0;
+      }
+
+      .search-clear:hover {
+        background: rgba(0, 0, 0, 0.15);
+      }
+
+      .search-clear svg {
+        width: 10px;
+        height: 10px;
+        color: var(--text-secondary);
+      }
+
+      .search-box:not(:placeholder-shown) ~ .search-clear {
+        display: flex;
       }
 
       .search-results-count {
         text-align: center;
         margin-top: 12px;
-        font-size: 14px;
+        font-size: 13px;
         color: var(--text-secondary);
-        min-height: 20px;
+        min-height: 18px;
+        opacity: 0;
+        transform: translateY(-4px);
+        transition: all 0.3s ease;
+      }
+
+      .search-results-count.visible {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .highlight {
-        background-color: #ffeb3b;
-        padding: 2px 0;
-        border-radius: 2px;
+        background: linear-gradient(120deg, rgba(255, 235, 59, 0.4) 0%, rgba(255, 235, 59, 0.6) 100%);
+        padding: 2px 4px;
+        border-radius: 4px;
+        font-weight: 500;
       }
 
       tr.hidden {
@@ -321,17 +381,22 @@
 
         <!-- Search Box -->
         <div class="search-container">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 20 20" fill="none">
+            <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M13 13L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
           <input
             type="text"
             id="searchInput"
             class="search-box"
-            placeholder="企業名、カテゴリ、キーワードで検索..."
+            placeholder="検索..."
             autocomplete="off"
           />
-          <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M13 13L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
+          <button class="search-clear" id="searchClear" type="button" aria-label="検索をクリア">
+            <svg viewBox="0 0 12 12" fill="none">
+              <path d="M2 2L10 10M10 2L2 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
           <div id="searchResults" class="search-results-count"></div>
         </div>
 
@@ -1112,10 +1177,20 @@
       document.addEventListener('DOMContentLoaded', function() {
         const searchInput = document.getElementById('searchInput');
         const searchResults = document.getElementById('searchResults');
+        const searchClear = document.getElementById('searchClear');
         const tables = document.querySelectorAll('table tbody');
+
+        function clearSearch() {
+          searchInput.value = '';
+          searchInput.dispatchEvent(new Event('input'));
+          searchInput.focus();
+        }
 
         searchInput.addEventListener('input', function(e) {
           const searchTerm = e.target.value.toLowerCase().trim();
+
+          // Toggle clear button visibility
+          searchClear.style.display = searchTerm ? 'flex' : 'none';
 
           if (searchTerm === '') {
             // Reset all rows
@@ -1128,6 +1203,7 @@
               });
             });
             searchResults.textContent = '';
+            searchResults.classList.remove('visible');
             return;
           }
 
@@ -1152,7 +1228,7 @@
                   const cleanHTML = cellHTML.replace(/<mark class="highlight">(.*?)<\/mark>/gi, '$1');
 
                   // Add new highlights (case-insensitive)
-                  const regex = new RegExp(`(${searchTerm})`, 'gi');
+                  const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
                   const highlightedHTML = cleanHTML.replace(regex, '<mark class="highlight">$1</mark>');
                   cell.innerHTML = highlightedHTML;
                 });
@@ -1162,21 +1238,24 @@
             });
           });
 
-          // Update results count
+          // Update results count with animation
+          searchResults.classList.add('visible');
           if (totalMatches > 0) {
-            searchResults.textContent = `${totalMatches}件の結果が見つかりました`;
+            searchResults.textContent = `${totalMatches}件の結果`;
             searchResults.style.color = 'var(--success-color)';
           } else {
-            searchResults.textContent = '該当する結果が見つかりませんでした';
+            searchResults.textContent = '結果なし';
             searchResults.style.color = 'var(--text-secondary)';
           }
         });
 
+        // Clear button click
+        searchClear.addEventListener('click', clearSearch);
+
         // Clear search on Escape key
         searchInput.addEventListener('keydown', function(e) {
           if (e.key === 'Escape') {
-            searchInput.value = '';
-            searchInput.dispatchEvent(new Event('input'));
+            clearSearch();
             searchInput.blur();
           }
         });
