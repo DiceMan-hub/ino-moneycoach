@@ -1205,8 +1205,13 @@
               const rows = table.querySelectorAll('tr');
               rows.forEach(row => {
                 row.classList.remove('hidden');
-                // Remove highlights
-                row.innerHTML = row.innerHTML.replace(/<mark class="highlight">(.*?)<\/mark>/gi, '$1');
+                // Remove highlights properly
+                const highlights = row.querySelectorAll('mark.highlight');
+                highlights.forEach(mark => {
+                  const textNode = document.createTextNode(mark.textContent);
+                  mark.parentNode.replaceChild(textNode, mark);
+                });
+                row.normalize();
               });
             });
             searchResults.textContent = '';
@@ -1227,17 +1232,49 @@
                 row.classList.remove('hidden');
                 totalMatches++;
 
-                // Highlight matching text
+                // Highlight matching text in text nodes only
                 const cells = row.querySelectorAll('td');
                 cells.forEach(cell => {
-                  const cellHTML = cell.innerHTML;
                   // Remove existing highlights first
-                  const cleanHTML = cellHTML.replace(/<mark class="highlight">(.*?)<\/mark>/gi, '$1');
+                  const existingHighlights = cell.querySelectorAll('mark.highlight');
+                  existingHighlights.forEach(mark => {
+                    const textNode = document.createTextNode(mark.textContent);
+                    mark.parentNode.replaceChild(textNode, mark);
+                  });
+                  // Normalize to merge adjacent text nodes
+                  cell.normalize();
 
-                  // Add new highlights (case-insensitive)
+                  // Highlight text nodes only (not HTML attributes)
+                  const walker = document.createTreeWalker(cell, NodeFilter.SHOW_TEXT, null, false);
+                  const textNodes = [];
+                  let node;
+                  while (node = walker.nextNode()) {
+                    textNodes.push(node);
+                  }
+
                   const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-                  const highlightedHTML = cleanHTML.replace(regex, '<mark class="highlight">$1</mark>');
-                  cell.innerHTML = highlightedHTML;
+                  textNodes.forEach(textNode => {
+                    const text = textNode.textContent;
+                    if (regex.test(text)) {
+                      const fragment = document.createDocumentFragment();
+                      let lastIndex = 0;
+                      text.replace(regex, (match, p1, offset) => {
+                        if (offset > lastIndex) {
+                          fragment.appendChild(document.createTextNode(text.slice(lastIndex, offset)));
+                        }
+                        const mark = document.createElement('mark');
+                        mark.className = 'highlight';
+                        mark.textContent = match;
+                        fragment.appendChild(mark);
+                        lastIndex = offset + match.length;
+                        return match;
+                      });
+                      if (lastIndex < text.length) {
+                        fragment.appendChild(document.createTextNode(text.slice(lastIndex)));
+                      }
+                      textNode.parentNode.replaceChild(fragment, textNode);
+                    }
+                  });
                 });
               } else {
                 row.classList.add('hidden');
