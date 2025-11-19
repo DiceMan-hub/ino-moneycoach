@@ -251,20 +251,23 @@
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         outline: none;
         font-family: inherit;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 4px 24px rgba(0, 0, 0, 0.02);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04),
+          0 4px 24px rgba(0, 0, 0, 0.02);
         color: var(--text-primary);
         letter-spacing: -0.01em;
       }
 
       .search-box:hover {
         border-color: rgba(0, 0, 0, 0.12);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 8px 32px rgba(0, 0, 0, 0.04);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06),
+          0 8px 32px rgba(0, 0, 0, 0.04);
       }
 
       .search-box:focus {
         background: rgba(255, 255, 255, 0.95);
         border-color: var(--primary-color);
-        box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.12), 0 4px 16px rgba(0, 113, 227, 0.08);
+        box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.12),
+          0 4px 16px rgba(0, 113, 227, 0.08);
         transform: translateY(-1px);
       }
 
@@ -338,7 +341,11 @@
       }
 
       .highlight {
-        background: linear-gradient(120deg, rgba(255, 235, 59, 0.4) 0%, rgba(255, 235, 59, 0.6) 100%);
+        background: linear-gradient(
+          120deg,
+          rgba(255, 235, 59, 0.4) 0%,
+          rgba(255, 235, 59, 0.6) 100%
+        );
         padding: 2px 4px;
         border-radius: 4px;
         font-weight: 500;
@@ -363,7 +370,11 @@
         font-size: 12px;
         font-weight: 600;
         color: white;
-        background: linear-gradient(135deg, var(--primary-color) 0%, #0051d5 100%);
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          #0051d5 100%
+        );
         border-radius: 8px;
         text-decoration: none;
         transition: all 0.2s ease;
@@ -386,44 +397,138 @@
   <body>
     <header>
       <div class="container">
-        <p style="font-size: 13px; color: rgba(255, 255, 255, 0.7); margin: 0 0 8px 0; letter-spacing: 0.5px;">いのマネーコーチ AI速報まとめ</p>
-        <h1>
-          ブラックフライデー2025<br />セール一覧＆おすすめ決済カード
-        </h1>
+        <p
+          style="
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0 0 8px 0;
+            letter-spacing: 0.5px;
+          "
+        >
+          いのマネーコーチ AI速報まとめ
+        </p>
+        <h1>ブラックフライデー2025<br />セール一覧＆おすすめ決済カード</h1>
         <p class="subtitle">旅行・EC・家電・ファッション 全ジャンル網羅</p>
-        <p class="subtitle" style="font-size: 14px; margin-top: 8px;">最終更新日：2025年11月18日 <span style="background: rgba(255, 255, 255, 0.2); padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">随時更新中</span></p>
+        <p class="subtitle" style="font-size: 14px; margin-top: 8px">
+          最終更新日：2025年11月18日
+          <span
+            style="
+              background: rgba(255, 255, 255, 0.2);
+              padding: 2px 8px;
+              border-radius: 4px;
+              font-size: 12px;
+              margin-left: 8px;
+            "
+            >随時更新中</span
+          >
+        </p>
       </div>
     </header>
 
     <main>
       <div class="container">
         <!-- ダッシュボード -->
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 32px;">
-          <div style="background: linear-gradient(135deg, #34c759 0%, #30d158 100%); border-radius: var(--radius); padding: 20px; text-align: center; color: white; box-shadow: var(--shadow-sm);">
-            <div style="font-size: 36px; font-weight: 700; line-height: 1.2;">45</div>
-            <div style="font-size: 13px; opacity: 0.9; margin-top: 4px;">開催中</div>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+          "
+        >
+          <div
+            style="
+              background: linear-gradient(135deg, #34c759 0%, #30d158 100%);
+              border-radius: var(--radius);
+              padding: 20px;
+              text-align: center;
+              color: white;
+              box-shadow: var(--shadow-sm);
+            "
+          >
+            <div style="font-size: 36px; font-weight: 700; line-height: 1.2">
+              45
+            </div>
+            <div style="font-size: 13px; opacity: 0.9; margin-top: 4px">
+              開催中
+            </div>
           </div>
-          <div style="background: linear-gradient(135deg, #0071e3 0%, #0051d5 100%); border-radius: var(--radius); padding: 20px; text-align: center; color: white; box-shadow: var(--shadow-sm);">
-            <div style="font-size: 36px; font-weight: 700; line-height: 1.2;">62</div>
-            <div style="font-size: 13px; opacity: 0.9; margin-top: 4px;">全店舗</div>
+          <div
+            style="
+              background: linear-gradient(135deg, #0071e3 0%, #0051d5 100%);
+              border-radius: var(--radius);
+              padding: 20px;
+              text-align: center;
+              color: white;
+              box-shadow: var(--shadow-sm);
+            "
+          >
+            <div style="font-size: 36px; font-weight: 700; line-height: 1.2">
+              62
+            </div>
+            <div style="font-size: 13px; opacity: 0.9; margin-top: 4px">
+              全店舗
+            </div>
           </div>
         </div>
 
         <!-- 3行まとめ -->
         <div class="intro-box">
-          <h3 style="font-size: 24px; margin: 0 0 20px 0; color: var(--primary-color);">📌 3行まとめ</h3>
-          <ol style="font-size: 18px; line-height: 1.9; padding-left: 24px; margin: 0;">
-            <li style="margin-bottom: 12px;"><strong>市場構造：</strong>2025年のブラックフライデーは「楽天・PayPay・ドコモ・イオン」の4大経済圏による顧客争奪戦に変貌した</li>
-            <li style="margin-bottom: 12px;"><strong>旅行セクター：</strong>最大の商戦は11月20日（木）正午開始の「Yahoo!トラベル ヤフーパック」。ANAは特典航空券が減額マイルで予約可能</li>
-            <li style="margin-bottom: 0;"><strong>決済戦略：</strong>「旅行（11/20）→楽天（11/20,25）→Yahoo!（11/25～）→Amazon（11/29～）」の4段階で決済手段を使い分けることが最適解</li>
+          <h3
+            style="
+              font-size: 24px;
+              margin: 0 0 20px 0;
+              color: var(--primary-color);
+            "
+          >
+            📌 3行まとめ
+          </h3>
+          <ol
+            style="
+              font-size: 18px;
+              line-height: 1.9;
+              padding-left: 24px;
+              margin: 0;
+            "
+          >
+            <li style="margin-bottom: 12px">
+              <strong>市場構造：</strong
+              >2025年のブラックフライデーは「楽天・PayPay・ドコモ・イオン」の4大経済圏による顧客争奪戦に変貌した
+            </li>
+            <li style="margin-bottom: 12px">
+              <strong>旅行セクター：</strong
+              >最大の商戦は11月20日（木）正午開始の「Yahoo!トラベル
+              ヤフーパック」。ANAは特典航空券が減額マイルで予約可能
+            </li>
+            <li style="margin-bottom: 0">
+              <strong>決済戦略：</strong
+              >「旅行（11/20）→楽天（11/20,25）→Yahoo!（11/25～）→Amazon（11/29～）」の4段階で決済手段を使い分けることが最適解
+            </li>
           </ol>
         </div>
 
         <!-- Search Box -->
         <div class="search-container">
-          <svg class="search-icon" width="18" height="18" viewBox="0 0 20 20" fill="none">
-            <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.8"/>
-            <path d="M13 13L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <svg
+            class="search-icon"
+            width="18"
+            height="18"
+            viewBox="0 0 20 20"
+            fill="none"
+          >
+            <circle
+              cx="8"
+              cy="8"
+              r="6"
+              stroke="currentColor"
+              stroke-width="1.8"
+            />
+            <path
+              d="M13 13L17 17"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+            />
           </svg>
           <input
             type="text"
@@ -432,9 +537,19 @@
             placeholder="検索..."
             autocomplete="off"
           />
-          <button class="search-clear" id="searchClear" type="button" aria-label="検索をクリア">
+          <button
+            class="search-clear"
+            id="searchClear"
+            type="button"
+            aria-label="検索をクリア"
+          >
             <svg viewBox="0 0 12 12" fill="none">
-              <path d="M2 2L10 10M10 2L2 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path
+                d="M2 2L10 10M10 2L2 10"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
             </svg>
           </button>
           <div id="searchResults" class="search-results-count"></div>
@@ -446,146 +561,629 @@
         <table class="travel-table">
           <thead>
             <tr>
-              <th style="width: 15%;">サービス</th>
-              <th style="width: 15%;">開催期間</th>
-              <th style="width: 30%;">セール内容</th>
-              <th style="width: 20%;">推奨決済手段</th>
-              <th style="width: 20%;">期待還元率</th>
+              <th style="width: 15%">サービス</th>
+              <th style="width: 15%">開催期間</th>
+              <th style="width: 30%">セール内容</th>
+              <th style="width: 20%">推奨決済手段</th>
+              <th style="width: 20%">期待還元率</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Yahoo!トラベル</strong><a href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3722426&pid=892289773" target="_blank" rel="noopener" class="official-link">公式</a><br><span class="badge-warning" style="background: #ff9500; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">最重要</span><br><span style="color: #6a6a6a; font-size: 11px;">#PR</span></td>
-              <td><strong>11月20日（木）</strong><br>12:00～12/4 11:59<br>お得な15日間</td>
-              <td><strong>ブラックフライデー特別キャンペーン</strong><br>• JAL・ANA最大38,000円分クーポン配布<br>• PayPayポイント最大10%付与（PayPay/PayPayカード利用）<br>• ヤフーパック（宿泊＋航空券）専用プラン<br><br><strong>対象都市例：</strong><br>• 東京：品川プリンス／グランドニッコー東京ベイ舞浜<br>• 札幌・沖縄・福岡・大阪の人気ホテル多数<br>※詳細条件は11/19正午公開</td>
-              <td>PayPayカード<br>LYPプレミアム会員</td>
-              <td>JAL/ANA：最大38,000円<br>PayPayポイント：最大10%<br>ヤフーパック割引</td>
+              <td>
+                <strong>Yahoo!トラベル</strong
+                ><a
+                  href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3722426&pid=892293277&vc_url=https%3A%2F%2Ftravel.yahoo.co.jp%2Fpromo%2Fdp%2Fblackfriday"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                ><br /><span
+                  class="badge-warning"
+                  style="
+                    background: #ff9500;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >最重要</span
+                ><br /><span style="color: #6a6a6a; font-size: 11px">#PR</span>
+              </td>
+              <td>
+                <strong>11月20日（木）</strong><br />12:00～12/4 11:59<br />お得な15日間
+              </td>
+              <td>
+                <strong>ブラックフライデー特別キャンペーン</strong><br />•
+                JAL・ANA最大38,000円分クーポン配布<br />•
+                PayPayポイント最大10%付与（PayPay/PayPayカード利用）<br />•
+                ヤフーパック（宿泊＋航空券）専用プラン<br /><br /><strong
+                  >対象都市例：</strong
+                ><br />• 東京：品川プリンス／グランドニッコー東京ベイ舞浜<br />•
+                札幌・沖縄・福岡・大阪の人気ホテル多数<br />※詳細条件は11/19正午公開
+              </td>
+              <td>PayPayカード<br /><a
+                  href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3722426&pid=892290124"
+                  target="_blank"
+                  rel="noopener"
+                  style="
+                    color: #0071e3;
+                    text-decoration: underline;
+                    font-weight: 600;
+                  "
+                  >LYPプレミアム会員</a
+                ></td>
+              <td>
+                JAL/ANA：最大38,000円<br />PayPayポイント：最大10%<br />ヤフーパック割引
+              </td>
             </tr>
             <tr>
-              <td><strong>一休.com</strong><a href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3722426&pid=892289766&vc_url=https%3A%2F%2Fwww.ikyu.com%2Ftheme%2Ft190%2F" target="_blank" rel="noopener" class="official-link">公式</a><br><span style="color: #6a6a6a; font-size: 11px;">#PR</span></td>
+              <td>
+                <strong>一休.com</strong
+                ><a
+                  href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3722426&pid=892289766&vc_url=https%3A%2F%2Fwww.ikyu.com%2Ftheme%2Ft190%2F"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                ><br /><span style="color: #6a6a6a; font-size: 11px">#PR</span>
+              </td>
               <td><strong>11月19日（水）</strong></td>
-              <td>ポイント10倍デー（毎月1日・9日・19日）。オンラインカード決済が条件</td>
-              <td>アメックスプロパー<br>（3%還元対象店）<br><br><span style="color: #86868b; font-size: 13px;">※PayPay<br>（オンライン決済）</span></td>
-              <td>ポイント10倍<br>＋アメックス3%</td>
+              <td>
+                ポイント10倍デー（毎月1日・9日・19日）。オンラインカード決済が条件
+              </td>
+              <td>
+                アメックスプロパー<br />（3%還元対象店）<br /><br /><span
+                  style="color: #86868b; font-size: 13px"
+                  >※PayPay<br />（オンライン決済）</span
+                >
+              </td>
+              <td>ポイント10倍<br />＋アメックス3%</td>
             </tr>
             <tr>
-              <td><strong>ANA</strong><a href="https://www.ana.co.jp/ja/jp/promotion/ana_kyun29/" target="_blank" rel="noopener" class="official-link">公式</a><br><span class="badge-success" style="background: #34c759; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">航空券対象</span></td>
-              <td>11月21日～<br>11月30日</td>
-              <td><strong style="color: #34c759;">【重要】特典航空券が減額マイルで予約可能</strong><br>• 国内線・国際線（ハワイ・中国）特典航空券が通常より少ないマイル<br>• ANA Mall：7倍マイル、最大78%OFFタイムセール<br>• 10%OFFクーポン（先着1,500枚、取得期限：11/20）<br><br><strong style="color: #ff9500;">【隠れた逸品】サックスバー（Sacs Bar）</strong><br>• ANA Mallで10%OFF直接割引クーポン配布<br>• Samsonite、Ace等の主要スーツケースブランド取扱<br>• ポイント還元ではなく「即時割引」型<br>※オンライン×アウトレット級割引の「第三の選択肢」</td>
-              <td>ANAマイレージクラブ<br>ANAカード推奨</td>
-              <td>減額マイル特典航空券<br>ANA Mall 7倍マイル<br>最大78%OFF<br><strong style="color: #ff9500;">スーツケース10%OFF</strong></td>
+              <td>
+                <strong>ANA</strong
+                ><a
+                  href="https://www.ana.co.jp/ja/jp/promotion/ana_kyun29/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                ><br /><span
+                  class="badge-success"
+                  style="
+                    background: #34c759;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >航空券対象</span
+                >
+              </td>
+              <td>11月21日～<br />11月30日</td>
+              <td>
+                <strong style="color: #34c759"
+                  >【重要】特典航空券が減額マイルで予約可能</strong
+                ><br />•
+                国内線・国際線（ハワイ・中国）特典航空券が通常より少ないマイル<br />•
+                ANA Mall：7倍マイル、最大78%OFFタイムセール<br />•
+                10%OFFクーポン（先着1,500枚、取得期限：11/20）<br /><br /><strong
+                  style="color: #ff9500"
+                  >【隠れた逸品】サックスバー（Sacs Bar）</strong
+                ><br />• ANA Mallで10%OFF直接割引クーポン配布<br />•
+                Samsonite、Ace等の主要スーツケースブランド取扱<br />•
+                ポイント還元ではなく「即時割引」型<br />※オンライン×アウトレット級割引の「第三の選択肢」
+              </td>
+              <td>ANAマイレージクラブ<br />ANAカード推奨</td>
+              <td>
+                減額マイル特典航空券<br />ANA Mall 7倍マイル<br />最大78%OFF<br /><strong
+                  style="color: #ff9500"
+                  >スーツケース10%OFF</strong
+                >
+              </td>
             </tr>
             <tr>
-              <td><strong>JAL</strong><a href="https://www.jal.co.jp/jp/ja/campaign/blackflyday/" target="_blank" rel="noopener" class="official-link">公式</a><br><span class="badge-success" style="background: #34c759; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">国内外対象</span></td>
-              <td>11月18日～<br>11月30日</td>
-              <td><strong>【国内線】</strong>片道7,700円～特別運賃<br>• 搭乗期間：2025/12/26～2026/2/28<br>• ダイナミックパッケージ最大53,000円割引<br>• ホテル予約ダブルマイル（100円=2マイル）<br><br><strong>【国際線】</strong>特別運賃＋パッケージ割引<br>• NY/LA/シカゴ：150,000円～<br>• シンガポール：69,000円～<br>• 海外パッケージ：最大50,000円割引<br>• 特典航空券：北米片道18,900マイル～<br>• 搭乗期間：北米2025/12/1～2026/2/28、アジア～2026/7/31<br><br><strong style="color: #0071e3;">【同時開催】Life Status 2周年</strong>（～2026/2/28）<br>• JALカード/JAL Pay：ポイント2倍<br>• 抽選で最大20万マイル（2,222名）<br>※要エントリー</td>
-              <td>JALカード<br>JALマイレージバンク<br>JAL Pay</td>
-              <td>国内：最大53,000円割引<br>海外：最大50,000円割引<br>＋特典航空券割引<br><strong style="color: #0071e3;">＋LSP2倍</strong></td>
+              <td>
+                <strong>JAL</strong
+                ><a
+                  href="https://www.jal.co.jp/jp/ja/campaign/blackflyday/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                ><br /><span
+                  class="badge-success"
+                  style="
+                    background: #34c759;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >国内外対象</span
+                >
+              </td>
+              <td>11月18日～<br />11月30日</td>
+              <td>
+                <strong>【国内線】</strong>片道7,700円～特別運賃<br />•
+                搭乗期間：2025/12/26～2026/2/28<br />•
+                ダイナミックパッケージ最大53,000円割引<br />•
+                ホテル予約ダブルマイル（100円=2マイル）<br /><br /><strong
+                  >【国際線】</strong
+                >特別運賃＋パッケージ割引<br />• NY/LA/シカゴ：150,000円～<br />•
+                シンガポール：69,000円～<br />•
+                海外パッケージ：最大50,000円割引<br />•
+                特典航空券：北米片道18,900マイル～<br />•
+                搭乗期間：北米2025/12/1～2026/2/28、アジア～2026/7/31<br /><br /><strong
+                  style="color: #0071e3"
+                  >【同時開催】Life Status 2周年</strong
+                >（～2026/2/28）<br />• JALカード/JAL Pay：ポイント2倍<br />•
+                抽選で最大20万マイル（2,222名）<br />※要エントリー
+              </td>
+              <td>JALカード<br />JALマイレージバンク<br />JAL Pay</td>
+              <td>
+                国内：最大53,000円割引<br />海外：最大50,000円割引<br />＋特典航空券割引<br /><strong
+                  style="color: #0071e3"
+                  >＋LSP2倍</strong
+                >
+              </td>
             </tr>
             <tr>
-              <td><strong>JR東日本びゅう</strong><a href="https://www.jrview-travel.com/content/sp/blackfriday/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>開催中～<br>2026年3月出発</td>
-              <td><strong>ブラックフライデー 鉄道旅</strong><br>• 函館2泊3日 <strong>39,800円〜</strong><br>• 金沢1泊2日 <strong>32,800円〜</strong>（グルメチケット付）<br>• 富山1泊2日 <strong>28,800円〜</strong>（市電乗り放題付）<br>• 福井1泊2日 <strong>29,800円〜</strong><br><span style="color: #86868b; font-size: 12px;">※ネット限定・1名から申込可・添乗員なし</span></td>
-              <td>ビューカード<br><br><span style="color: #86868b; font-size: 13px;">JRE POINT還元</span></td>
-              <td>鉄道＋宿泊<br>フリープラン<br>グルメ付プランあり</td>
+              <td>
+                <strong>JR東日本びゅう</strong
+                ><a
+                  href="https://www.jrview-travel.com/content/sp/blackfriday/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>開催中～<br />2026年3月出発</td>
+              <td>
+                <strong>ブラックフライデー 鉄道旅</strong><br />• 函館2泊3日
+                <strong>39,800円〜</strong><br />• 金沢1泊2日
+                <strong>32,800円〜</strong>（グルメチケット付）<br />•
+                富山1泊2日 <strong>28,800円〜</strong>（市電乗り放題付）<br />•
+                福井1泊2日 <strong>29,800円〜</strong><br /><span
+                  style="color: #86868b; font-size: 12px"
+                  >※ネット限定・1名から申込可・添乗員なし</span
+                >
+              </td>
+              <td>
+                ビューカード<br /><br /><span
+                  style="color: #86868b; font-size: 13px"
+                  >JRE POINT還元</span
+                >
+              </td>
+              <td>鉄道＋宿泊<br />フリープラン<br />グルメ付プランあり</td>
             </tr>
             <tr>
-              <td><strong>JR東海ツアーズ</strong><a href="https://travel.jr-central.co.jp/plan/tokushu/blackfriday/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>11月14日13時～<br>12月1日20時</td>
-              <td><strong>EX旅パック ブラックフライデーセール</strong><br>• 往復新幹線＋宿泊の自由組合せパック<br>• BLACK FRIDAY SALE -LUXURY- 高級ホテル特価<br>• EX会員×LINE連携：初回限定1,000円OFFクーポン<br><br><strong>対象エリア：</strong><br>• 東京・舞浜・神奈川・静岡・愛知・京都・奈良・大阪・USJエリア等<br>• 1泊2日～3泊4日、1～6名対応</td>
-              <td>汎用高還元カード<br><br><span style="color: #86868b; font-size: 13px;">※EX会員×LINE連携<br>1,000円OFFクーポン</span></td>
-              <td>高級ホテル特価<br>＋1,000円OFFクーポン<br>（初回限定）</td>
+              <td>
+                <strong>JR東海ツアーズ</strong
+                ><a
+                  href="https://travel.jr-central.co.jp/plan/tokushu/blackfriday/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>11月14日13時～<br />12月1日20時</td>
+              <td>
+                <strong>EX旅パック ブラックフライデーセール</strong><br />•
+                往復新幹線＋宿泊の自由組合せパック<br />• BLACK FRIDAY SALE
+                -LUXURY- 高級ホテル特価<br />•
+                EX会員×LINE連携：初回限定1,000円OFFクーポン<br /><br /><strong
+                  >対象エリア：</strong
+                ><br />•
+                東京・舞浜・神奈川・静岡・愛知・京都・奈良・大阪・USJエリア等<br />•
+                1泊2日～3泊4日、1～6名対応
+              </td>
+              <td>
+                汎用高還元カード<br /><br /><span
+                  style="color: #86868b; font-size: 13px"
+                  >※EX会員×LINE連携<br />1,000円OFFクーポン</span
+                >
+              </td>
+              <td>
+                高級ホテル特価<br />＋1,000円OFFクーポン<br />（初回限定）
+              </td>
             </tr>
             <tr>
-              <td><strong>東武トップツアーズ</strong><a href="https://tobutoptours.jp/dom/blackfriday/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td><strong>[第1弾]</strong> 11/7 11時～<br><strong>[第2弾]</strong> 11/14 11時～<br>12月1日18時</td>
-              <td><strong>ブラックフライデー特別旅行代金</strong><br>• 出発日：11/9～2026/2/28<br>• 日帰り＆宿泊温泉ツアー多数<br>• 往復新幹線＋宿泊セット、特急付き温泉宿泊<br><br><strong>価格例：</strong><br>• 日帰り：仙台14,300円、軽井沢7,400円、京都20,000円～<br>• 温泉：定山渓10,900円～、草津12,200円～、箱根24,200円～<br>※2日前まで申込可（先着順）</td>
+              <td>
+                <strong>東武トップツアーズ</strong
+                ><a
+                  href="https://tobutoptours.jp/dom/blackfriday/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>
+                <strong>[第1弾]</strong> 11/7 11時～<br /><strong
+                  >[第2弾]</strong
+                >
+                11/14 11時～<br />12月1日18時
+              </td>
+              <td>
+                <strong>ブラックフライデー特別旅行代金</strong><br />•
+                出発日：11/9～2026/2/28<br />• 日帰り＆宿泊温泉ツアー多数<br />•
+                往復新幹線＋宿泊セット、特急付き温泉宿泊<br /><br /><strong
+                  >価格例：</strong
+                ><br />• 日帰り：仙台14,300円、軽井沢7,400円、京都20,000円～<br />•
+                温泉：定山渓10,900円～、草津12,200円～、箱根24,200円～<br />※2日前まで申込可（先着順）
+              </td>
               <td>汎用高還元カード</td>
-              <td>特別旅行代金<br>日帰り7,400円～<br>温泉10,900円～</td>
+              <td>特別旅行代金<br />日帰り7,400円～<br />温泉10,900円～</td>
             </tr>
             <tr>
-              <td><strong>J TRIP</strong><a href="https://www.jtrip.co.jp/sp/blackfriday/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td><strong>[会員先行]</strong> 11/18 12:00～11/20 11:59<br><strong>[一般]</strong> 11/20 12:00～<br>12月8日9時59分</td>
-              <td><strong>JALパッケージ最大1万円OFF</strong><br>• 旅行代金に応じ1,000円～10,000円割引<br>• 北海道・沖縄・スキー限定特典<br>• レンタル無料、リフト券プレゼント等<br>• 「激安出発日」設定あり<br>• キャンセルサポート付き<br>※人気商品は早期売切注意</td>
+              <td>
+                <strong>J TRIP</strong
+                ><a
+                  href="https://www.jtrip.co.jp/sp/blackfriday/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>
+                <strong>[会員先行]</strong> 11/18 12:00～11/20 11:59<br /><strong
+                  >[一般]</strong
+                >
+                11/20 12:00～<br />12月8日9時59分
+              </td>
+              <td>
+                <strong>JALパッケージ最大1万円OFF</strong><br />•
+                旅行代金に応じ1,000円～10,000円割引<br />•
+                北海道・沖縄・スキー限定特典<br />•
+                レンタル無料、リフト券プレゼント等<br />•
+                「激安出発日」設定あり<br />• キャンセルサポート付き<br />※人気商品は早期売切注意
+              </td>
               <td>汎用高還元カード</td>
-              <td>最大10,000円OFF<br>＋限定特典<br>＋激安出発日</td>
+              <td>最大10,000円OFF<br />＋限定特典<br />＋激安出発日</td>
             </tr>
             <tr>
-              <td><strong>IBEXエアラインズ</strong><a href="https://www.ibexair.co.jp/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>11月14日0時～<br>11月20日23時59分</td>
-              <td><strong>ブラックフライデータイムセール</strong><br>• 対象路線：国内線12路線<br>• 搭乗期間：2025/12/1～2026/2/28（年末年始除く）<br><br><strong>主要路線運賃例：</strong><br>• 新千歳↔仙台：5,000円～<br>• 仙台↔大阪：7,000円～<br>• 仙台↔名古屋：7,200円～<br>• 仙台↔福岡：9,200円～<br>• 新潟↔札幌：6,200円～<br>• 新潟↔大阪：7,700円～<br>※席数限定、先着順</td>
+              <td>
+                <strong>IBEXエアラインズ</strong
+                ><a
+                  href="https://www.ibexair.co.jp/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>11月14日0時～<br />11月20日23時59分</td>
+              <td>
+                <strong>ブラックフライデータイムセール</strong><br />•
+                対象路線：国内線12路線<br />•
+                搭乗期間：2025/12/1～2026/2/28（年末年始除く）<br /><br /><strong
+                  >主要路線運賃例：</strong
+                ><br />• 新千歳↔仙台：5,000円～<br />• 仙台↔大阪：7,000円～<br />•
+                仙台↔名古屋：7,200円～<br />• 仙台↔福岡：9,200円～<br />•
+                新潟↔札幌：6,200円～<br />• 新潟↔大阪：7,700円～<br />※席数限定、先着順
+              </td>
               <td>汎用高還元カード</td>
-              <td>特価運賃<br>5,000円～</td>
+              <td>特価運賃<br />5,000円～</td>
             </tr>
             <tr>
-              <td><strong>FDA</strong><a href="https://www.fujidream.co.jp/" target="_blank" rel="noopener" class="official-link">公式</a><br><span class="badge" style="background: #0071e3; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">地方路線</span></td>
-              <td>11月21日～<br>11月28日<br>（8日間限定）</td>
-              <td><strong>BLACK FRIDAY プレミアムセール</strong><br>• 会員限定「メンバーズプライス」割引運賃<br>• 12～25歳「ユース割」特別運賃<br>• 航空券＋ホテルセットプラン（タイムセール）<br>• 行き先当日お楽しみ「ミステリープラン」<br>• 公式ショップ10%OFFクーポン<br><br>※会員登録無料・年会費不要<br>※LINEキャンペーン同時開催</td>
+              <td>
+                <strong>FDA</strong
+                ><a
+                  href="https://www.fujidream.co.jp/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                ><br /><span
+                  class="badge"
+                  style="
+                    background: #0071e3;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >地方路線</span
+                >
+              </td>
+              <td>11月21日～<br />11月28日<br />（8日間限定）</td>
+              <td>
+                <strong>BLACK FRIDAY プレミアムセール</strong><br />•
+                会員限定「メンバーズプライス」割引運賃<br />•
+                12～25歳「ユース割」特別運賃<br />•
+                航空券＋ホテルセットプラン（タイムセール）<br />•
+                行き先当日お楽しみ「ミステリープラン」<br />•
+                公式ショップ10%OFFクーポン<br /><br />※会員登録無料・年会費不要<br />※LINEキャンペーン同時開催
+              </td>
               <td>汎用高還元カード</td>
-              <td>会員限定割引<br>ユース割<br>＋セットプラン特価</td>
+              <td>会員限定割引<br />ユース割<br />＋セットプラン特価</td>
             </tr>
             <tr>
-              <td><strong>ZIPAIR</strong><a href="https://lp.zipair.net/campaign/blackfriday2025/" target="_blank" rel="noopener" class="official-link">公式</a><br><span class="badge-success" style="background: #34c759; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">LCC</span></td>
-              <td>11月17日～<br>12月4日</td>
-              <td><strong>ブラックフライデーセール</strong><br><br><strong>北米路線（片道・税抜）</strong><br>• ロサンゼルス：29,250円～<br>• サンフランシスコ/サンノゼ：32,500円～<br>• ヒューストン：39,000円～<br>• バンクーバー：28,950円～<br><br><strong>アジア・ハワイ路線</strong><br>• バンコク：16,500円～<br>• シンガポール：14,700円～<br>• ソウル：8,000円～<br>• マニラ：11,500円～<br>• ホノルル：20,000円～<br><br>※機内持込7kg含、預け荷物・機内食は別途</td>
+              <td>
+                <strong>ZIPAIR</strong
+                ><a
+                  href="https://lp.zipair.net/campaign/blackfriday2025/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                ><br /><span
+                  class="badge-success"
+                  style="
+                    background: #34c759;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >LCC</span
+                >
+              </td>
+              <td>11月17日～<br />12月4日</td>
+              <td>
+                <strong>ブラックフライデーセール</strong><br /><br /><strong
+                  >北米路線（片道・税抜）</strong
+                ><br />• ロサンゼルス：29,250円～<br />•
+                サンフランシスコ/サンノゼ：32,500円～<br />•
+                ヒューストン：39,000円～<br />• バンクーバー：28,950円～<br /><br /><strong
+                  >アジア・ハワイ路線</strong
+                ><br />• バンコク：16,500円～<br />• シンガポール：14,700円～<br />•
+                ソウル：8,000円～<br />• マニラ：11,500円～<br />•
+                ホノルル：20,000円～<br /><br />※機内持込7kg含、預け荷物・機内食は別途
+              </td>
               <td>汎用高還元カード</td>
-              <td>LA片道3万円未満<br>アジア1万円台～<br>搭乗：〜2026/3/28</td>
+              <td>
+                LA片道3万円未満<br />アジア1万円台～<br />搭乗：〜2026/3/28
+              </td>
             </tr>
             <tr>
-              <td><strong>Trip.com</strong><a href="https://jp.trip.com/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td><span style="color: #86868b;">セールなし</span></td>
-              <td>11.11メガSALE（11/11～14）が本命商戦。BFは米国市場向けのみ</td>
+              <td>
+                <strong>Trip.com</strong
+                ><a
+                  href="https://jp.trip.com/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td><span style="color: #86868b">セールなし</span></td>
+              <td>
+                11.11メガSALE（11/11～14）が本命商戦。BFは米国市場向けのみ
+              </td>
               <td>—</td>
               <td>—</td>
             </tr>
             <tr>
-              <td><strong>楽天トラベル</strong><a href="https://travel.rakuten.co.jp/special/blackfriday/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td><strong>11月19日（水）</strong><br>10:00開始</td>
-              <td><strong>ブラックフライデーセール</strong><br>• 国内宿泊：最大15%OFFクーポン（先着数量限定）<br>• 楽パック（交通＋宿）：ANA/JAL最大10,000円OFF<br>• 高速バス：1,000円OFFクーポン<br>• 遊び・体験：最大15,000円OFF<br>• レンタカー：最大30%OFF<br>• メルマガ登録で20%OFFクーポン配布<br><br><strong>対象体験例：</strong>チームラボ、ハリーポッター、スカイツリー等</td>
-              <td>楽天カード<br>SPU活用<br><br><span style="color: #86868b; font-size: 13px;">※アメックス：2%CB<br>（～2026/4/30<br>事前登録必須）</span></td>
-              <td>最大15%OFF<br>楽パック：最大10,000円<br>＋楽天ポイント<br>＋SPU倍率</td>
+              <td>
+                <strong>楽天トラベル</strong
+                ><a
+                  href="https://travel.rakuten.co.jp/special/blackfriday/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td><strong>11月19日（水）</strong><br />10:00開始</td>
+              <td>
+                <strong>ブラックフライデーセール</strong><br />•
+                国内宿泊：最大15%OFFクーポン（先着数量限定）<br />•
+                楽パック（交通＋宿）：ANA/JAL最大10,000円OFF<br />•
+                高速バス：1,000円OFFクーポン<br />•
+                遊び・体験：最大15,000円OFF<br />• レンタカー：最大30%OFF<br />•
+                メルマガ登録で20%OFFクーポン配布<br /><br /><strong
+                  >対象体験例：</strong
+                >チームラボ、ハリーポッター、スカイツリー等
+              </td>
+              <td>
+                楽天カード<br />SPU活用<br /><br /><span
+                  style="color: #86868b; font-size: 13px"
+                  >※アメックス：2%CB<br />（～2026/4/30<br />事前登録必須）</span
+                >
+              </td>
+              <td>
+                最大15%OFF<br />楽パック：最大10,000円<br />＋楽天ポイント<br />＋SPU倍率
+              </td>
             </tr>
             <tr>
-              <td><strong>HIS</strong><a href="https://www.his-j.com/campaign/blackfriday/kanto.html" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>11月18日～<br>出発：12月～2026/3月<br>（一部4月以降も）</td>
-              <td><strong>BLACK FRIDAY 2025（首都圏発）</strong><br><br><strong>アジア近距離</strong><br>• ソウル/釜山 3日間：19,800円～<br>• 台北 4日間：24,800円～<br>• セブ島 4日間：29,800円<br><br><strong>東南アジア・グアム</strong><br>• バンコク 4日間：39,800円～<br>• シンガポール 4日間：39,800円<br>• グアム 4日間：39,800円<br><br><strong>オセアニア・ハワイ</strong><br>• ケアンズ 5日間：59,800円<br>• ハワイ 5日間：89,800円<br><br><strong>ヨーロッパ</strong><br>• パリ 7日間：99,800円<br>• 周遊ツアー：179,800円～<br><br><strong>クルーズ</strong><br>• ダイヤモンド・プリンセス：70,980円～<br><br>※燃油・諸税別、2名1室時</td>
-              <td>アメックスプロパー<br>（3%還元対象店）<br><br><span style="color: #86868b; font-size: 13px;">※汎用高還元カード</span></td>
-              <td>韓国2万円未満<br>東南アジア4万円未満<br>ハワイ9万円未満<br>＋アメックス3%</td>
+              <td>
+                <strong>HIS</strong
+                ><a
+                  href="https://www.his-j.com/campaign/blackfriday/kanto.html"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>
+                11月18日～<br />出発：12月～2026/3月<br />（一部4月以降も）
+              </td>
+              <td>
+                <strong>BLACK FRIDAY 2025（首都圏発）</strong
+                ><br /><br /><strong>アジア近距離</strong><br />• ソウル/釜山
+                3日間：19,800円～<br />• 台北 4日間：24,800円～<br />• セブ島
+                4日間：29,800円<br /><br /><strong>東南アジア・グアム</strong
+                ><br />• バンコク 4日間：39,800円～<br />• シンガポール
+                4日間：39,800円<br />• グアム 4日間：39,800円<br /><br /><strong
+                  >オセアニア・ハワイ</strong
+                ><br />• ケアンズ 5日間：59,800円<br />• ハワイ
+                5日間：89,800円<br /><br /><strong>ヨーロッパ</strong><br />•
+                パリ 7日間：99,800円<br />• 周遊ツアー：179,800円～<br /><br /><strong
+                  >クルーズ</strong
+                ><br />• ダイヤモンド・プリンセス：70,980円～<br /><br />※燃油・諸税別、2名1室時
+              </td>
+              <td>
+                アメックスプロパー<br />（3%還元対象店）<br /><br /><span
+                  style="color: #86868b; font-size: 13px"
+                  >※汎用高還元カード</span
+                >
+              </td>
+              <td>
+                韓国2万円未満<br />東南アジア4万円未満<br />ハワイ9万円未満<br />＋アメックス3%
+              </td>
             </tr>
             <tr>
-              <td><strong>IHGホテルズ</strong><a href="https://www.ihg.com/" target="_blank" rel="noopener" class="official-link">公式</a><br><span class="badge-success" style="background: #34c759; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">世界6,800施設</span></td>
-              <td><strong>[アプリ先行]</strong> 11/18・19<br><strong>[通常]</strong> 11/20～12/4<br>宿泊：11/21～2026/3/31</td>
-              <td><strong>サイバーセール</strong><br>• アプリ会員限定先行：<strong>最大30%OFF</strong>（11/18-19）<br>• 通常期間：会員最大25%OFF、非会員20%OFF<br>• 国内・海外IHGグループホテル対象<br>• 都市型～温泉・リゾートまで<br><br><strong>イベロスター ビーチフロント</strong><br>• IHG会員限定<strong>最大60%OFF</strong><br>• 宿泊対象：～2027年10月末<br><br><strong>その他</strong><br>• アプリ初回DLで500ボーナスポイント<br>• 12/2～9ポイント寄付で同額上乗せ（社会貢献）</td>
-              <td>IHG One Rewards会員<br>汎用高還元カード</td>
-              <td>アプリ先行30%OFF<br>会員25%OFF<br>イベロスター60%OFF</td>
+              <td>
+                <strong>IHGホテルズ</strong
+                ><a
+                  href="https://www.ihg.com/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                ><br /><span
+                  class="badge-success"
+                  style="
+                    background: #34c759;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >世界6,800施設</span
+                >
+              </td>
+              <td>
+                <strong>[アプリ先行]</strong> 11/18・19<br /><strong
+                  >[通常]</strong
+                >
+                11/20～12/4<br />宿泊：11/21～2026/3/31
+              </td>
+              <td>
+                <strong>サイバーセール</strong><br />•
+                アプリ会員限定先行：<strong>最大30%OFF</strong>（11/18-19）<br />•
+                通常期間：会員最大25%OFF、非会員20%OFF<br />•
+                国内・海外IHGグループホテル対象<br />•
+                都市型～温泉・リゾートまで<br /><br /><strong
+                  >イベロスター ビーチフロント</strong
+                ><br />• IHG会員限定<strong>最大60%OFF</strong><br />•
+                宿泊対象：～2027年10月末<br /><br /><strong>その他</strong
+                ><br />• アプリ初回DLで500ボーナスポイント<br />•
+                12/2～9ポイント寄付で同額上乗せ（社会貢献）
+              </td>
+              <td>IHG One Rewards会員<br />汎用高還元カード</td>
+              <td>アプリ先行30%OFF<br />会員25%OFF<br />イベロスター60%OFF</td>
             </tr>
             <tr>
-              <td><strong>Booking.com</strong><a href="https://www.booking.com/deals/black-friday.ja.html" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>11月21日～<br>12月4日</td>
-              <td><strong>ブラックフライデーセール</strong><br>• 国内・海外ホテルが対象<br>• 宿泊期間：11/21～12/31<br><br><strong>価格例</strong><br>• 北海道：5,760円～（2名1泊）<br>• バンコク：1,970円～（2名1泊）</td>
+              <td>
+                <strong>Booking.com</strong
+                ><a
+                  href="https://www.booking.com/deals/black-friday.ja.html"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>11月21日～<br />12月4日</td>
+              <td>
+                <strong>ブラックフライデーセール</strong><br />•
+                国内・海外ホテルが対象<br />• 宿泊期間：11/21～12/31<br /><br /><strong
+                  >価格例</strong
+                ><br />• 北海道：5,760円～（2名1泊）<br />•
+                バンコク：1,970円～（2名1泊）
+              </td>
               <td>汎用高還元カード</td>
-              <td>ホテル割引<br>海外格安宿泊</td>
+              <td>ホテル割引<br />海外格安宿泊</td>
             </tr>
             <tr>
-              <td><strong>JTB</strong><a href="https://www.jtb.co.jp/myjtb/campaign/blackfriday/" target="_blank" rel="noopener" class="official-link">公式</a></td>
+              <td>
+                <strong>JTB</strong
+                ><a
+                  href="https://www.jtb.co.jp/myjtb/campaign/blackfriday/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
               <td>11月18日～</td>
-              <td><strong>ブラックフライデーセール</strong><br>• 年に一度の特選旅行商品（国内・海外）特価販売<br>• 割引クーポン配布（宿泊、パックツアー等）<br>• 限定キャンペーン（ポイント還元・プレゼント企画）<br><br><strong>対象商品</strong><br>• 国内：ホテル・旅館、観光地ツアー<br>• 海外：人気観光地への特典付き旅行<br>※一部商品は順次公開</td>
+              <td>
+                <strong>ブラックフライデーセール</strong><br />•
+                年に一度の特選旅行商品（国内・海外）特価販売<br />•
+                割引クーポン配布（宿泊、パックツアー等）<br />•
+                限定キャンペーン（ポイント還元・プレゼント企画）<br /><br /><strong
+                  >対象商品</strong
+                ><br />• 国内：ホテル・旅館、観光地ツアー<br />•
+                海外：人気観光地への特典付き旅行<br />※一部商品は順次公開
+              </td>
               <td>汎用高還元カード</td>
-              <td>特選商品特価<br>＋割引クーポン<br>＋ポイント還元</td>
+              <td>特選商品特価<br />＋割引クーポン<br />＋ポイント還元</td>
             </tr>
             <tr>
-              <td><strong>ジャルパック</strong><a href="https://www.jal.co.jp/jp/ja/campaign/blackflyday/" target="_blank" rel="noopener" class="official-link">公式</a><br><span class="badge-success" style="background: #34c759; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">JAL PAK</span></td>
-              <td>11月18日 0:00～<br>11月30日 23:59<br>宿泊：11/19～2026/11/8</td>
-              <td><strong>最大53,000円割引</strong>（クーポン併用）<br>• びっくりオプション：飲食メニュー300円<br>  - 北海道 海鮮丼 1,730円→300円<br>  - 沖縄 沖縄そば＆海ぶどう丼 2,000円→300円<br>• Sクラスレンタカー1泊2日：1,500円～</td>
-              <td>JALカード<br>JALマイレージバンク</td>
-              <td>最大53,000円割引<br>＋オプション300円<br>＋レンタカー特価</td>
+              <td>
+                <strong>ジャルパック</strong
+                ><a
+                  href="https://www.jal.co.jp/jp/ja/campaign/blackflyday/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                ><br /><span
+                  class="badge-success"
+                  style="
+                    background: #34c759;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >JAL PAK</span
+                >
+              </td>
+              <td>
+                11月18日 0:00～<br />11月30日 23:59<br />宿泊：11/19～2026/11/8
+              </td>
+              <td>
+                <strong>最大53,000円割引</strong>（クーポン併用）<br />•
+                びっくりオプション：飲食メニュー300円<br />
+                - 北海道 海鮮丼 1,730円→300円<br />
+                - 沖縄 沖縄そば＆海ぶどう丼 2,000円→300円<br />•
+                Sクラスレンタカー1泊2日：1,500円～
+              </td>
+              <td>JALカード<br />JALマイレージバンク</td>
+              <td>
+                最大53,000円割引<br />＋オプション300円<br />＋レンタカー特価
+              </td>
             </tr>
             <tr>
-              <td><strong>ベストワンクルーズ</strong><a href="https://www.best1cruise.com/user_data/tokusyu/blackfridaysale.php" target="_blank" rel="noopener" class="official-link">公式</a><br><span class="badge" style="background: #0071e3; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">クルーズ</span></td>
-              <td>11月1日～<br>11月30日<br>出発：11月～2026/4</td>
-              <td><strong>クルーズ特別キャンペーン</strong><br>• 直前割<br>• 交通費サポート<br>• ギフト券還元<br><br><strong>価格例</strong><br>• MSCベリッシマ 那覇・石垣島・基隆4泊5日：44,800円～159,800円</td>
+              <td>
+                <strong>ベストワンクルーズ</strong
+                ><a
+                  href="https://www.best1cruise.com/user_data/tokusyu/blackfridaysale.php"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                ><br /><span
+                  class="badge"
+                  style="
+                    background: #0071e3;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >クルーズ</span
+                >
+              </td>
+              <td>11月1日～<br />11月30日<br />出発：11月～2026/4</td>
+              <td>
+                <strong>クルーズ特別キャンペーン</strong><br />• 直前割<br />•
+                交通費サポート<br />• ギフト券還元<br /><br /><strong
+                  >価格例</strong
+                ><br />• MSCベリッシマ
+                那覇・石垣島・基隆4泊5日：44,800円～159,800円
+              </td>
               <td>汎用高還元カード</td>
-              <td>クルーズ直前割<br>＋交通費サポート</td>
+              <td>クルーズ直前割<br />＋交通費サポート</td>
             </tr>
           </tbody>
         </table>
@@ -596,34 +1194,133 @@
         <table class="travel-table">
           <thead>
             <tr>
-              <th style="width: 15%;">航空会社</th>
-              <th style="width: 15%;">予約期間</th>
-              <th style="width: 25%;">プロモーションコード・割引内容</th>
-              <th style="width: 25%;">対象搭乗期間</th>
-              <th style="width: 20%;">戦略ポイント</th>
+              <th style="width: 15%">航空会社</th>
+              <th style="width: 15%">予約期間</th>
+              <th style="width: 25%">プロモーションコード・割引内容</th>
+              <th style="width: 25%">対象搭乗期間</th>
+              <th style="width: 20%">戦略ポイント</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>キャセイパシフィック航空</strong><a href="https://flights.cathaypacific.com/ja_JP/offers/black-friday.html" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td><strong>[会員先行]</strong> 11/13 12:00～（24時間）<br><strong>[一般]</strong> 11/14 12:00～11/28 23:59</td>
-              <td><strong>運賃10%割引（世界100都市以上）</strong><br>• 近距離（アジア・中国）：JPBFSH（上限8,000円、先着800名）<br>• 中・長距離（欧米等）：JPBFLH（上限15,000円、先着200名）<br>• 全クラス対象（エコノミー・プレエコ・ビジネス）<br>• 出発地：東京・大阪・名古屋・福岡・札幌<br>※「キャセイ」会員限定（当日入会可・無料）</td>
-              <td>11/14～<br>2026年3月31日</td>
-              <td><span class="badge-warning" style="background: #ff9500; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">先着制</span><br>会員24時間先行<br>公式サイト予約限定</td>
+              <td>
+                <strong>キャセイパシフィック航空</strong
+                ><a
+                  href="https://flights.cathaypacific.com/ja_JP/offers/black-friday.html"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>
+                <strong>[会員先行]</strong> 11/13 12:00～（24時間）<br /><strong
+                  >[一般]</strong
+                >
+                11/14 12:00～11/28 23:59
+              </td>
+              <td>
+                <strong>運賃10%割引（世界100都市以上）</strong><br />•
+                近距離（アジア・中国）：JPBFSH（上限8,000円、先着800名）<br />•
+                中・長距離（欧米等）：JPBFLH（上限15,000円、先着200名）<br />•
+                全クラス対象（エコノミー・プレエコ・ビジネス）<br />•
+                出発地：東京・大阪・名古屋・福岡・札幌<br />※「キャセイ」会員限定（当日入会可・無料）
+              </td>
+              <td>11/14～<br />2026年3月31日</td>
+              <td>
+                <span
+                  class="badge-warning"
+                  style="
+                    background: #ff9500;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >先着制</span
+                ><br />会員24時間先行<br />公式サイト予約限定
+              </td>
             </tr>
             <tr>
-              <td><strong>シンガポール航空</strong><a href="https://www.singaporeair.com/ja_JP/jp/plan-travel/local-promotions/sq-wanderlust/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td><strong>[会員先行]</strong> 11/18 10:00～11/28 23:59<br><strong>[一般]</strong> 11/21 10:00～11/28 23:59</td>
-              <td><strong>SQ Wanderlust ブラックフライデー</strong><br>• KrisFlyer会員：最大17%OFF（コード：SQBF25）<br>• 非会員：最大12%OFF<br>• 全クラス対象（エコノミー・プレエコ・ビジネス）<br><br><strong>価格例：</strong><br>• シンガポール往復：66,640円～<br>• ロサンゼルス往復：91,870円～<br><br><strong>特典：</strong><br>• Mastercard利用でシンガポール現地バウチャー（最大S$130）<br>• Takashimaya/マリーナベイサンズ特典<br>• KrisFlyer会員：無料Wi-Fi<br>※Scoot乗継で追加割引</td>
-              <td>• LA：2026/1/20～11/8<br>• その他：2026/4/1～11/8</td>
-              <td><span class="badge-success" style="background: #34c759; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">超長期</span><br>会員3日先行<br>2026年夏休み・GW対象<br><strong>現地特典充実</strong></td>
+              <td>
+                <strong>シンガポール航空</strong
+                ><a
+                  href="https://www.singaporeair.com/ja_JP/jp/plan-travel/local-promotions/sq-wanderlust/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>
+                <strong>[会員先行]</strong> 11/18 10:00～11/28 23:59<br /><strong
+                  >[一般]</strong
+                >
+                11/21 10:00～11/28 23:59
+              </td>
+              <td>
+                <strong>SQ Wanderlust ブラックフライデー</strong><br />•
+                KrisFlyer会員：最大17%OFF（コード：SQBF25）<br />•
+                非会員：最大12%OFF<br />•
+                全クラス対象（エコノミー・プレエコ・ビジネス）<br /><br /><strong
+                  >価格例：</strong
+                ><br />• シンガポール往復：66,640円～<br />•
+                ロサンゼルス往復：91,870円～<br /><br /><strong>特典：</strong
+                ><br />•
+                Mastercard利用でシンガポール現地バウチャー（最大S$130）<br />•
+                Takashimaya/マリーナベイサンズ特典<br />•
+                KrisFlyer会員：無料Wi-Fi<br />※Scoot乗継で追加割引
+              </td>
+              <td>• LA：2026/1/20～11/8<br />• その他：2026/4/1～11/8</td>
+              <td>
+                <span
+                  class="badge-success"
+                  style="
+                    background: #34c759;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >超長期</span
+                ><br />会員3日先行<br />2026年夏休み・GW対象<br /><strong
+                  >現地特典充実</strong
+                >
+              </td>
             </tr>
             <tr>
-              <td><strong>ジンエアー</strong><a href="https://www.jinair.com/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td><strong>[第1回]</strong> 11/7～9<br><strong>[第2回]</strong> 11/14～16<br><strong>[第3回]</strong> 11/21～23</td>
-              <td><strong>定額割引</strong>（コード：FLYDAY10）<br>• 往復：3,000円割引<br>• 片道：1,500円割引</td>
-              <td>12/1～<br>2026年3月19日</td>
-              <td><span class="badge-warning" style="background: #ff9500; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">パルス型</span><br>3日間限定を3回実施</td>
+              <td>
+                <strong>ジンエアー</strong
+                ><a
+                  href="https://www.jinair.com/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>
+                <strong>[第1回]</strong> 11/7～9<br /><strong>[第2回]</strong>
+                11/14～16<br /><strong>[第3回]</strong> 11/21～23
+              </td>
+              <td>
+                <strong>定額割引</strong>（コード：FLYDAY10）<br />•
+                往復：3,000円割引<br />• 片道：1,500円割引
+              </td>
+              <td>12/1～<br />2026年3月19日</td>
+              <td>
+                <span
+                  class="badge-warning"
+                  style="
+                    background: #ff9500;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >パルス型</span
+                ><br />3日間限定を3回実施
+              </td>
             </tr>
           </tbody>
         </table>
@@ -634,55 +1331,324 @@
         <table>
           <thead>
             <tr>
-              <th style="width: 15%;">ストア名</th>
-              <th style="width: 15%;">開催期間</th>
-              <th style="width: 30%;">セール内容</th>
-              <th style="width: 20%;">推奨決済手段</th>
-              <th style="width: 20%;">期待還元率</th>
+              <th style="width: 15%">ストア名</th>
+              <th style="width: 15%">開催期間</th>
+              <th style="width: 30%">セール内容</th>
+              <th style="width: 20%">推奨決済手段</th>
+              <th style="width: 20%">期待還元率</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>楽天市場</strong><a href="https://event.rakuten.co.jp/campaign/point-up/blackfriday/" target="_blank" rel="noopener" class="official-link">公式</a><br><span class="badge-warning" style="background: #ff9500; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">最重要</span></td>
-              <td>11月20日20時～<br>11月27日23時59分</td>
-              <td><strong>ショップ買いまわり最大10倍</strong><br>• 10ショップで税込1,000円以上ずつ購入<br>• 上限7,000ポイント、事前エントリー必須<br><br><strong>スーパーDEAL：最大50%還元</strong><br>• 家電・コスメ・ファッション目玉商品<br><br><strong>最大50%OFFクーポン</strong><br>• 人気店舗限定、先着・枚数制限あり<br><br><strong>その他：</strong><br>• タイムセール随時開催<br>• ラクマ連動で最大1,500pt上乗せ<br>• 抽選スロットでクーポン獲得<br><br><strong>11/20、11/25は「5と0のつく日」でさらにお得</strong><br>※ポイント有効期限：2026年1月末</td>
-              <td>楽天カード<br>SPU活用</td>
-              <td>最大47倍超<br>（SPU＋買い回り＋DEAL）<br>買い回り上限7,000pt</td>
+              <td>
+                <strong>楽天市場</strong
+                ><a
+                  href="https://event.rakuten.co.jp/campaign/point-up/blackfriday/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                ><br /><span
+                  class="badge-warning"
+                  style="
+                    background: #ff9500;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >最重要</span
+                >
+              </td>
+              <td>11月20日20時～<br />11月27日23時59分</td>
+              <td>
+                <strong>ショップ買いまわり最大10倍</strong><br />•
+                10ショップで税込1,000円以上ずつ購入<br />•
+                上限7,000ポイント、事前エントリー必須<br /><br /><strong
+                  >スーパーDEAL：最大50%還元</strong
+                ><br />• 家電・コスメ・ファッション目玉商品<br /><br /><strong
+                  >最大50%OFFクーポン</strong
+                ><br />• 人気店舗限定、先着・枚数制限あり<br /><br /><strong
+                  >その他：</strong
+                ><br />• タイムセール随時開催<br />•
+                ラクマ連動で最大1,500pt上乗せ<br />•
+                抽選スロットでクーポン獲得<br /><br /><strong
+                  >11/20、11/25は「5と0のつく日」でさらにお得</strong
+                ><br />※ポイント有効期限：2026年1月末
+              </td>
+              <td>楽天カード<br />SPU活用</td>
+              <td>
+                最大47倍超<br />（SPU＋買い回り＋DEAL）<br />買い回り上限7,000pt
+              </td>
             </tr>
             <tr>
-              <td><strong>Yahoo!ショッピング</strong><a href="https://shopping.yahoo.co.jp/" target="_blank" rel="noopener" class="official-link">公式</a><br><span class="badge-warning" style="background: #ff9500; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">最重要</span></td>
-              <td>11月25日0:00～<br>11月30日23:59</td>
-              <td><strong>最大25%PayPayポイント還元</strong><br>• 5,000円以上購入：+5%<br>• 20,000円以上購入：+8%<br>• LINEアカウント連携：毎日+5%<br>• ボーナスストアPlus：最大+10%＋2%<br><br><strong>セール商品</strong><br>• 約1,200点以上が50%～最大70%OFF<br>• 家電、食品、日用品等カテゴリ横断<br>• 最大93,000円値引きクーポン<br>• 最大40%ポイント還元商品<br><br><strong>同時開催</strong><br>• LYPプレミアム会員限定特典<br>• ZOZO祭本気の+10%企画<br><br>※事前エントリー推奨、先着・数量限定あり</td>
-              <td>PayPayカード<br>LYPプレミアム会員<br><br><span style="color: #86868b; font-size: 13px;">※アメックスプロパー<br>3%還元対象店</span></td>
-              <td>最大25%還元<br>（購入額+LINE+ボーナスストア）<br>＋最大70%OFF商品<br>＋アメックス3%</td>
+              <td>
+                <strong>Yahoo!ショッピング</strong
+                ><a
+                  href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3722426&pid=892293293&vc_url=https%3A%2F%2Fshopping.yahoo.co.jp%2Fpromotion%2Fcampaign%2Fblackfriday%2F%3Fsc_i%3Dshp_bnr_points_revocation"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                ><br /><span
+                  class="badge-warning"
+                  style="
+                    background: #ff9500;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >最重要</span
+                >
+              </td>
+              <td>11月25日0:00～<br />11月30日23:59</td>
+              <td>
+                <strong>最大25%PayPayポイント還元</strong><br />•
+                5,000円以上購入：+5%<br />• 20,000円以上購入：+8%<br />•
+                LINEアカウント連携：毎日+5%<br />•
+                ボーナスストアPlus：最大+10%＋2%<br /><br /><strong
+                  >セール商品</strong
+                ><br />• 約1,200点以上が50%～最大70%OFF<br />•
+                家電、食品、日用品等カテゴリ横断<br />•
+                最大93,000円値引きクーポン<br />• 最大40%ポイント還元商品<br /><br /><strong
+                  >同時開催</strong
+                ><br />• LYPプレミアム会員限定特典<br />•
+                ZOZO祭本気の+10%企画<br /><br /><button
+                  type="button"
+                  class="lyp-toggle-btn"
+                  onclick="toggleLYPInfo(this)"
+                  style="
+                    background: linear-gradient(135deg, #fff4e6 0%, #ffe8cc 100%);
+                    border: 2px solid #ff9500;
+                    border-radius: 8px;
+                    padding: 10px 16px;
+                    margin: 8px 0;
+                    cursor: pointer;
+                    width: 100%;
+                    text-align: left;
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #ff9500;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 2px 4px rgba(255, 149, 0, 0.2);
+                  "
+                  onmouseover="this.style.background='linear-gradient(135deg, #ffe8cc 0%, #ffd699 100%)'"
+                  onmouseout="this.style.background='linear-gradient(135deg, #fff4e6 0%, #ffe8cc 100%)'"
+                >
+                  ✨Yahooショッピングを利用する人必見✨
+                  <span style="float: right; font-size: 12px;">▼ 詳細を見る</span>
+                </button><div
+                  class="lyp-info-content"
+                  style="
+                    display: none;
+                    background: linear-gradient(135deg, #fff4e6 0%, #ffe8cc 100%);
+                    border-left: 4px solid #ff9500;
+                    border-radius: 8px;
+                    padding: 16px;
+                    margin: 8px 0;
+                    box-shadow: 0 2px 8px rgba(255, 149, 0, 0.15);
+                  "
+                >
+                  <p style="font-size: 14px; line-height: 1.7; margin-bottom: 12px">
+                    ここをクリックで5,000円もらえると記載されている場合は<br /><a
+                      href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3722426&pid=892290124"
+                      target="_blank"
+                      rel="noopener"
+                      style="
+                        color: #0071e3;
+                        text-decoration: underline;
+                        font-weight: 600;
+                      "
+                      >LYPプレミアムの入会（最大2ヶ月無料で使える）</a
+                    ><br />で5,000円のPaypayポイントがもらえます！<br />（期間限定、Yahooショッピングなどの利用限定）
+                  </p>
+                  <p
+                    style="
+                      font-size: 13px;
+                      line-height: 1.6;
+                      color: #1d1d1f;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    <strong>5,000円の内訳：</strong>
+                  </p>
+                  <ul
+                    style="
+                      font-size: 13px;
+                      line-height: 1.8;
+                      margin: 0 0 12px 20px;
+                      padding: 0;
+                    "
+                  >
+                    <li>✅会員登録と同時に2,000円分</li>
+                    <li>✅2か月後の中旬～下旬に2,000円分</li>
+                    <li>✅3か月後の中旬～下旬に1,000円分</li>
+                  </ul>
+                  <p style="font-size: 13px; line-height: 1.7; margin: 0 0 8px 0">
+                    最大2か月分無料でLYPプレミアムに登録ができて、それ以降は月額508円がかかるので、5,000円分全てもらうには最大1,016円の出費だけど、クーポンなどももらえるのでおトク🫡
+                  </p>
+                  <p style="font-size: 11px; color: #6a6a6a; margin: 0; text-align: right">
+                    #PR
+                  </p>
+                </div>※事前エントリー推奨、先着・数量限定あり
+              </td>
+              <td>
+                PayPayカード<br /><a
+                  href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3722426&pid=892290124"
+                  target="_blank"
+                  rel="noopener"
+                  style="
+                    color: #0071e3;
+                    text-decoration: underline;
+                    font-weight: 600;
+                  "
+                  >LYPプレミアム会員</a
+                ><br /><br /><span
+                  style="color: #86868b; font-size: 13px"
+                  >※アメックスプロパー<br />3%還元対象店</span
+                >
+              </td>
+              <td>
+                最大25%還元<br />（購入額+LINE+ボーナスストア）<br />＋最大70%OFF商品<br />＋アメックス3%
+              </td>
             </tr>
             <tr>
-              <td><strong>Amazon</strong><a href="https://amzn.to/3X0OIi7" target="_blank" rel="noopener" class="official-link">公式</a><br><span class="badge-warning" style="background: #ff9500; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">最重要</span><br><span style="color: #6a6a6a; font-size: 11px;">#PR</span></td>
-              <td><strong>[先行]</strong> 11月21日～<br><strong>[本番]</strong> 11月24日0時～<br>12月1日23時59分</td>
-              <td><strong>年内最大級のブラックフライデー</strong><br>• 全カテゴリ対象（家電、ゲーム、ファッション、食品、日用品、化粧品等）<br>• Dyson、LG、シャープ、North Face、Mizuno等目玉アイテム<br>• Amazon限定・先行販売品多数<br>• 50%OFF以上商品＋タイムセール多数<br><br><strong>ポイントアップキャンペーン</strong><br>• 条件達成で最大10,000ポイント還元<br>• Amazon Mastercard利用：最大4.5%還元<br>• ギフトカード・抽選キャンペーン併催<br><br>※先着・数量限定商品は早期完売注意</td>
-              <td>Amazon Mastercard<br>（最大4.5%）<br><br>d払い（金・土＋3%）<br><br><span style="color: #86868b; font-size: 13px;">※アメックスプロパー<br>3%還元対象店</span></td>
-              <td>最大10,000pt還元<br>＋Mastercard4.5%<br>＋50%OFF商品<br>＋d曜日還元<br>＋アメックス3%</td>
+              <td>
+                <strong>Amazon</strong
+                ><a
+                  href="https://amzn.to/3X0OIi7"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                ><br /><span
+                  class="badge-warning"
+                  style="
+                    background: #ff9500;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >最重要</span
+                ><br /><span style="color: #6a6a6a; font-size: 11px">#PR</span>
+              </td>
+              <td>
+                <strong>[先行]</strong> 11月21日～<br /><strong>[本番]</strong>
+                11月24日0時～<br />12月1日23時59分
+              </td>
+              <td>
+                <strong>年内最大級のブラックフライデー</strong><br />•
+                全カテゴリ対象（家電、ゲーム、ファッション、食品、日用品、化粧品等）<br />•
+                Dyson、LG、シャープ、North Face、Mizuno等目玉アイテム<br />•
+                Amazon限定・先行販売品多数<br />•
+                50%OFF以上商品＋タイムセール多数<br /><br /><strong
+                  >ポイントアップキャンペーン</strong
+                ><br />• 条件達成で最大10,000ポイント還元<br />• Amazon
+                Mastercard利用：最大4.5%還元<br />•
+                ギフトカード・抽選キャンペーン併催<br /><br />※先着・数量限定商品は早期完売注意
+              </td>
+              <td>
+                Amazon Mastercard<br />（最大4.5%）<br /><br />d払い（金・土＋3%）<br /><br /><span
+                  style="color: #86868b; font-size: 13px"
+                  >※アメックスプロパー<br />3%還元対象店</span
+                >
+              </td>
+              <td>
+                最大10,000pt還元<br />＋Mastercard4.5%<br />＋50%OFF商品<br />＋d曜日還元<br />＋アメックス3%
+              </td>
             </tr>
             <tr>
-              <td><strong>Qoo10</strong><a href="https://www.qoo10.jp/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>11月22日～<br>11月29日<br><span style="color: #86868b; font-size: 13px;">（予測）</span></td>
+              <td>
+                <strong>Qoo10</strong
+                ><a
+                  href="https://www.qoo10.jp/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>
+                11月22日～<br />11月29日<br /><span
+                  style="color: #86868b; font-size: 13px"
+                  >（予測）</span
+                >
+              </td>
               <td>メガ割クーポン（20%OFF）</td>
               <td>Paidy / PayPay</td>
-              <td>20%OFFクーポン<br>＋決済ポイント</td>
+              <td>20%OFFクーポン<br />＋決済ポイント</td>
             </tr>
             <tr>
-              <td><strong>au PAY マーケット</strong><a href="https://wowma.jp/feature/black-friday" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td><strong>[エントリー]</strong> 11/17 10:00～12/2 9:59<br><strong>[ポイントUP]</strong> 11/21 10:00～12/2 9:59</td>
-              <td><strong>BLACK FRIDAY 2025</strong><br>• エントリー＆お店買い回りで<strong>最大40%Pontaポイント還元</strong><br>• 合計2,000万Pontaポイント ボーナス抽選<br>• Pontaパス会員は<strong>最大50%還元</strong><br><br><strong>限定クーポン</strong><br>• 初日・最終日24時間限定クーポン配布<br>• 毎日スーパーセール（日替わり特価）<br><br><strong>SNSキャンペーン</strong><br>• フォロー＆リポストで最大10,000pt<br>※6店舗以上買い回りで最大還元率達成</td>
-              <td>au PAY<br>au PAYカード<br><br><span style="color: #86868b; font-size: 13px;">※Pontaパス会員で<br>還元率UP</span></td>
-              <td>最大40%還元<br>（Pontaパス50%）<br>＋2,000万pt抽選<br>＋限定クーポン</td>
+              <td>
+                <strong>au PAY マーケット</strong
+                ><a
+                  href="https://wowma.jp/feature/black-friday"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>
+                <strong>[エントリー]</strong> 11/17 10:00～12/2 9:59<br /><strong
+                  >[ポイントUP]</strong
+                >
+                11/21 10:00～12/2 9:59
+              </td>
+              <td>
+                <strong>BLACK FRIDAY 2025</strong><br />•
+                エントリー＆お店買い回りで<strong
+                  >最大40%Pontaポイント還元</strong
+                ><br />• 合計2,000万Pontaポイント ボーナス抽選<br />•
+                Pontaパス会員は<strong>最大50%還元</strong><br /><br /><strong
+                  >限定クーポン</strong
+                ><br />• 初日・最終日24時間限定クーポン配布<br />•
+                毎日スーパーセール（日替わり特価）<br /><br /><strong
+                  >SNSキャンペーン</strong
+                ><br />• フォロー＆リポストで最大10,000pt<br />※6店舗以上買い回りで最大還元率達成
+              </td>
+              <td>
+                au PAY<br />au PAYカード<br /><br /><span
+                  style="color: #86868b; font-size: 13px"
+                  >※Pontaパス会員で<br />還元率UP</span
+                >
+              </td>
+              <td>
+                最大40%還元<br />（Pontaパス50%）<br />＋2,000万pt抽選<br />＋限定クーポン
+              </td>
             </tr>
             <tr>
-              <td><strong>SHEIN</strong><a href="https://jp.shein.com/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td><strong>[第1弾]</strong> 11/17 12:00～11/24<br><strong>[第2弾]</strong> 11/24～12/2 12:00</td>
-              <td><strong>BLACK FRIDAY 2025</strong><br>• <strong>最大95%OFF</strong>（第1弾80万点～、第2弾100万点以上）<br>• 毎日20:00先着：トレンドアイテム全品50%OFF<br>• 毎日20:00先着：10,000円OFFクーポン<br>• 週末限定ポイント2倍（6,000円以上）<br><br><strong>特別特典</strong><br>• 11/28当日：無料ギフト（6,000円以上購入）<br>• 本セール期間：抽選300名に全額キャッシュバック<br>※先着・数量限定多数、早期参加推奨</td>
-              <td>汎用高還元カード<br>＋各種QR決済</td>
-              <td>最大95%OFF<br>＋10,000円OFFクーポン<br>＋全額CB抽選</td>
+              <td>
+                <strong>SHEIN</strong
+                ><a
+                  href="https://jp.shein.com/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>
+                <strong>[第1弾]</strong> 11/17 12:00～11/24<br /><strong
+                  >[第2弾]</strong
+                >
+                11/24～12/2 12:00
+              </td>
+              <td>
+                <strong>BLACK FRIDAY 2025</strong><br />•
+                <strong>最大95%OFF</strong
+                >（第1弾80万点～、第2弾100万点以上）<br />•
+                毎日20:00先着：トレンドアイテム全品50%OFF<br />•
+                毎日20:00先着：10,000円OFFクーポン<br />•
+                週末限定ポイント2倍（6,000円以上）<br /><br /><strong
+                  >特別特典</strong
+                ><br />• 11/28当日：無料ギフト（6,000円以上購入）<br />•
+                本セール期間：抽選300名に全額キャッシュバック<br />※先着・数量限定多数、早期参加推奨
+              </td>
+              <td>汎用高還元カード<br />＋各種QR決済</td>
+              <td>最大95%OFF<br />＋10,000円OFFクーポン<br />＋全額CB抽選</td>
             </tr>
           </tbody>
         </table>
@@ -693,55 +1659,178 @@
         <table>
           <thead>
             <tr>
-              <th style="width: 15%;">ストア名</th>
-              <th style="width: 15%;">開催期間</th>
-              <th style="width: 30%;">セール内容</th>
-              <th style="width: 20%;">推奨決済手段</th>
-              <th style="width: 20%;">期待還元率</th>
+              <th style="width: 15%">ストア名</th>
+              <th style="width: 15%">開催期間</th>
+              <th style="width: 30%">セール内容</th>
+              <th style="width: 20%">推奨決済手段</th>
+              <th style="width: 20%">期待還元率</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>イオン／イオンモール</strong><a href="https://www.aeon.com/" target="_blank" rel="noopener" class="official-link">公式</a><br><span class="badge-warning" style="background: #ff9500; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">10周年</span></td>
-              <td><strong>[予約販売会]</strong> 11/1～11/10<br><strong>[オンライン先行]</strong> 11/11 10:00～11/20 8:59<br><strong>[店頭/モール]</strong> 11/20～11/30</td>
-              <td><strong>「超！ブラックフライデー」10周年記念</strong><br>• 全国約600店舗＋イオンモール＋オンライン<br>• 半額祭り・増量・アプリクーポン祭り<br>• オンライン：ほぼ全品20%OFFクーポン<br><br><strong>イオンモール特別企画</strong><br>• イオンドリームキャンペーン（5万円お買物体験等）<br>• アプリ事前予約特典（11/19 12:00～11/23）<br>• ノベルティプレゼント（クリアケース等）<br><br><strong>目玉商品例</strong><br>• メンズスーツ最大半額、靴下96円<br>• ゴディバ・シャインマスカット半額<br>• 家電・メガネ大特価<br><br>※店舗により内容異なる、事前確認推奨</td>
-              <td>イオンカード<br>AEON Pay<br>WAON</td>
-              <td>最大50%OFF<br>＋20%OFFクーポン<br>＋ドリームキャンペーン<br>＋ポイント還元</td>
+              <td>
+                <strong>イオン／イオンモール</strong
+                ><a
+                  href="https://www.aeon.com/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                ><br /><span
+                  class="badge-warning"
+                  style="
+                    background: #ff9500;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >10周年</span
+                >
+              </td>
+              <td>
+                <strong>[予約販売会]</strong> 11/1～11/10<br /><strong
+                  >[オンライン先行]</strong
+                >
+                11/11 10:00～11/20 8:59<br /><strong>[店頭/モール]</strong>
+                11/20～11/30
+              </td>
+              <td>
+                <strong>「超！ブラックフライデー」10周年記念</strong><br />•
+                全国約600店舗＋イオンモール＋オンライン<br />•
+                半額祭り・増量・アプリクーポン祭り<br />•
+                オンライン：ほぼ全品20%OFFクーポン<br /><br /><strong
+                  >イオンモール特別企画</strong
+                ><br />• イオンドリームキャンペーン（5万円お買物体験等）<br />•
+                アプリ事前予約特典（11/19 12:00～11/23）<br />•
+                ノベルティプレゼント（クリアケース等）<br /><br /><strong
+                  >目玉商品例</strong
+                ><br />• メンズスーツ最大半額、靴下96円<br />•
+                ゴディバ・シャインマスカット半額<br />• 家電・メガネ大特価<br /><br />※店舗により内容異なる、事前確認推奨
+              </td>
+              <td>イオンカード<br />AEON Pay<br />WAON</td>
+              <td>
+                最大50%OFF<br />＋20%OFFクーポン<br />＋ドリームキャンペーン<br />＋ポイント還元
+              </td>
             </tr>
             <tr>
-              <td><strong>ドン・キホーテ</strong><a href="https://www.ppihgroup.com/campaign/20251114blackfriday/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>【第1弾】11/14～<br>【第2弾】11/21～</td>
+              <td>
+                <strong>ドン・キホーテ</strong
+                ><a
+                  href="https://www.ppihgroup.com/campaign/20251114blackfriday/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>【第1弾】11/14～<br />【第2弾】11/21～</td>
               <td>majicaアプリ会員向け限定価格</td>
-              <td>majica提示<br>＋d払い/PayPay</td>
-              <td>会員価格<br>＋QR決済ポイント</td>
+              <td>majica提示<br />＋d払い/PayPay</td>
+              <td>会員価格<br />＋QR決済ポイント</td>
             </tr>
             <tr>
-              <td><strong>三井アウトレットパーク<br>ららぽーと</strong><a href="https://mitsui-shopping-park.com/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>11月14日～<br>11月30日</td>
-              <td><strong>【ららぽーと】</strong>SPY×FAMILYコラボ「おかいもの大作戦」<br>• スタンプラリー・アーニャ撮影会<br>• ポイント5倍デー・抽選キャンペーン<br><br><strong>【アウトレット】</strong>テーマ「増量」<br>• サンプル品＆B品フェア（試作品・B級品特価）<br>• 全額もどってくるキャンペーン<br>• ゴディバ限定ドリンク・タリーズ増量企画<br>• 最大80%OFF商品<br><br><strong>【スーツケース・バッグ】</strong>主要ブランド割引<br>• Samsonite：長島で1点10%OFF/2点以上20%OFF<br>• Ace：主要4施設で2点以上10%OFF<br>• Zero Halliburton：入間・木更津・長島で2点以上10%OFF<br>• Briefing：木更津・長島で2点以上10%OFF</td>
-              <td>三井ショッピングパークカード<br>＋QR決済</td>
-              <td>ポイント5倍<br>最大80%OFF<br>＋全額返金抽選<br><strong>スーツケース：<br>最大20%OFF</strong></td>
+              <td>
+                <strong>三井アウトレットパーク<br />ららぽーと</strong
+                ><a
+                  href="https://mitsui-shopping-park.com/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>11月14日～<br />11月30日</td>
+              <td>
+                <strong>【ららぽーと】</strong
+                >SPY×FAMILYコラボ「おかいもの大作戦」<br />•
+                スタンプラリー・アーニャ撮影会<br />•
+                ポイント5倍デー・抽選キャンペーン<br /><br /><strong
+                  >【アウトレット】</strong
+                >テーマ「増量」<br />•
+                サンプル品＆B品フェア（試作品・B級品特価）<br />•
+                全額もどってくるキャンペーン<br />•
+                ゴディバ限定ドリンク・タリーズ増量企画<br />• 最大80%OFF商品<br /><br /><strong
+                  >【スーツケース・バッグ】</strong
+                >主要ブランド割引<br />•
+                Samsonite：長島で1点10%OFF/2点以上20%OFF<br />•
+                Ace：主要4施設で2点以上10%OFF<br />• Zero
+                Halliburton：入間・木更津・長島で2点以上10%OFF<br />•
+                Briefing：木更津・長島で2点以上10%OFF
+              </td>
+              <td>三井ショッピングパークカード<br />＋QR決済</td>
+              <td>
+                ポイント5倍<br />最大80%OFF<br />＋全額返金抽選<br /><strong
+                  >スーツケース：<br />最大20%OFF</strong
+                >
+              </td>
             </tr>
             <tr>
-              <td><strong>佐野プレミアム・アウトレット</strong><a href="https://www.premiumoutlets.co.jp/schedule/" target="_blank" rel="noopener" class="official-link">公式</a></td>
+              <td>
+                <strong>佐野プレミアム・アウトレット</strong
+                ><a
+                  href="https://www.premiumoutlets.co.jp/schedule/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
               <td>11月中旬～</td>
-              <td><strong>BLACK FRIDAY</strong><br>• ホリデーシーズン先駆けセール<br>• 三菱地所・サイモン運営</td>
-              <td>汎用高還元カード<br>＋QR決済</td>
+              <td>
+                <strong>BLACK FRIDAY</strong><br />•
+                ホリデーシーズン先駆けセール<br />• 三菱地所・サイモン運営
+              </td>
+              <td>汎用高還元カード<br />＋QR決済</td>
               <td>商品割引中心</td>
             </tr>
             <tr>
-              <td><strong>コストコ</strong><a href="https://www.costco.co.jp/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>11月中旬～12月1日頃<br><span style="color: #86868b; font-size: 13px;">（米国実績：10/31～12/1）</span></td>
-              <td><strong>Phase 1（第1弾）形式の長期セール</strong><br>• テレビ、PC、家電<br>• 宝飾品<br>• 日用品が対象</td>
-              <td>コストコグローバルカード<br>＋Mastercard</td>
-              <td>長期セール戦略<br>ウェアハウス型</td>
+              <td>
+                <strong>コストコ</strong
+                ><a
+                  href="https://www.costco.co.jp/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>
+                11月中旬～12月1日頃<br /><span
+                  style="color: #86868b; font-size: 13px"
+                  >（米国実績：10/31～12/1）</span
+                >
+              </td>
+              <td>
+                <strong>Phase 1（第1弾）形式の長期セール</strong><br />•
+                テレビ、PC、家電<br />• 宝飾品<br />• 日用品が対象
+              </td>
+              <td>コストコグローバルカード<br />＋Mastercard</td>
+              <td>長期セール戦略<br />ウェアハウス型</td>
             </tr>
             <tr>
-              <td><strong>ウエルシア薬局</strong><a href="https://www.welcia-yakkyoku.co.jp/" target="_blank" rel="noopener" class="official-link">公式</a><br><span style="color: #86868b; font-size: 13px;">（グループ全店）</span></td>
-              <td>10月6日～<br>11月30日</td>
-              <td><strong>WAON POINT最大20%還元</strong>（要エントリー）<br>• 対象：ウエルシア、HAC、金光薬品、ダックス、ハッピードラッグ、よどやドラッグ等<br>• 条件：3点以上かつ税込¥2,500以上で+250pt<br>• 税込¥5,000以上で+1,000pt還元<br>• 上限：1会計最大1,000pt、期間合計5,000pt<br>※アプリエントリー＋カード提示必須</td>
-              <td>WAON POINTカード<br>＋アプリ</td>
-              <td>最大20%還元<br>（WAON POINT）</td>
+              <td>
+                <strong>ウエルシア薬局</strong
+                ><a
+                  href="https://www.welcia-yakkyoku.co.jp/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                ><br /><span style="color: #86868b; font-size: 13px"
+                  >（グループ全店）</span
+                >
+              </td>
+              <td>10月6日～<br />11月30日</td>
+              <td>
+                <strong>WAON POINT最大20%還元</strong>（要エントリー）<br />•
+                対象：ウエルシア、HAC、金光薬品、ダックス、ハッピードラッグ、よどやドラッグ等<br />•
+                条件：3点以上かつ税込¥2,500以上で+250pt<br />•
+                税込¥5,000以上で+1,000pt還元<br />•
+                上限：1会計最大1,000pt、期間合計5,000pt<br />※アプリエントリー＋カード提示必須
+              </td>
+              <td>WAON POINTカード<br />＋アプリ</td>
+              <td>最大20%還元<br />（WAON POINT）</td>
             </tr>
           </tbody>
         </table>
@@ -752,48 +1841,200 @@
         <table>
           <thead>
             <tr>
-              <th style="width: 15%;">量販店名</th>
-              <th style="width: 15%;">開催期間</th>
-              <th style="width: 25%;">実施チャネル・主要特典</th>
-              <th style="width: 25%;">推奨決済手段・戦略</th>
-              <th style="width: 20%;">戦略タイプ</th>
+              <th style="width: 15%">量販店名</th>
+              <th style="width: 15%">開催期間</th>
+              <th style="width: 25%">実施チャネル・主要特典</th>
+              <th style="width: 25%">推奨決済手段・戦略</th>
+              <th style="width: 20%">戦略タイプ</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>ビックカメラ</strong><a href="https://www.biccamera.com/bc/c/sale/daily/index.jsp" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td><strong>[オンライン先行]</strong> 11/13 22:00～<br><strong>[全体]</strong> 11/14～11/30</td>
-              <td><strong>オムニチャネル（実店舗＋EC）</strong><br>• 最大20%ポイント還元（カテゴリ別）<br>• 最大3万円分ポイント付与<br>• 限定割引（例：ダイソン2万円引）</td>
-              <td>ビックポイントカード<br>＋高還元クレジット<br><br>高マージン商品（PC周辺機器等）で最大還元</td>
-              <td><span class="badge" style="background: #0071e3; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">オムニチャネル</span><br>EC先行で話題喚起→実店舗で体験</td>
+              <td>
+                <strong>ビックカメラ</strong
+                ><a
+                  href="https://www.biccamera.com/bc/c/sale/daily/index.jsp"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>
+                <strong>[オンライン先行]</strong> 11/13 22:00～<br /><strong
+                  >[全体]</strong
+                >
+                11/14～11/30
+              </td>
+              <td>
+                <strong>オムニチャネル（実店舗＋EC）</strong><br />•
+                最大20%ポイント還元（カテゴリ別）<br />•
+                最大3万円分ポイント付与<br />• 限定割引（例：ダイソン2万円引）
+              </td>
+              <td>
+                ビックポイントカード<br />＋高還元クレジット<br /><br />高マージン商品（PC周辺機器等）で最大還元
+              </td>
+              <td>
+                <span
+                  class="badge"
+                  style="
+                    background: #0071e3;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >オムニチャネル</span
+                ><br />EC先行で話題喚起→実店舗で体験
+              </td>
             </tr>
             <tr>
-              <td><strong>ノジマ</strong><a href="https://www.nojima.co.jp/campaign/black-friday/" target="_blank" rel="noopener" class="official-link">公式</a><br><span class="badge-warning" style="background: #ff9500; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">10周年</span></td>
-              <td>11/8～11/30<br><strong>（最長23日間）</strong></td>
-              <td><strong>実店舗のみ（EC対象外）</strong><br>• 会員ランク別ポイント還元<br>  - G/P会員：最大3万円分<br>  - B/S会員：最大1.5万円分<br>• dカード利用で3%オフ</td>
-              <td>ノジマモバイルアプリ<br>＋dカード<br><br>実店舗でコンサル販売＋アプリ会員登録</td>
-              <td><span class="badge-success" style="background: #34c759; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">実店舗回帰</span><br>ロイヤル顧客のLTV最大化</td>
+              <td>
+                <strong>ノジマ</strong
+                ><a
+                  href="https://www.nojima.co.jp/campaign/black-friday/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                ><br /><span
+                  class="badge-warning"
+                  style="
+                    background: #ff9500;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >10周年</span
+                >
+              </td>
+              <td>11/8～11/30<br /><strong>（最長23日間）</strong></td>
+              <td>
+                <strong>実店舗のみ（EC対象外）</strong><br />•
+                会員ランク別ポイント還元<br />
+                - G/P会員：最大3万円分<br />
+                - B/S会員：最大1.5万円分<br />• dカード利用で3%オフ
+              </td>
+              <td>
+                ノジマモバイルアプリ<br />＋dカード<br /><br />実店舗でコンサル販売＋アプリ会員登録
+              </td>
+              <td>
+                <span
+                  class="badge-success"
+                  style="
+                    background: #34c759;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >実店舗回帰</span
+                ><br />ロイヤル顧客のLTV最大化
+              </td>
             </tr>
             <tr>
-              <td><strong>エディオン</strong><a href="https://www.edion.com/" target="_blank" rel="noopener" class="official-link">公式</a></td>
+              <td>
+                <strong>エディオン</strong
+                ><a
+                  href="https://www.edion.com/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
               <td>11/14～12/3</td>
-              <td><strong>オンラインのみ（実店舗除外）</strong><br>• セール限定特価<br>• 週替わり限定クーポン（第1弾～第3弾）<br>• 最大10%/20倍ポイント還元</td>
-              <td>エディオンカード<br>＋汎用高還元カード<br><br>週替わりクーポンでリピート訪問狙い</td>
-              <td><span class="badge" style="background: #0071e3; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">EC特化</span><br>価格競争に集中、コスト最適化</td>
+              <td>
+                <strong>オンラインのみ（実店舗除外）</strong><br />•
+                セール限定特価<br />• 週替わり限定クーポン（第1弾～第3弾）<br />•
+                最大10%/20倍ポイント還元
+              </td>
+              <td>
+                エディオンカード<br />＋汎用高還元カード<br /><br />週替わりクーポンでリピート訪問狙い
+              </td>
+              <td>
+                <span
+                  class="badge"
+                  style="
+                    background: #0071e3;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >EC特化</span
+                ><br />価格競争に集中、コスト最適化
+              </td>
             </tr>
             <tr>
-              <td><strong>デンキチ</strong><a href="https://www.denkichi.co.jp/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>11/15～11/21<br><strong>（7日間）</strong></td>
-              <td><strong>全店（実店舗）</strong><br>• 最大50%OFF<br>• 最大2倍/20%ポイント還元</td>
-              <td>汎用高還元カード<br><br>短期集中で即購入を促す</td>
-              <td><span class="badge-warning" style="background: #ff9500; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">短期集中</span><br>分かりやすい直接割引で広範囲集客</td>
+              <td>
+                <strong>デンキチ</strong
+                ><a
+                  href="https://www.denkichi.co.jp/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>11/15～11/21<br /><strong>（7日間）</strong></td>
+              <td>
+                <strong>全店（実店舗）</strong><br />• 最大50%OFF<br />•
+                最大2倍/20%ポイント還元
+              </td>
+              <td>汎用高還元カード<br /><br />短期集中で即購入を促す</td>
+              <td>
+                <span
+                  class="badge-warning"
+                  style="
+                    background: #ff9500;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >短期集中</span
+                ><br />分かりやすい直接割引で広範囲集客
+              </td>
             </tr>
             <tr>
-              <td><strong>ヨドバシカメラ</strong><a href="https://www.yodobashi.com/" target="_blank" rel="noopener" class="official-link">公式</a></td>
+              <td>
+                <strong>ヨドバシカメラ</strong
+                ><a
+                  href="https://www.yodobashi.com/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
               <td>メーカー協賛セール実施</td>
-              <td><strong>オンライン＋実店舗</strong><br>• メーカー協賛型セール<br>  - SteelSeries（最大33%OFF）<br>  - PICO 4 Special Box<br>• 実店舗で体験デモ重視</td>
-              <td>ゴールドポイントカード<br><br><span style="color: #86868b; font-size: 13px;">※ヨドバシ.com：<br>アメックスプロパー<br>3%還元対象店</span></td>
-              <td><span class="badge" style="background: #0071e3; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">メーカー協賛</span><br>特定カテゴリ強化<br>＋アメックス3%</td>
+              <td>
+                <strong>オンライン＋実店舗</strong><br />•
+                メーカー協賛型セール<br />
+                - SteelSeries（最大33%OFF）<br />
+                - PICO 4 Special Box<br />• 実店舗で体験デモ重視
+              </td>
+              <td>
+                ゴールドポイントカード<br /><br /><span
+                  style="color: #86868b; font-size: 13px"
+                  >※ヨドバシ.com：<br />アメックスプロパー<br />3%還元対象店</span
+                >
+              </td>
+              <td>
+                <span
+                  class="badge"
+                  style="
+                    background: #0071e3;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >メーカー協賛</span
+                ><br />特定カテゴリ強化<br />＋アメックス3%
+              </td>
             </tr>
           </tbody>
         </table>
@@ -804,55 +2045,153 @@
         <table>
           <thead>
             <tr>
-              <th style="width: 15%;">ストア名</th>
-              <th style="width: 15%;">開催期間</th>
-              <th style="width: 30%;">セール内容</th>
-              <th style="width: 20%;">推奨決済手段</th>
-              <th style="width: 20%;">期待還元率</th>
+              <th style="width: 15%">ストア名</th>
+              <th style="width: 15%">開催期間</th>
+              <th style="width: 30%">セール内容</th>
+              <th style="width: 20%">推奨決済手段</th>
+              <th style="width: 20%">期待還元率</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>ユニクロ</strong><a href="https://www.uniqlo.com/jp/ja/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>11月21日～<br>11月27日</td>
+              <td>
+                <strong>ユニクロ</strong
+                ><a
+                  href="https://www.uniqlo.com/jp/ja/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>11月21日～<br />11月27日</td>
               <td>ユニクロ感謝祭</td>
               <td>汎用高還元カード</td>
               <td>商品割引中心</td>
             </tr>
             <tr>
-              <td><strong>GU</strong><a href="https://www.gu-global.com/jp/ja/feature/contents/kanshasai/all" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>11月21日～<br>11月27日</td>
+              <td>
+                <strong>GU</strong
+                ><a
+                  href="https://www.gu-global.com/jp/ja/feature/contents/kanshasai/all"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>11月21日～<br />11月27日</td>
               <td>GU感謝祭</td>
               <td>汎用高還元カード</td>
               <td>商品割引中心</td>
             </tr>
             <tr>
-              <td><strong>GAP</strong><a href="https://www.gap.co.jp/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>11月20日～<br>12月1日</td>
-              <td><strong>年に一度の大セール</strong><br>• Gap直営店・オンライン：<strong>40%OFF</strong><br>• Gap Outlet：<strong>50%OFF</strong><br>• 購入者全員に<strong>50%OFF「Black Friday Card」</strong>プレゼント（12/2～12/25使用可、何度でも利用可）<br>• スクラッチ抽選：総額1,000万円分ギフトカード（2,000名に各¥5,000）</td>
-              <td>Gap公式LINE<br>＋高還元カード</td>
-              <td>Gap店：40%OFF<br>Outlet：50%OFF<br>＋後日50%OFFカード<br>＋抽選</td>
+              <td>
+                <strong>GAP</strong
+                ><a
+                  href="https://www.gap.co.jp/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>11月20日～<br />12月1日</td>
+              <td>
+                <strong>年に一度の大セール</strong><br />•
+                Gap直営店・オンライン：<strong>40%OFF</strong><br />• Gap
+                Outlet：<strong>50%OFF</strong><br />• 購入者全員に<strong
+                  >50%OFF「Black Friday Card」</strong
+                >プレゼント（12/2～12/25使用可、何度でも利用可）<br />•
+                スクラッチ抽選：総額1,000万円分ギフトカード（2,000名に各¥5,000）
+              </td>
+              <td>Gap公式LINE<br />＋高還元カード</td>
+              <td>
+                Gap店：40%OFF<br />Outlet：50%OFF<br />＋後日50%OFFカード<br />＋抽選
+              </td>
             </tr>
             <tr>
-              <td><strong>Zoff</strong><a href="https://www.zoff.com/news/20251027-6469/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td><strong>[オンライン]</strong> 11/12～12/4<br><strong>[店舗]</strong> 11/13～12/4</td>
-              <td><strong>限定3プライス</strong>（レンズ代込・税込）<br>• ¥4,600<br>• ¥6,600<br>• ¥9,600<br>※全国Zoff全店舗＋公式オンライン（一部店舗除く）</td>
+              <td>
+                <strong>Zoff</strong
+                ><a
+                  href="https://www.zoff.com/news/20251027-6469/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>
+                <strong>[オンライン]</strong> 11/12～12/4<br /><strong
+                  >[店舗]</strong
+                >
+                11/13～12/4
+              </td>
+              <td>
+                <strong>限定3プライス</strong>（レンズ代込・税込）<br />•
+                ¥4,600<br />• ¥6,600<br />• ¥9,600<br />※全国Zoff全店舗＋公式オンライン（一部店舗除く）
+              </td>
               <td>汎用高還元カード</td>
-              <td>限定価格<br>¥4,600～<br>（レンズ込）</td>
+              <td>限定価格<br />¥4,600～<br />（レンズ込）</td>
             </tr>
             <tr>
-              <td><strong>OWNDAYS</strong><a href="https://www.owndays.com/jp/ja/news/blackfriday" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td><strong>[第1弾]</strong> 11/6～19<br><strong>[第2弾]</strong> 11/14～30<br><strong>[第3弾]</strong> 11/20～12/1</td>
-              <td><strong>BLACK FRIDAY 3段階キャンペーン</strong><br><br><strong>第1弾：ポイント5倍</strong>（11/6～19）<br>• オンラインでお気に入り登録でポイント5倍<br>• 会員限定<br><br><strong>第2弾：SALE</strong>（11/14～30）<br>• オンライン：対象商品<strong>最大50%OFF</strong><br>• 店舗：SILVERシール <strong>6,600円</strong>、GOLDシール <strong>9,600円</strong>（税込・レンズ代込）<br>• 対象：OWNDAYS AIR、John Dillingerなど<br><br><strong>第3弾：くじ引き</strong>（11/20～12/1）<br>• 詳細Coming Soon<br><br>※他割引との併用不可、対象外あり</td>
+              <td>
+                <strong>OWNDAYS</strong
+                ><a
+                  href="https://www.owndays.com/jp/ja/news/blackfriday"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>
+                <strong>[第1弾]</strong> 11/6～19<br /><strong>[第2弾]</strong>
+                11/14～30<br /><strong>[第3弾]</strong> 11/20～12/1
+              </td>
+              <td>
+                <strong>BLACK FRIDAY 3段階キャンペーン</strong
+                ><br /><br /><strong>第1弾：ポイント5倍</strong
+                >（11/6～19）<br />• オンラインでお気に入り登録でポイント5倍<br />•
+                会員限定<br /><br /><strong>第2弾：SALE</strong
+                >（11/14～30）<br />• オンライン：対象商品<strong
+                  >最大50%OFF</strong
+                ><br />• 店舗：SILVERシール <strong>6,600円</strong>、GOLDシール
+                <strong>9,600円</strong>（税込・レンズ代込）<br />•
+                対象：OWNDAYS AIR、John Dillingerなど<br /><br /><strong
+                  >第3弾：くじ引き</strong
+                >（11/20～12/1）<br />• 詳細Coming Soon<br /><br />※他割引との併用不可、対象外あり
+              </td>
               <td>汎用高還元カード</td>
-              <td>オンライン最大50%OFF<br>店舗：6,600円/9,600円<br>（レンズ込）</td>
+              <td>
+                オンライン最大50%OFF<br />店舗：6,600円/9,600円<br />（レンズ込）
+              </td>
             </tr>
             <tr>
-              <td><strong>ZOZOTOWN</strong><a href="https://zozo.jp/event/blackfriday/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>11月27日頃～<br><span style="color: #86868b; font-size: 13px;">（2024年実績：11/23～26）</span></td>
-              <td><strong>最大95%OFF</strong>タイムセール<br>• 福袋販売<br>• 最大100万円分ZOZOポイント山分け</td>
-              <td>ZOZOCARD<br>＋汎用高還元カード</td>
-              <td><strong style="color: #ff9500;">最大95%OFF</strong><br>割引率で勝負</td>
+              <td>
+                <strong>ZOZOTOWN</strong
+                ><a
+                  href="https://zozo.jp/event/blackfriday/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>
+                11月27日頃～<br /><span style="color: #86868b; font-size: 13px"
+                  >（2024年実績：11/23～26）</span
+                >
+              </td>
+              <td>
+                <strong>最大95%OFF</strong>タイムセール<br />• 福袋販売<br />•
+                最大100万円分ZOZOポイント山分け
+              </td>
+              <td>ZOZOCARD<br />＋汎用高還元カード</td>
+              <td>
+                <strong style="color: #ff9500">最大95%OFF</strong
+                ><br />割引率で勝負
+              </td>
             </tr>
           </tbody>
         </table>
@@ -863,48 +2202,146 @@
         <table>
           <thead>
             <tr>
-              <th style="width: 15%;">ストア名</th>
-              <th style="width: 15%;">開催期間</th>
-              <th style="width: 30%;">セール内容</th>
-              <th style="width: 20%;">推奨決済手段</th>
-              <th style="width: 20%;">期待還元率</th>
+              <th style="width: 15%">ストア名</th>
+              <th style="width: 15%">開催期間</th>
+              <th style="width: 30%">セール内容</th>
+              <th style="width: 20%">推奨決済手段</th>
+              <th style="width: 20%">期待還元率</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Netflix × セブン-イレブン<br>× イトーヨーカドー</strong><a href="https://www.itoyokado.co.jp/special/netflix/index.html" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>11月15日～<br>11月30日</td>
-              <td><strong>Netflixコラボ最大26アイテム数量限定</strong><br>• 「ブラックマルゲリータ」（黒生地ピザ）<br>• 「辛口ブラックチゲラーメン」味変タイプ<br>• お菓子・飲料・冷食・雑貨等<br>• Netflix監修パッケージ<br>• 税込¥170～（例：チゲラーメン¥300）</td>
-              <td>nanaco<br>＋QR決済</td>
-              <td>コラボ限定商品<br>数量限定</td>
+              <td>
+                <strong
+                  >Netflix × セブン-イレブン<br />× イトーヨーカドー</strong
+                ><a
+                  href="https://www.itoyokado.co.jp/special/netflix/index.html"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>11月15日～<br />11月30日</td>
+              <td>
+                <strong>Netflixコラボ最大26アイテム数量限定</strong><br />•
+                「ブラックマルゲリータ」（黒生地ピザ）<br />•
+                「辛口ブラックチゲラーメン」味変タイプ<br />•
+                お菓子・飲料・冷食・雑貨等<br />• Netflix監修パッケージ<br />•
+                税込¥170～（例：チゲラーメン¥300）
+              </td>
+              <td>nanaco<br />＋QR決済</td>
+              <td>コラボ限定商品<br />数量限定</td>
             </tr>
             <tr>
-              <td><strong>セブン-イレブン</strong><a href="https://www.sej.co.jp/cmp/hs2511.html" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>11月27日～<br>11月30日</td>
-              <td><strong>揚げ物 日替わり半額</strong><br>• 27日：牛肉コロッケ <strong>54円</strong><br>• 28日：五目春巻 <strong>60円</strong><br>• 29日：揚げ鶏 <strong>120円</strong><br>• 30日：五目春巻 <strong>60円</strong><br><span style="color: #86868b; font-size: 12px;">※他割引との併用不可</span></td>
-              <td>nanaco<br>＋QR決済</td>
-              <td><span class="badge" style="background: #ff3b30; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">初開催</span><br>揚げ物半額<br>4日間限定</td>
+              <td>
+                <strong>セブン-イレブン</strong
+                ><a
+                  href="https://www.sej.co.jp/cmp/hs2511.html"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>11月27日～<br />11月30日</td>
+              <td>
+                <strong>揚げ物 日替わり半額</strong><br />• 27日：牛肉コロッケ
+                <strong>54円</strong><br />• 28日：五目春巻 <strong>60円</strong
+                ><br />• 29日：揚げ鶏 <strong>120円</strong><br />•
+                30日：五目春巻 <strong>60円</strong><br /><span
+                  style="color: #86868b; font-size: 12px"
+                  >※他割引との併用不可</span
+                >
+              </td>
+              <td>nanaco<br />＋QR決済</td>
+              <td>
+                <span
+                  class="badge"
+                  style="
+                    background: #ff3b30;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >初開催</span
+                ><br />揚げ物半額<br />4日間限定
+              </td>
             </tr>
             <tr>
-              <td><strong>ファミリーマート</strong><a href="https://www.family.co.jp/campaign/spot/2511_blackfried-d_cp.html" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>11月18日～<br>12月1日</td>
-              <td><strong>ブラック"フライ"デー</strong><br>• 揚げ物2個購入→ファミから<strong>10円</strong>クーポン<br>• 対象：ファミから醤油・塩・むね<br>• ファミペイでアプリクーポン配信<br>• SNSで抽選1,000円分ポイント<br><span style="color: #86868b; font-size: 12px;">※他割引との併用不可</span></td>
-              <td>ファミペイ<br>＋QR決済</td>
-              <td>揚げ物2個で<br>ファミから10円<br>クーポン進呈</td>
+              <td>
+                <strong>ファミリーマート</strong
+                ><a
+                  href="https://www.family.co.jp/campaign/spot/2511_blackfried-d_cp.html"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>11月18日～<br />12月1日</td>
+              <td>
+                <strong>ブラック"フライ"デー</strong><br />•
+                揚げ物2個購入→ファミから<strong>10円</strong>クーポン<br />•
+                対象：ファミから醤油・塩・むね<br />•
+                ファミペイでアプリクーポン配信<br />•
+                SNSで抽選1,000円分ポイント<br /><span
+                  style="color: #86868b; font-size: 12px"
+                  >※他割引との併用不可</span
+                >
+              </td>
+              <td>ファミペイ<br />＋QR決済</td>
+              <td>揚げ物2個で<br />ファミから10円<br />クーポン進呈</td>
             </tr>
             <tr>
-              <td><strong>ピザハット</strong><a href="https://www.pizzahut.jp/topic/black/friday" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>11月12日～<br>11月30日</td>
-              <td><strong>ブラックフライデー</strong><br>• 新規会員：マルゲリータM <strong>590円</strong>（通常1,860円）<br>• スライス（ポイント）<strong>5倍</strong><br>• 2枚目無料（持帰）／半額（配達）<br><span style="color: #86868b; font-size: 12px;">※公式サイト・アプリ限定</span></td>
+              <td>
+                <strong>ピザハット</strong
+                ><a
+                  href="https://www.pizzahut.jp/topic/black/friday"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>11月12日～<br />11月30日</td>
+              <td>
+                <strong>ブラックフライデー</strong><br />•
+                新規会員：マルゲリータM
+                <strong>590円</strong>（通常1,860円）<br />•
+                スライス（ポイント）<strong>5倍</strong><br />•
+                2枚目無料（持帰）／半額（配達）<br /><span
+                  style="color: #86868b; font-size: 12px"
+                  >※公式サイト・アプリ限定</span
+                >
+              </td>
               <td>汎用高還元カード</td>
-              <td>新規会員590円<br>ポイント5倍<br>2枚目無料/半額</td>
+              <td>新規会員590円<br />ポイント5倍<br />2枚目無料/半額</td>
             </tr>
             <tr>
-              <td><strong>Heart Bread ANTIQUE<br>（ハートブレッドアンティーク）</strong><a href="https://www.heart-bread.com/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>11月20日～<br>11月30日</td>
-              <td><strong>"まっくろすぎるパン"期間限定</strong><br>• 新作「ブラックウインナーパン」（甘じょっぱい黒ウインナーパン）<br>• 人気再登場「ブラッククロワッサン」（累計10万個）<br>• 「ブラックチョコリング」等<br>• "くろ"語呂合わせ：一部商品<strong>税込¥196</strong><br>• 全国ハートブレッドアンティーク・ベンケイ全店舗＋オンライン</td>
+              <td>
+                <strong
+                  >Heart Bread ANTIQUE<br />（ハートブレッドアンティーク）</strong
+                ><a
+                  href="https://www.heart-bread.com/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>11月20日～<br />11月30日</td>
+              <td>
+                <strong>"まっくろすぎるパン"期間限定</strong><br />•
+                新作「ブラックウインナーパン」（甘じょっぱい黒ウインナーパン）<br />•
+                人気再登場「ブラッククロワッサン」（累計10万個）<br />•
+                「ブラックチョコリング」等<br />•
+                "くろ"語呂合わせ：一部商品<strong>税込¥196</strong><br />•
+                全国ハートブレッドアンティーク・ベンケイ全店舗＋オンライン
+              </td>
               <td>汎用高還元カード</td>
-              <td>限定商品<br>一部¥196<br>（語呂合わせ）</td>
+              <td>限定商品<br />一部¥196<br />（語呂合わせ）</td>
             </tr>
           </tbody>
         </table>
@@ -915,90 +2352,288 @@
         <table>
           <thead>
             <tr>
-              <th style="width: 15%;">ストア名</th>
-              <th style="width: 15%;">開催期間</th>
-              <th style="width: 30%;">セール内容</th>
-              <th style="width: 20%;">推奨決済手段</th>
-              <th style="width: 20%;">期待還元率</th>
+              <th style="width: 15%">ストア名</th>
+              <th style="width: 15%">開催期間</th>
+              <th style="width: 30%">セール内容</th>
+              <th style="width: 20%">推奨決済手段</th>
+              <th style="width: 20%">期待還元率</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>ハンズ (HANDS)</strong><a href="https://hands.net/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>11月14日10:00～<br>11月30日</td>
-              <td><strong>「モバイル・スーツケース・バッグ」特設カテゴリ</strong><br>• ハンズネット特設ページ設置<br>• お買い得・ポイントアップ中心<br>• 高機能ブランド取扱：トラベリスト、フリクエンター、ブライテック等<br>• 静音性・サスペンション機能等の専門ブランド強み<br>※価格よりも機能性重視のセレクトショップ戦略</td>
-              <td>ハンズクラブ会員<br>＋高還元カード</td>
-              <td>ポイントアップ<br>機能性重視</td>
+              <td>
+                <strong>ハンズ (HANDS)</strong
+                ><a
+                  href="https://hands.net/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>11月14日10:00～<br />11月30日</td>
+              <td>
+                <strong>「モバイル・スーツケース・バッグ」特設カテゴリ</strong
+                ><br />• ハンズネット特設ページ設置<br />•
+                お買い得・ポイントアップ中心<br />•
+                高機能ブランド取扱：トラベリスト、フリクエンター、ブライテック等<br />•
+                静音性・サスペンション機能等の専門ブランド強み<br />※価格よりも機能性重視のセレクトショップ戦略
+              </td>
+              <td>ハンズクラブ会員<br />＋高還元カード</td>
+              <td>ポイントアップ<br />機能性重視</td>
             </tr>
             <tr>
-              <td><strong>Xiaomi (mi)</strong><a href="https://www.mi.com/jp/event/black-friday-2025/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td><strong>[事前ログイン]</strong> 11/11～20<br><strong>[セール]</strong> 11/21 12:00～12/1</td>
-              <td><strong>BLACK FRIDAY 2025</strong><br>• 対象製品139種類<strong>最大51%OFF</strong><br>• 事前ログインで<strong>最大480Miポイント</strong>付与<br>• スマホ（ライカカメラ搭載含む）、タブレット、ウェアラブル、スマート家電、TV等<br>• 公式ストア・楽天・Amazon・TikTok Shop・直営店舗</td>
+              <td>
+                <strong>Xiaomi (mi)</strong
+                ><a
+                  href="https://www.mi.com/jp/event/black-friday-2025/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>
+                <strong>[事前ログイン]</strong> 11/11～20<br /><strong
+                  >[セール]</strong
+                >
+                11/21 12:00～12/1
+              </td>
+              <td>
+                <strong>BLACK FRIDAY 2025</strong><br />• 対象製品139種類<strong
+                  >最大51%OFF</strong
+                ><br />• 事前ログインで<strong>最大480Miポイント</strong>付与<br />•
+                スマホ（ライカカメラ搭載含む）、タブレット、ウェアラブル、スマート家電、TV等<br />•
+                公式ストア・楽天・Amazon・TikTok Shop・直営店舗
+              </td>
               <td>汎用高還元カード</td>
-              <td><strong style="color: #ff9500;">最大51%OFF</strong><br>事前ログインで<br>ポイント確保推奨</td>
+              <td>
+                <strong style="color: #ff9500">最大51%OFF</strong
+                ><br />事前ログインで<br />ポイント確保推奨
+              </td>
             </tr>
             <tr>
-              <td><strong>Dyson</strong><a href="https://www.dyson.co.jp/deals" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>10月31日10時～<br>12月1日10時</td>
-              <td><strong>ブラックフライデーセール</strong><br>• <strong>最大50%OFF</strong><br>• Amazon Pay＋税込5万円以上でAmazonギフト券5,000円<br>• 一部掃除機モデル下取り1万円OFF<br>• 掃除機・ヘアケア・空調家電・ヘッドホン等<br>• 在庫なくなり次第終了</td>
-              <td>Amazon Pay<br>＋高還元カード</td>
-              <td><strong style="color: #ff9500;">最大50%OFF</strong><br>5万円以上で<br>ギフト券5,000円</td>
+              <td>
+                <strong>Dyson</strong
+                ><a
+                  href="https://www.dyson.co.jp/deals"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>10月31日10時～<br />12月1日10時</td>
+              <td>
+                <strong>ブラックフライデーセール</strong><br />•
+                <strong>最大50%OFF</strong><br />• Amazon
+                Pay＋税込5万円以上でAmazonギフト券5,000円<br />•
+                一部掃除機モデル下取り1万円OFF<br />•
+                掃除機・ヘアケア・空調家電・ヘッドホン等<br />•
+                在庫なくなり次第終了
+              </td>
+              <td>Amazon Pay<br />＋高還元カード</td>
+              <td>
+                <strong style="color: #ff9500">最大50%OFF</strong
+                ><br />5万円以上で<br />ギフト券5,000円
+              </td>
             </tr>
             <tr>
-              <td><strong>Disney Store</strong><a href="https://store.disney.co.jp/special/black-friday-sale.html" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>11月21日10時～<br>12月1日9時59分</td>
-              <td><strong>ブラックフライデーセール</strong><br>• <strong>最大40%OFF</strong><br>• 「ブラックスタイル」限定デザイン・限定カラー登場<br>• ぬいぐるみ・キーチェーン・おもちゃ・雑貨・アパレル等<br>• 公式オンライン＋全国店舗</td>
+              <td>
+                <strong>Disney Store</strong
+                ><a
+                  href="https://store.disney.co.jp/special/black-friday-sale.html"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>11月21日10時～<br />12月1日9時59分</td>
+              <td>
+                <strong>ブラックフライデーセール</strong><br />•
+                <strong>最大40%OFF</strong><br />•
+                「ブラックスタイル」限定デザイン・限定カラー登場<br />•
+                ぬいぐるみ・キーチェーン・おもちゃ・雑貨・アパレル等<br />•
+                公式オンライン＋全国店舗
+              </td>
               <td>汎用高還元カード</td>
-              <td><strong style="color: #ff9500;">最大40%OFF</strong><br>限定デザイン<br>早期売切注意</td>
+              <td>
+                <strong style="color: #ff9500">最大40%OFF</strong
+                ><br />限定デザイン<br />早期売切注意
+              </td>
             </tr>
             <tr>
-              <td><strong>GODIVA</strong><a href="https://www.godiva.co.jp/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>11月14日～<br>数量限定</td>
-              <td><strong>「2025 ブラックフライデー ハッピーバッグ」</strong><br>• A4サイズ対応ドット柄トートバッグ＋チョコ・焼き菓子詰合せ<br>• 4種類：店舗販売A/B、アウトレット限定、オンライン限定<br>• 税込¥3,780～¥6,480<br>• 全国ゴディバショップ・アウトレット・公式オンライン<br>※無くなり次第終了</td>
+              <td>
+                <strong>GODIVA</strong
+                ><a
+                  href="https://www.godiva.co.jp/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>11月14日～<br />数量限定</td>
+              <td>
+                <strong>「2025 ブラックフライデー ハッピーバッグ」</strong
+                ><br />•
+                A4サイズ対応ドット柄トートバッグ＋チョコ・焼き菓子詰合せ<br />•
+                4種類：店舗販売A/B、アウトレット限定、オンライン限定<br />•
+                税込¥3,780～¥6,480<br />•
+                全国ゴディバショップ・アウトレット・公式オンライン<br />※無くなり次第終了
+              </td>
               <td>汎用高還元カード</td>
-              <td>福袋形式<br>¥3,780～<br>数量限定</td>
+              <td>福袋形式<br />¥3,780～<br />数量限定</td>
             </tr>
             <tr>
-              <td><strong>トイザらス / ベビーザらス</strong><a href="https://www.toysrus.co.jp/ja-jp/promotions/blackfriday-toy/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td><strong>[マタニティ・ベビー]</strong><br>店舗：11/7～11/13<br>オンライン：11/6 12:00～11/13 23:59<br><br><strong>[おもちゃ・子ども用品]</strong><br>11/20 12:00～12/4 23:59</td>
-              <td><strong>【第1弾】マタニティ＆0～2歳向けベビー用品</strong><br>• ベビーカー、チャイルドシート、衣料、粉ミルク、ベビー向けおもちゃ等<br>• 限定パッケージ商品（福袋）<br><br><strong>【第2弾】おもちゃ・子ども用品</strong><br>※2週に分けて実施</td>
+              <td>
+                <strong>トイザらス / ベビーザらス</strong
+                ><a
+                  href="https://www.toysrus.co.jp/ja-jp/promotions/blackfriday-toy/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>
+                <strong>[マタニティ・ベビー]</strong
+                ><br />店舗：11/7～11/13<br />オンライン：11/6 12:00～11/13
+                23:59<br /><br /><strong>[おもちゃ・子ども用品]</strong
+                ><br />11/20 12:00～12/4 23:59
+              </td>
+              <td>
+                <strong>【第1弾】マタニティ＆0～2歳向けベビー用品</strong
+                ><br />•
+                ベビーカー、チャイルドシート、衣料、粉ミルク、ベビー向けおもちゃ等<br />•
+                限定パッケージ商品（福袋）<br /><br /><strong
+                  >【第2弾】おもちゃ・子ども用品</strong
+                ><br />※2週に分けて実施
+              </td>
               <td>汎用高還元カード</td>
-              <td>特別価格<br>＋福袋</td>
+              <td>特別価格<br />＋福袋</td>
             </tr>
             <tr>
-              <td><strong>アカチャンホンポ</strong><a href="https://www.akachan.jp/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>10月31日～11月27日<br>延長：11/28～12/4</td>
-              <td><strong>RED FRIDAY スペシャル</strong><br>• 4週間ロングセール（毎週カテゴリ変更）<br>• <strong>第3弾（11/14～20）</strong>：紙おむつSALE<br>• <strong>第4弾（11/21～27）</strong>：大型育児用品等<br>• 対象：ベビーカー・チャイルドシート・抱っこ紐・おむつ・ミルク・離乳食・ベビー服等</td>
+              <td>
+                <strong>アカチャンホンポ</strong
+                ><a
+                  href="https://www.akachan.jp/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>10月31日～11月27日<br />延長：11/28～12/4</td>
+              <td>
+                <strong>RED FRIDAY スペシャル</strong><br />•
+                4週間ロングセール（毎週カテゴリ変更）<br />•
+                <strong>第3弾（11/14～20）</strong>：紙おむつSALE<br />•
+                <strong>第4弾（11/21～27）</strong>：大型育児用品等<br />•
+                対象：ベビーカー・チャイルドシート・抱っこ紐・おむつ・ミルク・離乳食・ベビー服等
+              </td>
               <td>汎用高還元カード</td>
-              <td>週替わり特価<br>紙おむつ箱買い<br>出産準備に最適</td>
+              <td>週替わり特価<br />紙おむつ箱買い<br />出産準備に最適</td>
             </tr>
             <tr>
-              <td><strong>Microsoft Store</strong><a href="https://www.microsoft.com/ja-jp/store" target="_blank" rel="noopener" class="official-link">公式</a><br><span class="badge-warning" style="background: #ff9500; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">アメックス20%CB</span></td>
-              <td>11月19日（水）<br>11:00スタート</td>
-              <td><strong>ブラックフライデーセール</strong><br>• Surface Laptop Copilot+ PC（AI機能搭載モデル）割引<br>• Xbox Series S（1TB）：67,480円、Xbox Series S（512GB）：62,480円<br>• Xbox ワイヤレスコントローラー（Breaker特別モデル）：11,000円<br>• Microsoft 365ほかソフトウェア<br>• PC周辺機器・アクセサリー<br>※在庫終了次第終了、他キャンペーン併用不可の場合あり</td>
-              <td>アメックス<br>（オンライン限定）<br><br><span style="color: #86868b; font-size: 13px;">※150,000円利用で<br>30,000円CB<br>（～12/28）<br>事前登録必須</span></td>
-              <td>商品割引<br>＋<strong style="color: #ff9500;">アメックス20%CB</strong><br>（最大30,000円）</td>
+              <td>
+                <strong>Microsoft Store</strong
+                ><a
+                  href="https://www.microsoft.com/ja-jp/store"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                ><br /><span
+                  class="badge-warning"
+                  style="
+                    background: #ff9500;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >アメックス20%CB</span
+                >
+              </td>
+              <td>11月19日（水）<br />11:00スタート</td>
+              <td>
+                <strong>ブラックフライデーセール</strong><br />• Surface Laptop
+                Copilot+ PC（AI機能搭載モデル）割引<br />• Xbox Series
+                S（1TB）：67,480円、Xbox Series S（512GB）：62,480円<br />• Xbox
+                ワイヤレスコントローラー（Breaker特別モデル）：11,000円<br />•
+                Microsoft 365ほかソフトウェア<br />• PC周辺機器・アクセサリー<br />※在庫終了次第終了、他キャンペーン併用不可の場合あり
+              </td>
+              <td>
+                アメックス<br />（オンライン限定）<br /><br /><span
+                  style="color: #86868b; font-size: 13px"
+                  >※150,000円利用で<br />30,000円CB<br />（～12/28）<br />事前登録必須</span
+                >
+              </td>
+              <td>
+                商品割引<br />＋<strong style="color: #ff9500"
+                  >アメックス20%CB</strong
+                ><br />（最大30,000円）
+              </td>
             </tr>
             <tr>
-              <td><strong>Google ストア</strong><a href="https://store.google.com/jp/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>11月21日～<br>12月3日</td>
-              <td>• Pixel 9 Pro：32,100円引き<br>• Pixel 8 Pro：60,100円引き<br>• Pixel 10シリーズ：最大75,000円実質値引き＋15,000円分ポイント<br>• Pixel Watch・Buds等も割引対象</td>
+              <td>
+                <strong>Google ストア</strong
+                ><a
+                  href="https://store.google.com/jp/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>11月21日～<br />12月3日</td>
+              <td>
+                • Pixel 9 Pro：32,100円引き<br />• Pixel 8 Pro：60,100円引き<br />•
+                Pixel 10シリーズ：最大75,000円実質値引き＋15,000円分ポイント<br />•
+                Pixel Watch・Buds等も割引対象
+              </td>
               <td>汎用高還元カード</td>
-              <td>最大75,000円値引き<br>＋15,000円分ポイント</td>
+              <td>最大75,000円値引き<br />＋15,000円分ポイント</td>
             </tr>
             <tr>
-              <td><strong>LG公式オンラインショップ</strong><a href="https://www.lg.com/jp/promotion/all/2025/black-friday/" target="_blank" rel="noopener" class="official-link">公式</a></td>
+              <td>
+                <strong>LG公式オンラインショップ</strong
+                ><a
+                  href="https://www.lg.com/jp/promotion/all/2025/black-friday/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
               <td>11月17日～</td>
-              <td><strong>BLACK FRIDAY</strong><br>• LG公式オンライン限定セール<br>• 家電製品特別価格</td>
+              <td>
+                <strong>BLACK FRIDAY</strong><br />•
+                LG公式オンライン限定セール<br />• 家電製品特別価格
+              </td>
               <td>汎用高還元カード</td>
               <td>商品割引中心</td>
             </tr>
             <tr>
-              <td><strong>Jackery</strong><a href="https://www.jackery.jp/" target="_blank" rel="noopener" class="official-link">公式</a></td>
+              <td>
+                <strong>Jackery</strong
+                ><a
+                  href="https://www.jackery.jp/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
               <td>11月中旬～</td>
-              <td><strong>Amazon限定セール</strong><br>• ポータブル電源最大55%OFF<br>• Amazon ブラックフライデー連動</td>
-              <td>d払い（金・土）<br>JCBカード</td>
-              <td>最大55%OFF<br>＋d曜日還元</td>
+              <td>
+                <strong>Amazon限定セール</strong><br />•
+                ポータブル電源最大55%OFF<br />• Amazon ブラックフライデー連動
+              </td>
+              <td>d払い（金・土）<br />JCBカード</td>
+              <td>最大55%OFF<br />＋d曜日還元</td>
             </tr>
           </tbody>
         </table>
@@ -1009,41 +2644,159 @@
         <table>
           <thead>
             <tr>
-              <th style="width: 15%;">百貨店名</th>
-              <th style="width: 15%;">開催期間</th>
-              <th style="width: 30%;">セール内容・主要戦略</th>
-              <th style="width: 20%;">推奨決済手段</th>
-              <th style="width: 20%;">戦略タイプ</th>
+              <th style="width: 15%">百貨店名</th>
+              <th style="width: 15%">開催期間</th>
+              <th style="width: 30%">セール内容・主要戦略</th>
+              <th style="width: 20%">推奨決済手段</th>
+              <th style="width: 20%">戦略タイプ</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>そごう・西武</strong><a href="https://www.sogo-seibu.jp/yokohama/topics/black-friday-2025" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td>11月21日～<br>11月30日</td>
-              <td><strong>「ブラックフライデープレミアム」</strong><br>• 10～20%OFF優待<br>• ポイントフェア：+2%<br>• GWP(Gift With Purchase)：「シェ・シバタ」スイーツギフト<br><br><strong>店舗別戦略：</strong><br>• 横浜店：5,900個(美容重点)<br>• 千葉店：1,400個(全館対応)<br>• 渋谷店：500個(化粧品のみ)</td>
-              <td>クラブ・オンカード<br>ミレニアムカード<br>セゾン</td>
-              <td><span class="badge-success" style="background: #34c759; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">GWP特化</span><br>スタッキング(重ね掛け)型<br>高ロイヤリティ戦略</td>
+              <td>
+                <strong>そごう・西武</strong
+                ><a
+                  href="https://www.sogo-seibu.jp/yokohama/topics/black-friday-2025"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>11月21日～<br />11月30日</td>
+              <td>
+                <strong>「ブラックフライデープレミアム」</strong><br />•
+                10～20%OFF優待<br />• ポイントフェア：+2%<br />• GWP(Gift With
+                Purchase)：「シェ・シバタ」スイーツギフト<br /><br /><strong
+                  >店舗別戦略：</strong
+                ><br />• 横浜店：5,900個(美容重点)<br />•
+                千葉店：1,400個(全館対応)<br />• 渋谷店：500個(化粧品のみ)
+              </td>
+              <td>クラブ・オンカード<br />ミレニアムカード<br />セゾン</td>
+              <td>
+                <span
+                  class="badge-success"
+                  style="
+                    background: #34c759;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >GWP特化</span
+                ><br />スタッキング(重ね掛け)型<br />高ロイヤリティ戦略
+              </td>
             </tr>
             <tr>
-              <td><strong>高島屋</strong><a href="https://www.takashimaya.co.jp/shopping/special/blackfriday/" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td><strong>[先行]</strong> 11/17 10:00～19<br>（アプリ会員限定）<br><strong>[本番]</strong> 11/19 10:00～29</td>
-              <td><strong>ブラックフライデー2025</strong><br>• 約<strong>1,400点</strong>の特別提供品<br>• 先行：1万円以上で<strong>1,000円OFFクーポン</strong><br>• 「7」均一価格：7,777円/77,777円/777,777円<br>• 黒毛和牛3頭まるごと買付、ワケあり品特集<br>• ランドセル均一価格、体験・コト消費企画<br>• 送料無料クーポンあり</td>
+              <td>
+                <strong>高島屋</strong
+                ><a
+                  href="https://www.takashimaya.co.jp/shopping/special/blackfriday/"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>
+                <strong>[先行]</strong> 11/17 10:00～19<br />（アプリ会員限定）<br /><strong
+                  >[本番]</strong
+                >
+                11/19 10:00～29
+              </td>
+              <td>
+                <strong>ブラックフライデー2025</strong><br />•
+                約<strong>1,400点</strong>の特別提供品<br />•
+                先行：1万円以上で<strong>1,000円OFFクーポン</strong><br />•
+                「7」均一価格：7,777円/77,777円/777,777円<br />•
+                黒毛和牛3頭まるごと買付、ワケあり品特集<br />•
+                ランドセル均一価格、体験・コト消費企画<br />•
+                送料無料クーポンあり
+              </td>
               <td>タカシマヤカード</td>
-              <td>約1,400点<br>先行1,000円OFF<br>「7」均一価格</td>
+              <td>約1,400点<br />先行1,000円OFF<br />「7」均一価格</td>
             </tr>
             <tr>
-              <td><strong>大丸松坂屋</strong><a href="https://depaco.daimaru-matsuzakaya.jp/shop/pages/blackfriday.aspx" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td><strong>[DEPACO EC]</strong><br>11月14日～<br><br><strong>[全体]</strong><br>11月中旬～<br><span style="color: #86868b; font-size: 13px;">(詳細未発表)</span></td>
-              <td><strong>DEPACO(化粧品EC)超早期開始</strong><br>• 福袋販売<br>• クーポン配布<br>• ポイントアップキャンペーン<br><br><strong>戦略：</strong>コスメ特化チャネルで先行獲得</td>
-              <td>大丸松坂屋カード<br>(JFRカード)</td>
-              <td><span class="badge-warning" style="background: #ff9500; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">フライング戦略</span><br>DEPACO EC先行<br>コスメ専門化</td>
+              <td>
+                <strong>大丸松坂屋</strong
+                ><a
+                  href="https://depaco.daimaru-matsuzakaya.jp/shop/pages/blackfriday.aspx"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>
+                <strong>[DEPACO EC]</strong><br />11月14日～<br /><br /><strong
+                  >[全体]</strong
+                ><br />11月中旬～<br /><span
+                  style="color: #86868b; font-size: 13px"
+                  >(詳細未発表)</span
+                >
+              </td>
+              <td>
+                <strong>DEPACO(化粧品EC)超早期開始</strong><br />• 福袋販売<br />•
+                クーポン配布<br />• ポイントアップキャンペーン<br /><br /><strong
+                  >戦略：</strong
+                >コスメ特化チャネルで先行獲得
+              </td>
+              <td>大丸松坂屋カード<br />(JFRカード)</td>
+              <td>
+                <span
+                  class="badge-warning"
+                  style="
+                    background: #ff9500;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >フライング戦略</span
+                ><br />DEPACO EC先行<br />コスメ専門化
+              </td>
             </tr>
             <tr>
-              <td><strong>三越伊勢丹</strong><a href="https://www.mistore.jp/shopping/feature/shops_f3/blackfriday_sp" target="_blank" rel="noopener" class="official-link">公式</a></td>
-              <td><strong>[オンライン]</strong> 11/5～11/29<br><strong>[全体]</strong> 11月中旬～<br><span style="color: #86868b; font-size: 13px;">(詳細未発表)</span></td>
-              <td><strong>オンライン早期開催：</strong>限定品先行販売<br><br><strong>エポスカード新規会員獲得キャンペーン</strong><br>• エポスカード入会で1,000ポイント<br><br><strong>戦略：</strong>EC先行＋新規カード会員獲得の2軸戦略</td>
-              <td>エムアイカード<br><strong>新規：</strong>エポスカード</td>
-              <td><span class="badge" style="background: #0071e3; color: white; padding: 2px 8px; border-radius: 8px; font-size: 11px;">会員獲得型</span><br>LTV最大化戦略<br>決済囲い込み</td>
+              <td>
+                <strong>三越伊勢丹</strong
+                ><a
+                  href="https://www.mistore.jp/shopping/feature/shops_f3/blackfriday_sp"
+                  target="_blank"
+                  rel="noopener"
+                  class="official-link"
+                  >公式</a
+                >
+              </td>
+              <td>
+                <strong>[オンライン]</strong> 11/5～11/29<br /><strong
+                  >[全体]</strong
+                >
+                11月中旬～<br /><span style="color: #86868b; font-size: 13px"
+                  >(詳細未発表)</span
+                >
+              </td>
+              <td>
+                <strong>オンライン早期開催：</strong
+                >限定品先行販売<br /><br /><strong
+                  >エポスカード新規会員獲得キャンペーン</strong
+                ><br />• エポスカード入会で1,000ポイント<br /><br /><strong
+                  >戦略：</strong
+                >EC先行＋新規カード会員獲得の2軸戦略
+              </td>
+              <td>エムアイカード<br /><strong>新規：</strong>エポスカード</td>
+              <td>
+                <span
+                  class="badge"
+                  style="
+                    background: #0071e3;
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 8px;
+                    font-size: 11px;
+                  "
+                  >会員獲得型</span
+                ><br />LTV最大化戦略<br />決済囲い込み
+              </td>
             </tr>
           </tbody>
         </table>
@@ -1054,29 +2807,40 @@
         <table>
           <thead>
             <tr>
-              <th style="width: 15%;">フェーズ</th>
-              <th style="width: 15%;">実施日</th>
-              <th style="width: 40%;">アクション</th>
-              <th style="width: 30%;">推奨決済手段</th>
+              <th style="width: 15%">フェーズ</th>
+              <th style="width: 15%">実施日</th>
+              <th style="width: 40%">アクション</th>
+              <th style="width: 30%">推奨決済手段</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><strong>旅行・高額品</strong></td>
-              <td><strong style="color: #ff9500;">11月19日（水）・20日（木）</strong></td>
               <td>
-                <strong style="color: #ff9500;">【Xデー】国内旅行予約の最重要日</strong><br>
-                • <strong>11/19（水）10:00</strong>：楽天トラベルBFセール開始<br>
-                • <strong>11/19（水）</strong>：一休.com「ポイント10倍デー」<br>
-                • <strong>11/20（木）12:00</strong>：Yahoo!トラベル「ヤフーパック」正午開始<br>
+                <strong style="color: #ff9500"
+                  >11月19日（水）・20日（木）</strong
+                >
+              </td>
+              <td>
+                <strong style="color: #ff9500"
+                  >【Xデー】国内旅行予約の最重要日</strong
+                ><br />
+                •
+                <strong>11/19（水）10:00</strong
+                >：楽天トラベルBFセール開始<br />
+                •
+                <strong>11/19（水）</strong>：一休.com「ポイント10倍デー」<br />
+                •
+                <strong>11/20（木）12:00</strong
+                >：Yahoo!トラベル「ヤフーパック」正午開始<br />
                 • <strong>11/20（木）20:00</strong>：楽天市場BFセール開始
               </td>
               <td>
-                <strong>楽天カード</strong><br>
-                （楽天トラベル・楽天市場）<br><br>
-                <strong>PayPayカード</strong><br>
-                （Yahoo!トラベル）<br><br>
-                <strong>アメックスプロパー</strong><br>
+                <strong>楽天カード</strong><br />
+                （楽天トラベル・楽天市場）<br /><br />
+                <strong>PayPayカード</strong><br />
+                （Yahoo!トラベル）<br /><br />
+                <strong>アメックスプロパー</strong><br />
                 （一休.com：3%還元）
               </td>
             </tr>
@@ -1084,7 +2848,7 @@
               <td><strong>第1次 物販</strong></td>
               <td>11月20日～24日</td>
               <td>
-                <strong>11/20（木）「5と0のつく日」</strong><br>
+                <strong>11/20（木）「5と0のつく日」</strong><br />
                 楽天市場での買い物開始。ショップ買い回り＋SPU活用
               </td>
               <td><strong>楽天カード</strong></td>
@@ -1093,33 +2857,36 @@
               <td><strong>第2次 物販</strong></td>
               <td>11月25日～28日</td>
               <td>
-                <strong>11/25（火）</strong><br>
-                • Yahoo!ショッピング セール開始<br>
-                • 楽天市場「5と0のつく日」<br>
-                • 両者を価格・還元率で徹底比較<br><br>
-                <strong>戦略：</strong>Yahoo!経済圏ユーザーはPayPayに集中、楽天経済圏ユーザーは楽天に集中
+                <strong>11/25（火）</strong><br />
+                • Yahoo!ショッピング セール開始<br />
+                • 楽天市場「5と0のつく日」<br />
+                • 両者を価格・還元率で徹底比較<br /><br />
+                <strong>戦略：</strong
+                >Yahoo!経済圏ユーザーはPayPayに集中、楽天経済圏ユーザーは楽天に集中
               </td>
               <td>
-                <strong>PayPayカード</strong>（Yahoo!）<br>
+                <strong>PayPayカード</strong>（Yahoo!）<br />
                 <strong>楽天カード</strong>（楽天）
               </td>
             </tr>
             <tr>
               <td><strong>最終 物販</strong></td>
-              <td>11月21日～（先行）<br>11月24日～（本番）</td>
+              <td>11月21日～（先行）<br />11月24日～（本番）</td>
               <td>
-                <strong>Amazonセール開始</strong><br>
-                • <strong>11/21（先行セール）</strong>：早期割引商品<br>
-                • <strong>11/24 0時（本番セール）</strong>：全カテゴリ最大級セール開始<br>
-                • 楽天・Yahoo!で買い逃したものを購入<br>
-                • Kindle、Echoデバイス等のAmazon独占商品<br>
+                <strong>Amazonセール開始</strong><br />
+                • <strong>11/21（先行セール）</strong>：早期割引商品<br />
+                •
+                <strong>11/24 0時（本番セール）</strong
+                >：全カテゴリ最大級セール開始<br />
+                • 楽天・Yahoo!で買い逃したものを購入<br />
+                • Kindle、Echoデバイス等のAmazon独占商品<br />
                 • 金・土曜はd払いの「d曜日」キャンペーン狙い
               </td>
               <td>
-                <strong>Amazon Mastercard</strong><br>
-                （最大4.5%還元）<br><br>
-                <strong>d払い</strong>（金・土曜＋3%）<br><br>
-                <strong>アメックスプロパー</strong><br>
+                <strong>Amazon Mastercard</strong><br />
+                （最大4.5%還元）<br /><br />
+                <strong>d払い</strong>（金・土曜＋3%）<br /><br />
+                <strong>アメックスプロパー</strong><br />
                 （3%還元対象店）
               </td>
             </tr>
@@ -1129,18 +2896,73 @@
     </main>
 
     <!-- 重要なお知らせ -->
-    <section style="background-color: #fff4e6; border-left: 6px solid #ff9500; margin: 40px 24px; padding: 32px; border-radius: 12px;">
+    <section
+      style="
+        background-color: #fff4e6;
+        border-left: 6px solid #ff9500;
+        margin: 40px 24px;
+        padding: 32px;
+        border-radius: 12px;
+      "
+    >
       <div class="container">
-        <h2 style="color: #ff9500; font-size: 20px; font-weight: 700; margin-bottom: 20px;">⚠️ 重要なお知らせ</h2>
-        <div style="background-color: #ffffff; padding: 24px; border-radius: 12px; border: 2px solid #ff9500;">
-          <p style="font-size: 14px; line-height: 1.8; color: #1d1d1f; margin-bottom: 16px;">
+        <h2
+          style="
+            color: #ff9500;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+          "
+        >
+          ⚠️ 重要なお知らせ
+        </h2>
+        <div
+          style="
+            background-color: #ffffff;
+            padding: 24px;
+            border-radius: 12px;
+            border: 2px solid #ff9500;
+          "
+        >
+          <p
+            style="
+              font-size: 14px;
+              line-height: 1.8;
+              color: #1d1d1f;
+              margin-bottom: 16px;
+            "
+          >
             このサイトは速報まとめとして実験的に公開しています。
           </p>
-          <p style="font-size: 14px; line-height: 1.8; color: #1d1d1f; margin-bottom: 16px;">
+          <p
+            style="
+              font-size: 14px;
+              line-height: 1.8;
+              color: #1d1d1f;
+              margin-bottom: 16px;
+            "
+          >
             情報の正確性については最大限の注意を払っておりますが、間違いや不正確な情報が含まれる可能性があります。ご利用の際は、必ず公式情報をご確認いただき、ご了承の上でご活用ください。
           </p>
-          <p style="font-size: 14px; line-height: 1.8; color: #1d1d1f; margin-bottom: 0;">
-            ご意見、ご要望、誤りのご指摘などがございましたら、<a href="https://www.instagram.com/ino_moneycoach/" target="_blank" rel="noopener noreferrer" style="color: #0071e3; text-decoration: underline; font-weight: 600;">InstagramのDM</a>でお待ちしております。
+          <p
+            style="
+              font-size: 14px;
+              line-height: 1.8;
+              color: #1d1d1f;
+              margin-bottom: 0;
+            "
+          >
+            ご意見、ご要望、誤りのご指摘などがございましたら、<a
+              href="https://www.instagram.com/ino_moneycoach/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="
+                color: #0071e3;
+                text-decoration: underline;
+                font-weight: 600;
+              "
+              >InstagramのDM</a
+            >でお待ちしております。
           </p>
         </div>
       </div>
@@ -1148,19 +2970,32 @@
 
     <footer>
       <div class="container">
-        <p>
-          ブラックフライデー2025 セール一覧＆おすすめ決済カード完全ガイド
+        <p>ブラックフライデー2025 セール一覧＆おすすめ決済カード完全ガイド</p>
+        <p
+          style="
+            margin-top: 12px;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.5);
+          "
+        >
+          #PR
         </p>
-        <p style="margin-top: 12px; font-size: 11px; color: rgba(255, 255, 255, 0.5);">#PR</p>
-        <p style="margin-top: 16px; font-size: 11px; color: rgba(255, 255, 255, 0.6);">
-          © 2025 @ino-moneycoach. この内容は公開情報に基づきAIを活用して作成されたまとめです。
+        <p
+          style="
+            margin-top: 16px;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.6);
+          "
+        >
+          © 2025 @ino-moneycoach.
+          この内容は公開情報に基づきAIを活用して作成されたまとめです。
         </p>
       </div>
     </footer>
 
     <script>
       // Search functionality
-      document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('DOMContentLoaded', function () {
         const searchInput = document.getElementById('searchInput');
         const searchResults = document.getElementById('searchResults');
         const searchClear = document.getElementById('searchClear');
@@ -1172,7 +3007,7 @@
           searchInput.focus();
         }
 
-        searchInput.addEventListener('input', function(e) {
+        searchInput.addEventListener('input', function (e) {
           const searchTerm = e.target.value.toLowerCase().trim();
 
           // Toggle clear button visibility
@@ -1180,13 +3015,13 @@
 
           if (searchTerm === '') {
             // Reset all rows
-            tables.forEach(table => {
+            tables.forEach((table) => {
               const rows = table.querySelectorAll('tr');
-              rows.forEach(row => {
+              rows.forEach((row) => {
                 row.classList.remove('hidden');
                 // Remove highlights properly
                 const highlights = row.querySelectorAll('mark.highlight');
-                highlights.forEach(mark => {
+                highlights.forEach((mark) => {
                   const textNode = document.createTextNode(mark.textContent);
                   mark.parentNode.replaceChild(textNode, mark);
                 });
@@ -1200,10 +3035,10 @@
 
           let totalMatches = 0;
 
-          tables.forEach(table => {
+          tables.forEach((table) => {
             const rows = table.querySelectorAll('tr');
 
-            rows.forEach(row => {
+            rows.forEach((row) => {
               // Get original text without HTML tags for searching
               const textContent = row.textContent.toLowerCase();
 
@@ -1213,10 +3048,11 @@
 
                 // Highlight matching text in text nodes only
                 const cells = row.querySelectorAll('td');
-                cells.forEach(cell => {
+                cells.forEach((cell) => {
                   // Remove existing highlights first
-                  const existingHighlights = cell.querySelectorAll('mark.highlight');
-                  existingHighlights.forEach(mark => {
+                  const existingHighlights =
+                    cell.querySelectorAll('mark.highlight');
+                  existingHighlights.forEach((mark) => {
                     const textNode = document.createTextNode(mark.textContent);
                     mark.parentNode.replaceChild(textNode, mark);
                   });
@@ -1224,22 +3060,34 @@
                   cell.normalize();
 
                   // Highlight text nodes only (not HTML attributes)
-                  const walker = document.createTreeWalker(cell, NodeFilter.SHOW_TEXT, null, false);
+                  const walker = document.createTreeWalker(
+                    cell,
+                    NodeFilter.SHOW_TEXT,
+                    null,
+                    false
+                  );
                   const textNodes = [];
                   let node;
-                  while (node = walker.nextNode()) {
+                  while ((node = walker.nextNode())) {
                     textNodes.push(node);
                   }
 
-                  const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-                  textNodes.forEach(textNode => {
+                  const regex = new RegExp(
+                    `(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`,
+                    'gi'
+                  );
+                  textNodes.forEach((textNode) => {
                     const text = textNode.textContent;
                     if (regex.test(text)) {
                       const fragment = document.createDocumentFragment();
                       let lastIndex = 0;
                       text.replace(regex, (match, p1, offset) => {
                         if (offset > lastIndex) {
-                          fragment.appendChild(document.createTextNode(text.slice(lastIndex, offset)));
+                          fragment.appendChild(
+                            document.createTextNode(
+                              text.slice(lastIndex, offset)
+                            )
+                          );
                         }
                         const mark = document.createElement('mark');
                         mark.className = 'highlight';
@@ -1249,7 +3097,9 @@
                         return match;
                       });
                       if (lastIndex < text.length) {
-                        fragment.appendChild(document.createTextNode(text.slice(lastIndex)));
+                        fragment.appendChild(
+                          document.createTextNode(text.slice(lastIndex))
+                        );
                       }
                       textNode.parentNode.replaceChild(fragment, textNode);
                     }
@@ -1276,13 +3126,27 @@
         searchClear.addEventListener('click', clearSearch);
 
         // Clear search on Escape key
-        searchInput.addEventListener('keydown', function(e) {
+        searchInput.addEventListener('keydown', function (e) {
           if (e.key === 'Escape') {
             clearSearch();
             searchInput.blur();
           }
         });
       });
+
+      // LYP情報の折りたたみ/展開
+      function toggleLYPInfo(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('span');
+        
+        if (content.style.display === 'none' || content.style.display === '') {
+          content.style.display = 'block';
+          arrow.textContent = '▲ 詳細を閉じる';
+        } else {
+          content.style.display = 'none';
+          arrow.textContent = '▼ 詳細を見る';
+        }
+      }
     </script>
   </body>
 </html>
