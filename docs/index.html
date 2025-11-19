@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>いのマネーコーチ - クレジットカード・マイル情報</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #0071E3;
+            --light-blue: #64B5F6;
+            --sky-blue: #E3F2FD;
+            --ocean-blue: #1E88E5;
+            --success-green: #4CAF50;
+            --accent-orange: #FF9800;
+            --text-primary: #1D1D1F;
+            --text-secondary: #6E6E73;
+            --text-light: #86868B;
+            --background: #F5F9FF;
+            --surface: #FFFFFF;
+            --border-light: #E8F1FF;
+            --border-medium: #C5D9F2;
+            --shadow-subtle: 0 2px 12px rgba(0, 113, 227, 0.08);
+            --shadow-medium: 0 4px 20px rgba(0, 113, 227, 0.12);
+            --shadow-strong: 0 8px 32px rgba(0, 113, 227, 0.16);
+            --radius: 20px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Display', 'Segoe UI', sans-serif;
+            background: linear-gradient(180deg, #E3F2FD 0%, #FFFFFF 100%);
+            min-height: 100vh;
+            padding: 24px;
+            color: var(--text-primary);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 32px;
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-medium);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue) 0%, var(--light-blue) 50%, var(--ocean-blue) 100%);
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--ocean-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 22px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-medium);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .card-header {
+            padding: 24px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--ocean-blue) 100%);
+            color: white;
+            position: relative;
+        }
+
+        .card-header h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .card-header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .card-body {
+            padding: 24px;
+        }
+
+        .card-description {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .card-features {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .card-features li {
+            padding: 8px 0;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-features li::before {
+            content: '✓';
+            color: var(--success-green);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .card-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--ocean-blue) 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 100%;
+        }
+
+        .card-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 113, 227, 0.3);
+        }
+
+        .featured-card {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #FFF8E1 0%, #FFFEF7 100%);
+            border: 2px solid var(--accent-orange);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF9500 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 32px;
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-subtle);
+            margin-top: 40px;
+        }
+
+        .footer p {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        /* モバイル対応 */
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .subtitle {
+                font-size: 18px;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-card {
+                grid-column: 1;
+            }
+
+            .card-header h2 {
+                font-size: 20px;
+            }
+        }
+
+        /* アニメーション */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>いのマネーコーチ</h1>
+            <p class="subtitle">クレジットカード・マイル・ポイント情報の総合サイト</p>
+        </div>
+
+        <div class="content-grid">
+            <!-- 特集カード -->
+            <div class="card featured-card">
+                <div class="featured-badge">🔥 新着</div>
+                <div class="card-header">
+                    <h2>プレミアムカード特典比較表</h2>
+                    <p>ANAアメックスゴールド vs アメックスゴールドプリファード</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        最大10万ポイント以上の特典を分かりやすく比較。期間限定キャンペーン情報も含む詳細な比較表です。
+                    </p>
+                    <ul class="card-features">
+                        <li>最大102,000マイル vs 100,000ポイント比較</li>
+                        <li>期間限定キャンペーン情報</li>
+                        <li>レスポンシブデザイン対応</li>
+                        <li>アニメーション効果付き</li>
+                    </ul>
+                    <a href="credit_card_comparison/credit_card_comparison.html" class="card-link">
+                        比較表を見る →
+                    </a>
+                </div>
+            </div>
+
+            <!-- その他のカード -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>アメックス特典改定表</h2>
+                    <p>2025年10月版</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        アメックスカードの最新特典改定情報をまとめた表です。
+                    </p>
+                    <ul class="card-features">
+                        <li>最新の特典変更情報</li>
+                        <li>HTML版とMarkdown版</li>
+                        <li>2025年10月時点の情報</li>
+                    </ul>
+                    <a href="アメックス特典改定表_2025年10月.html" class="card-link">
+                        改定表を見る →
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2>クレジットカード年会費比較</h2>
+                    <p>2025年版</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        主要クレジットカードの年会費改定情報を比較した表です。
+                    </p>
+                    <ul class="card-features">
+                        <li>年会費改定の比較</li>
+                        <li>2025年最新情報</li>
+                        <li>見やすい表形式</li>
+                    </ul>
+                    <a href="クレジットカード年会費改定比較表_2025年.html" class="card-link">
+                        比較表を見る →
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2>進行中のキャンペーン</h2>
+                    <p>2025年10月</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        現在進行中のクレジットカード・マイル関連キャンペーン情報です。
+                    </p>
+                    <ul class="card-features">
+                        <li>期間限定キャンペーン</li>
+                        <li>最新の特典情報</li>
+                        <li>2025年10月時点</li>
+                    </ul>
+                    <a href="進行中のキャンペーン_2025年10月.html" class="card-link">
+                        キャンペーンを見る →
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 いのマネーコーチ - クレジットカード・マイル情報の総合サイト</p>
+            <p style="margin-top: 8px; font-size: 14px; opacity: 0.8;">
+                All rights reserved. | このサイトの情報は参考目的であり、最新の情報は各カード会社の公式サイトでご確認ください。
+            </p>
+        </div>
+    </div>
+</body>
+</html>

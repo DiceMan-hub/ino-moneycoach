@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>クレジットカード特典比較表</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #0071E3;
+            --light-blue: #64B5F6;
+            --sky-blue: #E3F2FD;
+            --ocean-blue: #1E88E5;
+            --ana-blue: #003A70;
+            --amex-blue: #006FCF;
+            --success-green: #4CAF50;
+            --accent-orange: #FF9800;
+            --text-primary: #1D1D1F;
+            --text-secondary: #6E6E73;
+            --text-light: #86868B;
+            --background: #F5F9FF;
+            --surface: #FFFFFF;
+            --border-light: #E8F1FF;
+            --border-medium: #C5D9F2;
+            --shadow-subtle: 0 2px 12px rgba(0, 113, 227, 0.08);
+            --shadow-medium: 0 4px 20px rgba(0, 113, 227, 0.12);
+            --shadow-strong: 0 8px 32px rgba(0, 113, 227, 0.16);
+            --radius: 20px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Display', 'Segoe UI', sans-serif;
+            background: linear-gradient(180deg, #E3F2FD 0%, #FFFFFF 100%);
+            min-height: 100vh;
+            padding: 24px;
+            color: var(--text-primary);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* キャンペーンバナー */
+        .campaign-banner {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF9500 100%);
+            border-radius: 16px;
+            padding: 16px 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 24px rgba(255, 107, 107, 0.25);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        .banner-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            color: white;
+            text-align: center;
+        }
+
+        .banner-icon {
+            font-size: 24px;
+            animation: flame 1s infinite alternate;
+        }
+
+        .banner-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .banner-text strong {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .banner-text span {
+            font-size: 14px;
+            opacity: 0.95;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes flame {
+            from { transform: scale(1) rotate(0deg); }
+            to { transform: scale(1.1) rotate(5deg); }
+        }
+
+        /* ヘッダー */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 32px;
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-medium);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue) 0%, var(--light-blue) 50%, var(--ocean-blue) 100%);
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--ocean-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 22px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* メイン比較テーブル */
+        .comparison-container {
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-strong);
+            overflow: hidden;
+        }
+
+        .comparison-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .header-cell {
+            padding: 24px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header-cell:first-child {
+            background: linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .vs-badge {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--ocean-blue) 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .header-cell.ana {
+            background: linear-gradient(135deg, var(--ana-blue) 0%, #0050A0 100%);
+            color: white;
+        }
+
+        .header-cell.amex {
+            background: linear-gradient(135deg, var(--amex-blue) 0%, #0090FF 100%);
+            color: white;
+        }
+
+        .card-title {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        .card-max-benefit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .benefit-label {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .benefit-value {
+            font-size: 52px;
+            font-weight: 700;
+            line-height: 1;
+            color: #FFE066;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .benefit-unit {
+            font-size: 18px;
+            opacity: 0.95;
+        }
+
+        .campaign-period {
+            margin-top: 12px;
+        }
+
+        .campaign-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF9500 100%);
+            color: white;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* 比較内容 */
+        .comparison-body {
+            padding: 0;
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            border-bottom: 1px solid var(--border-light);
+            transition: all 0.2s ease;
+        }
+
+        .comparison-row:hover {
+            background: #FAFBFD;
+        }
+
+        .comparison-row.section-header {
+            background: linear-gradient(135deg, #F0F8FF 0%, #F8FBFF 100%);
+            border-bottom: 2px solid var(--border-medium);
+        }
+
+        .comparison-row.section-header .row-label {
+            font-weight: 700;
+            color: var(--ocean-blue);
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .row-label {
+            padding: 24px;
+            background: #F8F9FA;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-primary);
+            font-size: 18px;
+        }
+
+        .row-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--sky-blue);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .row-cell {
+            padding: 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .point-display {
+            font-size: 30px;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .point-display.highlight {
+            font-size: 34px;
+            color: var(--accent-orange);
+        }
+
+        .point-display.none {
+            font-size: 24px;
+            color: var(--text-light);
+        }
+
+        .condition-info {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .condition-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            background: var(--sky-blue);
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--ocean-blue);
+            margin-bottom: 6px;
+        }
+
+        .condition-amount {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 17px;
+        }
+
+        /* 特別行 */
+        .comparison-row.special {
+            background: linear-gradient(135deg, #FFF8E1 0%, #FFFEF7 100%);
+        }
+
+        .comparison-row.special .row-label {
+            background: #FFF3E0;
+        }
+
+        /* 合計行 */
+        .comparison-row.total {
+            background: linear-gradient(135deg, #E8F4FD 0%, #F5F9FF 100%);
+            border-bottom: none;
+            border-top: 3px solid var(--primary-blue);
+        }
+
+        .comparison-row.total .row-label {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--ocean-blue) 100%);
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .comparison-row.total .row-icon {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .total-points {
+            font-size: 42px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--ocean-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .total-unit {
+            font-size: 18px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* 注記セクション */
+        .notes-section {
+            margin-top: 32px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .note-card {
+            padding: 28px;
+            background: var(--surface);
+            border-radius: 16px;
+            box-shadow: var(--shadow-subtle);
+            border-left: 4px solid;
+        }
+
+        .note-card.ana {
+            border-left-color: var(--ana-blue);
+        }
+
+        .note-card.amex {
+            border-left-color: var(--amex-blue);
+        }
+
+        .note-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .note-text {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .note-highlight {
+            display: inline-block;
+            padding: 8px 16px;
+            background: var(--sky-blue);
+            border-radius: 6px;
+            font-weight: 600;
+            color: var(--ocean-blue);
+            margin-top: 16px;
+            font-size: 15px;
+        }
+
+        .campaign-alert {
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+            border-left: 4px solid #FF9500;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            color: #E65100;
+        }
+
+        .alert-icon {
+            font-size: 20px;
+            animation: shake 2s infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        /* モバイル対応 */
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .subtitle {
+                font-size: 18px;
+            }
+
+            .comparison-header {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .header-cell:first-child {
+                display: none;
+            }
+
+            .card-title {
+                font-size: 22px;
+            }
+
+            .benefit-value {
+                font-size: 42px;
+            }
+
+            .comparison-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .comparison-row.section-header {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-row.section-header .row-label {
+                grid-column: 1;
+                text-align: center;
+                justify-content: center;
+                font-size: 18px;
+            }
+
+            .row-label {
+                padding: 18px;
+                font-size: 16px;
+                background: linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%);
+                border-bottom: 1px solid var(--border-light);
+            }
+
+            .row-cell {
+                padding: 18px;
+                border-bottom: 1px solid var(--border-light);
+            }
+
+            .row-cell::before {
+                content: attr(data-label);
+                font-size: 14px;
+                color: var(--text-secondary);
+                font-weight: 500;
+                margin-bottom: 10px;
+            }
+
+            .point-display {
+                font-size: 26px;
+            }
+
+            .point-display.highlight {
+                font-size: 30px;
+            }
+
+            .total-points {
+                font-size: 36px;
+            }
+
+            .condition-info {
+                font-size: 15px;
+            }
+
+            .condition-amount {
+                font-size: 16px;
+            }
+
+            .note-title {
+                font-size: 20px;
+            }
+
+            .note-text {
+                font-size: 15px;
+            }
+
+            .notes-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* アニメーション */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .comparison-container {
+            animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .note-card {
+            animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation-delay: 0.2s;
+            opacity: 0;
+        }
+
+        .note-card:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- キャンペーン告知バナー -->
+        <div class="campaign-banner">
+            <div class="banner-content">
+                <span class="banner-icon">🔥</span>
+                <div class="banner-text">
+                    <strong>期間限定キャンペーン実施中！</strong>
+                    <span>ANAアメックスゴールド最大102,000マイル相当（2025年11月5日申込まで）/ アメックスゴールドプリファード紹介で最大100,000ポイント</span>
+                </div>
+                <span class="banner-icon">🔥</span>
+            </div>
+        </div>
+
+        <div class="header">
+            <h1>プレミアムカード特典比較表</h1>
+            <p class="subtitle">最大10万ポイント以上の特典を分かりやすく左右で比較</p>
+        </div>
+
+        <div class="comparison-container">
+            <!-- ヘッダー部分 -->
+            <div class="comparison-header">
+                <div class="header-cell">
+                    <div class="vs-badge">VS</div>
+                </div>
+                <div class="header-cell ana">
+                    <div class="card-title">ANAアメックスゴールド</div>
+                    <div class="card-max-benefit">
+                        <span class="benefit-label">最大獲得</span>
+                        <span class="benefit-value">102,000</span>
+                        <span class="benefit-unit">マイル相当</span>
+                    </div>
+                    <div class="campaign-period">
+                        <span class="campaign-badge">🔥 2025年11月5日まで</span>
+                    </div>
+                </div>
+                <div class="header-cell amex">
+                    <div class="card-title">アメックスゴールドプリファード</div>
+                    <div class="card-max-benefit">
+                        <span class="benefit-label">最大獲得</span>
+                        <span class="benefit-value">100,000</span>
+                        <span class="benefit-unit">ポイント</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 比較内容 -->
+            <div class="comparison-body">
+                <!-- 入会特典セクション -->
+                <div class="comparison-row section-header">
+                    <div class="row-label">
+                        <span>🎁 入会特典</span>
+                    </div>
+                    <div class="row-cell"></div>
+                    <div class="row-cell"></div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="row-label">
+                        <div class="row-icon">✨</div>
+                        <span>新規入会ボーナス</span>
+                    </div>
+                    <div class="row-cell" data-label="ANAアメックスゴールド">
+                        <div class="point-display">2,000マイル</div>
+                        <div class="condition-info">
+                            決済条件なし<br>
+                            <span style="color: #FF6B6B; font-weight: 600; font-size: 14px;">
+                                ※11/5申込分まで
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row-cell" data-label="アメックスゴールドプリファード">
+                        <div class="point-display none">—</div>
+                        <div class="condition-info">入会ボーナスなし</div>
+                    </div>
+                </div>
+
+                <!-- 利用達成ボーナスセクション -->
+                <div class="comparison-row section-header">
+                    <div class="row-label">
+                        <span>💳 利用達成ボーナス</span>
+                    </div>
+                    <div class="row-cell"></div>
+                    <div class="row-cell"></div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="row-label">
+                        <div class="row-icon">🎯</div>
+                        <span>初回達成ボーナス</span>
+                    </div>
+                    <div class="row-cell" data-label="ANAアメックスゴールド">
+                        <div class="point-display">16,000P</div>
+                        <div class="condition-info">
+                            <span class="condition-badge">3ヶ月以内</span><br>
+                            <span class="condition-amount">60万円利用</span><br>
+                            <span style="color: #FF6B6B; font-size: 13px; font-weight: 500;">
+                                キャンペーン特典
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row-cell" data-label="アメックスゴールドプリファード">
+                        <div class="point-display">20,000P</div>
+                        <div class="condition-info">
+                            <span class="condition-badge">3ヶ月以内</span><br>
+                            <span class="condition-amount">50万円利用</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="row-label">
+                        <div class="row-icon">📈</div>
+                        <span>第2段階ボーナス</span>
+                    </div>
+                    <div class="row-cell" data-label="ANAアメックスゴールド">
+                        <div class="point-display">+12,000P</div>
+                        <div class="condition-info">
+                            <span class="condition-badge">3ヶ月以内</span><br>
+                            <span class="condition-amount">100万円利用</span>
+                        </div>
+                    </div>
+                    <div class="row-cell" data-label="アメックスゴールドプリファード">
+                        <div class="point-display highlight">+45,000P</div>
+                        <div class="condition-info">
+                            <span class="condition-badge">6ヶ月以内</span><br>
+                            <span class="condition-amount">150万円利用</span><br>
+                            <span style="color: var(--accent-orange); font-size: 14px;">紹介限定特典</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="row-label">
+                        <div class="row-icon">🚀</div>
+                        <span>第3段階ボーナス</span>
+                    </div>
+                    <div class="row-cell" data-label="ANAアメックスゴールド">
+                        <div class="point-display">+20,000P</div>
+                        <div class="condition-info">
+                            <span class="condition-badge">3ヶ月以内</span><br>
+                            <span class="condition-amount">180万円利用</span>
+                        </div>
+                    </div>
+                    <div class="row-cell" data-label="アメックスゴールドプリファード">
+                        <div class="point-display none">—</div>
+                        <div class="condition-info">設定なし</div>
+                    </div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="row-label">
+                        <div class="row-icon">🏆</div>
+                        <span>最高段階ボーナス</span>
+                    </div>
+                    <div class="row-cell" data-label="ANAアメックスゴールド">
+                        <div class="point-display highlight">+30,000P</div>
+                        <div class="condition-info">
+                            <span class="condition-badge">3ヶ月以内</span><br>
+                            <span class="condition-amount">200万円利用</span>
+                        </div>
+                    </div>
+                    <div class="row-cell" data-label="アメックスゴールドプリファード">
+                        <div class="point-display none">—</div>
+                        <div class="condition-info">設定なし</div>
+                    </div>
+                </div>
+
+                <!-- 通常利用ポイント -->
+                <div class="comparison-row section-header">
+                    <div class="row-label">
+                        <span>💰 通常利用ポイント</span>
+                    </div>
+                    <div class="row-cell"></div>
+                    <div class="row-cell"></div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="row-label">
+                        <div class="row-icon">💎</div>
+                        <span>通常還元（1%）</span>
+                    </div>
+                    <div class="row-cell" data-label="ANAアメックスゴールド">
+                        <div class="point-display">20,000P</div>
+                        <div class="condition-info">200万円利用分</div>
+                    </div>
+                    <div class="row-cell" data-label="アメックスゴールドプリファード">
+                        <div class="point-display">15,000P</div>
+                        <div class="condition-info">150万円利用分</div>
+                    </div>
+                </div>
+
+                <!-- 追加特典 -->
+                <div class="comparison-row section-header">
+                    <div class="row-label">
+                        <span>🎊 追加特典</span>
+                    </div>
+                    <div class="row-cell"></div>
+                    <div class="row-cell"></div>
+                </div>
+
+                <div class="comparison-row special">
+                    <div class="row-label">
+                        <div class="row-icon">🤝</div>
+                        <span>紹介プログラム</span>
+                    </div>
+                    <div class="row-cell" data-label="ANAアメックスゴールド">
+                        <div class="point-display">2,000マイル</div>
+                        <div class="condition-info">マイ友プログラム経由</div>
+                    </div>
+                    <div class="row-cell" data-label="アメックスゴールドプリファード">
+                        <div class="point-display">15,000P</div>
+                        <div class="condition-info">紹介プログラム限定特典</div>
+                    </div>
+                </div>
+
+                <!-- 合計 -->
+                <div class="comparison-row total">
+                    <div class="row-label">
+                        <div class="row-icon">⭐</div>
+                        <span>最大獲得可能</span>
+                    </div>
+                    <div class="row-cell" data-label="ANAアメックスゴールド">
+                        <div class="total-points">102,000</div>
+                        <div class="total-unit">マイル相当</div>
+                    </div>
+                    <div class="row-cell" data-label="アメックスゴールドプリファード">
+                        <div class="total-points">100,000</div>
+                        <div class="total-unit">ポイント</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 注記セクション -->
+        <div class="notes-section">
+            <div class="note-card ana">
+                <div class="note-title">ANAアメックスゴールド</div>
+                <div class="campaign-alert">
+                    <span class="alert-icon">⏰</span>
+                    <strong>2025年11月5日申込分まで！</strong> 最大102,000マイル相当獲得のチャンス
+                </div>
+                <div class="note-text">
+                    3ヶ月以内に200万円利用で最大特典を獲得できます。
+                    ANAマイルへの移行により、国内外の旅行に最適なカードです。
+                    段階的なボーナス設定により、利用額に応じて特典が増加します。
+                </div>
+                <span class="note-highlight">11/5まで・短期集中型</span>
+            </div>
+            <div class="note-card amex">
+                <div class="note-title">アメックスゴールドプリファード</div>
+                <div class="note-text">
+                    紹介プログラム経由なら最大100,000ポイント獲得可能！
+                    6ヶ月間の余裕のある期間で段階的に特典を獲得。
+                    年会費は2年分以上に相当する価値があり、メンバーシップ・リワード・プラス（年会費3,300円）加入でマイル移行レートも向上します。
+                </div>
+                <span class="note-highlight">紹介限定・最大10万ポイント</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
