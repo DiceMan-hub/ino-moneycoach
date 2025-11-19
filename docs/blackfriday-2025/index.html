@@ -2,7 +2,56 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="ブラックフライデー2025のセール情報を完全網羅。旅行・EC・家電・ファッション全ジャンルのおすすめ決済カードと還元率を徹底比較。Yahoo!トラベル、楽天、Amazonなど主要サイトのセール日程と最適な決済手段を解説。"
+    />
+    <meta
+      name="keywords"
+      content="ブラックフライデー2025,セール,決済カード,還元率,楽天,PayPay,Amazon,Yahoo!トラベル,旅行,EC"
+    />
+    <meta name="author" content="いのマネーコーチ" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://diceman-hub.github.io/ino-moneycoach/blackfriday-2025/"
+    />
+    <meta
+      property="og:title"
+      content="ブラックフライデー2025 セール一覧＆おすすめ決済カード完全ガイド"
+    />
+    <meta
+      property="og:description"
+      content="ブラックフライデー2025のセール情報を完全網羅。旅行・EC・家電・ファッション全ジャンルのおすすめ決済カードと還元率を徹底比較。"
+    />
+    <meta property="og:locale" content="ja_JP" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="ブラックフライデー2025 セール一覧＆おすすめ決済カード完全ガイド"
+    />
+    <meta
+      name="twitter:description"
+      content="ブラックフライデー2025のセール情報を完全網羅。旅行・EC・家電・ファッション全ジャンルのおすすめ決済カードと還元率を徹底比較。"
+    />
+
+    <!-- Performance & Security -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="#0071e3" />
+    <link
+      rel="canonical"
+      href="https://diceman-hub.github.io/ino-moneycoach/blackfriday-2025/"
+    />
+
     <title>
       ブラックフライデー2025 セール一覧＆おすすめ決済カード完全ガイド
     </title>
@@ -175,37 +224,187 @@
         font-size: 15px;
       }
 
+      /* Dark Mode Support */
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --text-primary: #f5f5f7;
+          --text-secondary: #a1a1a6;
+          --bg-primary: #1d1d1f;
+          --bg-secondary: #2c2c2e;
+          --bg-tertiary: #3a3a3c;
+          --border-color: #48484a;
+        }
+
+        header {
+          background: linear-gradient(180deg, #2c2c2e 0%, #1d1d1f 100%);
+        }
+
+        table {
+          background: var(--bg-secondary);
+        }
+
+        .intro-box {
+          background: linear-gradient(135deg, #2c2c2e 0%, #3a3a3c 100%);
+          border-left-color: var(--primary-color);
+        }
+
+        .search-box {
+          background: rgba(44, 44, 46, 0.8);
+          color: var(--text-primary);
+          border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .search-box:focus {
+          background: rgba(44, 44, 46, 0.95);
+        }
+      }
+
       /* Responsive */
       @media (max-width: 768px) {
         h1 {
           font-size: 28px;
+          line-height: 1.3;
         }
 
         h2 {
           font-size: 24px;
+          margin: 40px 0 20px;
         }
 
         h3 {
           font-size: 20px;
+          margin: 30px 0 16px;
         }
 
         .container {
           padding: 20px 16px;
         }
 
+        header {
+          padding: 24px 0;
+        }
+
         table {
           font-size: 13px;
+          display: block;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          white-space: nowrap;
+        }
+
+        table thead,
+        table tbody,
+        table tr {
+          display: table;
+          width: 100%;
+          table-layout: fixed;
         }
 
         th,
         td {
-          padding: 12px 10px;
+          padding: 12px 8px;
+          min-width: 100px;
+        }
+
+        .search-container {
+          margin: 24px auto;
+        }
+
+        .search-box {
+          padding: 14px 48px 14px 44px;
+          font-size: 16px; /* iOS zoom防止 */
+        }
+
+        .intro-box {
+          padding: 24px 20px;
+          margin: 24px 0;
+        }
+
+        .intro-box p,
+        .intro-box ol {
+          font-size: 16px;
+        }
+
+        /* タッチターゲットサイズ最適化 */
+        a.official-link,
+        button {
+          min-height: 44px;
+          min-width: 44px;
+        }
+
+        footer {
+          padding: 32px 0;
+          margin-top: 80px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 24px;
+        }
+
+        h2 {
+          font-size: 20px;
+        }
+
+        .container {
+          padding: 16px 12px;
+        }
+
+        th,
+        td {
+          padding: 10px 6px;
+          font-size: 12px;
+        }
+
+        .badge {
+          font-size: 10px;
+          padding: 3px 8px;
+        }
+      }
+
+      /* タブレット最適化 */
+      @media (min-width: 769px) and (max-width: 1024px) {
+        .container {
+          padding: 32px 20px;
+        }
+
+        table {
+          font-size: 14px;
         }
       }
 
       /* Smooth Scroll */
       html {
         scroll-behavior: smooth;
+      }
+
+      /* Performance Optimizations */
+      * {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      table {
+        will-change: transform;
+        transform: translateZ(0);
+      }
+
+      .search-box,
+      button,
+      a.official-link {
+        will-change: transform;
+      }
+
+      /* Reduce motion for users who prefer it */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
       }
 
       .intro-box {
@@ -393,19 +592,68 @@
         box-shadow: 0 4px 12px rgba(0, 113, 227, 0.4);
       }
     </style>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "ブラックフライデー2025 セール一覧＆おすすめ決済カード完全ガイド",
+        "description": "ブラックフライデー2025のセール情報を完全網羅。旅行・EC・家電・ファッション全ジャンルのおすすめ決済カードと還元率を徹底比較。",
+        "author": {
+          "@type": "Person",
+          "name": "いのマネーコーチ"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "いのマネーコーチ",
+          "url": "https://diceman-hub.github.io/ino-moneycoach/"
+        },
+        "datePublished": "2025-11-18",
+        "dateModified": "2025-11-19",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://diceman-hub.github.io/ino-moneycoach/blackfriday-2025/"
+        },
+        "inLanguage": "ja-JP"
+      }
+    </script>
   </head>
   <body>
-    <header>
+    <a
+      href="#main-content"
+      class="skip-link"
+      style="
+        position: absolute;
+        left: -9999px;
+        z-index: 999;
+        padding: 1em;
+        background: var(--primary-color);
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+      "
+      >メインコンテンツへスキップ</a
+    >
+    <style>
+      .skip-link:focus {
+        left: 0;
+        top: 0;
+        position: fixed;
+      }
+    </style>
+    <header role="banner">
       <div class="container">
         <p
           style="
             font-size: 13px;
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--text-secondary);
             margin: 0 0 8px 0;
             letter-spacing: 0.5px;
+            font-weight: 500;
           "
         >
-          いのマネーコーチ AI速報まとめ
+          いのマネーコーチ・速報まとめ(beta)
         </p>
         <h1>ブラックフライデー2025<br />セール一覧＆おすすめ決済カード</h1>
         <p class="subtitle">旅行・EC・家電・ファッション 全ジャンル網羅</p>
@@ -425,7 +673,7 @@
       </div>
     </header>
 
-    <main>
+    <main id="main-content" role="main">
       <div class="container">
         <!-- ダッシュボード -->
         <div
@@ -536,6 +784,8 @@
             class="search-box"
             placeholder="検索..."
             autocomplete="off"
+            aria-label="セール情報を検索"
+            aria-describedby="searchResults"
           />
           <button
             class="search-clear"
@@ -558,7 +808,11 @@
         <!-- 旅行セクター詳細分析 -->
         <h2>【最重要】旅行セクター：ブラックフライデー動向分析</h2>
 
-        <table class="travel-table">
+        <table
+          class="travel-table"
+          role="table"
+          aria-label="旅行セクター ブラックフライデー動向分析"
+        >
           <thead>
             <tr>
               <th style="width: 15%">サービス</th>
@@ -602,7 +856,8 @@
                 ><br />• 東京：品川プリンス／グランドニッコー東京ベイ舞浜<br />•
                 札幌・沖縄・福岡・大阪の人気ホテル多数<br />※詳細条件は11/19正午公開
               </td>
-              <td>PayPayカード<br /><a
+              <td>
+                PayPayカード<br /><a
                   href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3722426&pid=892290124"
                   target="_blank"
                   rel="noopener"
@@ -612,7 +867,8 @@
                     font-weight: 600;
                   "
                   >LYPプレミアム会員</a
-                ></td>
+                >
+              </td>
               <td>
                 JAL/ANA：最大38,000円<br />PayPayポイント：最大10%<br />ヤフーパック割引
               </td>
@@ -1419,7 +1675,11 @@
                   class="lyp-toggle-btn"
                   onclick="toggleLYPInfo(this)"
                   style="
-                    background: linear-gradient(135deg, #fff4e6 0%, #ffe8cc 100%);
+                    background: linear-gradient(
+                      135deg,
+                      #fff4e6 0%,
+                      #ffe8cc 100%
+                    );
                     border: 2px solid #ff9500;
                     border-radius: 8px;
                     padding: 10px 16px;
@@ -1437,12 +1697,19 @@
                   onmouseout="this.style.background='linear-gradient(135deg, #fff4e6 0%, #ffe8cc 100%)'"
                 >
                   ✨Yahooショッピングを利用する人必見✨
-                  <span style="float: right; font-size: 12px;">▼ 詳細を見る</span>
-                </button><div
+                  <span style="float: right; font-size: 12px"
+                    >▼ 詳細を見る</span
+                  >
+                </button>
+                <div
                   class="lyp-info-content"
                   style="
                     display: none;
-                    background: linear-gradient(135deg, #fff4e6 0%, #ffe8cc 100%);
+                    background: linear-gradient(
+                      135deg,
+                      #fff4e6 0%,
+                      #ffe8cc 100%
+                    );
                     border-left: 4px solid #ff9500;
                     border-radius: 8px;
                     padding: 16px;
@@ -1450,7 +1717,13 @@
                     box-shadow: 0 2px 8px rgba(255, 149, 0, 0.15);
                   "
                 >
-                  <p style="font-size: 14px; line-height: 1.7; margin-bottom: 12px">
+                  <p
+                    style="
+                      font-size: 14px;
+                      line-height: 1.7;
+                      margin-bottom: 12px;
+                    "
+                  >
                     ここをクリックで5,000円もらえると記載されている場合は<br /><a
                       href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3722426&pid=892290124"
                       target="_blank"
@@ -1485,13 +1758,23 @@
                     <li>✅2か月後の中旬～下旬に2,000円分</li>
                     <li>✅3か月後の中旬～下旬に1,000円分</li>
                   </ul>
-                  <p style="font-size: 13px; line-height: 1.7; margin: 0 0 8px 0">
+                  <p
+                    style="font-size: 13px; line-height: 1.7; margin: 0 0 8px 0"
+                  >
                     最大2か月分無料でLYPプレミアムに登録ができて、それ以降は月額508円がかかるので、5,000円分全てもらうには最大1,016円の出費だけど、クーポンなどももらえるのでおトク🫡
                   </p>
-                  <p style="font-size: 11px; color: #6a6a6a; margin: 0; text-align: right">
+                  <p
+                    style="
+                      font-size: 11px;
+                      color: #6a6a6a;
+                      margin: 0;
+                      text-align: right;
+                    "
+                  >
                     #PR
                   </p>
-                </div>※事前エントリー推奨、先着・数量限定あり
+                </div>
+                ※事前エントリー推奨、先着・数量限定あり
               </td>
               <td>
                 PayPayカード<br /><a
@@ -1504,8 +1787,7 @@
                     font-weight: 600;
                   "
                   >LYPプレミアム会員</a
-                ><br /><br /><span
-                  style="color: #86868b; font-size: 13px"
+                ><br /><br /><span style="color: #86868b; font-size: 13px"
                   >※アメックスプロパー<br />3%還元対象店</span
                 >
               </td>
@@ -2968,14 +3250,17 @@
       </div>
     </section>
 
-    <footer>
+    <footer role="contentinfo">
       <div class="container">
-        <p>ブラックフライデー2025 セール一覧＆おすすめ決済カード完全ガイド</p>
+        <p style="color: var(--text-secondary)">
+          ブラックフライデー2025 セール一覧＆おすすめ決済カード完全ガイド
+        </p>
         <p
           style="
             margin-top: 12px;
             font-size: 11px;
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--text-secondary);
+            opacity: 0.7;
           "
         >
           #PR
@@ -2983,12 +3268,13 @@
         <p
           style="
             margin-top: 16px;
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.6);
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
           "
         >
           © 2025 @ino-moneycoach.
-          この内容は公開情報に基づきAIを活用して作成されたまとめです。
+          この内容は公開情報に基づきAIを活用したまとめです。
         </p>
       </div>
     </footer>
@@ -3138,7 +3424,7 @@
       function toggleLYPInfo(button) {
         const content = button.nextElementSibling;
         const arrow = button.querySelector('span');
-        
+
         if (content.style.display === 'none' || content.style.display === '') {
           content.style.display = 'block';
           arrow.textContent = '▲ 詳細を閉じる';
