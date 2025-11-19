@@ -602,7 +602,8 @@
                 ><br />• 東京：品川プリンス／グランドニッコー東京ベイ舞浜<br />•
                 札幌・沖縄・福岡・大阪の人気ホテル多数<br />※詳細条件は11/19正午公開
               </td>
-              <td>PayPayカード<br /><a
+              <td>
+                PayPayカード<br /><a
                   href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3722426&pid=892290124"
                   target="_blank"
                   rel="noopener"
@@ -612,7 +613,8 @@
                     font-weight: 600;
                   "
                   >LYPプレミアム会員</a
-                ></td>
+                >
+              </td>
               <td>
                 JAL/ANA：最大38,000円<br />PayPayポイント：最大10%<br />ヤフーパック割引
               </td>
@@ -1419,7 +1421,11 @@
                   class="lyp-toggle-btn"
                   onclick="toggleLYPInfo(this)"
                   style="
-                    background: linear-gradient(135deg, #fff4e6 0%, #ffe8cc 100%);
+                    background: linear-gradient(
+                      135deg,
+                      #fff4e6 0%,
+                      #ffe8cc 100%
+                    );
                     border: 2px solid #ff9500;
                     border-radius: 8px;
                     padding: 10px 16px;
@@ -1437,12 +1443,19 @@
                   onmouseout="this.style.background='linear-gradient(135deg, #fff4e6 0%, #ffe8cc 100%)'"
                 >
                   ✨Yahooショッピングを利用する人必見✨
-                  <span style="float: right; font-size: 12px;">▼ 詳細を見る</span>
-                </button><div
+                  <span style="float: right; font-size: 12px"
+                    >▼ 詳細を見る</span
+                  >
+                </button>
+                <div
                   class="lyp-info-content"
                   style="
                     display: none;
-                    background: linear-gradient(135deg, #fff4e6 0%, #ffe8cc 100%);
+                    background: linear-gradient(
+                      135deg,
+                      #fff4e6 0%,
+                      #ffe8cc 100%
+                    );
                     border-left: 4px solid #ff9500;
                     border-radius: 8px;
                     padding: 16px;
@@ -1450,7 +1463,13 @@
                     box-shadow: 0 2px 8px rgba(255, 149, 0, 0.15);
                   "
                 >
-                  <p style="font-size: 14px; line-height: 1.7; margin-bottom: 12px">
+                  <p
+                    style="
+                      font-size: 14px;
+                      line-height: 1.7;
+                      margin-bottom: 12px;
+                    "
+                  >
                     ここをクリックで5,000円もらえると記載されている場合は<br /><a
                       href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3722426&pid=892290124"
                       target="_blank"
@@ -1485,13 +1504,23 @@
                     <li>✅2か月後の中旬～下旬に2,000円分</li>
                     <li>✅3か月後の中旬～下旬に1,000円分</li>
                   </ul>
-                  <p style="font-size: 13px; line-height: 1.7; margin: 0 0 8px 0">
+                  <p
+                    style="font-size: 13px; line-height: 1.7; margin: 0 0 8px 0"
+                  >
                     最大2か月分無料でLYPプレミアムに登録ができて、それ以降は月額508円がかかるので、5,000円分全てもらうには最大1,016円の出費だけど、クーポンなどももらえるのでおトク🫡
                   </p>
-                  <p style="font-size: 11px; color: #6a6a6a; margin: 0; text-align: right">
+                  <p
+                    style="
+                      font-size: 11px;
+                      color: #6a6a6a;
+                      margin: 0;
+                      text-align: right;
+                    "
+                  >
                     #PR
                   </p>
-                </div>※事前エントリー推奨、先着・数量限定あり
+                </div>
+                ※事前エントリー推奨、先着・数量限定あり
               </td>
               <td>
                 PayPayカード<br /><a
@@ -1504,8 +1533,7 @@
                     font-weight: 600;
                   "
                   >LYPプレミアム会員</a
-                ><br /><br /><span
-                  style="color: #86868b; font-size: 13px"
+                ><br /><br /><span style="color: #86868b; font-size: 13px"
                   >※アメックスプロパー<br />3%還元対象店</span
                 >
               </td>
@@ -3138,7 +3166,7 @@
       function toggleLYPInfo(button) {
         const content = button.nextElementSibling;
         const arrow = button.querySelector('span');
-        
+
         if (content.style.display === 'none' || content.style.display === '') {
           content.style.display = 'block';
           arrow.textContent = '▲ 詳細を閉じる';
