@@ -89,6 +89,13 @@
         background-color: var(--bg-primary);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        width: 100%;
+        max-width: 100vw;
+      }
+
+      html {
+        overflow-x: hidden;
+        width: 100%;
       }
 
       .container {
@@ -154,6 +161,34 @@
         border-radius: var(--radius);
         overflow: hidden;
         box-shadow: var(--shadow-sm);
+        position: relative;
+      }
+
+      /* モバイルでの横スクロール改善 */
+      @media (max-width: 768px) {
+        table {
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08),
+            0 0 0 1px rgba(0, 0, 0, 0.05);
+        }
+
+        table::-webkit-scrollbar {
+          height: 8px;
+        }
+
+        table::-webkit-scrollbar-track {
+          background: var(--bg-secondary);
+          border-radius: 4px;
+        }
+
+        table::-webkit-scrollbar-thumb {
+          background: var(--primary-color);
+          border-radius: 4px;
+          opacity: 0.6;
+        }
+
+        table::-webkit-scrollbar-thumb:hover {
+          opacity: 0.8;
+        }
       }
 
       thead {
@@ -284,26 +319,78 @@
           padding: 24px 0;
         }
 
-        table {
-          font-size: 13px;
-          display: block;
-          overflow-x: auto;
-          -webkit-overflow-scrolling: touch;
-          white-space: nowrap;
+        /* 表の親要素でスクロール可能にする */
+        main .container {
+          overflow-x: visible;
         }
 
-        table thead,
-        table tbody,
-        table tr {
+        table {
+          font-size: 13px;
           display: table;
           width: 100%;
           table-layout: fixed;
+          border-collapse: collapse;
+          margin: 32px 0;
+          min-width: 600px;
+        }
+
+        /* 表をラッパーで囲む（疑似要素で実現） */
+        table::before {
+          content: '';
+          display: block;
+          width: 100%;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        table thead,
+        table tbody {
+          display: table-row-group;
+        }
+
+        table tr {
+          display: table-row;
+        }
+
+        /* 列幅を固定してヘッダーとボディを一致させる */
+        th:nth-child(1),
+        td:nth-child(1) {
+          width: 15%;
+        }
+
+        th:nth-child(2),
+        td:nth-child(2) {
+          width: 15%;
+        }
+
+        th:nth-child(3),
+        td:nth-child(3) {
+          width: 30%;
+        }
+
+        th:nth-child(4),
+        td:nth-child(4) {
+          width: 20%;
+        }
+
+        th:nth-child(5),
+        td:nth-child(5) {
+          width: 20%;
         }
 
         th,
         td {
           padding: 12px 8px;
-          min-width: 100px;
+          word-wrap: break-word;
+          word-break: break-word;
+          white-space: normal;
+          vertical-align: top;
+          overflow-wrap: break-word;
+        }
+
+        th {
+          font-size: 12px;
+          white-space: nowrap;
         }
 
         .search-container {
@@ -349,17 +436,73 @@
 
         .container {
           padding: 16px 12px;
+          overflow-x: visible;
+        }
+
+        table {
+          font-size: 12px;
+          margin: 24px 0;
+          border-radius: 0;
+          width: 100%;
+          max-width: 100%;
+        }
+
+        table thead,
+        table tbody,
+        table tr {
+          min-width: 550px;
         }
 
         th,
         td {
           padding: 10px 6px;
-          font-size: 12px;
+          font-size: 11px;
+          min-width: 70px;
+        }
+
+        th {
+          font-size: 10px;
+          padding: 10px 4px;
         }
 
         .badge {
           font-size: 10px;
           padding: 3px 8px;
+        }
+
+        td a.official-link {
+          font-size: 10px;
+          padding: 4px 8px;
+          margin-top: 4px;
+          display: block;
+          width: fit-content;
+        }
+
+        .nav-menu {
+          padding: 12px 0;
+          margin: 24px 0;
+        }
+
+        .nav-menu-inner {
+          padding: 0 16px;
+          gap: 6px;
+        }
+
+        .nav-menu a {
+          font-size: 11px;
+          padding: 6px 12px;
+        }
+
+        .scroll-up {
+          width: 48px;
+          height: 48px;
+          bottom: 24px;
+          right: 24px;
+        }
+
+        .scroll-up svg {
+          width: 20px;
+          height: 20px;
         }
       }
 
@@ -563,9 +706,10 @@
 
       /* Table links - Official button style */
       td a.official-link {
-        display: inline-block;
+        display: block;
         padding: 6px 12px;
-        margin-left: 8px;
+        margin-top: 6px;
+        margin-left: 0;
         font-size: 12px;
         font-weight: 600;
         color: white;
@@ -579,6 +723,7 @@
         transition: all 0.2s ease;
         vertical-align: middle;
         box-shadow: 0 2px 6px rgba(0, 113, 227, 0.3);
+        width: fit-content;
       }
 
       td a.official-link::after {
@@ -590,6 +735,92 @@
         background: linear-gradient(135deg, #0051d5 0%, #003d99 100%);
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(0, 113, 227, 0.4);
+      }
+
+      /* ナビゲーションメニュー */
+      .nav-menu {
+        background: var(--bg-primary);
+        border-bottom: 1px solid var(--border-color);
+        padding: 16px 0;
+        margin: 32px 0;
+      }
+
+      .nav-menu-inner {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 22px;
+      }
+
+      .nav-menu a {
+        display: inline-block;
+        padding: 8px 16px;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text-primary);
+        text-decoration: none;
+        border-radius: 20px;
+        background: var(--bg-secondary);
+        transition: all 0.2s ease;
+        white-space: nowrap;
+      }
+
+      .nav-menu a:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+      }
+
+      /* スクロールアップボタン */
+      .scroll-up {
+        position: fixed;
+        bottom: 32px;
+        right: 32px;
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          #0051d5 100%
+        );
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 16px rgba(0, 113, 227, 0.4);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+      }
+
+      .scroll-up.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .scroll-up:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 24px rgba(0, 113, 227, 0.5);
+      }
+
+      .scroll-up svg {
+        width: 24px;
+        height: 24px;
+        color: white;
+      }
+
+      /* セクションID用のスクロールマージン */
+      section[id],
+      h2[id] {
+        scroll-margin-top: 100px;
       }
     </style>
 
@@ -740,17 +971,13 @@
             "
           >
             <li style="margin-bottom: 12px">
-              <strong>市場構造：</strong
-              >2025年のブラックフライデーは「楽天・PayPay・ドコモ・イオン」の4大経済圏による顧客争奪戦に変貌した
+              <strong>航空券を予約する人へ：</strong>JALは<strong>11月18日～</strong>国内線片道7,700円～、最大53,000円割引。ANAは<strong>11月21日～</strong>特典航空券が減額マイルで予約可能。両社とも国際線も大幅割引あり
             </li>
             <li style="margin-bottom: 12px">
-              <strong>旅行セクター：</strong
-              >最大の商戦は11月20日（木）正午開始の「Yahoo!トラベル
-              ヤフーパック」。ANAは特典航空券が減額マイルで予約可能
+              <strong>買い物のタイミング：</strong>旅行（11/20正午）→楽天市場（11/20夜・11/25）→Yahoo!ショッピング（11/25～）→Amazon（11/24～）の順で買い物すると、それぞれのポイント還元を最大限に活用できる
             </li>
             <li style="margin-bottom: 0">
-              <strong>決済戦略：</strong
-              >「旅行（11/20）→楽天（11/20,25）→Yahoo!（11/25～）→Amazon（11/29～）」の4段階で決済手段を使い分けることが最適解
+              <strong>お得に買うコツ：</strong>楽天市場は「5と0のつく日」（11/20、11/25）がポイント還元が高く、Yahoo!ショッピングはPayPayカード＋LYPプレミアム会員で最大25%還元。Amazonは金・土曜のd払いで追加還元あり
             </li>
           </ol>
         </div>
@@ -805,8 +1032,24 @@
           <div id="searchResults" class="search-results-count"></div>
         </div>
 
+        <!-- ナビゲーションメニュー -->
+        <nav class="nav-menu" role="navigation" aria-label="業種別ナビゲーション">
+          <div class="nav-menu-inner">
+            <a href="#travel">旅行セクター</a>
+            <a href="#airlines">外資系航空会社</a>
+            <a href="#ec">ECモール</a>
+            <a href="#retail">リテール</a>
+            <a href="#electronics">家電量販店</a>
+            <a href="#fashion">ファッション</a>
+            <a href="#convenience">コンビニ・飲食</a>
+            <a href="#other">家電・IT・その他</a>
+            <a href="#department">百貨店</a>
+            <a href="#roadmap">アクション・ロードマップ</a>
+          </div>
+        </nav>
+
         <!-- 旅行セクター詳細分析 -->
-        <h2>【最重要】旅行セクター：ブラックフライデー動向分析</h2>
+        <h2 id="travel">旅行セクター</h2>
 
         <table
           class="travel-table"
@@ -924,19 +1167,11 @@
                 ><br />•
                 国内線・国際線（ハワイ・中国）特典航空券が通常より少ないマイル<br />•
                 ANA Mall：7倍マイル、最大78%OFFタイムセール<br />•
-                10%OFFクーポン（先着1,500枚、取得期限：11/20）<br /><br /><strong
-                  style="color: #ff9500"
-                  >【隠れた逸品】サックスバー（Sacs Bar）</strong
-                ><br />• ANA Mallで10%OFF直接割引クーポン配布<br />•
-                Samsonite、Ace等の主要スーツケースブランド取扱<br />•
-                ポイント還元ではなく「即時割引」型<br />※オンライン×アウトレット級割引の「第三の選択肢」
+                10%OFFクーポン（先着1,500枚、取得期限：11/20）
               </td>
               <td>ANAマイレージクラブ<br />ANAカード推奨</td>
               <td>
-                減額マイル特典航空券<br />ANA Mall 7倍マイル<br />最大78%OFF<br /><strong
-                  style="color: #ff9500"
-                  >スーツケース10%OFF</strong
-                >
+                減額マイル特典航空券<br />ANA Mall 7倍マイル<br />最大78%OFF
               </td>
             </tr>
             <tr>
@@ -1445,7 +1680,7 @@
         </table>
 
         <!-- 外資系航空会社 -->
-        <h2>外資系航空会社：確定セール</h2>
+        <h2 id="airlines">外資系航空会社</h2>
 
         <table class="travel-table">
           <thead>
@@ -1582,7 +1817,7 @@
         </table>
 
         <!-- ECモール・総合通販 -->
-        <h2>ECモール・総合通販</h2>
+        <h2 id="ec">ECモール</h2>
 
         <table>
           <thead>
@@ -1936,7 +2171,7 @@
         </table>
 
         <!-- リテール・実店舗 -->
-        <h2>リテール・実店舗</h2>
+        <h2 id="retail">リテール</h2>
 
         <table>
           <thead>
@@ -2118,7 +2353,7 @@
         </table>
 
         <!-- 家電量販店 -->
-        <h2>家電量販店</h2>
+        <h2 id="electronics">家電量販店</h2>
 
         <table>
           <thead>
@@ -2322,7 +2557,7 @@
         </table>
 
         <!-- ファッション・アパレル -->
-        <h2>ファッション・アパレル</h2>
+        <h2 id="fashion">ファッション</h2>
 
         <table>
           <thead>
@@ -2479,7 +2714,7 @@
         </table>
 
         <!-- コンビニ・飲食 -->
-        <h2>コンビニ・飲食</h2>
+        <h2 id="convenience">コンビニ・飲食</h2>
 
         <table>
           <thead>
@@ -2629,7 +2864,7 @@
         </table>
 
         <!-- 家電・IT・その他 -->
-        <h2>家電・IT・その他</h2>
+        <h2 id="other">家電・IT・その他</h2>
 
         <table>
           <thead>
@@ -2921,7 +3156,7 @@
         </table>
 
         <!-- 百貨店(デパート) -->
-        <h2>百貨店(デパート)</h2>
+        <h2 id="department">百貨店</h2>
 
         <table>
           <thead>
@@ -3084,7 +3319,7 @@
         </table>
 
         <!-- アクションロードマップ -->
-        <h2>アクション・ロードマップ（決済カレンダー）</h2>
+        <h2 id="roadmap">アクション・ロードマップ</h2>
 
         <table>
           <thead>
@@ -3176,6 +3411,19 @@
         </table>
       </div>
     </main>
+
+    <!-- スクロールアップボタン -->
+    <button class="scroll-up" id="scrollUpBtn" aria-label="ページトップへ戻る">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path
+          d="M12 19V5M12 5L5 12M12 5L19 12"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
 
     <!-- 重要なお知らせ -->
     <section
@@ -3433,6 +3681,28 @@
           arrow.textContent = '▼ 詳細を見る';
         }
       }
+
+      // スクロールアップボタンの表示制御
+      document.addEventListener('DOMContentLoaded', function () {
+        const scrollUpBtn = document.getElementById('scrollUpBtn');
+
+        // スクロールイベントで表示/非表示を切り替え
+        window.addEventListener('scroll', function () {
+          if (window.pageYOffset > 300) {
+            scrollUpBtn.classList.add('visible');
+          } else {
+            scrollUpBtn.classList.remove('visible');
+          }
+        });
+
+        // ボタンクリックでトップへスクロール
+        scrollUpBtn.addEventListener('click', function () {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      });
     </script>
   </body>
 </html>
