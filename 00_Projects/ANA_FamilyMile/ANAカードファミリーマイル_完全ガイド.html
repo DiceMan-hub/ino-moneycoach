@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANAカードファミリーマイル 完全ガイド</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ana-blue: #004b8d;
+            --ana-blue-light: #0066cc;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: linear-gradient(180deg, #f5f5f7 0%, #ffffff 100%);
+            color: #1d1d1f;
+            line-height: 1.6;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--ana-blue) 0%, var(--ana-blue-light) 100%);
+            color: white;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .icon-circle {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--ana-blue) 0%, var(--ana-blue-light) 100%);
+            color: white;
+            font-size: 28px;
+            margin: 0 auto;
+        }
+        
+        .flow-arrow {
+            width: 0;
+            height: 0;
+            border-left: 12px solid var(--ana-blue);
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            margin: 0 16px;
+        }
+        
+        .flow-box {
+            background: white;
+            border: 2px solid var(--ana-blue);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            min-width: 200px;
+            flex: 1;
+        }
+        
+        .flow-box.active {
+            background: linear-gradient(135deg, var(--ana-blue) 0%, var(--ana-blue-light) 100%);
+            color: white;
+            border-color: var(--ana-blue-light);
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .badge-success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .badge-warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .badge-info {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+            padding-bottom: 32px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: -32px;
+            width: 2px;
+            background: var(--gray-200);
+        }
+        
+        .timeline-item:last-child::before {
+            display: none;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 4px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--ana-blue);
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--ana-blue);
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .comparison-table th {
+            background: var(--gray-100);
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+        
+        .comparison-table td {
+            padding: 16px;
+            border-top: 1px solid var(--gray-200);
+        }
+        
+        .comparison-table tr:hover {
+            background: var(--gray-50);
+        }
+        
+        .visual-diagram {
+            background: var(--gray-50);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 24px 0;
+        }
+        
+        .mile-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            font-weight: 600;
+            color: #92400e;
+        }
+        
+        .merge-icon {
+            font-size: 32px;
+            color: var(--ana-blue);
+            margin: 16px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .flow-arrow {
+                transform: rotate(90deg);
+                margin: 8px 0;
+            }
+            
+            .flow-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section py-20 px-4">
+        <div class="container mx-auto max-w-6xl text-center">
+            <div class="mb-6">
+                <span class="inline-block bg-white bg-opacity-20 text-white px-6 py-2 rounded-full text-sm font-medium backdrop-blur-sm">
+                    ANAカードサービス
+                </span>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight">
+                ANAカード<br>ファミリーマイル
+            </h1>
+            <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
+                家族のマイルを合算して、<br class="md:hidden">より大きな特典を実現
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto max-w-6xl px-4 py-16">
+        
+        <!-- サービス概要 -->
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">サービス概要</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    ANAカード本会員とご家族が貯めたマイルを、特典交換時に合算して使えるサービスです
+                </p>
+            </div>
+            
+            <div class="card p-8 md:p-12 mb-8">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="flex-1">
+                        <div class="icon-circle mb-6">
+                            <span>👨‍👩‍👧‍👦</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-center md:text-left">家族でマイルを合算</h3>
+                        <p class="text-gray-700 text-center md:text-left leading-relaxed">
+                            ANAカード（クレジット機能付き）の本会員と、そのご家族が貯めたマイルを、特典交換時に合算して使用できます。家族それぞれが個別にマイルを貯めていても、まとまったマイル数で特典獲得を目指せます。
+                        </p>
+                    </div>
+                    <div class="flex-1">
+                        <div class="visual-diagram">
+                            <div class="text-center mb-4">
+                                <div class="mile-box mb-4">
+                                    <div class="text-sm mb-2">プライム会員</div>
+                                    <div class="text-2xl">50,000マイル</div>
+                                </div>
+                                <div class="merge-icon">+</div>
+                                <div class="mile-box mb-4">
+                                    <div class="text-sm mb-2">ファミリー会員</div>
+                                    <div class="text-2xl">30,000マイル</div>
+                                </div>
+                                <div class="merge-icon">↓</div>
+                                <div class="mile-box" style="background: linear-gradient(135deg, #dbeafe 0%, #93c5fd 100%); border-color: var(--ana-blue); color: #1e40af;">
+                                    <div class="text-sm mb-2">合算マイル</div>
+                                    <div class="text-3xl font-bold">80,000マイル</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="card p-6 text-center">
+                    <div class="text-3xl mb-4">💰</div>
+                    <h4 class="font-bold text-lg mb-2">登録料</h4>
+                    <p class="text-2xl font-bold text-green-600 mb-2">無料</p>
+                    <p class="text-sm text-gray-600">登録料は一切かかりません</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <div class="text-3xl mb-4">👥</div>
+                    <h4 class="font-bold text-lg mb-2">対象者</h4>
+                    <p class="text-gray-700 mb-2">同一生計・同居する<br>配偶者・家族</p>
+                    <p class="text-sm text-gray-600">1親等以内のご家族</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <div class="text-3xl mb-4">⚡</div>
+                    <h4 class="font-bold text-lg mb-2">合算タイミング</h4>
+                    <p class="text-gray-700 mb-2">特典交換時</p>
+                    <p class="text-sm text-gray-600">自動的に合算されます</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 登録条件 -->
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">登録条件</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    ご自身の状況を確認して、登録可能かチェックしましょう
+                </p>
+            </div>
+            
+            <div class="card p-8 md:p-12 mb-8">
+                <h3 class="text-2xl font-bold mb-6 text-gray-900">プライム会員（親会員）の条件</h3>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold">✓</div>
+                        <div>
+                            <p class="font-semibold mb-1">ANAカード本会員（クレジット機能付き）</p>
+                            <p class="text-sm text-gray-600">メインカードとして利用中であること</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold">✓</div>
+                        <div>
+                            <p class="font-semibold mb-1">日本在住</p>
+                            <p class="text-sm text-gray-600">登録住所が日本国内であること</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 bg-red-50 rounded-lg">
+                        <div class="flex-shrink-0 w-8 h-8 bg-red-100 rounded-full flex items-center justify-center text-red-600 font-bold">✗</div>
+                        <div>
+                            <p class="font-semibold mb-1">法人用ANAカード会員は対象外</p>
+                            <p class="text-sm text-gray-600">個人会員のみが対象です</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card p-8 md:p-12 mb-8">
+                <h3 class="text-2xl font-bold mb-6 text-gray-900">ファミリー会員（子会員）の条件</h3>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">1</div>
+                        <div>
+                            <p class="font-semibold mb-1">18歳以上（高校生を除く）</p>
+                            <p class="text-sm text-gray-600">ANAカード本会員またはANAカード家族会員であること</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">2</div>
+                        <div>
+                            <p class="font-semibold mb-1">18歳未満または高校生</p>
+                            <p class="text-sm text-gray-600">ANAマイレージクラブ会員として参加</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">3</div>
+                        <div>
+                            <p class="font-semibold mb-1">同一生計・同居</p>
+                            <p class="text-sm text-gray-600">配偶者・同性パートナーまたは1親等以内のご家族</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 登録フロー -->
+            <div class="card p-8 md:p-12">
+                <h3 class="text-2xl font-bold mb-8 text-center text-gray-900">登録フロー</h3>
+                <div class="flow-container flex flex-col md:flex-row items-center justify-center gap-4">
+                    <div class="flow-box">
+                        <div class="text-2xl mb-2">📋</div>
+                        <p class="font-semibold">条件確認</p>
+                        <p class="text-sm text-gray-600 mt-2">登録条件を<br>満たしているか確認</p>
+                    </div>
+                    <div class="flow-arrow hidden md:block"></div>
+                    <div class="flow-arrow block md:hidden"></div>
+                    <div class="flow-box">
+                        <div class="text-2xl mb-2">📝</div>
+                        <p class="font-semibold">登録申請</p>
+                        <p class="text-sm text-gray-600 mt-2">ANAカード<br>ウェブサイトから申請</p>
+                    </div>
+                    <div class="flow-arrow hidden md:block"></div>
+                    <div class="flow-arrow block md:hidden"></div>
+                    <div class="flow-box active">
+                        <div class="text-2xl mb-2">✅</div>
+                        <p class="font-semibold">登録完了</p>
+                        <p class="text-sm mt-2">特典交換時に<br>自動的に合算</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 利用できる特典 -->
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">利用できる特典</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    合算したマイル数で、より大きな特典を獲得できます
+                </p>
+            </div>
+            
+            <div class="feature-grid mb-8">
+                <div class="card p-6">
+                    <div class="text-4xl mb-4 text-center">✈️</div>
+                    <h3 class="text-xl font-bold mb-3 text-center">国内線特典航空券</h3>
+                    <p class="text-gray-600 text-center text-sm">合算マイルで国内線の特典航空券を交換</p>
+                </div>
+                <div class="card p-6">
+                    <div class="text-4xl mb-4 text-center">🌏</div>
+                    <h3 class="text-xl font-bold mb-3 text-center">国際線特典航空券</h3>
+                    <p class="text-gray-600 text-center text-sm">家族旅行に最適な国際線特典を獲得</p>
+                </div>
+                <div class="card p-6">
+                    <div class="text-4xl mb-4 text-center">⬆️</div>
+                    <h3 class="text-xl font-bold mb-3 text-center">アップグレード特典</h3>
+                    <p class="text-gray-600 text-center text-sm">国内線・国際線の座席をアップグレード</p>
+                </div>
+                <div class="card p-6">
+                    <div class="text-4xl mb-4 text-center">🤝</div>
+                    <h3 class="text-xl font-bold mb-3 text-center">提携航空会社特典</h3>
+                    <p class="text-gray-600 text-center text-sm">他社提携航空会社の特典航空券も利用可能</p>
+                </div>
+                <div class="card p-6">
+                    <div class="text-4xl mb-4 text-center">🪙</div>
+                    <h3 class="text-xl font-bold mb-3 text-center">ANA SKY コイン</h3>
+                    <p class="text-gray-600 text-center text-sm">マイルをANA SKY コインに交換</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 合算の仕組み -->
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">合算の仕組み</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    特典交換時に自動的に最適な順序でマイルが使用されます
+                </p>
+            </div>
+            
+            <div class="card p-8 md:p-12 mb-8">
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900">自動合算の優先順位</h3>
+                    <div class="space-y-4">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <p class="font-semibold text-lg mb-2">1. 有効期限が近い順</p>
+                                <p class="text-gray-700">期限切れを防ぐため、有効期限が近いマイルから優先的に使用されます</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <p class="font-semibold text-lg mb-2">2. マイル口座グループ順</p>
+                                <p class="text-gray-700">古いマイルから順番に使用されるため、効率的にマイルを活用できます</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h4 class="font-bold text-lg mb-3 text-gray-900">💡 重要なポイント</h4>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-600 font-bold">•</span>
+                            <span>マイルを「一緒に貯める」わけではなく、「申込・交換時に合算できる」仕組みです</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-600 font-bold">•</span>
+                            <span>家族それぞれのマイルの有効期限を意識すると、さらに効率的です</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-600 font-bold">•</span>
+                            <span>合算は自動的に行われるため、手動での操作は不要です</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 注意事項 -->
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">注意事項</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    登録前に必ず確認してください
+                </p>
+            </div>
+            
+            <div class="card p-8 md:p-12 mb-6">
+                <div class="flex items-start gap-4 mb-6">
+                    <div class="text-3xl">⚠️</div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">変更・退会時の手数料</h3>
+                        <p class="text-gray-700 mb-4">
+                            登録料は無料ですが、登録後に変更・退会する場合は<strong class="text-red-600">1名あたり5,000マイル</strong>の手数料がかかる場合があります。
+                        </p>
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
+                            <p class="text-sm text-gray-700">
+                                <strong>注意：</strong>登録前に家族構成やカード保有状況を十分に確認してから登録することをおすすめします。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="card p-6 border-l-4 border-red-400">
+                    <h4 class="font-bold text-lg mb-3 text-gray-900">❌ 対象外となる方</h4>
+                    <ul class="space-y-2 text-gray-700 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-600">•</span>
+                            <span>日本国外に住んでいる方</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-600">•</span>
+                            <span>法人用ANAカード会員</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-600">•</span>
+                            <span>ANAカードをメインカードとして利用していない方</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card p-6 border-l-4 border-green-400">
+                    <h4 class="font-bold text-lg mb-3 text-gray-900">✅ 登録前に確認すること</h4>
+                    <ul class="space-y-2 text-gray-700 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-600">•</span>
+                            <span>同居・生計一体の条件を満たしているか</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-600">•</span>
+                            <span>ANAカード本会員・カード種類が条件通りか</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-600">•</span>
+                            <span>家族それぞれのマイルの有効期限</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 活用シナリオ -->
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">活用シナリオ</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    家族旅行でより大きな特典を実現
+                </p>
+            </div>
+            
+            <div class="card p-8 md:p-12">
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-900">例：家族4人でハワイ旅行</h3>
+                    <div class="space-y-6">
+                        <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg">
+                            <h4 class="font-bold text-lg mb-4 text-gray-900">個別にマイルを貯めている場合</h4>
+                            <div class="grid md:grid-cols-2 gap-4 mb-4">
+                                <div class="bg-white p-4 rounded-lg">
+                                    <p class="text-sm text-gray-600 mb-1">プライム会員（父）</p>
+                                    <p class="text-2xl font-bold text-blue-600">45,000マイル</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg">
+                                    <p class="text-sm text-gray-600 mb-1">ファミリー会員（母）</p>
+                                    <p class="text-2xl font-bold text-blue-600">35,000マイル</p>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-gray-600 mb-2">個別では...</p>
+                                <p class="text-lg text-gray-700">国際線特典航空券（往復）が1枚も交換できない</p>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center text-3xl text-gray-400">↓</div>
+                        
+                        <div class="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-lg">
+                            <h4 class="font-bold text-lg mb-4 text-gray-900">ファミリーマイルで合算した場合</h4>
+                            <div class="bg-white p-6 rounded-lg mb-4">
+                                <p class="text-sm text-gray-600 mb-2">合算マイル</p>
+                                <p class="text-4xl font-bold text-green-600 mb-2">80,000マイル</p>
+                                <p class="text-sm text-gray-600">国際線特典航空券（往復）1枚分に相当</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-lg font-semibold text-gray-900">✅ 家族1人分の特典航空券を獲得可能！</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- まとめ -->
+        <section class="mb-20">
+            <div class="card p-8 md:p-12 bg-gradient-to-br from-blue-50 to-indigo-50">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">まとめ</h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg">
+                        <div class="text-3xl mb-3 text-center">🎯</div>
+                        <h3 class="font-bold text-lg mb-2 text-center">メリット</h3>
+                        <p class="text-sm text-gray-700 text-center">
+                            家族でマイルを別々に貯めていても、まとまったマイル数で特典獲得を目指せます
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg">
+                        <div class="text-3xl mb-3 text-center">💰</div>
+                        <h3 class="font-bold text-lg mb-2 text-center">コスト</h3>
+                        <p class="text-sm text-gray-700 text-center">
+                            登録料は無料。変更・退会時のみ手数料が発生する可能性があります
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg">
+                        <div class="text-3xl mb-3 text-center">⚡</div>
+                        <h3 class="font-bold text-lg mb-2 text-center">使い方</h3>
+                        <p class="text-sm text-gray-700 text-center">
+                            特典交換時に自動的に合算されるため、手動操作は不要です
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 参考リンク -->
+        <section class="mb-20">
+            <div class="card p-8 md:p-12 text-center">
+                <h2 class="text-2xl font-bold mb-6 text-gray-900">詳細情報</h2>
+                <a href="https://www.ana.co.jp/ja/jp/amc/anacard/familymile/" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200 shadow-lg">
+                    ANA公式サイトで詳細を確認
+                </a>
+                <p class="text-sm text-gray-600 mt-4">
+                    最終更新日: 2025年10月
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4">
+        <div class="container mx-auto max-w-6xl text-center">
+            <p class="text-gray-400 text-sm">
+                © 2025 ANAカードファミリーマイル 完全ガイド
+            </p>
+            <p class="text-gray-500 text-xs mt-2">
+                本ページは情報提供を目的としており、最新の情報はANA公式サイトでご確認ください
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>

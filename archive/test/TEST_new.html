@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <title>新しいTESTファイル</title>
+    <style>
+      @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+      
+      :root {
+        --inter-bold-font-family: "Inter", Helvetica;
+        --inter-bold-font-weight: 700;
+        --inter-bold-font-size: 21.65625px;
+        --inter-bold-letter-spacing: 0px;
+        --inter-bold-line-height: normal;
+        --inter-bold-font-style: normal;
+        --inter-regular-font-family: "Inter", Helvetica;
+        --inter-regular-font-weight: 400;
+        --inter-regular-font-size: 13.671875px;
+        --inter-regular-letter-spacing: 0px;
+        --inter-regular-line-height: normal;
+        --inter-regular-font-style: normal;
+        --hiragino-sans-w0-font-family: "Hiragino Sans", Helvetica;
+        --hiragino-sans-w0-font-weight: 400;
+        --hiragino-sans-w0-font-size: 28px;
+        --hiragino-sans-w0-letter-spacing: 0px;
+        --hiragino-sans-w0-line-height: normal;
+        --hiragino-sans-w0-font-style: normal;
+        --www-canva-com-inter-semi-bold-font-family: "Inter", Helvetica;
+        --www-canva-com-inter-semi-bold-font-weight: 600;
+        --www-canva-com-inter-semi-bold-font-size: 12.800000190734863px;
+        --www-canva-com-inter-semi-bold-letter-spacing: 2.9889798164367676px;
+        --www-canva-com-inter-semi-bold-line-height: 17.104320526123047px;
+        --www-canva-com-inter-semi-bold-font-style: normal;
+        --www-canva-com-inter-bold-font-family: "Inter", Helvetica;
+        --www-canva-com-inter-bold-font-weight: 700;
+        --www-canva-com-inter-bold-font-size: 101.30000305175781px;
+        --www-canva-com-inter-bold-letter-spacing: 0px;
+        --www-canva-com-inter-bold-line-height: 141.1106414794922px;
+        --www-canva-com-inter-bold-font-style: normal;
+        --www-canva-com-inter-regular-upper-font-family: "Inter", Helvetica;
+        --www-canva-com-inter-regular-upper-font-weight: 400;
+        --www-canva-com-inter-regular-upper-font-size: 6.599999904632568px;
+        --www-canva-com-inter-regular-upper-letter-spacing: -0.4578506648540497px;
+        --www-canva-com-inter-regular-upper-line-height: 9.111455917358398px;
+        --www-canva-com-inter-regular-upper-font-style: normal;
+        --www-canva-com-inter-regular-font-family: "Inter", Helvetica;
+        --www-canva-com-inter-regular-font-weight: 400;
+        --www-canva-com-inter-regular-font-size: 25.700000762939453px;
+        --www-canva-com-inter-regular-letter-spacing: 0px;
+        --www-canva-com-inter-regular-line-height: 35.27766036987305px;
+        --www-canva-com-inter-regular-font-style: normal;
+        --www-canva-com-inter-black-font-family: "Inter", Helvetica;
+        --www-canva-com-inter-black-font-weight: 900;
+        --www-canva-com-inter-black-font-size: 18.5px;
+        --www-canva-com-inter-black-letter-spacing: 3.8538169860839844px;
+        --www-canva-com-inter-black-line-height: 25.65648078918457px;
+        --www-canva-com-inter-black-font-style: normal;
+        --www-canva-com-noto-sans-display-semibold-font-family: "Noto Sans", Helvetica;
+        --www-canva-com-noto-sans-display-semibold-font-weight: 600;
+        --www-canva-com-noto-sans-display-semibold-font-size: 14px;
+        --www-canva-com-noto-sans-display-semibold-letter-spacing: 0px;
+        --www-canva-com-noto-sans-display-semibold-line-height: 22px;
+        --www-canva-com-noto-sans-display-semibold-font-style: normal;
+        --www-canva-com-times-new-roman-regular-font-family: "Times New Roman", Helvetica;
+        --www-canva-com-times-new-roman-regular-font-weight: 400;
+        --www-canva-com-times-new-roman-regular-font-size: 10px;
+        --www-canva-com-times-new-roman-regular-letter-spacing: 0px;
+        --www-canva-com-times-new-roman-regular-line-height: normal;
+        --www-canva-com-times-new-roman-regular-font-style: normal;
+        --www-canva-com-semantic-button-font-family: "Noto Sans", Helvetica;
+        --www-canva-com-semantic-button-font-weight: 600;
+        --www-canva-com-semantic-button-font-size: 14px;
+        --www-canva-com-semantic-button-letter-spacing: 0px;
+        --www-canva-com-semantic-button-line-height: 22px;
+        --www-canva-com-semantic-button-font-style: normal;
+      }
+      
+      * {
+        -webkit-font-smoothing: antialiased;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0px;
+        height: 100%;
+      }
+      /* a blue color as a generic focus style */
+      button:focus-visible {
+        outline: 2px solid #4a90e2 !important;
+        outline: -webkit-focus-ring-color auto 5px !important;
+      }
+      a {
+        text-decoration: none;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+      .background {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
+      .container-wrapper-2 {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      }
+      
+      /* 新しいコンテンツ用のスタイル */
+      .header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 10px;
+      }
+      
+      .header h1 {
+        font-family: var(--www-canva-com-inter-bold-font-family);
+        font-weight: var(--www-canva-com-inter-bold-font-weight);
+        font-size: 48px;
+        margin: 0;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      }
+      
+      .header p {
+        font-family: var(--inter-regular-font-family);
+        font-size: 18px;
+        margin: 10px 0 0 0;
+        opacity: 0.9;
+      }
+      
+      .content-section {
+        margin: 30px 0;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border-left: 4px solid #007AFF;
+      }
+      
+      .content-section h2 {
+        font-family: var(--www-canva-com-inter-black-font-family);
+        font-weight: var(--www-canva-com-inter-black-font-weight);
+        font-size: 24px;
+        color: #333;
+        margin: 0 0 15px 0;
+      }
+      
+      .content-section p {
+        font-family: var(--inter-regular-font-family);
+        font-size: 16px;
+        line-height: 1.6;
+        color: #555;
+        margin: 0;
+      }
+      
+      .spot-badge {
+        background: #007AFF;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 600;
+        display: inline-block;
+        margin: 10px 0;
+      }
+      
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin: 30px 0;
+      }
+      
+      .feature-card {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        border: 1px solid #e0e0e0;
+      }
+      
+      .feature-card h3 {
+        font-family: var(--www-canva-com-inter-bold-font-family);
+        font-weight: var(--www-canva-com-inter-bold-font-weight);
+        font-size: 20px;
+        color: #333;
+        margin: 0 0 10px 0;
+      }
+      
+      .feature-card p {
+        font-family: var(--inter-regular-font-family);
+        font-size: 14px;
+        color: #666;
+        line-height: 1.5;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="background">
+        <div class="container-wrapper">
+          <div class="div-wrapper">
+            <div class="div">
+              <div class="container-wrapper-2">
+                <div class="header">
+                  <h1>新しいTESTファイル</h1>
+                  <p>美しいレイアウトとスタイリングのテストページ</p>
+                </div>
+                
+                <div class="content-section">
+                  <h2>セクション1: ウェルカムメッセージ</h2>
+                  <p>このページは、CSS変数とモダンなスタイリングを使用した新しいテストファイルです。美しいグラデーション背景とカード型レイアウトで、プロフェッショナルな見た目を実現しています。</p>
+                  <div class="spot-badge">NEW</div>
+                </div>
+                
+                <div class="content-section">
+                  <h2>セクション2: 機能紹介</h2>
+                  <p>以下の機能が含まれています：</p>
+                  <div class="feature-grid">
+                    <div class="feature-card">
+                      <h3>レスポンシブデザイン</h3>
+                      <p>様々な画面サイズに対応した柔軟なレイアウト</p>
+                    </div>
+                    <div class="feature-card">
+                      <h3>モダンなスタイリング</h3>
+                      <p>CSS変数とFlexboxを使用した最新のデザイン</p>
+                    </div>
+                    <div class="feature-card">
+                      <h3>アクセシビリティ</h3>
+                      <p>フォーカス管理とキーボードナビゲーション対応</p>
+                    </div>
+                    <div class="feature-card">
+                      <h3>パフォーマンス</h3>
+                      <p>最適化されたCSSとフォント読み込み</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="content-section">
+                  <h2>セクション3: 技術仕様</h2>
+                  <p>このページは以下の技術を使用して構築されています：</p>
+                  <ul>
+                    <li>HTML5セマンティックマークアップ</li>
+                    <li>CSS3カスタムプロパティ（変数）</li>
+                    <li>FlexboxとGridレイアウト</li>
+                    <li>Meyer Reset CSS</li>
+                    <li>フォントスムージング</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

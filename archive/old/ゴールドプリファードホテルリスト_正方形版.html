@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゴールドプリファード ホテルリスト</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .square-container {
+            width: 90vmin;
+            height: 90vmin;
+            max-width: 800px;
+            max-height: 800px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
+            display: grid;
+            grid-template-rows: auto 1fr;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #007AFF, #5856D6);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            opacity: 0.8;
+        }
+
+        .content {
+            padding: 20px;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            align-content: start;
+        }
+
+        .hotel-card {
+            background: white;
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #f0f0f0;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hotel-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .hotel-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+
+        .hotel-name {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+            line-height: 1.2;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            word-wrap: break-word;
+            hyphens: auto;
+        }
+
+        .hotel-location {
+            font-size: 0.7rem;
+            color: #666;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+        }
+
+        .location-icon {
+            width: 10px;
+            height: 10px;
+            margin-right: 4px;
+            opacity: 0.6;
+        }
+
+        .room-type {
+            background: #f8f9fa;
+            border-radius: 4px;
+            padding: 4px 6px;
+            margin-bottom: 6px;
+            font-size: 0.65rem;
+            color: #555;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .hotel-chain {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        /* チェーン別カラー */
+        .chain-marriott { 
+            background: linear-gradient(135deg, #007AFF, #5856D6);
+            color: white;
+        }
+        .chain-prince { 
+            background: linear-gradient(135deg, #FF3B30, #FF9500);
+            color: white;
+        }
+        .chain-okura { 
+            background: linear-gradient(135deg, #34C759, #30D158);
+            color: white;
+        }
+        .chain-hyatt { 
+            background: linear-gradient(135deg, #5856D6, #AF52DE);
+            color: white;
+        }
+        .chain-newotani { 
+            background: linear-gradient(135deg, #FF9500, #FF6B35);
+            color: white;
+        }
+        .chain-royalpark { 
+            background: linear-gradient(135deg, #FF2D92, #FF3B30);
+            color: white;
+        }
+
+        /* カードの上部バー */
+        .hotel-card.marriott::before { background: linear-gradient(90deg, #007AFF, #5856D6); }
+        .hotel-card.prince::before { background: linear-gradient(90deg, #FF3B30, #FF9500); }
+        .hotel-card.okura::before { background: linear-gradient(90deg, #34C759, #30D158); }
+        .hotel-card.hyatt::before { background: linear-gradient(90deg, #5856D6, #AF52DE); }
+        .hotel-card.newotani::before { background: linear-gradient(90deg, #FF9500, #FF6B35); }
+        .hotel-card.royalpark::before { background: linear-gradient(90deg, #FF2D92, #FF3B30); }
+
+        /* スクロールバー */
+        .content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+
+        .content::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 3px;
+        }
+
+        .content::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .hotel-card {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            .square-container {
+                width: 95vmin;
+                height: 95vmin;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="square-container">
+        <div class="header">
+            <h1>ゴールドプリファード</h1>
+            <p>厳選ホテルコレクション</p>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">42</span>
+                    <span class="stat-label">ホテル</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">6</span>
+                    <span class="stat-label">チェーン</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">15</span>
+                    <span class="stat-label">都道府県</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">国内</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <!-- マリオット系 -->
+            <div class="hotel-card marriott">
+                <div class="hotel-name">ウェスティン ルスツリゾート</div>
+                <div class="hotel-location">📍 北海道</div>
+                <div class="room-type">デラックス2シングルベッドルーム</div>
+                <span class="hotel-chain chain-marriott">マリオット</span>
+            </div>
+            
+            <div class="hotel-card marriott">
+                <div class="hotel-name">コートヤード・バイ・マリオット札幌</div>
+                <div class="hotel-location">📍 北海道</div>
+                <div class="room-type">スーペリアルーム</div>
+                <span class="hotel-chain chain-marriott">マリオット</span>
+            </div>
+            
+            <div class="hotel-card marriott">
+                <div class="hotel-name">アロフト東京銀座</div>
+                <div class="hotel-location">📍 東京</div>
+                <div class="room-type">アロフト ツイン／キング</div>
+                <span class="hotel-chain chain-marriott">マリオット</span>
+            </div>
+            
+            <div class="hotel-card marriott">
+                <div class="hotel-name">ウェスティンホテル仙台</div>
+                <div class="hotel-location">📍 宮城</div>
+                <div class="room-type">モデレートキング</div>
+                <span class="hotel-chain chain-marriott">マリオット</span>
+            </div>
+            
+            <div class="hotel-card marriott">
+                <div class="hotel-name">東京マリオットホテル</div>
+                <div class="hotel-location">📍 東京</div>
+                <div class="room-type">デラックス キング／ツイン</div>
+                <span class="hotel-chain chain-marriott">マリオット</span>
+            </div>
+            
+            <div class="hotel-card marriott">
+                <div class="hotel-name">シェラトン・グランデ・トーキョーベイ</div>
+                <div class="hotel-location">📍 千葉</div>
+                <div class="room-type">スタンダードルーム</div>
+                <span class="hotel-chain chain-marriott">マリオット</span>
+            </div>
+            
+            <div class="hotel-card marriott">
+                <div class="hotel-name">琵琶湖マリオットホテル</div>
+                <div class="hotel-location">📍 滋賀</div>
+                <div class="room-type">スーペリアルーム</div>
+                <span class="hotel-chain chain-marriott">マリオット</span>
+            </div>
+            
+            <div class="hotel-card marriott">
+                <div class="hotel-name">ウェスティンホテル横浜</div>
+                <div class="hotel-location">📍 神奈川</div>
+                <div class="room-type">デラックス キング / ダブル2台</div>
+                <span class="hotel-chain chain-marriott">マリオット</span>
+            </div>
+            
+            <div class="hotel-card marriott">
+                <div class="hotel-name">軽井沢マリオットホテル</div>
+                <div class="hotel-location">📍 長野</div>
+                <div class="room-type">スーペリアルーム</div>
+                <span class="hotel-chain chain-marriott">マリオット</span>
+            </div>
+            
+            <div class="hotel-card marriott">
+                <div class="hotel-name">チャプター京都</div>
+                <div class="hotel-location">📍 京都</div>
+                <div class="room-type">スーペリアツイン</div>
+                <span class="hotel-chain chain-marriott">マリオット</span>
+            </div>
+            
+            <div class="hotel-card marriott">
+                <div class="hotel-name">シェラトン鹿児島</div>
+                <div class="hotel-location">📍 鹿児島</div>
+                <div class="room-type">デラックスルーム 1キング／2ダブル</div>
+                <span class="hotel-chain chain-marriott">マリオット</span>
+            </div>
+            
+            <div class="hotel-card marriott">
+                <div class="hotel-name">長崎マリオットホテル</div>
+                <div class="hotel-location">📍 長崎</div>
+                <div class="room-type">デラックスキング</div>
+                <span class="hotel-chain chain-marriott">マリオット</span>
+            </div>
+            
+            <!-- プリンス系 -->
+            <div class="hotel-card prince">
+                <div class="hotel-name">札幌プリンスホテル</div>
+                <div class="hotel-location">📍 北海道</div>
+                <div class="room-type">スーペリアツインルーム</div>
+                <span class="hotel-chain chain-prince">プリンス</span>
+            </div>
+            
+            <div class="hotel-card prince">
+                <div class="hotel-name">グランドプリンスホテル新高輪</div>
+                <div class="hotel-location">📍 東京</div>
+                <div class="room-type">スーペリアモダンツイン</div>
+                <span class="hotel-chain chain-prince">プリンス</span>
+            </div>
+            
+            <div class="hotel-card prince">
+                <div class="hotel-name">ザ・プリンス 箱根芦ノ湖</div>
+                <div class="hotel-location">📍 神奈川</div>
+                <div class="room-type">本館ガーデンビューツインルーム</div>
+                <span class="hotel-chain chain-prince">プリンス</span>
+            </div>
+            
+            <div class="hotel-card prince">
+                <div class="hotel-name">ザ・プリンス パークタワー東京</div>
+                <div class="hotel-location">📍 東京</div>
+                <div class="room-type">デラックスツインルーム</div>
+                <span class="hotel-chain chain-prince">プリンス</span>
+            </div>
+            
+            <div class="hotel-card prince">
+                <div class="hotel-name">ザ・プリンス 軽井沢</div>
+                <div class="hotel-location">📍 長野</div>
+                <div class="room-type">ガーデンツインルーム / スーペリアツイン</div>
+                <span class="hotel-chain chain-prince">プリンス</span>
+            </div>
+            
+            <div class="hotel-card prince">
+                <div class="hotel-name">箱根仙石原プリンスホテル</div>
+                <div class="hotel-location">📍 神奈川</div>
+                <div class="room-type">スーペリアツインルーム</div>
+                <span class="hotel-chain chain-prince">プリンス</span>
+            </div>
+            
+            <div class="hotel-card prince">
+                <div class="hotel-name">名古屋プリンスホテル スカイタワー</div>
+                <div class="hotel-location">📍 愛知</div>
+                <div class="room-type">スカイツインルーム / スカイキングルーム</div>
+                <span class="hotel-chain chain-prince">プリンス</span>
+            </div>
+            
+            <div class="hotel-card prince">
+                <div class="hotel-name">グランドプリンスホテル大阪ベイ</div>
+                <div class="hotel-location">📍 大阪</div>
+                <div class="room-type">スタンダードルーム</div>
+                <span class="hotel-chain chain-prince">プリンス</span>
+            </div>
+            
+            <div class="hotel-card prince">
+                <div class="hotel-name">グランドプリンスホテル広島</div>
+                <div class="hotel-location">📍 広島</div>
+                <div class="room-type">スーペリアフロア ラグジュアリーファミリー</div>
+                <span class="hotel-chain chain-prince">プリンス</span>
+            </div>
+            
+            <!-- オークラ系 -->
+            <div class="hotel-card okura">
+                <div class="hotel-name">ホテルオークラ東京ベイ</div>
+                <div class="hotel-location">📍 千葉</div>
+                <div class="room-type">スーペリアルーム</div>
+                <span class="hotel-chain chain-okura">オークラ</span>
+            </div>
+            
+            <div class="hotel-card okura">
+                <div class="hotel-name">ホテル日航大阪</div>
+                <div class="hotel-location">📍 大阪</div>
+                <div class="room-type">スタンダードツイン</div>
+                <span class="hotel-chain chain-okura">オークラ</span>
+            </div>
+            
+            <div class="hotel-card okura">
+                <div class="hotel-name">ホテルオークラJRハウステンボス</div>
+                <div class="hotel-location">📍 長崎</div>
+                <div class="room-type">スーペリアパークビュールーム</div>
+                <span class="hotel-chain chain-okura">オークラ</span>
+            </div>
+            
+            <div class="hotel-card okura">
+                <div class="hotel-name">グランドニッコー東京 台場</div>
+                <div class="hotel-location">📍 東京</div>
+                <div class="room-type">レギュラーフロア スーペリアツイン／ダブル</div>
+                <span class="hotel-chain chain-okura">オークラ</span>
+            </div>
+            
+            <div class="hotel-card okura">
+                <div class="hotel-name">ホテル日航金沢</div>
+                <div class="hotel-location">📍 石川</div>
+                <div class="room-type">リュクスツイン</div>
+                <span class="hotel-chain chain-okura">オークラ</span>
+            </div>
+            
+            <div class="hotel-card okura">
+                <div class="hotel-name">ホテル日航アリビラ沖縄</div>
+                <div class="hotel-location">📍 沖縄</div>
+                <div class="room-type">スーペリアツイン</div>
+                <span class="hotel-chain chain-okura">オークラ</span>
+            </div>
+            
+            <!-- ハイアット系 -->
+            <div class="hotel-card hyatt">
+                <div class="hotel-name">ハイアット セントリック 金沢</div>
+                <div class="hotel-location">📍 石川</div>
+                <div class="room-type">キング／ツイン</div>
+                <span class="hotel-chain chain-hyatt">ハイアット</span>
+            </div>
+            
+            <div class="hotel-card hyatt">
+                <div class="hotel-name">ハイアット リージェンシー 東京ベイ</div>
+                <div class="hotel-location">📍 千葉</div>
+                <div class="room-type">キング／ツイン</div>
+                <span class="hotel-chain chain-hyatt">ハイアット</span>
+            </div>
+            
+            <div class="hotel-card hyatt">
+                <div class="hotel-name">ハイアット リージェンシー 京都</div>
+                <div class="hotel-location">📍 京都</div>
+                <div class="room-type">ゲストルーム キング／ツイン</div>
+                <span class="hotel-chain chain-hyatt">ハイアット</span>
+            </div>
+            
+            <div class="hotel-card hyatt">
+                <div class="hotel-name">ハイアット リージェンシー 瀬良垣アイランド</div>
+                <div class="hotel-location">📍 沖縄</div>
+                <div class="room-type">スタンダードツイン</div>
+                <span class="hotel-chain chain-hyatt">ハイアット</span>
+            </div>
+            
+            <div class="hotel-card hyatt">
+                <div class="hotel-name">グランド ハイアット 福岡</div>
+                <div class="hotel-location">📍 福岡</div>
+                <div class="room-type">スタンダードルーム ツイン／クイーン</div>
+                <span class="hotel-chain chain-hyatt">ハイアット</span>
+            </div>
+            
+            <div class="hotel-card hyatt">
+                <div class="hotel-name">キャプション by Hyatt なんば 大阪</div>
+                <div class="hotel-location">📍 大阪</div>
+                <div class="room-type">スタンダード (ツイン／クイーン)</div>
+                <span class="hotel-chain chain-hyatt">ハイアット</span>
+            </div>
+            
+            <!-- ニューオータニ系 -->
+            <div class="hotel-card newotani">
+                <div class="hotel-name">ホテルニューオータニ幕張</div>
+                <div class="hotel-location">📍 千葉</div>
+                <div class="room-type">スーペリアルーム</div>
+                <span class="hotel-chain chain-newotani">ニューオータニ</span>
+            </div>
+            
+            <div class="hotel-card newotani">
+                <div class="hotel-name">ホテルニューオータニ博多</div>
+                <div class="hotel-location">📍 福岡</div>
+                <div class="room-type">エグゼクティブツイン</div>
+                <span class="hotel-chain chain-newotani">ニューオータニ</span>
+            </div>
+            
+            <div class="hotel-card newotani">
+                <div class="hotel-name">ホテルニューオータニ佐賀</div>
+                <div class="hotel-location">📍 佐賀</div>
+                <div class="room-type">エグゼクティブツイン</div>
+                <span class="hotel-chain chain-newotani">ニューオータニ</span>
+            </div>
+            
+            <div class="hotel-card newotani">
+                <div class="hotel-name">ホテルニューオータニ（東京）</div>
+                <div class="hotel-location">📍 東京</div>
+                <div class="room-type">ザ・メイン スタンダード</div>
+                <span class="hotel-chain chain-newotani">ニューオータニ</span>
+            </div>
+            
+            <div class="hotel-card newotani">
+                <div class="hotel-name">ホテルニューオータニ大阪</div>
+                <div class="hotel-location">📍 大阪</div>
+                <div class="room-type">スーペリアツインルーム</div>
+                <span class="hotel-chain chain-newotani">ニューオータニ</span>
+            </div>
+            
+            <!-- ロイヤルパーク系 -->
+            <div class="hotel-card royalpark">
+                <div class="hotel-name">ザ ロイヤルパークホテル アイコニック 京都</div>
+                <div class="hotel-location">📍 京都</div>
+                <div class="room-type">デラックスフロアツイン</div>
+                <span class="hotel-chain chain-royalpark">ロイヤルパーク</span>
+            </div>
+            
+            <div class="hotel-card royalpark">
+                <div class="hotel-name">ザ ロイヤルパークホテル アイコニック 名古屋</div>
+                <div class="hotel-location">📍 愛知</div>
+                <div class="room-type">スーペリアツイン</div>
+                <span class="hotel-chain chain-royalpark">ロイヤルパーク</span>
+            </div>
+            
+            <div class="hotel-card royalpark">
+                <div class="hotel-name">ザ ロイヤルパークホテル アイコニック 大阪御堂筋</div>
+                <div class="hotel-location">📍 大阪</div>
+                <div class="room-type">スタンダードツイン</div>
+                <span class="hotel-chain chain-royalpark">ロイヤルパーク</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

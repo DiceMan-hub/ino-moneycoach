@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "Anthropic.claude-code",
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "ms-vscode.vscode-typescript-next",
+    "ritwickdey.LiveServer",
+    "GrapeCity.gc-excelviewer",
+    "cweijan.vscode-office"
+  ]
+}

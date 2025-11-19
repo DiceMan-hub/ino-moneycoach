@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>キャンペーンダッシュボード | 2025年10月</title>
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            /* Apple-inspired Design System */
+            --primary-bg: #f8f9fa;
+            --secondary-bg: #ffffff;
+            --card-bg: #ffffff;
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --text-tertiary: #a1a1a6;
+            --accent-primary: #007aff;
+            --accent-secondary: #5856d6;
+            --accent-success: #34c759;
+            --accent-warning: #ff9500;
+            --accent-danger: #ff3b30;
+            --accent-info: #5ac8fa;
+            --border-light: #f2f2f7;
+            --border-medium: #e5e5ea;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+            --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.15);
+            --shadow-xl: 0 12px 40px rgba(0, 0, 0, 0.15);
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --blur: blur(20px);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-2xl: 48px;
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary-bg: #000000;
+                --secondary-bg: #1c1c1e;
+                --card-bg: #2c2c2e;
+                --text-primary: #ffffff;
+                --text-secondary: #8e8e93;
+                --text-tertiary: #636366;
+                --border-light: #38383a;
+                --border-medium: #48484a;
+                --glass-bg: rgba(28, 28, 30, 0.8);
+                --glass-border: rgba(255, 255, 255, 0.1);
+                --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+                --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+                --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.4);
+                --shadow-xl: 0 12px 40px rgba(0, 0, 0, 0.4);
+            }
+        }
+        
+        body {
+            font-family: 'Arimo', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+        
+        /* Apple-inspired Header with Glass Morphism */
+        .header {
+            background: var(--glass-bg);
+            backdrop-filter: var(--blur) saturate(180%);
+            border-bottom: 1px solid var(--glass-border);
+            padding: var(--spacing-md) 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all var(--transition-normal);
+            -webkit-backdrop-filter: var(--blur) saturate(180%);
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            pointer-events: none;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--spacing-md);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+        
+        .header-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 600;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+        }
+        
+        .header-icon:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .header-text h1 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+        }
+        
+        .header-text .subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-top: var(--spacing-xs);
+            font-weight: 400;
+            line-height: 1.4;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+        
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            background: var(--accent-success);
+            color: white;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: 20px;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+        }
+        
+        .status-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        .status-badge:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(0.9); }
+        }
+        
+        /* Apple-inspired Dashboard Stats */
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: var(--spacing-lg);
+            margin: var(--spacing-2xl) 0;
+        }
+        
+        .stat-card {
+            background: var(--card-bg);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-primary);
+        }
+        
+        .stat-card:active {
+            transform: translateY(-2px);
+        }
+        
+        .stat-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .stat-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.125rem;
+            transition: all var(--transition-normal);
+        }
+        
+        .stat-icon.primary { 
+            background: rgba(0, 122, 255, 0.1); 
+            color: var(--accent-primary); 
+        }
+        .stat-icon.success { 
+            background: rgba(52, 199, 89, 0.1); 
+            color: var(--accent-success); 
+        }
+        .stat-icon.warning { 
+            background: rgba(255, 149, 0, 0.1); 
+            color: var(--accent-warning); 
+        }
+        .stat-icon.info { 
+            background: rgba(90, 200, 250, 0.1); 
+            color: var(--accent-info); 
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1;
+            margin-bottom: var(--spacing-sm);
+            letter-spacing: -0.01em;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        
+        .stat-change {
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: var(--spacing-sm);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            display: inline-block;
+        }
+        
+        .stat-change.positive { 
+            color: var(--accent-success); 
+            background: rgba(52, 199, 89, 0.1);
+        }
+        .stat-change.negative { 
+            color: var(--accent-danger); 
+            background: rgba(255, 59, 48, 0.1);
+        }
+        
+        /* Apple-inspired Search & Filter Section */
+        .search-filter-section {
+            background: var(--card-bg);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            margin: var(--spacing-2xl) 0;
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+        }
+        
+        .search-container {
+            position: relative;
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-lg) 3.5rem;
+            border: 1px solid var(--border-medium);
+            border-radius: var(--radius-lg);
+            font-size: 1.125rem;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            transition: all var(--transition-normal);
+            font-family: inherit;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
+            background: var(--card-bg);
+        }
+        
+        .search-input::placeholder {
+            color: var(--text-tertiary);
+            font-weight: 400;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: var(--spacing-md);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-tertiary);
+            font-size: 1.125rem;
+            pointer-events: none;
+            transition: color var(--transition-normal);
+        }
+        
+        .search-input:focus + .search-icon {
+            color: var(--accent-primary);
+        }
+        
+        .filter-tabs {
+            display: flex;
+            gap: var(--spacing-sm);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding-bottom: var(--spacing-sm);
+        }
+        
+        .filter-tabs::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .filter-tab {
+            background: var(--primary-bg);
+            border: 1px solid var(--border-medium);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all var(--transition-normal);
+            color: var(--text-secondary);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        
+        .filter-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            transition: left var(--transition-normal);
+            z-index: -1;
+        }
+        
+        .filter-tab:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .filter-tab.active {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: white;
+            box-shadow: var(--shadow-md);
+            transform: translateY(-1px);
+        }
+        
+        .filter-tab.active::before {
+            left: 0;
+        }
+        
+        .filter-count {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            min-width: 20px;
+            text-align: center;
+        }
+        
+        /* Apple-inspired Content Grid */
+        .campaigns-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: var(--spacing-lg);
+            margin: var(--spacing-2xl) 0;
+            padding-bottom: var(--spacing-2xl);
+        }
+        
+        .campaign-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+        }
+        
+        .campaign-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+            transition: all var(--transition-normal);
+        }
+        
+        .campaign-card.credit-card::before { 
+            background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%); 
+        }
+        .campaign-card.debit-card::before { 
+            background: linear-gradient(90deg, var(--accent-info) 0%, var(--accent-primary) 100%); 
+        }
+        .campaign-card.payment::before { 
+            background: linear-gradient(90deg, var(--accent-warning) 0%, var(--accent-danger) 100%); 
+        }
+        .campaign-card.points::before { 
+            background: linear-gradient(90deg, var(--accent-success) 0%, var(--accent-info) 100%); 
+        }
+        .campaign-card.news::before { 
+            background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-info) 100%); 
+        }
+        .campaign-card.event::before { 
+            background: linear-gradient(90deg, var(--accent-secondary) 0%, var(--accent-primary) 100%); 
+        }
+        
+        .campaign-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-primary);
+        }
+        
+        .campaign-card:hover::before {
+            height: 4px;
+        }
+        
+        .campaign-card:active {
+            transform: translateY(-3px);
+            transition: all var(--transition-fast);
+        }
+        
+        /* キャンペーンカードヘッダー */
+        .campaign-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+        
+        .campaign-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .campaign-number {
+            background: var(--primary-bg);
+            color: var(--text-secondary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            border: 1px solid var(--border-light);
+        }
+        
+        .campaign-category {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .campaign-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: currentColor;
+            opacity: 0.1;
+            transition: left 0.3s ease;
+        }
+        
+        .campaign-category:hover::before {
+            left: 0;
+        }
+        
+        .category-credit-card {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-primary);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        .category-debit-card {
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--accent-info);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+        }
+        
+        .category-payment {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--accent-warning);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+        
+        .category-points {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-success);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        
+        .category-news {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-primary);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        .category-event {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--accent-secondary);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+        
+        .category-icon {
+            font-size: 0.875rem;
+        }
+        
+        /* キャンペーンコンテンツ */
+        .campaign-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .campaign-date::before {
+            content: '📅';
+            font-size: 1rem;
+        }
+        
+        .campaign-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+            line-height: 1.4;
+            letter-spacing: -0.025em;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .campaign-description {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .campaign-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+        }
+        
+        .campaign-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            background: var(--accent-primary);
+            color: white;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .campaign-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left var(--transition-slow);
+        }
+        
+        .campaign-link:hover {
+            background: var(--accent-secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .campaign-link:hover::before {
+            left: 100%;
+        }
+        
+        .campaign-link:active {
+            transform: translateY(0);
+            transition: all var(--transition-fast);
+        }
+        
+        .campaign-link::after {
+            content: '→';
+            font-size: 0.875rem;
+            transition: transform var(--transition-normal);
+        }
+        
+        .campaign-link:hover::after {
+            transform: translateX(3px);
+        }
+        
+        .campaign-priority {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .priority-high {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--accent-danger);
+        }
+        
+        .priority-medium {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--accent-warning);
+        }
+        
+        .priority-low {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-success);
+        }
+        
+        /* ステータス表示 */
+        .campaign-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        
+        .status-active {
+            background: rgba(52, 199, 89, 0.1);
+            color: var(--accent-success);
+        }
+        
+        .status-ended {
+            background: rgba(142, 142, 147, 0.1);
+            color: var(--text-tertiary);
+        }
+        
+        .status-soon {
+            background: rgba(255, 149, 0, 0.1);
+            color: var(--accent-warning);
+        }
+        
+        .status-urgent {
+            background: rgba(255, 59, 48, 0.1);
+            color: var(--accent-danger);
+        }
+        
+        /* 終了したキャンペーンのスタイル */
+        .campaign-card.ended {
+            opacity: 0.7;
+            background: var(--primary-bg);
+            border-color: var(--border-medium);
+        }
+        
+        .campaign-card.ended::before {
+            background: linear-gradient(90deg, var(--text-tertiary) 0%, var(--border-medium) 100%);
+        }
+        
+        .campaign-card.ended .campaign-title {
+            color: var(--text-tertiary);
+        }
+        
+        .campaign-card.ended .campaign-description {
+            color: var(--text-tertiary);
+        }
+        
+        .campaign-card.ended .campaign-link {
+            background: var(--text-tertiary);
+            color: white;
+            cursor: not-allowed;
+        }
+        
+        .campaign-card.ended .campaign-link:hover {
+            background: var(--text-tertiary);
+            transform: none;
+        }
+        
+        /* フッター */
+        .footer {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border-light);
+            background: var(--card-bg);
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .footer-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            margin-top: 0.5rem;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        /* ローディングアニメーション */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border-light);
+            border-top: 4px solid var(--accent-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* 空の状態 */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+        }
+        
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+        
+        .empty-state-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .empty-state-description {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        
+        /* レスポンシブデザイン */
+        @media (max-width: 1024px) {
+            .campaigns-grid {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .header {
+                padding: 0.75rem 0;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+            
+            .header-left {
+                justify-content: center;
+            }
+            
+            .header-actions {
+                justify-content: center;
+            }
+            
+            .dashboard-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .campaigns-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .search-filter-section {
+                padding: 1rem;
+            }
+            
+            .filter-tabs {
+                flex-wrap: wrap;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.25rem;
+            }
+            
+            .header-text h1 {
+                font-size: 1.5rem;
+            }
+            
+            .dashboard-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-card {
+                padding: 1rem;
+            }
+            
+            .campaign-card {
+                padding: 1rem;
+            }
+            
+            .campaign-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+            
+            .campaign-actions {
+                flex-direction: column;
+                gap: 0.75rem;
+                align-items: stretch;
+            }
+            
+            .campaign-link {
+                justify-content: center;
+            }
+        }
+        
+        /* スムーズスクロール */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* シンプルなアニメーション（動きを最小限に） */
+        .campaign-card {
+            opacity: 0;
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        
+        .campaign-card:nth-child(1) { animation-delay: 0.05s; }
+        .campaign-card:nth-child(2) { animation-delay: 0.1s; }
+        .campaign-card:nth-child(3) { animation-delay: 0.15s; }
+        .campaign-card:nth-child(4) { animation-delay: 0.2s; }
+        .campaign-card:nth-child(5) { animation-delay: 0.25s; }
+        .campaign-card:nth-child(6) { animation-delay: 0.3s; }
+        .campaign-card:nth-child(7) { animation-delay: 0.35s; }
+        .campaign-card:nth-child(8) { animation-delay: 0.4s; }
+        .campaign-card:nth-child(9) { animation-delay: 0.45s; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="header-icon">📊</div>
+                    <div class="header-text">
+                    <h1>金融情報ダッシュボード</h1>
+                    <div class="subtitle">ニュース・イベント・キャンペーン統合</div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <span class="status-badge">リアルタイム更新中</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- ダッシュボード統計 -->
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon primary">📈</div>
+                </div>
+                <div class="stat-number">12</div>
+                <div class="stat-label">アクティブキャンペーン</div>
+                <div class="stat-change positive">+3 今月</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon success">📰</div>
+                </div>
+                <div class="stat-number">8</div>
+                <div class="stat-label">最新ニュース</div>
+                <div class="stat-change positive">今週</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon warning">🎯</div>
+                </div>
+                <div class="stat-number">5</div>
+                <div class="stat-label">重要イベント</div>
+                <div class="stat-change positive">注目</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon info">💎</div>
+                </div>
+                <div class="stat-number">7</div>
+                <div class="stat-label">カテゴリ</div>
+                <div class="stat-change positive">拡張</div>
+            </div>
+        </div>
+
+        <!-- 検索・フィルターセクション -->
+        <div class="search-filter-section">
+            <div class="search-container">
+                <div class="search-icon">🔍</div>
+                <input type="text" class="search-input" placeholder="ニュース・イベント・キャンペーンを検索..." id="searchInput">
+            </div>
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-category="all">
+                    すべて
+                    <span class="filter-count">25</span>
+                </button>
+                <button class="filter-tab" data-category="ニュース">
+                    📰 ニュース
+                    <span class="filter-count">8</span>
+                </button>
+                <button class="filter-tab" data-category="イベント">
+                    🎯 イベント
+                    <span class="filter-count">5</span>
+                </button>
+                <button class="filter-tab" data-category="クレジットカード">
+                    💳 クレジットカード
+                    <span class="filter-count">3</span>
+                </button>
+                <button class="filter-tab" data-category="デビットカード">
+                    💳 デビットカード
+                    <span class="filter-count">1</span>
+                </button>
+                <button class="filter-tab" data-category="決済サービス">
+                    💰 決済サービス
+                    <span class="filter-count">3</span>
+                </button>
+                <button class="filter-tab" data-category="ポイント・マイル">
+                    ✈️ ポイント・マイル
+                    <span class="filter-count">5</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- コンテンツグリッド -->
+        <div class="campaigns-grid">
+            <!-- ニュース 1 -->
+            <div class="campaign-card news" data-category="ニュース">
+                <div class="campaign-header">
+                    <div class="campaign-meta">
+                        <span class="campaign-number">#N001</span>
+                        <span class="campaign-category category-news">
+                            <span class="category-icon">📰</span>
+                            ニュース
+                        </span>
+                    </div>
+                    <span class="campaign-priority priority-high">重要</span>
+                </div>
+                <div class="campaign-date">2025年10月14日</div>
+                <h3 class="campaign-title">ANA Pay ギフトコード機能開始</h3>
+                <p class="campaign-description">
+                    ANA X株式会社と全日空商事が共同で「ANA Pay ギフトコード」機能を開始。企業のキャンペーン賞品として活用可能で、全国のスーパー・コンビニで利用可能。12月頃から遅延・欠航時の支払い方法としても選択可能になります。
+                </p>
+                <div class="campaign-actions">
+                    <a href="#" class="campaign-link">詳細を見る</a>
+                </div>
+            </div>
+
+            <!-- ニュース 2 -->
+            <div class="campaign-card news" data-category="ニュース">
+                <div class="campaign-header">
+                    <div class="campaign-meta">
+                        <span class="campaign-number">#N002</span>
+                        <span class="campaign-category category-news">
+                            <span class="category-icon">📰</span>
+                            ニュース
+                        </span>
+                    </div>
+                    <span class="campaign-priority priority-high">重要</span>
+                </div>
+                <div class="campaign-date">2025年10月14日</div>
+                <h3 class="campaign-title">三菱UFJカード ポイント制度変更</h3>
+                <p class="campaign-description">
+                    「全対象店の合算」方式に変更。1,000円単位の条件廃止により少額利用分もポイント対象となり、コンビニ・ファストフードでポイントが貯まりやすくなります。10月16日以降の利用分から適用されます。
+                </p>
+                <div class="campaign-actions">
+                    <a href="#" class="campaign-link">詳細を見る</a>
+                </div>
+            </div>
+
+            <!-- イベント 1 -->
+            <div class="campaign-card event" data-category="イベント">
+                <div class="campaign-header">
+                    <div class="campaign-meta">
+                        <span class="campaign-number">#E001</span>
+                        <span class="campaign-category category-event">
+                            <span class="category-icon">🎯</span>
+                            イベント
+                        </span>
+                    </div>
+                    <div>
+                        <span class="campaign-priority priority-high">注目</span>
+                        <span class="campaign-status status-active">進行中</span>
+                    </div>
+                </div>
+                <div class="campaign-date">開始: 2025年10月16日</div>
+                <h3 class="campaign-title">JCB タッチ決済キャンペーン</h3>
+                <p class="campaign-description">
+                    公共交通機関30％還元（上限500円）のキャンペーンが開始。期間は11月15日までで、参加登録が必須です。JCBカードのタッチ決済機能を活用した新しいキャンペーンです。
+                </p>
+                <div class="campaign-actions">
+                    <a href="#" class="campaign-link">詳細を見る</a>
+                </div>
+            </div>
+
+            <!-- イベント 2 -->
+            <div class="campaign-card event" data-category="イベント">
+                <div class="campaign-header">
+                    <div class="campaign-meta">
+                        <span class="campaign-number">#E002</span>
+                        <span class="campaign-category category-event">
+                            <span class="category-icon">🎯</span>
+                            イベント
+                        </span>
+                    </div>
+                    <div>
+                        <span class="campaign-priority priority-medium">注目</span>
+                        <span class="campaign-status status-active">進行中</span>
+                    </div>
+                </div>
+                <div class="campaign-date">2025年10月9日</div>
+                <h3 class="campaign-title">PayPay × Binance Japan 提携</h3>
+                <p class="campaign-description">
+                    PayPayがBinance Japanの株式40％を取得する資本業務提携契約を締結。キャッシュレス決済と暗号資産の融合により、PayPayマネーでの暗号資産購入を検討しており、日本のデジタル金融進化を推進します。
+                </p>
+                <div class="campaign-actions">
+                    <a href="#" class="campaign-link">詳細を見る</a>
+                </div>
+            </div>
+
+            <!-- Campaign 1 -->
+            <div class="campaign-card credit-card" data-category="クレジットカード">
+                <div class="campaign-header">
+                    <div class="campaign-meta">
+                        <span class="campaign-number">#001</span>
+                        <span class="campaign-category category-credit-card">
+                            <span class="category-icon">💳</span>
+                            クレジットカード
+                        </span>
+                    </div>
+                    <span class="campaign-priority priority-high">高優先度</span>
+                </div>
+                <div class="campaign-date">開始日: 2025年10月1日</div>
+                <h3 class="campaign-title">JCB オリジナルシリーズ 新規入会キャンペーン</h3>
+                <p class="campaign-description">
+                    JCBプラチナでは初年度年会費27,500円キャッシュバック（50万円以上の利用が条件）や、Amazon.co.jpでの利用分20%キャッシュバック（最大3万円）などが継続されています。その他のJCBオリジナルシリーズカードでも様々な入会特典が用意されています。<br>
+                    <strong>キャンペーン期間:</strong> 2026年1月12日まで
+                </p>
+                <div class="campaign-actions">
+                    <a href="https://www.jcb.co.jp/promotion/ordercard/platinum/" target="_blank" class="campaign-link">詳細を見る</a>
+                </div>
+            </div>
+
+            <!-- Campaign 2 -->
+            <div class="campaign-card credit-card" data-category="クレジットカード">
+                <div class="campaign-header">
+                    <div class="campaign-meta">
+                        <span class="campaign-number">#002</span>
+                        <span class="campaign-category category-credit-card">
+                            <span class="category-icon">💳</span>
+                            クレジットカード
+                        </span>
+                    </div>
+                    <span class="campaign-priority priority-high">高優先度</span>
+                </div>
+                <div class="campaign-date">開始日: 2025年10月1日</div>
+                <h3 class="campaign-title">JCB Premium Stay Powered by HoteLux リリース記念キャンペーン</h3>
+                <p class="campaign-description">
+                    総額500万円相当のホテルクーポンプレゼントキャンペーンや、厳選ホテルの滞在中特典プレゼントキャンペーンが実施されています。HoteLuxの予約で対象のJCBカードで10万円（税別）以上の決済をした人のうち500名に、次回利用できる1万円クーポンが付与されます。<br>
+                    <strong>キャンペーン期間:</strong> 2026年1月31日まで
+                </p>
+                <div class="campaign-actions">
+                    <a href="https://www.jcb.co.jp/premium/service/detail/hotelux.html" target="_blank" class="campaign-link">詳細を見る</a>
+                </div>
+            </div>
+
+            <!-- Campaign 3 -->
+            <div class="campaign-card debit-card" data-category="デビットカード">
+                <div class="campaign-header">
+                    <div class="campaign-meta">
+                        <span class="campaign-number">#003</span>
+                        <span class="campaign-category category-debit-card">
+                            <span class="category-icon">💳</span>
+                            デビットカード
+                        </span>
+                    </div>
+                    <span class="campaign-priority priority-medium">中優先度</span>
+                </div>
+                <div class="campaign-date">開始日: 2025年10月1日</div>
+                <h3 class="campaign-title">タカシマヤプラチナデビットカード 初年度年会費キャッシュバックキャンペーン</h3>
+                <p class="campaign-description">
+                    2025年10月1日から12月31日の期間中、新規申込者が国内Visa加盟店で30万円（税込）以上利用すると、初年度年会費33,000円（税込）がキャッシュバックされます。ソニー銀行とタカシマヤが提供するプラチナデビットカードの入会促進キャンペーンです。<br>
+                    <strong>キャンペーン期間:</strong> 12月31日まで
+                </p>
+                <div class="campaign-actions">
+                    <a href="https://www.takashimaya.co.jp/store/special/debit/campaign2025_10/" target="_blank" class="campaign-link">詳細を見る</a>
+                </div>
+            </div>
+
+            <!-- Campaign 4 -->
+            <div class="campaign-card payment" data-category="決済サービス">
+                <div class="campaign-header">
+                    <div class="campaign-meta">
+                        <span class="campaign-number">#004</span>
+                        <span class="campaign-category category-payment">
+                            <span class="category-icon">💰</span>
+                            決済サービス
+                        </span>
+                    </div>
+                    <span class="campaign-priority priority-low">低優先度</span>
+                </div>
+                <div class="campaign-date">開始日: 2025年10月10日</div>
+                <h3 class="campaign-title">JAL Pay チャージ限度額変更</h3>
+                <p class="campaign-description">
+                    コース未選択のチャージ限度額が変更され、1回あたり、および1日あたりの上限が5万円から2万円に引き下げられています（月間上限は5万円で変更なし）。JAL Payの利用規約改定に伴う変更点です。
+                </p>
+                <div class="campaign-actions">
+                    <a href="https://www.jal.co.jp/jp/ja/jmb/jalpay/pay/notice/251003/" target="_blank" class="campaign-link">詳細を見る</a>
+                </div>
+            </div>
+
+            <!-- Campaign 5 -->
+            <div class="campaign-card points" data-category="ポイント・マイル">
+                <div class="campaign-header">
+                    <div class="campaign-meta">
+                        <span class="campaign-number">#005</span>
+                        <span class="campaign-category category-points">
+                            <span class="category-icon">✈️</span>
+                            ポイント・マイル
+                        </span>
+                    </div>
+                    <span class="campaign-priority priority-high">高優先度</span>
+                </div>
+                <div class="campaign-date">開始日: 2025年10月1日</div>
+                <h3 class="campaign-title">ANAマイル移行上限突破キャンペーン</h3>
+                <p class="campaign-description">
+                    ANAマイレージクラブへ年間移行マイル数の上限（4万マイル）を超えてマイル移行ができるキャンペーン。ダイナースクラブカードの「ダイナースグローバルマイレージ」会員が対象で、4万マイルまでは1,000ポイント＝1,000マイル、4万マイル超は2,500ポイント＝1,000マイルの移行率となります。<br>
+                    <strong>キャンペーン期間:</strong> 12月19日まで
+                </p>
+                <div class="campaign-actions">
+                    <a href="https://www.diners.co.jp/ja/press/inf_20251001_2.html" target="_blank" class="campaign-link">詳細を見る</a>
+                </div>
+            </div>
+
+            <!-- Campaign 6 -->
+            <div class="campaign-card points" data-category="ポイント・マイル">
+                <div class="campaign-header">
+                    <div class="campaign-meta">
+                        <span class="campaign-number">#006</span>
+                        <span class="campaign-category category-points">
+                            <span class="category-icon">✈️</span>
+                            ポイント・マイル
+                        </span>
+                    </div>
+                    <span class="campaign-priority priority-medium">中優先度</span>
+                </div>
+                <div class="campaign-date">エントリー開始: 2025年10月9日</div>
+                <h3 class="campaign-title">dポイント10％増量キャンペーン</h3>
+                <p class="campaign-description">
+                    ポイント交換のキャンペーン期間は2025年11月1日からですが、エントリー期間は2025年10月9日から始まっています。対象企業のポイント（ポイントサイトや電力会社など）をdポイントへ交換すると10％増量されます。<br>
+                    <strong>エントリー期間:</strong> 2026年1月5日まで<br>
+                    <strong>交換期間:</strong> 2025年11月1日～2026年1月5日
+                </p>
+                <div class="campaign-actions">
+                    <a href="https://dpoint.docomo.ne.jp/cp_7/alliance_251101_6757/index.html" target="_blank" class="campaign-link">詳細を見る</a>
+                </div>
+            </div>
+
+            <!-- 追加ニュース 3 -->
+            <div class="campaign-card news" data-category="ニュース">
+                <div class="campaign-header">
+                    <div class="campaign-meta">
+                        <span class="campaign-number">#N003</span>
+                        <span class="campaign-category category-news">
+                            <span class="category-icon">📰</span>
+                            ニュース
+                        </span>
+                    </div>
+                    <span class="campaign-priority priority-medium">注目</span>
+                </div>
+                <div class="campaign-date">2025年10月15日</div>
+                <h3 class="campaign-title">バンドルカード クリック決済導入</h3>
+                <p class="campaign-description">
+                    株式会社カンムが「クリック決済」を導入。カード番号入力不要でスピーディで安全な決済が可能になり、日本国内初の対応となります。決済の利便性が大幅に向上します。
+                </p>
+                <div class="campaign-actions">
+                    <a href="#" class="campaign-link">詳細を見る</a>
+                </div>
+            </div>
+
+            <!-- 追加ニュース 4 -->
+            <div class="campaign-card news" data-category="ニュース">
+                <div class="campaign-header">
+                    <div class="campaign-meta">
+                        <span class="campaign-number">#N004</span>
+                        <span class="campaign-category category-news">
+                            <span class="category-icon">📰</span>
+                            ニュース
+                        </span>
+                    </div>
+                    <span class="campaign-priority priority-medium">注目</span>
+                </div>
+                <div class="campaign-date">2025年10月15日</div>
+                <h3 class="campaign-title">GMOあおぞら アメックス対応開始</h3>
+                <p class="campaign-description">
+                    GMOあおぞらネット銀行がアメックス口座振替に対応開始。より便利な決済環境を提供し、ユーザーの利便性が向上します。
+                </p>
+                <div class="campaign-actions">
+                    <a href="#" class="campaign-link">詳細を見る</a>
+                </div>
+            </div>
+
+            <!-- 追加イベント 3 -->
+            <div class="campaign-card event" data-category="イベント">
+                <div class="campaign-header">
+                    <div class="campaign-meta">
+                        <span class="campaign-number">#E003</span>
+                        <span class="campaign-category category-event">
+                            <span class="category-icon">🎯</span>
+                            イベント
+                        </span>
+                    </div>
+                    <span class="campaign-priority priority-high">注目</span>
+                </div>
+                <div class="campaign-date">開始: 2025年10月16日</div>
+                <h3 class="campaign-title">三菱UFJカード 新制度開始</h3>
+                <p class="campaign-description">
+                    全対象店合算方式による新制度が開始。1,000円未満の少額利用もポイント対象となり、コンビニやファストフードでの利用がよりお得になります。
+                </p>
+                <div class="campaign-actions">
+                    <a href="#" class="campaign-link">詳細を見る</a>
+                </div>
+            </div>
+
+            <!-- 追加イベント 4 -->
+            <div class="campaign-card event" data-category="イベント">
+                <div class="campaign-header">
+                    <div class="campaign-meta">
+                        <span class="campaign-number">#E004</span>
+                        <span class="campaign-category category-event">
+                            <span class="category-icon">🎯</span>
+                            イベント
+                        </span>
+                    </div>
+                    <div>
+                        <span class="campaign-priority priority-medium">注目</span>
+                        <span class="campaign-status status-soon">近日開催</span>
+                    </div>
+                </div>
+                <div class="campaign-date">2025年10月20日</div>
+                <h3 class="campaign-title">金融デジタル化推進セミナー</h3>
+                <p class="campaign-description">
+                    金融業界のデジタル化をテーマとしたオンラインセミナーを開催。最新の決済技術や暗号資産の動向について専門家が解説します。
+                </p>
+                <div class="campaign-actions">
+                    <a href="#" class="campaign-link">詳細を見る</a>
+                </div>
+            </div>
+
+            <!-- 追加イベント 5 -->
+            <div class="campaign-card event" data-category="イベント">
+                <div class="campaign-header">
+                    <div class="campaign-meta">
+                        <span class="campaign-number">#E005</span>
+                        <span class="campaign-category category-event">
+                            <span class="category-icon">🎯</span>
+                            イベント
+                        </span>
+                    </div>
+                    <div>
+                        <span class="campaign-priority priority-low">情報</span>
+                        <span class="campaign-status status-soon">近日開催</span>
+                    </div>
+                </div>
+                <div class="campaign-date">2025年10月25日</div>
+                <h3 class="campaign-title">ポイント活用セミナー</h3>
+                <p class="campaign-description">
+                    各種ポイントサービスの効果的な活用方法を学べるセミナー。ポイントの貯め方から使い方まで、実践的なノウハウを紹介します。
+                </p>
+                <div class="campaign-actions">
+                    <a href="#" class="campaign-link">詳細を見る</a>
+                </div>
+            </div>
+
+            <!-- 終了したイベントの例 -->
+            <div class="campaign-card event ended" data-category="イベント">
+                <div class="campaign-header">
+                    <div class="campaign-meta">
+                        <span class="campaign-number">#E006</span>
+                        <span class="campaign-category category-event">
+                            <span class="category-icon">🎯</span>
+                            イベント
+                        </span>
+                    </div>
+                    <div>
+                        <span class="campaign-priority priority-low">情報</span>
+                        <span class="campaign-status status-ended">終了</span>
+                    </div>
+                </div>
+                <div class="campaign-date">終了: 2025年10月15日</div>
+                <h3 class="campaign-title">9月キャンペーン振り返りセミナー</h3>
+                <p class="campaign-description">
+                    9月に実施された各種キャンペーンの振り返りと今後の展望について解説するセミナーでした。多くの参加者にご参加いただき、ありがとうございました。
+                </p>
+                <div class="campaign-actions">
+                    <a href="#" class="campaign-link">アーカイブを見る</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-title">金融情報ダッシュボード</div>
+                <p>2025年10月 ニュース・イベント・キャンペーン統合</p>
+                <div class="footer-subtitle">最終更新: 2025年10月22日</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 高度な検索・フィルター機能
+        class CampaignDashboard {
+            constructor() {
+                this.searchInput = document.getElementById('searchInput');
+                this.filterTabs = document.querySelectorAll('.filter-tab');
+                this.campaignCards = document.querySelectorAll('.campaign-card');
+                this.currentFilter = 'all';
+                this.currentSearch = '';
+                
+                this.init();
+            }
+            
+            init() {
+                this.setupSearch();
+                this.setupFilters();
+                this.setupCardInteractions();
+                this.setupAnimations();
+            }
+            
+            setupSearch() {
+                this.searchInput.addEventListener('input', (e) => {
+                    this.currentSearch = e.target.value.toLowerCase();
+                    this.filterCampaigns();
+                });
+            }
+            
+            setupFilters() {
+                this.filterTabs.forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        // アクティブタブの切り替え
+                        this.filterTabs.forEach(t => t.classList.remove('active'));
+                        tab.classList.add('active');
+                        
+                        this.currentFilter = tab.dataset.category;
+                        this.filterCampaigns();
+                    });
+                });
+            }
+            
+            setupCardInteractions() {
+                this.campaignCards.forEach(card => {
+                    card.addEventListener('click', (e) => {
+                        if (e.target.tagName !== 'A' && !e.target.closest('a')) {
+                            const link = card.querySelector('.campaign-link');
+                            if (link) {
+                                // アニメーション付きでリンクを開く
+                                card.style.transform = 'scale(0.98)';
+                                setTimeout(() => {
+                                    window.open(link.href, '_blank');
+                                    card.style.transform = '';
+                                }, 150);
+                            }
+                        }
+                    });
+                    
+                    // ホバーエフェクトの強化
+                    card.addEventListener('mouseenter', () => {
+                        card.style.transform = 'translateY(-8px) scale(1.02)';
+                    });
+                    
+                    card.addEventListener('mouseleave', () => {
+                        card.style.transform = '';
+                    });
+                });
+            }
+            
+            setupAnimations() {
+                // スクロール時のアニメーション
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                this.campaignCards.forEach(card => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(30px)';
+                    card.style.transition = 'all 0.6s ease';
+                    observer.observe(card);
+                });
+            }
+            
+            filterCampaigns() {
+                this.campaignCards.forEach(card => {
+                    const category = card.dataset.category;
+                    const title = card.querySelector('.campaign-title').textContent.toLowerCase();
+                    const description = card.querySelector('.campaign-description').textContent.toLowerCase();
+                    
+                    const matchesCategory = this.currentFilter === 'all' || category === this.currentFilter;
+                    const matchesSearch = this.currentSearch === '' || 
+                        title.includes(this.currentSearch) || 
+                        description.includes(this.currentSearch);
+                    
+                    if (matchesCategory && matchesSearch) {
+                        card.classList.remove('hidden');
+                        card.style.display = 'block';
+                        // アニメーション付きで表示
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 100);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.classList.add('hidden');
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+                
+                // 結果カウントの更新
+                this.updateResultCount();
+            }
+            
+            updateResultCount() {
+                const visibleCards = Array.from(this.campaignCards).filter(card => 
+                    !card.classList.contains('hidden')
+                );
+                
+                // フィルターカウントの更新
+                this.filterTabs.forEach(tab => {
+                    const category = tab.dataset.category;
+                    const count = category === 'all' ? 
+                        this.campaignCards.length : 
+                        Array.from(this.campaignCards).filter(card => 
+                            card.dataset.category === category
+                        ).length;
+                    
+                    const countElement = tab.querySelector('.filter-count');
+                    if (countElement) {
+                        countElement.textContent = count;
+                    }
+                });
+            }
+        }
+        
+        // ダッシュボードの初期化
+        document.addEventListener('DOMContentLoaded', () => {
+            new CampaignDashboard();
+        });
+        
+        // パフォーマンス最適化
+        let ticking = false;
+        
+        function updateOnScroll() {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    // スクロール時の処理
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+        
+        window.addEventListener('scroll', updateOnScroll, { passive: true });
+        
+        // キーボードショートカット
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                switch(e.key) {
+                    case 'f':
+                        e.preventDefault();
+                        document.getElementById('searchInput').focus();
+                        break;
+                    case '1':
+                        e.preventDefault();
+                        document.querySelector('[data-category="all"]').click();
+                        break;
+                    case '2':
+                        e.preventDefault();
+                        document.querySelector('[data-category="クレジットカード"]').click();
+                        break;
+                    case '3':
+                        e.preventDefault();
+                        document.querySelector('[data-category="デビットカード"]').click();
+                        break;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

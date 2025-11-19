@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ヒルトンの未来：日本 (2025-2032)</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        body {
+
+            font-family: 'Inter', sans-serif;
+
+            background-color: #F7F9F9;
+
+        }
+
+        .chart-container {
+
+            position: relative;
+
+            width: 100%;
+
+            max-width: 500px;
+
+            margin-left: auto;
+
+            margin-right: auto;
+
+            height: 320px;
+
+            max-height: 350px;
+
+        }
+
+        @media (min-width: 768px) {
+
+            .chart-container {
+
+                height: 350px;
+
+                max-height: 400px;
+
+            }
+
+        }
+
+        .timeline-dot {
+
+            background-color: #118AB2;
+
+        }
+
+        .timeline-item:last-child {
+
+            margin-bottom: 0;
+
+        }
+
+    </style>
+
+    
+
+    <!-- Infographic Narrative Plan -->
+
+    <!--
+
+    Section 1: Title & Hook: Title: "ヒルトンの拡大する日本市場 (2025-2028)". Hook: Key stats (19 new hotels, 3,500+ new rooms).
+
+    Section 2: The New Additions (Timeline): A visual HTML/Tailwind timeline of all 19 openings, grouped by year.
+
+    Section 3: Brand Portfolio Growth: Chart.js Bar Chart showing the count of new hotels by brand.
+
+    Section 4: Geographic Spread: Chart.js Donut Chart categorizing locations (Major City, Resort, Secondary City).
+
+    Section 5: Market Segment Focus: Chart.js Donut Chart showing the mix of hotel tiers (Luxury, Focused Service, Full Service).
+
+    Section 6: Key Takeaway: A text card to summarize the strategic insights from the data.
+
+    Section 7: The Full List (Data Table): A clean HTML/Tailwind table with details for all 19 hotels.
+
+    Section 8: Conclusion: A brief summary footer.
+
+    -->
+
+    
+
+    <!-- Visualization Selection Plan -->
+
+    <!--
+
+    Data Point 1: Total New Hotels (19)
+
+        Goal: Inform
+
+        Choice: Single Big Number (Styled HTML/Tailwind).
+
+        Justification: High-impact, immediate hook. (NO SVG).
+
+    Data Point 2: Total New Rooms (3,500+)
+
+        Goal: Inform
+
+        Choice: Single Big Number (Styled HTML/Tailwind).
+
+        Justification: Complements the hotel count. (NO SVG).
+
+    Data Point 3: Opening Timeline (19 hotels, 2025-2028)
+
+        Goal: Change (Show distinct events)
+
+        Choice: Timeline (Structured HTML/CSS with Tailwind).
+
+        Justification: Clearly shows the sequence of openings over time. (NO SVG, NO MERMAID JS).
+
+    Data Point 4: New Hotels per Brand
+
+        Goal: Compare (categories)
+
+        Choice: Bar Chart (Chart.js / Canvas).
+
+        Justification: Best way to compare counts across multiple distinct brands. (NO SVG).
+
+    Data Point 5: Geographic Location Type
+
+        Goal: Compare (composition)
+
+        Choice: Donut Chart (Chart.js / Canvas).
+
+        Justification: Shows the part-to-whole relationship of location strategy. (NO SVG).
+
+    Data Point 6: Market Segment Breakdown
+
+        Goal: Compare (composition)
+
+        Choice: Donut Chart (Chart.js / Canvas).
+
+        Justification: Shows the mix of hotel tiers clearly. (NO SVG).
+
+    Data Point 7: Full Hotel List
+
+        Goal: Organize
+
+        Choice: Table (Styled HTML/Tailwind).
+
+        Justification: Most direct way to present the raw, organized data. (NO SVG).
+
+    -->
+
+    
+
+    <!-- Color Palette Selection -->
+
+    <!-- Selected Palette: "Energetic & Playful". HEX: #FF6B6B (Red/Coral), #FFD166 (Yellow), #06D6A0 (Green), #118AB2 (Blue), #073B4C (Dark Blue/Text). Background: #F7F9F9. -->
+
+    
+
+    <!-- SVG/Mermaid JS Confirmation -->
+
+    <!-- Confirmed: No SVG graphics or elements are used. All charts use Canvas. All diagrams (timeline) use-styled HTML. -->
+
+    <!-- Confirmed: No Mermaid JS is used. -->
+
+    
+
+</head>
+
+<body class="text-[#073B4C]">
+
+
+
+    <header class="bg-white shadow-md">
+
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+
+            <h1 class="text-3xl font-bold leading-tight text-[#073B4C]">
+
+                拡大するヒルトンの日本市場
+
+            </h1>
+
+            <p class="text-lg text-[#118AB2]">新規開業ホテル一覧 (2025 - 2032)</p>
+
+        </div>
+
+    </header>
+
+
+
+    <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+
+        
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+
+
+            <div class="md:col-span-2 bg-white rounded-lg shadow-md p-6">
+
+                <p class="text-lg text-gray-700 mb-4">2025年から2032年にかけて、ヒルトン（SLHを含む）の日本におけるポートフォリオは大幅な成長を遂げる予定です。この拡大により、新しいブランドが市場に導入され、主要な都市やリゾート地での存在感が強化されます。</p>
+
+                <div class="flex flex-col md:flex-row justify-around items-center text-center">
+
+                    <div class="p-4">
+
+                        <div class="text-6xl font-bold text-[#118AB2]">22</div>
+
+                        <div class="text-xl font-semibold text-gray-800 mt-2">新規ホテル数</div>
+
+                    </div>
+
+                    <div class="p-4">
+
+                        <div class="text-6xl font-bold text-[#06D6A0]">3,500+</div>
+
+                        <div class="text-xl font-semibold text-gray-800 mt-2">新規客室数*</div>
+
+                    </div>
+
+                </div>
+
+                <p class="text-sm text-gray-500 text-center mt-2">*客室数未発表のホテル（5軒）を除く。</p>
+
+            </div>
+
+
+
+            <div class="md:col-span-2 bg-white rounded-lg shadow-md p-6">
+
+                <h2 class="text-2xl font-bold mb-4">開業予定タイムライン</h2>
+
+                <p class="text-gray-700 mb-6">今後数年間は、2025年後半の新しいダブルツリーの開業を皮切りに、2028年には多様なホテルが開業するなど、新規物件の安定したパイプラインが続きます。</p>
+
+                <div class="relative border-l-4 border-gray-200 pl-8">
+
+                    
+
+                    <h3 class="text-xl font-bold text-[#FF6B6B] mb-4">2025年</h3>
+
+                    <div class="relative mb-8 timeline-item">
+
+                        <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+
+                        <h4 class="font-semibold text-lg">ダブルツリーbyヒルトン札幌</h4>
+
+                        <p class="text-sm text-gray-600">2025年12月 • 250室</p>
+
+                    </div>
+
+
+
+                    <h3 class="text-xl font-bold text-[#FF6B6B] mb-4 mt-8">2026年</h3>
+
+                    <div class="relative mb-8 timeline-item">
+
+                        <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+
+                        <h4 class="font-semibold text-lg">ヒルトン・ガーデン・イン横浜みなとみらい</h4>
+
+                        <p class="text-sm text-gray-600">2026年前半 • 232室</p>
+
+                    </div>
+
+                     <div class="relative mb-8 timeline-item">
+
+                        <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+
+                        <h4 class="font-semibold text-lg">キャノピーbyヒルトン沖縄宮古島リゾート</h4>
+
+                        <p class="text-sm text-gray-600">2026年春 • 310室</p>
+
+                    </div>
+
+                    <div class="relative mb-8 timeline-item">
+
+                        <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+
+                        <h4 class="font-semibold text-lg">ヒルトン・ガーデン・イン京都四条</h4>
+
+                        <p class="text-sm text-gray-600">2026年4月 • 210室</p>
+
+                    </div>
+
+                    <div class="relative mb-8 timeline-item">
+
+                        <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+
+                        <h4 class="font-semibold text-lg">コンラッド名古屋</h4>
+
+                        <p class="text-sm text-gray-600">2026年夏 • 170室</p>
+
+                    </div>
+
+                    <div class="relative mb-8 timeline-item">
+
+                        <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+
+                        <h4 class="font-semibold text-lg">コンラッド横浜</h4>
+
+                        <p class="text-sm text-gray-600">2026年7月 • 280室</p>
+
+                    </div>
+
+                    <div class="relative mb-8 timeline-item">
+
+                        <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+
+                        <h4 class="font-semibold text-lg">LXRホテル＆リゾート日光</h4>
+
+                        <p class="text-sm text-gray-600">2026年9月 • 90室</p>
+
+                    </div>
+
+                    <div class="relative mb-8 timeline-item">
+
+                        <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+
+                        <h4 class="font-semibold text-lg">ヒルトン福岡エアポート</h4>
+
+                        <p class="text-sm text-gray-600">2026年11月 • 300室</p>
+
+                    </div>
+
+
+
+                    <h3 class="text-xl font-bold text-[#FF6B6B] mb-4 mt-8">2027年</h3>
+
+                    <div class="relative mb-8 timeline-item">
+
+                        <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+
+                        <h4 class="font-semibold text-lg">ヒルトン・ガーデン・イン長崎中華街</h4>
+
+                        <p class="text-sm text-gray-600">2027年前半 • 313室</p>
+
+                    </div>
+
+                    <div class="relative mb-8 timeline-item">
+
+                        <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+
+                        <h4 class="font-semibold text-lg">ウォルドーフ・アストリア大阪</h4>
+
+                        <p class="text-sm text-gray-600">2027年3月 • 250室</p>
+
+                    </div>
+
+                    <div class="relative mb-8 timeline-item">
+
+                        <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+
+                        <h4 class="font-semibold text-lg">ヒルトン・ガーデン・イン大阪梅田</h4>
+
+                        <p class="text-sm text-gray-600">2027年5月 • 350室</p>
+
+                    </div>
+
+                    <div class="relative mb-8 timeline-item">
+
+                        <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+
+                        <h4 class="font-semibold text-lg">SLH - 鎌倉リトリート</h4>
+
+                        <p class="text-sm text-gray-600">2027年6月 • 30室</p>
+
+                    </div>
+
+                    <div class="relative mb-8 timeline-item">
+
+                        <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+
+                        <h4 class="font-semibold text-lg">キュリオ・コレクションbyヒルトン金沢</h4>
+
+                        <p class="text-sm text-gray-600">2027年8月 • 180室</p>
+
+                    </div>
+
+                    <div class="relative mb-8 timeline-item">
+
+                        <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+
+                        <h4 class="font-semibold text-lg">ウォルドーフ・アストリア東京日本橋</h4>
+
+                        <p class="text-sm text-gray-600">2027年秋 • 197室</p>
+
+                    </div>
+
+                    <div class="relative mb-8 timeline-item">
+
+                        <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+
+                        <h4 class="font-semibold text-lg">ダブルツリーbyヒルトン沖縄那覇</h4>
+
+                        <p class="text-sm text-gray-600">2027年10月 • 220室</p>
+
+                    </div>
+
+                    <div class="relative mb-8 timeline-item">
+
+                        <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+
+                        <h4 class="font-semibold text-lg">SLH - The Onsen Ryokan ニセコ</h4>
+
+                        <p class="text-sm text-gray-600">2027年12月 • 50室</p>
+
+                    </div>
+
+
+
+                    <h3 class="text-xl font-bold text-[#FF6B6B] mb-4 mt-8">2028年以降</h3>
+
+                    <div class="relative mb-8 timeline-item">
+
+                        <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+
+                        <h4 class="font-semibold text-lg">キャノピーbyヒルトン東京赤坂</h4>
+
+                        <p class="text-sm text-gray-600">2028年 • 174室</p>
+
+                    </div>
+
+                    <div class="relative mb-8 timeline-item">
+
+                        <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+
+                        <h4 class="font-semibold text-lg">LXRホテルズ＆リゾーツ 宮島</h4>
+
+                        <p class="text-sm text-gray-600">2028年10月頃 • 客室数未発表</p>
+
+                    </div>
+
+                    <div class="relative mb-8 timeline-item">
+
+                        <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+
+                        <h4 class="font-semibold text-lg">ヒルトン札幌</h4>
+
+                        <p class="text-sm text-gray-600">2028年以降 • 客室数未発表 (パークホテル跡地)</p>
+
+                    </div>
+
+                    <div class="relative mb-8 timeline-item">
+
+                        <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+
+                        <h4 class="font-semibold text-lg">京都ブライトンホテル キュリオ・コレクションbyヒルトン</h4>
+
+                        <p class="text-sm text-gray-600">2028年冬 • 客室数未発表</p>
+
+                    </div>
+
+                    <div class="relative mb-8 timeline-item">
+
+                        <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+
+                        <h4 class="font-semibold text-lg">コンラッド神戸</h4>
+
+                        <p class="text-sm text-gray-600">2029年 • 客室数未発表 (市役所新庁舎内)</p>
+
+                    </div>
+
+                    <div class="relative mb-8 timeline-item">
+
+                        <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+
+                        <h4 class="font-semibold text-lg">（仮称）札幌MICE隣接ホテル</h4>
+
+                        <p class="text-sm text-gray-600">2032年度 • 客室数未発表 (中島公園駅周辺)</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+
+                <h2 class="text-2xl font-bold mb-4">ブランドポートフォリオの成長</h2>
+
+                <p class="text-gray-700 mb-6">この拡大は多岐にわたり、ダブルツリーやヒルトン・ガーデン・インのようなフォーカスサービスブランドを強化すると同時に、SLHを含む複数のラグジュアリー＆ライフスタイル・プロパティを追加しています。</p>
+
+                <div class="chart-container">
+
+                    <canvas id="brandBarChart"></canvas>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+
+                <h2 class="text-2xl font-bold mb-4">地理的展開</h2>
+
+                <p class="text-gray-700 mb-6">新規ホテルは、主要な都市ハブ、主要なリゾート地、そして成長中の地方中核都市に戦略的に分散しており、全国的な包括的戦略を示しています。</p>
+
+                <div class="chart-container">
+
+                    <canvas id="locationDonutChart"></canvas>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+
+                <h2 class="text-2xl font-bold mb-4">マーケットセグメントの焦点</h2>
+
+                <p class="text-gray-700 mb-6">新規開業は、「ラグジュアリー＆ライフスタイル」セグメント（13ホテル）と「フォーカスサービス」セグメント（6ホテル）に重点が置かれており、ハイエンドなレジャー旅行者と実用的なビジネス旅行者の両方に対応しています。</p>
+
+                <div class="chart-container">
+
+                    <canvas id="segmentDonutChart"></canvas>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="bg-white rounded-lg shadow-md p-6 flex flex-col justify-center">
+
+                <h2 class="text-2xl font-bold mb-4">戦略的な主なポイント</h2>
+
+                <p class="text-gray-700 text-lg">ヒルトンの日本におけるパイプラインは、二つの戦略を明らかにしています：
+
+                <br><br>
+
+                1.  **都市部＆ビジネスの成長:** 主要都市や交通のハブにおいて、フォーカスサービス（ヒルトン・ガーデン・イン、ダブルツリー）の展開を積極的に行っています。
+
+                <br><br>
+
+                2.  **ラグジュアリー＆レジャー:** 一流のリゾート地や文化的ロケーションに、最高級ブランド（ウォルドーフ・アストリア、LXR、コンラッド）やユニークなライフスタイル・プロパティ（キュリオ、SLH、キャノピー）を導入し、ハイエンド市場を獲得しています。</p>
+
+            </div>
+
+
+
+            <div class="md:col-span-2 bg-white rounded-lg shadow-md p-6 overflow-x-auto">
+
+                <h2 class="text-2xl font-bold mb-4">開業予定全リスト (2025-2032)</h2>
+
+                <p class="text-gray-700 mb-6">以下の表は、開業予定の全22ホテルの詳細（ブランド、ロケーション、開業予定日）です。</p>
+
+                <table class="w-full text-left table-auto">
+
+                    <thead class="bg-gray-50 border-b-2 border-gray-200">
+
+                        <tr>
+
+                            <th class="py-3 px-4 font-semibold">開業予定日</th>
+
+                            <th class="py-3 px-4 font-semibold">ホテル名</th>
+
+                            <th class="py-3 px-4 font-semibold">ブランド</th>
+
+                            <th class="py-3 px-4 font-semibold">ロケーション</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody class="divide-y divide-gray-200">
+
+                        <tr><td class="py-3 px-4">2025年12月</td><td class="py-3 px-4">ダブルツリーbyヒルトン札幌</td><td class="py-3 px-4">ダブルツリー</td><td class="py-3 px-4">札幌</td></tr>
+
+                        <tr><td class="py-3 px-4">2026年前半</td><td class="py-3 px-4">ヒルトン・ガーデン・イン横浜みなとみらい</td><td class="py-3 px-4">ヒルトン・ガーデン・イン</td><td class="py-3 px-4">横浜</td></tr>
+
+                        <tr><td class="py-3 px-4">2026年春</td><td class="py-3 px-4">キャノピーbyヒルトン沖縄宮古島リゾート</td><td class="py-3 px-4">キャノピー</td><td class="py-3 px-4">宮古島</td></tr>
+
+                        <tr><td class="py-3 px-4">2026年4月</td><td class="py-3 px-4">ヒルトン・ガーデン・イン京都四条</td><td class="py-3 px-4">ヒルトン・ガーデン・イン</td><td class="py-3 px-4">京都</td></tr>
+
+                        <tr><td class="py-3 px-4">2026年夏</td><td class="py-3 px-4">コンラッド名古屋</td><td class="py-3 px-4">コンラッド</td><td class="py-3 px-4">名古屋</td></tr>
+
+                        <tr><td class="py-3 px-4">2026年7月</td><td class="py-3 px-4">コンラッド横浜</td><td class="py-3 px-4">コンラッド</td><td class="py-3 px-4">横浜</td></tr>
+
+                        <tr><td class="py-3 px-4">2026年9月</td><td class="py-3 px-4">LXRホテル＆リゾート日光</td><td class="py-3 px-4">LXR</td><td class="py-3 px-4">日光</td></tr>
+
+                        <tr><td class="py-3 px-4">2026年11月</td><td class="py-3 px-4">ヒルトン福岡エアポート</td><td class="py-3 px-4">ヒルトン</td><td class="py-3 px-4">福岡</td></tr>
+
+                        <tr><td class="py-3 px-4">2027年前半</td><td class="py-3 px-4">ヒルトン・ガーデン・イン長崎中華街</td><td class="py-3 px-4">ヒルトン・ガーデン・イン</td><td class="py-3 px-4">長崎</td></tr>
+
+                        <tr><td class="py-3 px-4">2027年3月</td><td class="py-3 px-4">ウォルドーフ・アストリア大阪</td><td class="py-3 px-4">ウォルドーフ・アストリア</td><td class="py-3 px-4">大阪</td></tr>
+
+                        <tr><td class="py-3 px-4">2027年5月</td><td class="py-3 px-4">ヒルトン・ガーデン・イン大阪梅田</td><td class="py-3 px-4">ヒルトン・ガーデン・イン</td><td class="py-3 px-4">大阪</td></tr>
+
+                        <tr><td class="py-3 px-4">2027年6月</td><td class="py-3 px-4">SLH - 鎌倉リトリート</td><td class="py-3 px-4">SLH</td><td class="py-3 px-4">鎌倉</td></tr>
+
+                        <tr><td class="py-3 px-4">2027年8月</td><td class="py-3 px-4">キュリオ・コレクションbyヒルトン金沢</td><td class="py-3 px-4">キュリオ・コレクション</td><td class="py-3 px-4">金沢</td></tr>
+
+                        <tr><td class="py-3 px-4">2027年秋</td><td class="py-3 px-4">ウォルドーフ・アストリア東京日本橋</td><td class="py-3 px-4">ウォルドーフ・アストリア</td><td class="py-3 px-4">東京</td></tr>
+
+                        <tr><td class="py-3 px-4">2027年10月</td><td class="py-3 px-4">ダブルツリーbyヒルトン沖縄那覇</td><td class="py-3 px-4">ダブルツリー</td><td class="py-3 px-4">沖縄</td></tr>
+
+                        <tr><td class="py-3 px-4">2027年12月</td><td class="py-3 px-4">SLH - The Onsen Ryokan ニセコ</td><td class="py-3 px-4">SLH</td><td class="py-3 px-4">ニセコ</td></tr>
+
+                        <tr><td class="py-3 px-4">2028年</td><td class="py-3 px-4">キャノピーbyヒルトン東京赤坂</td><td class="py-3 px-4">キャノピー</td><td class="py-3 px-4">東京</td></tr>
+
+                        <tr><td class="py-3 px-4">2028年10月頃</td><td class="py-3 px-4">LXRホテルズ＆リゾーツ 宮島</td><td class="py-3 px-4">LXR</td><td class="py-3 px-4">宮島</td></tr>
+
+                        <tr><td class="py-3 px-4">2028年以降</td><td class="py-3 px-4">ヒルトン札幌</td><td class="py-3 px-4">ヒルトン</td><td class="py-3 px-4">札幌 (パークホテル跡地)</td></tr>
+
+                        <tr><td class="py-3 px-4">2028年冬</td><td class="py-3 px-4">京都ブライトンホテル キュリオ・コレクションbyヒルトン</td><td class="py-3 px-4">キュリオ・コレクション</td><td class="py-3 px-4">京都</td></tr>
+
+                        <tr><td class="py-3 px-4">2029年</td><td class="py-3 px-4">コンラッド神戸</td><td class="py-3 px-4">コンラッド</td><td class="py-3 px-4">神戸 (市役所新庁舎内)</td></tr>
+
+                        <tr><td class="py-3 px-4">2032年度</td><td class="py-3 px-4">（仮称）札幌MICE隣接ホテル</td><td class="py-3 px-4">（未定）</td><td class="py-3 px-4">札幌 (中島公園駅周辺)</td></tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <footer class="text-center py-8 text-gray-500 text-sm">
+
+        <p>このインフォグラフィックは、2025年11月時点で公開されている情報および生成されたデータに基づき視覚化したものです。</p>
+
+        <p>すべての開業日および計画は変更される可能性があります。</p>
+
+    </footer>
+
+
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const chartColors = {
+
+                red: '#FF6B6B',
+
+                yellow: '#FFD166',
+
+                green: '#06D6A0',
+
+                blue: '#118AB2',
+
+                darkBlue: '#073B4C',
+
+                gray: '#A9A9A9'
+
+            };
+
+
+
+            const tooltipTitleCallback = {
+
+                plugins: {
+
+                    tooltip: {
+
+                        callbacks: {
+
+                            title: function(tooltipItems) {
+
+                                const item = tooltipItems[0];
+
+                                let label = item.chart.data.labels[item.dataIndex];
+
+                                if (Array.isArray(label)) {
+
+                                  return label.join(' ');
+
+                                } else {
+
+                                  return label;
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            };
+
+
+
+            const brandBarCtx = document.getElementById('brandBarChart').getContext('2d');
+
+            new Chart(brandBarCtx, {
+
+                type: 'bar',
+
+                data: {
+
+                    labels: [
+
+                        ['ヒルトン・ガーデン・', 'イン'],
+
+                        'コンラッド',
+
+                        ['ダブルツリーby', 'ヒルトン'],
+
+                        'SLH',
+
+                        'LXR',
+
+                        ['ウォルドーフ・', 'アストリア'],
+
+                        ['キュリオ・', 'コレクション'],
+
+                        'キャノピー',
+
+                        'ヒルトン',
+
+                        '（未定）'
+
+                    ],
+
+                    datasets: [{
+
+                        label: '新規ホテル数',
+
+                        data: [4, 3, 2, 2, 2, 2, 2, 2, 2, 1],
+
+                        backgroundColor: [
+
+                            chartColors.blue,
+
+                            chartColors.red,
+
+                            chartColors.darkBlue,
+
+                            chartColors.blue,
+
+                            chartColors.green,
+
+                            chartColors.yellow,
+
+                            chartColors.red,
+
+                            chartColors.gray
+
+                        ],
+
+                        borderColor: '#ffffff',
+
+                        borderWidth: 1
+
+                    }]
+
+                },
+
+                options: {
+
+                    responsive: true,
+
+                    maintainAspectRatio: false,
+
+                    scales: {
+
+                        y: {
+
+                            beginAtZero: true,
+
+                            ticks: {
+
+                                stepSize: 1
+
+                            }
+
+                        }
+
+                    },
+
+                    plugins: {
+
+                        ...tooltipTitleCallback.plugins,
+
+                        legend: {
+
+                            display: false
+
+                        }
+
+                    }
+
+                }
+
+            });
+
+
+
+            const locationDonutCtx = document.getElementById('locationDonutChart').getContext('2d');
+
+            new Chart(locationDonutCtx, {
+
+                type: 'doughnut',
+
+                data: {
+
+                    labels: ['主要都市', 'リゾート地', '地方中核都市'],
+
+                    datasets: [{
+
+                        label: 'ホテルのロケーション',
+
+                        data: [12, 6, 4],
+
+                        backgroundColor: [
+
+                            chartColors.blue,
+
+                            chartColors.green,
+
+                            chartColors.yellow
+
+                        ],
+
+                        hoverOffset: 4
+
+                    }]
+
+                },
+
+                options: {
+
+                    responsive: true,
+
+                    maintainAspectRatio: false,
+
+                    plugins: {
+
+                        ...tooltipTitleCallback.plugins,
+
+                        legend: {
+
+                            position: 'bottom'
+
+                        }
+
+                    }
+
+                }
+
+            });
+
+
+
+            const segmentDonutCtx = document.getElementById('segmentDonutChart').getContext('2d');
+
+            new Chart(segmentDonutCtx, {
+
+                type: 'doughnut',
+
+                data: {
+
+                    labels: ['ラグジュアリー＆ライフスタイル', 'フォーカスサービス', 'フルサービス', '（未定）'],
+
+                    datasets: [{
+
+                        label: 'マーケットセグメント',
+
+                        data: [13, 6, 2, 1],
+
+                        backgroundColor: [
+
+                            chartColors.red,
+
+                            chartColors.blue,
+
+                            chartColors.green,
+
+                            chartColors.gray
+
+                        ],
+
+                        hoverOffset: 4
+
+                    }]
+
+                },
+
+                options: {
+
+                    responsive: true,
+
+                    maintainAspectRatio: false,
+
+                    plugins: {
+
+                        ...tooltipTitleCallback.plugins,
+
+                        legend: {
+
+                            position: 'bottom'
+
+                        }
+
+                    }
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>
+

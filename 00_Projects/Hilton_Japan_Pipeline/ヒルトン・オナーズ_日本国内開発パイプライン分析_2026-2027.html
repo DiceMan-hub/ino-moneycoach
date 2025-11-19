@@ -1,0 +1,2063 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      年会費を払う価値はあるの？ヒルトン・オナーズカード 日本国内ホテル完全ガイド（7年で1.5倍に拡大？！）
+    </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: 'Noto Sans JP', sans-serif;
+        background-color: #f0f4f8;
+      }
+      .hilton-blue-bg {
+        background-color: #00355f;
+      }
+      .bg-hilton-blue {
+        background-color: #00355f;
+      }
+      .hilton-blue-text {
+        color: #00355f;
+      }
+      .hilton-blue-border {
+        border-color: #00355f;
+      }
+      .hilton-gold {
+        color: #d4af37;
+      }
+      .hilton-gold-bg {
+        background-color: #d4af37;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      table th,
+      table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+      }
+      table th {
+        background-color: #00355f;
+        color: white;
+        font-weight: 600;
+      }
+      table tr:nth-child(even) {
+        background-color: #f8f9fa;
+      }
+      table tr:hover {
+        background-color: #e9ecef;
+      }
+      .chart-container {
+        position: relative;
+        width: 100%;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 320px;
+        max-height: 350px;
+      }
+      @media (min-width: 768px) {
+        .chart-container {
+          height: 350px;
+          max-height: 400px;
+        }
+      }
+      .timeline-dot {
+        background-color: #00355f;
+      }
+      .timeline-item:last-child {
+        margin-bottom: 0;
+      }
+      .hpcj-badge {
+        display: inline-block;
+        background-color: #d4af37;
+        color: #00355f;
+        font-size: 0.7rem;
+        font-weight: bold;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-left: 6px;
+        vertical-align: middle;
+      }
+      .lounge-badge {
+        display: inline-block;
+        background-color: #8b4513;
+        color: #ffffff;
+        font-size: 0.7rem;
+        font-weight: bold;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-left: 6px;
+        vertical-align: middle;
+      }
+      .wfn-badge {
+        display: inline-block;
+        background-color: #00355f;
+        color: #ffffff;
+        font-size: 0.7rem;
+        font-weight: bold;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-left: 6px;
+        vertical-align: middle;
+      }
+      details summary {
+        list-style: none;
+      }
+      details summary::-webkit-details-marker {
+        display: none;
+      }
+      details summary::marker {
+        display: none;
+      }
+      .hpcj-hotel {
+        position: relative;
+      }
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: #00355f;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transition: all 0.3s ease;
+        display: none;
+      }
+      .back-to-top:hover {
+        background-color: #002244;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+      }
+      .back-to-top.show {
+        display: block;
+      }
+      .table-of-contents {
+        background-color: #f8f9fa;
+        border: 2px solid #00355f;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+      .table-of-contents ul {
+        list-style: none;
+        padding-left: 0;
+      }
+      .table-of-contents li {
+        margin: 8px 0;
+      }
+      .table-of-contents a {
+        color: #00355f;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .table-of-contents a:hover {
+        color: #d4af37;
+        text-decoration: underline;
+      }
+      .section-divider {
+        height: 2px;
+        background: linear-gradient(to right, transparent, #00355f, transparent);
+        margin: 40px 0;
+      }
+    </style>
+  </head>
+  <body class="text-gray-800">
+    <header class="hilton-blue-bg text-white p-6 shadow-md">
+      <div class="container mx-auto max-w-5xl text-center">
+        <p class="text-sm text-blue-100 mb-3">いのマネーコーチ・速報まとめ(beta)</p>
+        <h1 class="text-3xl font-bold mb-3">
+          ヒルトン・オナーズカード<br>日本国内ホテル完全ガイド
+        </h1>
+        <p class="text-xl font-semibold mb-4 text-yellow-200">
+          年会費を払う価値はあるの？
+        </p>
+        <div class="bg-white/10 rounded-lg p-4 inline-block">
+          <p class="text-sm text-blue-100">
+            7年で<span class="font-bold text-lg">1.5倍</span>に増える？！
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <main class="container mx-auto max-w-5xl p-4 md:p-8">
+      <!-- 導入文（問題提起） -->
+      <section class="bg-white p-6 rounded-lg shadow-sm mb-8">
+        <p class="mb-4 text-gray-700 text-lg leading-relaxed">
+          「ヒルトン・オナーズカードを申し込もうか迷っているけど、実際にどう使えるのかわからない」「本当にお得なのか、年会費を払う価値があるのか判断できない」—そんな悩みを抱えている方も多いのではないでしょうか。
+        </p>
+        <p class="mb-4 text-gray-700 text-lg leading-relaxed">
+          このガイドでは、そんな疑問にお答えします。ヒルトン・オナーズカードをこれから申し込む方や、すでにカードをお持ちの方に向けて、日本国内で利用できるホテルや開業予定のホテルについて詳しくご紹介しています。現在利用できる43軒のホテルから、2025年から2032年にかけて開業予定の21軒のホテルまで、カードの価値を最大限に活かすための情報をまとめました。カードを申し込む前に、どんなホテルに泊まれるようになるのか、どんな特典があるのかを知ることで、カードの価値を実感できるはずです。
+        </p>
+        <p class="mb-4 text-gray-700 text-lg leading-relaxed">
+          以下の目次から、知りたい情報にすぐアクセスできます。まずは「現在利用できるホテル」や「開業予定のホテル」を確認して、カードを持つことでどれだけ選択肢が広がるのかを実感してみてください。
+        </p>
+      </section>
+
+      <!-- 目次 -->
+      <section class="bg-white p-6 rounded-lg shadow-sm mb-8 table-of-contents">
+        <h2 class="text-2xl font-bold hilton-blue-text mb-4 border-b-2 hilton-blue-border pb-2">
+          目次
+        </h2>
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6 rounded-lg">
+          <p class="text-gray-700 flex items-center">
+            <span class="text-2xl mr-2">🔗</span>
+            <strong>各項目をクリックすると、該当セクションに一気に移動できます。</strong>
+          </p>
+        </div>
+        <ul class="space-y-2">
+          <li><a href="#executive-summary">1. ヒルトン・オナーズカードの基本情報と主な特典</a></li>
+          <li><a href="#current-hotels">2. 現在利用できるホテル：ヒルトン・オナーズカードで泊まれるホテル一覧</a></li>
+          <li><a href="#slh-analysis">3. SLHホテルについて：個性的なホテルも使えるようになります</a></li>
+          <li><a href="#breakfast-benefits">4. ゴールド会員・ダイヤモンド会員の朝食特典について</a></li>
+          <li><a href="#upcoming-overview">5. 開業予定のホテル：これからどんなホテルが増える？</a></li>
+          <li><a href="#upcoming-stats">6. 開業予定のホテル：一目でわかる統計</a></li>
+          <li><a href="#timeline">7. 開業予定タイムライン</a></li>
+          <li><a href="#2026-2027-hotels">8. 2026年・2027年に開業予定のホテル：どんなホテルに泊まれる？</a></li>
+          <li><a href="#master-list">9. 開業予定ホテル一覧表（詳細情報）</a></li>
+          <li><a href="#conclusion">10. まとめ：これからヒルトン・オナーズカードを申し込む方へ</a></li>
+        </ul>
+      </section>
+
+      <!-- I. カードの基本情報と主な特典 -->
+      <section
+        id="executive-summary"
+        class="bg-white p-6 rounded-lg shadow-sm mb-8"
+      >
+        <h2
+          class="text-2xl font-bold hilton-blue-text mb-4 border-b-2 hilton-blue-border pb-2"
+        >
+          1. ヒルトン・オナーズカードの基本情報と主な特典
+        </h2>
+        <p class="mb-6 text-gray-700">
+          ヒルトン・オナーズカード（一般カード・プレミアムカード）をこれから申し込む方に向けて、カードの基本情報と主な特典をご紹介します。カードを申し込む前に、どんな特典があるのか、年会費はいくらなのかを知っておくと、カードの価値をより実感できます。
+        </p>
+
+        <!-- カードの特徴 -->
+        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-5 my-6 rounded-lg shadow-sm">
+          <p class="text-lg font-bold text-gray-800 mb-2">
+            ⭐ このカードはヒルトン系列ホテルに多く泊まりたい方向けのカードです
+          </p>
+          <p class="text-gray-700">
+            ヒルトン系列ホテルでの宿泊が多い方ほど、ポイント還元率が高く、特典を最大限に活用できます。特にプレミアムカードは、ヒルトン系列ホテルでの利用で7%のポイント還元となるため、頻繁にヒルトンホテルに泊まる方には非常に有利なカードです。
+          </p>
+        </div>
+
+        <!-- カードの基本情報 -->
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6 rounded-lg">
+          <h3 class="font-bold text-lg mb-3 hilton-blue-text">
+            カードの基本情報
+          </h3>
+          <div class="space-y-3 text-gray-700">
+            <p>
+              <strong>年会費：</strong>一般カードは年会費16,500円（税込）、プレミアムカードは年会費66,000円（税込）です。
+            </p>
+            <p>
+              <strong>ポイント還元率：</strong>一般カードは通常利用で2%、ヒルトン系列ホテルでは3%のポイント還元です。プレミアムカードは通常利用で3%、ヒルトン系列ホテルでは7%のポイント還元となっており、より高還元率です。
+            </p>
+            <p>
+              <strong>利用可能ホテル：</strong>現在、日本国内で43軒のホテルに泊まることができます。さらに、2025年から2032年にかけて21軒の新しいホテルが開業予定です。
+              </p>
+            </div>
+        </div>
+
+        <!-- 主な特典 -->
+        <div class="bg-green-50 border-l-4 border-green-500 p-4 my-6 rounded-lg">
+          <h3 class="font-bold text-lg mb-3 hilton-blue-text">
+            主な特典
+          </h3>
+          <div class="space-y-3 text-gray-700">
+            <p>
+              <strong>ウィークエンド無料宿泊特典（WFN）：</strong>年間の決済額に応じて、週末（金・土・日）に無料で宿泊できる特典です。一般カードは年間150万円、プレミアムカードは年間300万円の決済達成が必要です。ポイント上限を気にせず、10万円以上の高額ホテルも部屋に空きがあれば利用できるのが大きな魅力です。
+            </p>
+            <p class="text-sm text-gray-600">
+              <strong>活用のコツ：</strong>週末の宿泊料金が最も高額になるラグジュアリーホテル（LXR、ウォルドーフ・アストリア、コンラッド）やSLHホテルで利用すると、特典の価値を最大限に高められます。詳細は「現在利用できるホテル」セクションの各ホテルリストをご確認ください。
+            </p>
+            <p>
+              <strong>ポイントで宿泊できる：</strong>貯めたポイントを使って、ヒルトン・オナーズ加盟ホテルで無料で宿泊できます。現金を使わずに旅行できるのは嬉しいですね。
+            </p>
+            <p>
+              <strong>会員ステータス：</strong>カードを持っていると、自動的にヒルトン・オナーズのゴールド会員（一般カード）またはダイヤモンド会員（プレミアムカード）になれます。朝食特典や部屋アップグレードなどの特典が受けられます。
+            </p>
+            <p>
+              <strong>HPCJ（ヒルトン・プレミアムクラブ・ジャパン）特典：</strong>HPCJ対象ホテルでは、宿泊料金25%割引やレストラン利用時の割引などの特典が受けられます。日本国内の多くのヒルトングループホテルが対象となっています。
+              </p>
+            </div>
+        </div>
+
+        <!-- ポイント利用について -->
+        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-6 rounded-lg">
+          <h3 class="font-bold text-lg mb-3 hilton-blue-text">
+            ヒルトン・オナーズカードのポイント利用について
+          </h3>
+          <div class="space-y-3 text-gray-700">
+            <p>
+              <strong>ポイントで宿泊できる：</strong>ヒルトン・オナーズ加盟ホテルでは、貯めたポイントを使って無料で宿泊できます。現金を使わずに旅行できるのは嬉しいですね。
+            </p>
+            <p>
+              <strong>ポイントの価値について：</strong>ヒルトン・オナーズのポイントは、ホテルによって1ポイントあたりの価値が異なります。多くのホテルでは1ポイント=0.5円程度になることが多いですが、SLHホテルでは1ポイント=1円になるケースもあります。ただし、SLHホテルは元々料金が高めのホテルが多いため、ポイントで泊まる場合も必要なポイント数が多くなりがちです。
+            </p>
+            <p class="text-sm text-gray-600 mb-4">
+              ※マリオット・ボンヴォイなど他のホテルプログラムと比較すると、ヒルトンは1ポイント=1円以上で利用しやすいホテルが比較的少ない傾向があります。ポイントを効率的に使うためには、事前にホテルごとのポイント必要数を確認することをおすすめします。
+            </p>
+            
+            <!-- ポイント単価一覧表 -->
+            <div class="mt-4 mb-4">
+              <h4 class="font-bold text-lg mb-3 hilton-blue-text border-b-2 hilton-blue-border pb-2">
+                ヒルトングループのコアポートフォリオ
+              </h4>
+              <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4 rounded-lg">
+                <p class="text-base font-bold text-gray-800">
+                  平均ポイント単価：<span class="text-2xl text-blue-600">¥0.55</span> / ポイント
+                </p>
+                <p class="text-xs text-gray-600 mt-1">（32ホテルの平均値）</p>
+              </div>
+              <details>
+                <summary class="bg-blue-100 hover:bg-blue-200 border-2 border-blue-500 rounded-lg px-4 py-3 font-bold text-base hilton-blue-text cursor-pointer list-none transition-colors duration-200 flex items-center justify-between">
+                  <span class="flex items-center gap-2">
+                    <span class="text-xl">📊</span>
+                    <span>詳細なホテル別ポイント単価表</span>
+                  </span>
+                  <span class="text-lg ml-2">▼</span>
+                </summary>
+                <div class="mt-3 pt-3">
+                  <p class="text-sm text-gray-600 mb-3">
+                    以下は、現金価格ベースで計算した主要ホテルのポイント単価です。ポイント単価が高い（1ポイント当たりの価値が高い）ホテルほど、ポイントを効率的に使えます。
+                  </p>
+                  <p class="text-xs text-orange-600 mb-3 font-semibold">
+                    ※本表の推定税込価格は2026年5月12日(水)に公式アプリで計算した内容です。料金は変動するため、参考値としてご利用ください。
+                  </p>
+                  <div class="overflow-x-auto">
+                <table class="w-full text-sm border-collapse border border-gray-300">
+                  <thead>
+                    <tr class="bg-gray-100">
+                      <th class="border border-gray-300 px-2 py-2 text-left">順位</th>
+                      <th class="border border-gray-300 px-2 py-2 text-left">ホテル名</th>
+                      <th class="border border-gray-300 px-2 py-2 text-right">必要ポイント</th>
+                      <th class="border border-gray-300 px-2 py-2 text-right">推定税込価格</th>
+                      <th class="border border-gray-300 px-2 py-2 text-right font-bold">1ポイント=</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-gray-700">
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">1</td>
+                      <td class="border border-gray-300 px-2 py-2">コンラッド大阪</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">90,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥88,133</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.98</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">2</td>
+                      <td class="border border-gray-300 px-2 py-2">ヒルトン東京</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">85,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥79,707</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.94</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">3</td>
+                      <td class="border border-gray-300 px-2 py-2">ロク キョウト LXRホテルズ＆リゾーツ</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">140,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥114,053</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.81</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">4</td>
+                      <td class="border border-gray-300 px-2 py-2">ウォルドーフ・アストリア大阪</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">120,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥93,316</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.78</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">5</td>
+                      <td class="border border-gray-300 px-2 py-2">ヒルトン大阪</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">70,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥45,547</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.65</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">6</td>
+                      <td class="border border-gray-300 px-2 py-2">ヒルトン東京お台場</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">75,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥45,876</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.61</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">7</td>
+                      <td class="border border-gray-300 px-2 py-2">ダブルツリーbyヒルトン東京有明</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">45,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥26,999</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.60</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">8</td>
+                      <td class="border border-gray-300 px-2 py-2">ヒルトン小田原リゾート＆スパ</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">60,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥36,119</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.60</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">9</td>
+                      <td class="border border-gray-300 px-2 py-2">ダブルツリーbyヒルトン京都駅</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">51,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥30,545</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.60</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">10</td>
+                      <td class="border border-gray-300 px-2 py-2">ヒルトン東京ベイ</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">66,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥39,854</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.60</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">11</td>
+                      <td class="border border-gray-300 px-2 py-2">ヒルトン広島</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">80,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥47,410</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.59</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">12</td>
+                      <td class="border border-gray-300 px-2 py-2">ヒルトン長崎</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">43,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥25,559</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.59</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">13</td>
+                      <td class="border border-gray-300 px-2 py-2">ダブルツリーbyヒルトン那覇</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">26,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥15,132</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.58</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">14</td>
+                      <td class="border border-gray-300 px-2 py-2">ダブルツリーbyヒルトン那覇首里城</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">20,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥11,489</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.57</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">15</td>
+                      <td class="border border-gray-300 px-2 py-2">ヒルトン成田</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">45,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥25,554</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.57</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">16</td>
+                      <td class="border border-gray-300 px-2 py-2">ヒルトン・ガーデン・イン京都四条烏丸</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">51,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥28,820</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.57</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">17</td>
+                      <td class="border border-gray-300 px-2 py-2">ヒルトン京都</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">92,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥51,960</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.56</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">18</td>
+                      <td class="border border-gray-300 px-2 py-2">ヒルトン沖縄宮古島リゾート</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">66,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥36,489</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.55</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">19</td>
+                      <td class="border border-gray-300 px-2 py-2">ヒルトン沖縄瀬底リゾート</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">43,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥23,433</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.55</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">20</td>
+                      <td class="border border-gray-300 px-2 py-2">ダブルツリーbyヒルトン大阪城</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">57,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥30,974</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.54</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">21</td>
+                      <td class="border border-gray-300 px-2 py-2">ダブルツリーbyヒルトン富山</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">41,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥22,154</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.54</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">22</td>
+                      <td class="border border-gray-300 px-2 py-2">ヒルトンニセコビレッジ</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">25,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥13,479</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.54</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">23</td>
+                      <td class="border border-gray-300 px-2 py-2">キャノピーbyヒルトン大阪梅田</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">78,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥41,474</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.53</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">24</td>
+                      <td class="border border-gray-300 px-2 py-2">ヒルトン福岡シーホーク</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">49,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥25,470</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.52</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">25</td>
+                      <td class="border border-gray-300 px-2 py-2">ヒルトン横浜</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">51,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥26,480</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.52</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">26</td>
+                      <td class="border border-gray-300 px-2 py-2">ヒルトン名古屋</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">60,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥31,257</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.52</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">27</td>
+                      <td class="border border-gray-300 px-2 py-2">コンラッド東京</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">354,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥163,395</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.46</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">28</td>
+                      <td class="border border-gray-300 px-2 py-2">ダブルツリーbyヒルトン京都東山</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">50,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥25,051</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.50</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">29</td>
+                      <td class="border border-gray-300 px-2 py-2">ダブルツリーbyヒルトン沖縄北谷リゾート</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">93,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥42,131</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.45</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">30</td>
+                      <td class="border border-gray-300 px-2 py-2">旧軽井沢KIKYOキュリオ・コレクション</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">118,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥47,885</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.41</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">31</td>
+                      <td class="border border-gray-300 px-2 py-2">ヒルトン沖縄北谷リゾート</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">111,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥44,828</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.40</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">32</td>
+                      <td class="border border-gray-300 px-2 py-2">ヒルトン・クラブ・ザ・ビーチリゾート瀬底</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">216,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥80,339</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.37</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+                  <p class="text-xs text-gray-500 mt-2">
+                    ※ポイント単価は現金価格ベースで計算。料金は変動するため、参考値としてご利用ください。ポイント単価が高い（1ポイント当たりの価値が高い）ホテルほど、ポイントを効率的に使えます。
+                  </p>
+                </div>
+              </details>
+            </div>
+            
+            <!-- SLHホテルポイント単価一覧表 -->
+            <div class="mt-6 mb-4">
+              <h4 class="font-bold text-lg mb-3 hilton-blue-text border-b-2 hilton-blue-border pb-2">
+                SLH（スモール・ラグジュアリー・ホテルズ）提携ホテル
+              </h4>
+              <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4 rounded-lg">
+                <p class="text-base font-bold text-gray-800">
+                  平均ポイント単価：<span class="text-2xl text-blue-600">¥0.80</span> / ポイント
+                </p>
+                <p class="text-xs text-gray-600 mt-1">（10ホテルの平均値）</p>
+              </div>
+              <details>
+                <summary class="bg-blue-100 hover:bg-blue-200 border-2 border-blue-500 rounded-lg px-4 py-3 font-bold text-base hilton-blue-text cursor-pointer list-none transition-colors duration-200 flex items-center justify-between">
+                  <span class="flex items-center gap-2">
+                    <span class="text-xl">📊</span>
+                    <span>詳細なSLHホテル別ポイント単価表</span>
+                  </span>
+                  <span class="text-lg ml-2">▼</span>
+                </summary>
+                <div class="mt-3 pt-3">
+                  <p class="text-sm text-gray-600 mb-3">
+                    SLHホテルは個性的で魅力的なホテルが多い一方、ポイント単価は一般的にコアポートフォリオのホテルよりも低め（1ポイント=0.31円～1.50円）です。ただし、高額なホテルが多いため、WFN特典で利用すると非常に価値が高くなります。
+                  </p>
+                  <p class="text-xs text-orange-600 mb-3 font-semibold">
+                    ※本表の推定税込価格は2026年5月12日(水)に公式アプリで計算した内容です。料金は変動するため、参考値としてご利用ください。
+                  </p>
+                  <div class="overflow-x-auto">
+                <table class="w-full text-sm border-collapse border border-gray-300">
+                  <thead>
+                    <tr class="bg-gray-100">
+                      <th class="border border-gray-300 px-2 py-2 text-left">順位</th>
+                      <th class="border border-gray-300 px-2 py-2 text-left">SLHホテル名</th>
+                      <th class="border border-gray-300 px-2 py-2 text-right">必要ポイント</th>
+                      <th class="border border-gray-300 px-2 py-2 text-right">推定税込価格</th>
+                      <th class="border border-gray-300 px-2 py-2 text-right font-bold">1ポイント=</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-gray-700">
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">1</td>
+                      <td class="border border-gray-300 px-2 py-2">サンカラ ホテル＆スパ 屋久島</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">120,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥180,566</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥1.50</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">2</td>
+                      <td class="border border-gray-300 px-2 py-2">東京ステーションホテル</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">105,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥99,660</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.95</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">3</td>
+                      <td class="border border-gray-300 px-2 py-2">名古屋観光ホテル ESPACIO</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">70,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥65,434</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.93</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">4</td>
+                      <td class="border border-gray-300 px-2 py-2">ファイブ・スプリング・リゾート・ザ・シラハマ</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">200,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥178,137</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.89</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">5</td>
+                      <td class="border border-gray-300 px-2 py-2">高輪 花香路</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">120,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥97,919</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.82</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">6</td>
+                      <td class="border border-gray-300 px-2 py-2">ザ・テラスクラブ アット ブセナ</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">105,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥84,297</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.80</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">7</td>
+                      <td class="border border-gray-300 px-2 py-2">Cuvee J2 Hotel Osaka by 温故知新</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">95,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥59,875</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.63</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">8</td>
+                      <td class="border border-gray-300 px-2 py-2">ザ・タワーホテル名古屋</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">97,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥55,805</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.58</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">9</td>
+                      <td class="border border-gray-300 px-2 py-2">フォションホテル京都</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">105,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥57,774</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.55</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-300 px-2 py-2">10</td>
+                      <td class="border border-gray-300 px-2 py-2">そわか</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">716,000</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right">¥218,841</td>
+                      <td class="border border-gray-300 px-2 py-2 text-right font-bold">¥0.31</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+                  <p class="text-xs text-gray-500 mt-2">
+                    ※SLHホテルはポイント単価が低めのホテルが多いですが、サンカラ ホテル＆スパ 屋久島のように1ポイント=1.50円と非常に高い価値のホテルもあります。高額なホテルが多いため、WFN特典で利用すると非常に価値が高くなります。特に週末の宿泊料金が高額になるホテルでは、WFN特典の活用をおすすめします。
+                  </p>
+                </div>
+              </details>
+            </div>
+            <p>
+              <strong>リゾートフィーについて：</strong>100%ポイントで宿泊する場合、多くのホテルではリゾートフィーが免除されます。ただし、一部のホテル（特に海外のリゾートホテル）では別途加算される場合があるため、予約前に確認してください。
+            </p>
+          </div>
+        </div>
+
+        <!-- カードを申し込む前に知っておきたい注意点 -->
+        <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mt-6 rounded-lg">
+          <h3 class="font-bold text-lg mb-3 hilton-blue-text">
+            カードを申し込む前に知っておきたい注意点
+          </h3>
+          <div class="space-y-3 text-gray-700">
+            <p>
+              <strong>ウィークエンド無料宿泊特典（WFN）の利用制約：</strong>ヒルトン・オナーズカードの主要特典である「ウィークエンド無料宿泊特典」は、利用に際して2つの制約があります。1つ目は、予約が電話のみで可能な点です（オンライン予約不可）。2つ目は、利用可能日が金・土・日の週末のみに限定されている点です。平日の利用や、オンラインで簡単に予約したい方には不向きな特典です。
+            </p>
+            <p>
+              <strong>ポイントのマイル移行について：</strong>ヒルトン・オナーズのポイントを航空会社のマイルなどに移行する場合、移行レートが著しく低く設定されています（宿泊利用時と比較して約1/3以下の価値になる場合があります）。ポイントをマイルに交換して特典航空券などに使いたい「マイラー」層には、あまり適していません。
+            </p>
+            <p>
+              <strong>特典獲得のための決済ハードル：</strong>ウィークエンド無料宿泊特典を利用するには、一般カードで年間150万円、プレミアムカードで年間300万円の決済達成が必要です。特にプレミアムカードの300万円は、相当の利用がないと達成が困難な水準です。
+            </p>
+            <p>
+              <strong>サービス改定の可能性について：</strong>同じ提携カードであるマリオット・ボンヴォイカードでは、年会費の値上げやサービス特典の改定がありました。ヒルトン・オナーズカードも、アメックスとホテルとの構造上、同様の改定が入る可能性があります。改定の時期については不明ですが、2-3年以内に起こる可能性は十分にあります。現在の特典内容や年会費が将来的に変更される可能性があることを理解した上で、カードの申し込みを検討することをおすすめします。
+            </p>
+            <p class="text-sm text-gray-600">
+              ※これらの注意点を理解した上で、カードの価値を判断してください。特にプレミアムカード（年会費66,000円）の申し込みを検討する場合は、年間300万円の決済達成が現実的かどうかを慎重に検討することをおすすめします。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 現在利用可能なホテル -->
+      <section id="current-hotels" class="bg-white p-6 rounded-lg shadow-sm mb-8">
+        <div class="section-divider"></div>
+        <h2
+          class="text-2xl font-bold hilton-blue-text mb-4 border-b-2 hilton-blue-border pb-2"
+        >
+          2. 現在利用できるホテル：ヒルトン・オナーズカードで泊まれるホテル一覧
+        </h2>
+        <p class="mb-6 text-gray-700">
+          ヒルトン・オナーズカードを持っていれば、すでに日本国内で43軒のホテルに泊まることができます。開業予定のホテルに加えて、現在利用できるホテルもたくさんあるんです！
+        </p>
+
+        <!-- 既存ホテルの統計 -->
+        <div class="mb-8 bg-gray-50 p-6 rounded-lg">
+          <h3 class="text-xl font-bold hilton-blue-text mb-4">
+            現在利用可能なホテル：一目でわかる統計
+          </h3>
+          <div class="flex flex-col md:flex-row justify-around items-center text-center mb-6">
+            <div class="p-4">
+              <div class="text-6xl font-bold hilton-blue-text">43</div>
+              <div class="text-xl font-semibold text-gray-800 mt-2">現在利用可能なホテル数</div>
+            </div>
+            <div class="p-4">
+              <div class="text-6xl font-bold hilton-gold">12</div>
+              <div class="text-xl font-semibold text-gray-800 mt-2">SLH提携ホテル</div>
+            </div>
+            <div class="p-4">
+              <div class="text-6xl font-bold hilton-blue-text">32</div>
+              <div class="text-xl font-semibold text-gray-800 mt-2">コアポートフォリオ</div>
+            </div>
+          </div>
+
+          <!-- ブランド別の既存ホテル数チャート -->
+          <div class="mb-6">
+            <h4 class="text-lg font-bold hilton-blue-text mb-4">ブランド別の既存ホテル数</h4>
+            <p class="text-gray-700 mb-4 text-sm">
+              現在利用できるホテルをブランド別に見ると、ヒルトンが最も多く、続いてダブルツリー、SLHなど様々なブランドが展開されています。
+            </p>
+            <div class="chart-container">
+              <canvas id="existingBrandBarChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- コアポートフォリオ -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold hilton-blue-text mb-4">
+            ヒルトングループのコアポートフォリオ（32軒）
+          </h3>
+        <p class="mb-4 text-gray-700">
+            ヒルトングループが直接運営するホテルです。ラグジュアリーから手頃な価格帯まで、様々なブランドのホテルが全国に展開されています。
+          </p>
+          <p class="mb-4 text-sm text-gray-600">
+            <span class="hpcj-badge">HPCJ</span> マークが付いているホテルは、ヒルトン・プレミアムクラブ・ジャパン（HPCJ）の特典対象ホテルです。HPCJ会員は宿泊料金25%割引、レストラン利用時の割引などの特典が受けられます。<br>
+            <span class="lounge-badge">ラウンジ</span> マークが付いているホテルは、ダイヤモンド会員がエグゼクティブラウンジ（またはそれに準ずるラウンジサービス）を利用できるホテルです。ダイヤモンド会員は、ご本人様と同室にご宿泊のお客様1名まで無料でラウンジをご利用いただけます。
+          </p>
+
+          <div class="space-y-6">
+            <!-- ラグジュアリー -->
+            <div>
+              <h4 class="text-lg font-semibold hilton-gold mb-3">ラグジュアリー・コレクション</h4>
+              <p class="text-sm text-gray-600 mb-2">
+                <strong>⭐ <span class="wfn-badge">WFNでの利用価値</span>：</strong>週末の宿泊料金が1泊10万円を超えることも珍しくないため、ウィークエンド無料宿泊特典（WFN）の価値を最も高められる選択肢として絶大な人気を誇ります。
+              </p>
+              <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <li>ウォルドーフ・アストリア大阪（大阪）<span class="hpcj-badge">HPCJ</span><span class="lounge-badge">ラウンジ</span><span class="wfn-badge">WFN人気</span></li>
+                <li>ROKU KYOTO, LXR Hotels & Resorts（京都）<span class="hpcj-badge">HPCJ</span><span class="wfn-badge">WFN最人気</span></li>
+                <li>コンラッド東京（東京）<span class="hpcj-badge">HPCJ</span><span class="lounge-badge">ラウンジ</span><span class="wfn-badge">WFN人気</span></li>
+                <li>コンラッド大阪（大阪）<span class="hpcj-badge">HPCJ</span><span class="lounge-badge">ラウンジ</span><span class="wfn-badge">WFN人気</span></li>
+              </ul>
+            </div>
+
+            <!-- ライフスタイル -->
+            <div>
+              <h4 class="text-lg font-semibold hilton-gold mb-3">ライフスタイル・コレクション</h4>
+              <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <li>キャノピーbyヒルトン大阪梅田（大阪）<span class="hpcj-badge">HPCJ</span></li>
+                <li>旧軽井沢KIKYO キュリオ・コレクションbyヒルトン（長野）<span class="hpcj-badge">HPCJ</span><span class="lounge-badge">ラウンジ</span><span class="wfn-badge">WFN人気</span></li>
+              </ul>
+            </div>
+
+            <!-- フルサービス -->
+            <div>
+              <h4 class="text-lg font-semibold hilton-gold mb-3">フルサービス・コレクション（ヒルトン）</h4>
+              <p class="text-sm text-gray-600 mb-2">リゾート：</p>
+              <ul class="list-disc list-inside text-gray-700 space-y-1 mb-3">
+                <li>リゾートヒルトン東京ベイ（千葉・浦安）<span class="hpcj-badge">HPCJ</span><span class="lounge-badge">ラウンジ</span></li>
+                <li>ヒルトン小田原リゾート＆スパ（神奈川）<span class="hpcj-badge">HPCJ</span></li>
+                <li>ヒルトンニセコビレッジ（北海道）<span class="hpcj-badge">HPCJ</span></li>
+                <li>ヒルトン沖縄瀬底リゾート（沖縄）<span class="hpcj-badge">HPCJ</span><span class="lounge-badge">ラウンジ</span></li>
+                <li>ヒルトン・クラブ・ザ・ビーチリゾート瀬底（沖縄）<span class="hpcj-badge">HPCJ</span></li>
+                <li>ヒルトン沖縄北谷リゾート（沖縄）<span class="hpcj-badge">HPCJ</span><span class="lounge-badge">ラウンジ</span></li>
+                <li>ヒルトン沖縄宮古島リゾート（沖縄）<span class="hpcj-badge">HPCJ</span><span class="lounge-badge">ラウンジ</span></li>
+              </ul>
+              <p class="text-sm text-gray-600 mb-2">シティ＆エアポート：</p>
+              <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <li>ヒルトン東京（東京・新宿）<span class="hpcj-badge">HPCJ</span><span class="lounge-badge">ラウンジ</span></li>
+                <li>ヒルトン東京お台場（東京）<span class="hpcj-badge">HPCJ</span><span class="lounge-badge">ラウンジ</span></li>
+                <li>ヒルトン東京成田エアポート（千葉・成田）<span class="hpcj-badge">HPCJ</span></li>
+                <li>ヒルトン名古屋（愛知）<span class="hpcj-badge">HPCJ</span><span class="lounge-badge">ラウンジ</span></li>
+                <li>ヒルトン京都（京都）<span class="hpcj-badge">HPCJ</span><span class="lounge-badge">ラウンジ</span></li>
+                <li>ヒルトン大阪（大阪）<span class="hpcj-badge">HPCJ</span><span class="lounge-badge">ラウンジ</span></li>
+                <li>ヒルトン広島（広島）<span class="hpcj-badge">HPCJ</span><span class="lounge-badge">ラウンジ</span></li>
+                <li>ヒルトン福岡シーホーク（福岡）<span class="hpcj-badge">HPCJ</span><span class="lounge-badge">ラウンジ</span></li>
+                <li>ヒルトン横浜（神奈川）<span class="lounge-badge">ラウンジ</span></li>
+                <li>ヒルトン長崎（長崎）<span class="hpcj-badge">HPCJ</span><span class="lounge-badge">ラウンジ</span></li>
+              </ul>
+            </div>
+
+            <!-- セレクトサービス -->
+            <div>
+              <h4 class="text-lg font-semibold hilton-gold mb-3">セレクトサービス・コレクション</h4>
+              <p class="text-sm text-gray-600 mb-2">ダブルツリーbyヒルトン：</p>
+              <ul class="list-disc list-inside text-gray-700 space-y-1 mb-3">
+                <li>ダブルツリーbyヒルトン東京有明（東京）<span class="hpcj-badge">HPCJ</span></li>
+                <li>ダブルツリーbyヒルトン富山（富山）<span class="hpcj-badge">HPCJ</span></li>
+                <li>ダブルツリーbyヒルトン京都駅（京都）<span class="hpcj-badge">HPCJ</span><span class="lounge-badge">ラウンジ</span></li>
+                <li>ダブルツリーbyヒルトン京都東山（京都）<span class="hpcj-badge">HPCJ</span><span class="lounge-badge">ラウンジ</span></li>
+                <li>ダブルツリーbyヒルトン大阪城（大阪）<span class="hpcj-badge">HPCJ</span><span class="lounge-badge">ラウンジ</span></li>
+                <li>ダブルツリーbyヒルトン那覇（沖縄）<span class="hpcj-badge">HPCJ</span></li>
+                <li>ダブルツリーbyヒルトン那覇首里城（沖縄）<span class="hpcj-badge">HPCJ</span></li>
+                <li>ダブルツリーbyヒルトン沖縄北谷リゾート（沖縄）<span class="hpcj-badge">HPCJ</span></li>
+              </ul>
+              <p class="text-sm text-gray-600 mb-2">ヒルトン・ガーデン・イン：</p>
+              <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <li>ヒルトン・ガーデン・イン京都四条烏丸（京都）<span class="hpcj-badge">HPCJ</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLHホテル -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold hilton-blue-text mb-4">
+            SLH（スモール・ラグジュアリー・ホテルズ）提携ホテル（12軒）
+          </h3>
+          <p class="mb-4 text-gray-700">
+            2024年7月から、ヒルトンはSLH（Small Luxury Hotels of the World）との提携を開始しました。これにより、個性的で魅力的な独立系ホテルも、ヒルトン・オナーズのポイントで予約できるようになりました。ただし、<strong class="hilton-blue-text">ヒルトン公式サイトまたは公式アプリ経由で予約する必要があります</strong>。SLH公式サイト経由では、ヒルトン・オナーズのポイントや特典は使えませんのでご注意ください。
+          </p>
+          <p class="mb-4 text-sm text-gray-600">
+            <strong>※ダイヤモンド会員のラウンジアクセスについて：</strong>SLH提携ホテルでは、ヒルトン・オナーズのダイヤモンド会員特典にエグゼクティブラウンジの利用権は含まれていません。したがって、全12軒のSLH提携ホテルでは、ダイヤモンド会員であってもラウンジアクセスは提供されません。
+          </p>
+          <p class="mb-4 text-sm text-gray-700">
+            <strong>⭐ <span class="wfn-badge">WFNでの利用価値</span>：</strong>SLHホテルは週末に非常に高額になるため、ウィークエンド無料宿泊特典（WFN）の新たな人気の利用先となっています。特に高額なホテルでは、特典の価値を非常に高められます。
+          </p>
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead>
+              <tr>
+                <th>ホテル名</th>
+                  <th>所在地</th>
+                <th>備考</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                  <td><strong>ザ・東京ステーションホテル</strong> <span class="wfn-badge">WFN人気</span></td>
+                  <td>東京都</td>
+                  <td>東京駅直結、歴史的建造物</td>
+              </tr>
+              <tr>
+                  <td><strong>高輪 花香路</strong></td>
+                  <td>東京都</td>
+                  <td>2024年開業の新規ホテル</td>
+              </tr>
+              <tr>
+                  <td><strong>ザ・タワーホテル・ナゴヤ</strong></td>
+                  <td>愛知県</td>
+                  <td>名古屋の高層ホテル</td>
+              </tr>
+              <tr>
+                  <td><strong>名古屋観光ホテル エスパシオ</strong></td>
+                  <td>愛知県</td>
+                  <td>名古屋の老舗ホテル</td>
+              </tr>
+              <tr>
+                  <td><strong>志摩観光ホテル ザ ベイスイート</strong> <span class="wfn-badge">WFN人気</span></td>
+                  <td>三重県</td>
+                  <td>伊勢志摩の高級リゾート</td>
+              </tr>
+              <tr>
+                  <td><strong>ホテル長楽館</strong></td>
+                  <td>京都府</td>
+                  <td>明治時代の歴史的建造物</td>
+              </tr>
+              <tr>
+                  <td><strong>そわか (Sowaka)</strong> <span class="wfn-badge">WFN利用可</span></td>
+                  <td>京都府</td>
+                  <td>京町家をリノベーションしたブティックホテル</td>
+                </tr>
+                <tr>
+                  <td><strong>フォションホテル京都</strong></td>
+                  <td>京都府</td>
+                  <td>京都のブティックホテル</td>
+                </tr>
+                <tr>
+                  <td><strong>Cuvée J2 Hôtel Osaka by 温故知新</strong></td>
+                  <td>大阪府</td>
+                  <td>個性的なデザインのブティックホテル</td>
+                </tr>
+                <tr>
+                  <td><strong>ファイブ スプリング リゾート ザ・白浜</strong></td>
+                  <td>和歌山県</td>
+                  <td>白浜のリゾートホテル</td>
+                </tr>
+                <tr>
+                  <td><strong>サンカラホテル＆スパ屋久島</strong></td>
+                  <td>鹿児島県</td>
+                  <td>世界遺産・屋久島のリゾート</td>
+                </tr>
+                <tr>
+                  <td><strong>ザ・テラスクラブ アットブセナ</strong> <span class="wfn-badge">WFN人気</span></td>
+                  <td>沖縄県</td>
+                  <td>沖縄の最高級リゾート、週末1泊16万円前後</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        </div>
+
+        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-6">
+          <p class="text-gray-700">
+            <strong>重要なお知らせ：</strong>SLHホテルを利用する際は、必ずヒルトン公式サイトまたは公式アプリ経由で予約してください。SLH公式サイト経由では、ヒルトン・オナーズのポイントやエリート特典（無料朝食、アップグレードなど）は使えません。
+          </p>
+        </div>
+      </section>
+
+      <!-- SLHホテルについて -->
+      <section id="slh-analysis" class="bg-white p-6 rounded-lg shadow-sm mb-8">
+        <div class="section-divider"></div>
+        <h2
+          class="text-2xl font-bold hilton-blue-text mb-4 border-b-2 hilton-blue-border pb-2"
+        >
+          3. SLHホテルについて：個性的なホテルも使えるようになります
+        </h2>
+        <p class="mb-6 text-gray-700">
+          SLH（Small Luxury Hotels of the World）という、個性的で魅力的なホテルについてご紹介します。ヒルトン・オナーズカードを持っていると、これらのホテルでもポイントが使えるようになります。
+        </p>
+        <p class="mb-4 text-gray-700">
+          ヒルトンは2024年、SLH（Small Luxury Hotels of the World）との提携を発表しました<sup>12</sup>。SLHは、世界中の個性的で魅力的な独立系ホテルを集めたネットワークです。
+        </p>
+        <div class="bg-gray-50 border-l-4 border-gray-500 p-4 my-6">
+          <p class="text-gray-700 mb-3">
+            <strong
+              >SLHホテルとは、どんなホテル？</strong
+            >
+          </p>
+          <p class="text-gray-700 mb-3">
+            SLHは、ヒルトンの新しいブランドではありません。世界中の個性的で魅力的な独立系ホテルが集まったネットワークです。例えば、東京ステーションホテル<sup>13</sup>や、大阪の「Cuvée J2 Hôtel Osaka by 温故知新」<sup>19</sup>などがSLHに加盟しています。
+          </p>
+          <p class="text-gray-700 mb-3">
+            これらのホテルは、それぞれ独自のデザインや雰囲気を持っていて、ヒルトンが新しく建てるホテルとは一味違った魅力があります。歴史的な建物を改装したホテルや、その土地ならではの文化を感じられるホテルなど、個性的な体験ができるホテルが多いです。
+          </p>
+          <p class="text-gray-700">
+            ヒルトン・オナーズカードを持っていると、これらのSLHホテルでもポイントを貯めたり使ったりできるようになります。2027年には「SLH - 鎌倉リトリート」や「SLH - The Onsen Ryokan ニセコ」なども利用可能になる予定です。普通のホテルとは違う、特別な体験をしたい時に選べるホテルとして、とても魅力的ですね。
+          </p>
+        </div>
+      </section>
+
+      <!-- ゴールド会員の朝食特典について -->
+      <section id="breakfast-benefits" class="bg-white p-6 rounded-lg shadow-sm mb-8">
+        <div class="section-divider"></div>
+        <h2
+          class="text-2xl font-bold hilton-blue-text mb-4 border-b-2 hilton-blue-border pb-2"
+        >
+          4. ゴールド会員・ダイヤモンド会員の朝食特典について
+        </h2>
+        <p class="mb-6 text-gray-700">
+          ヒルトン・オナーズカード（プレミアムカード）を持っていると、ゴールド会員やダイヤモンド会員になれます。これらの会員には「朝食2名無料」の特典がありますが、実はホテルや地域によって特典の内容が異なるんです。知っておくと、旅行の計画が立てやすくなります。
+        </p>
+
+        <div class="space-y-6">
+          <!-- 日本国内での特典 -->
+          <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-lg">
+            <h3 class="text-lg font-bold hilton-blue-text mb-3">
+              日本国内での朝食特典：無料朝食が受けられます
+            </h3>
+            <p class="mb-3 text-gray-700">
+              日本国内のヒルトングループのホテル（コンラッド、ヒルトン、ダブルツリー、ヒルトン・ガーデン・インなど）では、ゴールド会員・ダイヤモンド会員は<strong>会員本人と同室のゲスト1名（計2名）に無料の朝食</strong>が提供されます。
+            </p>
+            <p class="mb-3 text-gray-700">
+              規約上は「コンチネンタルブレックファスト（パンやコーヒーなどの簡素な朝食）」となっていますが、実際には日本国内の多くのホテルでは、1名あたり数千円相当の豪華なビュッフェ朝食が提供されることが多いです。これは、ホテル側が会員に特別なサービスを提供しているためです。
+            </p>
+              <p class="text-gray-700">
+              <strong>対象ブランド：</strong>コンラッド、ヒルトン、ダブルツリー、ヒルトン・ガーデン・イン、キャノピー、キュリオ・コレクション、LXRなど、ほとんどのヒルトングループのホテルで利用できます。
+              </p>
+          </div>
+
+          <!-- SLHの特典 -->
+          <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-lg">
+            <h3 class="text-lg font-bold hilton-blue-text mb-3">
+              SLHホテルでの朝食特典：米国内外問わず無料朝食
+            </h3>
+            <p class="mb-3 text-gray-700">
+              <strong>SLHホテルは特別です！</strong>SLH加盟ホテルでは、米国内外を問わず、ゴールド会員・ダイヤモンド会員に<strong>無料のコンチネンタルブレックファスト（2名まで）</strong>が提供されます。
+            </p>
+            <p class="mb-3 text-gray-700">
+              これは非常に重要なポイントです。なぜなら、米国内のコンラッドやヒルトンでは「F&Bクレジット（飲食クレジット）」制度が採用されており、無料朝食ではなく一定額のクレジットが提供されるためです。しかし、SLHでは米国内でも無料朝食が受けられるという、とても有利な特典なんです。
+            </p>
+              <p class="text-gray-700">
+              <strong>重要：</strong>SLHで朝食特典を受けるには、<strong>必ずヒルトン公式サイトまたは公式アプリ経由で予約する必要があります</strong>。SLH公式サイトや旅行代理店経由では、この特典は受けられません。
+              </p>
+          </div>
+
+          <!-- 米国での特典 -->
+          <div class="bg-orange-50 border-l-4 border-orange-500 p-4 rounded-lg">
+            <h3 class="text-lg font-bold hilton-blue-text mb-3">
+              米国内での特典：F&Bクレジット制度
+            </h3>
+            <p class="mb-3 text-gray-700">
+              米国内のヒルトングループのホテルでは、2021年以降、「無料朝食」から「F&B（飲食）クレジット」制度に変更されました。クレジット額はブランドによって異なり、ウォルドーフ・アストリアやコンラッドでは$25/人（$50/室）、ヒルトンやダブルツリーでは$15～$18/人（$30～$36/室）、ヒルトン・ガーデン・インでは$10/人（$20/室）です。
+            </p>
+              <p class="text-gray-700">
+              <strong>注意：</strong>米国内では「無料朝食」ではなく「飲食クレジット」のため、クレジット額を超える分は自己負担になります。日本での「無料朝食」の感覚でいると、チェックアウト時に差額を請求される可能性があるのでご注意ください。
+              </p>
+          </div>
+
+          <!-- 特典対象外 -->
+          <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-lg">
+            <h3 class="text-lg font-bold hilton-blue-text mb-3">
+              朝食特典が対象外のブランド
+            </h3>
+            <p class="mb-3 text-gray-700">
+              <strong>ヒルトン・グランド・バケーションズ（HGV）：</strong>タイムシェアリゾートのため、朝食特典の対象外です。規約で明確に除外されています。
+            </p>
+              <p class="text-gray-700">
+              <strong>オールインクルーシブ・リゾート：</strong>宿泊料金に飲食が含まれているため、朝食特典は適用されません。代わりに、スパトリートメントの割引などの特典が提供されます。
+              </p>
+            </div>
+          </div>
+
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mt-6">
+              <p class="text-gray-700">
+            <strong>まとめ：</strong>日本国内では、ほとんどのヒルトングループのホテルで無料朝食が受けられます。SLHホテルは米国内外問わず無料朝食が受けられる特別な存在です。米国内のヒルトングループのホテルでは、F&Bクレジット制度が採用されているため、無料朝食ではなく飲食クレジットが提供されます。旅行の際は、これらの違いを理解しておくと、特典を最大限に活用できます。
+              </p>
+            </div>
+      </section>
+
+      <!-- 開業予定のホテル概要 -->
+      <section id="upcoming-overview" class="bg-white p-6 rounded-lg shadow-sm mb-8">
+        <div class="section-divider"></div>
+        <h2
+          class="text-2xl font-bold hilton-blue-text mb-4 border-b-2 hilton-blue-border pb-2"
+        >
+          5. 開業予定のホテル：これからどんなホテルが増える？
+        </h2>
+          <p class="mb-6 text-gray-700">
+          ヒルトン・オナーズカードを持っていると、世界中のヒルトングループのホテルでポイントを貯めたり使ったりできます。そして、<strong
+            class="hilton-blue-text"
+            >2025年から2032年にかけて、日本国内だけで21軒もの新しいホテルが開業予定</strong>なんです！合計3,500室以上が追加されるので、これまで以上に泊まりやすいホテルが増えることになります。
+        </p>
+        <p class="mb-4 text-gray-700">
+          しかも、ただ数が増えるだけではありません。ラグジュアリーから手頃な価格帯まで、様々なブランドのホテルが開業するので、旅行の目的や予算に合わせて選べる選択肢がどんどん広がります。
+        </p>
+
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6 rounded-lg">
+          <h3 class="font-bold text-lg mb-3 hilton-blue-text">
+            開業予定のホテルには、こんな特徴があります：
+          </h3>
+          <div class="space-y-4">
+            <div>
+              <h4 class="font-semibold text-gray-800 mb-2">
+                1. 最高級のラグジュアリーホテルが増える
+              </h4>
+              <p class="text-gray-700 text-sm">
+                「ウォルドーフ・アストリア大阪」<sup>8</sup>は既に2025年4月に開業しており、2027年には「ウォルドーフ・アストリア東京日本橋」<sup>3</sup>も開業予定です。さらに「コンラッド名古屋」<sup>7</sup>や「コンラッド横浜」<sup>4</sup>も加わります。特別な記念日や、ちょっと贅沢したい時に泊まれる最高級ホテルが、主要都市で選べるようになります。
+              </p>
+          </div>
+            <div>
+              <h4 class="font-semibold text-gray-800 mb-2">
+                2. 手頃な価格帯のホテルも充実
+              </h4>
+              <p class="text-gray-700 text-sm">
+                従来の「ヒルトン」や「コンラッド」だけでなく、「ヒルトン・ガーデン・イン」（横浜、長崎、京都、大阪など）<sup>1</sup>や「ダブルツリーbyヒルトン」（札幌、沖縄）といった、お手頃な価格帯のホテルもどんどん増えます。ビジネス出張や、気軽な旅行にも使いやすくなります。
+              </p>
+        </div>
+            <div>
+              <h4 class="font-semibold text-gray-800 mb-2">
+                3. 個性的なライフスタイルホテルも登場
+              </h4>
+              <p class="text-gray-700 text-sm">
+                「キャノピーbyヒルトン」（沖縄宮古島、東京赤坂）<sup>2</sup>や「キュリオ・コレクションbyヒルトン」（金沢、京都）など、その土地ならではの魅力を感じられる個性的なホテルも開業します。観光地での滞在が、より特別な体験になりそうです。
+              </p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-800 mb-2">
+                4. SLHホテルも使えるようになる
+              </h4>
+              <p class="text-gray-700 text-sm">
+                ヒルトンは2024年、SLH（Small Luxury Hotels of the World）との提携を発表しました<sup>12</sup>。これは、東京ステーションホテル<sup>13</sup>のような、個性的で魅力的な独立系ホテルも、ヒルトン・オナーズのポイントで予約できるようになるということです。2027年には「SLH - 鎌倉リトリート」や「SLH - The Onsen Ryokan ニセコ」なども利用可能になる予定です。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p class="mt-4 text-gray-700">
+          つまり、ヒルトン・オナーズカードを持っていれば、東京や大阪などの主要都市はもちろん、京都、金沢、高山、長崎、沖縄、札幌など、日本各地の観光地でも泊まれるホテルがどんどん増えていきます。旅行の選択肢が大幅に広がるということですね！
+        </p>
+      </section>
+
+      <!-- 統計情報と視覚化セクション -->
+      <section id="upcoming-stats" class="bg-white p-6 rounded-lg shadow-sm mb-8">
+        <div class="section-divider"></div>
+        <h2
+          class="text-2xl font-bold hilton-blue-text mb-4 border-b-2 hilton-blue-border pb-2"
+        >
+          6. 開業予定のホテル：一目でわかる統計
+        </h2>
+        <div class="flex flex-col md:flex-row justify-around items-center text-center mb-8">
+          <div class="p-4">
+            <div class="text-6xl font-bold hilton-blue-text">21</div>
+            <div class="text-xl font-semibold text-gray-800 mt-2">新規ホテル数</div>
+          </div>
+          <div class="p-4">
+            <div class="text-6xl font-bold hilton-gold">3,500+</div>
+            <div class="text-xl font-semibold text-gray-800 mt-2">新規客室数*</div>
+          </div>
+        </div>
+        <p class="text-sm text-gray-500 text-center mb-6">*客室数未発表のホテル（5軒）を除く。</p>
+
+        <!-- ブランドポートフォリオの成長チャート -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold hilton-blue-text mb-4">ブランド別の新規ホテル数</h3>
+          <p class="text-gray-700 mb-4">
+            どのブランドのホテルがどれくらい開業するのか、一目でわかります。ヒルトン・ガーデン・インが最も多く、続いてコンラッドやダブルツリーなど、様々なブランドが展開されます。
+          </p>
+          <div class="chart-container">
+            <canvas id="brandBarChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- 開業予定タイムライン -->
+      <section id="timeline" class="bg-white p-6 rounded-lg shadow-sm mb-8">
+        <div class="section-divider"></div>
+        <h2
+          class="text-2xl font-bold hilton-blue-text mb-4 border-b-2 hilton-blue-border pb-2"
+        >
+          7. 開業予定タイムライン
+        </h2>
+        <p class="text-gray-700 mb-6">
+          2025年から2032年にかけて、どのホテルがいつ開業するのか、時系列で見ることができます。旅行の計画を立てる際の参考にしてください。より詳細な情報（所在地、備考など）は、ページ下部の「開業予定ホテル一覧表」をご覧ください。
+        </p>
+        <div class="relative border-l-4 border-gray-200 pl-8">
+          <h3 class="text-xl font-bold text-white bg-hilton-blue px-4 py-2 rounded-lg inline-block mb-4">2025年</h3>
+          <div class="relative mb-8 timeline-item">
+            <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+            <h4 class="font-semibold text-lg">ダブルツリーbyヒルトン札幌</h4>
+            <p class="text-sm text-gray-600">2025年12月 • 250室</p>
+          </div>
+
+          <h3 class="text-xl font-bold text-white bg-hilton-blue px-4 py-2 rounded-lg inline-block mb-4 mt-8">2026年</h3>
+          <div class="relative mb-8 timeline-item">
+            <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+            <h4 class="font-semibold text-lg">ヒルトン・ガーデン・イン横浜みなとみらい</h4>
+            <p class="text-sm text-gray-600">2026年前半 • 232室</p>
+          </div>
+          <div class="relative mb-8 timeline-item">
+            <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+            <h4 class="font-semibold text-lg">キャノピーbyヒルトン沖縄宮古島リゾート</h4>
+            <p class="text-sm text-gray-600">2026年春 • 310室</p>
+          </div>
+          <div class="relative mb-8 timeline-item">
+            <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+            <h4 class="font-semibold text-lg">ヒルトン・ガーデン・イン京都四条</h4>
+            <p class="text-sm text-gray-600">2026年4月 • 210室</p>
+          </div>
+          <div class="relative mb-8 timeline-item">
+            <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+            <h4 class="font-semibold text-lg">コンラッド名古屋</h4>
+            <p class="text-sm text-gray-600">2026年夏 • 170室</p>
+          </div>
+          <div class="relative mb-8 timeline-item">
+            <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+            <h4 class="font-semibold text-lg">コンラッド横浜</h4>
+            <p class="text-sm text-gray-600">2026年7月 • 280室</p>
+          </div>
+          <div class="relative mb-8 timeline-item">
+            <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+            <h4 class="font-semibold text-lg">LXRホテル＆リゾート日光</h4>
+            <p class="text-sm text-gray-600">2026年9月 • 90室</p>
+          </div>
+          <div class="relative mb-8 timeline-item">
+            <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+            <h4 class="font-semibold text-lg">ヒルトン福岡エアポート</h4>
+            <p class="text-sm text-gray-600">2026年11月 • 300室</p>
+          </div>
+
+          <h3 class="text-xl font-bold text-white bg-hilton-blue px-4 py-2 rounded-lg inline-block mb-4 mt-8">2027年</h3>
+          <div class="relative mb-8 timeline-item">
+            <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+            <h4 class="font-semibold text-lg">ヒルトン・ガーデン・イン長崎中華街</h4>
+            <p class="text-sm text-gray-600">2027年前半 • 313室</p>
+          </div>
+          <div class="relative mb-8 timeline-item">
+            <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+            <h4 class="font-semibold text-lg">ヒルトン・ガーデン・イン大阪梅田</h4>
+            <p class="text-sm text-gray-600">2027年5月 • 350室</p>
+          </div>
+          <div class="relative mb-8 timeline-item">
+            <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+            <h4 class="font-semibold text-lg">SLH - 鎌倉リトリート</h4>
+            <p class="text-sm text-gray-600">2027年6月 • 30室</p>
+          </div>
+          <div class="relative mb-8 timeline-item">
+            <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+            <h4 class="font-semibold text-lg">キュリオ・コレクションbyヒルトン金沢</h4>
+            <p class="text-sm text-gray-600">2027年8月 • 180室</p>
+          </div>
+          <div class="relative mb-8 timeline-item">
+            <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+            <h4 class="font-semibold text-lg">ウォルドーフ・アストリア東京日本橋</h4>
+            <p class="text-sm text-gray-600">2027年秋 • 197室</p>
+          </div>
+          <div class="relative mb-8 timeline-item">
+            <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+            <h4 class="font-semibold text-lg">ダブルツリーbyヒルトン沖縄那覇</h4>
+            <p class="text-sm text-gray-600">2027年10月 • 220室</p>
+          </div>
+          <div class="relative mb-8 timeline-item">
+            <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+            <h4 class="font-semibold text-lg">SLH - The Onsen Ryokan ニセコ</h4>
+            <p class="text-sm text-gray-600">2027年12月 • 50室</p>
+          </div>
+
+          <h3 class="text-xl font-bold text-white bg-hilton-blue px-4 py-2 rounded-lg inline-block mb-4 mt-8">2028年以降</h3>
+          <div class="relative mb-8 timeline-item">
+            <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+            <h4 class="font-semibold text-lg">キャノピーbyヒルトン東京赤坂</h4>
+            <p class="text-sm text-gray-600">2028年 • 174室</p>
+          </div>
+          <div class="relative mb-8 timeline-item">
+            <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+            <h4 class="font-semibold text-lg">LXRホテルズ＆リゾーツ 宮島</h4>
+            <p class="text-sm text-gray-600">2028年10月頃 • 客室数未発表</p>
+          </div>
+          <div class="relative mb-8 timeline-item">
+            <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+            <h4 class="font-semibold text-lg">ヒルトン札幌</h4>
+            <p class="text-sm text-gray-600">2028年以降 • 客室数未発表 (パークホテル跡地)</p>
+          </div>
+          <div class="relative mb-8 timeline-item">
+            <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+            <h4 class="font-semibold text-lg">京都ブライトンホテル キュリオ・コレクションbyヒルトン</h4>
+            <p class="text-sm text-gray-600">2028年冬 • 客室数未発表</p>
+          </div>
+          <div class="relative mb-8 timeline-item">
+            <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+            <h4 class="font-semibold text-lg">コンラッド神戸</h4>
+            <p class="text-sm text-gray-600">2029年 • 客室数未発表 (市役所新庁舎内)</p>
+          </div>
+          <div class="relative mb-8 timeline-item">
+            <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full -ml-10"></div>
+            <h4 class="font-semibold text-lg">（仮称）札幌MICE隣接ホテル</h4>
+            <p class="text-sm text-gray-600">2032年度 • 客室数未発表 (中島公園駅周辺)</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2026年・2027年 開業予定ホテル -->
+      <section
+        id="2026-2027-hotels"
+        class="bg-white p-6 rounded-lg shadow-sm mb-8"
+      >
+        <div class="section-divider"></div>
+        <h2
+          class="text-2xl font-bold hilton-blue-text mb-4 border-b-2 hilton-blue-border pb-2"
+        >
+          8. 2026年・2027年に開業予定のホテル：どんなホテルに泊まれる？
+        </h2>
+        <p class="mb-6 text-gray-700">
+          2026年と2027年は、ラグジュアリーから手頃な価格帯まで、様々なタイプのホテルが開業します。旅行の目的に合わせて選べる選択肢が増えます。
+        </p>
+
+        <!-- 2026年 -->
+        <div class="mb-8">
+          <div class="bg-hilton-blue text-white px-6 py-4 rounded-lg mb-6 shadow-md">
+            <h3 class="text-3xl font-bold text-center">2026年</h3>
+          </div>
+          <div class="space-y-6">
+          <!-- A. キャノピーbyヒルトン沖縄宮古島リゾート -->
+          <div class="border-l-4 hilton-blue-border pl-4">
+            <h3 class="text-xl font-bold hilton-blue-text mb-3">
+              キャノピーbyヒルトン沖縄宮古島リゾート（2026年春・310室）
+            </h3>
+            <div class="bg-blue-50 p-4 rounded-lg mt-4">
+              <p class="text-gray-700">
+                アジア太平洋地域初のキャノピーリゾートホテル。2023年開業の「ヒルトン沖縄宮古島リゾート」の隣に建ち、宮古島旅行の選択肢が広がります。
+              </p>
+            </div>
+          </div>
+
+          <!-- B. ヒルトン・ガーデン・イン横浜みなとみらい -->
+          <div class="border-l-4 hilton-blue-border pl-4">
+            <h3 class="text-xl font-bold hilton-blue-text mb-3">
+              ヒルトン・ガーデン・イン横浜みなとみらい（2026年前半・232室）
+            </h3>
+            <div class="bg-blue-50 p-4 rounded-lg mt-4">
+              <p class="text-gray-700">
+                手頃な価格帯のホテル。既存の「ヒルトン横浜」と2027年開業予定の「コンラッド横浜」と合わせて、横浜エリアで3つの価格帯から選べるようになります。
+              </p>
+            </div>
+          </div>
+
+          <!-- C. コンラッド名古屋 -->
+          <div class="border-l-4 hilton-blue-border pl-4">
+            <h3 class="text-xl font-bold hilton-blue-text mb-3">
+              コンラッド名古屋（2026年夏）
+            </h3>
+            <div class="bg-blue-50 p-4 rounded-lg mt-4">
+              <p class="text-gray-700">
+                名古屋の中心地・栄エリアの地下鉄栄駅直結。中部地方で初めてのコンラッドです。
+              </p>
+            </div>
+          </div>
+
+          <!-- E. コンラッド横浜 -->
+          <div class="border-l-4 hilton-blue-border pl-4">
+            <h3 class="text-xl font-bold hilton-blue-text mb-3">
+              コンラッド横浜（2026年7月・280室）
+            </h3>
+            <div class="bg-blue-50 p-4 rounded-lg mt-4">
+              <p class="text-gray-700">
+                横浜で最高級のホテル。横浜みなとみらいエリアに近く、横浜観光にも便利です。
+              </p>
+            </div>
+          </div>
+
+          <!-- F. LXRホテル＆リゾート日光 -->
+          <div class="border-l-4 hilton-blue-border pl-4">
+            <h3 class="text-xl font-bold hilton-blue-text mb-3">
+              LXRホテル＆リゾート日光（2026年9月・90室）
+            </h3>
+            <div class="bg-blue-50 p-4 rounded-lg mt-4">
+              <p class="text-gray-700">
+                世界遺産の東照宮などがある日光で、特別な体験をしたい時に選べるラグジュアリーホテルです。
+              </p>
+            </div>
+          </div>
+
+          <!-- G. ヒルトン福岡エアポート -->
+          <div class="border-l-4 hilton-blue-border pl-4">
+            <h3 class="text-xl font-bold hilton-blue-text mb-3">
+              ヒルトン福岡エアポート（2026年11月・300室）
+            </h3>
+            <div class="bg-blue-50 p-4 rounded-lg mt-4">
+              <p class="text-gray-700">
+                福岡空港に近く、飛行機の出発前や到着後に便利です。
+              </p>
+            </div>
+          </div>
+
+          <!-- H. ヒルトン・ガーデン・イン京都四条 -->
+          <div class="border-l-4 hilton-blue-border pl-4">
+            <h3 class="text-xl font-bold hilton-blue-text mb-3">
+              ヒルトン・ガーデン・イン京都四条（2026年4月・210室）
+            </h3>
+            <div class="bg-blue-50 p-4 rounded-lg mt-4">
+              <p class="text-gray-700">
+                京都の四条エリアに開業。手頃な価格帯で気軽に京都観光を楽しめます。
+              </p>
+        </div>
+          </div>
+
+          <!-- D. ヒルトン高山リゾート -->
+          <div class="border-l-4 hilton-blue-border pl-4">
+            <h3 class="text-xl font-bold hilton-blue-text mb-3">
+              ヒルトン高山リゾート（2026年秋・283室）
+            </h3>
+            <div class="bg-blue-50 p-4 rounded-lg mt-4">
+              <p class="text-gray-700">
+                現在の「ホテルアソシア高山リゾート」をリブランド。高山の伝統的な雰囲気を楽しみながら、快適なホテルに泊まれます。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2027年 -->
+        <div class="mt-12">
+          <div class="bg-hilton-blue text-white px-6 py-4 rounded-lg mb-6 shadow-md">
+            <h3 class="text-3xl font-bold text-center">2027年</h3>
+          </div>
+          <div class="space-y-6">
+          <!-- A. ヒルトン・ガーデン・イン長崎中華街 -->
+          <div class="border-l-4 hilton-blue-border pl-4">
+            <h3 class="text-xl font-bold hilton-blue-text mb-3">
+              ヒルトン・ガーデン・イン長崎中華街（2027年前半・313室）
+            </h3>
+            <div class="bg-blue-50 p-4 rounded-lg mt-4">
+              <p class="text-gray-700">
+                長崎新地中華街のすぐ近くに開業。既存の「ヒルトン長崎」と合わせて、目的に合わせて選べるようになります。
+              </p>
+            </div>
+          </div>
+
+          <!-- B. ウォルドーフ・アストリア東京日本橋 -->
+          <div class="border-l-4 hilton-blue-border pl-4">
+            <h3 class="text-xl font-bold hilton-blue-text mb-3">
+              ウォルドーフ・アストリア東京日本橋（2027年秋・197室）
+            </h3>
+            <div class="bg-blue-50 p-4 rounded-lg mt-4">
+          <p class="text-gray-700">
+                ヒルトングループ最高級ブランドが東京に初進出。特別な記念日や、ちょっと贅沢したい時に泊まりたい最高級ホテルです。
+          </p>
+        </div>
+          </div>
+
+
+          <!-- E. ヒルトン・ガーデン・イン大阪梅田 -->
+          <div class="border-l-4 hilton-blue-border pl-4">
+            <h3 class="text-xl font-bold hilton-blue-text mb-3">
+              ヒルトン・ガーデン・イン大阪梅田（2027年5月・350室）
+            </h3>
+            <div class="bg-blue-50 p-4 rounded-lg mt-4">
+              <p class="text-gray-700">
+                大阪の中心地・梅田エリアに開業。手頃な価格帯で気軽に大阪観光を楽しめます。
+            </p>
+          </div>
+          </div>
+
+          <!-- F. SLH - 鎌倉リトリート -->
+          <div class="border-l-4 hilton-blue-border pl-4">
+            <h3 class="text-xl font-bold hilton-blue-text mb-3">
+              SLH - 鎌倉リトリート（2027年6月・30室）
+            </h3>
+            <div class="bg-blue-50 p-4 rounded-lg mt-4">
+          <p class="text-gray-700">
+                古都・鎌倉で、個性的なホテルに泊まれる特別な体験ができます。
+            </p>
+          </div>
+          </div>
+
+          <!-- G. キュリオ・コレクションbyヒルトン金沢 -->
+          <div class="border-l-4 hilton-blue-border pl-4">
+            <h3 class="text-xl font-bold hilton-blue-text mb-3">
+              キュリオ・コレクションbyヒルトン金沢（2027年8月・180室）
+            </h3>
+            <div class="bg-blue-50 p-4 rounded-lg mt-4">
+              <p class="text-gray-700">
+                金沢で、その土地ならではの魅力を感じられる個性的なホテルです。
+            </p>
+          </div>
+        </div>
+
+          <!-- H. ダブルツリーbyヒルトン沖縄那覇 -->
+          <div class="border-l-4 hilton-blue-border pl-4">
+            <h3 class="text-xl font-bold hilton-blue-text mb-3">
+              ダブルツリーbyヒルトン沖縄那覇（2027年10月・220室）
+            </h3>
+            <div class="bg-blue-50 p-4 rounded-lg mt-4">
+              <p class="text-gray-700">
+                沖縄の中心地・那覇に開業。手頃な価格帯で上質なサービスが受けられます。
+              </p>
+            </div>
+          </div>
+
+          <!-- I. SLH - The Onsen Ryokan ニセコ -->
+          <div class="border-l-4 hilton-blue-border pl-4">
+            <h3 class="text-xl font-bold hilton-blue-text mb-3">
+              SLH - The Onsen Ryokan ニセコ（2027年12月・50室）
+            </h3>
+            <div class="bg-blue-50 p-4 rounded-lg mt-4">
+          <p class="text-gray-700">
+                スキーや温泉で人気のニセコで、個性的なホテルに泊まれる特別な体験ができます。
+          </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ホテル一覧表（リファレンス） -->
+      <section id="master-list" class="bg-white p-6 rounded-lg shadow-sm mb-8">
+        <div class="section-divider"></div>
+        <h2
+          class="text-2xl font-bold hilton-blue-text mb-4 border-b-2 hilton-blue-border pb-2"
+        >
+          9. 開業予定ホテル一覧表（詳細情報）
+        </h2>
+        <p class="mb-6 text-gray-700">
+          以下は、2025年から2032年にかけて開業予定の全21軒のホテルを、開業時期順にまとめた一覧表です。各ホテルのブランド、所在地、開業予定時期、客室数などの詳細情報を確認できます。旅行の計画を立てる際の参考にしてください。
+        </p>
+
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead>
+              <tr>
+                <th>ホテル名</th>
+                <th>ブランド</th>
+                <th>所在地（都道府県・主要エリア）</th>
+                <th>開業予定時期</th>
+                <th>予定客室数</th>
+                <th>備考</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>ダブルツリーbyヒルトン札幌</strong></td>
+                <td>DoubleTree by Hilton</td>
+                <td>北海道・札幌市</td>
+                <td>2025年12月</td>
+                <td>250室</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>ヒルトン・ガーデン・イン横浜みなとみらい</strong>
+                </td>
+                <td>Hilton Garden Inn</td>
+                <td>神奈川県・横浜市</td>
+                <td>2026年前半</td>
+                <td>232室</td>
+                <td><sup>1</sup></td>
+              </tr>
+              <tr>
+                <td><strong>キャノピーbyヒルトン沖縄宮古島リゾート</strong></td>
+                <td>Canopy by Hilton</td>
+                <td>沖縄県・宮古島市</td>
+                <td>2026年春</td>
+                <td>310室</td>
+                <td>アジア太平洋地域初の同ブランドリゾート<sup>2</sup></td>
+              </tr>
+              <tr>
+                <td><strong>ヒルトン・ガーデン・イン京都四条</strong></td>
+                <td>Hilton Garden Inn</td>
+                <td>京都府・京都市</td>
+                <td>2026年4月</td>
+                <td>210室</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><strong>コンラッド名古屋</strong></td>
+                <td>Conrad Hotels & Resorts</td>
+                <td>愛知県・名古屋市</td>
+                <td>2026年夏</td>
+                <td>170室</td>
+                <td>栄駅直結<sup>7</sup></td>
+              </tr>
+              <tr>
+                <td><strong>コンラッド横浜</strong></td>
+                <td>Conrad Hotels & Resorts</td>
+                <td>神奈川県・横浜市</td>
+                <td>2026年7月</td>
+                <td>280室</td>
+                <td>北仲通地区の高層ビル内<sup>4</sup></td>
+              </tr>
+              <tr>
+                <td><strong>LXRホテル＆リゾート日光</strong></td>
+                <td>LXR Hotels & Resorts</td>
+                <td>栃木県・日光市</td>
+                <td>2026年9月</td>
+                <td>90室</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><strong>ヒルトン福岡エアポート</strong></td>
+                <td>Hilton Hotels & Resorts</td>
+                <td>福岡県・福岡市</td>
+                <td>2026年11月</td>
+                <td>300室</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><strong>ヒルトン・ガーデン・イン長崎中華街</strong></td>
+                <td>Hilton Garden Inn</td>
+                <td>長崎県・長崎市</td>
+                <td>2027年前半</td>
+                <td>313室</td>
+                <td>九州初のヒルトン・ガーデン・イン<sup>6</sup></td>
+              </tr>
+              <tr>
+                <td><strong>ヒルトン・ガーデン・イン大阪梅田</strong></td>
+                <td>Hilton Garden Inn</td>
+                <td>大阪府・大阪市</td>
+                <td>2027年5月</td>
+                <td>350室</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><strong>SLH - 鎌倉リトリート</strong></td>
+                <td>SLH</td>
+                <td>神奈川県・鎌倉市</td>
+                <td>2027年6月</td>
+                <td>30室</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><strong>キュリオ・コレクションbyヒルトン金沢</strong></td>
+                <td>Curio Collection by Hilton</td>
+                <td>石川県・金沢市</td>
+                <td>2027年8月</td>
+                <td>180室</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><strong>ウォルドーフ・アストリア東京日本橋</strong></td>
+                <td>Waldorf Astoria</td>
+                <td>東京都・中央区</td>
+                <td>2027年秋</td>
+                <td>197室</td>
+                <td>レジデンス併設の可能性<sup>3</sup></td>
+              </tr>
+              <tr>
+                <td><strong>ダブルツリーbyヒルトン沖縄那覇</strong></td>
+                <td>DoubleTree by Hilton</td>
+                <td>沖縄県・那覇市</td>
+                <td>2027年10月</td>
+                <td>220室</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><strong>SLH - The Onsen Ryokan ニセコ</strong></td>
+                <td>SLH</td>
+                <td>北海道・ニセコ町</td>
+                <td>2027年12月</td>
+                <td>50室</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><strong>キャノピーbyヒルトン東京赤坂</strong></td>
+                <td>Canopy by Hilton</td>
+                <td>東京都・港区</td>
+                <td>2028年</td>
+                <td>174室</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><strong>LXRホテルズ＆リゾーツ 宮島</strong></td>
+                <td>LXR Hotels & Resorts</td>
+                <td>広島県・廿日市市</td>
+                <td>2028年10月頃</td>
+                <td>未詳</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><strong>ヒルトン札幌</strong></td>
+                <td>Hilton Hotels & Resorts</td>
+                <td>北海道・札幌市</td>
+                <td>2028年以降</td>
+                <td>未詳</td>
+                <td>パークホテル跡地</td>
+              </tr>
+              <tr>
+                <td><strong>京都ブライトンホテル キュリオ・コレクションbyヒルトン</strong></td>
+                <td>Curio Collection by Hilton</td>
+                <td>京都府・京都市</td>
+                <td>2028年冬</td>
+                <td>未詳</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><strong>コンラッド神戸</strong></td>
+                <td>Conrad Hotels & Resorts</td>
+                <td>兵庫県・神戸市</td>
+                <td>2029年</td>
+                <td>未詳</td>
+                <td>市役所新庁舎内</td>
+              </tr>
+              <tr>
+                <td><strong>（仮称）札幌MICE隣接ホテル</strong></td>
+                <td>（未定）</td>
+                <td>北海道・札幌市</td>
+                <td>2032年度</td>
+                <td>未詳</td>
+                <td>中島公園駅周辺</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 text-sm text-gray-600">
+          <strong>注：</strong
+          >客室数や開業時期は、発表時点の計画に基づくものであり、変更される可能性があります。
+        </p>
+      </section>
+
+      <!-- VI. 総括 -->
+      <section id="conclusion" class="bg-white p-6 rounded-lg shadow-sm mb-8">
+        <div class="section-divider"></div>
+        <h2
+          class="text-2xl font-bold hilton-blue-text mb-4 border-b-2 hilton-blue-border pb-2"
+        >
+          10. まとめ：これからヒルトン・オナーズカードを申し込む方へ
+        </h2>
+        <p class="mb-6 text-gray-700 text-lg leading-relaxed">
+          このガイドでは、ヒルトン・オナーズカードの基本情報から、現在利用できるホテル、開業予定のホテルまで、幅広い情報をご紹介してきました。最後に、カードを申し込むかどうか判断する際のポイントをまとめます。
+        </p>
+
+        <!-- カードの価値 -->
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-5 my-6 rounded-lg">
+          <h3 class="font-bold text-lg mb-3 hilton-blue-text">
+            💎 カードの価値
+            </h3>
+          <p class="text-gray-700 mb-2">
+            <strong>現在43軒 + 開業予定21軒 = 合計64軒のホテルが利用可能に</strong>なります。ラグジュアリーから手頃な価格帯まで、予算や目的に合わせて選べるホテルが揃っています。さらに、SLHホテルも利用できるため、個性的なホテル体験も可能です。
+            </p>
+          </div>
+
+        <!-- このカードが向いている人 -->
+        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-5 my-6 rounded-lg">
+          <h3 class="font-bold text-lg mb-3 hilton-blue-text">
+            ✅ このカードが向いている人
+            </h3>
+          <ul class="space-y-2 text-gray-700 text-sm">
+            <li class="flex items-start">
+              <span class="mr-2">✓</span>
+              <span>ヒルトン系列ホテルに頻繁に泊まる方（年間数回以上）</span>
+            </li>
+            <li class="flex items-start">
+              <span class="mr-2">✓</span>
+              <span>週末旅行が多い方（WFN特典は週末のみ利用可能）</span>
+            </li>
+            <li class="flex items-start">
+              <span class="mr-2">✓</span>
+              <span>ラグジュアリーホテルや個性的なホテルに興味がある方</span>
+            </li>
+            <li class="flex items-start">
+              <span class="mr-2">✓</span>
+              <span>電話予約に抵抗がない方（WFN特典は電話予約のみ）</span>
+            </li>
+          </ul>
+          </div>
+
+        <!-- 注意点 -->
+        <div class="bg-orange-50 border-l-4 border-orange-500 p-5 my-6 rounded-lg">
+          <h3 class="font-bold text-lg mb-3 hilton-blue-text">
+            ⚠️ カードを申し込む前に確認したいポイント
+            </h3>
+          <ul class="space-y-2 text-gray-700 text-sm">
+            <li class="flex items-start">
+              <span class="mr-2">•</span>
+              <span><strong>WFN特典の制約：</strong>電話予約のみ、週末（金・土・日）のみ。一般カードは年間150万円、プレミアムカードは年間300万円の決済達成が必要</span>
+            </li>
+            <li class="flex items-start">
+              <span class="mr-2">•</span>
+              <span><strong>ポイントの価値：</strong>多くのホテルでは1ポイント=0.5円程度。マイル移行レートは低いため、マイラー層には不向き</span>
+            </li>
+            <li class="flex items-start">
+              <span class="mr-2">•</span>
+              <span><strong>サービス改定の可能性：</strong>年会費の値上げや特典の改定が入る可能性がある</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 今後の展望 -->
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-5 my-6 rounded-lg">
+          <h3 class="font-bold text-lg mb-3 hilton-blue-text">
+            🚀 これからも続く拡大
+          </h3>
+          <p class="text-gray-700 text-sm mb-2">
+            2025年から2032年にかけて、日本国内で21軒の新しいホテルが開業予定です（合計3,500室以上）。主要都市（東京、横浜、名古屋、大阪）での選択肢が増えるだけでなく、観光地（高山、長崎、沖縄、京都、金沢、日光、鎌倉、ニセコなど）でもヒルトングループのホテルが開業します。
+          </p>
+          <p class="text-gray-700 text-sm">
+            特に注目すべきは、<strong>ウォルドーフ・アストリアが東京に開業</strong>することです（大阪は既に2025年4月に開業済み）。2028年以降も、「キャノピーbyヒルトン東京赤坂」<sup>20</sup>、「LXRホテルズ＆リゾーツ 宮島」、「コンラッド神戸」など、様々なホテルが開業予定です。
+          </p>
+        </div>
+
+        <!-- 最終メッセージ -->
+        <div class="bg-gradient-to-r from-blue-50 to-green-50 border-2 border-blue-300 p-5 my-6 rounded-lg text-center">
+          <p class="text-base font-bold text-gray-800 mb-2">
+            ヒルトン・オナーズカードは、ヒルトン系列ホテルに多く泊まる方にとって、非常に価値の高いカードです。
+          </p>
+          <p class="text-sm text-gray-700">
+            現在43軒のホテルに加えて、今後21軒の新しいホテルが開業予定です。カードを持つことで、どんどん広がる選択肢を楽しめるようになります。ただし、WFN特典の制約や決済ハードルを理解した上で、カードの価値を判断してください。特にプレミアムカード（年会費66,000円）の申し込みを検討する場合は、年間300万円の決済達成が現実的かどうかを慎重に検討することをおすすめします。
+          </p>
+        </div>
+      </section>
+
+      <!-- 京都市宿泊税について -->
+      <section class="bg-white p-6 rounded-lg shadow-sm mb-8">
+        <div class="section-divider"></div>
+        <h2
+          class="text-2xl font-bold hilton-blue-text mb-4 border-b-2 hilton-blue-border pb-2"
+        >
+          京都市の宿泊税について（ポイント利用時の特典）
+        </h2>
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mt-6 rounded-lg">
+          <div class="space-y-3 text-gray-700">
+            <p>
+              <strong>ポイント全額使用時は宿泊税非課税：</strong>ヒルトン・オナーズの公式ポイントを全額使用して宿泊する場合、京都市の宿泊税は非課税となります。一方、ポイントと現金を併用する場合や、OTA（オンライン旅行代理店）のポイントを使用する場合は課税対象となります。
+            </p>
+            <p>
+              <strong>2026年3月1日から新税率適用：</strong>京都市の宿泊税は2026年3月1日から新税率（最高1万円）が適用されますが、<strong>ポイント全額使用時の非課税は変わらず</strong>です。
+            </p>
+            <p class="text-sm text-gray-600">
+              ※京都市公式（市税事務所）による情報。詳細は<a href="https://www.city.kyoto.lg.jp/gyozai/page/0000345893.html" target="_blank" class="text-blue-600 underline">京都市宿泊税の見直しについて</a>をご確認ください。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 脚注 -->
+      <section id="footnotes" class="bg-gray-50 p-6 rounded-lg shadow-sm mb-8">
+        <h2 class="text-xl font-bold hilton-blue-text mb-4">脚注</h2>
+        <div class="text-sm text-gray-600 space-y-2">
+          <p><sup>1</sup> ヒルトン・ガーデン・イン横浜みなとみらい 開業情報</p>
+          <p><sup>2</sup> キャノピーbyヒルトン沖縄宮古島リゾート 開業情報</p>
+          <p><sup>3</sup> ウォルドーフ・アストリア東京日本橋 開業情報</p>
+          <p><sup>4</sup> コンラッド横浜、ヒルトン横浜 開業情報</p>
+          <p>
+            <sup>5</sup>
+            ヒルトン高山リゾート（ホテルアソシア高山リゾートからのリブランド）情報
+          </p>
+          <p><sup>6</sup> ヒルトン・ガーデン・イン長崎中華街 開業情報</p>
+          <p><sup>7</sup> コンラッド名古屋 開業情報</p>
+          <p><sup>8</sup> ウォルドーフ・アストリア大阪 開業情報（2025年4月）</p>
+          <p>
+            <sup>10</sup> ヒルトン高山リゾート
+            改装情報（橋本行生デザインスタジオ）
+          </p>
+          <p><sup>11</sup> 三井不動産 日本橋再開発プロジェクト情報</p>
+          <p>
+            <sup>12</sup> ヒルトン・SLH 独占的パートナーシップ発表（2024年）
+          </p>
+          <p><sup>13</sup> 東京ステーションホテル SLH加盟情報</p>
+          <p><sup>18</sup> コンラッド東京 既存ホテル情報</p>
+          <p><sup>19</sup> Cuvée J2 Hôtel Osaka by 温故知新 SLH加盟情報</p>
+          <p>
+            <sup>20</sup> キャノピーbyヒルトン東京赤坂 開業予定情報（2028年）
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-white p-6 mt-8 rounded-lg shadow-sm mb-8">
+      <div class="max-w-5xl mx-auto">
+        <h3 class="text-xl font-bold hilton-blue-text mb-4">⚠️ 重要なお知らせ</h3>
+        <p class="mb-4 text-gray-700">
+          このサイトは速報まとめとして実験的に公開しています。
+        </p>
+        <p class="mb-4 text-gray-700">
+          情報の正確性については最大限の注意を払っておりますが、間違いや不正確な情報が含まれる可能性があります。ご利用の際は、必ず公式情報をご確認いただき、ご了承の上でご活用ください。
+        </p>
+        <p class="mb-6 text-gray-700">
+          ご意見、ご要望、誤りのご指摘などがございましたら、<a href="https://www.instagram.com/ino_moneycoach/" target="_blank" class="text-blue-600 underline">InstagramのDM</a>でお待ちしております。
+        </p>
+        <div class="text-center pt-4 border-t border-gray-200">
+          <p class="text-gray-500 text-sm">
+            © 2025 @ino-moneycoach. この内容は公開情報に基づきAIを活用して作成されたまとめです。
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const chartColors = {
+          hiltonBlue: '#00355f',
+          hiltonGold: '#d4af37',
+          blue: '#118AB2',
+          green: '#06D6A0',
+          red: '#FF6B6B',
+          yellow: '#FFD166',
+          gray: '#A9A9A9'
+        };
+
+        // ブランド別の新規ホテル数バーチャート
+        const brandBarCtx = document.getElementById('brandBarChart').getContext('2d');
+        new Chart(brandBarCtx, {
+          type: 'bar',
+          data: {
+            labels: [
+              ['ヒルトン・ガーデン・', 'イン'],
+              'コンラッド',
+              ['ダブルツリーby', 'ヒルトン'],
+              'SLH',
+              'LXR',
+              ['ウォルドーフ・', 'アストリア'],
+              ['キュリオ・', 'コレクション'],
+              'キャノピー',
+              'ヒルトン',
+              '（未定）'
+            ],
+            datasets: [{
+              label: '新規ホテル数',
+              data: [4, 3, 2, 2, 2, 1, 2, 2, 2, 1],
+              backgroundColor: [
+                chartColors.hiltonBlue,
+                chartColors.hiltonGold,
+                chartColors.blue,
+                chartColors.blue,
+                chartColors.green,
+                chartColors.yellow,
+                chartColors.red,
+                chartColors.gray,
+                chartColors.hiltonBlue,
+                chartColors.gray
+              ],
+              borderColor: '#ffffff',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: {
+                  stepSize: 1
+                }
+              }
+            },
+            plugins: {
+              tooltip: {
+                callbacks: {
+                  title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                      return label.join(' ');
+                    } else {
+                      return label;
+                    }
+                  }
+                }
+              },
+              legend: {
+                display: false
+              }
+            }
+          }
+        });
+
+        // 既存ホテルのブランド別ホテル数バーチャート
+        const existingBrandBarCtx = document.getElementById('existingBrandBarChart').getContext('2d');
+        new Chart(existingBrandBarCtx, {
+          type: 'bar',
+          data: {
+            labels: [
+              'ヒルトン',
+              'SLH',
+              ['ダブルツリーby', 'ヒルトン'],
+              'コンラッド',
+              ['ウォルドーフ・', 'アストリア'],
+              'LXR',
+              ['キャノピーby', 'ヒルトン'],
+              ['キュリオ・', 'コレクション'],
+              ['ヒルトン・ガーデン・', 'イン']
+            ],
+            datasets: [{
+              label: '既存ホテル数',
+              data: [16, 12, 8, 2, 1, 1, 1, 1, 1],
+              backgroundColor: [
+                chartColors.hiltonBlue,
+                chartColors.blue,
+                chartColors.hiltonGold,
+                chartColors.yellow,
+                chartColors.red,
+                chartColors.green,
+                chartColors.green,
+                chartColors.gray,
+                chartColors.hiltonBlue
+              ],
+              borderColor: '#ffffff',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: {
+                  stepSize: 1
+                }
+              }
+            },
+            plugins: {
+              tooltip: {
+                callbacks: {
+                  title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                      return label.join(' ');
+                    } else {
+                      return label;
+                    }
+                  }
+                }
+              },
+              legend: {
+                display: false
+              }
+            }
+          }
+        });
+      });
+
+      // 戻るボタンの表示/非表示
+      const backToTopButton = document.createElement('a');
+      backToTopButton.href = '#';
+      backToTopButton.className = 'back-to-top';
+      backToTopButton.textContent = '↑ ページトップへ';
+      backToTopButton.onclick = function(e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+      document.body.appendChild(backToTopButton);
+
+      window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+          backToTopButton.classList.add('show');
+        } else {
+          backToTopButton.classList.remove('show');
+        }
+      });
+
+      // スムーズスクロール
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const href = this.getAttribute('href');
+          if (href !== '#') {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

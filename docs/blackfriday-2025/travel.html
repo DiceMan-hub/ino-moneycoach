@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ブラックフライデー2025 旅行セール一覧｜航空券・ホテル・ツアー</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-color: #0071e3;
+        --secondary-color: #1d1d1f;
+        --text-primary: #1d1d1f;
+        --text-secondary: #86868b;
+        --bg-primary: #ffffff;
+        --bg-secondary: #f5f5f7;
+        --border-color: #d2d2d7;
+        --success-color: #34c759;
+        --warning-color: #ff9500;
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+        --radius: 12px;
+        --radius-lg: 18px;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+          'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+        line-height: 1.7;
+        color: var(--text-primary);
+        background-color: var(--bg-primary);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 22px;
+      }
+
+      header {
+        background: linear-gradient(135deg, #ff9500 0%, #ff6b00 100%);
+        padding: 40px 0;
+        text-align: center;
+        color: white;
+      }
+
+      h1 {
+        font-size: 32px;
+        font-weight: 600;
+        letter-spacing: -0.005em;
+        margin-bottom: 12px;
+      }
+
+      .subtitle {
+        font-size: 17px;
+        opacity: 0.9;
+        font-weight: 400;
+        margin-top: 8px;
+      }
+
+      h2 {
+        font-size: 28px;
+        font-weight: 600;
+        margin: 48px 0 20px;
+        color: var(--text-primary);
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 12px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 24px 0;
+        background: var(--bg-primary);
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+      }
+
+      thead {
+        background: linear-gradient(135deg, #ff9500 0%, #ff6b00 100%);
+        color: white;
+      }
+
+      th {
+        padding: 14px 16px;
+        text-align: left;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      td {
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--border-color);
+        font-size: 14px;
+        vertical-align: top;
+      }
+
+      tbody tr:last-child td {
+        border-bottom: none;
+      }
+
+      tbody tr:hover {
+        background-color: var(--bg-secondary);
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 10px;
+        font-size: 11px;
+        font-weight: 600;
+        color: white;
+        margin-top: 4px;
+      }
+
+      .badge-warning {
+        background: var(--warning-color);
+      }
+
+      .badge-success {
+        background: var(--success-color);
+      }
+
+      .badge-info {
+        background: var(--primary-color);
+      }
+
+      .intro-box {
+        background: linear-gradient(135deg, #fff5e6 0%, #ffe0b3 100%);
+        border-left: 4px solid var(--warning-color);
+        border-radius: var(--radius-lg);
+        padding: 24px;
+        margin: 24px 0;
+      }
+
+      .intro-box p {
+        font-size: 16px;
+        line-height: 1.8;
+        margin: 0;
+      }
+
+      /* Search */
+      .search-container {
+        max-width: 500px;
+        margin: 24px auto;
+        position: relative;
+      }
+
+      .search-box {
+        width: 100%;
+        padding: 14px 48px 14px 44px;
+        font-size: 15px;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(20px);
+        outline: none;
+        font-family: inherit;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        transition: all 0.3s ease;
+      }
+
+      .search-box:focus {
+        border-color: var(--warning-color);
+        box-shadow: 0 0 0 3px rgba(255, 149, 0, 0.15);
+      }
+
+      .search-icon {
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-secondary);
+        opacity: 0.6;
+      }
+
+      .search-clear {
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 18px;
+        height: 18px;
+        border: none;
+        background: rgba(0, 0, 0, 0.08);
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+      }
+
+      .search-clear svg {
+        width: 9px;
+        height: 9px;
+        color: var(--text-secondary);
+      }
+
+      .search-box:not(:placeholder-shown) ~ .search-clear {
+        display: flex;
+      }
+
+      .search-results-count {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 12px;
+        color: var(--text-secondary);
+        min-height: 16px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .search-results-count.visible {
+        opacity: 1;
+      }
+
+      .highlight {
+        background: rgba(255, 235, 59, 0.5);
+        padding: 1px 3px;
+        border-radius: 3px;
+      }
+
+      tr.hidden {
+        display: none;
+      }
+
+      footer {
+        background: var(--bg-secondary);
+        padding: 40px 0;
+        margin-top: 80px;
+        border-top: 1px solid var(--border-color);
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 14px;
+      }
+
+      @media (max-width: 768px) {
+        h1 { font-size: 24px; }
+        h2 { font-size: 20px; }
+        .container { padding: 20px 16px; }
+        table { font-size: 12px; }
+        th, td { padding: 10px 8px; }
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <p style="font-size: 12px; opacity: 0.8; margin: 0 0 8px 0;">いのマネーコーチ AI速報(beta)</p>
+        <h1>ブラックフライデー2025<br>旅行セール一覧</h1>
+        <p class="subtitle">航空券・ホテル・ツアー</p>
+        <p class="subtitle" style="font-size: 13px; margin-top: 8px;">最終更新日：2025年11月18日 <span style="background: rgba(255, 255, 255, 0.2); padding: 2px 8px; border-radius: 4px; font-size: 11px; margin-left: 8px;">随時更新中</span></p>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="intro-box">
+          <p>2025年ブラックフライデーの旅行関連セール情報をまとめました。航空券、ホテル、ツアー、クルーズなど、カテゴリ別に最新情報を掲載しています。</p>
+        </div>
+
+        <!-- Search Box -->
+        <div class="search-container">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 20 20" fill="none">
+            <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M13 13L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <input type="text" id="searchInput" class="search-box" placeholder="検索..." autocomplete="off"/>
+          <button class="search-clear" id="searchClear" type="button">
+            <svg viewBox="0 0 12 12" fill="none">
+              <path d="M2 2L10 10M10 2L2 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <div id="searchResults" class="search-results-count"></div>
+        </div>
+
+        <!-- 航空券 -->
+        <h2>航空券（国内・国際線）</h2>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 12%;">航空会社</th>
+              <th style="width: 15%;">販売期間</th>
+              <th style="width: 35%;">セール内容</th>
+              <th style="width: 18%;">推奨決済</th>
+              <th style="width: 20%;">対象搭乗期間</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>JAL</strong></td>
+              <td>国内：11/18～19<br>海外：11/18～30</td>
+              <td>• 国内線：片道7,700円～特別運賃<br>• ダイナミックパッケージ最大53,000円割引<br>• 国際線：NY/LA 150,000円～、シンガポール69,000円～<br>• 特典航空券：北米片道18,900マイル～<br>• ホテル予約ダブルマイル</td>
+              <td>JALカード<br>JAL Pay</td>
+              <td>国内：12/26～2026/2/28<br>海外：公式発表待ち</td>
+            </tr>
+            <tr>
+              <td><strong>ANA</strong><br><span class="badge badge-success">減額マイル</span></td>
+              <td>11/21～30</td>
+              <td>• 国内線・国際線（ハワイ・中国）が減額マイルで予約可能<br>• ANA Mall：7倍マイル、最大78%OFF<br>• 10%OFFクーポン（先着1,500枚）<br>• 抽選100名に10,000マイル</td>
+              <td>ANAカード</td>
+              <td>公式発表待ち</td>
+            </tr>
+            <tr>
+              <td><strong>IBEXエアラインズ</strong></td>
+              <td>11/14 0:00～<br>11/20 23:59</td>
+              <td>• 国内線12路線対象<br>• 新千歳↔仙台：5,000円～<br>• 仙台↔大阪：7,000円～<br>• 仙台↔福岡：9,200円～</td>
+              <td>汎用高還元カード</td>
+              <td>12/1～2026/2/28<br>（年末年始除く）</td>
+            </tr>
+            <tr>
+              <td><strong>FDA</strong><br><span class="badge badge-info">地方路線</span></td>
+              <td>11/21～28<br>（8日間限定）</td>
+              <td>• 会員限定「メンバーズプライス」<br>• 12～25歳「ユース割」<br>• 航空券＋ホテルセット（タイムセール）<br>• ミステリープラン<br>• 公式ショップ10%OFF</td>
+              <td>汎用高還元カード</td>
+              <td>公式発表待ち</td>
+            </tr>
+            <tr>
+              <td><strong>ZIPAIR</strong><br><span class="badge badge-success">LCC</span></td>
+              <td>11/17～12/4</td>
+              <td>• ロサンゼルス：29,250円～<br>• サンフランシスコ：32,500円～<br>• バンコク：16,500円～<br>• シンガポール：14,700円～<br>• ソウル：8,000円～<br>• ホノルル：20,000円～</td>
+              <td>汎用高還元カード</td>
+              <td>11/17～2026/3/28</td>
+            </tr>
+            <tr>
+              <td><strong>キャセイパシフィック</strong></td>
+              <td>会員先行：11/13 12:00～<br>一般：11/14～28</td>
+              <td>• 運賃10%割引（世界100都市以上）<br>• 近距離：上限8,000円（先着800名）<br>• 中・長距離：上限15,000円（先着200名）<br>• 全クラス対象</td>
+              <td>汎用高還元カード</td>
+              <td>11/14～2026/3/31</td>
+            </tr>
+            <tr>
+              <td><strong>シンガポール航空</strong></td>
+              <td>会員先行：11/18 10:00～<br>一般：11/21～28</td>
+              <td>• KrisFlyer会員：最大17%OFF<br>• 非会員：最大12%OFF<br>• シンガポール往復：66,640円～<br>• ロサンゼルス往復：91,870円～<br>• Mastercard利用で現地バウチャー最大S$130</td>
+              <td>Mastercard<br>（現地特典あり）</td>
+              <td>LA：2026/1/20～11/8<br>その他：2026/4/1～11/8</td>
+            </tr>
+            <tr>
+              <td><strong>ジンエアー</strong></td>
+              <td>[第1回] 11/7～9<br>[第2回] 11/14～16<br>[第3回] 11/21～23</td>
+              <td>• 定額割引（コード：FLYDAY10）<br>• 往復：3,000円割引<br>• 片道：1,500円割引</td>
+              <td>汎用高還元カード</td>
+              <td>12/1～2026/3/19</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ホテル・宿泊 -->
+        <h2>ホテル・宿泊予約</h2>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 12%;">サービス</th>
+              <th style="width: 15%;">販売期間</th>
+              <th style="width: 35%;">セール内容</th>
+              <th style="width: 18%;">推奨決済</th>
+              <th style="width: 20%;">対象宿泊期間</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Yahoo!トラベル</strong><br><span class="badge badge-warning">最重要</span></td>
+              <td>11/20 12:00～<br>12/4 11:59</td>
+              <td>• JAL・ANA最大38,000円分クーポン<br>• PayPayポイント最大10%付与<br>• ヤフーパック専用プラン<br>• 東京・札幌・沖縄・福岡・大阪の人気ホテル</td>
+              <td>PayPayカード<br>LYPプレミアム</td>
+              <td>公式発表待ち</td>
+            </tr>
+            <tr>
+              <td><strong>一休.com</strong></td>
+              <td>11/19</td>
+              <td>• ポイント10倍デー（毎月1日・9日・19日）<br>• オンラインカード決済が条件</td>
+              <td>アメックスプロパー<br>（3%還元対象店）</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td><strong>楽天トラベル</strong></td>
+              <td>11/19 10:00～</td>
+              <td>• 国内宿泊：最大15%OFFクーポン<br>• 楽パック：ANA/JAL最大10,000円OFF<br>• 高速バス：1,000円OFF<br>• レンタカー：最大30%OFF<br>• 遊び・体験：最大15,000円OFF</td>
+              <td>楽天カード<br>SPU活用</td>
+              <td>公式発表待ち</td>
+            </tr>
+            <tr>
+              <td><strong>IHGホテルズ</strong><br><span class="badge badge-success">世界6,800施設</span></td>
+              <td>アプリ先行：11/18・19<br>通常：11/20～12/4</td>
+              <td>• アプリ会員限定：最大30%OFF<br>• 通常：会員25%OFF、非会員20%OFF<br>• イベロスター：最大60%OFF（～2027/10末）<br>• アプリ初回DLで500pt</td>
+              <td>IHG One Rewards<br>汎用高還元カード</td>
+              <td>11/21～2026/3/31</td>
+            </tr>
+            <tr>
+              <td><strong>Booking.com</strong></td>
+              <td>11/21～12/4</td>
+              <td>• 国内・海外ホテルセール<br>• 北海道：5,760円～（2名1泊）<br>• バンコク：1,970円～（2名1泊）</td>
+              <td>汎用高還元カード</td>
+              <td>11/21～12/31</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ツアー・パッケージ -->
+        <h2>ツアー・パッケージ</h2>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 12%;">旅行会社</th>
+              <th style="width: 15%;">販売期間</th>
+              <th style="width: 33%;">セール内容</th>
+              <th style="width: 18%;">推奨決済</th>
+              <th style="width: 22%;">対象旅行期間</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>ジャルパック</strong><br><span class="badge badge-success">JAL PAK</span></td>
+              <td>11/18 0:00～<br>11/30 23:59</td>
+              <td>• クーポン併用で最大53,000円割引<br>• びっくりオプション：飲食メニュー300円<br>• Sクラスレンタカー1泊2日：1,500円～</td>
+              <td>JALカード</td>
+              <td>11/19～2026/11/8宿泊</td>
+            </tr>
+            <tr>
+              <td><strong>JTB</strong></td>
+              <td>11/18～</td>
+              <td>• 特選旅行商品（国内・海外）特価販売<br>• 割引クーポン配布<br>• 限定キャンペーン（ポイント還元・プレゼント）</td>
+              <td>汎用高還元カード</td>
+              <td>公式発表待ち</td>
+            </tr>
+            <tr>
+              <td><strong>J TRIP</strong></td>
+              <td>会員先行：11/18 12:00～<br>一般：11/20 12:00～<br>12/8 9:59まで</td>
+              <td>• JALパッケージ最大10,000円OFF<br>• 北海道・沖縄・スキー限定特典<br>• キャンセルサポート付き</td>
+              <td>汎用高還元カード</td>
+              <td>公式発表待ち</td>
+            </tr>
+            <tr>
+              <td><strong>東武トップツアーズ</strong></td>
+              <td>[第1弾] 11/7 11時～<br>[第2弾] 11/14 11時～<br>12/1 18時まで</td>
+              <td>• JR＋宿泊、JR日帰り、東武鉄道＋宿泊<br>• 日帰り：仙台14,300円、軽井沢7,400円<br>• 温泉：定山渓10,900円～、草津12,200円～</td>
+              <td>汎用高還元カード</td>
+              <td>11/9～2026/2/28</td>
+            </tr>
+            <tr>
+              <td><strong>JR東海ツアーズ</strong></td>
+              <td>11/14 13時～<br>12/1 20時</td>
+              <td>• EX旅パック ブラックフライデーセール<br>• 往復新幹線＋宿泊の自由組合せ<br>• EX会員×LINE連携：初回1,000円OFF</td>
+              <td>汎用高還元カード</td>
+              <td>公式発表待ち</td>
+            </tr>
+            <tr>
+              <td><strong>HIS</strong></td>
+              <td>11/18（火）<br>詳細発表予定</td>
+              <td>• BLACK FRIDAY 2025 準備中<br>• 詳細は11/18発表予定</td>
+              <td>アメックスプロパー<br>（3%還元対象店）</td>
+              <td>公式発表待ち</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>ブラックフライデー2025 旅行セール一覧</p>
+        <p style="margin-top: 8px; font-size: 12px">航空券・ホテル・ツアー</p>
+        <p style="margin-top: 12px; font-size: 11px; color: rgba(0, 0, 0, 0.4);">#PR</p>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        const searchClear = document.getElementById('searchClear');
+        const tables = document.querySelectorAll('table tbody');
+
+        function clearSearch() {
+          searchInput.value = '';
+          searchInput.dispatchEvent(new Event('input'));
+          searchInput.focus();
+        }
+
+        searchInput.addEventListener('input', function(e) {
+          const searchTerm = e.target.value.toLowerCase().trim();
+          searchClear.style.display = searchTerm ? 'flex' : 'none';
+
+          if (searchTerm === '') {
+            tables.forEach(table => {
+              const rows = table.querySelectorAll('tr');
+              rows.forEach(row => {
+                row.classList.remove('hidden');
+                const highlights = row.querySelectorAll('mark.highlight');
+                highlights.forEach(mark => {
+                  const textNode = document.createTextNode(mark.textContent);
+                  mark.parentNode.replaceChild(textNode, mark);
+                });
+                row.normalize();
+              });
+            });
+            searchResults.textContent = '';
+            searchResults.classList.remove('visible');
+            return;
+          }
+
+          let totalMatches = 0;
+
+          tables.forEach(table => {
+            const rows = table.querySelectorAll('tr');
+            rows.forEach(row => {
+              const textContent = row.textContent.toLowerCase();
+              if (textContent.includes(searchTerm)) {
+                row.classList.remove('hidden');
+                totalMatches++;
+
+                const cells = row.querySelectorAll('td');
+                cells.forEach(cell => {
+                  const existingHighlights = cell.querySelectorAll('mark.highlight');
+                  existingHighlights.forEach(mark => {
+                    const textNode = document.createTextNode(mark.textContent);
+                    mark.parentNode.replaceChild(textNode, mark);
+                  });
+                  cell.normalize();
+
+                  const walker = document.createTreeWalker(cell, NodeFilter.SHOW_TEXT, null, false);
+                  const textNodes = [];
+                  let node;
+                  while (node = walker.nextNode()) {
+                    textNodes.push(node);
+                  }
+
+                  const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+                  textNodes.forEach(textNode => {
+                    const text = textNode.textContent;
+                    if (regex.test(text)) {
+                      const fragment = document.createDocumentFragment();
+                      let lastIndex = 0;
+                      text.replace(regex, (match, p1, offset) => {
+                        if (offset > lastIndex) {
+                          fragment.appendChild(document.createTextNode(text.slice(lastIndex, offset)));
+                        }
+                        const mark = document.createElement('mark');
+                        mark.className = 'highlight';
+                        mark.textContent = match;
+                        fragment.appendChild(mark);
+                        lastIndex = offset + match.length;
+                        return match;
+                      });
+                      if (lastIndex < text.length) {
+                        fragment.appendChild(document.createTextNode(text.slice(lastIndex)));
+                      }
+                      textNode.parentNode.replaceChild(fragment, textNode);
+                    }
+                  });
+                });
+              } else {
+                row.classList.add('hidden');
+              }
+            });
+          });
+
+          searchResults.classList.add('visible');
+          if (totalMatches > 0) {
+            searchResults.textContent = `${totalMatches}件の結果`;
+            searchResults.style.color = 'var(--success-color)';
+          } else {
+            searchResults.textContent = '結果なし';
+            searchResults.style.color = 'var(--text-secondary)';
+          }
+        });
+
+        searchClear.addEventListener('click', clearSearch);
+        searchInput.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') {
+            clearSearch();
+            searchInput.blur();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

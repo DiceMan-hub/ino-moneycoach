@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANAマイル→SKYコイン交換レート早見表</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', 'Meiryo', 'メイリオ', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0066cc 0%, #003d7a 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .table-wrapper {
+            padding: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        thead {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        th {
+            padding: 20px 15px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 17px;
+            color: #2c3e50;
+            border-bottom: 3px solid #0066cc;
+        }
+
+        tbody tr {
+            transition: all 0.3s ease;
+        }
+
+        tbody tr:hover {
+            background: #f8f9fa;
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        td {
+            padding: 22px 15px;
+            border-bottom: 1px solid #e9ecef;
+            font-size: 16px;
+            color: #495057;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tier-name {
+            font-weight: 700;
+            color: #2c3e50;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .tier-name .badge {
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge.premium {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .badge.gold {
+            background: linear-gradient(135deg, #ffd89b 0%, #ff9a56 100%);
+            color: #fff;
+        }
+
+        .badge.standard {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #2c3e50;
+        }
+
+        .badge.basic {
+            background: #e9ecef;
+            color: #6c757d;
+        }
+
+        .rate-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .rate-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 18px;
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            border-radius: 20px;
+            font-weight: 700;
+            color: #2c3e50;
+            font-size: 19px;
+        }
+
+        .arrow {
+            font-size: 18px;
+            color: #6c757d;
+            margin: 0 6px;
+        }
+
+        .max-rate {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+        }
+
+        .miles-detail {
+            font-size: 14px;
+            color: #6c757d;
+            margin-top: 8px;
+            line-height: 1.6;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 20px 30px;
+            border-top: 2px solid #e9ecef;
+        }
+
+        .footer-content {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .footer-icon {
+            font-size: 24px;
+        }
+
+        .footer-text {
+            font-size: 15px;
+            color: #495057;
+            line-height: 1.6;
+        }
+
+        .footer-text strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 20px;
+            }
+
+            th, td {
+                padding: 12px 10px;
+                font-size: 12px;
+            }
+
+            .table-wrapper {
+                padding: 20px;
+            }
+
+            .rate-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✈️ ANAマイル→SKYコイン交換レート早見表</h1>
+            <p>会員ステータス・カード種別による交換率の違い</p>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>会員区分／カード種別</th>
+                        <th>交換レート(10,000マイル以上)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="tier-name">
+                                <span>ブロンズ〜ダイヤモンド<br>+ ANAカード保有</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="rate-info">
+                                <span class="rate-badge">1.3倍</span>
+                                <span class="arrow">→</span>
+                                <span class="rate-badge max-rate">1.7倍</span>
+                            </div>
+                            <div class="miles-detail">
+                                10,000→13,000 / 20,000→28,000<br>
+                                30,000→45,000 / 40,000→64,000<br>
+                                50,000→85,000
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="tier-name">
+                                <span>ANAゴールド／<br>プレミアムカード保有</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="rate-info">
+                                <span class="rate-badge">1.2倍</span>
+                                <span class="arrow">→</span>
+                                <span class="rate-badge">1.6倍</span>
+                            </div>
+                            <div class="miles-detail">
+                                10,000→12,000 / 20,000→26,000<br>
+                                30,000→42,000 / 40,000→60,000<br>
+                                50,000→80,000
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="tier-name">
+                                <span>ANAワイド／一般カード<br>または AMCモバイルプラス</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="rate-info">
+                                <span class="rate-badge">1.2倍</span>
+                                <span class="arrow">→</span>
+                                <span class="rate-badge">1.5倍</span>
+                            </div>
+                            <div class="miles-detail">
+                                10,000→12,000 / 20,000→26,000<br>
+                                30,000→42,000 / 40,000→60,000<br>
+                                50,000→75,000
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="tier-name">
+                                <span>ANAマイレージクラブ<br>(クレジット機能なし)</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="rate-info">
+                                <span class="rate-badge">1.2倍 (固定)</span>
+                            </div>
+                            <div class="miles-detail">
+                                10,000→12,000 / 20,000→24,000<br>
+                                30,000→36,000 / 40,000→48,000<br>
+                                50,000→60,000
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            <div class="footer-content">
+                <div class="footer-item">
+                    <div class="footer-icon">💡</div>
+                    <div class="footer-text">
+                        <strong>ポイント</strong>
+                        交換マイル数が多いほどレートが上昇します
+                    </div>
+                </div>
+                <div class="footer-item">
+                    <div class="footer-icon">🎯</div>
+                    <div class="footer-text">
+                        <strong>最大レート</strong>
+                        上級会員+ANAカードで最大1.7倍達成
+                    </div>
+                </div>
+                <div class="footer-item">
+                    <div class="footer-icon">📊</div>
+                    <div class="footer-text">
+                        <strong>最低保証</strong>
+                        どの会員でも最低1.2倍で交換可能
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
