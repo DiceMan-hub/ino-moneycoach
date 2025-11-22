@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ソウル：2025年版 お金まわり完全ガイド</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: 'Noto Sans JP', sans-serif;
+        background: #f8f9fa;
+        min-height: 100vh;
+      }
+      .theme-bg {
+        background: #006fcf;
+      }
+      .theme-text {
+        color: #006fcf;
+      }
+      .theme-border {
+        border-color: #006fcf;
+      }
+      .info-box-bg {
+        background-color: #f8fafb;
+        border-left-color: #006fcf;
+      }
+      .info-box-accent {
+        background-color: #f0f7ff;
+        border-left-color: #006fcf;
+      }
+      .card {
+        transition: all 0.3s ease;
+        border: 1px solid rgba(0, 111, 207, 0.1);
+      }
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(0, 111, 207, 0.15);
+      }
+      .section-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+      }
+      .section-card:hover {
+        box-shadow: 0 8px 24px rgba(0, 111, 207, 0.12);
+      }
+      .info-box {
+        transition: all 0.3s ease;
+      }
+      .info-box:hover {
+        transform: translateX(4px);
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+      table th,
+      table td {
+        border: 1px solid #e5e7eb;
+        padding: 16px;
+        text-align: left;
+      }
+      table th {
+        background: #006fcf;
+        color: white;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+      table tr:nth-child(even) {
+        background-color: #f9fafb;
+      }
+      table tr {
+        transition: background-color 0.2s ease;
+      }
+      table tr:hover {
+        background-color: #f3f4f6;
+      }
+      .badge {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+      .header-gradient {
+        background: #006fcf;
+        position: relative;
+        overflow: hidden;
+      }
+      .toc-link {
+        transition: all 0.2s ease;
+        padding: 8px 12px;
+        border-radius: 6px;
+        display: block;
+      }
+      .toc-link:hover {
+        background-color: #f8fafb;
+        transform: translateX(4px);
+      }
+      .highlight-box {
+        position: relative;
+        padding-left: 1rem;
+      }
+      .highlight-box::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: #006fcf;
+        border-radius: 2px;
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .fade-in {
+        animation: fadeInUp 0.6s ease-out;
+      }
+    </style>
+  </head>
+  <body class="text-gray-800">
+    <header class="header-gradient text-white p-8 md:p-12 shadow-xl relative">
+      <div class="container mx-auto max-w-5xl text-center relative z-10">
+        <div class="mb-6">
+          <span
+            class="badge bg-white bg-opacity-20 text-white backdrop-blur-sm"
+          >
+            海外旅行 FinTech & Money Hacks
+          </span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">
+          ソウル：2025年版<br />お金まわり完全ガイド
+        </h1>
+        <p class="mt-4 text-lg md:text-xl text-blue-100 leading-relaxed">
+          初めてソウルを訪れる日本人旅行者向けに、お金とデジタル決済のハック術を徹底解説
+        </p>
+      </div>
+    </header>
+
+    <main class="container mx-auto max-w-5xl p-4 md:p-8">
+      <!-- 目次 -->
+      <section class="section-card p-8 mb-8 fade-in">
+        <h2 class="text-2xl font-bold theme-text mb-6 flex items-center">
+          <span class="mr-2">📋</span> 目次
+        </h2>
+        <ul class="space-y-2 text-gray-700">
+          <li>
+            <a href="#summary" class="toc-link theme-text"
+              >1. 【結論】3分でわかる！ソウルのお金とアプリの正解</a
+            >
+          </li>
+          <li>
+            <a href="#preparation" class="toc-link theme-text"
+              >2. 出発前の準備 (SIM / eSIM / 必須アプリ)</a
+            >
+          </li>
+          <li>
+            <a href="#airport" class="toc-link theme-text"
+              >3. 空港から市内へ (アクセス)</a
+            >
+          </li>
+          <li>
+            <a href="#payment" class="toc-link theme-text"
+              >4. ソウルの決済完全攻略 (クレカ・WOWPASS・現金)</a
+            >
+          </li>
+          <li>
+            <a href="#transport" class="toc-link theme-text"
+              >5. 交通手段と移動ハック (T-money / 気候同行カード)</a
+            >
+          </li>
+          <li>
+            <a href="#budget" class="toc-link theme-text"
+              >6. 滞在費の目安 & 観光パス</a
+            >
+          </li>
+        </ul>
+      </section>
+
+      <!-- 1. Summary -->
+      <section id="summary" class="section-card p-8 mb-8 fade-in">
+        <h2
+          class="text-2xl font-bold theme-text mb-4 border-b-2 theme-border pb-3"
+        >
+          1. 【結論】3分でわかる！ソウルのお金とアプリの正解
+        </h2>
+        <div
+          class="bg-yellow-50 border border-yellow-200 text-yellow-800 px-4 py-2 rounded-lg mb-6 text-sm flex items-center"
+        >
+          <span class="mr-2">💱</span>
+          <strong>現在のレート目安 (2025.11)</strong>：1,000ウォン ≒
+          <span class="font-bold text-lg ml-1">106円</span>
+          <span class="ml-3 text-xs text-yellow-700 hidden md:inline"
+            >※「0を1つ取って、少し足す」感覚で計算すると安心です。</span
+          >
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="info-box info-box-accent p-4 rounded-lg">
+            <h3 class="font-bold text-lg mb-2 theme-text">💳 決済</h3>
+            <p class="text-sm text-gray-700">
+              <strong>クレカ + WOWPASS</strong>で99%OK。<br />
+              現金は予備で3〜5万ウォンあれば十分。
+            </p>
+          </div>
+          <div class="info-box info-box-bg p-4 rounded-lg">
+            <h3 class="font-bold text-lg mb-2 theme-text">📱 通信 & アプリ</h3>
+            <p class="text-sm text-gray-700">
+              <strong>eSIM</strong>事前購入が最安。<br />
+              地図は<strong>Naver Map</strong>、タクシーは<strong
+                >Kakao T</strong
+              >が必須。
+            </p>
+          </div>
+          <div class="info-box info-box-accent p-4 rounded-lg">
+            <h3 class="font-bold text-lg mb-2 theme-text">🚆 移動</h3>
+            <p class="text-sm text-gray-700">
+              <strong>T-money</strong
+              >カードで地下鉄・バス・タクシー全て乗れる。<br />
+              空港からは<strong>A'REX直通</strong>が最速。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Preparation (SIM & Apps) -->
+      <section id="preparation" class="section-card p-8 mb-8 fade-in">
+        <h2
+          class="text-2xl font-bold theme-text mb-6 border-b-2 theme-border pb-3"
+        >
+          2. 出発前の準備 (SIM / eSIM / 必須アプリ)
+        </h2>
+
+        <h3 class="text-xl font-bold theme-text mb-4">
+          📡 通信環境 (SIM / eSIM)
+        </h3>
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+          <div class="info-box info-box-accent border-l-4 p-5 rounded-lg">
+            <div class="flex items-center mb-3">
+              <span class="badge bg-blue-600 text-white mr-3">推奨</span>
+              <h4 class="font-bold text-lg theme-text">事前購入 (eSIM)</h4>
+            </div>
+            <p class="text-sm text-gray-700 mb-2">
+              最も推奨。渡航前に設定完了でき、安価。
+            </p>
+            <p class="text-sm text-gray-700">例：5GB/30日間で約1,650円など。</p>
+          </div>
+          <div class="info-box info-box-bg border-l-4 p-5 rounded-lg">
+            <h4 class="font-bold text-lg mb-3 theme-text">
+              空港カウンター (物理SIM)
+            </h4>
+            <p class="text-sm text-gray-700 mb-2">
+              その場で設定サポートを受けられる安心感があるが、割高。
+            </p>
+            <p class="text-sm text-gray-700">
+              例：5日間データ無制限で約25,000ウォン〜。
+            </p>
+          </div>
+        </div>
+
+        <h3 class="text-xl font-bold theme-text mb-4">
+          📱 必須アプリ：配車アプリ編
+        </h3>
+        <div class="info-box info-box-bg border-l-4 p-5 rounded-lg mb-6">
+          <p class="text-sm text-gray-700 mb-2">
+            韓国ではGoogle
+            Mapsがほぼ機能しません。また、流しのタクシーを捕まえるのは難易度が高いです。<br />
+            <strong>「Kakao T」</strong
+            >がシェア9割の絶対王者ですが、予備として<strong>「Uber」</strong>を入れるのが賢明です。
+          </p>
+        </div>
+
+        <div class="overflow-x-auto mb-6">
+          <table class="w-full text-sm text-left text-gray-700">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+              <tr>
+                <th class="px-4 py-3">アプリ名</th>
+                <th class="px-4 py-3">日本語 / 決済</th>
+                <th class="px-4 py-3">特徴・おすすめシーン</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="bg-white border-b">
+                <td class="px-4 py-3 font-bold text-yellow-600">Kakao T</td>
+                <td class="px-4 py-3">◯ / △(設定要)</td>
+                <td class="px-4 py-3">
+                  <strong>基本はこれ</strong
+                  >。圧倒的台数。近距離も捕まりやすい。
+                </td>
+              </tr>
+              <tr class="bg-white border-b">
+                <td class="px-4 py-3 font-bold text-black">Uber</td>
+                <td class="px-4 py-3">◎ / ◎(確実)</td>
+                <td class="px-4 py-3">
+                  <strong>設定不要</strong
+                  >。日本のアプリがそのまま使える。決済が楽。
+                </td>
+              </tr>
+              <tr class="bg-white">
+                <td class="px-4 py-3 font-bold text-indigo-600">TADA</td>
+                <td class="px-4 py-3">△(英語) / ◯</td>
+                <td class="px-4 py-3">
+                  <strong>快適重視</strong
+                  >。大型バンで荷物が多い時や家族旅行に。
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+            <h4 class="font-bold text-lg mb-2 text-black flex items-center">
+              <span class="mr-2">🚕</span> Uber (ウーバー)
+            </h4>
+            <p class="text-xs text-gray-600 mb-2 font-bold">
+              〜日本で使っているなら最強のサブ〜
+            </p>
+            <ul class="text-sm text-gray-700 list-disc ml-4 space-y-1">
+              <li>
+                <strong>アプリそのまま</strong>:
+                日本のUberアプリをソウルで開くだけ。
+              </li>
+              <li>
+                <strong>決済確実</strong>:
+                日本の登録カードで自動決済。エラーが少ない。
+              </li>
+              <li>
+                <strong>言葉の壁なし</strong>: 行き先指定も日本語UIで完結。
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+            <h4
+              class="font-bold text-lg mb-2 text-indigo-600 flex items-center"
+            >
+              <span class="mr-2">🚐</span> TADA (タダ)
+            </h4>
+            <p class="text-xs text-gray-600 mb-2 font-bold">
+              〜荷物が多い時のプレミアムな選択〜
+            </p>
+            <ul class="text-sm text-gray-700 list-disc ml-4 space-y-1">
+              <li>
+                <strong>車両が広い</strong>:
+                基本的に大型バン。スーツケースや3-4人に最適。
+              </li>
+              <li>
+                <strong>配車拒否なし</strong>:
+                ドライバーの質が高く、運転も丁寧。
+              </li>
+              <li>
+                <strong>日本の番号OK</strong>: SMS認証も日本の番号で可能。
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="info-box-accent p-4 rounded-lg text-sm text-gray-800 mb-8">
+          <strong>💡 FinTech Analyst's Hack</strong>
+          <p class="mt-2">
+            <strong>「Uber」を必ずスマホに入れておいてください。</strong>
+          </p>
+          <ul class="list-disc ml-5 mt-2 space-y-1">
+            <li>
+              <strong>クレカの相性</strong>：Kakao
+              Tは日本のカードがエラーになることがありますが、Uberは確実です。
+            </li>
+            <li>
+              <strong>ラッシュ時の分散</strong>：金曜夜や雨の日、Kakao
+              Tで捕まらない時にUberで探すと捕まる確率が上がります。
+            </li>
+          </ul>
+        </div>
+
+        <h3 class="text-xl font-bold theme-text mb-4">
+          🗺️ 必須アプリ：地図・その他
+        </h3>
+        <div class="space-y-4">
+          <div class="highlight-box">
+            <h4 class="font-bold text-lg mb-1 theme-text">Naver Map (地図)</h4>
+            <p class="text-sm text-gray-700">
+              韓国ではGoogle
+              Mapsが徒歩ルート等で機能しません。日本語対応しており必須です。
+            </p>
+          </div>
+          <div class="highlight-box">
+            <h4 class="font-bold text-lg mb-1 theme-text">
+              Shuttle (フードデリバリー)
+            </h4>
+            <p class="text-sm text-gray-700">
+              外国人観光客向け。日本語対応、海外クレカ決済可能。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Airport Access -->
+      <section id="airport" class="section-card p-8 mb-8 fade-in">
+        <h2
+          class="text-2xl font-bold theme-text mb-6 border-b-2 theme-border pb-3"
+        >
+          3. 空港から市内へ (アクセス)
+        </h2>
+
+        <h3 class="text-xl font-bold theme-text mb-3">
+          ✈️ 仁川国際空港 (ICN) → ソウル駅
+        </h3>
+        <div class="overflow-x-auto mb-6">
+          <table>
+            <thead>
+              <tr>
+                <th>手段</th>
+                <th>所要時間</th>
+                <th>料金 (目安)</th>
+                <th>特徴</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>A'REX (直通)</strong></td>
+                <td>約43分</td>
+                <td>
+                  11,000 W<br /><span class="text-xs text-gray-500"
+                    >(ネット予約:約9,500W)</span
+                  >
+                </td>
+                <td>最速。ノンストップ。</td>
+              </tr>
+              <tr>
+                <td><strong>A'REX (一般)</strong></td>
+                <td>約60分</td>
+                <td>4,750 W〜</td>
+                <td>最安。各駅停車。</td>
+              </tr>
+              <tr>
+                <td><strong>リムジンバス</strong></td>
+                <td>60〜90分</td>
+                <td>18,000 W</td>
+                <td>荷物が多い時に楽。</td>
+              </tr>
+              <tr>
+                <td><strong>タクシー</strong></td>
+                <td>60〜70分</td>
+                <td>6〜8万 W</td>
+                <td>快適だが割高。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-sm text-gray-600 mb-6">
+          ※金浦空港からはA'REX一般列車で約22分、タクシーで2〜3万ウォン程度です。
+        </p>
+      </section>
+
+      <!-- 4. Payment Strategy -->
+      <section id="payment" class="section-card p-8 mb-8 fade-in">
+        <h2
+          class="text-2xl font-bold theme-text mb-6 border-b-2 theme-border pb-3"
+        >
+          4. ソウルの決済完全攻略
+        </h2>
+
+        <div class="info-box info-box-accent border-l-4 p-5 rounded-lg mb-8">
+          <p class="text-lg font-bold theme-text">
+            基本戦略：メインは「クレジットカード」、サブで「WOWPASS」
+          </p>
+          <p class="text-sm text-gray-700 mt-2">
+            キャッシュレス普及率は99%以上。屋台や一部のチャージ機以外で現金はほぼ使いません。
+          </p>
+        </div>
+
+        <!-- Credit Card -->
+        <h3 class="text-xl font-bold theme-text mb-4">
+          ① メイン：クレジットカード & タッチ決済
+        </h3>
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <div class="info-box info-box-bg border-l-4 p-5 rounded-lg">
+            <h4 class="font-bold text-lg mb-3 theme-text">国際ブランド</h4>
+            <ul class="text-sm text-gray-700 space-y-2">
+              <li><strong>VISA / Mastercard</strong>：ほぼ100%利用可能。</li>
+              <li>
+                <strong>JCB / Amex</strong
+                >：百貨店や観光地はOKだが、ローカル店で不可の場合あり。
+              </li>
+            </ul>
+          </div>
+          <div class="info-box info-box-bg border-l-4 p-5 rounded-lg">
+            <h4 class="font-bold text-lg mb-3 theme-text">
+              Apple Pay / タッチ決済
+            </h4>
+            <ul class="text-sm text-gray-700 space-y-2">
+              <li>
+                <strong>使える場所</strong
+                >：コンビニ(CU/GS25)、スタバ、マクドナルド、ダイソー、ロッテ百貨店など。
+              </li>
+              <li>
+                <strong>注意</strong
+                >：まだ非対応の個人店も多いです。必ず<strong>物理カード</strong>を持ち歩いてください。
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Duty Free & Tax Refund Section -->
+        <div class="mt-8 pt-6 border-t-2 border-gray-100">
+          <h3 class="text-2xl font-bold theme-text mb-6 flex items-center">
+            <span class="mr-2">�️</span> ソウルのお買い物ハック：免税の仕組み
+          </h3>
+
+          <div class="info-box info-box-accent border-l-4 p-5 rounded-lg mb-8">
+            <p class="text-sm text-gray-700">
+              「免税」には実は<strong>2種類</strong>あります。ここを混同すると「空港で商品を受け取れない！」等のトラブルになります。<br />
+              <strong>① 市内免税店 (Duty Free)</strong
+              >：関税+消費税免除。空港受取。<br />
+              <strong>② 事後免税 (Tax Refund)</strong
+              >：消費税還付。街中のお店で即時割引or空港返金。
+            </p>
+          </div>
+
+          <!-- 1. Duty Free Shops -->
+          <h4 class="text-xl font-bold theme-text mb-4">
+            1. ソウルの「3大 有名市内免税店」 (Duty Free)
+          </h4>
+          <p class="text-sm text-gray-700 mb-4">
+            空港の免税店と同じ扱いですが、街中でゆっくり買い物ができるのがメリットです。<br />
+            <span class="text-red-600 font-bold"
+              >注意：その場では持ち帰れません（空港受取）。</span
+            >
+          </p>
+
+          <div class="grid md:grid-cols-3 gap-4 mb-6">
+            <!-- Lotte -->
+            <div
+              class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm"
+            >
+              <h5 class="font-bold text-gray-800 mb-2 border-b pb-2">
+                ① ロッテ免税店 明洞本店
+              </h5>
+              <p class="text-xs text-gray-600 mb-2">
+                <strong>特徴</strong>:
+                韓国最大手。圧倒的な品揃え。デパ地下直結で便利だが激混み。
+              </p>
+              <p class="text-xs text-gray-500">
+                📍 明洞ロッテ百貨店 9-12F<br />
+                🚇 2号線「乙支路入口」直結
+              </p>
+            </div>
+            <!-- Shinsegae -->
+            <div
+              class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm"
+            >
+              <h5 class="font-bold text-gray-800 mb-2 border-b pb-2">
+                ② 新世界免税店 明洞店
+              </h5>
+              <p class="text-xs text-gray-600 mb-2">
+                <strong>特徴</strong>:
+                内装がおしゃれで若者に人気。ロッテより通路が広く見やすい。
+              </p>
+              <p class="text-xs text-gray-500">
+                📍 新世界百貨店 新館 8-12F<br />
+                🚇 4号線「明洞」直結
+              </p>
+            </div>
+            <!-- Shilla -->
+            <div
+              class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm"
+            >
+              <h5 class="font-bold text-gray-800 mb-2 border-b pb-2">
+                ③ 新羅免税店 ソウル店
+              </h5>
+              <p class="text-xs text-gray-600 mb-2">
+                <strong>特徴</strong>:
+                落ち着いて買い物ができる単独店舗。タクシー代還元CPあり。
+              </p>
+              <p class="text-xs text-gray-500">
+                📍 奨忠洞エリア<br />
+                🚇 3号線「東大入口」からバス
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 mb-8">
+            <h5 class="font-bold text-sm theme-text mb-2">
+              🔰 免税店での買い物＆受け取り手順
+            </h5>
+            <ol class="list-decimal ml-5 text-sm text-gray-700 space-y-2">
+              <li>
+                <strong>入店時</strong>:
+                パスポートと帰りの航空券情報（スマホ画面OK）が必須。
+              </li>
+              <li>
+                <strong>購入時</strong>: 米ドルベース計算。引換券（Exchange
+                Voucher）を受け取る。<br /><span class="text-xs text-red-500"
+                  >※海外ブランド品はその場では渡されません。</span
+                >
+              </li>
+              <li>
+                <strong>帰国時（最重要）</strong>:
+                出国審査後、搭乗ゲートエリアの<strong>「免税品引渡所」</strong>で受け取り。<br /><span
+                  class="text-xs text-red-500"
+                  >※GW等は長蛇の列。搭乗1時間前には行くのが鉄則！</span
+                >
+              </li>
+            </ol>
+          </div>
+
+          <!-- 2. Tax Refund -->
+          <h4 class="text-xl font-bold theme-text mb-4">
+            2. 街中のお店での「事後免税」 (Tax Refund)
+          </h4>
+          <p class="text-sm text-gray-700 mb-4">
+            オリーブヤング、NIKE、コンビニなど「TAX
+            FREE」ロゴがある店で、消費税が戻ってくる仕組みです。<br />
+            <strong>2025年の最強ハックは「即時還付」です。</strong>
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div class="info-box info-box-accent border-l-4 p-5 rounded-lg">
+              <div class="flex items-center mb-2">
+                <span class="badge bg-blue-600 text-white mr-2">推奨</span>
+                <h5 class="font-bold text-lg theme-text">
+                  A. 即時還付 (Immediate)
+                </h5>
+              </div>
+              <p class="text-sm text-gray-700 mb-2">
+                レジでパスポートを見せるだけで、<strong>その場で消費税分を引いた金額</strong>で決済。空港手続き不要。
+              </p>
+              <ul class="text-xs text-gray-700 list-disc ml-4 space-y-1">
+                <li>
+                  <strong>条件</strong>: 1回 3万〜100万ウォン未満 (限度額UP!)
+                </li>
+                <li>
+                  <strong>場所</strong>:
+                  オリーブヤング、主要コンビニ、百貨店など
+                </li>
+                <li>
+                  <strong>合言葉</strong>:
+                  「パスポート・プリーズ（即時還付にして）」
+                </li>
+              </ul>
+            </div>
+
+            <div class="info-box info-box-bg border-l-4 p-5 rounded-lg">
+              <h5 class="font-bold text-lg mb-2 theme-text">
+                B. 事後還付 (Airport)
+              </h5>
+              <p class="text-sm text-gray-700 mb-2">
+                即時還付未対応の店や高額購入時。
+              </p>
+              <ol class="text-xs text-gray-700 list-decimal ml-4 space-y-1">
+                <li>購入時に「Tax Refund, please」でレシートをもらう。</li>
+                <li>
+                  空港のKIOSK（チェックイン付近）でパスポートとレシートをスキャン。
+                </li>
+                <li>
+                  出国後、ゲートエリアのKIOSK/カウンターで現金orカード返金受取。
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="info-box-accent p-3 rounded-lg text-sm text-gray-700">
+            <strong>💡 攻略のヒント</strong><br />
+            <ul class="list-disc ml-4 mt-1 space-y-1">
+              <li>
+                <strong>招待コード</strong>:
+                アプリ登録時に招待コード入力で0.5%キャッシュバック（例:
+                Q7KHBUPTなど）。
+              </li>
+              <li>
+                <strong>チャージ上限</strong>:
+                1日最大200万ウォンまで（カード残高上限: 100万ウォン）。
+              </li>
+              <li>
+                <strong>T-money</strong>:
+                交通系チャージは別途、地下鉄駅やコンビニで行う必要があります（WOWPASS残高とは別枠）。
+              </li>
+            </ul>
+          </div>
+          <div class="info-box-accent p-4 rounded-lg text-sm text-gray-800">
+            <strong>💡 FinTech Analyst's Advice</strong>
+            <ul class="list-disc ml-5 mt-2 space-y-1">
+              <li>
+                <strong>パスポートは常に携帯！</strong
+                >：コピーでは即時還付を受けられない店がほとんどです。原本必須（スリ注意）。
+              </li>
+              <li>
+                <strong>オンライン免税店を活用</strong
+                >：ロッテや新羅のオンライン店で、日本からスマホ注文→空港受取が一番の時短＆節約術です。
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- WOWPASS & Alternatives -->
+        <h3 class="text-xl font-bold theme-text mb-4">
+          ② サブ：WOWPASSと代替手段
+        </h3>
+        <div class="info-box info-box-bg border-l-4 p-5 rounded-lg mb-8">
+          <h4 class="font-bold text-lg mb-2 theme-text">WOWPASS（ワウパス）</h4>
+          <p class="text-sm text-gray-700 mb-3">
+            外国人観光客向けの多機能カード（プリペイドクレカ ＋ 両替 ＋
+            T-money）。
+          </p>
+
+          <div class="bg-white p-4 rounded-lg border border-gray-100 mb-4">
+            <h5 class="font-bold text-sm theme-text mb-2">
+              主なチャージ方法とX(Twitter)の声
+            </h5>
+            <ul class="space-y-4">
+              <li>
+                <div class="flex items-start">
+                  <span
+                    class="badge bg-blue-100 text-blue-800 mr-2 mt-0.5 shrink-0"
+                    >現金</span
+                  >
+                  <div class="text-sm text-gray-700">
+                    <strong>機械で直接チャージ（推奨）</strong><br />
+                    空港や街中の専用機械で日本円を直接投入。手数料ゼロで即時反映。
+                    <div
+                      class="mt-1 text-xs text-gray-600 bg-gray-50 p-2 rounded"
+                    >
+                      <strong>🗣️ Xの声</strong>:
+                      「レートが良い今は機械チャージが一番お得」「空港到着後すぐにチャージして移動するのが定番」。<br />
+                      <strong>⚠️ 注意</strong>:
+                      待ち時間が長い場合（40人待ちなど）もあります。
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="flex items-start">
+                  <span
+                    class="badge bg-blue-100 text-blue-800 mr-2 mt-0.5 shrink-0"
+                    >アプリ</span
+                  >
+                  <div class="text-sm text-gray-700">
+                    <strong>クレカチャージ（アプリ経由）</strong><br />
+                    Mastercard/JCB/Amexは直接可。VISAはPayPal経由（手数料3-4%）。
+                    <div
+                      class="mt-1 text-xs text-gray-600 bg-gray-50 p-2 rounded"
+                    >
+                      <strong>🗣️ Xの声</strong>:
+                      「VISA不可なのでPayPal経由で」「手数料かかるが渡韓前にチャージできて便利」。<br />
+                      <strong>⚠️ 注意</strong>:
+                      初回は電子パスポート認証必須。セキュリティロックに備えカード会社への事前連絡推奨。
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="flex items-start">
+                  <span
+                    class="badge bg-blue-100 text-blue-800 mr-2 mt-0.5 shrink-0"
+                    >機械</span
+                  >
+                  <div class="text-sm text-gray-700">
+                    <strong>クレカチャージ（機械経由）</strong><br />
+                    一部の新型機械ではクレカ挿入でチャージ可能。
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-gray-200">
+            <h5 class="font-bold text-sm theme-text mb-2">
+              🚀 WOWPASS以外の選択肢
+            </h5>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="bg-white p-3 rounded border border-gray-200">
+                <strong class="text-gray-800 text-sm">NAMANEカード</strong>
+                <p class="text-xs text-gray-600">
+                  交通+決済一体型。PayPayチャージ可。学生に人気。
+                </p>
+              </div>
+              <div class="bg-white p-3 rounded border border-gray-200">
+                <strong class="text-gray-800 text-sm">Trip.PASS</strong>
+                <p class="text-xs text-gray-600">
+                  観光パス統合型。eSIMセットあり。
+                </p>
+              </div>
+              <div class="bg-white p-3 rounded border border-gray-200">
+                <strong class="text-gray-800 text-sm">Revolut / IDARE</strong>
+                <p class="text-xs text-gray-600">
+                  手数料安。WOWPASSへのチャージ元にも。
+                </p>
+              </div>
+              <div class="bg-white p-3 rounded border border-gray-200">
+                <strong class="text-gray-800 text-sm">PayPay</strong>
+                <p class="text-xs text-gray-600">
+                  2025年から店舗普及。交通カードは別途必要。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cash & ATM -->
+        <h3 class="text-xl font-bold theme-text mb-4">③ 予備：現金とATM</h3>
+        <div class="space-y-4">
+          <div class="highlight-box">
+            <h4 class="font-bold text-lg mb-1 theme-text">現金が必要な場面</h4>
+            <ul class="list-disc ml-5 text-gray-700 space-y-1 text-sm">
+              <li>
+                交通系カード（T-money）のチャージ（一部の券売機・コンビニ）
+              </li>
+              <li>広蔵市場や南大門市場の一部の屋台</li>
+              <li>通信障害時の予備（3〜5万ウォン程度推奨）</li>
+            </ul>
+          </div>
+          <div class="highlight-box">
+            <h4 class="font-bold text-lg mb-1 theme-text">ATM手数料</h4>
+            <p class="text-sm text-gray-700">
+              「Global
+              ATM」で引き出し可能。コンビニATM（CU/GS25）が24時間使えて便利です。<br />
+              ※手数料：現地銀行手数料 + カード会社事務手数料がかかります。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Transport -->
+      <section id="transport" class="section-card p-8 mb-8 fade-in">
+        <h2
+          class="text-2xl font-bold theme-text mb-6 border-b-2 theme-border pb-3"
+        >
+          5. 交通手段と移動ハック
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <div class="info-box info-box-bg border-l-4 p-5 rounded-lg">
+            <h4 class="font-bold text-lg mb-2 theme-text">T-money（基本）</h4>
+            <p class="text-sm text-gray-700 mb-2">
+              Suicaのような交通系ICカード。地下鉄・バス・タクシーで利用可能。
+            </p>
+            <ul class="text-sm text-gray-700 space-y-1">
+              <li>• <strong>購入</strong>：コンビニや駅。</li>
+              <li>
+                • <strong>チャージ</strong>：現金のみの場合が多いので注意。
+              </li>
+              <li>
+                •
+                <strong>WOWPASS</strong
+                >：T-money機能付帯ですが、チャージは別財布です。
+              </li>
+            </ul>
+          </div>
+
+          <div class="info-box info-box-accent border-l-4 p-5 rounded-lg">
+            <div class="flex items-center mb-2">
+              <span class="badge bg-green-600 text-white mr-2">お得</span>
+              <h4 class="font-bold text-lg theme-text">気候同行カード</h4>
+            </div>
+            <p class="text-sm text-gray-700 mb-2">
+              ソウル市内の地下鉄・バスが乗り放題になるパス。
+            </p>
+            <div
+              class="bg-white p-3 rounded border border-green-200 text-sm text-gray-700"
+            >
+              <strong>観光客向け短期券（価格）</strong>
+              <ul class="list-none mt-1 space-y-1 pl-1">
+                <li>🎫 1日券: 5,000 W</li>
+                <li>🎫 2日券: 8,000 W</li>
+                <li>🎫 3日券: 10,000 W</li>
+                <li>🎫 5日券: 15,000 W</li>
+              </ul>
+              <p class="mt-2 text-xs text-gray-500">
+                ※地下鉄駅の案内所やコンビニで購入（現金3,000W）。チャージは駅の機械で。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <h3 class="font-bold text-lg mb-2 theme-text flex items-center">
+            <span class="mr-2">💡</span> 最強の使い分け：WOWPASS +
+            気候同行カード
+          </h3>
+          <p class="text-sm text-gray-700">
+            移動が多い日は「<strong>気候同行カード</strong>」で交通費を固定し、買い物や食事は「<strong
+              >WOWPASS / クレカ</strong
+            >」で支払うのが、最も賢くお得なスタイルです。<br />
+            ※気候同行カードは、新盆唐線や空港鉄道（一般）の仁川空港発着など一部対象外エリアがあるので注意してください。
+          </p>
+        </div>
+      </section>
+
+      <!-- 6. Budget & Sightseeing -->
+      <section id="budget" class="section-card p-8 mb-8 fade-in">
+        <h2
+          class="text-2xl font-bold theme-text mb-6 border-b-2 theme-border pb-3"
+        >
+          6. 滞在費の目安 & 観光パス
+        </h2>
+
+        <h3 class="text-xl font-bold theme-text mb-3">
+          🍽️ 1日あたりの食費目安
+        </h3>
+        <div
+          class="info-box info-box-accent border-l-4 p-5 rounded-lg mb-6 text-center"
+        >
+          <p class="text-xl font-bold theme-text">目安：5,000円 〜 10,000円</p>
+        </div>
+        <div class="overflow-x-auto mb-8">
+          <table>
+            <thead>
+              <tr>
+                <th>ジャンル</th>
+                <th>予算目安 (ウォン)</th>
+                <th>日本円換算 (約)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>ローカル食堂/屋台</strong></td>
+                <td>5,000〜10,000 W</td>
+                <td>500〜1,000円</td>
+              </tr>
+              <tr>
+                <td><strong>カフェ</strong></td>
+                <td>10,000〜15,000 W</td>
+                <td>1,000〜1,500円</td>
+              </tr>
+              <tr>
+                <td><strong>焼肉・居酒屋</strong></td>
+                <td>15,000〜30,000 W</td>
+                <td>1,500〜3,000円</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="text-xl font-bold theme-text mb-3">
+          🎟️ ディスカバーソウルパス
+        </h3>
+        <div class="info-box info-box-bg border-l-4 p-5 rounded-lg">
+          <p class="text-sm text-gray-700 mb-2">
+            外国人専用の観光フリーパス（24/48/72時間）。
+          </p>
+          <ul class="text-sm text-gray-700 space-y-1">
+            <li>
+              •
+              ロッテワールド、Nソウルタワー、景福宮など170以上のスポットが無料。
+            </li>
+            <li>
+              •
+              A'REX直通列車（片道1回）も含まれるため、48時間券ならほぼ元が取れます。
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <footer class="text-center text-gray-500 text-sm py-8">
+        <p class="mb-4">© 2025 Seoul Money Guide</p>
+      </footer>
+    </main>
+  </body>
+</html>
