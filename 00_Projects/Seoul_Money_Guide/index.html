@@ -399,22 +399,73 @@
         <h3 class="text-xl font-bold theme-text mb-4">
           🗺️ 必須アプリ：地図・その他
         </h3>
-        <div class="space-y-4">
-          <div class="highlight-box">
-            <h4 class="font-bold text-lg mb-1 theme-text">Naver Map (地図)</h4>
-            <p class="text-sm text-gray-700">
-              韓国ではGoogle
-              Mapsが徒歩ルート等で機能しません。日本語対応しており必須です。
-            </p>
-          </div>
-          <div class="highlight-box">
-            <h4 class="font-bold text-lg mb-1 theme-text">
-              Shuttle (フードデリバリー)
+        <div class="info-box info-box-bg border-l-4 p-5 rounded-lg mb-6">
+          <p class="text-sm text-gray-700 mb-2">
+            <strong>⚠️ Google Mapsは韓国でほぼ使えません。</strong><br />
+            政府の規制により、徒歩ルートが表示されず、店舗情報も古いです。以下の2つが必須です。
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+            <h4 class="font-bold text-lg mb-2 text-green-600 flex items-center">
+              <span class="mr-2">🟢</span> Naver Map (ネイバーマップ)
             </h4>
-            <p class="text-sm text-gray-700">
-              外国人観光客向け。日本語対応、海外クレカ決済可能。
-            </p>
+            <div class="flex items-center mb-2">
+              <span
+                class="text-xs font-bold bg-green-100 text-green-800 px-2 py-1 rounded"
+                >推奨度 ★★★★★</span
+              >
+            </div>
+            <ul class="text-sm text-gray-700 list-disc ml-4 space-y-1">
+              <li>
+                <strong>日本語対応が完璧</strong>:
+                メニューやレビューも翻訳機能あり。
+              </li>
+              <li>
+                <strong>検索に強い</strong>: 「明洞
+                カフェ」など日本語検索でヒットする。
+              </li>
+              <li>
+                <strong>2025年進化</strong>:
+                レストラン予約機能が強化され、さらに便利に。
+              </li>
+            </ul>
           </div>
+
+          <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+            <h4
+              class="font-bold text-lg mb-2 text-yellow-500 flex items-center"
+            >
+              <span class="mr-2">🟡</span> KakaoMap (カカオマップ)
+            </h4>
+            <div class="flex items-center mb-2">
+              <span
+                class="text-xs font-bold bg-yellow-100 text-yellow-800 px-2 py-1 rounded"
+                >推奨度 ★★★★☆</span
+              >
+            </div>
+            <ul class="text-sm text-gray-700 list-disc ml-4 space-y-1">
+              <li>
+                <strong>おしゃれ店に強い</strong>:
+                若者に人気のカフェやスポットが見つけやすい。
+              </li>
+              <li><strong>直感的</strong>: UIがシンプルで使いやすい。</li>
+              <li>
+                <strong>注意</strong>:
+                日本語対応はNaverに少し劣るが、英語併用なら問題なし。
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <h4 class="font-bold text-lg mb-1 theme-text">
+            Shuttle (フードデリバリー)
+          </h4>
+          <p class="text-sm text-gray-700">
+            外国人観光客向け。日本語対応、海外クレカ決済可能。
+          </p>
         </div>
       </section>
 
@@ -649,7 +700,7 @@
                   class="bg-red-100 text-red-600 text-xs px-2 py-0.5 rounded mr-2"
                   >Mastercard</span
                 >
-                感性ステイ
+                感性ステイ & ラグジュアリー
               </h4>
               <ul class="text-sm text-gray-700 space-y-2">
                 <li>
@@ -657,6 +708,12 @@
                   <span class="text-xs text-gray-500"
                     >おしゃれな韓屋やデザインホテルの予約がお得に。</span
                   >
+                </li>
+                <li>
+                  <strong>HoteLux (World/World Elite)</strong><br />
+                  <span class="text-xs text-gray-500">
+                    アプリ登録で朝食無料、$100クレジット、アップグレード等の上級会員特典が付与されます（新羅ホテルなど対象）。
+                  </span>
                 </li>
               </ul>
             </div>
