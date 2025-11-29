@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>アメックス・オファー＆キャンペーン徹底活用術</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* UX心理学ルールに基づくデザイン */
+      * {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: 'Noto Sans JP', sans-serif;
+        background: #f8f9fa;
+        min-height: 100vh;
+        /* 認知負荷軽減: 読みやすい行間 */
+        line-height: 1.7;
+      }
+      .amex-blue-bg {
+        background: #006fcf;
+      }
+      .amex-blue-text {
+        color: #006fcf;
+      }
+      .amex-blue-border {
+        border-color: #006fcf;
+      }
+      .info-box-bg {
+        background-color: #f8fafb;
+        border-left-color: #006fcf;
+      }
+      .info-box-accent {
+        background-color: #f0f7ff;
+        border-left-color: #006fcf;
+      }
+      .card {
+        transition: all 0.3s ease;
+        border: 1px solid rgba(0, 111, 207, 0.1);
+      }
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(0, 111, 207, 0.15);
+      }
+      /* 美的ユーザビリティ効果: 美しいカードデザイン */
+      .section-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        /* 視覚的階層: 明確な区切り */
+        border: 1px solid rgba(0, 111, 207, 0.1);
+      }
+      /* 即座の視覚的フィードバック: ホバーエフェクト */
+      .section-card:hover {
+        box-shadow: 0 8px 24px rgba(0, 111, 207, 0.12);
+        transform: translateY(-2px);
+      }
+      .info-box {
+        transition: all 0.3s ease;
+      }
+      .info-box:hover {
+        transform: translateX(4px);
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+      table th,
+      table td {
+        border: 1px solid #e5e7eb;
+        padding: 16px;
+        text-align: left;
+      }
+      table th {
+        background: #006fcf;
+        color: white;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+      table tr:nth-child(even) {
+        background-color: #f9fafb;
+      }
+      table tr {
+        transition: background-color 0.2s ease;
+      }
+      table tr:hover {
+        background-color: #f3f4f6;
+      }
+      .badge {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+      .header-gradient {
+        background: #006fcf;
+        position: relative;
+        overflow: hidden;
+      }
+      /* ビジュアル・アンカー: 目次リンクの強調 */
+      .toc-link {
+        transition: all 0.2s ease;
+        padding: 10px 16px;
+        border-radius: 8px;
+        display: block;
+        /* タッチターゲット48px以上（モバイル対応） */
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+      }
+      /* ドハティの閾値: 0.2秒の即座のフィードバック */
+      .toc-link:hover {
+        background-color: #f0f7ff;
+        transform: translateX(4px);
+        /* ビジュアル・アンカー: 色の変化で注意を引く */
+        border-left: 3px solid #006fcf;
+        padding-left: 13px;
+      }
+      .highlight-box {
+        position: relative;
+        padding-left: 1rem;
+      }
+      .highlight-box::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: #006fcf;
+        border-radius: 2px;
+      }
+      /* ドハティの閾値: 0.3秒以下のスムーズなアニメーション */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .fade-in {
+        animation: fadeInUp 0.3s ease-out;
+      }
+
+      /* 視覚的階層: 見出しの明確な階層 */
+      h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1.3;
+        margin-bottom: 1.5rem;
+        /* ビジュアル・アンカー: 重要な見出しを強調 */
+        color: #1a1a1a;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        line-height: 1.4;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #2d2d2d;
+      }
+
+      h4 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        line-height: 1.4;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        color: #3d3d3d;
+      }
+
+      /* 認知負荷軽減: 読みやすい段落 */
+      p {
+        margin-bottom: 1.25rem;
+        line-height: 1.8;
+        color: #4a4a4a;
+      }
+
+      /* 系列位置効果: 最初と最後の強調 */
+      .section-card:first-child {
+        border: 2px solid rgba(0, 111, 207, 0.2);
+        box-shadow: 0 4px 16px rgba(0, 111, 207, 0.15);
+      }
+
+      /* ビジュアル・アンカー: 重要な情報ボックスの強調 */
+      .info-box-accent {
+        background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+        border-left: 4px solid #006fcf;
+        /* 視覚的階層: 重要な情報を目立たせる */
+        box-shadow: 0 2px 8px rgba(0, 111, 207, 0.1);
+      }
+
+      /* 社会的証明: 信頼性を示すスタイル */
+      .trust-indicator {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: #f0f7ff;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        color: #006fcf;
+        font-weight: 600;
+      }
+
+      /* レスポンシブ: モバイルファースト */
+      @media (max-width: 768px) {
+        h2 {
+          font-size: 1.75rem;
+        }
+        h3 {
+          font-size: 1.25rem;
+        }
+        h4 {
+          font-size: 1.125rem;
+        }
+        .toc-link {
+          min-height: 44px;
+          padding: 12px 16px;
+        }
+        /* タッチターゲット: モバイルで48px以上 */
+        .toc-link:hover {
+          padding-left: 13px;
+        }
+      }
+
+      /* アクセシビリティ: フォーカス状態の明確化 */
+      .toc-link:focus,
+      a:focus {
+        outline: 3px solid #006fcf;
+        outline-offset: 2px;
+      }
+
+      /* 選択的注意: 重要なCTAの強調 */
+      .cta-highlight {
+        background: linear-gradient(135deg, #006fcf 0%, #0051a5 100%);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 12px;
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba(0, 111, 207, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .cta-highlight:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 111, 207, 0.4);
+      }
+    </style>
+  </head>
+  <body class="text-gray-800">
+    <header class="header-gradient text-white p-8 md:p-12 shadow-xl relative">
+      <div class="container mx-auto max-w-5xl text-center relative z-10">
+        <p class="text-sm md:text-base text-blue-100 mb-4 font-medium">
+          いのマネーコーチ AI速報まとめ(beta)
+        </p>
+        <div class="mb-6">
+          <span
+            class="badge bg-white bg-opacity-20 text-white backdrop-blur-sm"
+          >
+            アメックスオファー＆キャンペーン完全ガイド
+          </span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">
+          アメックス・オファー＆<br />会員限定キャンペーン徹底活用術
+        </h1>
+        <p class="mt-4 text-lg md:text-xl text-blue-100 leading-relaxed">
+          「知っている人だけが得をする」2つの特典プログラムを完全マスター
+        </p>
+      </div>
+    </header>
+
+    <main class="container mx-auto max-w-5xl p-4 md:p-8">
+      <!-- 目次 -->
+      <!-- 系列位置効果: 最初のセクションを強調して記憶に残す -->
+      <section class="section-card p-8 mb-8 fade-in">
+        <h2 class="text-2xl font-bold amex-blue-text mb-6 flex items-center">
+          <span class="mr-2">📋</span> 目次（タップで移動）
+        </h2>
+          <ul class="space-y-2 text-gray-700">
+          <li>
+            <a href="#what-is-offer" class="toc-link amex-blue-text"
+              >1. アメックスの「オファー」とは？</a
+            >
+          </li>
+          <li>
+            <a href="#access-methods" class="toc-link amex-blue-text"
+              >2. オファーはどこで確認・利用する？（アクセス方法）</a
+            >
+          </li>
+          <li>
+            <a href="#offer-types" class="toc-link amex-blue-text"
+              >3. オファーの種類</a
+            >
+          </li>
+          <li>
+            <a href="#offer-patterns" class="toc-link amex-blue-text"
+              >4. オファーの開催パターンと傾向</a
+            >
+          </li>
+          <li>
+            <a href="#campaigns-detail" class="toc-link amex-blue-text"
+              >5. 現在開催中のキャンペーン詳細</a
+            >
+            <ul class="ml-6 mt-2 space-y-1 text-sm">
+              <li><a href="#bonus-points-partners" class="toc-link amex-blue-text">5.1 ボーナスポイント・パートナーズ</a></li>
+              <li><a href="#accommodation-benefits" class="toc-link amex-blue-text">5.2 宿泊予約特典（トラベル・デスク経由）</a></li>
+              <li><a href="#cashback-campaigns" class="toc-link amex-blue-text">5.3 キャッシュバック・優待キャンペーン</a></li>
+              <li><a href="#hotel-special-offers" class="toc-link amex-blue-text">5.4 ホテル/旅行関連の特別優待</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#five-rules" class="toc-link amex-blue-text"
+              >6. オファーを完璧に使いこなすための「5つの鉄則」</a
+            >
+          </li>
+          <li>
+            <a href="#summary" class="toc-link amex-blue-text">7. まとめ</a>
+          </li>
+          </ul>
+        </nav>
+      </section>
+
+      <!-- セクション1: アメックスの「オファー」とは？ -->
+      <section id="what-is-offer" class="section-card p-8 mb-8 fade-in">
+        <h2
+          class="text-2xl font-bold amex-blue-text mb-6 border-b-2 amex-blue-border pb-3"
+        >
+          1. アメックスの「オファー」とは？
+        </h2>
+        <p class="mb-4 text-gray-700">
+          アメリカン・エキスプレスのカードの価値は、空港ラウンジや保険といった「付帯特典」だけではありません。
+        </p>
+        <p class="mb-4 text-gray-700">
+          実は、カードの年会費を上回るほどの経済的メリットを生み出す<strong
+            class="amex-blue-text"
+            >「キャンペーン・オファー」</strong
+          >が、日々提供されています。
+        </p>
+        <p class="mb-4 text-gray-700">
+          しかし、これらのオファーは<strong class="amex-blue-text"
+            >「知っている人だけが得をする」</strong
+          >仕組みになっており、その存在に気づかず損をしているケースが少なくありません。
+        </p>
+        <p class="mb-6 text-gray-700">
+          このガイドは、アメックスのオファーをまだ活用できていない方や、これから完璧に使いこなしたいと考えるすべての方に向けて、オファーの基本から具体的な活用法までを徹底的に解説します。
+        </p>
+
+        <h3 class="text-xl font-bold amex-blue-text mb-3">
+          まず、「カード付帯の特典」と「キャンペーン・オファー」の違いを理解しましょう
+        </h3>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <div class="info-box info-box-bg border-l-4 p-5 rounded-lg">
+            <h4 class="font-bold text-lg mb-3 amex-blue-text">
+              カード付帯の特典（基本特典）
+            </h4>
+            <ul class="text-sm text-gray-700 space-y-1">
+              <li>• 空港ラウンジ、旅行傷害保険、コンシェルジュなど</li>
+              <li>• カードを持つ限り常時利用できる基本機能</li>
+              <li>• 年会費に含まれる価値</li>
+            </ul>
+          </div>
+
+          <div class="info-box info-box-bg border-l-4 p-5 rounded-lg">
+            <h4 class="font-bold text-lg mb-3 amex-blue-text">
+              キャンペーン・オファー（追加特典）
+            </h4>
+            <ul class="text-sm text-gray-700 space-y-1">
+              <li>• 基本機能に上乗せされる「期間限定」の優待</li>
+              <li>
+                • 「キャッシュバック」「ポイントアップ」「限定宿泊プラン」など
+              </li>
+              <li>• 直接的な経済メリットが大きいのが特徴</li>
+              <li>
+                • 利用するには「事前登録」や「専用デスク経由の予約」が必要
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="info-box info-box-accent border-l-4 p-5 rounded-lg">
+          <p class="text-gray-700 leading-relaxed">
+            <strong class="amex-blue-text">💡 重要なポイント：</strong
+            >キャンペーン・オファーは、年会費以上の価値を生み出す可能性があります。しかし、その多くは自ら情報を取りに行き、「事前登録」というアクションを起こさなければ利用できません。
+          </p>
+        </div>
+      </section>
+
+      <!-- セクション2: オファーはどこで確認・利用する？ -->
+      <section id="access-methods" class="section-card p-8 mb-8 fade-in">
+        <h2
+          class="text-2xl font-bold amex-blue-text mb-4 border-b-2 amex-blue-border pb-2"
+        >
+          2. オファーはどこで確認・利用する？（アクセス方法）
+        </h2>
+        <p class="mb-4 text-gray-700">
+          オファーを見逃さないために、以下の3つの方法を必ずマスターしてください。
+        </p>
+
+        <div class="space-y-6">
+          <!-- 方法1: Amex App -->
+          <div class="info-box info-box-accent border-l-4 p-5 rounded-lg">
+            <div class="flex items-center mb-4">
+              <span class="badge amex-blue-bg text-white mr-3">推奨</span>
+              <h4 class="font-bold text-lg amex-blue-text">
+                ① Amex公式アプリ (Amex App)
+              </h4>
+            </div>
+            <p class="text-sm text-gray-700 mb-3">
+              <strong>最も簡単で、見逃しが少ない方法です。</strong>
+            </p>
+            <p class="text-sm text-gray-700 mb-2 font-semibold">手順：</p>
+            <ol class="text-sm text-gray-700 space-y-2 mb-4 ml-4 list-decimal">
+              <li>
+                <strong>アプリを開く：</strong
+                >アメックス公式アプリにログインします。
+              </li>
+              <li>
+                <strong>「オファー」タブを開く：</strong
+                >画面下部にある「オファー」メニューをタップします。
+              </li>
+              <li>
+                <strong>オファーを確認・登録する：</strong
+                >利用可能なオファーが一覧で表示されます。気になるオファーを選び、「オファーを登録する」ボタンをタップするだけで登録（＝保存）が完了します。
+              </li>
+            </ol>
+            <div class="bg-white p-3 rounded-lg">
+              <p class="text-sm text-gray-700 font-semibold mb-2">
+                重要なポイント：
+              </p>
+              <ul class="text-sm text-gray-700 space-y-1">
+                <li>
+                  •
+                  <strong>プッシュ通知の有効化：</strong
+                  >人気オファーは先着順で締め切られるため、通知をONにしておくことで機会損失を防げます
+                </li>
+                <li>
+                  •
+                  <strong>隙間時間での確認：</strong
+                  >通勤中や休憩時間での確認・登録が可能
+                </li>
+                <li>
+                  •
+                  <strong>即時登録の習慣化：</strong
+                  >「使うかもしれない」と感じたオファーは迷わず登録する
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 方法2: オンライン・サービス -->
+          <div class="info-box info-box-bg border-l-4 p-5 rounded-lg">
+            <h4 class="font-bold text-lg mb-3 amex-blue-text">
+              ② オンライン・サービス (Webサイト)
+            </h4>
+            <p class="text-sm text-gray-700 mb-3">
+              <strong
+                >パソコンでまとめて確認・登録したい場合に便利です。</strong
+              >
+            </p>
+            <p class="text-sm text-gray-700 mb-2 font-semibold">手順：</p>
+            <ol class="text-sm text-gray-700 space-y-2 mb-4 ml-4 list-decimal">
+              <li>
+                <strong>ログイン：</strong
+                >アメックス公式サイトから、会員様専用のオンライン・サービス（マイアカウント）にログインします。
+              </li>
+              <li>
+                <strong>「アメックス・オファー」へ：</strong
+                >ページ下部やメニュー内にある「アメックス・オファー」セクションに進みます。
+              </li>
+              <li>
+                <strong>オファーを確認・登録する：</strong
+                >アプリと同様に、「利用可能なオファー」の一覧が表示されます。利用したいオファーの「カードに保存」ボタンをクリックして登録します。
+              </li>
+            </ol>
+            <div class="bg-white p-3 rounded-lg">
+              <p class="text-sm text-gray-700 font-semibold mb-2">
+                活用のメリット：
+              </p>
+              <ul class="text-sm text-gray-700 space-y-1">
+                <li>
+                  •
+                  <strong>大画面での一覧表示：</strong
+                  >多数のオファーを比較検討可能
+                </li>
+                <li>
+                  •
+                  <strong>複数カード管理：</strong
+                  >本会員カードと家族カードのオファーをまとめて管理
+                </li>
+                <li>
+                  •
+                  <strong>詳細情報の確認：</strong
+                  >利用規約や条件をじっくり確認できる
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 方法3: トラベル・デスク -->
+          <div class="info-box info-box-bg border-l-4 p-5 rounded-lg">
+            <h4 class="font-bold text-lg mb-3 amex-blue-text">
+              ③ トラベル・デスク (電話)
+            </h4>
+            <p class="text-sm text-gray-700 mb-3">
+              <strong
+                >一部の「宿泊優待プラン」は、上記の方法（アプリ/Web）では登録できず、電話予約が必須となります。</strong
+              >
+            </p>
+            <div class="bg-white p-3 rounded-lg mb-3">
+              <p class="text-sm text-gray-700 font-semibold mb-2">対象：</p>
+              <ul class="text-sm text-gray-700 space-y-1">
+                <li>• 「至極の宿」</li>
+                <li>• 「Best Vacations」など</li>
+              </ul>
+            </div>
+            <p class="text-sm text-gray-700 mb-2 font-semibold">手順：</p>
+            <ol class="text-sm text-gray-700 space-y-2 mb-4 ml-4 list-decimal">
+              <li>
+                アプリやWebのキャンペーンページで、対象ホテルや優待内容を確認します。
+              </li>
+              <li>
+                カード裏面に記載されている電話番号（トラベル・デスク）に電話し、「至極の宿のプランで」などと伝えて予約します。
+              </li>
+            </ol>
+            <div class="bg-white p-3 rounded-lg">
+              <p class="text-sm text-gray-700 font-semibold mb-2">
+                この経路の価値：
+              </p>
+              <ul class="text-sm text-gray-700 space-y-1">
+                <li>
+                  • 単なる予約手続きではなく、旅のコンサルティングを受ける機会
+                </li>
+                <li>• より複雑な要望に応え、体験価値を最大化</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- セクション3: オファーの種類 -->
+      <section id="offer-types" class="section-card p-8 mb-8 fade-in">
+        <h2
+          class="text-2xl font-bold amex-blue-text mb-4 border-b-2 amex-blue-border pb-2"
+        >
+          3. オファーの種類
+        </h2>
+        <p class="mb-6 text-gray-700">
+          オファーは主に以下の<strong class="amex-blue-text">4つのカテゴリ</strong>に分類されます。それぞれの特徴を理解することで、適切な経路での登録・利用が可能になります。
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <!-- 1. Amexオファー -->
+          <div class="info-box info-box-accent border-l-4 p-5 rounded-lg">
+            <h4 class="font-bold text-lg mb-3 amex-blue-text flex items-center">
+              <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm mr-2">1</span>
+              Amexオファー（キャッシュバック系）
+            </h4>
+            <ul class="text-sm text-gray-700 space-y-2">
+              <li>• <strong>事前登録が必須</strong>（アプリ/Web）</li>
+              <li>• 登録したカードでの決済が条件</li>
+              <li>• 対象範囲が極めて広い（百貨店、ECサイト、ホテル、航空会社など）</li>
+              <li>• 後日キャッシュバックが口座に反映</li>
+            </ul>
+            <p class="text-xs text-gray-500 mt-3">👉 具体例は<a href="#cashback-campaigns" class="amex-blue-text hover:underline">セクション5.3</a>を参照</p>
+          </div>
+
+          <!-- 2. ボーナスポイント -->
+          <div class="info-box info-box-bg border-l-4 p-5 rounded-lg">
+            <h4 class="font-bold text-lg mb-3 amex-blue-text flex items-center">
+              <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm mr-2">2</span>
+              ボーナスポイント・パートナーズ
+            </h4>
+            <ul class="text-sm text-gray-700 space-y-2">
+              <li>• <strong>事前登録が不要</strong>なものが多い</li>
+              <li>• 対象の提携店でカードを利用するだけで自動的にポイント増量</li>
+              <li>• ポイントレートは提携店によって異なる（100円=2P〜5P）</li>
+              <li>• 高級ホテル、レストラン、ブランド店などが対象</li>
+            </ul>
+            <p class="text-xs text-gray-500 mt-3">👉 具体例は<a href="#bonus-points-partners" class="amex-blue-text hover:underline">セクション5.1</a>を参照</p>
+          </div>
+
+          <!-- 3. 限定宿泊プラン -->
+          <div class="info-box info-box-bg border-l-4 p-5 rounded-lg">
+            <h4 class="font-bold text-lg mb-3 amex-blue-text flex items-center">
+              <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm mr-2">3</span>
+              限定宿泊プラン（優待系）
+            </h4>
+            <ul class="text-sm text-gray-700 space-y-2">
+              <li>• <strong>トラベル・デスク経由での電話予約が必須</strong></li>
+              <li>• 金銭的メリットに加え「体験価値」を提供</li>
+              <li>• 特別な優待（館内クレジット、お土産、アップグレードなど）</li>
+              <li>• 「至極の宿」「Best Vacations」などのプログラム</li>
+            </ul>
+            <p class="text-xs text-gray-500 mt-3">👉 具体例は<a href="#accommodation-benefits" class="amex-blue-text hover:underline">セクション5.2</a>を参照</p>
+          </div>
+
+          <!-- 4. クーポンコード系 -->
+          <div class="info-box info-box-bg border-l-4 p-5 rounded-lg">
+            <h4 class="font-bold text-lg mb-3 amex-blue-text flex items-center">
+              <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm mr-2">4</span>
+              クーポンコード系（提携サイト割引）
+            </h4>
+            <ul class="text-sm text-gray-700 space-y-2">
+              <li>• Amexオファーのプラットフォーム<strong>外</strong>で提供</li>
+              <li>• 決済時に特定のクーポンコードを入力することで適用</li>
+              <li>• アプリのチェックだけでは見逃しがち</li>
+              <li>• Hotels.com、Expediaなどの提携サイトが対象</li>
+            </ul>
+            <p class="text-xs text-gray-500 mt-3">👉 具体例は<a href="#hotel-special-offers" class="amex-blue-text hover:underline">セクション5.4</a>を参照</p>
+          </div>
+        </div>
+
+        <div class="info-box info-box-accent border-l-4 p-4 rounded-lg">
+          <p class="text-sm text-gray-700">
+            <strong class="amex-blue-text">💡 ポイント：</strong>
+            各カテゴリの具体的な対象店舗・キャンペーン内容は<a href="#campaigns-detail" class="amex-blue-text hover:underline font-semibold">セクション5「現在開催中のキャンペーン詳細」</a>にまとめています。必要な情報をリファレンスとしてご活用ください。
+          </p>
+        </div>
+      </section>
+
+      <!-- セクション4: オファーの開催パターン -->
+      <section id="offer-patterns" class="section-card p-8 mb-8 fade-in">
+        <h2
+          class="text-2xl font-bold amex-blue-text mb-4 border-b-2 amex-blue-border pb-2"
+        >
+          4. オファーの開催パターンと傾向
+        </h2>
+        <p class="mb-6 text-gray-700">
+          オファーの開催には、一定の傾向があります。これを理解することで、効率的にオファーを見つけ、活用できるようになります。
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- 不定期オファー -->
+          <div class="info-box info-box-accent border-l-4 p-5 rounded-lg">
+            <h3 class="text-lg font-bold amex-blue-text mb-3 flex items-center">
+              <span class="mr-2">🔄</span> 不定期オファー（Amexオファー）
+            </h3>
+            <p class="text-sm text-gray-700 mb-3">
+              <strong>開催パターン：</strong>不定期かつランダム。新しいオファーが随時追加されるため、<strong class="amex-blue-text">こまめなアプリチェックが必須</strong>です。
+            </p>
+            <p class="text-sm text-gray-700 font-semibold mb-2">過去の主なオファー例：</p>
+            <ul class="text-xs text-gray-600 space-y-1">
+              <li>• <strong>SHOP SMALL：</strong>中小規模店舗で20%キャッシュバック</li>
+              <li>• <strong>百貨店：</strong>高島屋、大丸松坂屋、三越伊勢丹など</li>
+              <li>• <strong>ホテル：</strong>ヒルトン、マリオット、オークラニッコーなど</li>
+              <li>• <strong>航空会社：</strong>JAL、ANA、カタール航空など</li>
+              <li>• <strong>日常利用：</strong>Amazon、コンビニ、スーパーなど</li>
+            </ul>
+          </div>
+
+          <!-- 定期プログラム -->
+          <div class="info-box info-box-bg border-l-4 p-5 rounded-lg">
+            <h3 class="text-lg font-bold amex-blue-text mb-3 flex items-center">
+              <span class="mr-2">📅</span> 定期プログラム（宿泊優待・提携割引）
+            </h3>
+            <p class="text-sm text-gray-700 mb-3">
+              <strong>開催パターン：</strong>定期的（年次更新）の傾向が強い。対象期間が<strong class="amex-blue-text">約1年間</strong>と長く設定されています。
+            </p>
+            <p class="text-sm text-gray-700 font-semibold mb-2">主なプログラム：</p>
+            <ul class="text-xs text-gray-600 space-y-1">
+              <li>• <strong>至極の宿：</strong>厳選された国内旅館の優待プラン</li>
+              <li>• <strong>Best Vacations：</strong>国内ホテルの優待プラン</li>
+              <li>• <strong>ボーナスポイント・パートナーズ：</strong>提携店でのポイントアップ</li>
+              <li>• <strong>FINE HOTELS + RESORTS：</strong>世界の高級ホテル優待</li>
+            </ul>
+            <p class="text-xs text-gray-500 mt-3">※毎年内容が更新されて継続する可能性が高い</p>
+          </div>
+        </div>
+
+        <div class="info-box info-box-accent border-l-4 p-4 rounded-lg mt-6">
+          <p class="text-sm text-gray-700">
+            <strong class="amex-blue-text">💡 活用のコツ：</strong>
+            不定期オファーは「毎日チェック＆即時登録」、定期プログラムは「旅行計画時にまとめて確認」という使い分けがおすすめです。
+          </p>
+        </div>
+      </section>
+
+      <!-- セクション5: 現在開催中のキャンペーン・特典プログラム詳細 -->
+      <section id="campaigns-detail" class="section-card p-8 mb-8 fade-in">
+        <h2 class="text-2xl font-bold amex-blue-text mb-4 border-b-2 amex-blue-border pb-2">
+          5. 現在開催中のキャンペーン詳細
+        </h2>
+        
+        <!-- ナビゲーションガイド -->
+        <div class="info-box info-box-accent border-l-4 p-5 rounded-lg mb-6" style="background: linear-gradient(135deg, #e8f4fd 0%, #ffffff 100%);">
+          <h4 class="font-bold text-lg mb-3 amex-blue-text">📖 このセクションの使い方</h4>
+          <p class="text-sm text-gray-700 mb-3">
+            このセクションは<strong>リファレンス（参照資料）</strong>としてご活用ください。すべてを読む必要はありません。
+          </p>
+          <div class="grid md:grid-cols-2 gap-3 text-sm">
+            <div class="bg-white p-3 rounded-lg">
+              <p class="font-semibold amex-blue-text mb-1">🏨 宿泊予定がある方</p>
+              <p class="text-gray-600">→ <a href="#bonus-points-partners" class="amex-blue-text hover:underline">5.1</a> と <a href="#accommodation-benefits" class="amex-blue-text hover:underline">5.2</a> をチェック</p>
+            </div>
+            <div class="bg-white p-3 rounded-lg">
+              <p class="font-semibold amex-blue-text mb-1">💰 キャッシュバックを狙う方</p>
+              <p class="text-gray-600">→ <a href="#cashback-campaigns" class="amex-blue-text hover:underline">5.3</a> をチェック</p>
+            </div>
+            <div class="bg-white p-3 rounded-lg">
+              <p class="font-semibold amex-blue-text mb-1">✈️ 海外旅行予定がある方</p>
+              <p class="text-gray-600">→ <a href="#hotel-special-offers" class="amex-blue-text hover:underline">5.4</a> をチェック</p>
+            </div>
+            <div class="bg-white p-3 rounded-lg">
+              <p class="font-semibold amex-blue-text mb-1">🍽️ グルメ・ショッピング</p>
+              <p class="text-gray-600">→ <a href="#bonus-points-partners" class="amex-blue-text hover:underline">5.1</a> のダイニング・ショッピング欄</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-box info-box-bg border-l-4 p-4 rounded-lg mb-6">
+          <p class="text-sm text-gray-700">
+            <strong class="amex-blue-text">📋 対象カード：</strong>
+            特に記載がない限り、<strong>プラチナ・カード®</strong>または<strong>アメリカン・エキスプレス®・ビジネス・プラチナ・カード</strong>をご利用の場合に適用されます。<br>
+            <span class="text-gray-500">※ゴールド・カード以上が対象のキャンペーンは個別に記載しています。</span>
+          </p>
+        </div>
+
+        <!-- 5.1 ボーナスポイント・パートナーズ -->
+        <div id="bonus-points-partners" class="mb-10">
+          <h3 class="text-xl font-bold amex-blue-text mb-4 flex items-center">
+            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm mr-3">5.1</span>
+            ボーナスポイント・パートナーズ
+          </h3>
+          <div class="inline-flex items-center bg-gradient-to-r from-gray-800 to-gray-700 text-white px-4 py-2 rounded-lg text-sm mb-4">
+            <span class="mr-2">🎫</span>
+            <span><strong>対象カード：</strong>プラチナ・カード® / ビジネス・プラチナ・カード 限定</span>
+          </div>
+          <p class="text-gray-700 mb-4">
+            「ボーナスポイント・パートナーズ」は、加盟店でカードを利用するだけで、ポイントが通常より多く貯まるプログラムです。<strong class="amex-blue-text">事前登録は不要</strong>です。
+          </p>
+
+          <!-- 宿泊 100円=5ポイント -->
+          <div class="mb-6">
+            <h4 class="font-bold text-lg mb-3 amex-blue-text border-b pb-2">🏨 宿泊施設（100円=5ポイント）</h4>
+            <p class="text-sm text-gray-600 mb-3">通常1P + ボーナス4P / 上限: 1,600,000ポイント（基本カード1枚につき）</p>
+            <div class="overflow-x-auto">
+              <table class="text-sm">
+                <thead>
+                  <tr>
+                    <th>店舗名</th>
+                    <th>所在地</th>
+                    <th>対象となる利用</th>
+                    <th>備考</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>SONEKA</strong></td><td>北海道・北広島</td><td>ホテルにて決済</td><td>プライベートヴィラリゾート</td></tr>
+                  <tr><td><strong>ブルガリ ホテル 東京</strong></td><td>東京・八重洲</td><td>ホテルにて決済</td><td>イタリアのコンテンポラリーなデザインが特徴</td></tr>
+                  <tr><td><strong>清流荘</strong></td><td>静岡・蓮台寺温泉</td><td>お宿にて決済</td><td>純和風旅館。ヨーロッパ伝承のスパ施設あり</td></tr>
+                  <tr><td><strong>四季Yuzawa QUATTRO</strong></td><td>新潟・湯沢</td><td>ホテルにて決済</td><td>全4室。源泉掛け流し露天風呂付き</td></tr>
+                  <tr><td><strong>季澄香</strong></td><td>長野・駒ヶ根</td><td>お宿にて決済</td><td>全8室。「蕎麦フレンチ会席」を提供</td></tr>
+                  <tr><td><strong>ROKU KYOTO, LXR Hotels & Resorts</strong></td><td>京都・北区</td><td>ホテル・オールデイダイニング「TENJIN」にて決済</td><td>洛北の自然に囲まれたラグジュアリーホテル</td></tr>
+                  <tr><td><strong>KIZASHI THE SUITE 京都祇園</strong></td><td>京都・祇園</td><td>お宿にて決済</td><td>全8室のデザイナーズホテル（全室スイート）</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 宿泊 100円=3ポイント -->
+          <div class="mb-6">
+            <h4 class="font-bold text-lg mb-3 amex-blue-text border-b pb-2">🏨 宿泊施設（100円=3ポイント）</h4>
+            <p class="text-sm text-gray-600 mb-3">通常1P + ボーナス2P / 上限: 800,000ポイント（基本カード1枚につき）</p>
+            <div class="overflow-x-auto">
+              <table class="text-sm">
+                <thead>
+                  <tr>
+                    <th>店舗名</th>
+                    <th>所在地</th>
+                    <th>対象となる利用</th>
+                    <th>備考</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>東山ニセコビレッジ・リッツ・カールトン・リザーブ</strong></td><td>北海道・ニセコ</td><td>ホテルにて決済</td><td>豊かな自然の中で美食と癒しを提供</td></tr>
+                  <tr><td><strong>センチュリーマリーナ函館</strong></td><td>北海道・函館</td><td>ホテルにて決済</td><td>天然温泉SPAゾーン完備</td></tr>
+                  <tr><td><strong>茶寮宗園</strong></td><td>宮城・仙台</td><td>お宿にて決済</td><td>約8,000坪の日本庭園を持つ数寄屋風建築の旅館</td></tr>
+                  <tr><td><strong>沼津倶楽部</strong></td><td>静岡・沼津</td><td>ホテルにて決済</td><td>全8室。モダンチャイニーズのコースメニューを提供</td></tr>
+                  <tr><td><strong>ザ・リッツ・カールトン日光</strong></td><td>栃木・日光</td><td>ホテル、レストラン、スパにて決済（宴会除く）</td><td>中禅寺湖畔に位置</td></tr>
+                  <tr><td><strong>HOTEL de L'ALPAGE</strong></td><td>長野・蓼科</td><td>ホテルにて決済</td><td>12室のオーベルジュ</td></tr>
+                  <tr><td><strong>ホテルオークラ京都 岡崎別邸</strong></td><td>京都・左京</td><td>ホテルにて決済</td><td>全60室のスモールラグジュアリーホテル</td></tr>
+                  <tr><td><strong>デュシタニ京都</strong></td><td>京都・下京</td><td>ホテルにて決済</td><td>タイの優雅さと京都の伝統美が融合</td></tr>
+                  <tr><td><strong>THE THOUSAND KYOTO</strong></td><td>京都・下京</td><td>ホテル、レストラン、スパ、宴会、ウエディングで決済</td><td>「サステナブル・コンフォート・ホテル」</td></tr>
+                  <tr><td><strong>上七軒 億</strong></td><td>京都・今出川通</td><td>お宿にて決済</td><td>京都最古の花街に佇む全6室の和モダンホテル</td></tr>
+                  <tr><td><strong>ザ・プリンス 京都宝ヶ池</strong></td><td>京都・宝ヶ池</td><td>ホテル、レストランにて決済</td><td>自然と調和するリゾート</td></tr>
+                  <tr><td><strong>柊家旅館</strong></td><td>京都・中京区</td><td>お宿にて決済</td><td>1818年創業の老舗旅館</td></tr>
+                  <tr><td><strong>江田島荘</strong></td><td>広島・江田島</td><td>ホテルにて決済</td><td>瀬戸内海に囲まれた32室のホテル</td></tr>
+                  <tr><td><strong>汀渚 ばさら邸</strong></td><td>三重・志摩</td><td>お宿にて決済</td><td>全客室に露天風呂を備える隠れ家</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 宿泊 100円=2ポイント -->
+          <div class="mb-6">
+            <h4 class="font-bold text-lg mb-3 amex-blue-text border-b pb-2">🏨 宿泊施設（100円=2ポイント）</h4>
+            <p class="text-sm text-gray-600 mb-3">通常1P + ボーナス1P / 上限: 400,000ポイント（基本カード1枚につき）</p>
+            <div class="overflow-x-auto">
+              <table class="text-sm">
+                <thead>
+                  <tr>
+                    <th>店舗名</th>
+                    <th>所在地</th>
+                    <th>対象となる利用</th>
+                    <th>備考</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>グランドプリンスホテル新高輪</strong></td><td>東京・高輪</td><td>ホテルフロントにて宿泊代金を決済</td><td>風雅な日本庭園を持つ</td></tr>
+                  <tr><td><strong>グランドプリンスホテル高輪</strong></td><td>東京・高輪</td><td>ホテルフロントにて宿泊代金を決済</td><td>伝統と気品漂う空間</td></tr>
+                  <tr><td><strong>ザ・プリンス さくらタワー東京</strong></td><td>東京・高輪</td><td>ホテルフロントにて宿泊代金を決済</td><td>サウナ＆ブロアバス、フィットネスジムなどが充実</td></tr>
+                  <tr><td><strong>ザ・プリンスギャラリー 東京紀尾井町</strong></td><td>東京・紀尾井町</td><td>ホテルフロントにて宿泊代金を決済</td><td>高層階からの眺望とデザイン空間</td></tr>
+                  <tr><td><strong>ザ・プリンス パークタワー東京</strong></td><td>東京・芝公園</td><td>ホテルフロントにて宿泊代金を決済</td><td>東京タワーを目の前に望む</td></tr>
+                  <tr><td><strong>メズム東京、オートグラフ コレクション</strong></td><td>東京・竹芝</td><td>ホテルフロントにて宿泊代金を決済</td><td>東京湾と隅田川、浜離宮恩賜庭園を一望</td></tr>
+                  <tr><td><strong>富士スピードウェイホテル</strong></td><td>静岡・小山町</td><td>ホテル、レストラン、スパの利用</td><td>モータースポーツとホスピタリティーの融合</td></tr>
+                  <tr><td><strong>佳ら久（箱根・熱海）</strong></td><td>神奈川/静岡</td><td>ホテルにて決済</td><td>箱根強羅は全室温泉露天風呂付き</td></tr>
+                  <tr><td><strong>ザ・プリンス 軽井沢</strong></td><td>長野・軽井沢</td><td>ホテルにて決済</td><td>2025年7月リニューアルオープン</td></tr>
+                  <tr><td><strong>ザ・プリンス ヴィラ軽井沢</strong></td><td>長野・軽井沢</td><td>ホテルにて決済</td><td>別荘機能とホテルサービスを融合</td></tr>
+                  <tr><td><strong>ホテルインディゴ軽井沢</strong></td><td>長野・軽井沢</td><td>ホテル・オールデイダイニング「KAGARIBI」にて決済</td><td>薪の炎で調理するイタリアンレストランあり</td></tr>
+                  <tr><td><strong>ザ・ホテル青龍 京都清水</strong></td><td>京都・東山</td><td>ホテルにて決済</td><td>1933年の小学校校舎を活用したホテル</td></tr>
+                  <tr><td><strong>シックスセンシズ 京都</strong></td><td>京都・東山</td><td>ホテルにて決済</td><td>自然派ラグジュアリーホテル（日本初上陸）</td></tr>
+                  <tr><td><strong>翠嵐 ラグジュアリーコレクションホテル 京都</strong></td><td>京都・嵐山</td><td>ホテル、レストランにて決済（宴会除く）</td><td>保津川の流れを望む</td></tr>
+                  <tr><td><strong>紫翠 ラグジュアリーコレクションホテル 奈良</strong></td><td>奈良・登大路町</td><td>ホテルにて決済</td><td>奈良公園西端に立地</td></tr>
+                  <tr><td><strong>グランドプリンスホテル大阪ベイ</strong></td><td>大阪・南港</td><td>ホテルにて決済</td><td>2025年大阪・関西万博が開催される夢洲に近接</td></tr>
+                  <tr><td><strong>パティーナ大阪</strong></td><td>大阪・中央区</td><td>ホテルフロントにて宿泊代金を決済</td><td>カペラホテルグループの日本初進出</td></tr>
+                  <tr><td><strong>ANAインターコンチネンタル別府リゾート＆スパ</strong></td><td>大分・別府</td><td>ホテル・豊後前「霧翆」にて決済</td><td>山と海に抱かれたリゾート</td></tr>
+                  <tr><td><strong>やど紫苑亭</strong></td><td>鳥取・米子</td><td>ホテルにて決済</td><td>10室の料理宿</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- ダイニング -->
+          <div class="mb-6">
+            <h4 class="font-bold text-lg mb-3 amex-blue-text border-b pb-2">🍽️ ダイニング</h4>
+            <div class="overflow-x-auto">
+              <table class="text-sm">
+                <thead>
+                  <tr>
+                    <th>ポイントレート</th>
+                    <th>店舗名</th>
+                    <th>所在地</th>
+                    <th>対象となる利用</th>
+                    <th>上限</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="bg-blue-50"><td colspan="5"><strong>100円=5ポイント（通常1P + ボーナス4P）</strong></td></tr>
+                  <tr><td>5P</td><td><strong>マンダリン オリエンタル 東京</strong></td><td>東京・日本橋</td><td>レストラン・バーにて決済（フロント精算対象外）</td><td>200,000P</td></tr>
+                  <tr><td>5P</td><td><strong>麻布黒しゃり</strong>（鮨）</td><td>東京・麻布十番</td><td>レストランにて決済</td><td>200,000P</td></tr>
+                  <tr><td>5P</td><td><strong>麻布肉しゃり</strong>（肉割烹）</td><td>東京・麻布十番</td><td>レストランにて決済</td><td>200,000P</td></tr>
+                  <tr><td>5P</td><td><strong>VinIX -Aging Beef-</strong>（熟成黒毛和牛）</td><td>東京・元麻布</td><td>レストランにて決済</td><td>200,000P</td></tr>
+                  <tr><td>5P</td><td><strong>沼津喜代寿司</strong>（寿司）</td><td>東京・三田/田町</td><td>レストランにて決済</td><td>200,000P</td></tr>
+                  <tr class="bg-blue-50"><td colspan="5"><strong>100円=3ポイント（通常1P + ボーナス2P）</strong></td></tr>
+                  <tr><td>3P</td><td><strong>THE THOUSAND KYOTO レストラン</strong></td><td>京都・下京</td><td>レストランにて決済</td><td>100,000P</td></tr>
+                  <tr><td>3P</td><td><strong>フレンチレストラン フルーヴ</strong></td><td>大阪・梅田</td><td>レストランにて決済（フロント精算対象外）</td><td>100,000P</td></tr>
+                  <tr class="bg-blue-50"><td colspan="5"><strong>100円=2ポイント（通常1P + ボーナス1P）</strong></td></tr>
+                  <tr><td>2P</td><td><strong>メズム東京（レストラン）</strong></td><td>東京・竹芝</td><td>ホテルにて決済</td><td>50,000P</td></tr>
+                  <tr><td>2P</td><td><strong>東京エディション銀座</strong>（レストラン・バー）</td><td>東京・銀座</td><td>店舗にて決済（フロント精算対象外）</td><td>50,000P</td></tr>
+                  <tr><td>2P</td><td><strong>東京エディション虎ノ門</strong>（レストラン・バー・スパ）</td><td>東京・虎ノ門</td><td>店舗にて決済（フロント精算対象外）</td><td>50,000P</td></tr>
+                  <tr><td>2P</td><td><strong>鉄板焼 銀明翠 GINZA</strong></td><td>東京・銀座</td><td>レストランにて決済</td><td>50,000P</td></tr>
+                  <tr><td>2P</td><td><strong>赤坂松葉屋</strong>（日本料理）</td><td>東京・赤坂</td><td>レストランにて決済</td><td>50,000P</td></tr>
+                  <tr><td>2P</td><td><strong>割烹 瑞兆</strong>（日本料理）</td><td>東京・有楽町</td><td>レストランにて決済</td><td>50,000P</td></tr>
+                  <tr><td>2P</td><td><strong>即今</strong>（和食・茶懐石）</td><td>東京・南青山</td><td>レストランにて決済</td><td>50,000P</td></tr>
+                  <tr><td>2P</td><td><strong>夜咄Sahan</strong>（茶懐石料理・茶事体験）</td><td>東京・新宿</td><td>レストランにて決済</td><td>50,000P</td></tr>
+                  <tr><td>2P</td><td><strong>エンバ・キョウト・グリル</strong>（ステーキ＆シーフード）</td><td>京都・東山</td><td>レストランにて決済（フロント精算対象外）</td><td>50,000P</td></tr>
+                  <tr><td>2P</td><td><strong>セント レジス ホテル 大阪</strong>（レストランとバー）</td><td>大阪・本町</td><td>レストランにて決済（フロント精算対象外）</td><td>50,000P</td></tr>
+                  <tr><td>2P</td><td><strong>バスク料理「IÑAKI」</strong></td><td>大阪・中央区</td><td>レストランにて決済</td><td>50,000P</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- ショッピング -->
+          <div class="mb-6">
+            <h4 class="font-bold text-lg mb-3 amex-blue-text border-b pb-2">🛍️ ショッピング</h4>
+            <div class="overflow-x-auto">
+              <table class="text-sm">
+                <thead>
+                  <tr>
+                    <th>ポイントレート</th>
+                    <th>店舗名</th>
+                    <th>所在地</th>
+                    <th>対象となる利用</th>
+                    <th>上限</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="bg-blue-50"><td colspan="5"><strong>100円=5ポイント（通常1P + ボーナス4P）</strong></td></tr>
+                  <tr><td>5P</td><td><strong>BALLY 銀座本店</strong></td><td>東京・銀座</td><td>ショッピング</td><td>1,000,000P</td></tr>
+                  <tr class="bg-blue-50"><td colspan="5"><strong>100円=3ポイント（通常1P + ボーナス2P）</strong></td></tr>
+                  <tr><td>3P</td><td><strong>SAKE HUNDRED</strong></td><td>オンラインストア</td><td>オンラインストアでの決済</td><td>500,000P</td></tr>
+                  <tr><td>3P</td><td><strong>ELEVIN～エレヴァン～</strong>（高級ワイン専門通販店）</td><td>オンラインストア</td><td>オンラインストアでの決済</td><td>500,000P</td></tr>
+                  <tr class="bg-blue-50"><td colspan="5"><strong>100円=2ポイント（通常1P + ボーナス1P）</strong></td></tr>
+                  <tr><td>2P</td><td><strong>ショパール ブティック 銀座本店</strong></td><td>東京・銀座</td><td>ショッピング</td><td>250,000P</td></tr>
+                  <tr><td>2P</td><td><strong>jun ashida ONLINE STORE</strong></td><td>オンラインストア</td><td>オンラインストアでの決済</td><td>250,000P</td></tr>
+                  <tr><td>2P</td><td><strong>LAND OF TOMORROW 丸の内店</strong></td><td>東京・丸の内</td><td>ショッピング</td><td>250,000P</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- スパ・ゴルフ・その他 -->
+          <div class="mb-6">
+            <h4 class="font-bold text-lg mb-3 amex-blue-text border-b pb-2">💆 スパ・ゴルフ・その他</h4>
+            <div class="overflow-x-auto">
+              <table class="text-sm">
+                <thead>
+                  <tr>
+                    <th>カテゴリ</th>
+                    <th>店舗名</th>
+                    <th>所在地</th>
+                    <th>ポイント</th>
+                    <th>上限</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>スパ</td><td><strong>Chiスパ シャングリ・ラ 東京</strong></td><td>東京・丸の内</td><td>2P</td><td>100,000P</td></tr>
+                  <tr><td>スパ</td><td><strong>カージュラジャ ティアド ザ・キャピトルホテル東急店</strong></td><td>東京・永田町</td><td>2P</td><td>100,000P</td></tr>
+                  <tr><td>スパ</td><td><strong>The Spa at The Tokyo EDITION, Toranomon</strong></td><td>東京・虎ノ門</td><td>2P</td><td>100,000P</td></tr>
+                  <tr><td>スパ</td><td><strong>ザ・スパ・アット・フォーシーズンズホテル京都</strong></td><td>京都・東山</td><td>2P</td><td>100,000P</td></tr>
+                  <tr><td>スパ</td><td><strong>THE THOUSAND SPA</strong></td><td>京都・下京</td><td>3P</td><td>200,000P</td></tr>
+                  <tr><td>ゴルフ</td><td><strong>葉山国際カンツリー倶楽部</strong></td><td>神奈川・葉山</td><td>2P</td><td>100,000P</td></tr>
+                  <tr><td>ゴルフ/宿泊/レストラン</td><td><strong>かねひで喜瀬カントリークラブ</strong></td><td>沖縄・喜瀬</td><td>2P</td><td>100,000P</td></tr>
+                  <tr><td>WiFi</td><td><strong>スカイベリー</strong></td><td>オンライン</td><td>3P</td><td>200,000P</td></tr>
+                  <tr><td>クルーズ</td><td><strong>MITSUI OCEAN CRUISES</strong></td><td>—</td><td>3P</td><td>200,000P</td></tr>
+                  <tr><td>レンタカー</td><td><strong>ユニバースレンタカー</strong></td><td>沖縄（那覇/宮古島）</td><td>3P</td><td>200,000P</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5.2 宿泊予約特典 -->
+        <div id="accommodation-benefits" class="mb-10">
+          <h3 class="text-xl font-bold amex-blue-text mb-4 flex items-center">
+            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm mr-3">5.2</span>
+            宿泊予約特典（トラベル・デスク経由）
+          </h3>
+          <div class="inline-flex items-center bg-gradient-to-r from-gray-800 to-gray-700 text-white px-4 py-2 rounded-lg text-sm mb-4">
+            <span class="mr-2">🎫</span>
+            <span><strong>対象カード：</strong>プラチナ・カード® / ビジネス・プラチナ・カード 限定</span>
+          </div>
+          <div class="info-box info-box-accent border-l-4 p-4 rounded-lg mb-4">
+            <p class="text-sm text-gray-700">
+              <strong class="amex-blue-text">📞 予約方法：</strong>
+              トラベル・デスクを通して新規に予約し、アメリカン・エキスプレスのカードにて<strong>現地決済</strong>（宿泊施設で支払う）した場合に適用されます。<br>
+              <strong>対象期間：2025年3月1日（土）～12月31日（水）ご宿泊分まで</strong>
+            </p>
+          </div>
+
+          <!-- Best Vacations -->
+          <div class="mb-6">
+            <h4 class="font-bold text-lg mb-3 amex-blue-text">🏨 Best Vacations（国内ホテル）</h4>
+            <div class="overflow-x-auto">
+              <table class="text-sm">
+                <thead>
+                  <tr>
+                    <th>ホテル名</th>
+                    <th>対象お部屋タイプ</th>
+                    <th>主な特典内容</th>
+                    <th>対象外日</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>THE HIRAMATSU HOTELS & RESORTS</strong><br><span class="text-xs text-gray-500">仙石原/京都/賢島</span></td>
+                    <td>全お部屋タイプ（京都のザ・ひらまつスイート除く）</td>
+                    <td>1時間アーリー・チェックイン、ひらまつオリジナルティーバッグセット、1時間レイト・チェックアウト</td>
+                    <td>4/26～5/6、8/9～17、12/26～31、休館日</td>
+                  </tr>
+                  <tr>
+                    <td><strong>ハイアット セントリック 金沢</strong><br><span class="text-xs text-gray-500">石川県</span></td>
+                    <td>全お部屋タイプ</td>
+                    <td>1時間アーリー・チェックイン、ウェルカム・ドリンクサービス、1時間レイト・チェックアウト</td>
+                    <td>なし</td>
+                  </tr>
+                  <tr>
+                    <td><strong>瀬戸内リトリート青凪 by 温故知新</strong><br><span class="text-xs text-gray-500">愛媛県</span></td>
+                    <td>半露天温泉スイートフォレストビュー</td>
+                    <td>1時間アーリー・チェックイン、<strong class="amex-blue-text">お部屋にワイン/シャンパンボトルサービス</strong>、1時間レイト・チェックアウト</td>
+                    <td>なし</td>
+                  </tr>
+                  <tr>
+                    <td><strong>沖縄のテラスホテルズ</strong><br><span class="text-xs text-gray-500">ナハ/アッタ/クラブ/ブセナ/ウザ</span></td>
+                    <td>各施設指定のお部屋タイプ</td>
+                    <td><strong class="amex-blue-text">10,000円分のホテルクレジット</strong>（1室1滞在）、ホテルからのお土産、1時間レイト・チェックアウト</td>
+                    <td>5/2～5、8/8～16、12/28～31など</td>
+                  </tr>
+                  <tr>
+                    <td><strong>ANAインターコンチネンタル石垣リゾート</strong><br><span class="text-xs text-gray-500">沖縄県</span></td>
+                    <td>全お部屋タイプ</td>
+                    <td>予約時の空室状況により対象のお部屋をアップグレード、ホテルからのお土産、1時間レイト・チェックアウト</td>
+                    <td>なし</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 至極の宿 -->
+          <div class="mb-6">
+            <h4 class="font-bold text-lg mb-3 amex-blue-text">🏯 至極の宿（国内旅館）</h4>
+            <div class="overflow-x-auto">
+              <table class="text-sm">
+                <thead>
+                  <tr>
+                    <th>施設名</th>
+                    <th>対象お部屋タイプ</th>
+                    <th>主な特典内容</th>
+                    <th>対象外日</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>望楼 NOGUCHI 函館</strong><br><span class="text-xs text-gray-500">北海道</span></td>
+                    <td>全お部屋タイプ</td>
+                    <td>SUITEを1日1室ご用意（8日前までに要予約）、片道専用送迎、ホテルからのお土産、1時間レイト・チェックアウト</td>
+                    <td>4/19～5/5、その他特定日</td>
+                  </tr>
+                  <tr>
+                    <td><strong>ふふ</strong><br><span class="text-xs text-gray-500">熱海/旧軽井沢/軽井沢陽光の風/箱根/京都/奈良</span></td>
+                    <td>各施設指定のお部屋タイプ</td>
+                    <td><strong class="amex-blue-text">10,000円分の館内クレジット</strong>、夕食時のファースト・ドリンクサービス、1時間レイト・チェックアウト</td>
+                    <td>なし（一部施設は3/14、3/15などあり）</td>
+                  </tr>
+                  <tr>
+                    <td><strong>熱海・伊豆山 佳ら久</strong><br><span class="text-xs text-gray-500">静岡県</span></td>
+                    <td>全お部屋タイプ</td>
+                    <td>高層階デラックスルームを1日1室ご用意、専用車にて片道送迎、<strong class="amex-blue-text">お部屋へシャンパンボトルサービス</strong>、ホテルからのお土産、1時間レイト・チェックアウト</td>
+                    <td>なし</td>
+                  </tr>
+                  <tr>
+                    <td><strong>箱根 吟遊</strong><br><span class="text-xs text-gray-500">神奈川県</span></td>
+                    <td>露天風呂・内風呂付き「月タイプ（和室）」</td>
+                    <td><strong class="amex-blue-text">10,000円分の館内クレジット</strong>、ウェルカム・ドリンクサービス、1時間レイト・チェックアウト</td>
+                    <td>要問い合わせ</td>
+                  </tr>
+                  <tr>
+                    <td><strong>べにや 無何有</strong><br><span class="text-xs text-gray-500">石川県</span></td>
+                    <td>露天風呂付き 和洋室 エグゼクティブスイート</td>
+                    <td>1時間アーリー・チェックイン、ウェルカム・ドリンクサービス、1時間レイト・チェックアウト</td>
+                    <td>なし</td>
+                  </tr>
+                  <tr>
+                    <td><strong>別邸 仙寿庵</strong><br><span class="text-xs text-gray-500">群馬県</span></td>
+                    <td>全お部屋タイプ</td>
+                    <td>予約時の空室状況により対象のお部屋をアップグレード、ウェルカム・ドリンクサービス、1時間レイト・チェックアウト</td>
+                    <td>なし</td>
+                  </tr>
+                  <tr>
+                    <td><strong>あさば</strong><br><span class="text-xs text-gray-500">静岡県</span></td>
+                    <td>天鼓、羽衣、萌葱、浅葱、萩</td>
+                    <td>30分アーリー・チェックイン、お部屋に地酒一合サービス、1時間レイト・チェックアウト</td>
+                    <td>なし</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5.3 キャッシュバック・優待キャンペーン -->
+        <div id="cashback-campaigns" class="mb-10">
+          <h3 class="text-xl font-bold amex-blue-text mb-4 flex items-center">
+            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm mr-3">5.3</span>
+            キャッシュバック・優待キャンペーン
+          </h3>
+          <div class="inline-flex items-center bg-gradient-to-r from-green-700 to-green-600 text-white px-4 py-2 rounded-lg text-sm mb-4">
+            <span class="mr-2">🎫</span>
+            <span><strong>対象カード：</strong>全てのアメリカン・エキスプレス・カード（キャンペーンにより一部制限あり）</span>
+          </div>
+
+          <!-- 宿泊10%還元 -->
+          <div class="info-box info-box-bg border-l-4 p-5 rounded-lg mb-4">
+            <h4 class="font-bold text-lg mb-2 amex-blue-text">🏨 事前登録制 宿泊10%還元キャンペーン</h4>
+            <ul class="text-sm text-gray-700 space-y-2">
+              <li><strong>特典内容：</strong>事前登録の上、対象のホテル・旅館にてカードを利用すると、<strong class="amex-blue-text">10%をキャッシュバック</strong></li>
+              <li><strong>期間：</strong>2025年8月22日～2025年12月20日</li>
+              <li><strong>上限：</strong>キャッシュバック総額は期間中合計<strong>100,000円まで</strong>（登録済みカード1枚につき）</li>
+              <li><strong>制限：</strong>事前登録は<strong>先着500,000名様限定</strong></li>
+              <li class="text-red-600"><strong>⚠️ 注意：</strong>フロントデスクで決済された宿泊料金のみが対象。レストラン・施設での決済、オンライン事前決済、代理店経由の決済、QUICPayなどは対象外</li>
+            </ul>
+          </div>
+
+          <!-- 楽天トラベル -->
+          <div class="info-box info-box-bg border-l-4 p-5 rounded-lg mb-4">
+            <h4 class="font-bold text-lg mb-2 amex-blue-text">✈️ 楽天トラベル キャッシュバックキャンペーン</h4>
+            <ul class="text-sm text-gray-700 space-y-2">
+              <li><strong>特典内容：</strong>事前登録の上、楽天トラベルのウェブサイトにてカードを利用すると、<strong class="amex-blue-text">2%をキャッシュバック</strong></li>
+              <li><strong>期間：</strong>
+                <ul class="ml-4 mt-1">
+                  <li>• 個人カード：<strong>2026年4月30日（木）まで</strong></li>
+                  <li>• ビジネス・カード：2025年12月31日（水）まで</li>
+                </ul>
+              </li>
+              <li><strong>上限：</strong>登録済みカード1枚につき合計<strong>300万円まで</strong></li>
+              <li><strong>対象商品：</strong>国内宿泊、ANA楽パック、JAL楽パック、レンタカー、高速バス・ツアー（はとバスツアー除く）、海外旅行、遊び・体験など</li>
+              <li><strong>💡 ポイント：</strong>2%キャッシュバックに加え、1%～楽天ポイントも獲得可能。楽天トラベルのキャンペーン・クーポンも併用可</li>
+            </ul>
+          </div>
+
+          <!-- スイス鉄道 -->
+          <div class="info-box info-box-bg border-l-4 p-5 rounded-lg mb-4">
+            <h4 class="font-bold text-lg mb-2 amex-blue-text">🇨🇭 スイスの鉄道チケットを含む旅行商品のご優待</h4>
+            <ul class="text-sm text-gray-700 space-y-2">
+              <li><strong>特典内容：</strong>「MAXVISTA」が販売する「スイス ランドパッケージ」または「スイスレイルパス」を、<strong class="amex-blue-text">お一人様につき5,000円オフ</strong></li>
+              <li><strong>対象期間：</strong>2026年2月28日（土）ご購入分まで</li>
+              <li><strong>予約方法：</strong>アメリカン・エキスプレスのサービス・デスクまたはコンシェルジェ・デスクを通して予約</li>
+              <li><strong>同時利用可能プロモーション：</strong>スイストラベルパス（1等）プロモーション2025
+                <ul class="ml-4 mt-1 text-xs">
+                  <li>• 対象購入期間：2025年11月30日（日）まで</li>
+                  <li>• 1等 4日間パス（469スイスフラン）→ 5日間利用可能</li>
+                  <li>• 1等 8日間パス（665スイスフラン）→ 10日間利用可能</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 5.4 ホテル/旅行関連の特別優待 -->
+        <div id="hotel-special-offers" class="mb-6">
+          <h3 class="text-xl font-bold amex-blue-text mb-4 flex items-center">
+            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm mr-3">5.4</span>
+            ホテル/旅行関連の特別優待
+          </h3>
+          <div class="inline-flex items-center bg-gradient-to-r from-amber-600 to-amber-500 text-white px-4 py-2 rounded-lg text-sm mb-4">
+            <span class="mr-2">🎫</span>
+            <span><strong>対象カード：</strong>キャンペーンにより異なる（各項目に記載）</span>
+          </div>
+
+          <!-- フリー・ステイ・ギフト海外利用 -->
+          <div class="info-box info-box-bg border-l-4 p-5 rounded-lg mb-4">
+            <h4 class="font-bold text-lg mb-2 amex-blue-text">🌏 フリー・ステイ・ギフト 海外利用キャンペーン</h4>
+            <span class="inline-block bg-gray-800 text-white text-xs px-2 py-1 rounded mb-2">プラチナ・カード® 限定</span>
+            <p class="text-sm text-gray-700 mb-3">毎年プレゼントされる国内ホテル1泊無料宿泊券を、期間限定で<strong>オークラ ニッコー ホテルズの海外対象ホテル</strong>にて利用可能。<strong>3連泊以上のご宿泊において、3泊目が無料</strong>となります。</p>
+            <p class="text-sm text-gray-600 mb-3"><strong>宿泊期間：</strong>2025年12月1日（月）～2026年3月31日（火）</p>
+            <div class="overflow-x-auto">
+              <table class="text-sm">
+                <thead>
+                  <tr><th>対象ホテル</th><th>対象お部屋</th><th>特典</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>オークラ プレステージ台北</strong></td><td>プレステージ（44㎡）</td><td>3泊目無料、レイト・チェックアウト（最大13時）</td></tr>
+                  <tr><td><strong>オークラ プレステージバンコク</strong></td><td>デラックス（43～47㎡）</td><td>3泊目無料、<strong class="amex-blue-text">3泊目の朝食無料</strong>（2名様まで）、お部屋のアップグレード（全日程）、館内レストラン15%/20%優待、レイト・チェックアウト（最大15時）</td></tr>
+                  <tr><td><strong>ホテル・ニッコー・サイゴン</strong></td><td>ニッコークラブ・ジュニアスイート（60㎡）</td><td>3泊目無料、クラブラウンジアクセス（2名様まで）、3泊目の朝食無料（2名様まで）、館内レストラン15％優待</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Seibu Prince Global Rewards -->
+          <div class="info-box info-box-bg border-l-4 p-5 rounded-lg mb-4">
+            <h4 class="font-bold text-lg mb-2 amex-blue-text">👑 Seibu Prince Global Rewards 上級ステータス登録</h4>
+            <p class="text-sm text-gray-700 mb-3">対象カード会員は、無条件でSeibu Prince Hotels & Resortsの会員限定プレミアムサービス「Seibu Prince Global Rewards」の<strong>上級ステータスに登録可能</strong></p>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="bg-white p-3 rounded-lg">
+                <p class="font-semibold amex-blue-text mb-2">プラチナメンバー対象カード</p>
+                <ul class="text-sm text-gray-700 space-y-1">
+                  <li>• プラチナ・カード®</li>
+                  <li>• ANAアメリカン・エキスプレス®・プレミアム・カード</li>
+                  <li>• アメリカン・エキスプレス®・ビジネス・プラチナ・カード</li>
+                </ul>
+              </div>
+              <div class="bg-white p-3 rounded-lg">
+                <p class="font-semibold amex-blue-text mb-2">ゴールドメンバー対象カード</p>
+                <ul class="text-sm text-gray-700 space-y-1">
+                  <li>• アメリカン・エキスプレス®・ゴールド・プリファード・カード</li>
+                  <li>• アメリカン・エキスプレス®・ゴールド・カード</li>
+                  <li>• アメリカン・エキスプレス®・ビジネス・ゴールド・カード</li>
+                </ul>
+              </div>
+            </div>
+            <p class="text-sm text-gray-700 mt-3"><strong>プラチナメンバー特典例：</strong>宿泊/ゴルフ ベストレート保証、朝食無料、レイトチェックアウト</p>
+          </div>
+
+          <!-- ザ・プリンスギャラリー ハッピーアワー -->
+          <div class="info-box info-box-bg border-l-4 p-5 rounded-lg mb-4">
+            <h4 class="font-bold text-lg mb-2 amex-blue-text">🍸 ザ・プリンスギャラリー 東京紀尾井町 ハッピーアワー</h4>
+            <span class="inline-block bg-gray-800 text-white text-xs px-2 py-1 rounded mb-2">プラチナ・カード® / ゴールド・カード以上</span>
+            <p class="text-sm text-gray-700 mb-3">Sky Gallery Lounge Levitaにて、カード会員限定のハッピーアワー特別コースを提供（<strong>2026年3月31日まで</strong>）</p>
+            <div class="overflow-x-auto">
+              <table class="text-sm">
+                <thead>
+                  <tr><th>コース</th><th>料金（税サ別）</th><th>内容</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>コース1</td><td>¥4,000</td><td>—</td></tr>
+                  <tr><td>コース2</td><td>¥6,500</td><td>フリーフロー＋1チャーム＋1フード</td></tr>
+                  <tr><td>コース3</td><td>¥8,000</td><td>スパークリングワイン1本＋ミートプレート</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-sm text-gray-600 mt-3">
+              <strong>利用可能日：</strong>プラチナ会員 → 土曜日以外の全日 ｜ ゴールド会員 → 月曜日～木曜日
+            </p>
+          </div>
+
+          <!-- ウォルドーフ・アストリア大阪 -->
+          <div class="info-box info-box-accent border-l-4 p-5 rounded-lg mb-4">
+            <h4 class="font-bold text-lg mb-2 amex-blue-text">✨ ウォルドーフ・アストリア大阪 3泊目無料特典</h4>
+            <p class="text-sm text-gray-700 mb-2">2025年4月に開業したウォルドーフ・アストリア大阪を<strong>3連泊以上</strong>予約すると、<strong class="amex-blue-text">3泊目が無料</strong>に！</p>
+            <ul class="text-sm text-gray-700 space-y-1">
+              <li><strong>対象者：</strong>プラチナ・カード®、ビジネス・プラチナカード会員様限定（「FINE HOTELS + RESORTS」特典の活用が必要）</li>
+              <li><strong>予約期間：</strong>2025年12月27日（土）まで</li>
+              <li><strong>旅行期間：</strong>2025年12月30日（火）チェックアウト分まで</li>
+            </ul>
+          </div>
+
+          <!-- アジア現地優待 -->
+          <div class="info-box info-box-bg border-l-4 p-5 rounded-lg mb-4">
+            <h4 class="font-bold text-lg mb-2 amex-blue-text">🌏 アジア現地優待（海外利用キャンペーン）</h4>
+            <span class="inline-block bg-green-700 text-white text-xs px-2 py-1 rounded mb-3">全てのアメリカン・エキスプレス・カード</span>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="bg-white p-3 rounded-lg">
+                <p class="font-semibold text-gray-700 mb-1">🇭🇰 香港</p>
+                <p class="text-sm text-gray-600">「Star Ferry Ride」が片道HK$1で体験可能</p>
+              </div>
+              <div class="bg-white p-3 rounded-lg">
+                <p class="font-semibold text-gray-700 mb-1">🇹🇼 台湾</p>
+                <p class="text-sm text-gray-600">「Wyndham Sun Moon Lake」宿泊料金15%割引</p>
+              </div>
+              <div class="bg-white p-3 rounded-lg">
+                <p class="font-semibold text-gray-700 mb-1">🇸🇬 シンガポール</p>
+                <p class="text-sm text-gray-600">「Pan Pacific Hotels Group」公式サイト予約で最大10%割引（会員はさらに10%）</p>
+              </div>
+              <div class="bg-white p-3 rounded-lg">
+                <p class="font-semibold text-gray-700 mb-1">🇹🇭 タイ</p>
+                <p class="text-sm text-gray-600">「Baba Beach Club Hua Hin」プロモーションコード「25AMXBBH」で最大50%割引</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ボーナスポイント獲得 -->
+          <div class="info-box info-box-bg border-l-4 p-5 rounded-lg">
+            <h4 class="font-bold text-lg mb-2 amex-blue-text">💳 会員専用旅行予約サイトでのボーナスポイント獲得</h4>
+            <span class="inline-block bg-green-700 text-white text-xs px-2 py-1 rounded mb-2">メンバーシップ・リワード対象カード</span>
+            <p class="text-sm text-gray-700">アメリカン・エキスプレス・トラベル オンラインを利用すると、宿泊予約などの獲得ポイントが効率よく貯まります。<br><span class="text-gray-500">※メンバーシップ・リワード・プラスおよび対象加盟店ボーナスポイントプログラムへの登録が必要</span></p>
+          </div>
+        </div>
+
+        <!-- 共通の注意事項 -->
+        <div class="info-box info-box-accent border-l-4 p-5 rounded-lg" style="background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%); border-left-color: #ff6b6b;">
+          <h4 class="font-bold text-lg mb-3" style="color: #c92a2a;">⚠️ 本プログラムの共通注意事項</h4>
+          <ul class="text-sm text-gray-700 space-y-2">
+            <li>• ボーナスポイント・パートナーズの特典は、<strong>プラチナ・カード®またはビジネス・プラチナ・カード</strong>をご利用の場合にのみ適用されます</li>
+            <li>• 宿泊施設における特典は、特に記載がない限り、宿泊代金を現地にてカード決済した場合に対象となります</li>
+            <li>• <strong>第三者機関を経由した決済、ID決済サービス、QUICPay、楽天Edy、Suicaなどのご利用分は特典の対象外</strong>です</li>
+            <li>• 本プログラムの内容は予告なしに変更または中止される場合があります</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- セクション6: 5つの鉄則 -->
+      <section id="five-rules" class="section-card p-8 mb-8 fade-in">
+        <h2
+          class="text-2xl font-bold amex-blue-text mb-4 border-b-2 amex-blue-border pb-2"
+        >
+          6. オファーを完璧に使いこなすための「5つの鉄則」
+        </h2>
+        <p class="mb-4 text-gray-700">
+          オファーを最大限に活用し、年会費以上のメリットを引き出すための具体的な行動指針です。
+        </p>
+
+        <div class="space-y-6">
+          <!-- 鉄則1 -->
+          <div class="info-box info-box-bg border-l-4 p-5 rounded-lg">
+            <h4 class="font-bold text-lg mb-2 amex-blue-text">
+              鉄則1: アプリの通知をONにし、毎日チェックする
+            </h4>
+            <p class="text-sm text-gray-700 mb-3">
+              オファーは不定期に追加されます。また、人気のオファーは「先着順」で登録が締め切られることがあります。アプリのプッシュ通知をONにし、隙間時間（朝起きた時、通勤中など）にチェックする習慣をつけましょう。
+            </p>
+            <div class="bg-white p-3 rounded-lg">
+              <p class="text-sm text-gray-700 font-semibold mb-2">
+                具体的な行動：
+              </p>
+              <ul class="text-sm text-gray-700 space-y-1">
+                <li>
+                  • 朝の通勤時や昼休みなど、生活リズムの中にAmex
+                  Appの確認時間を組み込む
+                </li>
+                <li>
+                  • プッシュ通知を有効にして、新しいオファーの出現を逃さない
+                </li>
+                <li>
+                  •
+                  「使うかもしれない」と少しでも感じたオファーは、その場で迷わず登録
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 鉄則2 -->
+          <div class="info-box info-box-bg border-l-4 p-5 rounded-lg">
+            <h4 class="font-bold text-lg mb-2 amex-blue-text">
+              鉄則2: オファーは「とりあえず登録」する
+            </h4>
+            <p class="text-sm text-gray-700 mb-3">
+              「使うかもしれない」と少しでも思ったら、その場ですぐに「オファーを登録する」ボタンを押してください。登録したからといって、利用義務は発生しません。先着枠を確保するためにも、即時登録が基本です。
+            </p>
+            <div class="bg-white p-3 rounded-lg">
+              <p class="text-sm text-gray-700 font-semibold mb-2">
+                重要なポイント：
+              </p>
+              <ul class="text-sm text-gray-700 space-y-1">
+                <li>• 登録したからといって利用義務は一切発生しない</li>
+                <li>
+                  •
+                  将来得られるかもしれない金銭的メリット（割引の権利）を、コストゼロで確保する
+                </li>
+                <li>• これは純粋に有利なオプションの確保である</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 鉄則3 -->
+          <div class="info-box info-box-bg border-l-4 p-5 rounded-lg">
+            <h4 class="font-bold text-lg mb-2 amex-blue-text">
+              鉄則3: 家族カード・追加カードも個別にチェックする
+            </h4>
+            <p class="text-sm text-gray-700 mb-3">
+              オファーはカード番号ごとに提供されます。本会員カードと家族カード（追加カード）では、表示されるオファーが異なる場合があります。家族カード会員も個別にアプリやオンライン・サービスにログインし、オファーを登録しましょう。
+            </p>
+            <div class="bg-white p-3 rounded-lg mb-3">
+              <p class="text-sm text-gray-700 font-semibold mb-2">
+                戦略的活用：
+              </p>
+              <ul class="text-sm text-gray-700 space-y-1">
+                <li>
+                  •
+                  本会員カードと家族カードは、それぞれが独立したオファーの登録対象
+                </li>
+                <li>
+                  •
+                  ゴールド・プリファード・カードでは1枚目の家族カードが無料（※最新の年会費体系は公式サイトでご確認ください）
+                </li>
+                <li>
+                  •
+                  プラチナ・カードでは複数枚まで無料で発行可能（※最新の年会費体系は公式サイトでご確認ください）
+                </li>
+                <li>
+                  •
+                  追加コストゼロで、オファーによるリターン獲得の機会を2倍から5倍に増やすことが可能
+                </li>
+              </ul>
+            </div>
+            <div class="info-box-accent border-l-2 p-3 rounded-lg">
+              <p class="text-sm text-gray-700 font-semibold mb-2">具体例：</p>
+              <p class="text-sm text-gray-700 mb-2">
+                4人家族がプラチナ・カードを保有（本会員1名＋無料の家族カード3枚）している場合：
+              </p>
+              <ul class="text-sm text-gray-700 space-y-1">
+                <li>
+                  • 「SHOP
+                  SMALL」キャンペーン（20%キャッシュバック、上限2,000円）が登場
+                </li>
+                <li>
+                  • 家族4人全員が、各自のスマートフォンでAmex
+                  Appにログインし、それぞれのカードでオファーを登録
+                </li>
+                <li>
+                  • 家族の支出を分担または集約し、各カードで10,000円ずつ利用
+                </li>
+                <li>
+                  •
+                  <strong
+                    >結果：世帯全体での最大キャッシュバック額は 2,000円 × 4名 =
+                    8,000円となり、リターンが4倍に増幅</strong
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 鉄則4 -->
+          <div class="info-box info-box-bg border-l-4 p-5 rounded-lg">
+            <h4 class="font-bold text-lg mb-2 amex-blue-text">
+              鉄則4: 利用規約の「3つのポイント」を確認する
+            </h4>
+            <p class="text-sm text-gray-700 mb-3">
+              登録後、詳細ボタンから必ず利用規約を確認してください。特に以下の点は重要です。
+            </p>
+            <div class="bg-white p-3 rounded-lg mb-3">
+              <p class="text-sm text-gray-700 font-semibold mb-2">
+                確認すべき3つのポイント：
+              </p>
+              <ul class="text-sm text-gray-700 space-y-1">
+                <li>
+                  •
+                  <strong>金額条件：</strong
+                  >「1回で◯円以上」か「合計で◯円以上」か。後者の場合、少額決済の積み重ねでも達成可能。
+                </li>
+                <li>
+                  •
+                  <strong>対象：</strong
+                  >「オンライン限定」か「店舗のみ」か。「特定の店舗（例：空港店除く）」は対象外か。
+                </li>
+                <li>
+                  •
+                  <strong>上限：</strong>「キャッシュバックの上限は◯円まで」か。
+                </li>
+              </ul>
+            </div>
+            <div class="bg-white p-3 rounded-lg">
+              <p class="text-sm text-gray-700 font-semibold mb-2">
+                その他の確認事項：
+              </p>
+              <ul class="text-sm text-gray-700 space-y-1">
+                <li>
+                  •
+                  <strong>決済方法：</strong
+                  >カード直接決済のみが対象か。第三者決済サービス（QRコード決済など）を経由した支払いは対象外となるケースがあるか
+                </li>
+                <li>
+                  •
+                  <strong>対象商品/サービス：</strong
+                  >特定の商品カテゴリやサービス（例：ギフトカードの購入、送料）が対象外となっていないか
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 鉄則5 -->
+          <div class="info-box info-box-accent border-l-4 p-5 rounded-lg">
+            <h4 class="font-bold text-lg mb-2 amex-blue-text">
+              鉄則5: 特典を「重ねがけ」する
+            </h4>
+            <p class="text-sm text-gray-700 mb-3">
+              アメックスの特典は組み合わせることで威力を発揮します。特典は異なるレイヤー（階層）で適用されると理解することが重要です。
+            </p>
+            <div class="bg-white p-3 rounded-lg mb-4">
+              <p class="text-sm text-gray-700 font-semibold mb-2">
+                特典の重ねがけの仕組み：
+              </p>
+              <ul class="text-sm text-gray-700 space-y-1">
+                <li>
+                  •
+                  <strong>政府・自治体レイヤー：</strong
+                  >全国旅行支援などの公的割引
+                </li>
+                <li>
+                  •
+                  <strong>加盟店・プラットフォームレイヤー：</strong
+                  >楽天ポイントのキャンペーンや、ヒルトン・オナーズのポイントアッププロモーションなど、加盟店自身が提供する特典
+                </li>
+                <li>
+                  •
+                  <strong>決済ネットワークレイヤー：</strong
+                  >Amexオファー（キャッシュバックなど）
+                </li>
+              </ul>
+            </div>
+            <div class="info-box-accent border-l-2 p-3 rounded-lg mb-3">
+              <p class="text-sm text-gray-700 font-semibold mb-2">
+                具体例1（ホテル利用）：
+              </p>
+              <p class="text-sm text-gray-700 mb-2">
+                ヒルトン系列ホテルでの宿泊を計画する場合：
+              </p>
+              <ol class="text-sm text-gray-700 space-y-1 ml-4 list-decimal">
+                <li>
+                  まず、政府の「全国旅行支援」を適用し、基本宿泊料金の割引を受ける（レイヤー1）
+                </li>
+                <li>
+                  次に、ヒルトン・オナーズの会員プログラムによるポイントを獲得する（レイヤー2）
+                </li>
+                <li>
+                  最後に、チェックアウト時の支払い（割引後の金額）を、事前に「ヒルトンで合計80,000円以上利用で15,000円キャッシュバック」のオファーに登録したアメックスカードで行う。これにより、決済額に対してキャッシュバックが発生する（レイヤー3）
+                </li>
+              </ol>
+            </div>
+            <div class="info-box-accent border-l-2 p-3 rounded-lg">
+              <p class="text-sm text-gray-700 font-semibold mb-2">
+                具体例2（オンライン旅行予約）：
+              </p>
+              <p class="text-sm text-gray-700 mb-2">
+                楽天トラベルでの予約を計画する場合：
+              </p>
+              <ol class="text-sm text-gray-700 space-y-1 ml-4 list-decimal">
+                <li>
+                  Amexオファーに「楽天トラベルで2%キャッシュバック」が提供されていることを確認し、登録する
+                </li>
+                <li>
+                  同時に、楽天トラベルが独自の「得旅キャンペーン」などでポイント10倍といったキャンペーンを実施している場合がある。楽天のキャンペーンは、アメックスのオファーとは独立して適用される
+                </li>
+                <li>
+                  予約時に楽天のキャンペーンにエントリーし、支払いを登録済みのアメックスカードで行う
+                </li>
+                <li>
+                  <strong>結果：</strong
+                  >楽天トラベルからは大量の楽天ポイントが付与され（レイヤー2）、後日アメリカン・エキスプレスから利用金額の2%がキャッシュバックされる（レイヤー3）。このように、異なる事業主体が提供する特典を組み合わせることで、価値を二重取りすることが可能となる。
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- セクション7: まとめ -->
+      <!-- 系列位置効果: 最後のセクションを強調して記憶に残す -->
+      <section id="summary" class="section-card p-8 mb-8 fade-in" style="border: 2px solid rgba(0, 111, 207, 0.2); box-shadow: 0 4px 16px rgba(0, 111, 207, 0.15);">
+        <h2
+          class="text-2xl font-bold amex-blue-text mb-4 border-b-2 amex-blue-border pb-2"
+        >
+          7. まとめ
+        </h2>
+        <p class="mb-4 text-gray-700">
+          アメックスの「キャンペーン・オファー」は、カードの基本特典に上乗せされる、非常に強力な追加特典です。その多くは、自ら情報を取りに行き、「事前登録」というアクションを起こさなければ利用できません。
+        </p>
+
+        <div class="info-box info-box-bg border-l-4 p-6 rounded-lg mb-6">
+          <h3 class="text-xl font-bold amex-blue-text mb-4">
+            📚 今日学んだこと
+          </h3>
+          <ol class="text-gray-700 space-y-3 ml-4 list-decimal">
+            <li>
+              <strong>オファーの真の価値：</strong>
+              基本特典を超える、年会費を上回るリターンを生み出す仕組み
+            </li>
+            <li>
+              <strong>3つのアクセス経路：</strong>
+              Amex App、オンライン・サービス、トラベル・デスクの使い分け
+            </li>
+            <li>
+              <strong>4つのオファー種類：</strong>
+              キャッシュバック、ポイントアップ、宿泊優待、提携割引の特徴
+            </li>
+            <li>
+              <strong>開催パターンの理解：</strong>
+              不定期オファーと定期プログラムの違いを把握
+            </li>
+            <li>
+              <strong>6つの鉄則：</strong>
+              毎日のチェック、即時登録、家族カード活用、規約確認、特典の重ねがけ
+            </li>
+          </ol>
+        </div>
+
+        <div class="info-box info-box-bg border-l-4 p-6 rounded-lg mb-6">
+          <h3 class="text-xl font-bold amex-blue-text mb-4">
+            🚀 今すぐできること
+          </h3>
+          <ol class="text-gray-700 space-y-3 ml-4 list-decimal">
+            <li>
+              <strong>Amex Appのダウンロード：</strong><br />
+              まだアプリをダウンロードしていない場合は、まず公式アプリをインストールしましょう
+            </li>
+            <li>
+              <strong>プッシュ通知の有効化：</strong><br />
+              新しいオファーの出現を逃さないよう、通知設定をONにしましょう
+            </li>
+            <li>
+              <strong>現在利用可能なオファーの確認：</strong><br />
+              アプリを開いて、今すぐ利用できるオファーをチェックしましょう
+            </li>
+            <li>
+              <strong>家族カードの戦略的配置検討：</strong><br />
+              家族カードを活用して、オファーの恩恵を最大化する戦略を考えましょう
+            </li>
+            <li>
+              <strong>毎日のチェック習慣の開始：</strong><br />
+              朝の通勤時や昼休みなど、生活リズムに組み込んで習慣化しましょう
+            </li>
+          </ol>
+        </div>
+
+        <!-- ビジュアル・アンカー: 最後のCTAを強調 -->
+        <div class="info-box info-box-accent border-l-4 p-6 rounded-lg" style="background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%); border-left-width: 6px;">
+          <h3 class="text-xl font-bold amex-blue-text mb-4">🎯 次のステップ</h3>
+          <p class="text-gray-700 mb-4">
+            ぜひこのガイドを参考に、Amexアプリの毎日のチェックを習慣化し、お得なオファーを漏れなく活用して、年会費以上の価値を引き出してください。
+          </p>
+          <!-- 明確なCTA: 次のアクションを明確に示す -->
+          <div class="text-center mt-6">
+            <p class="text-sm text-gray-600 mb-2">今すぐ始めましょう</p>
+            <p class="text-xs text-gray-500">Amex Appを開いて、利用可能なオファーを確認してください</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      style="
+        background: #f5f5f7;
+        padding: 60px 0;
+        margin-top: 120px;
+        border-top: 1px solid #d2d2d7;
+      "
+    >
+      <div class="container mx-auto max-w-5xl px-4">
+        <!-- 重要なお知らせ -->
+        <div
+          class="info-box info-box-accent border-l-4 p-6 rounded-lg mb-8 max-w-3xl mx-auto"
+          style="background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%); border-left-color: #ff6b6b;"
+        >
+          <h3
+            class="text-xl font-bold mb-4"
+            style="color: #c92a2a;"
+          >
+            ⚠️ 重要なお知らせ
+          </h3>
+          <div class="space-y-4 text-sm text-gray-700">
+            <p>
+              本ガイドは<strong>実験的公開</strong>であり、情報の正確性について完全な保証はできません。記載されている内容は、公開情報に基づきAIを活用して作成されたまとめです。
+            </p>
+            <p>
+              最新の情報や詳細については、必ず<strong>アメリカン・エキスプレスの公式サイト</strong>または<strong>Amex App</strong>でご確認ください。
+            </p>
+            <p>
+              ご質問やご意見がございましたら、<a
+                href="https://www.instagram.com/ino.moneycoach/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="amex-blue-text hover:underline font-semibold"
+                >InstagramのDM</a
+              >までお気軽にお問い合わせください。
+            </p>
+          </div>
+        </div>
+
+        <!-- コピーライト -->
+        <div class="text-center">
+          <p style="color: #86868b; font-size: 14px; margin-bottom: 8px;">
+            アメックス・オファー＆キャンペーン徹底活用術
+          </p>
+          <p style="color: #86868b; font-size: 12px; margin-top: 8px;">
+            © 2025 @ino-moneycoach All rights reserved.
+          </p>
+          <p style="color: #86868b; font-size: 11px; margin-top: 8px;">
+            本ガイドは公開情報に基づきAIを活用して作成されたまとめです。
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
