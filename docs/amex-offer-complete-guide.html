@@ -263,6 +263,78 @@
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(0, 111, 207, 0.4);
       }
+
+      /* アコーディオンスタイル */
+      details {
+        border: 2px solid #d1e7ff;
+        border-radius: 8px;
+        padding: 12px;
+        margin-bottom: 12px;
+        background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 4px rgba(0, 111, 207, 0.08);
+      }
+      
+      details:hover {
+        border-color: #006fcf;
+        box-shadow: 0 4px 12px rgba(0, 111, 207, 0.15);
+        transform: translateY(-1px);
+      }
+      
+      details[open] {
+        border-color: #006fcf;
+        background: #ffffff;
+        box-shadow: 0 4px 16px rgba(0, 111, 207, 0.2);
+      }
+      
+      summary {
+        cursor: pointer;
+        font-weight: 600;
+        color: #006fcf;
+        padding: 12px 16px;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: rgba(0, 111, 207, 0.05);
+        user-select: none;
+      }
+      
+      summary::-webkit-details-marker {
+        display: none;
+      }
+      
+      summary::before {
+        content: '▼';
+        font-size: 0.75rem;
+        transition: transform 0.3s ease;
+        display: inline-block;
+        color: #006fcf;
+        font-weight: bold;
+      }
+      
+      details[open] summary::before {
+        transform: rotate(180deg);
+      }
+      
+      summary:hover {
+        background: rgba(0, 111, 207, 0.12);
+        padding-left: 20px;
+      }
+      
+      summary::after {
+        content: 'クリックして展開';
+        font-size: 0.7rem;
+        color: #6b7280;
+        margin-left: auto;
+        font-weight: normal;
+      }
+      
+      details[open] summary::after {
+        content: 'クリックして閉じる';
+      }
     </style>
   </head>
   <body class="text-gray-800">
@@ -285,7 +357,7 @@
           「知っている人だけが得をする」2つの特典プログラムを完全マスター
         </p>
         <p class="mt-3 text-sm text-blue-200">
-          最終更新日：2025年11月29日
+          最終更新日：2025年12月13日
         </p>
       </div>
     </header>
@@ -323,9 +395,17 @@
               >5. 現在開催中のキャンペーン詳細</a
             >
             <ul class="ml-6 mt-2 space-y-1 text-sm">
-              <li><a href="#bonus-points-partners" class="toc-link amex-blue-text">5.1 ボーナスポイント・パートナーズ</a></li>
+              <li><a href="#bonus-points-partners" class="toc-link amex-blue-text">5.1 ボーナスポイント・パートナーズ</a>
+                <ul class="ml-4 mt-1 text-xs text-gray-500">
+                  <li>• <a href="#by-emotion" class="hover:underline">By Emotion (NEW)</a></li>
+                </ul>
+              </li>
               <li><a href="#accommodation-benefits" class="toc-link amex-blue-text">5.2 宿泊予約特典（トラベル・デスク経由）</a></li>
-              <li><a href="#cashback-campaigns" class="toc-link amex-blue-text">5.3 キャッシュバック・優待キャンペーン</a></li>
+              <li><a href="#cashback-campaigns" class="toc-link amex-blue-text">5.3 キャッシュバック・優待キャンペーン</a>
+                <ul class="ml-4 mt-1 text-xs text-gray-500">
+                  <li>• <a href="#singapore-airlines" class="hover:underline">シンガポール航空</a></li>
+                </ul>
+              </li>
               <li><a href="#hotel-special-offers" class="toc-link amex-blue-text">5.4 ホテル/旅行関連の特別優待</a></li>
             </ul>
           </li>
@@ -751,11 +831,29 @@
             「ボーナスポイント・パートナーズ」は、加盟店でカードを利用するだけで、ポイントが通常より多く貯まるプログラムです。<strong class="amex-blue-text">事前登録は不要</strong>です。
           </p>
 
+          <!-- By Emotion ボーナスポイント -->
+          <div id="by-emotion" class="info-box info-box-accent border-l-4 p-5 rounded-lg mb-6">
+            <h4 class="font-bold text-lg mb-2 amex-blue-text">
+              <span class="inline-block px-2 py-1 text-xs font-bold text-white bg-red-500 rounded mr-2">NEW</span>
+              🛍️ By Emotion ボーナスポイントキャンペーン
+            </h4>
+            <span class="inline-block bg-gradient-to-r from-gray-800 to-gray-700 text-white text-xs px-2 py-1 rounded mb-3">グリーン / ゴールド / ゴールド・プリファード / プラチナ</span>
+            
+            <ul class="text-sm text-gray-700 space-y-2">
+              <li><strong>特典：</strong>ハイエンド・オンラインストア「By Emotion」での決済で <strong class="amex-blue-text">100円=10ポイント</strong>（通常1P+ボーナス9P）</li>
+              <li><strong>期間：</strong>2025年11月27日（木）〜2026年2月26日（木）</li>
+              <li><strong>上限：</strong>500万円（税込）まで</li>
+              <li><strong>取扱商品：</strong>高級食品、アート、ファッション、ゴルフ用品、特別体験プログラム（数千円〜数百万円の価格帯）</li>
+              <li class="text-xs text-gray-500"><strong>💡</strong> 家族カード利用分も基本カード会員に合算</li>
+            </ul>
+          </div>
+
           <!-- 宿泊 100円=5ポイント -->
           <div class="mb-6">
-            <h4 class="font-bold text-lg mb-3 amex-blue-text border-b pb-2">🏨 宿泊施設（100円=5ポイント）</h4>
-            <p class="text-sm text-gray-600 mb-3">通常1P + ボーナス4P / 上限: 1,600,000ポイント（基本カード1枚につき）</p>
-            <div class="overflow-x-auto">
+            <details>
+              <summary>🏨 宿泊施設（100円=5ポイント）<span class="text-xs text-gray-500 ml-2">7施設</span></summary>
+              <p class="text-sm text-gray-600 my-3">通常1P + ボーナス4P / 上限: 1,600,000ポイント（基本カード1枚につき）</p>
+              <div class="overflow-x-auto">
               <table class="text-sm">
                 <thead>
                   <tr>
@@ -775,14 +873,16 @@
                   <tr><td><strong>KIZASHI THE SUITE 京都祇園</strong></td><td>京都・祇園</td><td>お宿にて決済</td><td>全8室のデザイナーズホテル（全室スイート）</td></tr>
                 </tbody>
               </table>
-            </div>
+              </div>
+            </details>
           </div>
 
           <!-- 宿泊 100円=3ポイント -->
           <div class="mb-6">
-            <h4 class="font-bold text-lg mb-3 amex-blue-text border-b pb-2">🏨 宿泊施設（100円=3ポイント）</h4>
-            <p class="text-sm text-gray-600 mb-3">通常1P + ボーナス2P / 上限: 800,000ポイント（基本カード1枚につき）</p>
-            <div class="overflow-x-auto">
+            <details>
+              <summary>🏨 宿泊施設（100円=3ポイント）<span class="text-xs text-gray-500 ml-2">14施設</span></summary>
+              <p class="text-sm text-gray-600 my-3">通常1P + ボーナス2P / 上限: 800,000ポイント（基本カード1枚につき）</p>
+              <div class="overflow-x-auto">
               <table class="text-sm">
                 <thead>
                   <tr>
@@ -809,14 +909,16 @@
                   <tr><td><strong>汀渚 ばさら邸</strong></td><td>三重・志摩</td><td>お宿にて決済</td><td>全客室に露天風呂を備える隠れ家</td></tr>
                 </tbody>
               </table>
-            </div>
+              </div>
+            </details>
           </div>
 
           <!-- 宿泊 100円=2ポイント -->
           <div class="mb-6">
-            <h4 class="font-bold text-lg mb-3 amex-blue-text border-b pb-2">🏨 宿泊施設（100円=2ポイント）</h4>
-            <p class="text-sm text-gray-600 mb-3">通常1P + ボーナス1P / 上限: 400,000ポイント（基本カード1枚につき）</p>
-            <div class="overflow-x-auto">
+            <details>
+              <summary>🏨 宿泊施設（100円=2ポイント）<span class="text-xs text-gray-500 ml-2">17施設</span></summary>
+              <p class="text-sm text-gray-600 my-3">通常1P + ボーナス1P / 上限: 400,000ポイント（基本カード1枚につき）</p>
+              <div class="overflow-x-auto">
               <table class="text-sm">
                 <thead>
                   <tr>
@@ -848,13 +950,15 @@
                   <tr><td><strong>やど紫苑亭</strong></td><td>鳥取・米子</td><td>ホテルにて決済</td><td>10室の料理宿</td></tr>
                 </tbody>
               </table>
-            </div>
+              </div>
+            </details>
           </div>
 
           <!-- ダイニング -->
           <div class="mb-6">
-            <h4 class="font-bold text-lg mb-3 amex-blue-text border-b pb-2">🍽️ ダイニング</h4>
-            <div class="overflow-x-auto">
+            <details>
+              <summary>🍽️ ダイニング<span class="text-xs text-gray-500 ml-2">16店舗</span></summary>
+              <div class="overflow-x-auto mt-3">
               <table class="text-sm">
                 <thead>
                   <tr>
@@ -889,13 +993,15 @@
                   <tr><td>2P</td><td><strong>バスク料理「IÑAKI」</strong></td><td>大阪・中央区</td><td>レストランにて決済</td><td>50,000P</td></tr>
                 </tbody>
               </table>
-            </div>
+              </div>
+            </details>
           </div>
 
           <!-- ショッピング -->
           <div class="mb-6">
-            <h4 class="font-bold text-lg mb-3 amex-blue-text border-b pb-2">🛍️ ショッピング</h4>
-            <div class="overflow-x-auto">
+            <details>
+              <summary>🛍️ ショッピング<span class="text-xs text-gray-500 ml-2">6店舗</span></summary>
+              <div class="overflow-x-auto mt-3">
               <table class="text-sm">
                 <thead>
                   <tr>
@@ -918,13 +1024,15 @@
                   <tr><td>2P</td><td><strong>LAND OF TOMORROW 丸の内店</strong></td><td>東京・丸の内</td><td>ショッピング</td><td>250,000P</td></tr>
                 </tbody>
               </table>
-            </div>
+              </div>
+            </details>
           </div>
 
           <!-- スパ・ゴルフ・その他 -->
           <div class="mb-6">
-            <h4 class="font-bold text-lg mb-3 amex-blue-text border-b pb-2">💆 スパ・ゴルフ・その他</h4>
-            <div class="overflow-x-auto">
+            <details>
+              <summary>💆 スパ・ゴルフ・その他<span class="text-xs text-gray-500 ml-2">10店舗</span></summary>
+              <div class="overflow-x-auto mt-3">
               <table class="text-sm">
                 <thead>
                   <tr>
@@ -1079,6 +1187,8 @@
               </table>
             </div>
           </div>
+
+
         </div>
 
         <!-- 5.3 キャッシュバック・優待キャンペーン -->
@@ -1094,10 +1204,13 @@
 
           <!-- 宿泊10%還元 -->
           <div class="info-box info-box-bg border-l-4 p-5 rounded-lg mb-4">
-            <h4 class="font-bold text-lg mb-2 amex-blue-text">🏨 事前登録制 宿泊10%還元キャンペーン</h4>
+            <h4 class="font-bold text-lg mb-2 amex-blue-text">
+              <span class="inline-block px-2 py-1 text-xs font-bold text-white bg-orange-500 rounded mr-2">⏰ 終了間近</span>
+              🏨 事前登録制 宿泊10%還元キャンペーン
+            </h4>
             <ul class="text-sm text-gray-700 space-y-2">
               <li><strong>特典内容：</strong>事前登録の上、対象のホテル・旅館にてカードを利用すると、<strong class="amex-blue-text">10%をキャッシュバック</strong></li>
-              <li><strong>期間：</strong>2025年8月22日～2025年12月20日</li>
+              <li><strong>期間：</strong>2025年8月22日～<span class="text-orange-600 font-bold">2025年12月20日（残り約7日）</span></li>
               <li><strong>上限：</strong>キャッシュバック総額は期間中合計<strong>100,000円まで</strong>（登録済みカード1枚につき）</li>
               <li><strong>制限：</strong>事前登録は<strong>先着500,000名様限定</strong></li>
               <li class="text-red-600"><strong>⚠️ 注意：</strong>フロントデスクで決済された宿泊料金のみが対象。レストラン・施設での決済、オンライン事前決済、代理店経由の決済、QUICPayなどは対象外</li>
@@ -1106,13 +1219,16 @@
 
           <!-- 楽天トラベル -->
           <div class="info-box info-box-bg border-l-4 p-5 rounded-lg mb-4">
-            <h4 class="font-bold text-lg mb-2 amex-blue-text">✈️ 楽天トラベル キャッシュバックキャンペーン</h4>
+            <h4 class="font-bold text-lg mb-2 amex-blue-text">
+              <span class="inline-block px-2 py-1 text-xs font-bold text-white bg-orange-500 rounded mr-2">⏰ 終了間近（ビジネスカード）</span>
+              ✈️ 楽天トラベル キャッシュバックキャンペーン
+            </h4>
             <ul class="text-sm text-gray-700 space-y-2">
               <li><strong>特典内容：</strong>事前登録の上、楽天トラベルのウェブサイトにてカードを利用すると、<strong class="amex-blue-text">2%をキャッシュバック</strong></li>
               <li><strong>期間：</strong>
                 <ul class="ml-4 mt-1">
                   <li>• 個人カード：<strong>2026年4月30日（木）まで</strong></li>
-                  <li>• ビジネス・カード：2025年12月31日（水）まで</li>
+                  <li>• ビジネス・カード：<span class="text-orange-600 font-bold">2025年12月31日（水）まで（残り約18日）</span></li>
                 </ul>
               </li>
               <li><strong>上限：</strong>登録済みカード1枚につき合計<strong>300万円まで</strong></li>
@@ -1135,6 +1251,20 @@
                   <li>• 1等 8日間パス（665スイスフラン）→ 10日間利用可能</li>
                 </ul>
               </li>
+            </ul>
+          </div>
+
+          <!-- シンガポール航空 -->
+          <div id="singapore-airlines" class="info-box info-box-accent border-l-4 p-5 rounded-lg mb-4">
+            <h4 class="font-bold text-lg mb-2 amex-blue-text">✈️ シンガポール航空 航空券割引キャンペーン</h4>
+            <span class="inline-block bg-gray-800 text-white text-xs px-2 py-1 rounded mb-3">全てのアメリカン・エキスプレス・カード</span>
+            
+            <ul class="text-sm text-gray-700 space-y-2">
+              <li><strong>割引率：</strong>プレミアムエコノミー/ビジネスクラス <strong class="amex-blue-text">5〜15% OFF</strong>、ファーストクラス <strong class="amex-blue-text">5% OFF</strong></li>
+              <li><strong>期間：</strong>2026年3月31日（火）までに予約・決済完了分</li>
+              <li><strong>対象路線：</strong>東京（羽田・成田）、大阪、名古屋、福岡発着のシンガポール航空便</li>
+              <li><strong>予約方法：</strong>アメリカン・エキスプレス・トラベルオンラインで「Singapore Airline」を選択し、「<strong class="amex-blue-text">カード会員様特別運賃</strong>」と表示されるフライトを予約</li>
+              <li class="text-xs text-gray-500"><strong>💡</strong> マイル加算可、世界一のチャンギ空港経由、ビジネス/ファーストクラスはシルバークリスラウンジ利用可</li>
             </ul>
           </div>
         </div>
@@ -1219,27 +1349,45 @@
 
           <!-- ウォルドーフ・アストリア大阪 -->
           <div class="info-box info-box-accent border-l-4 p-5 rounded-lg mb-4">
-            <h4 class="font-bold text-lg mb-2 amex-blue-text">✨ ウォルドーフ・アストリア大阪 3泊目無料特典</h4>
+            <h4 class="font-bold text-lg mb-2 amex-blue-text">
+              <span class="inline-block px-2 py-1 text-xs font-bold text-white bg-orange-500 rounded mr-2">⏰ 終了間近</span>
+              ✨ ウォルドーフ・アストリア大阪 3泊目無料特典
+            </h4>
             <p class="text-sm text-gray-700 mb-2">2025年4月に開業したウォルドーフ・アストリア大阪を<strong>3連泊以上</strong>予約すると、<strong class="amex-blue-text">3泊目が無料</strong>に！</p>
             <ul class="text-sm text-gray-700 space-y-1">
               <li><strong>対象者：</strong>プラチナ・カード®、ビジネス・プラチナカード会員様限定（「FINE HOTELS + RESORTS」特典の活用が必要）</li>
               <li><strong>予約期間：</strong>2025年12月27日（土）まで</li>
-              <li><strong>旅行期間：</strong>2025年12月30日（火）チェックアウト分まで</li>
+              <li><strong>旅行期間：</strong><span class="text-orange-600 font-bold">2025年12月30日（火）チェックアウト分まで（残り約17日）</span></li>
             </ul>
           </div>
 
           <!-- アジア現地優待 -->
           <div class="info-box info-box-bg border-l-4 p-5 rounded-lg mb-4">
-            <h4 class="font-bold text-lg mb-2 amex-blue-text">🌏 アジア現地優待（海外利用キャンペーン）</h4>
+            <h4 class="font-bold text-lg mb-2 amex-blue-text">
+              <span class="inline-block px-2 py-1 text-xs font-bold text-white bg-orange-500 rounded mr-2">⏰ 終了間近</span>
+              🌏 アジア現地優待（海外利用キャンペーン）
+            </h4>
             <span class="inline-block bg-green-700 text-white text-xs px-2 py-1 rounded mb-3">全てのアメリカン・エキスプレス・カード</span>
+            <div class="bg-orange-50 border border-orange-300 rounded-lg p-3 mb-4">
+              <p class="text-xs text-orange-800 font-bold">
+                ⚠️ 注意：このキャンペーンは2025年12月31日で終了予定です（残り約18日）。利用予定の方はお早めにご確認ください。
+              </p>
+            </div>
             <div class="grid md:grid-cols-2 gap-4">
               <div class="bg-white p-3 rounded-lg">
+                <p class="font-semibold text-gray-700 mb-1">🇰🇷 韓国</p>
+                <p class="text-sm text-gray-600 mb-2"><strong>特典例：</strong>「ロッテ免税店」で最大15%割引（ゴールドメンバーシップ提供）</p>
+                <p class="text-xs text-orange-600 font-semibold">期限：2025年12月31日（残り約18日）</p>
+              </div>
+              <div class="bg-white p-3 rounded-lg">
                 <p class="font-semibold text-gray-700 mb-1">🇭🇰 香港</p>
-                <p class="text-sm text-gray-600">「Star Ferry Ride」が片道HK$1で体験可能</p>
+                <p class="text-sm text-gray-600 mb-2"><strong>特典例：</strong>「Star Ferry Ride」が片道HK$1で体験可能</p>
+                <p class="text-xs text-orange-600 font-semibold">期限：2025年12月31日（残り約18日）</p>
               </div>
               <div class="bg-white p-3 rounded-lg">
                 <p class="font-semibold text-gray-700 mb-1">🇹🇼 台湾</p>
-                <p class="text-sm text-gray-600">「Wyndham Sun Moon Lake」宿泊料金15%割引</p>
+                <p class="text-sm text-gray-600 mb-2"><strong>特典例：</strong>「Wyndham Sun Moon Lake」宿泊料金15%割引</p>
+                <p class="text-xs text-orange-600 font-semibold">期限：2025年12月31日（残り約18日）</p>
               </div>
               <div class="bg-white p-3 rounded-lg">
                 <p class="font-semibold text-gray-700 mb-1">🇸🇬 シンガポール</p>
@@ -1250,6 +1398,7 @@
                 <p class="text-sm text-gray-600">「Baba Beach Club Hua Hin」プロモーションコード「25AMXBBH」で最大50%割引</p>
               </div>
             </div>
+            <p class="text-xs text-gray-500 mt-3">※各国の詳細な特典情報は<a href="https://www.americanexpress.com/ja-jp/benefits/travel/travel-asia/" target="_blank" class="amex-blue-text hover:underline">公式サイト</a>でご確認ください</p>
           </div>
 
           <!-- ボーナスポイント獲得 -->
@@ -1649,7 +1798,7 @@
             © 2025 @ino-moneycoach All rights reserved.
           </p>
           <p style="color: #86868b; font-size: 11px; margin-top: 8px;">
-            作成日：2025年11月29日
+            最終更新日：2025年12月13日
           </p>
           <p style="color: #86868b; font-size: 11px; margin-top: 4px;">
             本ガイドは公開情報に基づきAIを活用して作成されたまとめです。
