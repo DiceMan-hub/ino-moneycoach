@@ -1,1 +1,15 @@
-00_Projects/Canva_Posts/
+# プライベートディレクトリ（公開しない）
+00_Projects/
+01_OurStory/
+
+# エディタ設定ファイル
+.obsidian/
+.vscode/
+.specstory/
+
+# その他の除外
+.DS_Store
+*.local
+
+# 注意: docs/ 内の 00_Projects/ も除外
+docs/00_Projects/
