@@ -1,33 +1,104 @@
-# GitHub Pages File Structure Rules
+# GitHub Pages デプロイルール（Cursor AI 用）
 
-## CRITICAL: HTML File Placement for GitHub Pages
+このリポジトリは GitHub Pages で公開されています。
+公開URL: https://diceman-hub.github.io/ino-moneycoach/
 
-When creating or modifying HTML files for this repository's GitHub Pages:
+## デプロイの仕組み
 
-  ### ✅ REQUIRED STRUCTURE
-ALL HTML files MUST follow this exact structure:
+- `docs/` ディレクトリの内容が GitHub Pages として公開される
+- デプロイは `main` ブランチへの push 時に GitHub Actions が自動実行
+- **feature ブランチへの push ではデプロイされない**（main へのマージが必要）
+
+## HTML ファイル配置ルール
+
+### 必須の構造（新規作成時）
 ```
 /docs/[project-name]/index.html
-  ```
+```
+→ URL: `https://diceman-hub.github.io/ino-moneycoach/[project-name]/`
 
-  ### 📋 RULES
-  1. Create a folder directly under `/docs/` with your project name
-2. Inside that folder, create `index.html` as the main file
-3. URL will be: `https://diceman-hub.github.io/ino-moneycoach/[project-name]/`
+### 正しい例
+```
+/docs/sfc-dashboard/index.html     → /sfc-dashboard/
+/docs/credit-card/index.html       → /credit-card/
+/docs/budget-tracker/index.html    → /budget-tracker/
+```
 
-### ❌ NEVER DO THIS
-  - `/docs/project-name.html` ← Wrong! This creates URLs with .html extension
-- `/docs/folder/subfolder/project/index.html` ← Wrong! Too many levels
-- `/docs/project-name/main.html` ← Wrong! Must be named index.html
+### 禁止事項
+```
+/docs/project-name.html            ← .html拡張子付きURLになる
+/docs/folder/subfolder/page.html   ← 深いネストは禁止
+/docs/project/main.html            ← index.html以外はフォルダURLで404になる
+```
 
-  ### ✅ CORRECT EXAMPLES
-  - `/docs/sfc-dashboard/index.html` → URL: `/sfc-dashboard/`
-  - `/docs/credit-card/index.html` → URL: `/credit-card/`
-  - `/docs/budget-tracker/index.html` → URL: `/budget-tracker/`
+### フォルダ名の命名規則
+- 英語の小文字とハイフンのみ使用（例: `sfc-dashboard`）
+- 日本語ファイル名はレガシー。新規では使わない
 
-  ### 📝 IMPORTANT NOTES
-  - Always use lowercase, hyphenated folder names
-- Each project gets its own folder
-- The file inside MUST be named `index.html`
-  - This structure ensures clean URLs without .html extensions
-- See /docs/README.md for detailed guidelines
+## 404エラーを防ぐチェックリスト
+
+HTMLファイルを追加・変更したら、push前に以下を必ず確認：
+
+1. **ファイルは `docs/` 内にあるか？** — ルート直下に置いても公開されない
+2. **`docs/[name]/index.html` の構造か？** — `docs/[name].html` はレガシー
+3. **リンク先ファイルは実在するか？** — `docs/index.html` のリンクと実ファイルが一致
+4. **mainブランチにマージしたか？** — feature ブランチでは Pages は更新されない
+5. **検証スクリプトを実行したか？** — `bash scripts/validate-pages.sh`
+
+## Push 前に実行すべきコマンド
+
+```bash
+# デプロイ前チェック（必須）
+bash scripts/validate-pages.sh
+
+# エラー0件を確認してから push
+git push origin main
+```
+
+## 新しいページを追加する完全手順
+
+```bash
+# 1. フォルダとindex.htmlを作成
+mkdir -p docs/new-project
+# → docs/new-project/index.html を作成
+
+# 2. docs/index.html にリンクを追加（必要な場合）
+# <a href="new-project/" class="link-button">新しいプロジェクト</a>
+
+# 3. 検証
+bash scripts/validate-pages.sh
+
+# 4. コミット & プッシュ
+git add docs/new-project/index.html docs/index.html
+git commit -m "Add new-project page"
+git push origin main
+
+# 5. 数分待ってからURLを確認
+# https://diceman-hub.github.io/ino-moneycoach/new-project/
+```
+
+## よくある 404 の原因と対処
+
+| 症状 | 原因 | 対処 |
+|------|------|------|
+| 新ページが404 | feature ブランチにpushしただけ | main にマージしてpush |
+| 全ページが404 | docs/.nojekyll が消えた | `touch docs/.nojekyll` して再push |
+| 特定ページだけ404 | ファイルが docs/ 外にある | docs/ 内に移動 |
+| フォルダURLで404 | index.html がない | ファイル名を index.html に変更 |
+| リンクから404 | index.html のhrefが間違い | validate-pages.sh で検証 |
+
+## ディレクトリ構造
+
+```
+/
+├── docs/                  ← GitHub Pages 公開ディレクトリ（触る時は慎重に）
+│   ├── .nojekyll          ← 削除禁止
+│   ├── index.html         ← トップページ
+│   ├── [project]/index.html  ← 各ページ（推奨構造）
+│   └── *.html             ← レガシーページ（新規作成禁止）
+├── archive/               ← 非公開のアーカイブ
+├── content/               ← ソースコンテンツ（MD等）
+├── scripts/               ← ユーティリティスクリプト
+├── credit_card_comparison/ ← 開発中プロジェクト
+└── .github/workflows/     ← GitHub Actions 設定
+```
