@@ -1,0 +1,33 @@
+# GitHub Pages File Structure Rules
+
+## CRITICAL: HTML File Placement for GitHub Pages
+
+When creating or modifying HTML files for this repository's GitHub Pages:
+
+  ### ✅ REQUIRED STRUCTURE
+ALL HTML files MUST follow this exact structure:
+```
+/docs/[project-name]/index.html
+  ```
+
+  ### 📋 RULES
+  1. Create a folder directly under `/docs/` with your project name
+2. Inside that folder, create `index.html` as the main file
+3. URL will be: `https://diceman-hub.github.io/ino-moneycoach/[project-name]/`
+
+### ❌ NEVER DO THIS
+  - `/docs/project-name.html` ← Wrong! This creates URLs with .html extension
+- `/docs/folder/subfolder/project/index.html` ← Wrong! Too many levels
+- `/docs/project-name/main.html` ← Wrong! Must be named index.html
+
+  ### ✅ CORRECT EXAMPLES
+  - `/docs/sfc-dashboard/index.html` → URL: `/sfc-dashboard/`
+  - `/docs/credit-card/index.html` → URL: `/credit-card/`
+  - `/docs/budget-tracker/index.html` → URL: `/budget-tracker/`
+
+  ### 📝 IMPORTANT NOTES
+  - Always use lowercase, hyphenated folder names
+- Each project gets its own folder
+- The file inside MUST be named `index.html`
+  - This structure ensures clean URLs without .html extensions
+- See /docs/README.md for detailed guidelines
