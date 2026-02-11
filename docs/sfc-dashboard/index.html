@@ -231,6 +231,7 @@
         .route-haneda-ishigaki { background: rgba(124, 58, 237, 0.2); color: #a78bfa; }
         .route-haneda-miyako { background: rgba(251, 191, 36, 0.2); color: #fbbf24; }
         .route-naha-sendai { background: rgba(52, 211, 153, 0.2); color: #34d399; }
+        .route-kul-hnd { background: rgba(236, 72, 153, 0.2); color: #ec4899; }
 
         /* モバイル用路線カード（デフォルトは非表示） */
         .route-cards-mobile {
@@ -303,6 +304,7 @@
         .route-haneda-ishigaki-card { border-left: 3px solid #a78bfa; }
         .route-haneda-miyako-card { border-left: 3px solid #fbbf24; }
         .route-naha-sendai-card { border-left: 3px solid #34d399; }
+        .route-kul-hnd-card { border-left: 3px solid #ec4899; }
 
         .remaining-section {
             background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(251, 191, 36, 0.05));
@@ -815,26 +817,27 @@
             <div class="progress-container">
                 <div class="progress-bar" style="position: relative;">
                     <div class="milestone" style="left: 60%;">30,000PP<br>ブロンズ ✓</div>
-                    <div class="progress-fill" style="width: 61.52%;">61.52%</div>
+                    <div class="milestone" style="left: 100%;">50,000PP<br>SFC ✓</div>
+                    <div class="progress-fill" style="width: 100%;">100.1%</div>
                 </div>
                 <div class="progress-labels">
                     <span>0 PP</span>
-                    <span>現在: 30,762 PP</span>
+                    <span>現在: 50,052 PP</span>
                     <span>目標: 50,000 PP</span>
                 </div>
             </div>
             <div class="highlight-box">
                 <div class="highlight-item">
                     <span class="highlight-label">残り必要PP</span>
-                    <span class="highlight-value">19,238 PP</span>
+                    <span class="highlight-value" style="color: #34d399;">達成！</span>
                 </div>
                 <div class="highlight-item">
                     <span class="highlight-label">羽田⇔那覇換算</span>
-                    <span class="highlight-value">約13便（7往復）</span>
+                    <span class="highlight-value">26便（1月＋2月上旬）</span>
                 </div>
                 <div class="highlight-item">
                     <span class="highlight-label">達成予想</span>
-                    <span class="highlight-value">あと約13便で達成</span>
+                    <span class="highlight-value" style="color: #34d399;">SFC達成！</span>
                 </div>
             </div>
         </div>
@@ -842,36 +845,36 @@
         <!-- 総フライト数 -->
         <div class="card">
             <div class="card-title">総フライト数</div>
-            <div class="stat-value">20<span class="stat-unit">便</span></div>
-            <div class="stat-sub">期間: 約1ヶ月間（1月）</div>
+            <div class="stat-value">26<span class="stat-unit">便</span></div>
+            <div class="stat-sub">期間: 約1.5ヶ月間（1月＋2月上旬）</div>
         </div>
 
         <!-- 獲得PP -->
         <div class="card">
             <div class="card-title">獲得プレミアムポイント</div>
-            <div class="stat-value">30,762<span class="stat-unit">PP</span></div>
-            <div class="stat-sub">1フライト平均: 1,538 PP</div>
+            <div class="stat-value">50,052<span class="stat-unit">PP</span></div>
+            <div class="stat-sub">1フライト平均: 1,925 PP</div>
         </div>
 
         <!-- 獲得マイル -->
         <div class="card">
             <div class="card-title">獲得フライトマイル</div>
-            <div class="stat-value">23,626<span class="stat-unit">マイル</span></div>
-            <div class="stat-sub">1フライト平均: 1,181 マイル</div>
+            <div class="stat-value">35,660<span class="stat-unit">マイル</span></div>
+            <div class="stat-sub">1フライト平均: 1,372 マイル</div>
         </div>
 
         <!-- 残りPP -->
         <div class="card remaining-section">
             <div class="card-title">SFC達成まで残り</div>
-            <div class="stat-value remaining-value">19,238<span class="stat-unit">PP</span></div>
-            <div class="stat-sub">目標: 50,000 PP</div>
+            <div class="stat-value remaining-value" style="color: #34d399;">達成！</div>
+            <div class="stat-sub">目標: 50,000 PP（50,052 PP獲得）</div>
         </div>
 
         <!-- 総飛行距離 -->
         <div class="card">
             <div class="card-title">総飛行距離</div>
-            <div class="stat-value">20,652<span class="stat-unit">km</span></div>
-            <div class="stat-sub">地球半周相当（約52%）</div>
+            <div class="stat-value">35,416<span class="stat-unit">km</span></div>
+            <div class="stat-sub">地球半周の約89%</div>
         </div>
 
         <!-- PP効率 -->
@@ -879,11 +882,11 @@
             <div class="card-title">PP効率指標</div>
             <div class="efficiency-grid">
                 <div class="efficiency-item">
-                    <div class="efficiency-value">1.49</div>
+                    <div class="efficiency-value">1.39</div>
                     <div class="efficiency-label">PP/km</div>
                 </div>
                 <div class="efficiency-item">
-                    <div class="efficiency-value">1,538</div>
+                    <div class="efficiency-value">1,925</div>
                     <div class="efficiency-label">平均PP/便</div>
                 </div>
             </div>
@@ -903,7 +906,7 @@
                 </div>
             </div>
             <div style="margin-top: 12px; font-size: 0.8rem; color: #94a3b8; text-align: center;">
-                ※ 実際の航空券代（243,070円）から算出
+                ※ 実際の航空券代（464,024円）から算出
             </div>
         </div>
 
@@ -941,18 +944,18 @@
                 <tbody>
                     <tr>
                         <td><span class="route-badge route-haneda-naha">羽田 → 那覇</span></td>
-                        <td>7便</td>
-                        <td>7,749</td>
-                        <td>10,332</td>
-                        <td>1,476</td>
+                        <td>8便</td>
+                        <td>8,733</td>
+                        <td>12,300</td>
+                        <td>1,538</td>
                         <td>⭐⭐⭐</td>
                     </tr>
                     <tr>
                         <td><span class="route-badge route-haneda-naha">那覇 → 羽田</span></td>
-                        <td>7便</td>
-                        <td>7,749</td>
-                        <td>10,332</td>
-                        <td>1,476</td>
+                        <td>8便</td>
+                        <td>8,733</td>
+                        <td>12,300</td>
+                        <td>1,538</td>
                         <td>⭐⭐⭐</td>
                     </tr>
                     <tr>
@@ -990,17 +993,33 @@
                     <tr>
                         <td><span class="route-badge route-naha-sendai">那覇 → 仙台</span></td>
                         <td>1便</td>
-                        <td>1,341</td>
-                        <td>1,791</td>
-                        <td>1,791</td>
+                        <td>1,130</td>
+                        <td>2,260</td>
+                        <td>2,260</td>
                         <td>⭐⭐⭐⭐⭐</td>
                     </tr>
                     <tr>
                         <td><span class="route-badge route-naha-sendai">仙台 → 那覇</span></td>
                         <td>1便</td>
-                        <td>1,341</td>
-                        <td>1,791</td>
-                        <td>1,791</td>
+                        <td>1,130</td>
+                        <td>2,260</td>
+                        <td>2,260</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><span class="route-badge route-kul-hnd">クアラルンプール → 羽田</span></td>
+                        <td>1便</td>
+                        <td>4,181</td>
+                        <td>5,417</td>
+                        <td>5,417</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><span class="route-badge route-kul-hnd">羽田 → クアラルンプール</span></td>
+                        <td>1便</td>
+                        <td>4,181</td>
+                        <td>5,417</td>
+                        <td>5,417</td>
                         <td>⭐⭐⭐⭐⭐</td>
                     </tr>
                 </tbody>
@@ -1014,19 +1033,19 @@
                     </div>
                     <div class="route-card-stats">
                         <div class="route-stat">
-                            <span class="route-stat-num">14</span>
+                            <span class="route-stat-num">16</span>
                             <span class="route-stat-label">便</span>
                         </div>
                         <div class="route-stat">
-                            <span class="route-stat-num">15,498</span>
+                            <span class="route-stat-num">17,466</span>
                             <span class="route-stat-label">マイル</span>
                         </div>
                         <div class="route-stat">
-                            <span class="route-stat-num">20,664</span>
+                            <span class="route-stat-num">24,600</span>
                             <span class="route-stat-label">PP</span>
                         </div>
                         <div class="route-stat highlight">
-                            <span class="route-stat-num">1,476</span>
+                            <span class="route-stat-num">1,538</span>
                             <span class="route-stat-label">PP/便</span>
                         </div>
                     </div>
@@ -1090,15 +1109,39 @@
                             <span class="route-stat-label">便</span>
                         </div>
                         <div class="route-stat">
-                            <span class="route-stat-num">2,682</span>
+                            <span class="route-stat-num">2,260</span>
                             <span class="route-stat-label">マイル</span>
                         </div>
                         <div class="route-stat">
-                            <span class="route-stat-num">3,582</span>
+                            <span class="route-stat-num">4,520</span>
                             <span class="route-stat-label">PP</span>
                         </div>
                         <div class="route-stat highlight">
-                            <span class="route-stat-num">1,791</span>
+                            <span class="route-stat-num">2,260</span>
+                            <span class="route-stat-label">PP/便</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="route-card route-kul-hnd-card">
+                    <div class="route-card-header">
+                        <span class="route-badge route-kul-hnd">クアラルンプール ⇔ 羽田</span>
+                        <span class="route-efficiency">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <div class="route-card-stats">
+                        <div class="route-stat">
+                            <span class="route-stat-num">2</span>
+                            <span class="route-stat-label">便</span>
+                        </div>
+                        <div class="route-stat">
+                            <span class="route-stat-num">8,362</span>
+                            <span class="route-stat-label">マイル</span>
+                        </div>
+                        <div class="route-stat">
+                            <span class="route-stat-num">10,834</span>
+                            <span class="route-stat-label">PP</span>
+                        </div>
+                        <div class="route-stat highlight">
+                            <span class="route-stat-num">5,417</span>
                             <span class="route-stat-label">PP/便</span>
                         </div>
                     </div>
@@ -1108,7 +1151,7 @@
 
         <!-- フライト一覧 -->
         <div class="card table-container" id="flightListContainer">
-            <div class="card-title">フライト一覧（全20便）</div>
+            <div class="card-title">フライト一覧（全26便）</div>
             <table class="desktop-table">
                 <thead>
                     <tr>
@@ -1133,37 +1176,38 @@
                 <div class="highlight-box">
                     <h4 style="color: #00d4ff; margin-bottom: 10px;">🎯 路線別PP効率ランキング</h4>
                     <p style="color: #94a3b8; font-size: 0.9rem;">
-                        1位: <strong style="color: #34d399;">那覇⇔仙台</strong> 1,791 PP/便<br>
-                        2位: <strong style="color: #a78bfa;">羽田⇔石垣</strong> 1,686 PP/便<br>
-                        3位: <strong style="color: #fbbf24;">羽田⇔宮古</strong> 1,422 PP/便（平均）<br>
-                        4位: <strong style="color: #00d4ff;">羽田⇔那覇</strong> 1,476 PP/便
+                        1位: <strong style="color: #34d399;">クアラルンプール⇔羽田</strong> 5,417 PP/便<br>
+                        2位: <strong style="color: #a78bfa;">那覇⇔仙台</strong> 1,995 PP/便<br>
+                        3位: <strong style="color: #fbbf24;">羽田⇔石垣</strong> 1,686 PP/便<br>
+                        4位: <strong style="color: #00d4ff;">羽田⇔那覇</strong> 1,509 PP/便（平均）<br>
+                        5位: <strong style="color: #94a3b8;">羽田⇔宮古</strong> 1,422 PP/便（平均）
                     </p>
                 </div>
                 <div class="highlight-box">
                     <h4 style="color: #00d4ff; margin-bottom: 10px;">📈 達成状況</h4>
                     <p style="color: #94a3b8; font-size: 0.9rem;">
-                        <strong style="color: #34d399;">ブロンズ達成！</strong>30,000PP突破<br>
-                        現在: <strong style="color: #00d4ff;">30,762 PP</strong>（61.52%）<br>
-                        残り: <strong style="color: #fbbf24;">19,238 PP</strong>（38.48%）<br>
-                        平均獲得: <strong>1,538 PP/便</strong>
+                        <strong style="color: #34d399;">SFC達成！</strong>50,000PP突破<br>
+                        現在: <strong style="color: #34d399;">50,052 PP</strong>（100.1%）<br>
+                        残り: <strong style="color: #34d399;">0 PP</strong>（達成）<br>
+                        平均獲得: <strong>1,925 PP/便</strong>（26便）
                     </p>
                 </div>
                 <div class="highlight-box">
-                    <h4 style="color: #00d4ff; margin-bottom: 10px;">💡 最短達成戦略</h4>
+                    <h4 style="color: #00d4ff; margin-bottom: 10px;">💡 達成サマリー</h4>
                     <p style="color: #94a3b8; font-size: 0.9rem;">
-                        残り19,238PP達成に必要な便数:<br>
-                        • 那覇⇔仙台: <strong style="color: #34d399;">約11便</strong>（最速）<br>
-                        • 羽田⇔石垣: <strong style="color: #a78bfa;">約11便</strong><br>
-                        • 羽田⇔那覇: <strong style="color: #00d4ff;">約13便</strong>
+                        <strong style="color: #34d399;">2月上旬の6便</strong>でSFC達成<br>
+                        KL往復＋那覇・仙台周りで<br>
+                        <strong>19,290 PP</strong>を追加獲得。<br>
+                        総26便・約1.5ヶ月で達成。
                     </p>
                 </div>
                 <div class="highlight-box">
                     <h4 style="color: #00d4ff; margin-bottom: 10px;">📊 データ分析</h4>
                     <p style="color: #94a3b8; font-size: 0.9rem;">
-                        総飛行距離: <strong>20,652 km</strong>（地球半周の52%）<br>
-                        獲得マイル: <strong>23,626マイル</strong>（国内線特典約3往復分）<br>
-                        PP効率: <strong>1.49 PP/km</strong><br>
-                        最多利用路線: <strong>羽田⇔那覇</strong>（14便・70%）
+                        総飛行距離: <strong>35,416 km</strong>（地球半周の約89%）<br>
+                        獲得マイル: <strong>35,660マイル</strong><br>
+                        PP効率: <strong>1.39 PP/km</strong><br>
+                        最多利用路線: <strong>羽田⇔那覇</strong>（16便・62%）
                     </p>
                 </div>
             </div>
@@ -1192,16 +1236,14 @@
             {no: 17, period: "1月中旬", route: "羽田 → 那覇", distance: 984, mile: 1107, pp: 1476},
             {no: 18, period: "1月中旬", route: "那覇 → 羽田", distance: 984, mile: 1107, pp: 1476},
             {no: 19, period: "1月中旬", route: "羽田 → 宮古", distance: 1067, mile: 1302, pp: 1601},
-            {no: 20, period: "1月下旬", route: "宮古 → 羽田", distance: 1067, mile: 1302, pp: 1242}
+            {no: 20, period: "1月下旬", route: "宮古 → 羽田", distance: 1067, mile: 1302, pp: 1242},
+            {no: 21, period: "2月上旬", route: "クアラルンプール → 羽田", distance: 5320, mile: 4181, pp: 5417},
+            {no: 22, period: "2月上旬", route: "羽田 → 那覇", distance: 984, mile: 984, pp: 1968},
+            {no: 23, period: "2月上旬", route: "那覇 → 仙台", distance: 1341, mile: 1130, pp: 2260},
+            {no: 24, period: "2月上旬", route: "仙台 → 那覇", distance: 1341, mile: 1130, pp: 2260},
+            {no: 25, period: "2月上旬", route: "那覇 → 羽田", distance: 984, mile: 984, pp: 1968},
+            {no: 26, period: "2月上旬", route: "羽田 → クアラルンプール", distance: 5320, mile: 4181, pp: 5417}
         ];
-
-        // 総PPを計算して検証
-        const calculatedTotalPP = flightData.reduce((sum, f) => sum + f.pp, 0);
-        // 30,762PPが正しい総PPなので、20便目のPPを調整
-        if (calculatedTotalPP !== 30762) {
-            const ppBefore20 = flightData.slice(0, 19).reduce((sum, f) => sum + f.pp, 0);
-            flightData[19].pp = 30762 - ppBefore20;
-        }
 
         // フライトテーブル生成
         const flightTable = document.getElementById('flightTable');
@@ -1213,6 +1255,7 @@
             if (flight.route.includes('石垣')) badgeClass = 'route-haneda-ishigaki';
             if (flight.route.includes('宮古')) badgeClass = 'route-haneda-miyako';
             if (flight.route.includes('仙台')) badgeClass = 'route-naha-sendai';
+            if (flight.route.includes('クアラルンプール')) badgeClass = 'route-kul-hnd';
             
             row.innerHTML = `
                 <td data-label="#">${flight.no}</td>
@@ -1227,7 +1270,7 @@
         });
 
         // PP単価計算（実際の航空券代から算出）
-        const actualTotalCost = 243070; // 全20便の実際の航空券代
+        const actualTotalCost = 464024; // 全26便の実際の航空券代
         const totalPP = flightData.reduce((sum, f) => sum + f.pp, 0);
         
         // 平均PP単価を計算
@@ -1242,11 +1285,11 @@
         new Chart(routeCtx, {
             type: 'bar',
             data: {
-                labels: ['羽田⇔那覇', '羽田⇔石垣', '羽田⇔宮古', '那覇⇔仙台'],
+                labels: ['羽田⇔那覇', '羽田⇔石垣', '羽田⇔宮古', '那覇⇔仙台', 'クアラルンプール⇔羽田'],
                 datasets: [
                     {
                         label: 'フライト数',
-                        data: [14, 2, 2, 2],
+                        data: [16, 2, 3, 2, 2],
                         backgroundColor: 'rgba(0, 212, 255, 0.7)',
                         borderColor: '#00d4ff',
                         borderWidth: 2,
@@ -1254,7 +1297,7 @@
                     },
                     {
                         label: '合計PP',
-                        data: [20664, 3372, 2843, 3582],
+                        data: [24600, 3372, 4444, 4520, 10834],
                         backgroundColor: 'rgba(124, 58, 237, 0.7)',
                         borderColor: '#7c3aed',
                         borderWidth: 2,

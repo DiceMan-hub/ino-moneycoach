@@ -11,7 +11,8 @@
 CursorまたはVS Codeを開き、以下の拡張機能をインストールしてください：
 
 #### 必須拡張機能
-- **Anthropic Claude Code** - Claude AIとの統合
+- **Claude Code** (`anthropic.claude-code`) - Claude AIとの統合  
+  → このワークスペースには `.vscode/extensions.json` で推奨済み。ワークスペースを開くとインストールを促す通知が出ます。
 
 #### 推奨拡張機能
 - **Python** - Python言語サポート
@@ -83,9 +84,47 @@ export ANTHROPIC_API_KEY="your-api-key-here"
 - Prettierがインストールされているか確認してください
 - 設定ファイル（`.vscode/settings.json`）が正しく読み込まれているか確認してください
 
+## ターミナルでClaude Code（CLI）を使う場合
+
+Cursorの**ターミナル**から `claude` コマンドで使う方法です（拡張機能とは別のツール）。
+
+### CLI のインストール／再インストール
+
+**重要**: 次のコマンドは **Cursor 外のターミナル（iTerm / ターミナル.app など）** で実行してください。`/usr/local` への書き込み権限が必要です。
+
+**方法A: npm（推奨）**
+```bash
+sudo npm install -g @anthropic-ai/claude-code
+```
+インストール後: `claude --version` で確認。
+
+**方法B: Homebrew**
+```bash
+brew install claude-code
+```
+
+### 初回だけ
+
+- `claude` を実行するとブラウザが開くので、Anthropicアカウントでログインして認証します。
+- 過去にインストールしていて `~/.claude` が残っている場合は、そのまま再ログインされることが多いです。
+
+### Cursor をエディタにする（任意）
+
+Claude がファイルを編集するときに Cursor で開くようにするには、`~/.claude/settings.json` を次のように用意します（既存の設定がある場合は `env` だけ追加してください）。
+
+```json
+{
+  "env": {
+    "EDITOR": "cursor --wait"
+  }
+}
+```
+
+`settings.local.json` だけある場合は、上記の内容で `settings.json` を新規作成するか、`settings.local.json` に `"env": { "EDITOR": "cursor --wait" }` を追加してもかまいません。
+
 ## 参考リンク
 
-- [Anthropic Claude Code Extension](https://marketplace.visualstudio.com/items?itemName=Anthropic.claude-code)
+- [Claude Code - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code)
 - [Anthropic API Documentation](https://docs.anthropic.com/)
 - [Cursor Documentation](https://cursor.sh/docs)
 

@@ -11,5 +11,5 @@
 .DS_Store
 *.local
 
-# 注意: docs/ 内の 00_Projects/ も除外
-docs/00_Projects/
+# 注意: docs/ 内のファイルは公開用なので、.gitignoreの対象外
+# （00_Projects/は既に移動済みのため、この設定は不要）
