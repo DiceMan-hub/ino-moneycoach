@@ -378,6 +378,20 @@
             box-sizing: border-box;
         }
 
+        .dashboard-footer {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 24px 20px;
+            margin-top: 20px;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        .dashboard-footer p {
+            margin: 0;
+            text-align: center;
+        }
+
         /* デスクトップでのテーブル表示 */
         @media (min-width: 769px) {
             td::before {
@@ -984,10 +998,10 @@
                     </tr>
                     <tr>
                         <td><span class="route-badge route-haneda-miyako">宮古 → 羽田</span></td>
-                        <td>2便</td>
-                        <td>2,604</td>
-                        <td>2,843</td>
-                        <td>1,422</td>
+                        <td>1便</td>
+                        <td>1,302</td>
+                        <td>1,242</td>
+                        <td>1,242</td>
                         <td>⭐⭐⭐⭐</td>
                     </tr>
                     <tr>
@@ -1212,6 +1226,9 @@
                 </div>
             </div>
         </div>
+        <footer class="dashboard-footer">
+            <p>© 2026 ino-moneycoach</p>
+        </footer>
     </div>
 
     <script>
@@ -1289,7 +1306,7 @@
                 datasets: [
                     {
                         label: 'フライト数',
-                        data: [16, 2, 3, 2, 2],
+                        data: [16, 2, 2, 2, 2],
                         backgroundColor: 'rgba(0, 212, 255, 0.7)',
                         borderColor: '#00d4ff',
                         borderWidth: 2,
@@ -1297,7 +1314,7 @@
                     },
                     {
                         label: '合計PP',
-                        data: [24600, 3372, 4444, 4520, 10834],
+                        data: [24600, 3372, 2843, 4520, 10834],
                         backgroundColor: 'rgba(124, 58, 237, 0.7)',
                         borderColor: '#7c3aed',
                         borderWidth: 2,

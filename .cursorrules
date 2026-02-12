@@ -31,3 +31,7 @@ ALL HTML files MUST follow this exact structure:
 - The file inside MUST be named `index.html`
   - This structure ensures clean URLs without .html extensions
 - See /docs/README.md for detailed guidelines
+
+## Git push
+
+When running `git push` (to any remote, e.g. ino-moneycoach or origin), **always** use `required_permissions: ["all"]`. Otherwise the process cannot access the credential helper / Keychain and push will fail with "could not read Username" or "Device not configured". Do not use only `network` + `git_write`.
