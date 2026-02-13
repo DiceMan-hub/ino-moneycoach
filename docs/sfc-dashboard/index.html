@@ -867,7 +867,7 @@
                 </div>
                 <div class="highlight-item">
                     <span class="highlight-label">達成予想</span>
-                    <span class="highlight-value" id="highlightAchieve" style="color: #34d399;">SFC達成！</span>
+                    <span class="highlight-value" id="highlightAchieve" style="color: #34d399;">プラチナ（SFC）達成！</span>
                 </div>
             </div>
         </div>
@@ -1112,7 +1112,7 @@
                 <div class="highlight-box">
                     <h4 style="color: #00d4ff; margin-bottom: 10px;">📈 達成状況</h4>
                     <p style="color: #94a3b8; font-size: 0.9rem;">
-                        <strong style="color: #34d399;">SFC達成！</strong>50,000PP突破<br>
+                        <strong style="color: #34d399;">プラチナ（SFC）達成！</strong>50,000PP突破<br>
                         現在: <strong style="color: #34d399;">50,052 PP</strong>（100.1%）<br>
                         残り: <strong style="color: #34d399;">0 PP</strong>（達成）<br>
                         平均獲得: <strong>1,925 PP/便</strong>（26便）
@@ -1263,7 +1263,7 @@
         }
         var highlightEl = el('highlightAchieve');
         if (highlightEl) {
-            if (totalPP >= sfcGoal) { highlightEl.textContent = 'SFC達成！'; highlightEl.style.color = '#34d399'; }
+            if (totalPP >= sfcGoal) { highlightEl.textContent = 'プラチナ（SFC）達成！'; highlightEl.style.color = '#34d399'; }
             else { highlightEl.textContent = 'あと' + remainingPP.toLocaleString() + ' PP'; highlightEl.style.color = '#00d4ff'; }
         }
 
