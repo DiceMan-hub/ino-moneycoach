@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>いのマネーコーチ速報まとめ｜プラチナ・カード（プレミアム） フリー・ステイ・ギフト 2025→2026 変更一覧</title>
+    <style>
+        :root {
+            --text-primary: #1a1a1a;
+            --text-secondary: #555;
+            --text-muted: #777;
+            --bg-page: #f5f7fa;
+            --bg-card: #fff;
+            --accent: #0066cc;
+            --add-color: #0a7c42;
+            --remove-color: #c0392b;
+            --border-radius: 12px;
+            --shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-page);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 24px 20px; }
+        .header { text-align: center; margin-bottom: 28px; }
+        .header .title-brand { font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); letter-spacing: 0.05em; margin-bottom: 6px; text-transform: none; }
+        .header h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; color: var(--text-primary); }
+        .header .lead { font-size: 0.95rem; color: var(--text-secondary); }
+        .header .cross-link { font-size: 0.85rem; margin-top: 8px; }
+        .section { margin-bottom: 32px; }
+        .section h2 {
+            font-size: 1.2rem; font-weight: 600; margin-bottom: 14px; padding-bottom: 6px;
+            border-bottom: 2px solid var(--accent); color: var(--text-primary);
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .stat-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 18px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        .stat-number { font-size: 1.75rem; font-weight: 700; margin-bottom: 4px; }
+        .stat-number.add { color: var(--add-color); }
+        .stat-number.remove { color: var(--remove-color); }
+        .stat-number.net { color: var(--accent); }
+        .stat-label { font-size: 0.8rem; color: var(--text-muted); }
+        .compare-box { background: #f0f4ff; border: 1px solid #c5d4f0; border-radius: var(--border-radius); padding: 14px 18px; margin-bottom: 24px; font-size: 0.88rem; }
+        .compare-box h3 { font-size: 0.95rem; margin: 0 0 10px; color: var(--text-primary); }
+        .compare-box ul { margin: 0; padding-left: 1.2em; }
+        .compare-box li { margin-bottom: 4px; }
+        .compare-box .compare-stats { display: flex; flex-wrap: wrap; gap: 12px 20px; margin-bottom: 8px; font-weight: 600; }
+        .compare-box a { color: var(--accent); text-decoration: none; }
+        .compare-box a:hover { text-decoration: underline; }
+        /* Brand bar chart */
+        .brand-viz { background: var(--bg-card); border-radius: var(--border-radius); padding: 18px; box-shadow: var(--shadow); }
+        .brand-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+        .brand-row:last-child { margin-bottom: 0; }
+        .brand-name { flex: 0 0 200px; font-weight: 500; }
+        .brand-bars { flex: 1; display: flex; align-items: center; gap: 8px; }
+        .bar-wrap { flex: 1; max-width: 120px; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+        .bar-wrap .bar {
+            height: 20px;
+            border-radius: 4px;
+            min-width: 4px;
+        }
+        .bar-wrap .bar.add { background: var(--add-color); }
+        .bar-wrap .bar.remove { background: var(--remove-color); }
+        .bar-wrap .label { font-size: 0.7rem; color: var(--text-muted); }
+        .brand-net { flex: 0 0 48px; text-align: right; font-weight: 600; font-size: 0.9rem; }
+        .brand-net.plus { color: var(--add-color); }
+        .brand-net.minus { color: var(--remove-color); }
+        .brand-net.zero { color: var(--text-muted); }
+        /* Hotel cards */
+        .hotel-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+        @media (min-width: 640px) { .hotel-grid { grid-template-columns: repeat(2, 1fr); } }
+        .hotel-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 18px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--accent);
+        }
+        .hotel-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 10px; line-height: 1.3; }
+        .hotel-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+        .hotel-desc { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; margin: 0 0 10px; padding: 8px 0; border-bottom: 1px dashed #e0e0e0; }
+        .hotel-voice { font-size: 0.8rem; color: var(--text-muted); margin: 0 0 10px; padding: 8px 10px; border-left: 3px solid #b0bec5; background: #f8f9fa; border-radius: 0 6px 6px 0; }
+        .hotel-info { font-size: 0.85rem; }
+        .hotel-info-group { margin-bottom: 10px; padding-left: 10px; border-left: 3px solid #e8e8e8; }
+        .hotel-info-group:last-child { margin-bottom: 0; }
+        .hotel-info-group.hotel-info-object { border-left-color: #f0f0f0; }
+        .hotel-info-head { font-size: 0.7rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 4px; }
+        .hotel-info-row { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-bottom: 4px; }
+        .hotel-info-row:last-child { margin-bottom: 0; }
+        .hotel-info-label { flex: 0 0 72px; color: var(--text-muted); font-weight: 500; }
+        .hotel-info-value { flex: 1; min-width: 0; color: var(--text-primary); }
+        .hotel-info-value a { color: var(--accent); text-decoration: none; }
+        .hotel-info-value a:hover { text-decoration: underline; }
+        .hotel-info-object .hotel-info-value { font-size: 0.8rem; color: var(--text-muted); }
+        .tag { font-size: 0.7rem; padding: 4px 8px; border-radius: 6px; background: #e8e8e8; color: var(--text-secondary); }
+        .tag.brand { background: #e3f2fd; color: #1565c0; }
+        .tag.credit { background: #e8f5e9; color: #2e7d32; }
+        .tag.no-credit { background: #fff3e0; color: #e65100; }
+        .tag.new-open { background: #fce4ec; color: #c2185b; }
+        .placeholder-note { font-size: 0.9rem; color: var(--text-secondary); background: #f8f9fa; padding: 14px 18px; border-radius: var(--border-radius); border-left: 4px solid var(--accent); }
+        /* Excluded table */
+        .excluded-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; background: var(--bg-card); border-radius: var(--border-radius); overflow: hidden; box-shadow: var(--shadow); }
+        .excluded-table th, .excluded-table td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #eee; }
+        .excluded-table th { background: #f8f9fa; font-weight: 600; color: var(--text-secondary); }
+        .excluded-table tr:last-child td { border-bottom: none; }
+        /* Rules summary */
+        .rules-box {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 18px;
+            box-shadow: var(--shadow);
+            font-size: 0.9rem;
+        }
+        .rules-box h3 { font-size: 1rem; margin-bottom: 10px; }
+        .rules-box ul { margin: 0; padding-left: 1.2em; }
+        .rules-box li { margin-bottom: 6px; }
+        .rules-box .no-change { background: #e8f5e9; color: #1b5e20; padding: 8px 12px; border-radius: 8px; margin-bottom: 12px; font-weight: 500; }
+        .note-cross-ref { font-size: 0.85rem; color: var(--text-secondary); background: #f5f5f5; border-left: 4px solid var(--accent); padding: 10px 14px; margin-top: 14px; border-radius: 0 8px 8px 0; }
+        details { margin-top: 10px; }
+        summary { cursor: pointer; font-weight: 500; color: var(--accent); }
+        /* Evaluation */
+        .eval-box { background: var(--bg-card); border-radius: var(--border-radius); padding: 18px; box-shadow: var(--shadow); font-size: 0.9rem; }
+        .eval-box h3 { font-size: 0.95rem; margin: 14px 0 6px; color: var(--text-primary); }
+        .eval-box h3:first-child { margin-top: 0; }
+        .eval-box ul { margin: 0; padding-left: 1.2em; }
+        .eval-box li { margin-bottom: 4px; }
+        .eval-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 8px; }
+        .eval-table th, .eval-table td { padding: 6px 10px; text-align: left; border-bottom: 1px solid #eee; }
+        .eval-table th { background: #f8f9fa; font-weight: 600; color: var(--text-secondary); }
+        /* Footer */
+        .footer { margin-top: 28px; padding-top: 16px; border-top: 1px solid #e0e0e0; font-size: 0.8rem; color: var(--text-muted); }
+        .footer a { color: var(--accent); text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <p class="title-brand">いのマネーコーチ速報まとめ</p>
+            <h1>プラチナ・カード（プレミアム） フリー・ステイ・ギフト 2025→2026 変更一覧</h1>
+            <p class="lead">2025年度：2025年4月1日～2026年3月31日　／　2026年度：2026年4月1日～2027年3月31日</p>
+            <p class="cross-link"><a href="../fsg-goldpreferred-changes/">ゴールド・プリファードの変更一覧はこちら</a></p>
+        </header>
+
+        <section class="section">
+            <h2>サマリ</h2>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number add">+6</div>
+                    <div class="stat-label">追加（2026で新規対象）</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number remove">−8</div>
+                    <div class="stat-label">除外（2026で対象外）</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number net">−2</div>
+                    <div class="stat-label">実質（対象ホテル数）</div>
+                </div>
+            </div>
+            <p style="margin: 0.5em 0 0 0; font-size: 0.9rem; color: var(--text-secondary);">合計対象ホテル数：2025年度54件→2026年度52件</p>
+        </section>
+
+        <div class="compare-box">
+            <h3>ゴールド・プリファードとの比較</h3>
+            <div class="compare-stats">プラチナ：追加6・除外8（実質−2）　／　ゴールド：追加9・除外12（実質−3）</div>
+            <ul>
+                <li><strong>プラチナのみ追加</strong>：キャノピーbyヒルトン大阪梅田・沖縄宮古島（計2件）</li>
+                <li><strong>ゴールドのみ追加</strong>：沖縄プリンスぎのわん、モクシー京都・大阪本町・梅田、アロフト大阪堂島（計5件）</li>
+                <li><strong>共通で追加</strong>：福岡プリンスももち浜、コートヤード名古屋、ロイヤルパーク舞浜・那覇（計4件）</li>
+                <li>ヒルトン系はプラチナでは対象（ゴールドでは対象外）。<a href="../fsg-goldpreferred-changes/">ゴールド・プリファードの変更一覧はこちら</a></li>
+            </ul>
+        </div>
+
+        <section class="section">
+            <h2>ブランド別の追加・除外</h2>
+            <div class="brand-viz">
+                <div class="brand-row">
+                    <span class="brand-name">西武プリンスホテルズ＆リゾーツ</span>
+                    <div class="brand-bars">
+                        <div class="bar-wrap"><div class="bar add" style="width: 100%;"></div><span class="label">追加 1</span></div>
+                        <div class="bar-wrap"><div class="bar remove" style="width: 100%;"></div><span class="label">除外 1</span></div>
+                    </div>
+                    <span class="brand-net zero">0</span>
+                </div>
+                <div class="brand-row">
+                    <span class="brand-name">マリオット系</span>
+                    <div class="brand-bars">
+                        <div class="bar-wrap"><div class="bar add" style="width: 50%;"></div><span class="label">追加 1</span></div>
+                        <div class="bar-wrap"><div class="bar remove" style="width: 100%;"></div><span class="label">除外 2</span></div>
+                    </div>
+                    <span class="brand-net minus">−1</span>
+                </div>
+                <div class="brand-row">
+                    <span class="brand-name">ロイヤルパークホテルズ</span>
+                    <div class="brand-bars">
+                        <div class="bar-wrap"><div class="bar add" style="width: 100%;"></div><span class="label">追加 2</span></div>
+                        <div class="bar-wrap"><div class="bar remove" style="width: 100%;"></div><span class="label">除外 2</span></div>
+                    </div>
+                    <span class="brand-net zero">0</span>
+                </div>
+                <div class="brand-row">
+                    <span class="brand-name">ヒルトン系</span>
+                    <div class="brand-bars">
+                        <div class="bar-wrap"><div class="bar add" style="width: 100%;"></div><span class="label">追加 2</span></div>
+                        <div class="bar-wrap"><span class="label">除外 0</span></div>
+                    </div>
+                    <span class="brand-net plus">＋2</span>
+                </div>
+                <div class="brand-row">
+                    <span class="brand-name">オークラ・ニッコー系</span>
+                    <div class="brand-bars">
+                        <div class="bar-wrap"><span class="label">追加 0</span></div>
+                        <div class="bar-wrap"><div class="bar remove" style="width: 100%;"></div><span class="label">除外 1</span></div>
+                    </div>
+                    <span class="brand-net minus">−1</span>
+                </div>
+                <div class="brand-row">
+                    <span class="brand-name">ハイアット</span>
+                    <div class="brand-bars">
+                        <div class="bar-wrap"><span class="label">追加 0</span></div>
+                        <div class="bar-wrap"><div class="bar remove" style="width: 100%;"></div><span class="label">除外 2</span></div>
+                    </div>
+                    <span class="brand-net minus">−2</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>新規追加ホテル（6件）</h2>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 14px;">2026年度版で新たに対象になったホテル。基本情報と特徴を掲載。<br><span class="tag new-open" style="margin-top:6px;display:inline-block;">新規開業に近い</span>＝2020年以降の開業または2026年開業予定のホテル。</p>
+            <div class="hotel-grid">
+                <div class="hotel-card">
+                    <h3>福岡プリンスホテル ももち浜</h3>
+                    <div class="hotel-tags">
+                        <span class="tag brand">西武プリンス</span>
+                        <span class="tag credit">2泊目5,000円</span>
+                        <span class="tag new-open">新規開業に近い（2026年3月開業予定）</span>
+                        <span class="tag">リゾート</span>
+                    </div>
+                    <p class="hotel-desc">百道浜・福岡タワー西側に2026年3月開業予定。全229室オーシャンビュー、博多湾・玄界灘を一望。天神・空港アクセス良好。</p>
+                    <div class="hotel-info">
+                        <div class="hotel-info-group">
+                            <div class="hotel-info-head">予約</div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">所在地</span><span class="hotel-info-value">福岡</span></div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">窓口</span><span class="hotel-info-value">西武プリンス 0570-07-8686 (9:30～18:00)</span></div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">公式</span><span class="hotel-info-value"><a href="https://www.princehotels.co.jp/momochihama/" target="_blank" rel="noopener noreferrer">福岡プリンスホテル ももち浜</a></span></div>
+                        </div>
+                        <div class="hotel-info-group">
+                            <div class="hotel-info-head">客室・特典</div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">お部屋</span><span class="hotel-info-value">スーペリアツイン</span></div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">特典</span><span class="hotel-info-value">レイトチェックアウト(12:00まで) 空室により</span></div>
+                        </div>
+                        <div class="hotel-info-group hotel-info-object">
+                            <div class="hotel-info-head">対象外日</div>
+                            <div class="hotel-info-row"><span class="hotel-info-value">4月下旬～GW・夏季・年末年始・一部祝日など</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hotel-card">
+                    <h3>コートヤード・バイ・マリオット名古屋</h3>
+                    <div class="hotel-tags">
+                        <span class="tag brand">マリオット</span>
+                        <span class="tag credit">2泊目5,000円</span>
+                        <span class="tag new-open">新規開業に近い（2022年開業）</span>
+                        <span class="tag">都心・ビジネス</span>
+                    </div>
+                    <p class="hotel-desc">伏見・堀川沿い。名古屋駅・伏見駅からアクセス良好。モダンな客室で、ビジネス・観光の拠点に。</p>
+                    <div class="hotel-info">
+                        <div class="hotel-info-group">
+                            <div class="hotel-info-head">予約</div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">所在地</span><span class="hotel-info-value">愛知</span></div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">窓口</span><span class="hotel-info-value">052-228-2220 (9:00～18:00)</span></div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">公式</span><span class="hotel-info-value"><a href="https://www.marriott.co.jp/hotels/travel/ngocy-courtyard-nagoya/" target="_blank" rel="noopener noreferrer">コートヤード・バイ・マリオット名古屋</a></span></div>
+                        </div>
+                        <div class="hotel-info-group">
+                            <div class="hotel-info-head">客室・特典</div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">お部屋</span><span class="hotel-info-value">デラックスルームツイン</span></div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">特典</span><span class="hotel-info-value">—</span></div>
+                        </div>
+                        <div class="hotel-info-group hotel-info-object">
+                            <div class="hotel-info-head">対象外日</div>
+                            <div class="hotel-info-row"><span class="hotel-info-value">9/16～10/6、10/13～10/26、3/26～3/29</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hotel-card">
+                    <h3>キャノピーbyヒルトン大阪梅田</h3>
+                    <div class="hotel-tags">
+                        <span class="tag brand">ヒルトン（キャノピー）</span>
+                        <span class="tag credit">2泊目5,000円</span>
+                        <span class="tag">都心・ビジネス</span>
+                    </div>
+                    <p class="hotel-desc">梅田エリアのヒルトン系ライフスタイルホテル。ゴールド会員特典と併用可能で、都心の1泊に使いやすい。</p>
+                    <div class="hotel-info">
+                        <div class="hotel-info-group">
+                            <div class="hotel-info-head">予約</div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">所在地</span><span class="hotel-info-value">大阪</span></div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">窓口</span><span class="hotel-info-value">06-7658-5300</span></div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">公式</span><span class="hotel-info-value"><a href="https://canopy-osaka.hiltonjapan.co.jp/" target="_blank" rel="noopener noreferrer">キャノピーbyヒルトン大阪梅田</a></span></div>
+                        </div>
+                        <div class="hotel-info-group">
+                            <div class="hotel-info-head">客室・特典</div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">お部屋</span><span class="hotel-info-value">キャノピールーム</span></div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">特典</span><span class="hotel-info-value">—</span></div>
+                        </div>
+                        <div class="hotel-info-group hotel-info-object">
+                            <div class="hotel-info-head">対象外日</div>
+                            <div class="hotel-info-row"><span class="hotel-info-value">4月上旬・GW・8月中旬・10月上旬・年末年始など</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hotel-card">
+                    <h3>キャノピーbyヒルトン沖縄宮古島</h3>
+                    <div class="hotel-tags">
+                        <span class="tag brand">ヒルトン（キャノピー）</span>
+                        <span class="tag credit">2泊目5,000円</span>
+                        <span class="tag">リゾート</span>
+                    </div>
+                    <p class="hotel-desc">宮古島のヒルトン系ホテル。離島リゾートでヒルトン・オナーズ特典とFSGを併用できる選択肢が増えた。</p>
+                    <div class="hotel-info">
+                        <div class="hotel-info-group">
+                            <div class="hotel-info-head">予約</div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">所在地</span><span class="hotel-info-value">沖縄</span></div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">窓口</span><span class="hotel-info-value">0980-75-3330</span></div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">公式</span><span class="hotel-info-value"><a href="https://canopy-miyakojima.hiltonjapan.co.jp/" target="_blank" rel="noopener noreferrer">キャノピーbyヒルトン沖縄宮古島</a></span></div>
+                        </div>
+                        <div class="hotel-info-group">
+                            <div class="hotel-info-head">客室・特典</div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">お部屋</span><span class="hotel-info-value">デラックスツインルーム シティービュー</span></div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">特典</span><span class="hotel-info-value">—</span></div>
+                        </div>
+                        <div class="hotel-info-group hotel-info-object">
+                            <div class="hotel-info-head">対象外日</div>
+                            <div class="hotel-info-row"><span class="hotel-info-value">4月・GW・夏季・10月上旬・年末年始など</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hotel-card">
+                    <h3>ザ ロイヤルパークホテル 舞浜リゾート 東京ベイ</h3>
+                    <div class="hotel-tags">
+                        <span class="tag brand">ロイヤルパーク</span>
+                        <span class="tag no-credit">2泊目クレジット対象外</span>
+                        <span class="tag new-open">新規開業に近い（2026年2月開業予定）</span>
+                        <span class="tag">リゾート・ディズニー周辺</span>
+                    </div>
+                    <p class="hotel-desc">東京ディズニーリゾート徒歩圏。約750室の大型リゾートで、世界の海をテーマにした客室。ファミリーやグループに人気。</p>
+                    <div class="hotel-info">
+                        <div class="hotel-info-group">
+                            <div class="hotel-info-head">予約</div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">所在地</span><span class="hotel-info-value">千葉</span></div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">窓口</span><span class="hotel-info-value">047-351-1122 (10:00～18:00)</span></div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">公式</span><span class="hotel-info-value"><a href="https://www.royalparkhotels.co.jp/the/maihama/" target="_blank" rel="noopener noreferrer">ザ ロイヤルパークホテル 舞浜リゾート 東京ベイ</a></span></div>
+                        </div>
+                        <div class="hotel-info-group">
+                            <div class="hotel-info-head">客室・特典</div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">お部屋</span><span class="hotel-info-value">スタンダードツイン</span></div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">特典</span><span class="hotel-info-value">—</span></div>
+                        </div>
+                        <div class="hotel-info-group hotel-info-object">
+                            <div class="hotel-info-head">対象外日</div>
+                            <div class="hotel-info-row"><span class="hotel-info-value">GW・年末年始・週末・祝日など</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hotel-card">
+                    <h3>ザ ロイヤルパークホテル アイコニック 那覇</h3>
+                    <div class="hotel-tags">
+                        <span class="tag brand">ロイヤルパーク</span>
+                        <span class="tag no-credit">2泊目クレジット対象外</span>
+                        <span class="tag new-open">新規開業に近い（2026年1月開業予定）</span>
+                        <span class="tag">観光・都心</span>
+                    </div>
+                    <p class="hotel-desc">那覇都心・琉球銀行本店ビル内。国際通りに近く観光の拠点に。最上階はエグゼクティブフロアでレストラン・プール完備。</p>
+                    <p class="hotel-voice"><strong>いのとぴよた</strong>：最新の設備で立地も最高、とても気に入りました。</p>
+                    <div class="hotel-info">
+                        <div class="hotel-info-group">
+                            <div class="hotel-info-head">予約</div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">所在地</span><span class="hotel-info-value">沖縄</span></div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">窓口</span><span class="hotel-info-value">098-988-6661 (9:30～18:00)</span></div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">公式</span><span class="hotel-info-value"><a href="https://www.royalparkhotels.co.jp/ic/naha/" target="_blank" rel="noopener noreferrer">ザ ロイヤルパークホテル アイコニック 那覇</a></span></div>
+                        </div>
+                        <div class="hotel-info-group">
+                            <div class="hotel-info-head">客室・特典</div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">お部屋</span><span class="hotel-info-value">スーペリアツイン</span></div>
+                            <div class="hotel-info-row"><span class="hotel-info-label">特典</span><span class="hotel-info-value">—</span></div>
+                        </div>
+                        <div class="hotel-info-group hotel-info-object">
+                            <div class="hotel-info-head">対象外日</div>
+                            <div class="hotel-info-row"><span class="hotel-info-value">GW・6月下旬～8月・年末年始など</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>除外ホテル（8件）</h2>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 12px;">2025年度版に掲載されていたが、2026年度版では対象外となったホテル。</p>
+            <table class="excluded-table">
+                <thead>
+                    <tr><th>#</th><th>ホテル名</th><th>所在地</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>ウェスティン ルスツリゾート</td><td>北海道</td></tr>
+                    <tr><td>2</td><td>アロフト東京銀座</td><td>東京</td></tr>
+                    <tr><td>3</td><td>ザ・プリンス 京都宝ヶ池</td><td>京都</td></tr>
+                    <tr><td>4</td><td>ホテルオークラ東京ベイ</td><td>千葉</td></tr>
+                    <tr><td>5</td><td>キャプション by Hyatt なんば 大阪</td><td>大阪</td></tr>
+                    <tr><td>6</td><td>ハイアット リージェンシー 瀬良垣アイランド 沖縄</td><td>沖縄</td></tr>
+                    <tr><td>7</td><td>ザ ロイヤルパークホテル アイコニック 名古屋</td><td>愛知</td></tr>
+                    <tr><td>8</td><td>ザ ロイヤルパークホテル アイコニック 京都</td><td>京都</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>予約の方法・利用の流れ・ルール（2025→2026 変更なし）</h2>
+            <div class="rules-box">
+                <p class="no-change">予約方法・利用方法・ルール・注意事項に変更はありません。以下は2026年度版に沿った要点です。</p>
+                <ul>
+                    <li><strong>予約</strong>：各ホテルの予約窓口に電話し、「アメリカン・エキスプレスのフリー・ステイ・ギフト宿泊券を利用する」と伝える。予約前にカードと宿泊券を用意。</li>
+                    <li><strong>利用の流れ</strong>：チェックイン時にカードを呈示し、宿泊券にサインしてフロントに渡す。</li>
+                    <li><strong>ルール・注意の要点</strong>：1泊食事なしプラン。記載の客室タイプが対象。会員本人または家族カード・追加カード会員本人の宿泊のみ。転売・譲渡不可。解約済みのカードでは利用不可。有効期限はチェックイン期限（予約期限ではない）。宿泊券の再発行・複写は不可。キャンセル・変更は各ホテル指定の期限内に手続き。2泊目クレジットは「【2泊目】5,000円分」とあるホテルで2連泊以上予約した場合に適用（窓口予約が条件、第三者経由は対象外）。</li>
+                </ul>
+                <p class="note-cross-ref"><strong>参考</strong>：プラチナ・カード（およびANAアメリカン・エキスプレス・プレミアム・カード、ビジネス・プラチナ・カード）のFSGでは<strong>ヒルトン系ホテルが対象</strong>に含まれます。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>今回の変更の評価</h2>
+            <div class="eval-box">
+                <h3>1. 変更の全体像</h3>
+                <ul>
+                    <li><strong>件数</strong>：追加6・除外8で<strong>実質2件減</strong>。選択肢はわずかに絞られる。</li>
+                    <li><strong>ブランド別</strong>：<strong>ヒルトン系が純増（+2）</strong>でキャノピー梅田・宮古島が加わった。西武プリンス・ロイヤルパークは同数。マリオット・オークラニッコー・ハイアットは減。</li>
+                </ul>
+                <h3>2. 利用者視点でのメリット</h3>
+                <ul>
+                    <li><strong>ヒルトン系</strong>：<strong>キャノピーbyヒルトン大阪梅田・沖縄宮古島</strong>が新規追加。プラチナFSGではヒルトン・オナーズ特典と併用できるため、梅田の都心1泊や宮古島リゾートの選択肢が増えた。</li>
+                    <li><strong>福岡・名古屋</strong>：福岡プリンスももち浜（2026年3月開業予定）・コートヤード名古屋が追加。九州・中部の都市・リゾートでFSGを使いやすくなった。</li>
+                    <li><strong>舞浜・那覇</strong>：ロイヤルパーク舞浜・那覇アイコニックが新規。ディズニー周辺や那覇都心の立地重視の選択肢が増えた（いずれも2泊目クレジットは対象外）。</li>
+                    <li><strong>ルール</strong>：予約方法・利用条件・2泊目クレジットのルールに変更なし。</li>
+                </ul>
+                <h3>3. 利用者視点でのデメリット・注意点</h3>
+                <ul>
+                    <li><strong>除外されたホテル</strong>：ルスツ・京都宝ヶ池・オークラ東京ベイ・キャプションなんば・瀬良垣沖縄・ロイヤルパーク名古屋・京都など。リゾート・都市の一部選択肢が減った。</li>
+                    <li><strong>マリオット・ハイアット</strong>：アロフト銀座・ウェスティンルスツが除外。ハイアットなんば・瀬良垣が除外され、<strong>会員特典を併用してメリットを出せるホテル</strong>が一部減少。</li>
+                    <li><strong>2泊目クレジット</strong>：追加6件のうち舞浜・那覇アイコニックは対象外。連泊で5,000円クレジットを狙うなら他4件を選ぶ必要がある。</li>
+                </ul>
+                <h3>4. まとめ</h3>
+                <ul>
+                    <li><strong>ヒルトン系の追加</strong>が目立つ変更。都市型（梅田・名古屋）とリゾート（福岡・宮古島・舞浜・那覇）の新規がバランスよく入り、除外はリゾート・都市の一部に集中。利用条件・ルールは変わっていないため、対象ホテルリストの入れ替えとして把握し、自分の利用パターンに合うかで判断するとよい。</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p><strong>出典・詳細の確認</strong></p>
+            <p>対象外日・客室タイプ・宿泊特典の詳細は、下記アメリカン・エキスプレス公式（対象ホテル一覧PDF／ウェブ）でご確認ください。</p>
+            <ul style="margin: 8px 0 0 1.2em; padding: 0;">
+                <li><strong>フリー・ステイ・ギフト（継続特典）公式</strong>：<a href="https://www.americanexpress.com/ja-jp/benefits/premium/continuation-gift/free-stay-gift/" target="_blank" rel="noopener noreferrer">https://www.americanexpress.com/ja-jp/benefits/premium/continuation-gift/free-stay-gift/</a></li>
+                <li><strong>プラチナ・カード公式</strong>：<a href="https://www.americanexpress.com/ja-jp/credit-cards/platinum-card/" target="_blank" rel="noopener noreferrer">https://www.americanexpress.com/ja-jp/credit-cards/platinum-card/</a></li>
+                <li><strong>ANAアメリカン・エキスプレス・プレミアム・カード公式</strong>：<a href="https://www.americanexpress.com/ja-jp/credit-cards/ana-premium-card/" target="_blank" rel="noopener noreferrer">https://www.americanexpress.com/ja-jp/credit-cards/ana-premium-card/</a></li>
+            </ul>
+            <p style="margin-top: 10px;">本ページの一覧は、プラチナ（プレミアム）向け 2025年度版・2026年度版の対象ホテル案内（公式PDF／同フォルダ内MD）を基に作成。</p>
+            <p style="margin-top: 8px;">作成日：2026年2月19日</p>
+            <p style="margin-top: 12px; padding-top: 8px; border-top: 1px solid #e0e0e0;">© 2026 ino-moneycoach. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
