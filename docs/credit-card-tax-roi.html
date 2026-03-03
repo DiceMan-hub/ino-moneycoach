@@ -363,7 +363,9 @@
     .net-rate-grid { grid-template-columns: 1fr; }
     .gauge-label { width: 140px; font-size: 12px; }
     .header h1 { font-size: 22px; }
-    .cond-table, .roi-table, .bonus-table { font-size: 11px; display: block; overflow-x: auto; }
+    .cond-table, .roi-table, .bonus-table, .caveat-table { font-size: 11px; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -16px; padding: 0 16px; }
+    .table-scroll table { min-width: 600px; }
     .stretch-card-name { width: 120px; }
     .bonus-grid { grid-template-columns: 1fr; }
   }
@@ -675,6 +677,7 @@
   <p style="font-size:13px;color:var(--gray);margin-bottom:8px">入会特典のマイル移行後価値から年会費を引いた「元の利益」を、税金で条件達成した場合で再計算</p>
   <p style="font-size:12px;color:var(--gray);margin-bottom:20px">計算式：税金時利益 ＝ 元の利益 − 還元率低下分 − カード納付手数料（国税0.99%）</p>
 
+  <div class="table-scroll">
   <table class="roi-table">
     <thead>
       <tr>
@@ -824,6 +827,7 @@
       </tr>
     </tbody>
   </table>
+  </div>
 
   <div style="margin-top:12px;font-size:12px;color:var(--gray)">
     ★ = 裏紹介ルート前提。還元率 = 税金時利益 ÷ 必要利用額<br>
@@ -866,6 +870,7 @@
   <h2 class="section-title"><span class="num">★</span>マイル移行前提の換算レート</h2>
   <p style="font-size:13px;color:var(--gray);margin-bottom:16px">各カードで獲得できるポイント種別が異なるため、<strong>全てマイルへの移行を前提</strong>に円換算を統一</p>
 
+  <div class="table-scroll">
   <table class="cond-table">
     <thead>
       <tr>
@@ -928,6 +933,7 @@
       </tr>
     </tbody>
   </table>
+  </div>
 
   <div style="margin-top:12px;font-size:12px;color:var(--gray)">
     ※ デルタマイル単価：TPG 1.25¢(≈1.88円)、NerdWallet 1.2¢(≈1.80円)、日本発実用中央値1.5円<br>
@@ -945,6 +951,7 @@
     <p>税金支払いは入会特典の「利用額条件」にカウントされる。つまり、税金を払うだけで入会ボーナスの条件達成に使える。</p>
   </div>
 
+  <div class="table-scroll">
   <table class="cond-table">
     <thead>
       <tr>
@@ -1059,6 +1066,7 @@
       </tr>
     </tbody>
   </table>
+  </div>
 </div>
 
 <!-- 3. 実質還元率（手数料差引後） -->
@@ -1131,6 +1139,7 @@
   <h2 class="section-title"><span class="num">7</span>決済額連動の別枠特典（ポイント以外）</h2>
   <p style="font-size:13px;color:var(--gray);margin-bottom:20px">ポイント/マイル還元とは別に、決済額の閾値で獲得できる特典。税金支払いもカウント対象のものが多い</p>
 
+  <div class="table-scroll">
   <table class="bonus-table">
     <thead>
       <tr>
@@ -1225,6 +1234,7 @@
       </tr>
     </tbody>
   </table>
+  </div>
 
   <!-- あと少しで届く -->
   <div class="stretch-tip">
@@ -1296,6 +1306,7 @@
     <span style="font-size:12px;color:var(--gray)">※ 140,000pt × 1.5円(デルタ換算) = 210,000円の逸失</span></p>
   </div>
 
+  <div class="table-scroll">
   <table class="caveat-table">
     <thead>
       <tr>
@@ -1338,6 +1349,7 @@
       </tr>
     </tbody>
   </table>
+  </div>
 </div>
 
 <!-- 9. 注意事項 -->
