@@ -1,0 +1,62 @@
+---
+source: LINE
+date: 2026-01-14T14:29:32.963Z
+messageId: 596546913802125502
+userId: U2c31233044c2c7b30a5df29ba4c9c3ea
+category: AI
+title: Claude Code使い分けガイド
+---
+
+Claude Code の CLAUDE .md、Rules、Skills、Subagents、MCP 使い分け
+
+◯ 使い分けの感覚はこれだけ覚えればいい
+
+- どういう思想で働いてほしいかは CLAUDE .md
+- この領域では絶対に守る知識は Rules
+- 人（自動もあり）が開始する作業手順は Skills
+- 自動で任せたい重い作業は Subagents
+- 外部世界と触るなら MCP
+
+一言で言うとこれやね
+
+- CLAUDE .md はプロジェクトの地図
+- Rules は専門知識
+- Skills は繰り返し作業
+- Subagents は複雑な自動化
+- MCP は外部ツール連携
+
+Claude Code は「全部ルールを書くほど賢くなる」わけじゃないよ
+レイヤーを間違えると、むしろ指示を無視し始める
+
+◯ Claude の脳
+
+CLAUDE .md
+常に読み込まれる前提知識。技術スタック・前提条件を書く。300 行以下が目安
+
+Rules
+ドメイン固有の知識。設計規約、セキュリティ、DB ルールなどを .claude/rules/ に分離
+
+Skills
+人が明示的に起動するワークフロー。判断手順や生成プロセスを再利用するためのもの
+
+Subagents
+複雑なマルチステップを自動実行する専門家。調査、監査、大規模変更向け
+
+MCPs
+GitHub、Slack、DB など外部ツールへの公式な橋渡し
+
+◯ よくある失敗はだいたい同じ
+
+- CLAUDE .md に全部詰め込む
+- ワークフロー指示を Rules に書く
+- レイヤーの役割を理解せず混ぜる
+
+◯ ポイントは段階的に構築すること
+
+1. まず CLAUDE .md で地図を作る
+2. 次に Rules で専門知識を固める
+3. 繰り返し作業は Skills に切り出す
+4. 重くなったら Subagents に任せる
+5. 外部と繋ぐ必要が出たら MCPs を使う
+
+この使い分けができたとき、Claude Code は「指示待ち AI」から「分かって動く相棒」に変わる

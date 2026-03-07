@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Analytics Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="w-full min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-red-500 p-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-5xl font-bold text-white mb-2">📊 Instagram Analytics Dashboard</h1>
+                <p class="text-white text-lg opacity-90">2025年10月23日 - 2026年1月20日（90日間）</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8" id="statsCards"></div>
+
+            <!-- Main Chart -->
+            <div class="bg-white rounded-xl p-6 shadow-xl mb-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">📈 全指標トレンド推移</h2>
+                <div style="position: relative; height: 400px;">
+                    <canvas id="mainChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Conversion Rate Analysis -->
+            <div class="bg-white rounded-xl p-6 shadow-xl mb-6">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">🎯 エンゲージメント率向上のための転換率分析</h3>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6" id="conversionRateCards"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-bold text-lg mb-3 text-gray-700">📊 主要転換率推移</h4>
+                        <div style="position: relative; height: 300px;">
+                            <canvas id="conversionRateChart"></canvas>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-3 text-gray-700">📈 訪問→フォロー転換率推移</h4>
+                        <div style="position: relative; height: 300px;">
+                            <canvas id="visitToFollowChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stories Analysis -->
+            <div class="bg-white rounded-xl p-6 shadow-xl mb-6">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">📱 Instagram Stories 分析</h3>
+                <p class="text-gray-600 mb-6 text-sm">2025年12月22日 - 2026年1月20日（30日間）</p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6" id="storiesSummaryCards"></div>
+                <div>
+                    <h4 class="font-bold text-lg mb-3 text-gray-700">📈 ストーリーズ主要指標推移</h4>
+                    <div style="position: relative; height: 350px;">
+                        <canvas id="storiesTrendChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stories Topic Analysis -->
+            <div class="bg-white rounded-xl p-6 shadow-xl mb-6">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">📝 トピック別パフォーマンス（TOP10）</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-bold text-lg mb-3 text-gray-700">🏆 エンゲージメント率</h4>
+                        <div style="position: relative; height: 350px;">
+                            <canvas id="topicEngagementChart"></canvas>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-3 text-gray-700">👥 プロフィール訪問率</h4>
+                        <div style="position: relative; height: 350px;">
+                            <canvas id="topicVisitRateChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detail Charts -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-xl p-6 shadow-xl">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">👥 訪問数推移</h3>
+                    <div style="position: relative; height: 250px;">
+                        <canvas id="visitsChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-xl">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">➕ フォロー推移</h3>
+                    <div style="position: relative; height: 250px;">
+                        <canvas id="followsChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-xl">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">💬 インタラクション推移</h3>
+                    <div style="position: relative; height: 250px;">
+                        <canvas id="interactionsChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-xl">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">👁️ リーチ推移</h3>
+                    <div style="position: relative; height: 250px;">
+                        <canvas id="reachChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-xl">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">👀 閲覧数推移</h3>
+                    <div style="position: relative; height: 250px;">
+                        <canvas id="viewsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Audience Analysis -->
+            <div class="bg-white rounded-xl p-6 shadow-xl mb-6">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">👥 オーディエンス分析</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <h4 class="font-bold text-lg mb-3 text-gray-700">📊 年齢・性別分布</h4>
+                        <div style="position: relative; height: 300px;">
+                            <canvas id="ageGenderChart"></canvas>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-3 text-gray-700">🏙️ TOP都市分布</h4>
+                        <div style="position: relative; height: 300px;">
+                            <canvas id="citiesChart"></canvas>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-3 text-gray-700">🌍 国別分布</h4>
+                        <div style="position: relative; height: 300px;">
+                            <canvas id="countriesChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Wait for both DOM and Chart.js to be ready
+        function initDashboard() {
+            if (typeof Chart === 'undefined') {
+                console.error('Chart.js is not loaded yet, retrying...');
+                setTimeout(initDashboard, 100);
+                return;
+            }
+
+            try {
+                // Raw data
+                const rawData = {
+                    visits: [{"Date": "2025-10-23", "Value": 596}, {"Date": "2025-10-24", "Value": 618}, {"Date": "2025-10-25", "Value": 646}, {"Date": "2025-10-26", "Value": 859}, {"Date": "2025-10-27", "Value": 537}, {"Date": "2025-10-28", "Value": 645}, {"Date": "2025-10-29", "Value": 492}, {"Date": "2025-10-30", "Value": 798}, {"Date": "2025-10-31", "Value": 504}, {"Date": "2025-11-01", "Value": 581}, {"Date": "2025-11-02", "Value": 613}, {"Date": "2025-11-03", "Value": 1077}, {"Date": "2025-11-04", "Value": 689}, {"Date": "2025-11-05", "Value": 664}, {"Date": "2025-11-06", "Value": 510}, {"Date": "2025-11-07", "Value": 689}, {"Date": "2025-11-08", "Value": 767}, {"Date": "2025-11-09", "Value": 806}, {"Date": "2025-11-10", "Value": 579}, {"Date": "2025-11-11", "Value": 1074}, {"Date": "2025-11-12", "Value": 625}, {"Date": "2025-11-13", "Value": 649}, {"Date": "2025-11-14", "Value": 547}, {"Date": "2025-11-15", "Value": 634}, {"Date": "2025-11-16", "Value": 496}, {"Date": "2025-11-17", "Value": 557}, {"Date": "2025-11-18", "Value": 525}, {"Date": "2025-11-19", "Value": 549}, {"Date": "2025-11-20", "Value": 430}, {"Date": "2025-11-21", "Value": 513}, {"Date": "2025-11-22", "Value": 425}, {"Date": "2025-11-23", "Value": 962}, {"Date": "2025-11-24", "Value": 551}, {"Date": "2025-11-25", "Value": 517}, {"Date": "2025-11-26", "Value": 521}, {"Date": "2025-11-27", "Value": 628}, {"Date": "2025-11-28", "Value": 410}, {"Date": "2025-11-29", "Value": 772}, {"Date": "2025-11-30", "Value": 394}, {"Date": "2025-12-01", "Value": 779}, {"Date": "2025-12-02", "Value": 489}, {"Date": "2025-12-03", "Value": 602}, {"Date": "2025-12-04", "Value": 461}, {"Date": "2025-12-05", "Value": 620}, {"Date": "2025-12-06", "Value": 480}, {"Date": "2025-12-07", "Value": 747}, {"Date": "2025-12-08", "Value": 529}, {"Date": "2025-12-09", "Value": 607}, {"Date": "2025-12-10", "Value": 418}, {"Date": "2025-12-11", "Value": 465}, {"Date": "2025-12-12", "Value": 362}, {"Date": "2025-12-13", "Value": 923}, {"Date": "2025-12-14", "Value": 487}, {"Date": "2025-12-15", "Value": 613}, {"Date": "2025-12-16", "Value": 375}, {"Date": "2025-12-17", "Value": 558}, {"Date": "2025-12-18", "Value": 305}, {"Date": "2025-12-19", "Value": 306}, {"Date": "2025-12-20", "Value": 303}, {"Date": "2025-12-21", "Value": 349}, {"Date": "2025-12-22", "Value": 435}, {"Date": "2025-12-23", "Value": 268}, {"Date": "2025-12-24", "Value": 358}, {"Date": "2025-12-25", "Value": 321}, {"Date": "2025-12-26", "Value": 481}, {"Date": "2025-12-27", "Value": 329}, {"Date": "2025-12-28", "Value": 623}, {"Date": "2025-12-29", "Value": 352}, {"Date": "2025-12-30", "Value": 502}, {"Date": "2025-12-31", "Value": 327}, {"Date": "2026-01-01", "Value": 699}, {"Date": "2026-01-02", "Value": 594}, {"Date": "2026-01-03", "Value": 625}, {"Date": "2026-01-04", "Value": 447}, {"Date": "2026-01-05", "Value": 607}, {"Date": "2026-01-06", "Value": 370}, {"Date": "2026-01-07", "Value": 548}, {"Date": "2026-01-08", "Value": 427}, {"Date": "2026-01-09", "Value": 486}, {"Date": "2026-01-10", "Value": 417}, {"Date": "2026-01-11", "Value": 493}, {"Date": "2026-01-12", "Value": 375}, {"Date": "2026-01-13", "Value": 505}, {"Date": "2026-01-14", "Value": 391}, {"Date": "2026-01-15", "Value": 500}, {"Date": "2026-01-16", "Value": 391}, {"Date": "2026-01-17", "Value": 670}, {"Date": "2026-01-18", "Value": 466}, {"Date": "2026-01-19", "Value": 909}, {"Date": "2026-01-20", "Value": 614}],
+            follows: [{"Date": "2025-10-23", "Value": 22}, {"Date": "2025-10-24", "Value": 9}, {"Date": "2025-10-25", "Value": 26}, {"Date": "2025-10-26", "Value": 16}, {"Date": "2025-10-27", "Value": 24}, {"Date": "2025-10-28", "Value": 15}, {"Date": "2025-10-29", "Value": 22}, {"Date": "2025-10-30", "Value": 20}, {"Date": "2025-10-31", "Value": 14}, {"Date": "2025-11-01", "Value": 15}, {"Date": "2025-11-02", "Value": 18}, {"Date": "2025-11-03", "Value": 23}, {"Date": "2025-11-04", "Value": 26}, {"Date": "2025-11-05", "Value": 26}, {"Date": "2025-11-06", "Value": 21}, {"Date": "2025-11-07", "Value": 26}, {"Date": "2025-11-08", "Value": 26}, {"Date": "2025-11-09", "Value": 34}, {"Date": "2025-11-10", "Value": 32}, {"Date": "2025-11-11", "Value": 33}, {"Date": "2025-11-12", "Value": 19}, {"Date": "2025-11-13", "Value": 21}, {"Date": "2025-11-14", "Value": 30}, {"Date": "2025-11-15", "Value": 27}, {"Date": "2025-11-16", "Value": 22}, {"Date": "2025-11-17", "Value": 20}, {"Date": "2025-11-18", "Value": 36}, {"Date": "2025-11-19", "Value": 25}, {"Date": "2025-11-20", "Value": 29}, {"Date": "2025-11-21", "Value": 17}, {"Date": "2025-11-22", "Value": 23}, {"Date": "2025-11-23", "Value": 51}, {"Date": "2025-11-24", "Value": 34}, {"Date": "2025-11-25", "Value": 22}, {"Date": "2025-11-26", "Value": 21}, {"Date": "2025-11-27", "Value": 24}, {"Date": "2025-11-28", "Value": 23}, {"Date": "2025-11-29", "Value": 15}, {"Date": "2025-11-30", "Value": 19}, {"Date": "2025-12-01", "Value": 22}, {"Date": "2025-12-02", "Value": 27}, {"Date": "2025-12-03", "Value": 39}, {"Date": "2025-12-04", "Value": 25}, {"Date": "2025-12-05", "Value": 25}, {"Date": "2025-12-06", "Value": 27}, {"Date": "2025-12-07", "Value": 43}, {"Date": "2025-12-08", "Value": 50}, {"Date": "2025-12-09", "Value": 34}, {"Date": "2025-12-10", "Value": 34}, {"Date": "2025-12-11", "Value": 30}, {"Date": "2025-12-12", "Value": 25}, {"Date": "2025-12-13", "Value": 52}, {"Date": "2025-12-14", "Value": 46}, {"Date": "2025-12-15", "Value": 59}, {"Date": "2025-12-16", "Value": 40}, {"Date": "2025-12-17", "Value": 40}, {"Date": "2025-12-18", "Value": 19}, {"Date": "2025-12-19", "Value": 24}, {"Date": "2025-12-20", "Value": 30}, {"Date": "2025-12-21", "Value": 25}, {"Date": "2025-12-22", "Value": 38}, {"Date": "2025-12-23", "Value": 16}, {"Date": "2025-12-24", "Value": 24}, {"Date": "2025-12-25", "Value": 14}, {"Date": "2025-12-26", "Value": 44}, {"Date": "2025-12-27", "Value": 26}, {"Date": "2025-12-28", "Value": 42}, {"Date": "2025-12-29", "Value": 36}, {"Date": "2025-12-30", "Value": 19}, {"Date": "2025-12-31", "Value": 21}, {"Date": "2026-01-01", "Value": 94}, {"Date": "2026-01-02", "Value": 73}, {"Date": "2026-01-03", "Value": 69}, {"Date": "2026-01-04", "Value": 61}, {"Date": "2026-01-05", "Value": 50}, {"Date": "2026-01-06", "Value": 43}, {"Date": "2026-01-07", "Value": 58}, {"Date": "2026-01-08", "Value": 30}, {"Date": "2026-01-09", "Value": 58}, {"Date": "2026-01-10", "Value": 35}, {"Date": "2026-01-11", "Value": 44}, {"Date": "2026-01-12", "Value": 38}, {"Date": "2026-01-13", "Value": 29}, {"Date": "2026-01-14", "Value": 35}, {"Date": "2026-01-15", "Value": 33}, {"Date": "2026-01-16", "Value": 31}, {"Date": "2026-01-17", "Value": 53}, {"Date": "2026-01-18", "Value": 33}, {"Date": "2026-01-19", "Value": 91}, {"Date": "2026-01-20", "Value": 70}],
+            interactions: [{"Date": "2025-10-23", "Value": 117}, {"Date": "2025-10-24", "Value": 515}, {"Date": "2025-10-25", "Value": 181}, {"Date": "2025-10-26", "Value": 334}, {"Date": "2025-10-27", "Value": 126}, {"Date": "2025-10-28", "Value": 428}, {"Date": "2025-10-29", "Value": 148}, {"Date": "2025-10-30", "Value": 410}, {"Date": "2025-10-31", "Value": 122}, {"Date": "2025-11-01", "Value": 311}, {"Date": "2025-11-02", "Value": 144}, {"Date": "2025-11-03", "Value": 353}, {"Date": "2025-11-04", "Value": 173}, {"Date": "2025-11-05", "Value": 208}, {"Date": "2025-11-06", "Value": 117}, {"Date": "2025-11-07", "Value": 240}, {"Date": "2025-11-08", "Value": 157}, {"Date": "2025-11-09", "Value": 492}, {"Date": "2025-11-10", "Value": 172}, {"Date": "2025-11-11", "Value": 343}, {"Date": "2025-11-12", "Value": 228}, {"Date": "2025-11-13", "Value": 465}, {"Date": "2025-11-14", "Value": 192}, {"Date": "2025-11-15", "Value": 264}, {"Date": "2025-11-16", "Value": 181}, {"Date": "2025-11-17", "Value": 589}, {"Date": "2025-11-18", "Value": 275}, {"Date": "2025-11-19", "Value": 300}, {"Date": "2025-11-20", "Value": 137}, {"Date": "2025-11-21", "Value": 342}, {"Date": "2025-11-22", "Value": 204}, {"Date": "2025-11-23", "Value": 465}, {"Date": "2025-11-24", "Value": 182}, {"Date": "2025-11-25", "Value": 448}, {"Date": "2025-11-26", "Value": 142}, {"Date": "2025-11-27", "Value": 247}, {"Date": "2025-11-28", "Value": 133}, {"Date": "2025-11-29", "Value": 661}, {"Date": "2025-11-30", "Value": 110}, {"Date": "2025-12-01", "Value": 368}, {"Date": "2025-12-02", "Value": 160}, {"Date": "2025-12-03", "Value": 1041}, {"Date": "2025-12-04", "Value": 357}, {"Date": "2025-12-05", "Value": 224}, {"Date": "2025-12-06", "Value": 167}, {"Date": "2025-12-07", "Value": 667}, {"Date": "2025-12-08", "Value": 328}, {"Date": "2025-12-09", "Value": 339}, {"Date": "2025-12-10", "Value": 169}, {"Date": "2025-12-11", "Value": 546}, {"Date": "2025-12-12", "Value": 173}, {"Date": "2025-12-13", "Value": 979}, {"Date": "2025-12-14", "Value": 409}, {"Date": "2025-12-15", "Value": 476}, {"Date": "2025-12-16", "Value": 365}, {"Date": "2025-12-17", "Value": 470}, {"Date": "2025-12-18", "Value": 146}, {"Date": "2025-12-19", "Value": 463}, {"Date": "2025-12-20", "Value": 209}, {"Date": "2025-12-21", "Value": 179}, {"Date": "2025-12-22", "Value": 297}, {"Date": "2025-12-23", "Value": 112}, {"Date": "2025-12-24", "Value": 610}, {"Date": "2025-12-25", "Value": 239}, {"Date": "2025-12-26", "Value": 378}, {"Date": "2025-12-27", "Value": 167}, {"Date": "2025-12-28", "Value": 470}, {"Date": "2025-12-29", "Value": 180}, {"Date": "2025-12-30", "Value": 258}, {"Date": "2025-12-31", "Value": 142}, {"Date": "2026-01-01", "Value": 801}, {"Date": "2026-01-02", "Value": 320}, {"Date": "2026-01-03", "Value": 560}, {"Date": "2026-01-04", "Value": 239}, {"Date": "2026-01-05", "Value": 797}, {"Date": "2026-01-06", "Value": 258}, {"Date": "2026-01-07", "Value": 487}, {"Date": "2026-01-08", "Value": 184}, {"Date": "2026-01-09", "Value": 824}, {"Date": "2026-01-10", "Value": 425}, {"Date": "2026-01-11", "Value": 401}, {"Date": "2026-01-12", "Value": 227}, {"Date": "2026-01-13", "Value": 639}, {"Date": "2026-01-14", "Value": 373}, {"Date": "2026-01-15", "Value": 422}, {"Date": "2026-01-16", "Value": 275}, {"Date": "2026-01-17", "Value": 649}, {"Date": "2026-01-18", "Value": 285}, {"Date": "2026-01-19", "Value": 788}, {"Date": "2026-01-20", "Value": 361}],
+            linkClicks: [{"Date": "2025-10-23", "Value": 53}, {"Date": "2025-10-24", "Value": 89}, {"Date": "2025-10-25", "Value": 288}, {"Date": "2025-10-26", "Value": 10}, {"Date": "2025-10-27", "Value": 17}, {"Date": "2025-10-28", "Value": 0}, {"Date": "2025-10-29", "Value": 0}, {"Date": "2025-10-30", "Value": 1}, {"Date": "2025-10-31", "Value": 38}, {"Date": "2025-11-01", "Value": 52}, {"Date": "2025-11-02", "Value": 19}, {"Date": "2025-11-03", "Value": 151}, {"Date": "2025-11-04", "Value": 131}, {"Date": "2025-11-05", "Value": 30}, {"Date": "2025-11-06", "Value": 6}, {"Date": "2025-11-07", "Value": 83}, {"Date": "2025-11-08", "Value": 117}, {"Date": "2025-11-09", "Value": 21}, {"Date": "2025-11-10", "Value": 54}, {"Date": "2025-11-11", "Value": 13}, {"Date": "2025-11-12", "Value": 80}, {"Date": "2025-11-13", "Value": 74}, {"Date": "2025-11-14", "Value": 4}, {"Date": "2025-11-15", "Value": 11}, {"Date": "2025-11-16", "Value": 65}, {"Date": "2025-11-17", "Value": 29}, {"Date": "2025-11-18", "Value": 74}, {"Date": "2025-11-19", "Value": 256}, {"Date": "2025-11-20", "Value": 98}, {"Date": "2025-11-21", "Value": 0}, {"Date": "2025-11-22", "Value": 0}, {"Date": "2025-11-23", "Value": 0}, {"Date": "2025-11-24", "Value": 0}, {"Date": "2025-11-25", "Value": 0}, {"Date": "2025-11-26", "Value": 126}, {"Date": "2025-11-27", "Value": 50}, {"Date": "2025-11-28", "Value": 7}, {"Date": "2025-11-29", "Value": 0}, {"Date": "2025-11-30", "Value": 13}, {"Date": "2025-12-01", "Value": 39}, {"Date": "2025-12-02", "Value": 52}, {"Date": "2025-12-03", "Value": 29}, {"Date": "2025-12-04", "Value": 0}, {"Date": "2025-12-05", "Value": 0}, {"Date": "2025-12-06", "Value": 149}, {"Date": "2025-12-07", "Value": 57}, {"Date": "2025-12-08", "Value": 0}, {"Date": "2025-12-09", "Value": 27}, {"Date": "2025-12-10", "Value": 32}, {"Date": "2025-12-11", "Value": 71}, {"Date": "2025-12-12", "Value": 110}, {"Date": "2025-12-13", "Value": 96}, {"Date": "2025-12-14", "Value": 0}, {"Date": "2025-12-15", "Value": 0}, {"Date": "2025-12-16", "Value": 0}, {"Date": "2025-12-17", "Value": 94}, {"Date": "2025-12-18", "Value": 24}, {"Date": "2025-12-19", "Value": 5}, {"Date": "2025-12-20", "Value": 47}, {"Date": "2025-12-21", "Value": 0}, {"Date": "2025-12-22", "Value": 7}, {"Date": "2025-12-23", "Value": 13}, {"Date": "2025-12-24", "Value": 0}, {"Date": "2025-12-25", "Value": 36}, {"Date": "2025-12-26", "Value": 21}, {"Date": "2025-12-27", "Value": 199}, {"Date": "2025-12-28", "Value": 116}, {"Date": "2025-12-29", "Value": 25}, {"Date": "2025-12-30", "Value": 20}, {"Date": "2025-12-31", "Value": 29}, {"Date": "2026-01-01", "Value": 38}, {"Date": "2026-01-02", "Value": 38}, {"Date": "2026-01-03", "Value": 49}, {"Date": "2026-01-04", "Value": 0}, {"Date": "2026-01-05", "Value": 9}, {"Date": "2026-01-06", "Value": 2}, {"Date": "2026-01-07", "Value": 9}, {"Date": "2026-01-08", "Value": 23}, {"Date": "2026-01-09", "Value": 57}, {"Date": "2026-01-10", "Value": 24}, {"Date": "2026-01-11", "Value": 0}, {"Date": "2026-01-12", "Value": 0}, {"Date": "2026-01-13", "Value": 0}, {"Date": "2026-01-14", "Value": 0}, {"Date": "2026-01-15", "Value": 4}, {"Date": "2026-01-16", "Value": 11}, {"Date": "2026-01-17", "Value": 190}, {"Date": "2026-01-18", "Value": 16}, {"Date": "2026-01-19", "Value": 38}, {"Date": "2026-01-20", "Value": 115}],
+                    reach: [{"Date": "2025-10-23", "Value": 8331}, {"Date": "2025-10-24", "Value": 10182}, {"Date": "2025-10-25", "Value": 9122}, {"Date": "2025-10-26", "Value": 10725}, {"Date": "2025-10-27", "Value": 7031}, {"Date": "2025-10-28", "Value": 10617}, {"Date": "2025-10-29", "Value": 7705}, {"Date": "2025-10-30", "Value": 9571}, {"Date": "2025-10-31", "Value": 5915}, {"Date": "2025-11-01", "Value": 9212}, {"Date": "2025-11-02", "Value": 6925}, {"Date": "2025-11-03", "Value": 10939}, {"Date": "2025-11-04", "Value": 8328}, {"Date": "2025-11-05", "Value": 9604}, {"Date": "2025-11-06", "Value": 7151}, {"Date": "2025-11-07", "Value": 7689}, {"Date": "2025-11-08", "Value": 8601}, {"Date": "2025-11-09", "Value": 10717}, {"Date": "2025-11-10", "Value": 7555}, {"Date": "2025-11-11", "Value": 13317}, {"Date": "2025-11-12", "Value": 8993}, {"Date": "2025-11-13", "Value": 11255}, {"Date": "2025-11-14", "Value": 9504}, {"Date": "2025-11-15", "Value": 11508}, {"Date": "2025-11-16", "Value": 8538}, {"Date": "2025-11-17", "Value": 10081}, {"Date": "2025-11-18", "Value": 8475}, {"Date": "2025-11-19", "Value": 7824}, {"Date": "2025-11-20", "Value": 5891}, {"Date": "2025-11-21", "Value": 9037}, {"Date": "2025-11-22", "Value": 6796}, {"Date": "2025-11-23", "Value": 10889}, {"Date": "2025-11-24", "Value": 8301}, {"Date": "2025-11-25", "Value": 8940}, {"Date": "2025-11-26", "Value": 6229}, {"Date": "2025-11-27", "Value": 9124}, {"Date": "2025-11-28", "Value": 6462}, {"Date": "2025-11-29", "Value": 9434}, {"Date": "2025-11-30", "Value": 6313}, {"Date": "2025-12-01", "Value": 10653}, {"Date": "2025-12-02", "Value": 6756}, {"Date": "2025-12-03", "Value": 11547}, {"Date": "2025-12-04", "Value": 9659}, {"Date": "2025-12-05", "Value": 11660}, {"Date": "2025-12-06", "Value": 10049}, {"Date": "2025-12-07", "Value": 14397}, {"Date": "2025-12-08", "Value": 13679}, {"Date": "2025-12-09", "Value": 12385}, {"Date": "2025-12-10", "Value": 8172}, {"Date": "2025-12-11", "Value": 10997}, {"Date": "2025-12-12", "Value": 6929}, {"Date": "2025-12-13", "Value": 17211}, {"Date": "2025-12-14", "Value": 9818}, {"Date": "2025-12-15", "Value": 12275}, {"Date": "2025-12-16", "Value": 9193}, {"Date": "2025-12-17", "Value": 12748}, {"Date": "2025-12-18", "Value": 6562}, {"Date": "2025-12-19", "Value": 9531}, {"Date": "2025-12-20", "Value": 8042}, {"Date": "2025-12-21", "Value": 6798}, {"Date": "2025-12-22", "Value": 9262}, {"Date": "2025-12-23", "Value": 5854}, {"Date": "2025-12-24", "Value": 10133}, {"Date": "2025-12-25", "Value": 8151}, {"Date": "2025-12-26", "Value": 11025}, {"Date": "2025-12-27", "Value": 8081}, {"Date": "2025-12-28", "Value": 12115}, {"Date": "2025-12-29", "Value": 6974}, {"Date": "2025-12-30", "Value": 11274}, {"Date": "2025-12-31", "Value": 6281}, {"Date": "2026-01-01", "Value": 17479}, {"Date": "2026-01-02", "Value": 11269}, {"Date": "2026-01-03", "Value": 16998}, {"Date": "2026-01-04", "Value": 10050}, {"Date": "2026-01-05", "Value": 16117}, {"Date": "2026-01-06", "Value": 9585}, {"Date": "2026-01-07", "Value": 12706}, {"Date": "2026-01-08", "Value": 8190}, {"Date": "2026-01-09", "Value": 14365}, {"Date": "2026-01-10", "Value": 10156}, {"Date": "2026-01-11", "Value": 11982}, {"Date": "2026-01-12", "Value": 9774}, {"Date": "2026-01-13", "Value": 12748}, {"Date": "2026-01-14", "Value": 8952}, {"Date": "2026-01-15", "Value": 15168}, {"Date": "2026-01-16", "Value": 10715}, {"Date": "2026-01-17", "Value": 14333}, {"Date": "2026-01-18", "Value": 9898}, {"Date": "2026-01-19", "Value": 25322}, {"Date": "2026-01-20", "Value": 14920}],
+                    views: [{"Date": "2025-10-23", "Value": 46595}, {"Date": "2025-10-24", "Value": 68785}, {"Date": "2025-10-25", "Value": 61916}, {"Date": "2025-10-26", "Value": 60261}, {"Date": "2025-10-27", "Value": 47821}, {"Date": "2025-10-28", "Value": 78149}, {"Date": "2025-10-29", "Value": 53105}, {"Date": "2025-10-30", "Value": 66810}, {"Date": "2025-10-31", "Value": 56264}, {"Date": "2025-11-01", "Value": 85009}, {"Date": "2025-11-02", "Value": 72665}, {"Date": "2025-11-03", "Value": 83663}, {"Date": "2025-11-04", "Value": 67762}, {"Date": "2025-11-05", "Value": 77605}, {"Date": "2025-11-06", "Value": 62303}, {"Date": "2025-11-07", "Value": 69395}, {"Date": "2025-11-08", "Value": 92296}, {"Date": "2025-11-09", "Value": 101988}, {"Date": "2025-11-10", "Value": 72991}, {"Date": "2025-11-11", "Value": 85936}, {"Date": "2025-11-12", "Value": 62364}, {"Date": "2025-11-13", "Value": 80670}, {"Date": "2025-11-14", "Value": 70350}, {"Date": "2025-11-15", "Value": 81145}, {"Date": "2025-11-16", "Value": 60576}, {"Date": "2025-11-17", "Value": 73521}, {"Date": "2025-11-18", "Value": 63566}, {"Date": "2025-11-19", "Value": 65547}, {"Date": "2025-11-20", "Value": 51387}, {"Date": "2025-11-21", "Value": 88094}, {"Date": "2025-11-22", "Value": 71741}, {"Date": "2025-11-23", "Value": 97573}, {"Date": "2025-11-24", "Value": 67032}, {"Date": "2025-11-25", "Value": 75646}, {"Date": "2025-11-26", "Value": 59397}, {"Date": "2025-11-27", "Value": 69158}, {"Date": "2025-11-28", "Value": 51344}, {"Date": "2025-11-29", "Value": 98899}, {"Date": "2025-11-30", "Value": 56109}, {"Date": "2025-12-01", "Value": 85129}, {"Date": "2025-12-02", "Value": 67948}, {"Date": "2025-12-03", "Value": 95391}, {"Date": "2025-12-04", "Value": 65256}, {"Date": "2025-12-05", "Value": 76008}, {"Date": "2025-12-06", "Value": 81453}, {"Date": "2025-12-07", "Value": 105495}, {"Date": "2025-12-08", "Value": 68788}, {"Date": "2025-12-09", "Value": 71879}, {"Date": "2025-12-10", "Value": 56825}, {"Date": "2025-12-11", "Value": 69051}, {"Date": "2025-12-12", "Value": 52506}, {"Date": "2025-12-13", "Value": 106547}, {"Date": "2025-12-14", "Value": 63308}, {"Date": "2025-12-15", "Value": 70531}, {"Date": "2025-12-16", "Value": 49831}, {"Date": "2025-12-17", "Value": 63011}, {"Date": "2025-12-18", "Value": 37863}, {"Date": "2025-12-19", "Value": 47881}, {"Date": "2025-12-20", "Value": 44944}, {"Date": "2025-12-21", "Value": 46678}, {"Date": "2025-12-22", "Value": 53111}, {"Date": "2025-12-23", "Value": 37214}, {"Date": "2025-12-24", "Value": 59399}, {"Date": "2025-12-25", "Value": 44629}, {"Date": "2025-12-26", "Value": 52888}, {"Date": "2025-12-27", "Value": 48968}, {"Date": "2025-12-28", "Value": 67390}, {"Date": "2025-12-29", "Value": 35425}, {"Date": "2025-12-30", "Value": 47561}, {"Date": "2025-12-31", "Value": 30081}, {"Date": "2026-01-01", "Value": 99813}, {"Date": "2026-01-02", "Value": 64269}, {"Date": "2026-01-03", "Value": 67840}, {"Date": "2026-01-04", "Value": 44141}, {"Date": "2026-01-05", "Value": 71007}, {"Date": "2026-01-06", "Value": 36751}, {"Date": "2026-01-07", "Value": 57424}, {"Date": "2026-01-08", "Value": 48590}, {"Date": "2026-01-09", "Value": 71879}, {"Date": "2026-01-10", "Value": 45569}, {"Date": "2026-01-11", "Value": 53194}, {"Date": "2026-01-12", "Value": 35444}, {"Date": "2026-01-13", "Value": 49694}, {"Date": "2026-01-14", "Value": 36065}, {"Date": "2026-01-15", "Value": 55871}, {"Date": "2026-01-16", "Value": 36338}, {"Date": "2026-01-17", "Value": 68431}, {"Date": "2026-01-18", "Value": 36299}, {"Date": "2026-01-19", "Value": 87505}, {"Date": "2026-01-20", "Value": 60217}]
+                };
+
+                // Audience data
+                const audienceData = {
+                    ageGender: [
+                        {age: "18-24", men: 2.0, women: 0.5},
+                        {age: "25-34", men: 22.4, women: 11.8},
+                        {age: "35-44", men: 17.7, women: 21.0},
+                        {age: "45-54", men: 6.7, women: 11.2},
+                        {age: "55-64", men: 2.4, women: 3.5},
+                        {age: "65+", men: 0.5, women: 0.3}
+                    ],
+                    topCities: [
+                        {city: "Yokohama, Kanagawa, Japan", value: 4.4},
+                        {city: "Osaka, Japan", value: 4.1},
+                        {city: "Nagoya-shi, Aichi, Japan", value: 3.3},
+                        {city: "Kawasaki-shi, Kanagawa, Japan", value: 2.2},
+                        {city: "Fukuoka-shi, Fukuoka, Japan", value: 2.1},
+                        {city: "Setagaya-ku, Tokyo, Japan", value: 1.9},
+                        {city: "Sapporo-shi, Hokkaido, Japan", value: 1.8},
+                        {city: "Kobe-shi, Hyogo, Japan", value: 1.5},
+                        {city: "Saitama-shi, Saitama, Japan", value: 1.4},
+                        {city: "Ota-ku, Tokyo, Japan", value: 1.4}
+                    ],
+                    topCountries: [
+                        {country: "Japan", value: 97.4},
+                        {country: "China", value: 0.5},
+                        {country: "United States", value: 0.3},
+                        {country: "Hong Kong", value: 0.1},
+                        {country: "South Korea", value: 0.1},
+                        {country: "Thailand", value: 0.1},
+                        {country: "Australia", value: 0.1},
+                        {country: "Indonesia", value: 0.1},
+                        {country: "Philippines", value: 0.1}
+                    ]
+                };
+
+        // Calculate stats
+        const calcStats = (arr) => {
+            const total = arr.reduce((sum, d) => sum + d.Value, 0);
+            const avg = total / arr.length;
+            return { total, avg: Math.round(avg) };
+        };
+
+        const stats = {
+            visits: calcStats(rawData.visits),
+            follows: calcStats(rawData.follows),
+            interactions: calcStats(rawData.interactions),
+            reach: calcStats(rawData.reach),
+            views: calcStats(rawData.views)
+        };
+
+        // Render stats cards
+        const statsCards = [
+            { label: '訪問', icon: '👥', data: stats.visits },
+            { label: 'フォロー', icon: '➕', data: stats.follows },
+            { label: 'インタラクション', icon: '💬', data: stats.interactions },
+            { label: 'リーチ', icon: '👁️', data: stats.reach },
+            { label: '閲覧数', icon: '👀', data: stats.views }
+        ];
+
+        const statsContainer = document.getElementById('statsCards');
+        statsCards.forEach(stat => {
+            const card = document.createElement('div');
+            card.className = 'bg-white rounded-xl p-5 shadow-xl transform hover:scale-105 transition-transform';
+            card.innerHTML = `
+                <div class="text-sm text-gray-600 mb-1">${stat.icon} ${stat.label}</div>
+                <div class="text-3xl font-bold text-gray-800 mb-2">${stat.data.total.toLocaleString()}</div>
+                <div class="text-xs text-gray-500 mt-1">平均: ${stat.data.avg.toLocaleString()}/日</div>
+            `;
+            statsContainer.appendChild(card);
+        });
+
+        const labels = rawData.visits.map(d => d.Date.substring(5));
+
+        // Main Chart
+        new Chart(document.getElementById('mainChart'), {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: '訪問',
+                        data: rawData.visits.map(d => d.Value),
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        tension: 0.4,
+                        pointRadius: 0
+                    },
+                    {
+                        label: 'フォロー',
+                        data: rawData.follows.map(d => d.Value),
+                        borderColor: '#10b981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        tension: 0.4,
+                        pointRadius: 0
+                    },
+                    {
+                        label: 'インタラクション',
+                        data: rawData.interactions.map(d => d.Value),
+                        borderColor: '#f59e0b',
+                        backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                        tension: 0.4,
+                        pointRadius: 0
+                    },
+                    {
+                        label: 'リーチ (÷100)',
+                        data: rawData.reach.map(d => Math.round(d.Value / 100)),
+                        borderColor: '#8b5cf6',
+                        backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                        tension: 0.4,
+                        pointRadius: 0
+                    },
+                    {
+                        label: '閲覧数 (÷1000)',
+                        data: rawData.views.map(d => Math.round(d.Value / 1000)),
+                        borderColor: '#ec4899',
+                        backgroundColor: 'rgba(236, 72, 153, 0.1)',
+                        tension: 0.4,
+                        pointRadius: 0
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: true, position: 'top' },
+                    tooltip: { mode: 'index', intersect: false }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            maxRotation: 45,
+                            minRotation: 45,
+                            maxTicksLimit: 15
+                        }
+                    },
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // Individual charts
+        new Chart(document.getElementById('visitsChart'), {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '訪問',
+                    data: rawData.visits.map(d => d.Value),
+                    borderColor: '#3b82f6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.6)',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { ticks: { maxRotation: 45, minRotation: 45, maxTicksLimit: 10 } },
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('followsChart'), {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'フォロー',
+                    data: rawData.follows.map(d => d.Value),
+                    backgroundColor: '#10b981',
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { ticks: { maxRotation: 45, minRotation: 45, maxTicksLimit: 10 } },
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('interactionsChart'), {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'インタラクション',
+                    data: rawData.interactions.map(d => d.Value),
+                    borderColor: '#f59e0b',
+                    backgroundColor: 'rgba(245, 158, 11, 0.6)',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { ticks: { maxRotation: 45, minRotation: 45, maxTicksLimit: 10 } },
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('reachChart'), {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'リーチ',
+                    data: rawData.reach.map(d => d.Value),
+                    borderColor: '#8b5cf6',
+                    backgroundColor: 'rgba(139, 92, 246, 0.6)',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { ticks: { maxRotation: 45, minRotation: 45, maxTicksLimit: 10 } },
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('viewsChart'), {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '閲覧数',
+                    data: rawData.views.map(d => d.Value),
+                    borderColor: '#ec4899',
+                    backgroundColor: 'rgba(236, 72, 153, 0.6)',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { ticks: { maxRotation: 45, minRotation: 45, maxTicksLimit: 10 } },
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // Audience Analysis Charts
+        // Age & Gender Chart
+        new Chart(document.getElementById('ageGenderChart'), {
+            type: 'bar',
+            data: {
+                labels: audienceData.ageGender.map(a => a.age),
+                datasets: [
+                    {
+                        label: '男性 (%)',
+                        data: audienceData.ageGender.map(a => a.men),
+                        backgroundColor: '#3b82f6'
+                    },
+                    {
+                        label: '女性 (%)',
+                        data: audienceData.ageGender.map(a => a.women),
+                        backgroundColor: '#ec4899'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: true, position: 'top' } },
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+
+        // Top Cities Chart
+        new Chart(document.getElementById('citiesChart'), {
+            type: 'bar',
+            data: {
+                labels: audienceData.topCities.map(c => c.city.split(',')[0]),
+                datasets: [{
+                    label: '割合 (%)',
+                    data: audienceData.topCities.map(c => c.value),
+                    backgroundColor: audienceData.topCities.map((c, i) => 
+                        i < 3 ? '#10b981' : i < 6 ? '#f59e0b' : '#6b7280'
+                    ),
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: { legend: { display: false } },
+                scales: { x: { beginAtZero: true } }
+            }
+        });
+
+        // Top Countries Chart
+        new Chart(document.getElementById('countriesChart'), {
+            type: 'doughnut',
+            data: {
+                labels: audienceData.topCountries.map(c => c.country),
+                datasets: [{
+                    data: audienceData.topCountries.map(c => c.value),
+                    backgroundColor: [
+                        '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6',
+                        '#ec4899', '#06b6d4', '#84cc16', '#f97316'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: true, position: 'right' }
+                }
+            }
+        });
+
+        // Conversion Rate Analysis
+        function getValueByDate(dataList, date) {
+            const item = dataList.find(d => d.Date === date);
+            return item ? item.Value : 0;
+        }
+
+        const conversionRates = {
+            interactionRate: [],
+            followRate: [],
+            visitRate: [],
+            visitToFollowRate: []
+        };
+
+        rawData.reach.forEach((reachItem) => {
+            const date = reachItem.Date;
+            const reach = reachItem.Value;
+            const interactions = getValueByDate(rawData.interactions, date);
+            const follows = getValueByDate(rawData.follows, date);
+            const visits = getValueByDate(rawData.visits, date);
+
+            if (reach > 0) {
+                conversionRates.interactionRate.push((interactions / reach) * 100);
+                conversionRates.followRate.push((follows / reach) * 100);
+                conversionRates.visitRate.push((visits / reach) * 100);
+                
+                if (visits > 0) {
+                    conversionRates.visitToFollowRate.push((follows / visits) * 100);
+                } else {
+                    conversionRates.visitToFollowRate.push(0);
+                }
+            }
+        });
+
+        const avgConversionRates = {
+            interactionRate: conversionRates.interactionRate.reduce((a, b) => a + b, 0) / conversionRates.interactionRate.length,
+            followRate: conversionRates.followRate.reduce((a, b) => a + b, 0) / conversionRates.followRate.length,
+            visitRate: conversionRates.visitRate.reduce((a, b) => a + b, 0) / conversionRates.visitRate.length,
+            visitToFollowRate: conversionRates.visitToFollowRate.filter(r => r > 0).reduce((a, b) => a + b, 0) / conversionRates.visitToFollowRate.filter(r => r > 0).length
+        };
+
+        const conversionCards = [
+            { label: 'インタラクション率', value: avgConversionRates.interactionRate.toFixed(2), icon: '💬' },
+            { label: 'フォロー率', value: avgConversionRates.followRate.toFixed(2), icon: '➕' },
+            { label: '訪問率', value: avgConversionRates.visitRate.toFixed(2), icon: '👥' },
+            { label: 'クリック率', value: '0.41', icon: '🔗' },
+            { label: '訪問→フォロー転換率', value: avgConversionRates.visitToFollowRate.toFixed(2), icon: '🎯' }
+        ];
+
+        const conversionContainer = document.getElementById('conversionRateCards');
+        conversionCards.forEach(card => {
+            const cardEl = document.createElement('div');
+            cardEl.className = 'bg-white rounded-xl p-4 shadow-lg transform hover:scale-105 transition-transform';
+            cardEl.innerHTML = `
+                <div class="text-xs text-gray-600 mb-1">${card.icon} ${card.label}</div>
+                <div class="text-2xl font-bold text-gray-800">${card.value}%</div>
+            `;
+            conversionContainer.appendChild(cardEl);
+        });
+
+        new Chart(document.getElementById('conversionRateChart'), {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'インタラクション率 (%)',
+                        data: conversionRates.interactionRate,
+                        borderColor: '#f59e0b',
+                        backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                        tension: 0.4,
+                        pointRadius: 0
+                    },
+                    {
+                        label: 'フォロー率 (%)',
+                        data: conversionRates.followRate,
+                        borderColor: '#10b981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        tension: 0.4,
+                        pointRadius: 0
+                    },
+                    {
+                        label: '訪問率 (%)',
+                        data: conversionRates.visitRate,
+                        borderColor: '#6366f1',
+                        backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                        tension: 0.4,
+                        pointRadius: 0
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: true, position: 'top' }
+                },
+                scales: {
+                    x: { ticks: { maxRotation: 45, minRotation: 45, maxTicksLimit: 15 } },
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('visitToFollowChart'), {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '訪問→フォロー転換率 (%)',
+                    data: conversionRates.visitToFollowRate,
+                    borderColor: '#ec4899',
+                    backgroundColor: 'rgba(236, 72, 153, 0.6)',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { ticks: { maxRotation: 45, minRotation: 45, maxTicksLimit: 15 } },
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // Stories Data
+        const storiesData = [
+            {"Date": "2025-12-22", "Views": 18683, "Reach": 14962, "Likes": 27, "ProfileVisits": 67, "Follows": 0, "StoryCount": 8},
+            {"Date": "2025-12-23", "Views": 22616, "Reach": 17580, "Likes": 84, "ProfileVisits": 76, "Follows": 3, "StoryCount": 7},
+            {"Date": "2025-12-24", "Views": 19820, "Reach": 13594, "Likes": 39, "ProfileVisits": 116, "Follows": 2, "StoryCount": 5},
+            {"Date": "2025-12-25", "Views": 22842, "Reach": 16532, "Likes": 42, "ProfileVisits": 83, "Follows": 2, "StoryCount": 5},
+            {"Date": "2025-12-26", "Views": 20746, "Reach": 15498, "Likes": 44, "ProfileVisits": 120, "Follows": 3, "StoryCount": 6},
+            {"Date": "2025-12-27", "Views": 33103, "Reach": 25558, "Likes": 61, "ProfileVisits": 75, "Follows": 1, "StoryCount": 9},
+            {"Date": "2025-12-28", "Views": 21717, "Reach": 16691, "Likes": 30, "ProfileVisits": 98, "Follows": 2, "StoryCount": 7},
+            {"Date": "2025-12-29", "Views": 12620, "Reach": 9886, "Likes": 26, "ProfileVisits": 67, "Follows": 1, "StoryCount": 4},
+            {"Date": "2025-12-30", "Views": 11879, "Reach": 9983, "Likes": 34, "ProfileVisits": 87, "Follows": 0, "StoryCount": 5},
+            {"Date": "2025-12-31", "Views": 10846, "Reach": 8830, "Likes": 101, "ProfileVisits": 76, "Follows": 3, "StoryCount": 4},
+            {"Date": "2026-01-01", "Views": 57681, "Reach": 43217, "Likes": 74, "ProfileVisits": 151, "Follows": 4, "StoryCount": 17},
+            {"Date": "2026-01-02", "Views": 17270, "Reach": 13734, "Likes": 24, "ProfileVisits": 127, "Follows": 6, "StoryCount": 5},
+            {"Date": "2026-01-03", "Views": 19950, "Reach": 15362, "Likes": 33, "ProfileVisits": 102, "Follows": 3, "StoryCount": 5},
+            {"Date": "2026-01-04", "Views": 15461, "Reach": 11690, "Likes": 35, "ProfileVisits": 70, "Follows": 2, "StoryCount": 3},
+            {"Date": "2026-01-05", "Views": 20345, "Reach": 15778, "Likes": 35, "ProfileVisits": 81, "Follows": 1, "StoryCount": 6},
+            {"Date": "2026-01-06", "Views": 15882, "Reach": 12431, "Likes": 29, "ProfileVisits": 74, "Follows": 3, "StoryCount": 5},
+            {"Date": "2026-01-07", "Views": 39216, "Reach": 29081, "Likes": 57, "ProfileVisits": 153, "Follows": 4, "StoryCount": 9},
+            {"Date": "2026-01-08", "Views": 32479, "Reach": 24470, "Likes": 38, "ProfileVisits": 100, "Follows": 3, "StoryCount": 9},
+            {"Date": "2026-01-09", "Views": 20082, "Reach": 15035, "Likes": 46, "ProfileVisits": 100, "Follows": 2, "StoryCount": 6},
+            {"Date": "2026-01-10", "Views": 16630, "Reach": 12152, "Likes": 30, "ProfileVisits": 57, "Follows": 0, "StoryCount": 4},
+            {"Date": "2026-01-11", "Views": 24082, "Reach": 18289, "Likes": 44, "ProfileVisits": 102, "Follows": 1, "StoryCount": 5},
+            {"Date": "2026-01-12", "Views": 8226, "Reach": 6175, "Likes": 16, "ProfileVisits": 61, "Follows": 1, "StoryCount": 2},
+            {"Date": "2026-01-13", "Views": 14604, "Reach": 11324, "Likes": 31, "ProfileVisits": 98, "Follows": 1, "StoryCount": 4},
+            {"Date": "2026-01-14", "Views": 20908, "Reach": 15685, "Likes": 48, "ProfileVisits": 90, "Follows": 1, "StoryCount": 4},
+            {"Date": "2026-01-15", "Views": 20955, "Reach": 15913, "Likes": 33, "ProfileVisits": 68, "Follows": 0, "StoryCount": 7},
+            {"Date": "2026-01-16", "Views": 11238, "Reach": 8504, "Likes": 21, "ProfileVisits": 95, "Follows": 3, "StoryCount": 3},
+            {"Date": "2026-01-17", "Views": 38453, "Reach": 29256, "Likes": 66, "ProfileVisits": 122, "Follows": 4, "StoryCount": 12},
+            {"Date": "2026-01-18", "Views": 17478, "Reach": 13567, "Likes": 43, "ProfileVisits": 101, "Follows": 3, "StoryCount": 5},
+            {"Date": "2026-01-19", "Views": 19513, "Reach": 16220, "Likes": 36, "ProfileVisits": 125, "Follows": 2, "StoryCount": 8},
+            {"Date": "2026-01-20", "Views": 33995, "Reach": 26798, "Likes": 41, "ProfileVisits": 147, "Follows": 1, "StoryCount": 11}
+        ];
+
+        const storiesStats = {
+            totalViews: storiesData.reduce((sum, d) => sum + d.Views, 0),
+            totalReach: storiesData.reduce((sum, d) => sum + d.Reach, 0),
+            totalLikes: storiesData.reduce((sum, d) => sum + d.Likes, 0),
+            totalFollows: storiesData.reduce((sum, d) => sum + d.Follows, 0)
+        };
+
+        const storiesSummaryCards = [
+            { label: '総閲覧数', value: storiesStats.totalViews, icon: '👀' },
+            { label: '総リーチ', value: storiesStats.totalReach, icon: '👁️' },
+            { label: '総いいね', value: storiesStats.totalLikes, icon: '❤️' },
+            { label: 'フォロー獲得', value: storiesStats.totalFollows, icon: '➕' }
+        ];
+
+        const storiesSummaryContainer = document.getElementById('storiesSummaryCards');
+        storiesSummaryCards.forEach(card => {
+            const cardEl = document.createElement('div');
+            cardEl.className = 'bg-white rounded-xl p-4 shadow-lg transform hover:scale-105 transition-transform';
+            cardEl.innerHTML = `
+                <div class="text-xs text-gray-600 mb-1">${card.icon} ${card.label}</div>
+                <div class="text-2xl font-bold text-gray-800">${card.value.toLocaleString()}</div>
+            `;
+            storiesSummaryContainer.appendChild(cardEl);
+        });
+
+        const storiesLabels = storiesData.map(d => d.Date.substring(5));
+        new Chart(document.getElementById('storiesTrendChart'), {
+            type: 'line',
+            data: {
+                labels: storiesLabels,
+                datasets: [
+                    {
+                        label: '閲覧数 (÷100)',
+                        data: storiesData.map(d => Math.round(d.Views / 100)),
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        tension: 0.4,
+                        pointRadius: 0
+                    },
+                    {
+                        label: 'リーチ (÷100)',
+                        data: storiesData.map(d => Math.round(d.Reach / 100)),
+                        borderColor: '#8b5cf6',
+                        backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                        tension: 0.4,
+                        pointRadius: 0
+                    },
+                    {
+                        label: 'いいね数',
+                        data: storiesData.map(d => d.Likes),
+                        borderColor: '#ef4444',
+                        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                        tension: 0.4,
+                        pointRadius: 0
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: true, position: 'top' } },
+                scales: {
+                    x: { ticks: { maxRotation: 45, minRotation: 45, maxTicksLimit: 15 } },
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // Topic Performance Data
+        const topicPerformanceData = [
+            {"topic": "SFC修行", "count": 11, "engagementRate": 0.37, "visitRate": 0.81},
+            {"topic": "アメックス", "count": 2, "engagementRate": 0.37, "visitRate": 1.53},
+            {"topic": "商品・サービス紹介", "count": 2, "engagementRate": 0.36, "visitRate": 1.29},
+            {"topic": "プライオリティパス", "count": 2, "engagementRate": 0.32, "visitRate": 1.50},
+            {"topic": "リール紹介", "count": 2, "engagementRate": 0.24, "visitRate": 1.63},
+            {"topic": "ハイライト案内", "count": 1, "engagementRate": 0.18, "visitRate": 1.85},
+            {"topic": "クレジットカード情報", "count": 8, "engagementRate": 0.23, "visitRate": 0.82},
+            {"topic": "マイル情報", "count": 3, "engagementRate": 0.28, "visitRate": 0.96},
+            {"topic": "その他", "count": 35, "engagementRate": 0.28, "visitRate": 0.60},
+            {"topic": "説明なし", "count": 117, "engagementRate": 0.33, "visitRate": 0.44}
+        ];
+
+        const topEngagementTopics = [...topicPerformanceData].sort((a, b) => b.engagementRate - a.engagementRate).slice(0, 10);
+        const topVisitRateTopics = [...topicPerformanceData].sort((a, b) => b.visitRate - a.visitRate).slice(0, 10);
+
+        new Chart(document.getElementById('topicEngagementChart'), {
+            type: 'bar',
+            data: {
+                labels: topEngagementTopics.map(t => t.topic),
+                datasets: [{
+                    label: 'エンゲージメント率 (%)',
+                    data: topEngagementTopics.map(t => t.engagementRate),
+                    backgroundColor: topEngagementTopics.map((t, i) => i < 3 ? '#10b981' : i < 6 ? '#f59e0b' : '#6b7280'),
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { beginAtZero: true }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('topicVisitRateChart'), {
+            type: 'bar',
+            data: {
+                labels: topVisitRateTopics.map(t => t.topic),
+                datasets: [{
+                    label: 'プロフィール訪問率 (%)',
+                    data: topVisitRateTopics.map(t => t.visitRate),
+                    backgroundColor: topVisitRateTopics.map((t, i) => i < 3 ? '#6366f1' : i < 6 ? '#8b5cf6' : '#9ca3af'),
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { beginAtZero: true }
+                }
+            }
+        });
+
+            } catch (error) {
+                console.error('Error initializing dashboard:', error);
+            }
+        }
+
+        // Start initialization when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initDashboard);
+        } else {
+            initDashboard();
+        }
+    </script>
+</body>
+</html>

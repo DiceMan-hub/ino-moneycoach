@@ -1,0 +1,2479 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初心者向け JALカードの正しい選び方【2026年最新版】</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* ブランドカラー（JAL vs ANA 比較時のみ使用） */
+            --jal-red: #c8102e;
+            --jal-red-light: #e8354f;
+            --jal-red-dark: #a00d25;
+            --ana-blue: #0038a8;
+            /* 中立色（ライトトーン） */
+            --neutral-600: #6b7280;
+            --neutral-500: #9ca3af;
+            --neutral-400: #d1d5db;
+            --neutral-300: #e5e7eb;
+            --neutral-200: #f3f4f6;
+            --neutral-100: #f9fafb;
+            --gold: #b8860b;
+            --gold-light: #d4a84b;
+            --platinum: #6b7280;
+            --platinum-dark: #5d6d7e;
+            --success: #059669;
+            --warning: #d97706;
+            --info: #0e7490;
+            --light-bg: #fafafa;
+            --card-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            --text-primary: #374151;
+            --text-secondary: #6b7280;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #fafbfc 0%, #f5f6f8 100%);
+        }
+
+        /* Hero Section（JALガイドのためJALブランド色を使用） */
+        .hero {
+            background: linear-gradient(135deg, var(--jal-red) 0%, var(--jal-red-dark) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: float 30s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: #333;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        .nav-container {
+            background: white;
+            box-shadow: var(--card-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .nav-item {
+            background: var(--light-bg);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .nav-item:hover {
+            background: var(--neutral-400);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Section Styles */
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--neutral-300);
+        }
+
+        .section-number {
+            background: var(--neutral-200);
+            color: var(--text-primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            border: 1px solid var(--neutral-400);
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        .comparison-table th {
+            background: var(--neutral-100);
+            color: var(--text-primary);
+            padding: 15px 12px;
+            text-align: center;
+            font-weight: 700;
+            border-bottom: 2px solid var(--neutral-400);
+        }
+
+        .comparison-table td {
+            padding: 15px 12px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .comparison-table .highlight-jal {
+            background: rgba(200, 16, 46, 0.08);
+        }
+
+        .comparison-table .highlight-ana {
+            background: rgba(0, 56, 168, 0.06);
+        }
+
+        /* Visual Comparison Cards */
+        .vs-container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 20px;
+            align-items: stretch;
+            margin: 30px 0;
+        }
+
+        .vs-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-top: 4px solid;
+        }
+
+        .vs-card.jal {
+            border-color: var(--jal-red);
+        }
+
+        .vs-card.ana {
+            border-color: var(--ana-blue);
+        }
+
+        .vs-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .vs-card.jal h4 { color: var(--jal-red); }
+        .vs-card.ana h4 { color: var(--ana-blue); }
+
+        .vs-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--text-secondary);
+        }
+
+        .vs-list {
+            list-style: none;
+        }
+
+        .vs-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .vs-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Info Boxes */
+        .info-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 5px solid var(--info);
+            padding: 20px 25px;
+            border-radius: 0 15px 15px 0;
+            margin: 20px 0;
+        }
+
+        .info-box.success {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border-color: var(--success);
+        }
+
+        .info-box.warning {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            border-color: var(--warning);
+        }
+
+        .info-box.danger {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border-color: #dc2626;
+        }
+
+        .info-box-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Flowchart */
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .flow-step {
+            background: white;
+            border: 2px solid var(--neutral-300);
+            border-radius: 15px;
+            padding: 20px 30px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            position: relative;
+        }
+
+        .flow-step.active {
+            background: var(--neutral-100);
+            color: var(--text-primary);
+            border-color: var(--neutral-500);
+        }
+
+        .flow-arrow {
+            font-size: 2rem;
+            color: var(--neutral-500);
+        }
+
+        /* Type Cards */
+        .type-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .type-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-top: 5px solid;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .type-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .type-card.beginner { border-color: var(--success); }
+        .type-card.frequent { border-color: var(--info); }
+        .type-card.balance { border-color: var(--gold); }
+        .type-card.premium { border-color: var(--platinum-dark); }
+
+        .type-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .type-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .type-card.beginner .type-name { color: var(--success); }
+        .type-card.frequent .type-name { color: var(--info); }
+        .type-card.balance .type-name { color: var(--gold); }
+        .type-card.premium .type-name { color: var(--platinum-dark); }
+
+        .type-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .type-recommend {
+            background: var(--light-bg);
+            padding: 12px 15px;
+            border-radius: 10px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        /* Card Comparison Visual */
+        .card-visual-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .card-visual {
+            background: linear-gradient(145deg, #f0f0f0 0%, #e0e0e0 100%);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-visual.normal {
+            background: linear-gradient(145deg, #e8e8e8 0%, #d0d0d0 100%);
+        }
+
+        .card-visual.club-a {
+            background: linear-gradient(145deg, #ffd700 0%, #daa520 100%);
+        }
+
+        .card-visual.gold {
+            background: linear-gradient(145deg, #ffd700 0%, #b8860b 100%);
+        }
+
+        .card-visual.platinum {
+            background: linear-gradient(145deg, #c0c0c0 0%, #808080 100%);
+            color: white;
+        }
+
+        .card-visual.platinum-pro {
+            background: linear-gradient(145deg, #2c3e50 0%, #1a252f 100%);
+            color: white;
+        }
+
+        .card-name {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .card-fee {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 5px;
+        }
+
+        .card-fee small {
+            font-size: 0.7rem;
+            font-weight: 400;
+        }
+
+        .card-rate {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        /* Simulation Table */
+        .sim-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.85rem;
+        }
+
+        .sim-table th {
+            background: var(--neutral-100);
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--neutral-400);
+            padding: 12px 10px;
+            text-align: center;
+        }
+
+        .sim-table td {
+            padding: 12px 10px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .sim-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .sim-highlight {
+            background: rgba(209, 213, 219, 0.4) !important;
+            font-weight: 700;
+        }
+
+        /* Mistake Cards */
+        .mistake-grid {
+            display: grid;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .mistake-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+
+        .mistake-number {
+            background: var(--neutral-200);
+            color: var(--text-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            border: 1px solid var(--neutral-400);
+        }
+
+        .mistake-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .mistake-fact {
+            background: var(--neutral-100);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            border-left: 3px solid var(--neutral-500);
+        }
+
+        .mistake-correct {
+            background: #ecfdf5;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        /* Checklist */
+        .checklist {
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px dashed #dee2e6;
+        }
+
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+
+        .checkbox {
+            width: 30px;
+            height: 30px;
+            border: 2px solid var(--neutral-400);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--success);
+            flex-shrink: 0;
+        }
+
+        /* Summary Flow */
+        .summary-flow {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 30px 0;
+        }
+
+        .summary-step {
+            background: var(--neutral-100);
+            color: var(--text-primary);
+            padding: 15px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid var(--neutral-400);
+        }
+
+        .summary-arrow {
+            color: var(--neutral-500);
+            font-size: 1.5rem;
+        }
+
+        /* Brand Cards */
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .brand-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .brand-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .brand-logo {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .brand-name {
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .brand-desc {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--neutral-200);
+            color: var(--text-primary);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .vs-container {
+                grid-template-columns: 1fr;
+            }
+
+            .vs-divider {
+                transform: rotate(90deg);
+            }
+
+            .comparison-table {
+                font-size: 0.75rem;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 10px 6px;
+            }
+
+            .mistake-card {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-flow {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .summary-arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+        /* Question Section */
+        .question-grid {
+            display: grid;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .question-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .question-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .answer-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .answer-option {
+            background: var(--light-bg);
+            padding: 12px 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .answer-label {
+            background: var(--neutral-400);
+            color: var(--text-primary);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: var(--neutral-100);
+            color: var(--text-primary);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 30px 0;
+            border: 1px solid var(--neutral-300);
+        }
+
+        .highlight-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* JGC Section */
+        .jgc-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .jgc-benefit {
+            background: var(--light-bg);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .jgc-benefit-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .jgc-benefit-text {
+            font-weight: 500;
+        }
+
+        /* LSP Table */
+        .lsp-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .lsp-table th {
+            background: var(--neutral-100);
+            color: var(--text-primary);
+            padding: 12px;
+            text-align: left;
+            border-bottom: 2px solid var(--neutral-400);
+        }
+
+        .lsp-table td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .lsp-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        /* Dual Card Section */
+        .dual-card-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .dual-card-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .dual-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .dual-card h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-bg);
+        }
+
+        .dual-card ul {
+            list-style: none;
+        }
+
+        .dual-card li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* 損益分岐シミュレーター */
+        .sim-calc {
+            background: var(--neutral-100);
+            border: 1px solid var(--neutral-300);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        .sim-calc-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .sim-calc-inputs {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .sim-calc-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .sim-calc-inputs input[type="number"] {
+            width: 120px;
+            padding: 10px 12px;
+            border: 1px solid var(--neutral-400);
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+        .sim-calc-inputs select {
+            padding: 10px 12px;
+            border: 1px solid var(--neutral-400);
+            border-radius: 10px;
+            font-size: 1rem;
+            background: white;
+        }
+        .sim-calc-result {
+            overflow-x: auto;
+        }
+        .sim-calc-result table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        .sim-calc-result th {
+            background: var(--neutral-200);
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--neutral-400);
+        }
+        .sim-calc-result td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--neutral-300);
+        }
+        .sim-calc-result tr.above-breakeven td {
+            background: rgba(5, 150, 105, 0.06);
+        }
+        .sim-calc-result .col-ok {
+            font-weight: 700;
+            color: var(--success);
+        }
+        .sim-calc-result .col-ng {
+            color: var(--text-secondary);
+        }
+
+        /* 詳細スペック表（横スクロール） */
+        .spec-table-wrap {
+            overflow-x: auto;
+            margin: 24px 0;
+            -webkit-overflow-scrolling: touch;
+            position: relative;
+        }
+        .spec-table-wrap table {
+            width: 100%;
+            min-width: 860px;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+        }
+        .spec-table-wrap th,
+        .spec-table-wrap td {
+            padding: 8px 6px;
+            border: 1px solid var(--neutral-300);
+            vertical-align: top;
+        }
+        .spec-table-wrap thead th {
+            background: var(--neutral-200);
+            font-weight: 700;
+            white-space: nowrap;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            box-shadow: 0 1px 0 var(--neutral-300);
+        }
+        .spec-table-wrap thead th:first-child {
+            left: 0;
+            z-index: 3;
+        }
+        .spec-table-wrap tbody tr:nth-child(even) td {
+            background: var(--neutral-100);
+        }
+        .spec-table-wrap tbody tr:nth-child(even) td:first-child {
+            background: var(--neutral-200);
+        }
+        .spec-table-wrap td:first-child {
+            font-weight: 600;
+            background: var(--neutral-100);
+            position: sticky;
+            left: 0;
+            z-index: 1;
+            box-shadow: 2px 0 0 var(--neutral-300);
+        }
+        .spec-table-wrap tbody tr:nth-child(even) td:first-child {
+            background: var(--neutral-200);
+        }
+        .spec-table-wrap tbody tr:hover td {
+            background: #f5f5f5;
+        }
+        .spec-table-wrap tbody tr:hover td:first-child {
+            background: var(--neutral-300);
+        }
+        .spec-table-wrap th[title] { cursor: help; }
+        @media (min-width: 900px) {
+            .spec-scroll-hint { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">2026年最新版</span>
+            <h1>初心者向け JALカードの正しい選び方</h1>
+            <p>種類が多くて迷う…そんなあなたに。この記事を読めば、あなたに合った「正しい1枚」が必ず見つかります。</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-content">
+            <a href="#premise" class="nav-item">大前提</a>
+            <a href="#basics" class="nav-item">3つの前提</a>
+            <a href="#numbers" class="nav-item">数字で比較</a>
+            <a href="#type" class="nav-item">タイプ判定</a>
+            <a href="#recommend" class="nav-item">おすすめカード</a>
+            <a href="#simulation" class="nav-item">損益分岐</a>
+            <a href="#mistakes" class="nav-item">よくある失敗</a>
+            <a href="#emoney" class="nav-item">電子マネー・JAL Pay</a>
+            <a href="#jgc" class="nav-item">JGC</a>
+            <a href="#vs-other" class="nav-item">JAL vs 他社</a>
+            <a href="#brand" class="nav-item">ブランド選び</a>
+            <a href="#checklist" class="nav-item">チェックリスト</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Section 0: 大前提 -->
+        <section id="premise" class="section">
+            <div class="section-header">
+                <div class="section-number">0</div>
+                <h2 class="section-title">大前提：なぜJALカードが良いのか、自分にJALでいいのか</h2>
+            </div>
+
+            <p style="margin-bottom: 20px;">JALカードの選び方に入る前に、「そもそも自分にはJALカードが合っているのか」を確認しましょう。</p>
+
+            <!-- Visual Comparison -->
+            <div class="vs-container">
+                <div class="vs-card jal">
+                    <h4>✈️ JALカード</h4>
+                    <ul class="vs-list">
+                        <li>🎯 マイルが<strong>直接</strong>貯まる</li>
+                        <li>📅 有効期限36ヶ月（延長不可）</li>
+                        <li>🎫 特典航空券PLUSで取りやすい</li>
+                        <li>🌏 ハワイ・アジア・沖縄離島に強い</li>
+                        <li>🛒 イオン・ENEOS特約店</li>
+                    </ul>
+                </div>
+                <div class="vs-divider">VS</div>
+                <div class="vs-card ana">
+                    <h4>✈️ ANAカード</h4>
+                    <ul class="vs-list">
+                        <li>🔄 ポイント→<strong>交換</strong>でマイル</li>
+                        <li>📅 実質無期限（都度延長可）</li>
+                        <li>⏰ 355日前からの争奪戦</li>
+                        <li>🌍 ヨーロッパ・アジアに強い</li>
+                        <li>🛒 セブン・ヤマダ電機特約店</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>比較項目</th>
+                        <th>JAL</th>
+                        <th>ANA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>マイルの貯まり方</strong></td>
+                        <td class="highlight-jal">直接マイルが貯まる</td>
+                        <td class="highlight-ana">ポイント→交換</td>
+                    </tr>
+                    <tr>
+                        <td><strong>有効期限</strong></td>
+                        <td class="highlight-jal">36ヶ月（延長不可）</td>
+                        <td class="highlight-ana">実質無期限</td>
+                    </tr>
+                    <tr>
+                        <td><strong>特典航空券</strong></td>
+                        <td class="highlight-jal">直前でも取りやすい</td>
+                        <td class="highlight-ana">計画性が必要</td>
+                    </tr>
+                    <tr>
+                        <td><strong>必要マイル数</strong></td>
+                        <td class="highlight-jal">変動制</td>
+                        <td class="highlight-ana">固定制</td>
+                    </tr>
+                    <tr>
+                        <td><strong>アライアンス</strong></td>
+                        <td class="highlight-jal">ワンワールド</td>
+                        <td class="highlight-ana">スターアライアンス</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box success">
+                <div class="info-box-title">✅ JALカードが向いている人</div>
+                <ul style="margin-left: 20px;">
+                    <li>「貯まったらすぐマイル」のシンプルさが好き</li>
+                    <li>特典航空券を「確実に」取りたい（家族旅行・繁忙期）</li>
+                    <li>ハワイ・アジア・沖縄離島によく行く</li>
+                    <li>イオン・ENEOSをよく使う</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <div class="info-box-title">💡 結論</div>
+                <p>「貯め方・使い方・生活圏・よく行く路線」から判断するのが正解。本記事はJALカードを選んだ（または検討したい）読者向けに、その先の「正しい選び方」を解説します。</p>
+            </div>
+        </section>
+
+        <!-- Section 1: 3つの前提 -->
+        <section id="basics" class="section">
+            <div class="section-header">
+                <div class="section-number">1</div>
+                <h2 class="section-title">選ぶ前に押さえる「3つの前提」</h2>
+            </div>
+
+            <div class="type-grid">
+                <div class="type-card beginner">
+                    <div class="type-icon">🎫</div>
+                    <div class="type-name">前提1</div>
+                    <div class="type-desc"><strong>JALカードは「マイルが貯まる会員証」</strong></div>
+                    <p style="font-size: 0.9rem;">単なるクレジットカードではなく、JALマイレージバンクの会員証機能を兼ねています。JAL経済圏の入口となるカードです。</p>
+                </div>
+
+                <div class="type-card frequent">
+                    <div class="type-icon">💰</div>
+                    <div class="type-name">前提2</div>
+                    <div class="type-desc"><strong>年会費は有料が基本</strong></div>
+                    <p style="font-size: 0.9rem;">無料は普通カードの初年度のみ。2年目以降は2,200円〜77,000円。「年会費無料でずっと」は不向きです。</p>
+                </div>
+
+                <div class="type-card balance">
+                    <div class="type-icon">⚡</div>
+                    <div class="type-name">前提3</div>
+                    <div class="type-desc"><strong>プレミアムで還元率が変わる</strong></div>
+                    <p style="font-size: 0.9rem;">基本0.5%→プレミアム加入で1.0%に倍増。ゴールド以上は自動付帯（無料）。</p>
+                </div>
+            </div>
+
+            <!-- Premium Comparison -->
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>カード種類</th>
+                        <th>プレミアム</th>
+                        <th>還元率</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>普通カード・CLUB-A</td>
+                        <td>未加入</td>
+                        <td>0.5%（200円＝1マイル）</td>
+                    </tr>
+                    <tr>
+                        <td>普通カード・CLUB-A</td>
+                        <td>加入（+4,950円）</td>
+                        <td><strong>1.0%</strong>（100円＝1マイル）</td>
+                    </tr>
+                    <tr class="sim-highlight">
+                        <td>CLUB-Aゴールド以上</td>
+                        <td><strong>自動付帯（無料）</strong></td>
+                        <td><strong>1.0%</strong>（100円＝1マイル）</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Section 2: 数字で比較 -->
+        <section id="numbers" class="section">
+            <div class="section-header">
+                <div class="section-number">2</div>
+                <h2 class="section-title">選びに効く「数字」だけ押さえる</h2>
+            </div>
+
+            <!-- Visual Card Comparison -->
+            <div class="card-visual-grid">
+                <div class="card-visual normal">
+                    <div class="card-name">普通カード</div>
+                    <div class="card-fee">2,200<small>円/年</small></div>
+                    <div class="card-rate">還元 0.5%〜1.0%</div>
+                    <div class="card-rate">ボーナス +10%</div>
+                </div>
+                <div class="card-visual club-a">
+                    <div class="card-name">CLUB-A</div>
+                    <div class="card-fee">11,000<small>円/年</small></div>
+                    <div class="card-rate">還元 0.5%〜1.0%</div>
+                    <div class="card-rate">ボーナス +25%</div>
+                </div>
+                <div class="card-visual gold">
+                    <div class="card-name">CLUB-Aゴールド</div>
+                    <div class="card-fee">17,600<small>円/年</small></div>
+                    <div class="card-rate">還元 1.0%〜2.0%</div>
+                    <div class="card-rate">ボーナス +25%</div>
+                </div>
+                <div class="card-visual platinum">
+                    <div class="card-name">プラチナ</div>
+                    <div class="card-fee">34,100<small>円/年</small></div>
+                    <div class="card-rate">還元 1.0%〜2.0%</div>
+                    <div class="card-rate">ボーナス +25%</div>
+                </div>
+                <div class="card-visual platinum-pro">
+                    <div class="card-name">プラチナPro</div>
+                    <div class="card-fee">77,000<small>円/年</small></div>
+                    <div class="card-rate">還元 1.0%〜2.0%+α</div>
+                    <div class="card-rate">ボーナス +25%</div>
+                </div>
+            </div>
+
+            <!-- Detailed Table -->
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>カード</th>
+                        <th>年会費</th>
+                        <th>還元率</th>
+                        <th>特約店</th>
+                        <th>フライト</th>
+                        <th>JGC</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>普通</strong></td>
+                        <td>2,200円</td>
+                        <td>0.5%（1.0%）</td>
+                        <td>1.0%（2.0%）</td>
+                        <td>+10%</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CLUB-A</strong></td>
+                        <td>11,000円</td>
+                        <td>0.5%（1.0%）</td>
+                        <td>1.0%（2.0%）</td>
+                        <td>+25%</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr class="sim-highlight">
+                        <td><strong>ゴールド</strong></td>
+                        <td>17,600円</td>
+                        <td>1.0%</td>
+                        <td>2.0%</td>
+                        <td>+25%</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td><strong>プラチナ</strong></td>
+                        <td>34,100円</td>
+                        <td>1.0%</td>
+                        <td>2.0%</td>
+                        <td>+25%</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pro</strong></td>
+                        <td>77,000円</td>
+                        <td>1.0%+ボーナス</td>
+                        <td>2.0%</td>
+                        <td>+25%</td>
+                        <td>✅</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box">
+                <div class="info-box-title">📊 表の見方</div>
+                <ul style="margin-left: 20px;">
+                    <li><strong>還元率</strong>：カッコ内はプレミアム加入時。ゴールド以上は自動付帯。</li>
+                    <li><strong>フライトボーナス</strong>：JAL便搭乗時にフライトマイルに加算される割合。</li>
+                    <li><strong>JGC</strong>：JALグローバルクラブ入会にはCLUB-A以上が必須。</li>
+                </ul>
+            </div>
+
+            <h3 style="margin: 32px 0 16px; font-size: 1.15rem;">📋 カード別 詳細スペック一覧</h3>
+            <p style="margin-bottom: 12px; font-size: 0.9rem; color: var(--text-secondary);">※表は横にスクロールできます。<span class="spec-scroll-hint"> ← → 左右にスライド</span> ※JAL・JCB等の一般カードを基準とした目安です。JALカードSuica・Amex等は年会費・特典が異なる場合があります。</p>
+            <div class="spec-table-wrap">
+                <table class="spec-table">
+                    <thead>
+                        <tr>
+                            <th>カード</th>
+                            <th title="基本マイル還元率">還元率</th>
+                            <th title="年会費(税込)">年会費</th>
+                            <th title="家族カード年会費">家族年会費</th>
+                            <th title="ショッピングマイル・プレミアム">プレミアム</th>
+                            <th>アドオンマイル</th>
+                            <th title="海外空港ラウンジ">P.P.<sup>*7</sup></th>
+                            <th>空港ラウンジ</th>
+                            <th title="国内旅行付帯保険">国内保険</th>
+                            <th title="海外旅行付帯保険">海外保険</th>
+                            <th title="搭乗ボーナスマイル">搭乗ボーナス</th>
+                            <th title="毎年初回搭乗ボーナス">初回搭乗</th>
+                            <th title="入会搭乗ボーナスマイル">入会ボーナス</th>
+                            <th title="国際線ビジネスクラスカウンター">Bizカウンター</th>
+                            <th>免税店割引</th>
+                            <th title="JALオリジナルカレンダー送付">カレンダー</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>JALカードnavi</td>
+                            <td>1%</td>
+                            <td>在学中無料</td>
+                            <td>なし</td>
+                            <td>自動加入</td>
+                            <td>なし</td>
+                            <td>なし</td>
+                            <td>なし</td>
+                            <td>最高1,000万円</td>
+                            <td>最高1,000万円</td>
+                            <td>10%</td>
+                            <td>1,000マイル</td>
+                            <td>1,000マイル</td>
+                            <td>ー</td>
+                            <td>5%</td>
+                            <td>ー</td>
+                        </tr>
+                        <tr>
+                            <td>JALカード普通</td>
+                            <td>0.5%</td>
+                            <td>普通カード 2,200円<br>初年度無料</td>
+                            <td>1,100円</td>
+                            <td>4,950円</td>
+                            <td>なし</td>
+                            <td>なし</td>
+                            <td>AMEXのみ</td>
+                            <td>最高1,000万〜3,000万円</td>
+                            <td>最高1,000万〜3,000万円</td>
+                            <td>10%</td>
+                            <td>1,000マイル</td>
+                            <td>1,000マイル</td>
+                            <td>ー</td>
+                            <td>5%</td>
+                            <td>ー</td>
+                        </tr>
+                        <tr>
+                            <td>JALカードCLUB-A</td>
+                            <td>0.5%</td>
+                            <td>CLUB-A 11,000円</td>
+                            <td>3,850円</td>
+                            <td>4,950円</td>
+                            <td>なし</td>
+                            <td>なし</td>
+                            <td>なし</td>
+                            <td>最高5,000万円</td>
+                            <td>最高5,000万円</td>
+                            <td>25%</td>
+                            <td>2,000マイル</td>
+                            <td>5,000マイル</td>
+                            <td>○</td>
+                            <td>10%</td>
+                            <td>○</td>
+                        </tr>
+                        <tr>
+                            <td>JALカードCLUB-Aゴールド</td>
+                            <td>1%</td>
+                            <td>CLUB-Aゴールド 17,600円</td>
+                            <td>8,800円</td>
+                            <td>自動加入</td>
+                            <td>AMEXのみ<br>100円=1マイル</td>
+                            <td>なし</td>
+                            <td>○</td>
+                            <td>最高5,000万〜1億円</td>
+                            <td>最高5,000万〜1億円</td>
+                            <td>25%</td>
+                            <td>2,000マイル</td>
+                            <td>5,000マイル</td>
+                            <td>○</td>
+                            <td>10%</td>
+                            <td>○</td>
+                        </tr>
+                        <tr>
+                            <td>JALカードプラチナ</td>
+                            <td>1%</td>
+                            <td>プラチナ 34,100円</td>
+                            <td>17,050円</td>
+                            <td>自動加入</td>
+                            <td>○<br>100円=2マイル</td>
+                            <td>○</td>
+                            <td>○</td>
+                            <td>最高1億円</td>
+                            <td>最高1億円</td>
+                            <td>25%</td>
+                            <td>2,000マイル</td>
+                            <td>5,000マイル</td>
+                            <td>○</td>
+                            <td>10%</td>
+                            <td>○</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="margin-top: 8px; font-size: 0.75rem; color: var(--text-secondary);">*7 プライオリティ・パス：海外空港ラウンジサービス。内容は公式サイトでご確認ください。</p>
+            <p style="margin-top: 4px; font-size: 0.75rem; color: var(--text-secondary);">※上記はJAL公式「カード別年会費・サービス比較」（<a href="https://www.jal.co.jp/jp/ja/jalcard/index03.html" target="_blank" rel="noopener">jalcard/index03.html</a>）を参照した目安です。提携ブランド・改定により異なる場合があります。</p>
+        </section>
+
+        <!-- Section 3: タイプ判定 -->
+        <section id="type" class="section">
+            <div class="section-header">
+                <div class="section-number">3</div>
+                <h2 class="section-title">まず決める：あなたの「使い方」</h2>
+            </div>
+
+            <p style="margin-bottom: 20px;">次の質問に答えて、自分がどのタイプかを判定しましょう。</p>
+
+            <div class="question-grid">
+                <div class="question-card">
+                    <div class="question-title">❓ Q1. JAL便に年何回くらい乗りますか？</div>
+                    <div class="answer-options">
+                        <div class="answer-option"><span class="answer-label">A</span> ほとんど乗らない（年0〜1回）</div>
+                        <div class="answer-option"><span class="answer-label">B</span> 年2回以上乗る</div>
+                        <div class="answer-option"><span class="answer-label">C</span> 年4回以上、または出張で頻繁に乗る</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-title">❓ Q2. 年会費はどこまで許容できますか？</div>
+                    <div class="answer-options">
+                        <div class="answer-option"><span class="answer-label">A</span> できるだけ安く（〜5,000円）</div>
+                        <div class="answer-option"><span class="answer-label">B</span> 1万円台なら許容</div>
+                        <div class="answer-option"><span class="answer-label">C</span> 2万円以上でもサービス次第</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-title">❓ Q3. 空港ラウンジや旅行保険は重視しますか？</div>
+                    <div class="answer-options">
+                        <div class="answer-option"><span class="answer-label">A</span> 特に必要ない</div>
+                        <div class="answer-option"><span class="answer-label">B</span> あれば嬉しい</div>
+                        <div class="answer-option"><span class="answer-label">C</span> 必須。充実していてほしい</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-title">❓ Q4. 将来、JAL上級会員（JGC）を目指したいですか？</div>
+                    <div class="answer-options">
+                        <div class="answer-option"><span class="answer-label">A</span> 特に考えていない</div>
+                        <div class="answer-option"><span class="answer-label">B</span> いつかは目指したい</div>
+                        <div class="answer-option"><span class="answer-label">C</span> 積極的に目指している</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Type Result -->
+            <div class="highlight-box">
+                <h3>📋 タイプ判定結果</h3>
+                <p>A多め → <strong>入門タイプ</strong> ｜ B多め・Q4がB → <strong>搭乗多めタイプ</strong><br>
+                B〜C混在・Q3がB以上 → <strong>陸空バランスタイプ</strong> ｜ C多め → <strong>サービス重視タイプ</strong></p>
+            </div>
+        </section>
+
+        <!-- Section 4: おすすめカード -->
+        <section id="recommend" class="section">
+            <div class="section-header">
+                <div class="section-number">4</div>
+                <h2 class="section-title">タイプ別・おすすめカードと理由</h2>
+            </div>
+
+            <div class="type-grid">
+                <!-- 入門タイプ -->
+                <div class="type-card beginner">
+                    <div class="type-icon">🌱</div>
+                    <div class="type-name">入門タイプ</div>
+                    <div class="type-desc">コスト最小で試したい。JAL便はたまにしか乗らない。</div>
+                    <div class="type-recommend">👉 JAL普通カード</div>
+                    <div style="margin-top: 15px; font-size: 0.85rem;">
+                        <p><strong>年会費</strong>：初年度無料 / 2,200円</p>
+                        <p><strong>還元率</strong>：0.5%（プレミアムで1.0%）</p>
+                        <p><strong>ボーナス</strong>：+10%</p>
+                    </div>
+                </div>
+
+                <!-- 搭乗多めタイプ -->
+                <div class="type-card frequent">
+                    <div class="type-icon">✈️</div>
+                    <div class="type-name">搭乗多めタイプ</div>
+                    <div class="type-desc">JALに年2回以上乗る。JGCを視野に入れている。</div>
+                    <div class="type-recommend">👉 JAL CLUB-Aカード</div>
+                    <div style="margin-top: 15px; font-size: 0.85rem;">
+                        <p><strong>年会費</strong>：11,000円</p>
+                        <p><strong>還元率</strong>：0.5%（プレミアムで1.0%）</p>
+                        <p><strong>ボーナス</strong>：+25%（2.5倍！）</p>
+                    </div>
+                </div>
+
+                <!-- 陸空バランスタイプ -->
+                <div class="type-card balance">
+                    <div class="type-icon">⚖️</div>
+                    <div class="type-name">陸空バランスタイプ</div>
+                    <div class="type-desc">普段使いでも貯めたい。旅行時のサービスも欲しい。</div>
+                    <div class="type-recommend">👉 CLUB-Aゴールド</div>
+                    <div style="margin-top: 15px; font-size: 0.85rem;">
+                        <p><strong>年会費</strong>：17,600円（プレミアム込み）</p>
+                        <p><strong>還元率</strong>：1.0%（特約店2.0%）</p>
+                        <p><strong>特典</strong>：ラウンジ・保険・JALパック割引</p>
+                    </div>
+                </div>
+
+                <!-- サービス重視タイプ -->
+                <div class="type-card premium">
+                    <div class="type-icon">👑</div>
+                    <div class="type-name">サービス重視タイプ</div>
+                    <div class="type-desc">ラウンジ・保険・コンシェルジュを重視。</div>
+                    <div class="type-recommend">👉 JALプラチナ</div>
+                    <div style="margin-top: 15px; font-size: 0.85rem;">
+                        <p><strong>年会費</strong>：34,100円</p>
+                        <p><strong>還元率</strong>：1.0%（特約店2.0%）</p>
+                        <p><strong>特典</strong>：プライオリティパス・コンシェルジュ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box warning">
+                <div class="info-box-title">💎 高額決済者向け：プラチナPro</div>
+                <p>年間300万〜500万円以上の決済がある方向け。継続8,000マイル＋利用ボーナス（300万で10,000マイル、500万で20,000マイル）で、最大80,000マイル/年が貯まる設計。年会費77,000円。</p>
+            </div>
+        </section>
+
+        <!-- Section 5: 損益分岐シミュレーション -->
+        <section id="simulation" class="section">
+            <div class="section-header">
+                <div class="section-number">5</div>
+                <h2 class="section-title">年間決済額の目安と損益分岐シミュレーション</h2>
+            </div>
+
+            <div class="info-box">
+                <div class="info-box-title">📐 損益分岐の考え方</div>
+                <p style="font-size: 1.2rem; text-align: center; margin: 15px 0;">
+                    <strong>損益分岐決済額 ≒ 年会費 ÷ 実質還元率</strong>
+                </p>
+                <p>例：年会費17,600円 ÷ 還元率1.0% = <strong>176万円</strong>で年会費分のマイルが貯まる</p>
+            </div>
+
+            <!-- 損益分岐シミュレーター -->
+            <div class="sim-calc">
+                <div class="sim-calc-title">🧮 あなたの年間決済額でシミュレーション</div>
+                <div class="sim-calc-inputs">
+                    <div>
+                        <div class="sim-calc-label">年間決済額（万円）</div>
+                        <input type="number" id="sim-amount" min="20" max="1000" value="150" step="10">
+                    </div>
+                    <div>
+                        <div class="sim-calc-label">想定還元率</div>
+                        <select id="sim-rate">
+                            <option value="0.005">0.5%</option>
+                            <option value="0.01" selected>1.0%</option>
+                            <option value="0.015">1.5%</option>
+                            <option value="0.02">2.0%</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="sim-calc-result">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>カード</th>
+                                <th>年会費</th>
+                                <th>損益分岐額</th>
+                                <th>貯まるマイル</th>
+                                <th>損益分岐</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sim-tbody">
+                            <!-- JSで生成 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <table class="sim-table">
+                <thead>
+                    <tr>
+                        <th>カード</th>
+                        <th>年会費</th>
+                        <th>想定還元率</th>
+                        <th>損益分岐</th>
+                        <th>年間決済目安</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>普通カード</strong></td>
+                        <td>2,200円</td>
+                        <td>0.5%〜1.0%</td>
+                        <td>約22万〜44万円</td>
+                        <td>〜50万円程度</td>
+                    </tr>
+                    <tr>
+                        <td><strong>普通＋プレミアム</strong></td>
+                        <td>7,150円</td>
+                        <td>1.0%</td>
+                        <td>約72万円</td>
+                        <td>〜100万円程度</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CLUB-A</strong></td>
+                        <td>11,000円</td>
+                        <td>0.5%〜1.0%</td>
+                        <td>約110万〜220万円</td>
+                        <td>〜100万〜150万円</td>
+                    </tr>
+                    <tr class="sim-highlight">
+                        <td><strong>CLUB-Aゴールド</strong></td>
+                        <td>17,600円</td>
+                        <td>1.0%〜2.0%</td>
+                        <td>約88万〜176万円</td>
+                        <td>〜150万〜200万円</td>
+                    </tr>
+                    <tr>
+                        <td><strong>プラチナ</strong></td>
+                        <td>34,100円</td>
+                        <td>1.0%〜2.0%</td>
+                        <td>約170万〜341万円</td>
+                        <td>〜200万円以上</td>
+                    </tr>
+                    <tr>
+                        <td><strong>プラチナPro</strong></td>
+                        <td>77,000円</td>
+                        <td>1.0%＋ボーナス</td>
+                        <td>還元のみなら約770万円</td>
+                        <td>300万/500万でボーナス考慮</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box success">
+                <div class="info-box-title">💡 ポイント</div>
+                <ul style="margin-left: 20px;">
+                    <li>還元率は「プレミアム加入の有無」「特約店の利用比率」で変わります</li>
+                    <li>特約店をある程度使えば1.5%〜2.0%に近づきます</li>
+                    <li>付帯サービス（ラウンジ・保険・割引）の価値も加味して判断しましょう</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 6: よくある失敗 -->
+        <section id="mistakes" class="section">
+            <div class="section-header">
+                <div class="section-number">6</div>
+                <h2 class="section-title">よくある失敗と正しい選び方</h2>
+            </div>
+
+            <div class="mistake-grid">
+                <div class="mistake-card">
+                    <div class="mistake-number">1</div>
+                    <div>
+                        <div class="mistake-title">CLUB-Aを「ゴールドカード」だと思っている</div>
+                        <div class="mistake-fact">
+                            <strong>❌ 事実：</strong>CLUB-Aは券面が金色ですが、ゴールドカードではありません。空港ラウンジは使えず、プレミアムも別途加入が必要。
+                        </div>
+                        <div class="mistake-correct">
+                            <strong>✅ 正しい選び方：</strong>ゴールド特典（ラウンジ・プレミアム無料）が欲しいなら<strong>CLUB-Aゴールド</strong>を選ぶ。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mistake-card">
+                    <div class="mistake-number">2</div>
+                    <div>
+                        <div class="mistake-title">JGCを狙うのに普通カードを選んでしまう</div>
+                        <div class="mistake-fact">
+                            <strong>❌ 事実：</strong>JGC入会には<strong>CLUB-A以上が必須</strong>。普通カードでは、どれだけ搭乗してもJGCには入れません。
+                        </div>
+                        <div class="mistake-correct">
+                            <strong>✅ 正しい選び方：</strong>JGCを視野に入れるなら、最初から<strong>CLUB-A以上</strong>を選ぶ。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mistake-card">
+                    <div class="mistake-number">3</div>
+                    <div>
+                        <div class="mistake-title">プレミアム未加入で還元率が半分になっている</div>
+                        <div class="mistake-fact">
+                            <strong>❌ 事実：</strong>普通・CLUB-Aはプレミアム未加入だと還元率0.5%のまま。年間100万円決済で5,000マイル vs 10,000マイルと<strong>2倍の差</strong>。
+                        </div>
+                        <div class="mistake-correct">
+                            <strong>✅ 正しい選び方：</strong>普通・CLUB-Aを選ぶなら<strong>プレミアム加入はほぼ必須</strong>。ゴールド以上なら無料で自動付帯。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mistake-card">
+                    <div class="mistake-number">4</div>
+                    <div>
+                        <div class="mistake-title">プラチナProを「とりあえず」選んでしまう</div>
+                        <div class="mistake-fact">
+                            <strong>❌ 事実：</strong>年会費77,000円は、年間300万円以上の決済がないと元が取りにくい。利用ボーナスがあるため「使えば使うほどお得」な設計。
+                        </div>
+                        <div class="mistake-correct">
+                            <strong>✅ 正しい選び方：</strong>年間決済300万円未満なら<strong>プラチナ</strong>で十分。300万〜500万円以上の決済があるならProを検討。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mistake-card">
+                    <div class="mistake-number">5</div>
+                    <div>
+                        <div class="mistake-title">「とりあえず普通カード」で機会損失</div>
+                        <div class="mistake-fact">
+                            <strong>❌ 事実：</strong>年2回以上JALに乗るなら、フライトボーナス+25%のCLUB-A以上の方がお得になるケースが多い。
+                        </div>
+                        <div class="mistake-correct">
+                            <strong>✅ 正しい選び方：</strong>搭乗頻度と年会費のバランスを見て、<strong>最初から適切なグレード</strong>を選ぶ。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6.5: 電子マネー・JAL Pay活用術 -->
+        <section id="emoney" class="section">
+            <div class="section-header">
+                <div class="section-number">💳</div>
+                <h2 class="section-title">電子マネー・JAL Pay活用術と注意点</h2>
+            </div>
+
+            <p style="margin-bottom: 20px;">JALカードを選ぶ際、電子マネー（JMB WAON）やJAL Payの対応状況も重要なポイントです。カードによって使える機能が異なるため、事前に確認しましょう。</p>
+
+            <!-- JMB WAON対応表 -->
+            <h3 style="margin: 30px 0 20px; font-size: 1.2rem;">📱 JMB WAONチャージ対応カード</h3>
+            
+            <div class="info-box warning">
+                <div class="info-box-title">⚠️ 重要：JMB WAONが使えないカードがある</div>
+                <p><strong>JALカードSuicaはJMB WAONチャージに非対応</strong>です。Suicaチャージでマイルは貯まりますが、WAONとの併用はできません。</p>
+            </div>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>カード種類</th>
+                        <th>JMB WAON</th>
+                        <th>Suica</th>
+                        <th>PASMO</th>
+                        <th>備考</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="sim-highlight">
+                        <td><strong>TOKYU POINT ClubQ</strong></td>
+                        <td>✅ 0.5〜1%</td>
+                        <td>❌</td>
+                        <td>✅ 0.25%</td>
+                        <td><strong>WAON+PASMO両対応は唯一</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>JALカードSuica</strong></td>
+                        <td>❌</td>
+                        <td>✅ JRE POINT（チャージ1.5%等）</td>
+                        <td>❌</td>
+                        <td>JR東日本向け。詳細は下記「JALカードSuica」参照</td>
+                    </tr>
+                    <tr>
+                        <td><strong>OPクレジット</strong></td>
+                        <td>✅ 0.5〜1%</td>
+                        <td>❌</td>
+                        <td>✅ 0.25%</td>
+                        <td>小田急沿線ユーザー向け</td>
+                    </tr>
+                    <tr>
+                        <td><strong>JAL・JCBカード等</strong></td>
+                        <td>✅ 0.5〜1%</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                        <td>WAONのみ対応</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box success">
+                <div class="info-box-title">💡 JMB WAONの二重取り</div>
+                <p>JMB WAONは<strong>チャージ時</strong>と<strong>利用時</strong>の両方でマイルが貯まります。</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>チャージ時</strong>：100円＝1マイル（プレミアム加入時）</li>
+                    <li><strong>利用時</strong>：200円＝1マイル</li>
+                    <li><strong>合計</strong>：実質<strong>1.5%還元</strong>（プレミアム加入時）</li>
+                </ul>
+            </div>
+
+            <!-- JALカードSuica 詳細 -->
+            <h3 style="margin: 40px 0 20px; font-size: 1.2rem;">🚃 JALカードSuica｜マイル・JRE POINT・路線・チケットのまとめ</h3>
+            <p style="margin-bottom: 20px;">JALカードSuicaはSuicaチャージで<strong>マイルではなくJRE POINT</strong>が貯まります。路線別・チケット購入方法別の還元を押さえておきましょう。</p>
+
+            <h4 style="margin: 24px 0 12px; font-size: 1.05rem;">何が貯まるか</h4>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>利用内容</th>
+                        <th>貯まるもの</th>
+                        <th>備考</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>JR東日本（Suicaチャージ・オートチャージ・えきねっと・窓口・券売機等）</td>
+                        <td><strong>JRE POINT</strong></td>
+                        <td>ショッピングマイルは付かない</td>
+                    </tr>
+                    <tr>
+                        <td>JR東日本以外のカード利用</td>
+                        <td><strong>ショッピングマイル</strong></td>
+                        <td>特約店は2倍</td>
+                    </tr>
+                    <tr class="sim-highlight">
+                        <td>東京モノレール（浜松町駅⇔羽田空港第1・2・3ターミナル）をICで乗車</td>
+                        <td><strong>JALマイル 20マイル/回</strong></td>
+                        <td>降車後改札外の専用端末でタッチ要。JMBお得意様番号の事前登録要。定期・紙きっぷ・天王洲アイル－空港間は対象外</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4 style="margin: 24px 0 12px; font-size: 1.05rem;">還元率の目安</h4>
+            <div class="dual-card-container">
+                <div class="dual-card">
+                    <h4>📌 ショッピングマイル（JR東日本以外）</h4>
+                    <ul>
+                        <li>通常：200円＝1マイル（0.5%）</li>
+                        <li>プレミアム加入時：100円＝1マイル（1.0%）</li>
+                        <li>特約店：上記の2倍</li>
+                    </ul>
+                    <p style="margin-top: 10px; font-size: 0.85rem; color: var(--text-secondary);">※CLUB-Aゴールド以上はプレミアム自動付帯</p>
+                </div>
+                <div class="dual-card">
+                    <h4>📌 JRE POINT → マイル交換</h4>
+                    <ul>
+                        <li>プレミアム時：1,500pt＝<strong>1,000マイル</strong></li>
+                        <li>未加入時：1,500pt＝500マイル</li>
+                    </ul>
+                    <p style="margin-top: 10px; font-size: 0.85rem; color: var(--text-secondary);">※1,500pt単位で交換可能</p>
+                    <p style="margin-top: 8px; font-size: 0.85rem; color: var(--text-secondary);">※換算：10%pt還元 → マイルにすると<strong>約6.7%還元</strong>（10×1,000/1,500）。5%pt→約3.3%、1.5%pt→1%</p>
+                </div>
+            </div>
+
+            <h4 style="margin: 24px 0 12px; font-size: 1.05rem;">JR東日本での還元（VIEWプラス）</h4>
+            <table class="sim-table">
+                <thead>
+                    <tr>
+                        <th>利用内容</th>
+                        <th>ゴールド（CLUB-Aゴールド等）</th>
+                        <th>ゴールド以外</th>
+                        <th>JALマイル換算（プレミアム時）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>オートチャージ・Suicaチャージ</td>
+                        <td>1.5%pt</td>
+                        <td>1.5%pt</td>
+                        <td>約1%</td>
+                    </tr>
+                    <tr>
+                        <td>モバイルSuica定期券購入</td>
+                        <td>6%pt</td>
+                        <td>5%pt</td>
+                        <td>約4%／約3.3%</td>
+                    </tr>
+                    <tr>
+                        <td>モバイルSuicaグリーン券購入</td>
+                        <td>10%pt</td>
+                        <td>5%pt</td>
+                        <td>約6.7%／約3.3%</td>
+                    </tr>
+                    <tr>
+                        <td>えきねっと予約時決済（新幹線eチケット指定席・チケットレス乗車時）</td>
+                        <td>10%pt</td>
+                        <td>5%pt</td>
+                        <td>約6.7%／約3.3%</td>
+                    </tr>
+                    <tr>
+                        <td>みどりの窓口・券売機・VIEW ALTTE（きっぷ・定期・チャージ等）</td>
+                        <td>1%pt</td>
+                        <td>0.5%pt</td>
+                        <td>約0.7%／約0.3%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="margin-top: 8px; font-size: 0.85rem; color: var(--text-secondary);">※pt＝JRE POINT。JALマイル換算は1,500pt＝1,000マイル（プレミアム時）で計算（10%pt→約6.7%マイル還元）。※VIEWプラスはビューカードWebサイトで最新条件を確認してください。※JALカードSuicaのCLUB-Aゴールド年会費は20,900円（税込）。他ブランドのCLUB-Aゴールドは17,600円。</p>
+
+            <h4 style="margin: 24px 0 12px; font-size: 1.05rem;">どの路線で貯まるか</h4>
+            <ul style="margin-left: 20px; margin-bottom: 20px;">
+                <li><strong>JR東日本</strong>：路線による差はなし。Suica利用可能区間なら、<strong>チャージした分</strong>にJRE POINT（通常0.5%、VIEWプラスで1.5%）が付く。</li>
+                <li><strong>東京モノレール</strong>：<strong>ICタッチ乗車のみ</strong>が対象。対象区間は<strong>浜松町駅⇔羽田空港第1・2・3ターミナル駅</strong>（天王洲アイル－空港間は対象外）。1回20マイル。降車後改札外の専用端末タッチとJMBお得意様番号の事前登録が必要。</li>
+            </ul>
+
+            <h4 style="margin: 24px 0 12px; font-size: 1.05rem;">チケットの購入方法と対象</h4>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>購入方法</th>
+                        <th>還元（目安）</th>
+                        <th>備考</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Suicaチャージ（オートチャージ含む）</td>
+                        <td>1.5%</td>
+                        <td>モバイルSuica・カード型どちらも対象</td>
+                    </tr>
+                    <tr>
+                        <td>モバイルSuicaで定期券・グリーン券購入</td>
+                        <td>5%〜10%pt（マイル換算で約3.3%〜6.7%）</td>
+                        <td>VIEWプラス対象</td>
+                    </tr>
+                    <tr>
+                        <td>えきねっとで予約時決済（指定席・チケットレス時は合計10%/5%）</td>
+                        <td>5%〜10%pt（マイル換算で約3.3%〜6.7%）</td>
+                        <td>「駅で支払う」は0.5%（ゴールド1%）</td>
+                    </tr>
+                    <tr>
+                        <td>みどりの窓口・券売機・VIEW ALTTE（きっぷ・定期・チャージ等）</td>
+                        <td>0.5%〜1%</td>
+                        <td>VIEWプラス対象外。現金チャージはJRE POINT対象外</td>
+                    </tr>
+                    <tr class="sim-highlight">
+                        <td>東京モノレールをICで乗車</td>
+                        <td>20マイル/回</td>
+                        <td>定期・紙きっぷは対象外</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box">
+                <div class="info-box-title">📋 押さえておくポイント</div>
+                <ul style="margin-left: 20px;">
+                    <li>Suicaチャージ分は<strong>マイルではなくJRE POINT</strong>。1,500pt単位でマイルに交換可能（プレミアム時1,500pt＝1,000マイル）。<strong>10%pt還元はマイルにすると約6.7%還元</strong>（プレミアム年会費4,950円別途）。</li>
+                    <li>定期・グリーン・新幹線は<strong>モバイルSuica</strong>や<strong>えきねっと予約時決済</strong>で還元率アップ（最大10%pt＝約6.7%マイル還元相当）。みどりの窓口・券売機での購入はVIEWプラス対象外で0.5%（ゴールドは当面1%）。</li>
+                    <li>羽田利用時は東京モノレールを<strong>IC乗車＋降車後改札外の専用端末タッチ</strong>で20マイル/回。事前にJMBお得意様番号の登録が必要。</li>
+                </ul>
+            </div>
+
+            <!-- JAL Pay -->
+            <h3 style="margin: 40px 0 20px; font-size: 1.2rem;">📲 JAL Payとマイル二重取りの真実</h3>
+
+            <div class="info-box danger">
+                <div class="info-box-title">🚨 最重要：JALカード→JAL Payチャージは0%還元</div>
+                <p><strong>JALカードからJAL Payへのチャージは、マイル積算の対象外（0%）</strong>です。これはANAカード→ANA Payでチャージ時にもマイルが貯まるのとは大きく異なる点です。</p>
+            </div>
+
+            <div class="dual-card-container" style="margin-top: 20px;">
+                <div class="dual-card" style="border-top: 4px solid var(--jal-red);">
+                    <h4 style="color: var(--jal-red);">❌ JALカード → JAL Pay</h4>
+                    <ul>
+                        <li>❌ チャージ時：<strong>0%</strong>（対象外）</li>
+                        <li>✅ 利用時：0.5%（200円＝1マイル）</li>
+                        <li>📊 合計：<strong>0.5%のみ</strong></li>
+                    </ul>
+                    <p style="margin-top: 15px; font-size: 0.85rem; color: var(--text-secondary);">※JALカードで直接決済した方がお得（1.0%〜2.0%）</p>
+                </div>
+                <div class="dual-card" style="border-top: 4px solid var(--ana-blue);">
+                    <h4 style="color: var(--ana-blue);">✅ 他社カード → JAL Pay</h4>
+                    <ul>
+                        <li>✅ チャージ時：0.6%〜1.2%（カードによる）</li>
+                        <li>✅ 利用時：0.5%</li>
+                        <li>📊 合計：<strong>1.1%〜1.7%</strong></li>
+                    </ul>
+                    <p style="margin-top: 15px; font-size: 0.85rem; color: var(--text-secondary);">※Mastercard系が対応（Visaは手数料2.75%発生）</p>
+                </div>
+            </div>
+
+            <h4 style="margin: 30px 0 15px;">JAL Payチャージ＆JALマイルが貯まるおすすめ他社カード</h4>
+            <table class="sim-table">
+                <thead>
+                    <tr>
+                        <th>カード名</th>
+                        <th>年会費</th>
+                        <th>還元率</th>
+                        <th>特徴・備考</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="sim-highlight">
+                        <td><strong>三菱UFJカード</strong></td>
+                        <td>無料</td>
+                        <td>2.8%〜8%相当</td>
+                        <td>対象店舗で7〜20%還元→JALマイル交換40%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>リクルートカード（Mastercard）</strong></td>
+                        <td>無料</td>
+                        <td>0.6%相当</td>
+                        <td>Ponta経由でJALマイルに。JAL Payチャージ対応</td>
+                    </tr>
+                    <tr>
+                        <td><strong>JCBカードW</strong></td>
+                        <td>無料</td>
+                        <td>最大6.3%相当</td>
+                        <td>スタバeGift購入で10.5%→JALマイル交換60%（39歳以下）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>VポイントカードPrime</strong></td>
+                        <td>1,375円</td>
+                        <td>0.75%相当</td>
+                        <td>日曜日利用で還元率UP。JAL Payチャージ対応</td>
+                    </tr>
+                    <tr>
+                        <td><strong>三井住友ゴールド(NL)</strong></td>
+                        <td>5,500円</td>
+                        <td>0.75%相当</td>
+                        <td>年100万利用で翌年無料。JAL Payチャージ対応</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- 三菱UFJカード詳細 -->
+            <div class="info-box success" style="margin-top: 20px;">
+                <div class="info-box-title">🌟 三菱UFJカードが陸マイラーに人気の理由</div>
+                <ul style="margin-left: 20px;">
+                    <li><strong>年会費無料</strong>（条件なし）でJALマイルが貯まる</li>
+                    <li><strong>対象店舗で基本7%還元（最大20%）</strong></li>
+                    <li>グローバルポイント→JALマイル交換レート<strong>40%</strong></li>
+                    <li>対象店舗での実質マイル還元率：<strong>7% × 40% = 2.8%</strong>（最大8%）</li>
+                </ul>
+                <p style="margin-top: 15px; font-size: 0.85rem;"><strong>【対象店舗】</strong><br>
+                <strong>コンビニ</strong>：セブン-イレブン、ローソン<br>
+                <strong>スーパー</strong>：オーケー、オオゼキ、東急ストア、肉のハナマサ、ジャパンミート等<br>
+                <strong>飲食店</strong>：松屋、くら寿司、スシロー、ピザハット、ロッテリア等<br>
+                <strong>その他</strong>：コカ・コーラ自販機（タッチ決済）</p>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: var(--text-secondary);">※ポイントアッププログラムにエントリーし条件達成で最大20%。JALカード特約店（イオン・ファミマ等）以外では三菱UFJカードが高還元</p>
+            </div>
+
+            <!-- JCBカードW詳細 -->
+            <div class="info-box" style="margin-top: 15px;">
+                <div class="info-box-title">☕ JCBカードW（39歳以下限定）の強み</div>
+                <ul style="margin-left: 20px;">
+                    <li><strong>年会費無料</strong>（39歳以下で申込、その後も継続利用可）</li>
+                    <li><strong>Amazon</strong>：ポイント2%→JALマイル1.2%相当</li>
+                    <li><strong>スタバeGift</strong>：ポイント10.5%→JALマイル<strong>6.3%相当</strong></li>
+                    <li>Oki Dokiポイント→JALマイル交換レート<strong>60%</strong></li>
+                </ul>
+                <p style="margin-top: 10px; font-size: 0.8rem; color: var(--text-secondary);">※JCB公式サイトでは「18歳以上39歳以下」が申込条件。一度発行すれば40歳以降も継続利用可能。</p>
+            </div>
+
+            <div class="info-box">
+                <div class="info-box-title">📋 JAL Pay活用の結論</div>
+                <ul style="margin-left: 20px;">
+                    <li><strong>JALカードユーザー</strong>：JAL Payより<strong>JALカード直接決済</strong>の方がお得</li>
+                    <li><strong>年会費を抑えたい陸マイラー</strong>：他社カード＋JAL Payで<strong>二重取り</strong>が有効</li>
+                    <li><strong>特約店</strong>：JALカード直接決済が最強（2.0%還元）</li>
+                    <li><strong>Visaブランド</strong>：JAL Payチャージに<strong>2.75%手数料</strong>が発生するため非推奨</li>
+                </ul>
+            </div>
+
+            <!-- ANA Payとの比較 -->
+            <h4 style="margin: 30px 0 15px;">参考：ANA Pay vs JAL Pay チャージ還元比較</h4>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ANA Pay</th>
+                        <th>JAL Pay</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>自社カードチャージ</strong></td>
+                        <td class="highlight-ana">✅ 0.5%〜1.0%</td>
+                        <td class="highlight-jal">❌ 0%（対象外）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>利用時還元</strong></td>
+                        <td class="highlight-ana">0.5%</td>
+                        <td class="highlight-jal">0.5%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>自社カードでの合計</strong></td>
+                        <td class="highlight-ana"><strong>1.0%〜1.5%</strong></td>
+                        <td class="highlight-jal"><strong>0.5%のみ</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>他社カード活用</strong></td>
+                        <td class="highlight-ana">可能</td>
+                        <td class="highlight-jal">可能（Mastercard推奨）</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box warning">
+                <div class="info-box-title">⚠️ JALカードユーザーへのアドバイス</div>
+                <p>JALカードを持っているなら、<strong>JAL Payを経由せず直接決済</strong>するのが基本です。JAL Payは「年会費無料の高還元カード＋JAL Pay」という組み合わせで、JALカードを持たない陸マイラー向けの選択肢と考えましょう。</p>
+            </div>
+        </section>
+
+        <!-- Section 7: JGC -->
+        <section id="jgc" class="section">
+            <div class="section-header">
+                <div class="section-number">7</div>
+                <h2 class="section-title">JGCの仕組みとカード選び</h2>
+            </div>
+
+            <div class="info-box">
+                <div class="info-box-title">🏆 JGC（JALグローバルクラブ）とは</div>
+                <p>JALの上級会員制度。一度入会すれば、カードを持ち続ける限り<strong>半永久的に上級会員資格を維持</strong>できます。</p>
+            </div>
+
+            <!-- JGC入会条件 -->
+            <div class="flowchart">
+                <div class="flow-step active">
+                    <strong>JGC入会条件</strong><br>
+                    JMBサファイア以上を達成
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">
+                    <strong>必要なカード</strong><br>
+                    CLUB-A / CLUB-Aゴールド / プラチナ / プラチナPro
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">
+                    <strong>入会後</strong><br>
+                    カードを持ち続ける限り資格維持
+                </div>
+            </div>
+
+            <!-- JGC特典 -->
+            <h3 style="margin: 30px 0 20px; font-size: 1.2rem;">JGC会員の主な特典</h3>
+            <div class="jgc-benefits">
+                <div class="jgc-benefit">
+                    <div class="jgc-benefit-icon">🛋️</div>
+                    <div class="jgc-benefit-text">サクララウンジ利用</div>
+                </div>
+                <div class="jgc-benefit">
+                    <div class="jgc-benefit-icon">⏭️</div>
+                    <div class="jgc-benefit-text">優先搭乗</div>
+                </div>
+                <div class="jgc-benefit">
+                    <div class="jgc-benefit-icon">🧳</div>
+                    <div class="jgc-benefit-text">手荷物優先受取</div>
+                </div>
+                <div class="jgc-benefit">
+                    <div class="jgc-benefit-icon">📞</div>
+                    <div class="jgc-benefit-text">専用予約デスク</div>
+                </div>
+                <div class="jgc-benefit">
+                    <div class="jgc-benefit-icon">💺</div>
+                    <div class="jgc-benefit-text">前方座席指定</div>
+                </div>
+                <div class="jgc-benefit">
+                    <div class="jgc-benefit-icon">🎫</div>
+                    <div class="jgc-benefit-text">特典航空券優先</div>
+                </div>
+            </div>
+
+            <div class="info-box warning">
+                <div class="info-box-title">⚠️ 重要ポイント</div>
+                <ul style="margin-left: 20px;">
+                    <li><strong>普通カードではJGCに入会できません</strong></li>
+                    <li>JGCを目指すなら、最初からCLUB-A以上を選ぶのが効率的</li>
+                    <li>入会後にカードをダウングレードするとJGC資格を失います</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 8: JAL vs 他社カード -->
+        <section id="vs-other" class="section">
+            <div class="section-header">
+                <div class="section-number">8</div>
+                <h2 class="section-title">JAL vs 他社カード（両方がベスト）</h2>
+            </div>
+
+            <p style="margin-bottom: 20px;">「JALカード1枚で完結」も良いですが、他社カードとの併用で効率が上がるケースがあります。</p>
+
+            <div class="dual-card-container">
+                <div class="dual-card">
+                    <h4>✈️ JALカードの強み</h4>
+                    <ul>
+                        <li>✅ JAL便搭乗でフライトボーナス</li>
+                        <li>✅ 特約店（イオン・ENEOS等）で2倍</li>
+                        <li>✅ JALパック割引・機内販売割引</li>
+                        <li>✅ JGC入会資格（CLUB-A以上）</li>
+                    </ul>
+                </div>
+                <div class="dual-card">
+                    <h4>💳 他社カードの強み</h4>
+                    <ul>
+                        <li>✅ 高還元（1.5%〜2.0%以上）</li>
+                        <li>✅ ポイント→マイル交換で有効期限延長</li>
+                        <li>✅ 特定店舗で高還元（コンビニ等）</li>
+                        <li>✅ 年会費無料の選択肢あり</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-box success">
+                <div class="info-box-title">💡 おすすめの使い分け（JALカード＋三菱UFJカード等）</div>
+                <table class="lsp-table">
+                    <thead>
+                        <tr>
+                            <th>利用シーン</th>
+                            <th>おすすめカード</th>
+                            <th>還元率</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>JAL便の航空券購入</td>
+                            <td>JALカード</td>
+                            <td>1.0%＋ボーナスマイル</td>
+                        </tr>
+                        <tr>
+                            <td>イオン・ファミマ・ENEOS</td>
+                            <td>JALカード（特約店）</td>
+                            <td><strong>2.0%</strong></td>
+                        </tr>
+                        <tr class="sim-highlight">
+                            <td>セブン・ローソン・オーケー等</td>
+                            <td><strong>三菱UFJカード</strong></td>
+                            <td><strong>2.8%〜8%相当</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Amazon</td>
+                            <td>JCBカードW</td>
+                            <td>1.2%相当</td>
+                        </tr>
+                        <tr>
+                            <td>スターバックス</td>
+                            <td>JCBカードW（eGift）</td>
+                            <td><strong>6.3%相当</strong></td>
+                        </tr>
+                        <tr>
+                            <td>一般加盟店</td>
+                            <td>JALカード</td>
+                            <td>1.0%</td>
+                        </tr>
+                        <tr>
+                            <td>公共料金・固定費</td>
+                            <td>JALカード（LSP対象）</td>
+                            <td>1.0%＋LSP</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box warning">
+                <div class="info-box-title">🎯 三菱UFJカードとの2枚持ちが最強な理由</div>
+                <p>JALカード特約店（イオン・ファミマ等）では<strong>JALカードが2.0%</strong>で最強。<br>
+                一方、特約店以外のコンビニ・スーパー（セブン・ローソン・オーケー等）では<strong>三菱UFJカードが2.8%〜8%相当</strong>で圧倒的に上回ります。</p>
+                <p style="margin-top: 10px;"><strong>結論</strong>：JALカード1枚で完結も可能ですが、<strong>三菱UFJカード（年会費無料）との2枚持ち</strong>で、どの店舗でも高還元を実現できます。</p>
+            </div>
+        </section>
+
+        <!-- Section 9: 国際ブランド -->
+        <section id="brand" class="section">
+            <div class="section-header">
+                <div class="section-number">9</div>
+                <h2 class="section-title">国際ブランドの選び方</h2>
+            </div>
+
+            <p style="margin-bottom: 20px;">JALカードは複数の国際ブランドから選べます。それぞれの特徴を理解して選びましょう。</p>
+
+            <div class="brand-grid">
+                <div class="brand-card">
+                    <div class="brand-logo">💳</div>
+                    <div class="brand-name">JCB</div>
+                    <div class="brand-desc">国内最強・ディズニー特典・海外は弱め</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-logo">🌐</div>
+                    <div class="brand-name">VISA</div>
+                    <div class="brand-desc">世界最大シェア・海外で安心</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-logo">🔴</div>
+                    <div class="brand-name">Mastercard</div>
+                    <div class="brand-desc">VISAに次ぐシェア・コストコOK</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-logo">🔷</div>
+                    <div class="brand-name">Amex</div>
+                    <div class="brand-desc">ステータス・空港ラウンジ・年会費高め</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-logo">🍽️</div>
+                    <div class="brand-name">Diners</div>
+                    <div class="brand-desc">グルメ特典・限度額なし・年会費高め</div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <div class="info-box-title">📋 選び方の目安</div>
+                <table class="lsp-table">
+                    <thead>
+                        <tr>
+                            <th>あなたの状況</th>
+                            <th>おすすめブランド</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>国内メイン・ディズニー好き</td>
+                            <td><strong>JCB</strong></td>
+                        </tr>
+                        <tr>
+                            <td>海外旅行が多い・迷ったら</td>
+                            <td><strong>VISA</strong></td>
+                        </tr>
+                        <tr>
+                            <td>コストコを使う</td>
+                            <td><strong>Mastercard</strong></td>
+                        </tr>
+                        <tr>
+                            <td>ステータス重視・ラウンジ重視</td>
+                            <td><strong>Amex</strong></td>
+                        </tr>
+                        <tr>
+                            <td>グルメ・限度額を気にしたくない</td>
+                            <td><strong>Diners</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box warning">
+                <div class="info-box-title">⚠️ 注意点</div>
+                <ul style="margin-left: 20px;">
+                    <li>カードグレードによって選べるブランドが異なります</li>
+                    <li>プラチナはJCB・Amexのみ</li>
+                    <li>プラチナProはJCBのみ</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 10: チェックリスト -->
+        <section id="checklist" class="section">
+            <div class="section-header">
+                <div class="section-number">10</div>
+                <h2 class="section-title">申し込み前の最終チェックリスト</h2>
+            </div>
+
+            <div class="checklist">
+                <div class="checklist-item">
+                    <div class="checkbox">☐</div>
+                    <div>
+                        <strong>自分のタイプを確認した</strong><br>
+                        <span style="color: var(--text-secondary); font-size: 0.9rem;">入門 / 搭乗多め / 陸空バランス / サービス重視</span>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox">☐</div>
+                    <div>
+                        <strong>JGCを目指すか決めた</strong><br>
+                        <span style="color: var(--text-secondary); font-size: 0.9rem;">目指すならCLUB-A以上が必須</span>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox">☐</div>
+                    <div>
+                        <strong>年会費と還元率のバランスを確認した</strong><br>
+                        <span style="color: var(--text-secondary); font-size: 0.9rem;">損益分岐シミュレーションで妥当性を確認</span>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox">☐</div>
+                    <div>
+                        <strong>プレミアム加入の要否を確認した</strong><br>
+                        <span style="color: var(--text-secondary); font-size: 0.9rem;">普通・CLUB-Aは別途加入が必要。ゴールド以上は自動付帯。</span>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox">☐</div>
+                    <div>
+                        <strong>国際ブランドを決めた</strong><br>
+                        <span style="color: var(--text-secondary); font-size: 0.9rem;">迷ったらVISA。国内メインならJCB。</span>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox">☐</div>
+                    <div>
+                        <strong>他社カードとの併用を検討した</strong><br>
+                        <span style="color: var(--text-secondary); font-size: 0.9rem;">JALカード1枚 or 高還元カードとの2枚持ち</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Summary -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">✓</div>
+                <h2 class="section-title">まとめ：正しい選び方の流れ</h2>
+            </div>
+
+            <div class="summary-flow">
+                <div class="summary-step">
+                    <span>1</span>
+                    タイプを判定
+                </div>
+                <span class="summary-arrow">→</span>
+                <div class="summary-step">
+                    <span>2</span>
+                    カードを選ぶ
+                </div>
+                <span class="summary-arrow">→</span>
+                <div class="summary-step">
+                    <span>3</span>
+                    損益分岐を確認
+                </div>
+                <span class="summary-arrow">→</span>
+                <div class="summary-step">
+                    <span>4</span>
+                    ブランドを決定
+                </div>
+                <span class="summary-arrow">→</span>
+                <div class="summary-step">
+                    <span>5</span>
+                    申し込み
+                </div>
+            </div>
+
+            <!-- Final Recommendation -->
+            <div class="type-grid" style="margin-top: 30px;">
+                <div class="type-card beginner">
+                    <div class="type-name">入門タイプ</div>
+                    <div class="type-recommend" style="background: var(--success); color: white;">JAL普通カード</div>
+                </div>
+                <div class="type-card frequent">
+                    <div class="type-name">搭乗多め</div>
+                    <div class="type-recommend" style="background: var(--info); color: white;">JAL CLUB-A</div>
+                </div>
+                <div class="type-card balance">
+                    <div class="type-name">陸空バランス</div>
+                    <div class="type-recommend" style="background: var(--gold); color: #333;">CLUB-Aゴールド</div>
+                </div>
+                <div class="type-card premium">
+                    <div class="type-name">サービス重視</div>
+                    <div class="type-recommend" style="background: var(--platinum-dark); color: white;">JALプラチナ</div>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h3>🎯 最後に</h3>
+                <p style="font-size: 1.1rem;">JALカードは「マイルを貯める」だけでなく、「JAL経済圏の入口」となるカードです。<br>
+                自分の使い方に合った1枚を選んで、効率よくマイルを貯めましょう！</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2026 JALカード選び方ガイド | 情報は2026年2月時点のものです</p>
+        <p style="margin-top: 10px; font-size: 0.8rem;">※本ページはJAL公式ではありません。最新情報は公式サイトをご確認ください。</p>
+    </footer>
+
+    <script>
+    (function() {
+        var cards = [
+            { name: '普通カード', fee: 2200 },
+            { name: '普通＋プレミアム', fee: 7150 },
+            { name: 'CLUB-A', fee: 11000 },
+            { name: 'CLUB-Aゴールド', fee: 17600 },
+            { name: 'プラチナ', fee: 34100 },
+            { name: 'プラチナPro', fee: 77000 }
+        ];
+        function formatMan(val) {
+            if (val >= 10000) return (val / 10000).toFixed(0) + '万';
+            if (val >= 1000) return (val / 10000).toFixed(1) + '万';
+            return Math.round(val) + '円';
+        }
+        function updateSim() {
+            var amountMan = parseInt(document.getElementById('sim-amount').value, 10) || 0;
+            var rate = parseFloat(document.getElementById('sim-rate').value, 10) || 0.01;
+            var amount = amountMan * 10000;
+            var tbody = document.getElementById('sim-tbody');
+            tbody.innerHTML = cards.map(function(c) {
+                var breakeven = c.fee / rate;
+                var miles = Math.floor(amount * rate / 100);
+                var ok = amount >= breakeven;
+                var breakevenStr = breakeven >= 10000 ? (breakeven / 10000).toFixed(0) + '万円' : Math.round(breakeven) + '円';
+                return '<tr class="' + (ok ? 'above-breakeven' : '') + '">' +
+                    '<td><strong>' + c.name + '</strong></td>' +
+                    '<td>' + c.fee.toLocaleString() + '円</td>' +
+                    '<td>' + breakevenStr + '</td>' +
+                    '<td>' + miles.toLocaleString() + 'マイル</td>' +
+                    '<td class="' + (ok ? 'col-ok">✓ 超えている' : 'col-ng">まだ') + '</td></tr>';
+            }).join('');
+        }
+        document.getElementById('sim-amount').addEventListener('input', updateSim);
+        document.getElementById('sim-amount').addEventListener('change', updateSim);
+        document.getElementById('sim-rate').addEventListener('change', updateSim);
+        updateSim();
+    })();
+    </script>
+</body>
+</html>

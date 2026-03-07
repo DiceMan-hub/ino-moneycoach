@@ -1,0 +1,144 @@
+【1枚目：改悪TOP 6】
+
+Create a professional, elegant infographic in Japanese showing negative changes (改悪) in credit cards for 2025. Minimalist white background, 9:16 vertical format (1080 x 1920 pixels) for Instagram Reels.
+
+HEADER:
+"2025年 クレカ衝撃ニュース"
+"🔴 改悪 TOP 6"
+(Center-aligned, bold, red accent #D32F2F for "改悪")
+
+CONTENT - 6 Items:
+
+1. 海外事務手数料の大幅値上げ
+   • 楽天カード：2.20% → 3.63% (+65%)
+   • PayPayカード：1.60% → 3.85% (+140%)
+   • エポスカード：2.20% → 3.85% (+75%)
+
+2. 年会費の大幅値上げ
+   • Marriott Bonvoy：49,500円 → 82,500円 (+33,000円)
+   • ANAプラチナ：88,000円 → 96,800円 (+8,800円)
+   • ダイナース：24,200円 → 29,700円 (+5,500円)
+
+3. ポイント還元率の改悪
+   • 楽天海外還元：1.0% → 0.2% (-80%)
+   • 楽天公共料金：1.0% → 0.2% (-80%)
+   • dカード公共料金：1.0% → 0.5% (-50%)
+
+4. プライオリティパスの改悪
+   • 楽天プレミアム：無制限 → 年5回
+   • レストラン利用：全面禁止
+   • 到着時利用：全面禁止
+
+5. 航空マイレージの大幅改定
+   • JAL北米F：70,000 → 110,000-140,000 (+57-100%)
+   • JAL北米B：50,000 → 55,000 (+10%)
+   • JAL国内線：+500マイル（一律）
+
+6. 高還元チャージルートの封鎖
+   • 楽天ギフト：実質3%値上げ
+   • VポイントPay：チャージ還元廃止
+   • ふるさと納税サイト：ポイント付与全面廃止
+     - 楽天ふるさと納税：10%還元 → 廃止
+     - さとふる：PayPayポイント → 廃止
+     - ふるなび：Amazonギフト → 廃止
+     - JALふるさと納税：マイル積算終了
+
+DESIGN: Red tones (#D32F2F, #FF5722), subtle red background tint, bold numbers (26-30pt), clean typography, Apple-style minimalist, professional layout optimized for vertical mobile viewing.
+
+---
+
+【2枚目：改善TOP 6】
+
+Create a professional, elegant infographic in Japanese showing positive changes (改善) in credit cards for 2025. Minimalist white background, 9:16 vertical format (1080 x 1920 pixels) for Instagram Reels.
+
+HEADER:
+"2025年 クレカ衝撃ニュース"
+"🟢 改善 TOP 6"
+(Center-aligned, bold, green accent #388E3C for "改善")
+
+CONTENT - 6 Items:
+
+1. 超高還元カードの台頭
+   • 三菱UFJカード：最大19%還元
+   • 三井住友NL/Olive：最大7%還元
+   • JCB Card W：最大5%還元
+   • Pontaカードプラス：高還元
+
+2. 公共交通機関でのクレカタッチ決済普及
+   • 東京メトロ：2026年春全線対応
+   • 札幌市営地下鉄：実証実験開始
+   • 京王バス・船鉄バス：導入完了
+
+3. クレカ積立サービスの拡充
+   • 松井証券：最大7.0%還元（キャンペーン）
+   • SBI証券：最大3.0%還元（条件付き）
+   • マネックス証券：最大1.1%還元（無条件）
+   • auカブコム証券：1.0%還元
+   • PayPay証券：0.7%還元
+
+4. VポイントとTポイントの統合
+   • Tポイント + Vポイント = 青と黄色のVポイント
+   • 加盟店：ファミマ、ウエルシア、TSUTAYA等
+   • Olive開設特典：最大33,500円相当
+
+5. ゴールドカードの大衆化と実質無料化
+   • 三井住友ゴールド：100万円修行で永年無料
+   • dカードGOLD U：29歳以下限定で実質無料
+   • エポスゴールド：インビテーションで永年無料
+
+6. 富裕層向けプレミアムカードの拡充
+   • JAL・JCB プラチナ Pro：金属表面加工
+   • 三井住友インフィニット：最上位カード
+   • JCBゴールド/ザ・クラス：日本国内特化型
+
+DESIGN: Green tones (#388E3C, #4CAF50), subtle green background tint, bold numbers (26-30pt), clean typography, Apple-style minimalist, professional layout optimized for vertical mobile viewing.
+
+---
+
+【3枚目：まとめ・トレンド】（オプション）
+
+Create a professional summary infographic in Japanese showing key trends from 2025 credit card industry changes. Minimalist white background, 9:16 vertical format (1080 x 1920 pixels) for Instagram Reels.
+
+HEADER:
+"2025年 クレカ衝撃ニュース"
+"まとめ・トレンド"
+(Center-aligned, bold, dark gray #212121)
+
+CONTENT:
+
+【2025年の構造的転換】
+3大テーマ
+
+1. 選別の時代
+   • カード会社：収益性の低い顧客を排除
+   • ユーザー：自分に最適な数枚に集約
+   • 決済手段：用途に応じた使い分け
+
+2. コスト転嫁の加速
+   • 海外事務手数料の大幅値上げ
+   • 年会費の上昇
+   • 特典の条件厳格化
+
+3. インフラの国際標準化
+   • タッチ決済の普及
+   • iD等の国内規格の終焉
+   • 世界標準への統合
+
+【2026年への提言】
+消費者が取るべき3つの戦略
+
+1. メインカードの損益分岐点を再計算
+   • 年間100万円・300万円のボーダーを確認
+   • 超える→高還元カードに集約
+   • 超えない→年会費無料カードに留まる
+
+2. 決済と投資のデカップリング
+   • クレカ積立専用カードを別途用意
+   • メインカードとの使い分けでリスク分散
+
+3. セキュリティ機能を重視
+   • 還元率0.1%の差より、不正利用対応の早さ
+   • アプリ通知機能、利用制限機能の有無を確認
+
+DESIGN: Balanced red/green accents, clean typography, Apple-style minimalist, professional summary aesthetic, optimized for vertical mobile viewing.
+

@@ -35,3 +35,69 @@ ALL HTML files MUST follow this exact structure:
 ## Git push
 
 When running `git push` (to any remote, e.g. ino-moneycoach or origin), **always** use `required_permissions: ["all"]`. Otherwise the process cannot access the credential helper / Keychain and push will fail with "could not read Username" or "Device not configured". Do not use only `network` + `git_write`.
+
+---
+
+## Language and project context
+
+- **Responses**: Always respond in Japanese unless the user explicitly asks in another language.
+- **This repo**: Obsidian vault for content (newsletter, note articles, LINE-saved memos, travel/mileage/card projects). Structure: `03_NewsLetter/`, `04_note/`, `00_Projects/`, `LINE/processed/` (AI, マイレージ, クレカ, ビジネス).
+
+---
+
+## Claude Code の育て方（文脈設計）
+
+**原則**: 差がつくのは「使い方」ではなく「育て方」＝AIに渡す**文脈の厚み**。セッションごとに記憶がリセットされ、長いチャットでは**コンテキストを失うこともある**ため、判断基準・過去の経緯・嗜好を**外部記憶**として残し、会話のうちに記録を積み重ねる。
+
+- **文脈の置き場**: `.cursor/context/`（`01_judgment_criteria.md`, `02_past_outcomes.md`, `03_preferences.md`）。詳細は `.cursor/context/README.md`。
+- **タスク開始時**: 意思決定・書き方・フォーマットに触れるタスクでは、必要に応じて上記ファイルを読む。
+- **会話の途中で（記録を残す）**: 新しい判断基準・成功/失敗・嗜好が明らかになったら「context に残しておきましょうか？」と追記案を提示し、了承されたら**すぐに該当ファイルへ書き込む**。ユーザーが「記録して」「contextに残して」「追記して」と言ったらすぐ追記する。追記時は `[YYYY-MM]` や `[VolXX]` を付ける。
+
+---
+
+## Related reference (LINE and other projects)
+
+When the user is **editing or creating** a file under:
+- `03_NewsLetter/` (e.g. 段取り, ドラフト)
+- `04_note/`
+- `00_Projects/`
+
+then:
+- Propose **2–5 related notes** from `LINE/processed/` and, if relevant, from `00_Projects/` or `04_note/`, based on the document's topic or title.
+- Present them as **「関連参照候補」** (e.g. a short list with `[[path]]` links). Do not insert links into the body unless the user asks.
+- Prefer LINE notes whose `category` or `title` matches the theme (マイレージ, クレカ, ビジネス, AI).
+
+When suggesting content that exists in LINE or other project notes, prefer **linking** (`[[LINE/processed/...]]`) over copying; keep 2–3 references per article or newsletter issue when summarizing.
+
+---
+
+## Newsletter (03_NewsLetter) — Vol.10以降の運用
+
+`03_NewsLetter/` 内の 段取り・ドラフト・HTML を編集・作成するときは、以下を守る。詳細は `03_NewsLetter/Vol10_以降_配信チェックリスト.md` と `03_NewsLetter/Newsletter_Execution_Standard.md` を参照。
+
+### 企画（Phase 1）
+- **1号1リンク**: 今号で最も読んでほしいリンクを**1つだけ**決定（メインCTA）。選択肢: note、PDF、ダッシュボード、特設ページ、キャンペーンURL。
+- **CTAの連続を避ける**: 同じCTAが2〜3号続いたら、次号は**別の出口**（note・SFCダッシュボード・読者限定PDF・今週のニュース1本など）を検討。例: Vol.11=note、Vol.12=ビジネスプラチナ → Vol.13はアメックス以外が無難。
+- **今号で参照する LINE メモ**: 段取りに「今号で参照する LINE メモ」を**2〜3本**リンクで明記。特集のネタ元として `LINE/processed/` の該当ノートを参照。
+
+### 件名・プレヘッダー
+- **件名フォーマット**: `【具体的ベネフィット】週刊マイル・ポイント通信 vol.XX`
+  - 冒頭15文字にベネフィット（数値・期限を含む）
+  - **全体50文字以内**
+- **プレヘッダー**: 件名を補足、30〜40文字。件名と重複しない。
+
+### 本文構造
+- **冒頭ハイライト必須**: 「📌 今週のハイライト（30秒で読める）」の下に **3項目**。各項目は「✅ 【期限・重要度】→ 具体的ベネフィット」の形。
+- **メインCTAの配置**: 冒頭（必読コンテンツ）・本文中盤・末尾の**3箇所**。ボタン文言は「無料で読む」「今すぐ確認する」「ダウンロードする」など、ハードルを下げる表現。
+- **ニュース表**: 列は**「ニュース」「概要」の2列のみ**。ニュース見出しを公式URLのテキストリンクにする（URLがない項目はリンクなし）。表内にリンクを並べず、末尾に「詳細はインスタストーリーズで随時更新」と記載。
+- **リンク数**: メインCTA（3箇所）＋Instagram＋配信停止を除き、リンクは最小限。**合計5つ以内**が理想。
+
+### 配信後
+- **アーカイブ**: 該当号のファイルは `_archive/YYYY/VolXX_第X号/` に移動。`_working` に溜めない。必要なら `scripts/newsletter_organize.py` を利用（`--dry-run` で確認後に実行）。
+- **次号への引き継ぎ**: 配信チェックリスト Phase 5 の「改善点の記録」「次号への引き継ぎ事項」を記入。
+
+### 参照ファイル（作成・編集時に参照）
+- 段取り・企画: `Vol10_以降_配信チェックリスト.md`、`Newsletter_Execution_Standard.md`
+- ドラフトの土台: `_template/Vol10以降_改善版Markdownテンプレート.md` または `Vol05以降_Markdownテンプレート.md`
+- HTMLのベース: 直近号の `_archive/YYYY/VolXX_第X号/*.html` または `_working/` の当号HTML
+- 配信後: `_template/ファイル管理ルール_Vol05以降.md`
