@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ベトナム中部・南部｜家族観光完全ガイド 2026 (ダナン・ホイアン・フーコック)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@300;600;800&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-cyan: #00bcd4;
+            --primary-amber: #ffb300;
+            --dark-blue: #003049;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-sub: #64748b;
+            --accent-gradient: linear-gradient(135deg, #00bcd4, #00838f);
+            --amber-gradient: linear-gradient(135deg, #ffb300, #f57c00);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            color: var(--dark-blue);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            height: 450px;
+            background: linear-gradient(135deg, #003049 0%, #005f73 60%, #00b4d8 100%), url('./danang_hoian_header.png') center/cover no-repeat;
+            border-radius: 24px;
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            background: linear-gradient(to top, rgba(0, 48, 73, 0.8), transparent);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 40px;
+            color: white;
+            width: 100%;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* --- Sections --- */
+        section {
+            margin-bottom: 60px;
+        }
+
+        .section-header {
+            margin-bottom: 30px;
+            border-left: 6px solid var(--primary-cyan);
+            padding-left: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+        }
+
+        /* --- Grid & Cards --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.03);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* --- Tables --- */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background: #f1f5f9;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 700;
+            color: var(--dark-blue);
+        }
+
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* --- Highlights --- */
+        .teen-choice {
+            background: #fff8e1;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            border-left: 4px solid var(--primary-amber);
+        }
+
+        .teen-choice strong {
+            color: #f57c00;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        .caution {
+            background: #fee2e2;
+            padding: 12px 20px;
+            border-radius: 12px;
+            margin-top: 15px;
+            border-left: 4px solid #ef4444;
+            font-size: 0.9rem;
+            color: #991b1b;
+        }
+
+        /* --- Lists --- */
+        ul {
+            list-style: none;
+        }
+
+        li {
+            padding-left: 24px;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary-cyan);
+            font-weight: bold;
+        }
+
+        /* --- Links --- */
+        a {
+            color: var(--primary-cyan);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #00838f;
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            background: var(--accent-gradient);
+            color: white;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            color: white;
+            text-decoration: none;
+        }
+
+        /* --- Timeline --- */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: #e2e8f0;
+        }
+
+        .time-block {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .time-block::after {
+            content: '';
+            position: absolute;
+            left: -40px;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            background: var(--primary-cyan);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px var(--primary-cyan);
+        }
+
+        .time-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .time-label {
+            font-weight: 800;
+            color: var(--primary-cyan);
+            font-family: 'Outfit';
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--dark-blue);
+            color: rgba(255,255,255,0.6);
+            border-radius: 24px 24px 0 0;
+            margin-top: 80px;
+        }
+
+        footer h4 { color: white; margin-bottom: 10px; }
+
+        @media (max-width: 768px) {
+            .hero { height: 350px; border-radius: 0; margin-left: -20px; margin-right: -20px; }
+            .hero h1 { font-size: 2rem; }
+            .grid { grid-template-columns: 1fr; }
+            .hero-meta { gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-content">
+                <div class="meta-item" style="display:inline-flex; border:1px solid rgba(255,255,255,0.3); margin-bottom: 15px;">
+                    Family Travel Guide 2026
+                </div>
+                <h1>ベトナム 中部・南部</h1>
+                <div class="hero-meta">
+                    <div class="meta-item">📍 ダナン・ホイアン・フーコック</div>
+                    <div class="meta-item">👨‍👩‍👧‍👦 家族・中学生向け</div>
+                    <div class="meta-item">☀️ 3月-8月（中部）/ 11月-4月（フーコック）</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 1: エリア概要 -->
+        <section id="overview">
+            <div class="section-header">
+                <h2>エリア概要</h2>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>エリア</th>
+                            <th>特徴</th>
+                            <th>移動</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>ダナン市街</strong></td>
+                            <td>ドラゴンブリッジ、レストラン集中エリア、ナイトマーケット</td>
+                            <td>拠点</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ミーケービーチ</strong></td>
+                            <td>ビーチ、サーフィン、人気レストラン</td>
+                            <td>市街から車5-10分</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ソンチャ半島</strong></td>
+                            <td>レディブッダ、野生の猿、自然探索</td>
+                            <td>市街から車20-30分</td>
+                        </tr>
+                        <tr>
+                            <td><strong>五行山</strong></td>
+                            <td>洞窟探検、大理石の山、パノラマビュー</td>
+                            <td>中間地点</td>
+                        </tr>
+                        <tr>
+                            <td><strong>バーナーヒルズ</strong></td>
+                            <td>ゴールデンブリッジ、テーマパーク</td>
+                            <td>車40-50分</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ホイアン旧市街</strong></td>
+                            <td>世界遺産、ランタン、カフェ、テーラー</td>
+                            <td>車40-50分</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Section 2: アクティビティ — ダナン -->
+        <section id="activities-danang">
+            <div class="section-header">
+                <h2>アクティビティ — ダナン</h2>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🎡 <a href="https://www.google.com/maps/place/Sun+World+Ba+Na+Hills/" target="_blank">バーナーヒルズ</a></h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>内容</strong></td><td>テーマパーク・ゴールデンブリッジ</td></tr>
+                            <tr><td><strong>料金</strong></td><td>大人 950,000 VND（約5,700円）</td></tr>
+                            <tr><td><strong>予約</strong></td><td><a href="https://booking.sunworld.vn/vi/catalog?land=SunParadiseLandDaNang">公式サイト</a> / <a href="#">Klook WOWパス</a></td></tr>
+                            <tr><td><strong>Map</strong></td><td><a href="https://www.google.com/maps/place/Sun+World+Ba+Na+Hills/" target="_blank">📍 Google Maps</a></td></tr>
+                        </table>
+                    </div>
+                    <div class="teen-choice">
+                        <strong>TEEN'S CHOICE</strong>
+                        ゴールデンブリッジの映え写真、ゲーム遊び放題のファンタジーパーク、スリル満点のアルペンコースター。
+                    </div>
+                    <p style="font-size: 0.85rem; color: var(--text-sub); margin-top: 10px;">
+                        【身体的層】山頂の冷気を感じながら駆け抜けるコースター、迷路のようなフランス村探索で、自律的な冒険心を満たします。
+                    </p>
+                    <div class="caution">
+                        山頂は5-10℃低いため、薄手ジャケット必須。スニーカー推奨。
+                    </div>
+                </div>
+                <!-- Activity Card 2 -->
+                <div class="card">
+                    <h3>⛰️ <a href="https://www.google.com/maps/search/Marble+Mountains+Da+Nang" target="_blank">五行山 (Marble Mountains)</a></h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>内容</strong></td><td>洞窟探検・パノラマ展望</td></tr>
+                            <tr><td><strong>料金</strong></td><td>入場 40,000 VND / エレベーター 15,000 VND</td></tr>
+                            <tr><td><strong>Map</strong></td><td><a href="https://www.google.com/maps/search/Marble+Mountains+Da+Nang" target="_blank">📍 Google Maps</a></td></tr>
+                        </table>
+                    </div>
+                    <div class="teen-choice">
+                        <strong>TEEN'S CHOICE</strong>
+                        フエン・ホン洞窟の光の差し込み、アン・フー洞窟の「地獄探検」のようなワクワク感。
+                    </div>
+                    <div class="caution">
+                        大理石は滑りやすいため、サンダル禁止・スニーカー必須。
+                    </div>
+                </div>
+                <!-- Activity Card 3 -->
+                <div class="card">
+                    <h3>🌊 <a href="https://www.google.com/maps/place/My+Khe+Beach/" target="_blank">ミーケービーチ</a></h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>特徴</strong></td><td>ダナン屈指。サーフィンも可能。</td></tr>
+                            <tr><td><strong>Map</strong></td><td><a href="https://www.google.com/maps/place/My+Khe+Beach/" target="_blank">📍 Google Maps</a></td></tr>
+                            <tr><td><strong>料金</strong></td><td>レッスン $35〜/人</td></tr>
+                        </table>
+                    </div>
+                    <div class="teen-choice">
+                        <strong>TEEN'S CHOICE</strong>
+                        遠浅で初心者でも立ちやすく、テイクオフの成功は最高の旅の思い出に。
+                    </div>
+                </div>
+                <!-- Activity Card 4 -->
+                <div class="card">
+                    <h3>🐉 <a href="https://www.google.com/maps/place/Dragon+Bridge/" target="_blank">ドラゴンブリッジ</a></h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>内容</strong></td><td>炎と水のショー（金土日 21:00〜）</td></tr>
+                            <tr><td><strong>クルーズ</strong></td><td>約150,000 VND/人</td></tr>
+                        </table>
+                    </div>
+                    <div class="teen-choice">
+                        <strong>TEEN'S CHOICE</strong>
+                        龍が実際に火と水（大量！）を吹く迫力。橋の近くはずぶ濡れ必須。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: アクティビティ — ホイアン -->
+        <section id="activities-hoian">
+            <div class="section-header">
+                <h2>アクティビティ — ホイアン</h2>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🏮 <a href="https://www.google.com/maps/place/Hoi+An+Ancient+Town/" target="_blank">ホイアン旧市街</a></h3>
+                    <p>世界遺産の街並み散策。1999年登録の歴史的真正性を、五感で味わう没入型体験。</p>
+                    <div class="teen-choice">
+                        <strong>TEEN'S CHOICE</strong>
+                        黄色い壁の路地での写真、日本橋（来遠橋）、夜のランタンの輝き。
+                    </div>
+                    <p style="font-size: 0.85rem; color: var(--text-sub); margin-top: 10px;">
+                        <strong>【3層の記憶】</strong><br>
+                        ・視覚：早朝（5:30-7:00）の黄金色の光<br>
+                        ・身体：自転車での路地探索、テーラーでの計測<br>
+                        ・文化：貿易港として栄えた多文化融合の歴史
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>🖼️ <a href="https://www.google.com/maps/place/Hoi+An+Memories+Land/" target="_blank">ホイアン・メモリーズ</a></h3>
+                    <p>ギネス認定の屋外実景ショー。500人以上の出演者が、言語を超えて歴史の物語を伝えます。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>開演</strong></td><td>20:00 (17:00開園)</td></tr>
+                            <tr><td><strong>料金</strong></td><td>HIGH席 750,000 VND (推奨)</td></tr>
+                            <tr><td><strong>Map</strong></td><td><a href="https://www.google.com/maps/place/Hoi+An+Memories+Land/" target="_blank">📍 Google Maps</a></td></tr>
+                        </table>
+                    </div>
+                    <div class="teen-choice">
+                         <strong>TEEN'S CHOICE</strong>
+                         巨大ステージを駆け巡る光と音の演出。中学生でも飽きない圧倒的な没入感。
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>🛶 <a href="https://www.google.com/maps/search/Cam+Thanh+Coconut+Forest" target="_blank">バスケットボート</a></h3>
+                    <p>ココナッツフォレストを巡る丸い竹船体験。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>Map</strong></td><td><a href="https://www.google.com/maps/search/Cam+Thanh+Coconut+Forest" target="_blank">📍 Google Maps</a></td></tr>
+                        </table>
+                    </div>
+                    <div class="teen-choice">
+                        <strong>TEEN'S CHOICE</strong>
+                        K-POP爆音でのボート回転パフォーマンス（遊園地気分！）。
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>👟 <a href="https://www.google.com/maps/search/Friendly+Shoe+Shop+Hoi+An" target="_blank">カスタムスニーカー</a></h3>
+                    <p>自分だけの1足を24時間で作れるオーダーメイド体験。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>推奨店</strong></td><td>Friendly Shoe Shop</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: レストラン -->
+        <section id="restaurants">
+            <div class="section-header">
+                <h2>厳選レストラン</h2>
+            </div>
+            
+            <h3 style="margin-bottom: 20px;">📍 ダナンエリア</h3>
+            <div class="grid" style="margin-bottom: 40px;">
+                <div class="card">
+                    <h3>🍕 <a href="https://maps.app.goo.gl/yDvRsKkELd7aeQCJ6" target="_blank">Pizza 4P's</a></h3>
+                    <p>日系イタリアン。自家製ブッラータのパフォーマンスが子供にも人気。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>予算</strong></td><td>300k–600k VND</td></tr>
+                            <tr><td><strong>特徴</strong></td><td>清潔・安心、日本語メニューあり</td></tr>
+                            <tr><td><strong>Map</strong></td><td><a href="https://maps.app.goo.gl/yDvRsKkELd7aeQCJ6" target="_blank">📍 Google Maps</a></td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>🍝 <a href="https://www.google.com/maps/search/L'Italiano+Danang" target="_blank">L'Italiano</a></h3>
+                    <p>本格イタリアン。4P'sよりリーズナブルで味も本格的。イタリア人オーナー。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>予算</strong></td><td>200k–400k VND</td></tr>
+                            <tr><td><strong>特徴</strong></td><td>コスパ◎、事前予約推奨</td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>🍲 <a href="https://maps.app.goo.gl/Qnx4k4aF5kqBugGH9" target="_blank">Thìa Gỗ (ティアゴー)</a></h3>
+                    <p>南部ベトナム料理。バインセオが絶品。エアコン完備で非常に清潔。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>予算</strong></td><td>150k–300k VND</td></tr>
+                            <tr><td><strong>特徴</strong></td><td>ミシュラン・ビブグルマン、指差し注文OK</td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>🥬 <a href="https://www.google.com/maps/search/Bếp+Cuốn+Đà+Nẵng" target="_blank">Bếp Cuốn (ベップクオン)</a></h3>
+                    <p>中部・巻き料理専門店。ライスペーパーで自分で巻く体験型スタイル。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>予算</strong></td><td>200k–350k VND</td></tr>
+                            <tr><td><strong>特徴</strong></td><td>手巻き体験、ファミリーに人気</td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>👑 <a href="https://www.google.com/maps/search/Madame+Lan+4+Bach+Dang+Da+Nang" target="_blank">Madam Thu / Madame Lân</a></h3>
+                    <p>フエ宮廷料理。少量多品種のセットがあり、文化体験に最適。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>予算</strong></td><td>150k–250k VND</td></tr>
+                            <tr><td><strong>特徴</strong></td><td>辛さ控えめ対応可、雰囲気抜群</td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>🍜 <a href="https://www.google.com/maps/search/Luk+Lak+Danang" target="_blank">Luk Lak (ルックラック)</a></h3>
+                    <p>北部モダンベトナム料理。ブンチャや蓮の実チャーハンが人気。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>予算</strong></td><td>300k–500k VND</td></tr>
+                            <tr><td><strong>特徴</strong></td><td>ミシュラン掲載、洗練された空間</td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>🌿 <a href="https://maps.app.goo.gl/8itpPfbJpjZhLEDW6" target="_blank">Shamballa</a></h3>
+                    <p>ルーフトップの温室型ベジタリアン。ハン川の夕景が絶景。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>予算</strong></td><td>ミドル</td></tr>
+                            <tr><td><strong>特徴</strong></td><td>ビブグルマン2025、眺望最高</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin-bottom: 20px;">🏮 ホイアンエリア</h3>
+            <div class="grid">
+                <div class="card" style="border-top: 4px solid var(--primary-cyan);">
+                    <h3>🇬🇷 <a href="https://www.google.com/maps/search/Mix+Greek+Hoi+An" target="_blank">MIX Greek</a></h3>
+                    <p>ギリシャ料理。ベトナム料理の合間の「味変え」に最適。シーフードが新鮮。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>予算</strong></td><td>ミドル</td></tr>
+                            <tr><td><strong>推し</strong></td><td>スブラキ（ラップ）はボリューム満点</td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="card" style="border-top: 4px solid var(--primary-cyan);">
+                    <h3>🍱 <a href="https://www.google.com/maps/search/Morning+Glory+Signature+Hoi+An" target="_blank">Morning Glory Signature</a></h3>
+                    <p>ホイアンの有名店。バルコニー席からは日本橋が正面に見えます。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>推し</strong></td><td>カオラウ、炸ワンタン（ホイアン名物）</td></tr>
+                            <tr><td><strong>ポイント</strong></td><td>17:30頃の入店が夜景に最適</td></tr>
+                            <tr><td><strong>Map</strong></td><td><a href="https://www.google.com/maps/search/Morning+Glory+Signature+Hoi+An" target="_blank">📍 Google Maps</a></td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="card" style="border-top: 4px solid var(--primary-cyan);">
+                    <h3>🍰 <a href="https://www.google.com/maps/search/Cargo+Club+Hoi+An" target="_blank">Cargo Club</a></h3>
+                    <p>パティスリー併設。川沿いのテラスでランタンを眺めながら食事やケーキを。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>予算</strong></td><td>200k–500k VND</td></tr>
+                            <tr><td><strong>特徴</strong></td><td>デザート充実、西洋料理もあり</td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="card" style="border-top: 4px solid var(--primary-cyan);">
+                    <h3>🥭 <a href="https://www.google.com/maps/search/Mango+Mango+Hoi+An" target="_blank">Mango Mango</a></h3>
+                    <p>モダンフュージョン。屋上テラスから旧市街を360度見渡せます。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>予算</strong></td><td>115k–360k VND</td></tr>
+                            <tr><td><strong>特徴</strong></td><td>コスパ良、夜景ディナーの穴場</td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="card" style="border-top: 4px solid var(--primary-amber);">
+                    <h3>🚜 <a href="https://www.google.com/maps/search/Thanh+Dong+Organic+Farm+Hoi+An" target="_blank">Thanh Dong Organic Farm</a></h3>
+                    <p>有機農園でのクッキング体験。サイクリングやボートもセット。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>料金</strong></td><td>US$39/人 (約4.5時間)</td></tr>
+                            <tr><td><strong>特徴</strong></td><td>食育体験、中学生に刺さる内容</td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="card" style="border-top: 4px solid var(--primary-amber);">
+                    <h3>🌱 <a href="https://www.google.com/maps/search/Baby+Mustard+Restaurant+Hoi+An" target="_blank">Baby Mustard</a></h3>
+                    <p>Tra Que野菜村のfarm-to-table。畑から摘みたてのハーブを提供。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>予算</strong></td><td>~200k VND</td></tr>
+                            <tr><td><strong>特徴</strong></td><td>気軽な農園体験、カオラウ作りもあり</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: スパ・マッサージ -->
+        <section id="spa">
+            <div class="section-header">
+                <h2>スパ・マッサージ</h2>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🌿 <a href="https://www.google.com/maps?cid=3697329826264097745" target="_blank">Herbal Spa</a></h3>
+                    <p>ダナン総合力No.1。ハーブを使用した施術と軽食サービスが魅力。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>60分目安</strong></td><td>〜550k VND</td></tr>
+                            <tr><td><strong>特徴</strong></td><td>王道・帰国前におすすめ</td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>🎍 <a href="https://maps.app.goo.gl/LMecYJc1Y2ApWAt9A" target="_blank">Charm Spa Grand</a></h3>
+                    <p>バンブーマッサージが有名。チップ込みの明朗会計で安心。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>60分目安</strong></td><td>〜460k VND</td></tr>
+                            <tr><td><strong>特徴</strong></td><td>日本語・英語予約可</td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>🌳 <a href="https://www.google.com/maps/search/Trees+Spa+Danang" target="_blank">Trees Spa</a></h3>
+                    <p>洗髪（ヘッドスパ）＋ハンド・ボディの人気店。空港送迎あり。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>60分目安</strong></td><td>〜480k VND</td></tr>
+                            <tr><td><strong>特徴</strong></td><td>荷物預かりOK、帰国日に最適</td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>🕯️ <a href="https://www.google.com/maps/search/Queen+Spa+Danang" target="_blank">Queen Spa</a></h3>
+                    <p>キャンドルマッサージの先駆け。ユニークな体験を求める方に。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>60分目安</strong></td><td>〜550k VND</td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>🌸 <a href="https://www.google.com/maps/place/White+Orchid+Spa+Hoi+An/" target="_blank">White Orchid Spa (ホイアン)</a></h3>
+                    <p>ホイアンの最高評価店。アロマやホットストーンが人気。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>60分目安</strong></td><td>450k–500k VND</td></tr>
+                            <tr><td><strong>評価</strong></td><td>★5.0の高評価</td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>🧘 <a href="https://www.google.com/maps/place/SEN+Boutique+Spa/" target="_blank">Sen Boutique Spa</a></h3>
+                    <p>アントゥオン地区。完全個室で静かにリラックスしたい方向け。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>60分目安</strong></td><td>〜420k VND</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: マネー & 交通 -->
+        <section id="logistics">
+            <div class="section-header">
+                <h2>マネー・交通・通信</h2>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>💰 お金について</h3>
+                    <ul>
+                        <li><strong>通貨:</strong> 1円 ≒ 160-170 VND</li>
+                        <li><strong>簡易計算:</strong> 0を2つ取って半分強 = 円</li>
+                        <li><strong>ATM:</strong> TPBank (手数料無料)</li>
+                        <li><strong>カード:</strong> VISA/Master推奨。Amex/JCBは高級店のみ</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>🚖 交通手段</h3>
+                    <ul>
+                        <li><strong>Grab:</strong> 必須アプリ。明朗会計で安全。</li>
+                        <li><strong>タクシー:</strong> Mailinh (緑) または Vinasun (白)</li>
+                        <li><strong>空港移動:</strong> Grabで市内へ約120k VND (15分)</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>📱 通信 (eSIM)</h3>
+                    <ul>
+                        <li><strong>Trip.com / Klook:</strong> 日本人で一番簡単。事前購入でQRを読み込むだけ。</li>
+                        <li><strong>空港カウンター:</strong> Viettel等。現地番号が必要な場合に。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: 南部フーコック島 (Phu Quoc) -->
+        <section id="phu-quoc">
+            <div class="section-header">
+                <h2>南部フーコック島 (South Phu Quoc)</h2>
+            </div>
+            <p style="margin-bottom: 25px;">「海洋自然 × 洗練された人工美」。サン・グループの開発により、世界クラスのエンターテインメント・ハブへと進化したエリアです。</p>
+            
+            <div class="grid">
+                <!-- Activity Card 1 -->
+                <div class="card">
+                    <h3>🚠 <a href="https://www.google.com/maps/search/Sun+World+Hon+Thom+Nature+Park" target="_blank">サンワールド・ケーブルカー</a></h3>
+                    <p>ギネス認定。全長7,899mの世界最長ロープウェイでアン・トイ諸島を横断。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>Map</strong></td><td><a href="https://www.google.com/maps/search/Sun+World+Hon+Thom+Nature+Park" target="_blank">📍 Google Maps</a></td></tr>
+                        </table>
+                    </div>
+                    <div class="caution">
+                        昼11:30–13:30は運行休止あり。飲食物持ち込み禁止。
+                    </div>
+                </div>
+                <!-- Activity Card 2 -->
+                <div class="card">
+                    <h3>🎢 エキゾティカ・パーク</h3>
+                    <p>スリルを求めるティーンには、轟音と振動が凄まじい「木造コースター」がおすすめ。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>Map</strong></td><td><a href="https://www.google.com/maps/search/Sun+World+Hon+Thom+Nature+Park" target="_blank">📍 Google Maps</a></td></tr>
+                        </table>
+                    </div>
+                    <div class="teen-choice">
+                        木造ならではの不安定感とスピードで、中学生の冒険心を刺激。
+                    </div>
+                </div>
+                <!-- Activity Card 3 -->
+                <div class="card">
+                    <h3>🌊 アクアトピア・ウォーターパーク</h3>
+                    <p>20種以上のスライダーが揃う。東南アジア最大級のウォーターパーク。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>Map</strong></td><td><a href="https://www.google.com/maps/search/Sun+World+Hon+Thom+Nature+Park" target="_blank">📍 Google Maps</a></td></tr>
+                        </table>
+                    </div>
+                    <div class="caution">
+                        <strong>超重要:</strong> ジッパーや金属付き水着は禁止。ラッシュガード着用推奨。
+                    </div>
+                </div>
+                <!-- Activity Card 4 -->
+                <div class="card">
+                    <h3>🌉 <a href="https://www.google.com/maps/search/Kiss+Bridge+Phu+Quoc" target="_blank">キスブリッジ & サンセットタウン</a></h3>
+                    <p>地中海風の街並みと、夕暮れに美しく交差する「キスブリッジ」。</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td><strong>Map</strong></td><td><a href="https://www.google.com/maps/search/Kiss+Bridge+Phu+Quoc" target="_blank">📍 Google Maps</a></td></tr>
+                        </table>
+                    </div>
+                    <div class="teen-choice">
+                        夕暮れの「ゴールデンアワー」に撮影するのが鉄則。
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 30px; background: #e0f2fe;">
+                <h3>🗺️ フーコック南部 1日モデルコース</h3>
+                <div class="timeline" style="margin-top: 20px;">
+                    <div class="time-block"><span class="time-label">午前:</span> ケーブルカー & エキゾティカ（木造コースター）</div>
+                    <div class="time-block"><span class="time-label">昼食:</span> アクアトピア園内ビュッフェ</div>
+                    <div class="time-block"><span class="time-label">午後:</span> サンセットタウン散策 & キスブリッジ夕景撮影</div>
+                    <div class="time-block"><span class="time-label">夜間:</span> VUI-Fest ナイトマーケット & Symphony ショー</div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 20px; border-left: 4px solid var(--primary-cyan);">
+                <h3>🚐 移動とロジスティクス</h3>
+                <ul>
+                    <li><strong>無料シャトル:</strong> ケムビーチ〜サンセットタウン間の公式シャトルを活用（タクシーは割高）。</li>
+                    <li><strong>水着規定:</strong> アクアトピアはジッパーなし必須。日本から持参が確実。</li>
+                    <li><strong>歴史教育:</strong> 負の遺産「フーコック刑務所」（無料）も短時間で強烈な歴史学習になります。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 6: モデルコース (中部) -->
+        <section id="model-course">
+            <div class="section-header">
+                <h2>ダナン・ホイアン モデルコース (3泊4日)</h2>
+            </div>
+            <div class="timeline">
+                <div class="time-block">
+                    <div class="time-header"><span class="time-label">Day 1: ダナン到着</span></div>
+                    <p>到着後 <strong>Thìa Gỗ</strong> でランチ。夕方は <strong>レディブッダ</strong> で夕景、夜は <strong>ドラゴンブリッジ</strong> のショーを満喫。</p>
+                </div>
+                <div class="time-block">
+                    <div class="time-header"><span class="time-label">Day 2: バーナーヒルズ 終日</span></div>
+                    <p>早朝 7:30 出発。<strong>ゴールデンブリッジ</strong> 撮影。午後は <strong>スパ</strong> でリフレッシュし、夜は <strong>Pizza 4P's</strong>。</p>
+                </div>
+                <div class="time-block">
+                    <div class="time-header"><span class="time-label">Day 3: ホイアンの世界</span></div>
+                    <p>午前中に旧市街。午後は <strong>バスケットボート</strong> と <strong>ランタン作り</strong>。夜は <strong>メモリーズショー</strong> で感動体験。</p>
+                </div>
+                <div class="time-block">
+                    <div class="time-header"><span class="time-label">Day 4: 五行山と帰国</span></div>
+                    <p><strong>五行山</strong> で洞窟探検。空港送迎のある <strong>Trees Spa</strong> で仕上げのマッサージを受けて空港へ。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Checklist -->
+        <div class="card" style="background: var(--amber-gradient); color: white;">
+            <h3 style="color: white;">🎒 最終チェックリスト</h3>
+            <div class="grid" style="grid-template-columns: 1fr 1fr; margin-top: 15px;">
+                <ul style="color: white; opacity: 0.9;">
+                    <li style="color:white">スニーカー (五行山必須)</li>
+                    <li style="color:white">薄手ジャケット (バーナーヒルズ)</li>
+                </ul>
+                <ul style="color: white; opacity: 0.9;">
+                    <li style="color:white">Grabアプリ設定</li>
+                    <li style="color:white">モバイルバッテリー</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+            <h4>Danang & Hoi An Guide 2026</h4>
+            <p>&copy; 2026 Antigravity Intelligence Report. Created for the Ultimate Family Adventure.</p>
+        </footer>
+    </div>
+</body>
+</html>
