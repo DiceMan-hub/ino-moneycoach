@@ -1,20 +1,2 @@
-# ホワイトリスト方式: 全て除外 → 必要なものだけ許可
-*
-
-# GitHub Pages 配信用
-!docs/
-!docs/**
-
-# GitHub Actions
-!.github/
-!.github/**
-
-# Git設定
-!.gitignore
-
-# リポジトリ説明
-!README.md
-
-# docs/ 内でも除外するもの
 .DS_Store
 *.env
