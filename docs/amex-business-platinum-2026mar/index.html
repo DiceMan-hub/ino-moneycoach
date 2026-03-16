@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ビジネス・プラチナ 特別紹介プログラム｜2026年3月</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, sans-serif;
+            background: #F5F5F5;
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        /* ── ヘッダー（プラチナ・ダーク） ── */
+        .hero {
+            text-align: center;
+            padding: 56px 24px 44px;
+            margin-bottom: 32px;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(20,193,189,0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(20,193,189,0.06) 0%, transparent 50%),
+                linear-gradient(135deg, #1B1B2F 0%, #2A2A3D 50%, #1B1B2F 100%);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #14C1BD, transparent);
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(20,193,189,0.3), transparent);
+        }
+        .hero h1 {
+            color: #fff;
+            font-size: 2.2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: 0.04em;
+        }
+        .hero .subtitle {
+            color: rgba(255,255,255,0.6);
+            font-size: 1em;
+            margin-bottom: 24px;
+            letter-spacing: 0.02em;
+        }
+        .campaign-badge {
+            display: inline-block;
+            background: #14C1BD;
+            color: #fff;
+            padding: 12px 34px;
+            border-radius: 8px;
+            font-size: 1.15em;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        /* ── カードセクション ── */
+        .card-section {
+            background: #fff;
+            border-radius: 8px;
+            padding: 32px;
+            margin-bottom: 28px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+        .card-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #14C1BD;
+        }
+
+        /* ── アラート ── */
+        .campaign-alert {
+            background: #E8F8F8;
+            border: 1px solid #B0E8E6;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 18px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .campaign-alert .icon { font-size: 24px; }
+        .campaign-alert strong { color: #0FA8A5; font-size: 1.05em; }
+
+        /* ── 比較カード ── */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 18px;
+            margin-top: 20px;
+        }
+        .comparison-card {
+            background: #F9FAFA;
+            border-radius: 8px;
+            padding: 22px;
+            border: 1px solid #E5E5E7;
+            transition: all 0.3s ease;
+        }
+        .comparison-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .comparison-card.best {
+            border: 2px solid #14C1BD;
+            background: linear-gradient(135deg, #F0FAFA 0%, #E8F8F8 100%);
+            box-shadow: 0 2px 8px rgba(20,193,189,0.12);
+        }
+        .comparison-card h3 { color: #444; margin-bottom: 12px; font-size: 1.15em; }
+        .comparison-card.best h3 { color: #0FA8A5; }
+        .comparison-card .total-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #14C1BD;
+            margin: 8px 0;
+        }
+        .comparison-card .details {
+            background: #fff;
+            border-radius: 8px;
+            padding: 14px;
+            margin-top: 10px;
+            font-size: 0.9em;
+            line-height: 1.7;
+            color: #444;
+        }
+        .best-badge {
+            display: inline-block;
+            background: #14C1BD;
+            color: #fff;
+            padding: 4px 14px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.8em;
+            margin-bottom: 8px;
+        }
+
+        /* ── チャート ── */
+        .chart-container { position: relative; height: 400px; margin-bottom: 25px; }
+
+        /* ── テーブル ── */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+        .data-table thead tr { background: #1D1D1F; color: #fff; }
+        .data-table th, .data-table td { padding: 12px; text-align: left; }
+        .data-table tbody tr { border-bottom: 1px solid #E5E5E7; }
+        .data-table tbody tr:hover { background: #F9FAFA; }
+
+        /* ── 独自特典 ── */
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-top: 18px;
+        }
+        .benefit-card {
+            background: #F9FAFA;
+            border-radius: 8px;
+            padding: 22px;
+            border: 1px solid #E5E5E7;
+            transition: all 0.3s ease;
+        }
+        .benefit-card:hover {
+            border-color: #14C1BD;
+            transform: translateY(-3px);
+            box-shadow: 0 2px 8px rgba(20,193,189,0.1);
+        }
+        .benefit-card .number {
+            display: inline-block;
+            width: 28px; height: 28px; line-height: 28px;
+            text-align: center;
+            background: #14C1BD;
+            color: #fff;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+        }
+        .benefit-card h4 { color: #0FA8A5; margin-bottom: 8px; font-size: 1em; }
+        .benefit-card p { color: #444; font-size: 0.9em; line-height: 1.6; }
+
+        /* ── Amazon ── */
+        .amazon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .amazon-item {
+            background: #E8F5E9;
+            padding: 10px;
+            border-radius: 8px;
+            border-left: 3px solid #4CAF50;
+            font-size: 0.9em;
+        }
+        .amazon-item strong { color: #388E3C; }
+        .amazon-item small { color: #999; }
+
+        /* ── CTA ── */
+        .cta-section {
+            text-align: center;
+            padding: 36px;
+            margin: 28px 0;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+        .cta-button {
+            display: inline-block;
+            background: #14C1BD;
+            color: #fff;
+            padding: 14px 36px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            background: #0FA8A5;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(20,193,189,0.25);
+        }
+
+        /* ── レスポンシブ ── */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.6em; }
+            .card-section { padding: 20px; }
+            .card-title { font-size: 1.25em; }
+            .chart-container { height: 300px; }
+            .campaign-badge { font-size: 1em; padding: 10px 20px; }
+            .comparison-card .total-value { font-size: 1.5em; }
+        }
+
+        /* ── ユーティリティ ── */
+        .text-accent { color: #14C1BD; }
+        .text-muted { color: #999; }
+        .highlight-box {
+            background: #E8F8F8;
+            border-left: 4px solid #14C1BD;
+            padding: 14px;
+            border-radius: 0 8px 8px 0;
+            margin: 14px 0;
+        }
+        .note-tip {
+            background: #F9FAFA;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 12px;
+            font-size: 0.9em;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- ヘッダー -->
+        <div class="hero">
+            <h1>ビジネス・プラチナ・カード</h1>
+            <p class="subtitle">特別紹介プログラム｜期間限定</p>
+            <div class="campaign-badge">3月9日〜5月11日 限定</div>
+        </div>
+
+        <!-- Instagram DM 相談 -->
+        <div class="card-section" style="background: linear-gradient(135deg, #FFF0F5 0%, #fff 100%); border: 1px solid #F8BBD0;">
+            <p style="margin: 0 0 14px 0; font-size: 1em; line-height: 1.75; color: #444;">
+                <strong style="color: #C2185B;">アメックスのカードをすでにお持ちの方</strong>で、<strong style="color: #C2185B;">複数枚保有を検討している方</strong>へ。どのような形なら発行できるか、お気軽にInstagramのDMでご相談ください。
+            </p>
+            <a href="https://www.instagram.com/ino_moneycoach/" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #e91e63; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600;">InstagramでDMする</a>
+        </div>
+
+        <!-- メインセクション：特典概要 -->
+        <div class="card-section">
+            <h2 class="card-title">特別紹介プログラム — 特典概要</h2>
+
+            <div class="campaign-alert">
+                <div class="icon">⚡</div>
+                <div>
+                    <strong>キャンペーン期間：2026年3月9日〜5月11日</strong><br>
+                    <span style="color: #444;">選ばれた会員からの紹介限定。通常の紹介より特典が上乗せされています。</span>
+                </div>
+            </div>
+
+            <!-- チャート：経路別比較 -->
+            <div class="chart-container"><canvas id="routeChart"></canvas></div>
+
+            <!-- チャート：決済額別比較 -->
+            <div class="chart-container" style="height: 250px;"><canvas id="spendChart"></canvas></div>
+
+            <!-- チャート：決済額別獲得推移 -->
+            <div style="margin-bottom: 20px;">
+                <h4 style="color: #222; margin-bottom: 12px; text-align: center;">決済額別 獲得特典総額の推移</h4>
+                <div class="chart-container" style="height: 400px;"><canvas id="progressChart"></canvas></div>
+                <div class="note-tip">
+                    <strong>グラフの見方：</strong>横軸は累計決済額、縦軸は獲得特典総額（円相当）。<strong>キャンペーン特典＋通常決済1％還元</strong>を合算。全経路で400万円のうち100万円はAmazon決済が必要です。<br>
+                    ※特別紹介ルートの5万円トラベルクレジットは計50万円利用で獲得。入会ボーナス3万ptは0万円時点で加算。
+                </div>
+            </div>
+
+            <!-- 決済条件テーブル -->
+            <div style="margin: 24px 0;">
+                <h3 style="color: #222; margin-bottom: 14px;">決済条件の詳細比較</h3>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>申込経路</th>
+                                <th style="text-align: center;">必要決済額</th>
+                                <th style="text-align: center;">期限</th>
+                                <th style="text-align: center;">月平均</th>
+                                <th>特典獲得条件</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-weight: bold;">公式サイト</td>
+                                <td style="text-align: center; font-size: 1.1em;"><strong class="text-accent">400万円</strong></td>
+                                <td style="text-align: center;">4ヶ月</td>
+                                <td style="text-align: center;">100万円/月</td>
+                                <td style="font-size: 0.9em;">
+                                    <strong>Amazon100万円：</strong>14万pt<br>
+                                    <strong>計200万円：</strong>6万pt<br>
+                                    <strong>計400万円：</strong>2万pt<br>
+                                    <strong>通常ポイント：</strong>4万pt
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">紹介経由</td>
+                                <td style="text-align: center; font-size: 1.1em;"><strong class="text-accent">400万円</strong></td>
+                                <td style="text-align: center;">4ヶ月</td>
+                                <td style="text-align: center;">100万円/月</td>
+                                <td style="font-size: 0.9em;">
+                                    <strong>Amazon100万円：</strong>14万pt<br>
+                                    <strong>計200万円：</strong>6万pt<br>
+                                    <strong>計400万円：</strong>2万pt <span style="color: #D32F2F; font-weight: bold;">+紹介1万pt</span><br>
+                                    <strong>通常ポイント：</strong>4万pt
+                                </td>
+                            </tr>
+                            <tr style="background: #F0FAFA;">
+                                <td style="font-weight: bold; color: #0FA8A5;">特別紹介 ⭐</td>
+                                <td style="text-align: center; font-size: 1.1em;"><strong class="text-accent">50万〜400万円</strong></td>
+                                <td style="text-align: center;">4ヶ月</td>
+                                <td style="text-align: center;">最低12.5万円/月</td>
+                                <td style="font-size: 0.9em;">
+                                    <strong style="color: #14C1BD;">入会ボーナス：</strong>3万pt <span style="color: #14C1BD; font-weight: bold;">← NEW</span><br>
+                                    <strong>トラベルクレジット：</strong>計50万円で5万円分<br>
+                                    <strong>Amazon100万円：</strong>14万pt<br>
+                                    <strong>計200万円：</strong>6万pt<br>
+                                    <strong>計400万円：</strong>2万pt<br>
+                                    <strong>通常ポイント：</strong>4万pt
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="highlight-box" style="margin-top: 16px;">
+                    <strong>⚠️ 注意：</strong>全経路で400万円のうち100万円をAmazon対象サービスで決済する必要があります。
+                </div>
+            </div>
+
+            <!-- 経路別比較カード -->
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <h3>公式サイト（WEB）</h3>
+                    <div class="total-value" style="color: #999;">260,000pt</div>
+                    <div class="details">
+                        <strong>必要決済：</strong>400万円（4ヶ月）<br>
+                        うち100万円はAmazon<br><br>
+                        <strong>内訳：</strong><br>
+                        • Amazonボーナス: 140,000pt<br>
+                        • 利用ボーナス: 80,000pt<br>
+                        <small class="text-muted">（計200万:6万 / 計400万:2万）</small><br>
+                        • 通常ポイント: 40,000pt
+                    </div>
+                </div>
+                <div class="comparison-card">
+                    <h3>紹介経由（WEB）</h3>
+                    <div class="total-value" style="color: #5AB5B3;">270,000pt</div>
+                    <div class="details">
+                        <strong>必要決済：</strong>400万円（4ヶ月）<br>
+                        うち100万円はAmazon<br><br>
+                        <strong>内訳：</strong><br>
+                        • Amazonボーナス: 140,000pt<br>
+                        • 利用ボーナス: 80,000pt<br>
+                        • 通常ポイント: 40,000pt<br>
+                        • <strong style="color: #D32F2F;">紹介特典: +10,000pt</strong>
+                    </div>
+                </div>
+                <div class="comparison-card best">
+                    <div class="best-badge">3/9限定・総合価値最大</div>
+                    <h3>特別紹介ルート</h3>
+                    <div class="total-value">290,000pt<br><span style="font-size: 0.6em;">+ 50,000円トラベルクレジット</span></div>
+                    <div class="details">
+                        <strong>必要決済：</strong>400万円（4ヶ月）<br>
+                        うち100万円はAmazon<br><br>
+                        <strong>特典：</strong><br>
+                        • <strong style="color: #14C1BD;">入会ボーナス: 30,000pt ← NEW</strong><br>
+                        • トラベルクレジット: 50,000円<br>
+                        <small class="text-muted">（計50万円利用）</small><br>
+                        • Amazonボーナス: 140,000pt<br>
+                        • 利用ボーナス: 80,000pt<br>
+                        • 通常ポイント: 40,000pt<br><br>
+                        <strong style="color: #14C1BD;">実質価値：約34万円相当</strong><br>
+                        <small class="text-muted">紹介経由より約7万円相当お得</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 29万ポイントで何ができる？ -->
+            <div style="background: #E8F5E9; padding: 22px; border-radius: 8px; margin-top: 24px; border-left: 4px solid #4CAF50;">
+                <h3 style="color: #388E3C; margin-bottom: 12px; font-size: 1.15em;">29万ポイントで何ができる？</h3>
+                <p style="margin-bottom: 12px; font-size: 0.95em; color: #444;">特別紹介ルートで貯まる29万ptをマイルに交換した場合の目安です。</p>
+                <ul style="margin: 0 0 12px 1.2em; font-size: 0.95em; line-height: 1.8; color: #333;">
+                    <li><strong style="color: #388E3C;">デルタマイル</strong>に交換すると約23.2万マイル → <strong>東京‐ハワイ エコノミー往復 4人分以上</strong><br><span style="font-size: 0.9em; color: #999;">（同じ便の現金価格目安：4人往復 約50万円）</span></li>
+                    <li><strong style="color: #388E3C;">ANAマイル</strong>なら 東京‐ハワイ エコノミー往復<strong>7回分</strong>（毎年1回 + α）<br><span style="font-size: 0.9em; color: #999;">（同じ便の現金価格目安：1人往復 約13万円）</span></li>
+                </ul>
+                <a href="https://bit.ly/3O23MdY" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #4CAF50; color: white; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9em;">特典航空券の詳細（PDF）</a>
+            </div>
+        </div>
+
+        <!-- 月758円ガイド（note記事） -->
+        <div class="card-section" style="background: linear-gradient(135deg, #F0FAFA 0%, #fff 100%);">
+            <h3 style="color: #0FA8A5; margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                年会費16.5万円のカードを月758円で持てる？
+            </h3>
+            <p style="margin: 0 0 14px 0; font-size: 1em; line-height: 1.7; color: #444;">
+                「年会費が高すぎる」と感じている方へ。経費計上・特典回収・追加カード活用の<strong style="color: #14C1BD;">3ステップで実質月758円になる計算ロジック</strong>をnote記事で詳しく解説しています。無料パートだけで計算の全体像がわかります。
+            </p>
+            <a href="https://bit.ly/4rUh7E1" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #0FA8A5; color: white; padding: 12px 22px; border-radius: 8px; text-decoration: none; font-weight: 600;">月758円ガイドを読む（note）</a>
+        </div>
+
+        <!-- いの独自限定特典 -->
+        <div class="card-section">
+            <h2 class="card-title">いのマネーコーチ 独自限定特典</h2>
+            <p style="color: #444; margin-bottom: 18px; line-height: 1.7;">
+                アメックスの公式特典に加えて、いの経由で入会された方だけが受け取れる<strong style="color: #14C1BD;">4つの独自特典</strong>をご用意しています。<br>
+                他の紹介者にはない「入会後も安心して使いこなせるサポート」です。
+            </p>
+            <div class="benefit-grid">
+                <div class="benefit-card">
+                    <div class="number">1</div>
+                    <h4>オンボーディング記事</h4>
+                    <p>カードが届いたらまずやることをチェックリスト形式でまとめたガイド。初日〜1週間のアクションが全てわかります。</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="number">2</div>
+                    <h4>FHR / THC 攻略ガイド</h4>
+                    <p>ファイン・ホテルズ＆リゾーツの予約テクニック、上振れ事例、FSG活用法。note記事では控えめに書いた本音ベースの攻略情報です。</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="number">3</div>
+                    <h4>決済修行ロードマップ</h4>
+                    <p>4ヶ月400万円で29万ptをフル獲得するための月別計画表。200万ライン狙いのペース配分も記載。</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="number">4</div>
+                    <h4>個別サポート 1ヶ月</h4>
+                    <p>DMで何でも相談OK。カードの使い方、決済ルート、特典の活用方法など、入会後1ヶ月間サポートします。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Amazon詳細 -->
+        <div class="card-section">
+            <h3 style="display: flex; align-items: center; gap: 10px; color: #388E3C; margin-bottom: 14px;">
+                <span style="font-size: 1.4em;">📦</span>
+                Amazonご利用ボーナスとは？
+            </h3>
+            <div style="background: #F9FAFA; padding: 20px; border-radius: 8px; line-height: 1.8;">
+                <p style="margin-bottom: 14px; font-size: 1em;">
+                    <strong>ご入会後4ヶ月以内</strong>に、Amazon対象サービスで<strong style="color: #388E3C;">合計100万円のカードご利用</strong>で獲得できます。
+                </p>
+                <div style="background: #E8F5E9; border-left: 4px solid #4CAF50; padding: 14px; border-radius: 0 8px 8px 0; margin-bottom: 16px;">
+                    <strong>特典：</strong><span style="color: #388E3C; font-size: 1.3em; font-weight: bold;">140,000ボーナスポイント</span>
+                    <div style="margin-top: 6px; color: #999; font-size: 0.95em;">100万円利用で14%還元相当の超高還元</div>
+                </div>
+                <div style="margin-bottom: 16px;">
+                    <strong style="color: #388E3C;">対象サービス：</strong>
+                    <div class="amazon-grid" style="margin-top: 10px;">
+                        <div class="amazon-item"><strong>Amazon.co.jp</strong><br><small>Amazonギフトカード含む</small></div>
+                        <div class="amazon-item"><strong>Amazonマーケットプレイス</strong></div>
+                        <div class="amazon-item"><strong>Kindle本</strong></div>
+                        <div class="amazon-item"><strong>Amazon Business</strong></div>
+                    </div>
+                </div>
+                <div style="margin-bottom: 14px;">
+                    <strong style="color: #D32F2F;">対象外サービス：</strong>
+                    <div style="background: #FFEBEE; padding: 12px; border-radius: 8px; margin-top: 8px; font-size: 0.9em; color: #999;">
+                        Amazon広告、Amazon Pay、Amazon Web Services、Amazonプライムの会費、Prime Studentの会費、Amazonフレッシュ など
+                    </div>
+                </div>
+                <a href="https://icm.aexp-static.com/Internet/internationalcardshop/ja_jp/pdf/bizplatselist.pdf" target="_blank" style="display: inline-block; background: #4CAF50; color: white; padding: 12px 22px; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 8px; transition: all 0.3s;">
+                    対象サービス一覧（PDF）を確認
+                </a>
+            </div>
+        </div>
+
+        <!-- 決済修行ガイド CTA -->
+        <div class="card-section" style="background: linear-gradient(135deg, #E8F8F8 0%, #fff 100%);">
+            <p style="margin: 0 0 10px 0; font-size: 1em; line-height: 1.7; color: #444;">
+                「この短期間で、ここまで高額な決済ができるかどうか」と悩んでいる方へ。
+            </p>
+            <p style="margin: 0 0 14px 0; font-size: 1em; line-height: 1.7; color: #444;">
+                <strong style="color: #14C1BD;">アメックス決済修行ガイド</strong>（note）では、<strong style="color: #14C1BD;">3%還元が受けられるルート</strong>（Amazon残高でのふるさと納税、Amazon Pay対応356店舗以上のリスト、ギフトカード37種の活用法など）や、手数料ゼロで決済実績を積む方法をまとめています。
+            </p>
+            <a href="https://bit.ly/4pJATkt" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #14C1BD; color: white; padding: 12px 22px; border-radius: 8px; text-decoration: none; font-weight: 600;">決済修行ガイドを読む（note）</a>
+        </div>
+
+        <!-- パターン別おすすめ -->
+        <div class="card-section">
+            <h2 class="card-title">入会経路の選び方</h2>
+            <p style="margin-bottom: 20px; font-size: 1em; color: #444;">
+                利用状況や優先度に応じて、最もお得な入会経路は異なります。
+            </p>
+
+            <h3 style="color: #222; margin: 20px 0 14px 0; font-size: 1.15em;">パターン別おすすめ入会経路</h3>
+            <div style="overflow-x: auto; margin-bottom: 24px;">
+                <table class="data-table" style="min-width: 700px;">
+                    <thead>
+                        <tr>
+                            <th>パターン</th>
+                            <th>おすすめ経路</th>
+                            <th>獲得特典</th>
+                            <th style="text-align: center;">必要決済額</th>
+                            <th>理由</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="font-weight: bold;">総合価値を最大化したい</td><td class="text-accent" style="font-weight:bold;">特別紹介 ⭐</td><td>290,000pt＋5万円</td><td style="text-align: center;">400万円</td><td style="font-size: 0.9em;">入会ボーナス3万pt＋トラベル5万円で実質約34万円相当</td></tr>
+                        <tr><td style="font-weight: bold;">純粋なポイント数最重視</td><td class="text-accent" style="font-weight:bold;">特別紹介 ⭐</td><td>290,000pt</td><td style="text-align: center;">400万円</td><td style="font-size: 0.9em;">3月の特別紹介が全経路で最多ポイント</td></tr>
+                        <tr><td style="font-weight: bold;">旅行・ホテル体験重視</td><td class="text-accent" style="font-weight:bold;">特別紹介 ⭐</td><td>290,000pt＋5万円</td><td style="text-align: center;">50万〜</td><td style="font-size: 0.9em;">50万円で5万円トラベル。FHRで朝食＋100ドル＋アップグレード等</td></tr>
+                        <tr><td style="font-weight: bold;">Amazon決済が多い</td><td>全経路共通で有利</td><td>Amazon100万=14万pt</td><td style="text-align: center;">100万円</td><td style="font-size: 0.9em;">どの経路でも14万pt。特別紹介なら＋入会3万＋トラベル5万で最大</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 style="color: #222; margin: 20px 0 14px 0; font-size: 1.15em;">ベストチョイス</h3>
+            <div class="highlight-box">
+                <p style="margin: 6px 0;"><strong>1位：</strong>特別紹介ルート ⭐（29万pt＋5万円トラベル＝<strong class="text-accent">実質約34万円相当</strong>）</p>
+                <p style="margin: 6px 0;"><strong>2位：</strong>紹介経由（270,000pt）</p>
+                <p style="margin: 6px 0;"><strong>3位：</strong>公式サイト（260,000pt）</p>
+            </div>
+
+            <h3 style="color: #222; margin: 20px 0 14px 0; font-size: 1.15em;">あなたに最適な入会経路は？</h3>
+            <div style="background: #F9FAFA; padding: 18px; border-radius: 8px; border: 1px solid #E5E5E7;">
+                <p style="margin: 8px 0; font-size: 0.95em;"><strong class="text-accent">Q1.</strong> 400万円決済（うち100万Amazon）できる？ → YES：次へ ／ NO：まず決済計画を</p>
+                <p style="margin: 8px 0; font-size: 0.95em;"><strong class="text-accent">Q2.</strong> 入会ボーナス＋トラベルクレジットも欲しい？ → YES：特別紹介（34万円相当）</p>
+                <p style="margin: 8px 0; font-size: 0.95em;"><strong class="text-accent">Q3.</strong> FHRやTHCでホテル体験を楽しみたい？ → YES：特別紹介ルート</p>
+            </div>
+
+            <details style="margin: 20px 0 0 0; background: #F9FAFA; border-radius: 8px; padding: 14px 18px;">
+                <summary style="cursor: pointer; font-weight: bold; color: #14C1BD; font-size: 0.95em;">更新履歴</summary>
+                <ul style="margin: 12px 0 0 16px; padding: 0; font-size: 0.9em; color: #999; line-height: 1.7;">
+                    <li><strong>2026年3月8日</strong>　3月9日〜5月11日の特別紹介プログラム情報で新規作成。入会ボーナス30,000ptを反映。</li>
+                </ul>
+            </details>
+        </div>
+
+        <!-- CTA セクション -->
+        <div class="cta-section">
+            <p style="color: #444; margin-bottom: 16px; font-size: 1.05em; line-height: 1.7;">
+                特別紹介プログラムへの申し込み、ご質問など<br>
+                お気軽にInstagramのDMでお問い合わせください。
+            </p>
+            <a href="https://www.instagram.com/ino_moneycoach/" target="_blank" rel="noopener noreferrer" class="cta-button">InstagramでDMする</a>
+        </div>
+
+        <footer style="text-align: center; padding: 20px; font-size: 12px; color: #999;">© 2026 いのマネーコーチ</footer>
+    </div>
+
+    <script>
+        // Chart.js テーマ
+        Chart.defaults.color = '#444';
+        Chart.defaults.borderColor = '#E5E5E7';
+
+        // 経路別 特典比較（棒グラフ）
+        new Chart(document.getElementById('routeChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['公式サイト', '紹介経由', '特別紹介（3/9〜）'],
+                datasets: [
+                    {
+                        label: 'ポイント特典',
+                        data: [260000, 270000, 290000],
+                        backgroundColor: ['#B0BEC5', '#7EC8C6', '#14C1BD'],
+                        borderColor: ['#90A4AE', '#5AB5B3', '#0FA8A5'],
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'トラベルクレジット',
+                        data: [0, 0, 50000],
+                        backgroundColor: '#EF9A9A',
+                        borderColor: '#E57373',
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: { display: true, text: '申込経路別 特典総額比較', font: { size: 16, weight: 'bold' }, color: '#222' },
+                    legend: { display: true, position: 'top' },
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toLocaleString() + (ctx.dataset.label.includes('ポイント') ? 'pt' : '円'),
+                            footer: items => { let s=0; items.forEach(i=>s+=i.parsed.y); return '合計: '+s.toLocaleString()+'円相当'; }
+                        }
+                    }
+                },
+                scales: {
+                    x: { stacked: true, grid: { display: false } },
+                    y: { stacked: true, beginAtZero: true, ticks: { callback: v=>(v/10000).toLocaleString()+'万' }, title: { display: true, text: '特典価値（円相当）' } }
+                }
+            }
+        });
+
+        // 必要決済額（棒グラフ）
+        new Chart(document.getElementById('spendChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['特別紹介\n（最低）', '公式サイト', '紹介経由', '特別紹介\n（最大）'],
+                datasets: [{
+                    label: '必要決済額',
+                    data: [500000, 4000000, 4000000, 4000000],
+                    backgroundColor: ['#14C1BD', '#B0BEC5', '#7EC8C6', '#0FA8A5'],
+                    borderColor: ['#0FA8A5', '#90A4AE', '#5AB5B3', '#0D8E8B'],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: { display: true, text: '必要決済額の比較', font: { size: 14, weight: 'bold' }, color: '#222' },
+                    legend: { display: false },
+                    tooltip: { callbacks: { label: ctx => { let n=ctx.dataIndex===0?'・トラベルクレジットのみ獲得':'・うち100万円はAmazon決済'; return ['必要決済額: '+ctx.parsed.y.toLocaleString()+'円（4ヶ月以内）', n]; } } }
+                },
+                scales: {
+                    x: { grid: { display: false } },
+                    y: { beginAtZero: true, ticks: { callback: v=>(v/10000).toLocaleString()+'万円' }, title: { display: true, text: '決済額' } }
+                }
+            }
+        });
+
+        // 決済額別 獲得推移（折れ線グラフ）
+        new Chart(document.getElementById('progressChart').getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: ['0万', '50万', '100万', '200万', '300万', '400万'],
+                datasets: [
+                    {
+                        label: '公式サイト',
+                        data: [0, 5000, 150000, 220000, 230000, 260000],
+                        borderColor: '#B0BEC5', backgroundColor: 'rgba(176,190,197,0.08)',
+                        borderWidth: 2, tension: 0.1, pointRadius: 5, pointHoverRadius: 7, pointBackgroundColor: '#B0BEC5'
+                    },
+                    {
+                        label: '紹介経由',
+                        data: [0, 5000, 150000, 220000, 230000, 270000],
+                        borderColor: '#7EC8C6', backgroundColor: 'rgba(126,200,198,0.08)',
+                        borderWidth: 2, tension: 0.1, pointRadius: 5, pointHoverRadius: 7, pointBackgroundColor: '#7EC8C6'
+                    },
+                    {
+                        label: '特別紹介（3/9〜）',
+                        data: [30000, 85000, 230000, 300000, 310000, 340000],
+                        borderColor: '#14C1BD', backgroundColor: 'rgba(20,193,189,0.08)',
+                        borderWidth: 3, tension: 0.1, pointRadius: 6, pointHoverRadius: 8, pointBackgroundColor: '#14C1BD'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: { mode: 'index', intersect: false },
+                plugins: {
+                    legend: { display: true, position: 'top' },
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toLocaleString() + '円相当',
+                            afterLabel: ctx => {
+                                if (ctx.dataset.label === '特別紹介（3/9〜）') {
+                                    if (ctx.dataIndex===0) return '（入会ボーナス3万pt）';
+                                    if (ctx.dataIndex===1) return '（入会3万pt + トラベル5万円含む）';
+                                    if (ctx.dataIndex===5) return '（29万pt + トラベル5万円）';
+                                }
+                                return '';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: { title: { display: true, text: '累計決済額' } },
+                    y: { beginAtZero: true, ticks: { callback: v=>(v/10000).toLocaleString()+'万円' }, title: { display: true, text: '獲得特典総額（円相当）' } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

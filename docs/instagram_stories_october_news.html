@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Stories - 10月13日〜19日 金融ニュース</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'ヒラギノ角ゴシック', 'Yu Gothic', 'メイリオ', sans-serif;
+            background: #ffffff;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        .story-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            background: #ffffff;
+            min-height: 100vh;
+        }
+
+        .story-slide {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            text-align: left;
+            position: relative;
+            border-bottom: 1px solid #f0f0f0;
+            overflow-y: auto;
+        }
+
+        .title-slide {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .news-slide {
+            background: #ffffff;
+        }
+
+        .news-slide:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .slide-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+
+        .slide-title.white {
+            color: white;
+        }
+
+        .slide-subtitle {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #7f8c8d;
+        }
+
+        .slide-subtitle.white {
+            color: #ecf0f1;
+        }
+
+        .news-item {
+            background: #ffffff;
+            border: 1px solid #e1e8ed;
+            border-radius: 6px;
+            padding: 8px;
+            margin: 4px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+
+        .news-title {
+            font-size: 12px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+
+        .news-date {
+            font-size: 9px;
+            color: #95a5a6;
+            margin-bottom: 3px;
+        }
+
+        .news-content {
+            font-size: 10px;
+            color: #34495e;
+            line-height: 1.3;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .event-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 12px;
+        }
+
+        .event-table th,
+        .event-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .event-table th {
+            background: #f8f9fa;
+            font-weight: bold;
+        }
+
+        .campaign-item {
+            background: #e8f5e8;
+            border-left: 2px solid #27ae60;
+            padding: 6px;
+            margin: 3px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .campaign-title {
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 2px;
+            font-size: 10px;
+        }
+
+        .campaign-details {
+            font-size: 8px;
+            color: #2c3e50;
+            line-height: 1.2;
+        }
+
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 12px;
+            color: #95a5a6;
+        }
+
+        .icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            margin: 8px 0;
+            border-radius: 1px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            margin: 4px 0;
+        }
+
+        .news-grid .news-item {
+            margin: 0;
+        }
+
+        .campaign-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px;
+            margin: 4px 0;
+        }
+
+        .campaign-grid .campaign-item {
+            margin: 0;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 8px 0 4px 0;
+            padding-bottom: 2px;
+            border-bottom: 1px solid #e1e8ed;
+        }
+
+        .compact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 4px;
+            margin: 4px 0;
+        }
+
+        .compact-grid .news-item,
+        .compact-grid .campaign-item {
+            margin: 0;
+            padding: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="story-container">
+        <!-- タイトルスライド -->
+        <div class="story-slide title-slide">
+            <div class="icon">📰</div>
+            <h1 class="slide-title white">金融ニュース週報</h1>
+            <p class="slide-subtitle white">2025年10月13日〜19日</p>
+            <div class="slide-number">1/4</div>
+        </div>
+
+        <!-- 主要ニュース統合 -->
+        <div class="story-slide news-slide">
+            <h2 class="slide-title">今週の主要ニュース</h2>
+            
+            <div class="section-title">ANA Pay ギフトコード新機能</div>
+            <div class="news-item">
+                <div class="news-date">2025年10月14日</div>
+                <div class="news-title">ANA Pay ギフトコード機能開始</div>
+                <div class="news-content">
+                    ANA X株式会社と全日空商事が共同で「<span class="highlight">ANA Pay ギフトコード</span>」機能を開始。<br>
+                    • 企業のキャンペーン賞品として活用可能<br>
+                    • 全国のスーパー・コンビニで利用可能<br>
+                    • 12月頃から遅延・欠航時の支払い方法としても選択可能
+                </div>
+            </div>
+
+            <div class="section-title">三菱UFJカード ポイント制度変更</div>
+            <div class="news-item">
+                <div class="news-date">2025年10月14日発表</div>
+                <div class="news-title">ポイント算出方法を変更</div>
+                <div class="news-content">
+                    <span class="highlight">「全対象店の合算」</span>方式に変更<br>
+                    • 1,000円単位の条件廃止<br>
+                    • 少額利用分もポイント対象<br>
+                    • コンビニ・ファストフードでポイントが貯まりやすく<br>
+                    <strong>10月16日以降の利用分から適用</strong>
+                </div>
+            </div>
+
+            <div class="section-title">決済サービス最新情報</div>
+            <div class="news-grid">
+                <div class="news-item">
+                    <div class="news-date">2025年10月15日</div>
+                    <div class="news-title">バンドルカード クリック決済</div>
+                    <div class="news-content">
+                        株式会社カンムが<span class="highlight">「クリック決済」</span>を導入<br>
+                        • カード番号入力不要<br>
+                        • スピーディで安全<br>
+                        • 日本国内初対応
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2025年10月15日</div>
+                    <div class="news-title">GMOあおぞら アメックス対応</div>
+                    <div class="news-content">
+                        GMOあおぞらネット銀行が<span class="highlight">アメックス口座振替</span>に対応開始<br>
+                        より便利な決済環境を提供
+                    </div>
+                </div>
+            </div>
+            <div class="slide-number">2/4</div>
+        </div>
+
+        <!-- 重要提携・今週開始イベント -->
+        <div class="story-slide news-slide">
+            <h2 class="slide-title">重要提携・今週開始イベント</h2>
+            
+            <div class="section-title">PayPay × Binance Japan 提携</div>
+            <div class="news-item">
+                <div class="news-date">2025年10月9日</div>
+                <div class="news-title">資本業務提携契約締結</div>
+                <div class="news-content">
+                    PayPayがBinance Japanの<span class="highlight">株式40％を取得</span><br>
+                    • キャッシュレス決済と暗号資産の融合<br>
+                    • PayPayマネーでの暗号資産購入検討<br>
+                    • 日本のデジタル金融進化を推進
+                </div>
+            </div>
+
+            <div class="section-title">今週開始の重要イベント</div>
+            <div class="campaign-grid">
+                <div class="campaign-item">
+                    <div class="campaign-title">JCB タッチ決済キャンペーン</div>
+                    <div class="campaign-details">
+                        開始：10月16日（木）<br>
+                        公共交通機関30％還元（上限500円）<br>
+                        期間：〜11月15日<br>
+                        <strong>※参加登録必須</strong>
+                    </div>
+                </div>
+                <div class="campaign-item">
+                    <div class="campaign-title">三菱UFJカード 新制度</div>
+                    <div class="campaign-details">
+                        開始：10月16日利用分から<br>
+                        全対象店合算方式<br>
+                        1,000円未満もポイント対象
+                    </div>
+                </div>
+            </div>
+            <div class="slide-number">3/4</div>
+        </div>
+
+        <!-- 進行中キャンペーン -->
+        <div class="story-slide news-slide">
+            <h2 class="slide-title">進行中の主要キャンペーン</h2>
+            
+            <div class="compact-grid">
+                <div class="campaign-item">
+                    <div class="campaign-title">JCB オリジナルシリーズ</div>
+                    <div class="campaign-details">初年度年会費キャッシュバック・Amazon 20%還元</div>
+                </div>
+                <div class="campaign-item">
+                    <div class="campaign-title">JCB Premium Stay</div>
+                    <div class="campaign-details">総額500万円相当ホテルクーポンプレゼント</div>
+                </div>
+                <div class="campaign-item">
+                    <div class="campaign-title">ANAマイル移行上限突破</div>
+                    <div class="campaign-details">年間4万マイル上限を超えて移行可能（〜12月19日）</div>
+                </div>
+                <div class="campaign-item">
+                    <div class="campaign-title">dポイント10％増量</div>
+                    <div class="campaign-details">エントリー期間：10月9日〜（11月1日から交換開始）</div>
+                </div>
+                <div class="campaign-item">
+                    <div class="campaign-title">タカシマヤプラチナデビット</div>
+                    <div class="campaign-details">初年度年会費キャッシュバック（30万円利用で33,000円還元）</div>
+                </div>
+                <div class="campaign-item">
+                    <div class="campaign-title">JAL Pay チャージ限度額変更</div>
+                    <div class="campaign-details">1回・1日あたり上限5万円→2万円に変更（月間上限5万円は変更なし）</div>
+                </div>
+            </div>
+            <div class="slide-number">4/4</div>
+        </div>
+    </div>
+</body>
+</html>
