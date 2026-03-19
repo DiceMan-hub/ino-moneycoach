@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>アメックス 3%還元シミュレーター｜Amazon Pay対応300+店舗を無料検索</title>
-<meta name="description" content="アメックスの3%還元対象店（Amazon Pay対応300+店舗）を無料検索。年間獲得ポイント・ANAマイル換算をリアルタイムでシミュレーション。">
-<meta property="og:title" content="アメックス 3%還元シミュレーター｜300+店舗を無料検索">
-<meta property="og:description" content="Amazon Pay対応300+店舗を無料検索。年間獲得ポイント・ANAマイル換算をリアルタイムでシミュレーション。">
+<title>アメックス 3%還元シミュレーター｜年間ポイント・マイルを自動計算</title>
+<meta name="description" content="アメックス6カードの3%還元ポイントを自動計算。ANA・提携航空・Marriott・Hiltonのマイル交換先比較も。">
+<meta property="og:title" content="アメックス 3%還元シミュレーター｜ポイント自動計算">
+<meta property="og:description" content="アメックス6カードの3%還元ポイントを自動計算。マイル交換先比較・実質還元率をリアルタイムでシミュレーション。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://diceman-hub.github.io/ino-moneycoach/amex-3percent-simulator/">
 <link rel="canonical" href="https://diceman-hub.github.io/ino-moneycoach/amex-3percent-simulator/">
@@ -24,16 +24,20 @@ body{
 .hero{
   text-align:center;padding:56px 24px 44px;
   background:
-    radial-gradient(ellipse at 30% 40%,rgba(20,193,189,0.12) 0%,transparent 50%),
-    radial-gradient(ellipse at 70% 60%,rgba(20,193,189,0.06) 0%,transparent 50%),
-    linear-gradient(135deg,#1B1B2F 0%,#2A2A3D 50%,#1B1B2F 100%);
+    radial-gradient(ellipse at 30% 40%,rgba(20,193,189,0.18) 0%,transparent 50%),
+    radial-gradient(ellipse at 70% 60%,rgba(20,193,189,0.08) 0%,transparent 50%),
+    linear-gradient(135deg,#132D42 0%,#1A3A52 50%,#132D42 100%);
   color:#fff;position:relative;overflow:hidden;
 }
 .hero::before{
   content:'';position:absolute;top:0;left:0;right:0;height:3px;
   background:linear-gradient(90deg,transparent,#14C1BD,transparent);
 }
-.hero h1{font-size:1.8em;font-weight:700;margin-bottom:8px;letter-spacing:0.02em}
+.hero::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(20,193,189,0.3),transparent);
+}
+.hero h1{font-size:2.4em;font-weight:700;margin-bottom:8px;letter-spacing:0.02em}
 .hero .subtitle{color:rgba(255,255,255,0.65);font-size:1em;margin-bottom:24px}
 .hero .scroll-hint{
   display:inline-block;margin-top:12px;padding:8px 24px;
@@ -121,6 +125,8 @@ body{
 }
 .bar-fill.green{background:linear-gradient(90deg,#14C1BD,#0FA8A5)}
 .bar-fill.gold{background:linear-gradient(90deg,#D4A853,#B8932B)}
+.bar-fill.plat{background:linear-gradient(90deg,#8B8B8B,#5C5C5C)}
+.bar-fill.biz-green{background:linear-gradient(90deg,#5CB8B5,#3A9995)}
 .bar-fill.biz-gold{background:linear-gradient(90deg,#6B9FD4,#4A7DB8)}
 .bar-fill.biz-plat{background:linear-gradient(90deg,#888,#666)}
 .bar-row.current .bar-label{color:#14C1BD}
@@ -134,90 +140,50 @@ body{
 }
 .gp-alert strong{color:#E65100}
 
+/* ── Rate KPI ── */
+.rate-kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:28px}
+.rate-kpi-card{
+  background:#1B1B2F;border-radius:10px;padding:18px;text-align:center;
+  border:1.5px solid rgba(20,193,189,0.3);position:relative;overflow:hidden;
+}
+.rate-kpi-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,#14C1BD,#0FA8A5);
+}
+.rate-kpi-label{font-size:0.7em;color:rgba(255,255,255,0.5);margin-bottom:4px;font-weight:600;letter-spacing:0.03em}
+.rate-kpi-value{font-size:2em;font-weight:800;color:#14C1BD;font-variant-numeric:tabular-nums}
+.rate-kpi-unit{font-size:0.45em;color:rgba(255,255,255,0.4);font-weight:500}
+.rate-kpi-note{font-size:0.65em;color:rgba(255,255,255,0.35);margin-top:4px}
+
+/* ── Mile Comparison ── */
+.mile-compare{margin-top:28px;padding-top:24px;border-top:1px solid #E5E5E7}
+.mile-compare h3{font-size:1.1em;font-weight:700;color:#222;margin-bottom:6px}
+.mile-compare-sub{font-size:0.8em;color:#999;margin-bottom:16px}
+.mile-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mile-card{
+  background:#F9FAFA;border:1px solid #E5E5E7;border-radius:10px;padding:16px;
+  text-align:center;position:relative;transition:all 0.2s;
+}
+.mile-card.best{border-color:#14C1BD;background:#F0FAFA}
+.mile-card.best::after{
+  content:'BEST';position:absolute;top:8px;right:8px;
+  background:#14C1BD;color:#fff;font-size:0.6em;font-weight:700;
+  padding:2px 6px;border-radius:4px;letter-spacing:0.05em;
+}
+.mile-card-name{font-size:0.85em;font-weight:700;color:#222;margin-bottom:2px}
+.mile-card-rate{font-size:0.7em;color:#999;margin-bottom:8px}
+.mile-card-value{font-size:1.4em;font-weight:800;color:#222;font-variant-numeric:tabular-nums}
+.mile-card-value.brand{color:#14C1BD}
+.mile-card-sub{font-size:0.7em;color:#777;margin-top:4px}
+.mile-card-yen{font-size:0.9em;font-weight:700;color:#14C1BD;margin-top:6px;
+  padding-top:6px;border-top:1px dashed #E5E5E7}
+
 /* ── [D] Store Search ── */
 .search-section{background:#fff;padding:32px 24px;border-top:1px solid #E5E5E7}
 .search-section h2{
   font-size:1.3em;font-weight:700;color:#222;margin-bottom:20px;
   padding-bottom:10px;border-bottom:2px solid #14C1BD;
 }
-.search-bar{
-  width:100%;padding:12px 16px;border:2px solid #E5E5E7;border-radius:10px;
-  font-size:1em;outline:none;background:#F9FAFA;transition:border-color 0.2s;
-}
-.search-bar:focus{border-color:#14C1BD}
-.search-bar::placeholder{color:#bbb}
-
-/* Category Chips */
-.chip-scroll{
-  display:flex;gap:8px;flex-wrap:wrap;padding:14px 0 8px;
-}
-.chip{
-  padding:6px 14px;border:1px solid #E5E5E7;border-radius:20px;
-  font-size:0.8em;cursor:pointer;background:#fff;color:#666;
-  transition:all 0.2s;white-space:nowrap;user-select:none;
-}
-.chip:hover{border-color:#14C1BD;color:#14C1BD}
-.chip.active{background:#14C1BD;color:#fff;border-color:#14C1BD}
-
-/* Layer Toggle */
-.layer-toggle{display:flex;gap:0;border-radius:8px;overflow:hidden;border:1px solid #E5E5E7;margin:12px 0 16px;display:inline-flex}
-.layer-toggle button{
-  padding:8px 18px;border:none;background:#fff;color:#666;
-  font-size:0.8em;font-weight:600;cursor:pointer;transition:all 0.15s;
-}
-.layer-toggle button.active{background:#14C1BD;color:#fff}
-
-/* Store Count */
-.store-count{font-size:0.85em;color:#999;margin-bottom:12px}
-.store-count strong{color:#14C1BD}
-
-/* ── [E] Store List ── */
-.store-list{background:#fff;padding:0 24px 32px}
-.store-card{
-  border:1px solid #E5E5E7;border-radius:8px;padding:16px;
-  margin-bottom:10px;transition:all 0.2s;
-}
-.store-card:hover{box-shadow:0 2px 8px rgba(0,0,0,0.06)}
-.store-card.layer2{border-left:4px solid #14C1BD}
-.store-card .store-badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
-.store-card .badge{
-  font-size:0.7em;padding:3px 8px;border-radius:5px;font-weight:600;
-}
-.store-card .badge-curated{background:#E8F8F8;color:#0FA8A5}
-.store-card .badge-cat{background:#F3F4F6;color:#666}
-.store-card .store-name{font-size:1em;font-weight:600;color:#222;margin-bottom:4px}
-.store-card .store-memo{font-size:0.8em;color:#777;margin-bottom:8px;line-height:1.5}
-.store-card .store-link{
-  display:inline-block;font-size:0.8em;color:#14C1BD;text-decoration:none;font-weight:600;
-}
-.store-card .store-link:hover{text-decoration:underline}
-
-/* Favorite Button */
-.store-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
-.store-header .store-name{flex:1}
-.fav-btn{
-  flex-shrink:0;width:36px;height:36px;border:none;background:none;
-  cursor:pointer;font-size:1.2em;line-height:1;padding:0;
-  color:#ccc;transition:all 0.2s;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-}
-.fav-btn:hover{color:#FF6B6B;transform:scale(1.15)}
-.fav-btn.active{color:#FF6B6B}
-.fav-count{
-  display:inline-flex;align-items:center;justify-content:center;
-  min-width:18px;height:18px;padding:0 5px;
-  background:#FF6B6B;color:#fff;border-radius:9px;
-  font-size:0.65em;font-weight:700;margin-left:4px;vertical-align:middle;
-}
-.fav-empty{text-align:center;padding:40px 20px;color:#999;font-size:0.9em}
-
-/* Load More Sentinel */
-.pagination{display:flex;justify-content:center;align-items:center;gap:4px;padding:20px 0;flex-wrap:wrap}
-.pagination button{min-width:36px;height:36px;border:1px solid #ddd;background:#fff;border-radius:6px;font-size:14px;cursor:pointer;color:#333;transition:all .2s}
-.pagination button:hover{border-color:#14C1BD;color:#14C1BD}
-.pagination button.active{background:#14C1BD;color:#fff;border-color:#14C1BD;font-weight:700}
-.pagination button:disabled{opacity:.4;cursor:default}
-.pagination .page-info{font-size:13px;color:#888;margin:0 8px}
 
 /* ── [F] CTA ── */
 .cta-section{background:#E8F8F8;padding:40px 24px;text-align:center}
@@ -245,12 +211,16 @@ body{
 
 /* ── Responsive ── */
 @media(max-width:768px){
-  .hero h1{font-size:1.4em}
+  .hero h1{font-size:1.8em}
   .card-grid{grid-template-columns:repeat(2,1fr);gap:8px}
   .kpi-grid{grid-template-columns:1fr}
   .kpi-value{font-size:1.3em}
+  .rate-kpi-grid{grid-template-columns:1fr 1fr}
+  .rate-kpi-value{font-size:1.6em}
   .bar-label{width:100px;font-size:0.7em}
   .bar-row{gap:8px}
+  .mile-grid{grid-template-columns:1fr 1fr}
+  .mile-card-value{font-size:1.2em}
   .cta-cards{grid-template-columns:1fr}
 }
 @media(min-width:1024px){
@@ -263,8 +233,9 @@ body{
 
 <!-- ═══ [A] HERO ═══ -->
 <section class="hero">
+  <div style="font-size:0.75em;color:rgba(255,255,255,0.5);letter-spacing:0.1em;margin-bottom:8px">いのマネーコーチ</div>
   <h1>アメックス 3%還元<br>シミュレーター</h1>
-  <p class="subtitle">Amazon Pay対応店舗を無料検索</p>
+  <p class="subtitle">カード別ポイント・マイル交換先を自動計算</p>
   <a href="#simulator" class="scroll-hint">シミュレーションを始める ↓</a>
 </section>
 
@@ -277,7 +248,8 @@ body{
     <!-- Step 1: Card Select -->
     <div class="sim-step">
       <div class="sim-step-label"><span class="num">1</span> カードを選択</div>
-      <div class="card-grid">
+      <div style="font-size:0.7em;color:#14C1BD;font-weight:600;letter-spacing:0.05em;margin-bottom:6px;">個人カード</div>
+      <div class="card-grid" style="margin-bottom:14px;">
         <div class="card-option selected" data-card="green" onclick="selectCard(this)">
           <div class="card-name">グリーン</div>
           <div class="card-rate">3%上限 年500万円</div>
@@ -286,12 +258,23 @@ body{
           <div class="card-name">ゴールド・プリファード</div>
           <div class="card-rate">3%上限 年50万円</div>
         </div>
+        <div class="card-option" data-card="platinum" onclick="selectCard(this)">
+          <div class="card-name">プラチナ</div>
+          <div class="card-rate">3%上限 年500万円</div>
+        </div>
+      </div>
+      <div style="font-size:0.7em;color:#14C1BD;font-weight:600;letter-spacing:0.05em;margin-bottom:6px;">ビジネスカード</div>
+      <div class="card-grid">
+        <div class="card-option" data-card="biz-green" onclick="selectCard(this)">
+          <div class="card-name">ビジネス・グリーン</div>
+          <div class="card-rate">3%上限 年500万円</div>
+        </div>
         <div class="card-option" data-card="biz-gold" onclick="selectCard(this)">
-          <div class="card-name">Bizゴールド</div>
+          <div class="card-name">ビジネス・ゴールド</div>
           <div class="card-rate">3%上限 年500万円</div>
         </div>
         <div class="card-option" data-card="biz-platinum" onclick="selectCard(this)">
-          <div class="card-name">Bizプラチナ</div>
+          <div class="card-name">ビジネス・プラチナ</div>
           <div class="card-rate">3%上限 年500万円</div>
         </div>
       </div>
@@ -355,6 +338,19 @@ body{
       </div>
     </div>
 
+    <div class="rate-kpi-grid">
+      <div class="rate-kpi-card">
+        <div class="rate-kpi-label">実質ポイント還元率</div>
+        <div class="rate-kpi-value" id="kpiPointRate">-<span class="rate-kpi-unit">%</span></div>
+        <div class="rate-kpi-note">ポイント÷利用総額</div>
+      </div>
+      <div class="rate-kpi-card">
+        <div class="rate-kpi-label">実質マイル還元率</div>
+        <div class="rate-kpi-value" id="kpiMileRate">-<span class="rate-kpi-unit">%</span></div>
+        <div class="rate-kpi-note">ANAマイル÷利用総額</div>
+      </div>
+    </div>
+
     <!-- Bar Graph: 4 Cards Comparison -->
     <div class="compare-title">カード別 年間ポイント比較</div>
     <div id="barGraph">
@@ -366,12 +362,20 @@ body{
         <div class="bar-label">ゴールド・プリファード</div>
         <div class="bar-track"><div class="bar-fill gold" style="width:0%"></div></div>
       </div>
+      <div class="bar-row" data-card="platinum">
+        <div class="bar-label">プラチナ</div>
+        <div class="bar-track"><div class="bar-fill plat" style="width:0%"></div></div>
+      </div>
+      <div class="bar-row" data-card="biz-green">
+        <div class="bar-label">ビジネス・グリーン</div>
+        <div class="bar-track"><div class="bar-fill biz-green" style="width:0%"></div></div>
+      </div>
       <div class="bar-row" data-card="biz-gold">
-        <div class="bar-label">Bizゴールド</div>
+        <div class="bar-label">ビジネス・ゴールド</div>
         <div class="bar-track"><div class="bar-fill biz-gold" style="width:0%"></div></div>
       </div>
       <div class="bar-row" data-card="biz-platinum">
-        <div class="bar-label">Bizプラチナ</div>
+        <div class="bar-label">ビジネス・プラチナ</div>
         <div class="bar-track"><div class="bar-fill biz-plat" style="width:0%"></div></div>
       </div>
     </div>
@@ -379,10 +383,49 @@ body{
     <!-- Limit Alert -->
     <div class="gp-alert" id="limitAlert"></div>
 
+    <div class="mile-compare">
+      <h3>マイル交換先比較</h3>
+      <div class="mile-compare-sub">同じポイントでも交換先で価値が大きく変わります</div>
+      <div class="mile-grid">
+        <div class="mile-card best" id="mileCardAna">
+          <div class="mile-card-name">ANA マイル</div>
+          <div class="mile-card-rate">1,000P → 1,000マイル</div>
+          <div class="mile-card-value brand" id="mileAna">-</div>
+          <div class="mile-card-sub">マイル（還元率 <strong id="mileAnaRate">-</strong>%）</div>
+          <div class="mile-card-yen" id="mileAnaYen">≒ - 円相当</div>
+        </div>
+        <div class="mile-card" id="mileCardPartner">
+          <div class="mile-card-name">提携航空会社</div>
+          <div class="mile-card-rate">1,250P → 1,000マイル</div>
+          <div class="mile-card-value" id="milePartner">-</div>
+          <div class="mile-card-sub">マイル（還元率 <strong id="milePartnerRate">-</strong>%）</div>
+          <div class="mile-card-yen" id="milePartnerYen">≒ - 円相当</div>
+        </div>
+        <div class="mile-card" id="mileCardMarriott">
+          <div class="mile-card-name">Marriott Bonvoy</div>
+          <div class="mile-card-rate">1,000P → 990pt</div>
+          <div class="mile-card-value" id="mileMarriott">-</div>
+          <div class="mile-card-sub">ポイント</div>
+          <div class="mile-card-yen" id="mileMarriottYen">≒ - 円相当</div>
+        </div>
+        <div class="mile-card" id="mileCardHilton">
+          <div class="mile-card-name">Hilton Honors</div>
+          <div class="mile-card-rate">1,000P → 1,250pt</div>
+          <div class="mile-card-value" id="mileHilton">-</div>
+          <div class="mile-card-sub">ポイント</div>
+          <div class="mile-card-yen" id="mileHiltonYen">≒ - 円相当</div>
+        </div>
+      </div>
+      <div style="font-size:0.7em;color:#999;margin-top:10px;line-height:1.5">
+        ※ ANA: MR Plus登録前提（年3,300円）。年間移行上限40,000マイル<br>
+        ※ 円相当額はANA 1マイル≒2円、提携航空1マイル≒1.5円、Marriott 1pt≒0.8円、Hilton 1pt≒0.5円で概算
+      </div>
+    </div>
+
     <!-- CTA① -->
     <div style="margin-top:24px;padding:18px;background:#F9FAFA;border-radius:8px;border-left:4px solid #14C1BD;">
-      <p style="font-size:0.9em;color:#444;margin-bottom:10px"><strong style="color:#0FA8A5">もっとポイントを貯めるには？</strong><br>決済修行ガイドで3%還元の活用ルートを詳しく解説しています。</p>
-      <a href="https://bit.ly/4pJATkt" target="_blank" rel="noopener noreferrer" class="cta-btn primary" style="font-size:0.8em;padding:8px 20px">決済修行ガイドを見る（note）</a>
+      <p style="font-size:0.9em;color:#444;margin-bottom:10px"><strong style="color:#0FA8A5">もっとポイントを貯めるには？</strong><br>Amazon Pay活用法やギフトカード37種の還元ルートを詳しく解説しています。</p>
+      <a href="https://bit.ly/4pJATkt" target="_blank" rel="noopener noreferrer" class="cta-btn primary" style="font-size:0.8em;padding:8px 20px">決済修行ガイドを読む（note）</a>
     </div>
   </div>
 </section>
@@ -391,47 +434,18 @@ body{
 <section class="search-section" id="store-search">
   <div class="container">
     <h2>対象店舗を検索</h2>
-    <input type="text" class="search-bar" id="searchInput" placeholder="ストア名で検索..." oninput="filterStores()">
 
-    <!-- Category Chips -->
-    <div class="chip-scroll" id="chipScroll">
-      <div class="chip active" data-cat="all" onclick="toggleChip(this)">すべて</div>
-      <div class="chip" data-cat="electronics" onclick="toggleChip(this)">PC・家電</div>
-      <div class="chip" data-cat="fashion" onclick="toggleChip(this)">ファッション</div>
-      <div class="chip" data-cat="food" onclick="toggleChip(this)">食品・グルメ</div>
-      <div class="chip" data-cat="beauty" onclick="toggleChip(this)">美容・コスメ</div>
-      <div class="chip" data-cat="health" onclick="toggleChip(this)">健康・医療</div>
-      <div class="chip" data-cat="home" onclick="toggleChip(this)">家具・インテリア</div>
-      <div class="chip" data-cat="baby" onclick="toggleChip(this)">ベビー・キッズ</div>
-      <div class="chip" data-cat="sports" onclick="toggleChip(this)">スポーツ</div>
-      <div class="chip" data-cat="hobby" onclick="toggleChip(this)">趣味・エンタメ</div>
-      <div class="chip" data-cat="travel" onclick="toggleChip(this)">旅行</div>
-      <div class="chip" data-cat="education" onclick="toggleChip(this)">教育・学び</div>
-      <div class="chip" data-cat="business" onclick="toggleChip(this)">ビジネス</div>
-      <div class="chip" data-cat="pet" onclick="toggleChip(this)">ペット</div>
-      <div class="chip" data-cat="furusato" onclick="toggleChip(this)">ふるさと納税</div>
-      <div class="chip" data-cat="other" onclick="toggleChip(this)">その他</div>
+    <!-- 無料版ティーザー（PRO版ではJSで非表示） -->
+    <div id="storeTeaser" style="text-align:center;padding:32px 16px;">
+      <p style="font-size:1.1em;font-weight:700;color:#222;margin-bottom:8px">Amazon Pay対応 300+店舗をカテゴリ別に検索</p>
+      <p style="font-size:0.85em;color:#777;line-height:1.7;margin-bottom:20px">ふるさと納税・家電・ファッション・旅行など<br>15カテゴリの3%還元対象店舗を検索・お気に入り登録できます。</p>
+      <a href="https://bit.ly/4pJATkt" target="_blank" rel="noopener noreferrer" class="cta-btn primary" style="font-size:0.9em">店舗検索つきガイドを見る（note）</a>
+      <p style="font-size:0.7em;color:#bbb;margin-top:12px">※ 前半は無料で読めます｜有料セクションで300+店舗の検索・お気に入り機能が使えます</p>
     </div>
 
-    <!-- Layer Toggle -->
-    <div class="layer-toggle">
-      <button class="active" data-layer="all" onclick="setLayer(this)">全店舗</button>
-      <button data-layer="2" onclick="setLayer(this)">厳選のみ</button>
-      <button data-layer="fav" onclick="setLayer(this)" id="favTabBtn">お気に入り<span class="fav-count" id="favTabCount" style="display:none">0</span></button>
-    </div>
-
-    <div class="store-count" id="storeCount"></div>
-    <div style="font-size:11px;color:#999;margin-top:4px">※ ★厳選店舗を優先表示、同区分内は名前順</div>
   </div>
 </section>
 
-<!-- ═══ [E] STORE LIST ═══ -->
-<section class="store-list">
-  <div class="container">
-    <div id="storeContainer"></div>
-    <div id="pagination" class="pagination"></div>
-  </div>
-</section>
 
 <!-- ═══ [F] CTA ═══ -->
 <section class="cta-section">
@@ -442,7 +456,8 @@ body{
       <div class="cta-card">
         <h3>アメックス決済修行ガイド</h3>
         <p>3%還元ルートの全体像、Amazon Pay活用法、ギフトカード37種を網羅。356+店舗のリスト付き。</p>
-        <a href="https://bit.ly/4pJATkt" target="_blank" rel="noopener noreferrer" class="cta-btn primary">ガイドを読む（note ¥2,980）</a>
+        <a href="https://bit.ly/4pJATkt" target="_blank" rel="noopener noreferrer" class="cta-btn primary">無料で読みはじめる（note）</a>
+        <p style="font-size:0.7em;color:#999;margin-top:8px">前半無料 ｜ 有料セクション ¥2,980</p>
       </div>
       <div class="cta-card">
         <h3>カード選び相談</h3>
@@ -455,28 +470,23 @@ body{
 
 <!-- ═══ [G] FOOTER ═══ -->
 <footer class="footer">
-  <p>最終更新：2026年3月8日</p>
+  <p>最終更新：2026年3月19日</p>
   <p>データ出典：独自調査（2026年3月時点）</p>
   <p style="margin-top:8px">&copy; 2026 <a href="https://www.instagram.com/ino_moneycoach/" target="_blank" rel="noopener noreferrer">いのマネーコーチ</a></p>
 </footer>
 
 <script>
-// ════════════════════════════════════════════════
-// DATA: インライン埋め込み（file://対応）+ fetch更新
-// ════════════════════════════════════════════════
-let CATEGORIES = {};
-let STORES = [];
-const INLINE_DATA = {"meta":{"version":"2.0","updatedAt":"2026-03-09","totalStores":313,"curatedStores":111},"categories":[{"id":"electronics","name":"PC・家電","icon":"💻"},{"id":"fashion","name":"ファッション","icon":"👗"},{"id":"food","name":"食品・グルメ","icon":"🍽"},{"id":"beauty","name":"美容・コスメ","icon":"💄"},{"id":"health","name":"健康・医療","icon":"💊"},{"id":"home","name":"家具・インテリア","icon":"🏠"},{"id":"sports","name":"スポーツ","icon":"⚽"},{"id":"hobby","name":"趣味・エンタメ","icon":"🎮"},{"id":"travel","name":"旅行","icon":"✈️"},{"id":"education","name":"教育・学び","icon":"📚"},{"id":"business","name":"ビジネス","icon":"💼"},{"id":"furusato","name":"ふるさと納税","icon":"🏡"},{"id":"other","name":"その他","icon":"📦"}],"stores":[{"name":".st (グローバルワーク等)","url":"https://www.dot-st.com/","cat":"fashion","layer":2,"tags":["総合モール"],"memo":"グローバルワーク等のアダストリア系ブランド"},{"name":"4℃","url":"https://fdcp.co.jp/","cat":"fashion","layer":2,"tags":["ジュエリー","ギフト"],"memo":"ジュエリー・アクセサリーのギフトに人気"},{"name":"Asics","url":"https://asics.com/jp/ja-jp/","cat":"sports","layer":2,"tags":["スポーツ"],"memo":"ランニングシューズ・スポーツウェア公式"},{"name":"BEAMS","url":"https://www.beams.co.jp/","cat":"fashion","layer":2,"tags":["セレクト"],"memo":"カジュアルからドレスまで幅広いセレクトショップ"},{"name":"BRUNO","url":"https://idea-onlineshop.jp/","cat":"home","layer":2,"tags":["キッチン","ギフト"],"memo":"ホットプレート等おしゃれキッチン家電"},{"name":"CASIO","url":"https://casio.com/jp/","cat":"electronics","layer":2,"tags":["時計","家電"],"memo":"G-SHOCK等の時計・電子機器メーカー公式"},{"name":"Chatwork","url":"https://go.chatwork.com/","cat":"business","layer":2,"tags":["SaaS","ビジネス"],"memo":"ビジネスチャットの月額課金で3%還元"},{"name":"DEAN & DELUCA","url":"https://store.deandeluca.co.jp/","cat":"food","layer":2,"tags":["ギフト"],"memo":"NYスタイルの食のセレクトショップ"},{"name":"DESCENTE","url":"https://store.descente.co.jp/","cat":"sports","layer":2,"tags":["スポーツ"],"memo":"スキー・ランニング等の高機能スポーツウェア"},{"name":"DMM.com","url":"https://dmm.com/","cat":"hobby","layer":2,"tags":["エンタメ","ビジネス"],"memo":"動画・英会話・3Dプリントなど幅広い"},{"name":"ETVOS","url":"https://etvos.com/","cat":"beauty","layer":2,"tags":["コスメ"],"memo":"ミネラルコスメ・セラミドスキンケア"},{"name":"EcoFlow","url":"https://www.ecoflow.com/jp/","cat":"electronics","layer":2,"tags":["ポータブル電源"],"memo":"ポータブル電源・ソーラーパネルの専門"},{"name":"Francfranc","url":"https://francfranc.com/","cat":"home","layer":2,"tags":["インテリア","ギフト"],"memo":"おしゃれな生活雑貨・インテリアの通販"},{"name":"GDO ゴルフショップ","url":"https://golfdigest-minna.jp/","cat":"sports","layer":2,"tags":["ゴルフ"],"memo":"ゴルフ用品・ゴルフ場予約の総合サイト"},{"name":"GLOBAL WiFi","url":"https://townwifi.com/","cat":"travel","layer":2,"tags":["海外WiFi"],"memo":"海外用ポケットWiFiレンタルサービス"},{"name":"GODIVA","url":"https://godiva.co.jp/","cat":"food","layer":2,"tags":["ギフト"],"memo":"ベルギー高級チョコレート。ギフトに最適"},{"name":"GOLDWIN","url":"https://goldwinwebstore.jp/","cat":"sports","layer":2,"tags":["スポーツ","アウトドア"],"memo":"THE NORTH FACE等を展開するアウトドア通販"},{"name":"HACCI","url":"https://hacci1912.com/","cat":"beauty","layer":2,"tags":["コスメ","ギフト"],"memo":"はちみつ美容コスメ。ギフトにも人気"},{"name":"HANKYU FASHION & BEAUTY","url":"https://web.hh-online.jp/","cat":"beauty","layer":2,"tags":["百貨店"],"memo":"阪急阪神百貨店のファッション・コスメ通販"},{"name":"I-PRIMO","url":"https://iprimo.jp/","cat":"fashion","layer":2,"tags":["ジュエリー","ギフト"],"memo":"婚約・結婚指輪の専門ブランド"},{"name":"JINS","url":"https://jins.com/jp/","cat":"fashion","layer":2,"tags":["メガネ"],"memo":"メガネ・サングラスのアイウェア専門通販"},{"name":"JTB","url":"https://jtb.co.jp/","cat":"travel","layer":2,"tags":["旅行","高額"],"memo":"旅行代金で3%還元。高額決済向き"},{"name":"Jackery","url":"https://www.jackery.jp/","cat":"electronics","layer":2,"tags":["ポータブル電源"],"memo":"ポータブル電源のパイオニアブランド"},{"name":"Lindt","url":"https://lindt.jp/","cat":"food","layer":2,"tags":["ギフト"],"memo":"スイスの高級チョコレートブランド"},{"name":"MTG","url":"https://mtgec.jp/","cat":"beauty","layer":2,"tags":["美容機器"],"memo":"ReFa等の美容機器メーカー公式"},{"name":"MoMA Design Store","url":"https://www.momastore.jp/","cat":"home","layer":2,"tags":["インテリア","ギフト"],"memo":"NY近代美術館セレクトのデザイン雑貨"},{"name":"New Balance","url":"https://shop.newbalance.jp/","cat":"sports","layer":2,"tags":["スポーツ"],"memo":"高品質スニーカー・ランニングシューズ"},{"name":"ONWARD","url":"https://crosset.onward.co.jp/","cat":"fashion","layer":2,"tags":["セレクト"],"memo":"23区、自由区等のオンワードブランド"},{"name":"PAL CLOSET","url":"https://palcloset.jp/","cat":"fashion","layer":2,"tags":["セレクト"],"memo":"3COINS・Kastane等パルグループ公式通販"},{"name":"PUMA","url":"https://jp.puma.com/","cat":"sports","layer":2,"tags":["スポーツ"],"memo":"スポーツ・ライフスタイルシューズ・ウェア"},{"name":"Paul Smith","url":"https://paulsmith.co.jp/","cat":"fashion","layer":2,"tags":["ブランド"],"memo":"英国発のデザイナーズブランド公式通販"},{"name":"RINGBELL","url":"https://ringbell.co.jp/","cat":"other","layer":2,"tags":["ギフト","カタログ"],"memo":"カタログギフトの大手ブランド通販"},{"name":"Reebok","url":"https://www.reebok.jp/","cat":"sports","layer":2,"tags":["スポーツ"],"memo":"フィットネス・スポーツシューズのブランド"},{"name":"Renta!","url":"https://renta.papy.co.jp/","cat":"hobby","layer":2,"tags":["電子書籍"],"memo":"マンガ・小説のレンタル型電子書籍サービス"},{"name":"SABON","url":"https://sabon.co.jp/","cat":"beauty","layer":2,"tags":["ギフト"],"memo":"イスラエル発のボディケア・ギフトブランド"},{"name":"SHIPS","url":"https://www.shipsltd.co.jp/","cat":"fashion","layer":2,"tags":["セレクト"],"memo":"トラッド・ベーシックなセレクトショップ"},{"name":"SHOPLIST","url":"https://shop-list.com/","cat":"fashion","layer":2,"tags":["総合モール"],"memo":"プチプラファッション総合モール"},{"name":"Schoo","url":"https://schoo.jp/","cat":"education","layer":2,"tags":["自己投資","サブスク"],"memo":"オンライン学習の月額課金で3%還元"},{"name":"Sow Experience (体験ギフト)","url":"https://sowxp.co.jp/","cat":"other","layer":2,"tags":["体験ギフト"],"memo":"体験型ギフトの専門サイト"},{"name":"TENTIAL","url":"https://tential.jp/","cat":"fashion","layer":2,"tags":["健康","ビジネス"],"memo":"BAKUNE等リカバリーウェア。ビジネスパーソンに"},{"name":"Tabio","url":"https://tabio.com/jp/","cat":"fashion","layer":2,"tags":["靴下"],"memo":"靴下・タイツ・レッグウェア専門の通販"},{"name":"UNDER ARMOUR","url":"https://www.underarmour.co.jp/","cat":"sports","layer":2,"tags":["スポーツ"],"memo":"パフォーマンスウェア・トレーニング用品"},{"name":"UNITED ARROWS","url":"https://store.united-arrows.co.jp/","cat":"fashion","layer":2,"tags":["セレクト"],"memo":"UA・ビューティ&ユースなど幅広い"},{"name":"USAGI ONLINE","url":"https://usagi-online.com/","cat":"fashion","layer":2,"tags":["セレクト"],"memo":"アーバンリサーチ系列のセレクトショップ通販"},{"name":"Udemy","url":"https://www.udemy.com/","cat":"education","layer":2,"tags":["自己投資"],"memo":"オンライン講座のセール時にまとめ買い"},{"name":"World Online Store","url":"https://world.co.jp/","cat":"fashion","layer":2,"tags":["総合モール"],"memo":"UNTITLED・TAKEO KIKUCHI等ワールド系ブランド"},{"name":"Zoff","url":"https://www.zoff.co.jp/","cat":"fashion","layer":2,"tags":["メガネ"],"memo":"リーズナブルなメガネ・サングラス通販"},{"name":"adidas","url":"https://shop.adidas.jp/","cat":"sports","layer":2,"tags":["スポーツ"],"memo":"スニーカー・スポーツウェアの世界的ブランド"},{"name":"antiqua","url":"https://antiqua.co.jp/","cat":"fashion","layer":2,"tags":["レディース"],"memo":"シンプル&モードな大人向けカジュアル通販"},{"name":"fifth","url":"https://5-fifth.com/","cat":"fashion","layer":2,"tags":["レディース"],"memo":"プチプラでトレンドのレディース通販サイト"},{"name":"kate spade","url":"https://katespade.jp/","cat":"fashion","layer":2,"tags":["ブランド"],"memo":"NY発バッグ・財布・アクセサリーのブランド"},{"name":"maNara","url":"https://manara.jp/","cat":"beauty","layer":2,"tags":["コスメ"],"memo":"ホットクレンジングゲルで有名なスキンケア"},{"name":"minne","url":"https://minne.com/","cat":"other","layer":2,"tags":["ハンドメイド","ギフト"],"memo":"ハンドメイド・手作り作品のマーケット"},{"name":"note","url":"https://note.com/","cat":"hobby","layer":2,"tags":["クリエイター"],"memo":"クリエイターの記事販売・サブスクプラットフォーム"},{"name":"titivate","url":"https://titivate.jp/","cat":"fashion","layer":2,"tags":["レディース"],"memo":"大人カジュアルなレディースファッション通販"},{"name":"unico","url":"https://www.unico-fan.co.jp/","cat":"home","layer":2,"tags":["家具"],"memo":"ナチュラルな家具・インテリアの専門通販"},{"name":"さとふる","url":"https://www.satofull.jp/","cat":"furusato","layer":2,"tags":["ふるさと納税","節税"],"memo":"ふるさと納税のAmazon Pay対応サイト"},{"name":"ふるさとチョイス","url":"https://www.furusato-tax.jp/","cat":"furusato","layer":2,"tags":["ふるさと納税","節税"],"memo":"ふるさと納税で3%還元。実質還元率が大幅UP"},{"name":"ふるさとプレミアム","url":"https://26p.jp/","cat":"furusato","layer":2,"tags":["ふるさと納税"],"memo":"家電・食品など厳選返礼品に特化"},{"name":"ふるなび","url":"https://furunavi.jp/","cat":"furusato","layer":2,"tags":["ふるさと納税","節税"],"memo":"Amazonギフト券還元と3%を二重取り"},{"name":"ふるラボ","url":"https://furusato.asahi.co.jp/","cat":"furusato","layer":2,"tags":["ふるさと納税"],"memo":"テレビ朝日運営のふるさと納税サイト"},{"name":"めちゃコミック","url":"https://sp.comics.mecha.cc/","cat":"hobby","layer":2,"tags":["電子書籍"],"memo":"国内最大級の電子コミック配信サービス"},{"name":"るるぶトラベル","url":"https://rurubu.travel/","cat":"travel","layer":2,"tags":["旅行"],"memo":"JTBグループの旅行予約サイト"},{"name":"アイリスプラザ","url":"https://www.irisplaza.co.jp/","cat":"home","layer":2,"tags":["家電","日用品"],"memo":"アイリスオーヤマ公式の家電・日用品通販"},{"name":"アイロボット","url":"https://irobot-homesupport.jp/","cat":"electronics","layer":2,"tags":["家電"],"memo":"ルンバ等のロボット掃除機メーカー公式"},{"name":"アットコンタクト","url":"https://at-contact.jp/","cat":"health","layer":2,"tags":["コンタクト"],"memo":"国内正規品のコンタクトレンズ激安通販"},{"name":"アパホテル","url":"https://apahotel.com/","cat":"travel","layer":2,"tags":["ビジネスホテル"],"memo":"ビジネスホテルチェーンの公式予約"},{"name":"イイハナ・ドットコム","url":"https://e87.com/","cat":"other","layer":2,"tags":["ギフト","花"],"memo":"千趣会運営の花・ギフト通販サイト"},{"name":"イオシス","url":"https://iosys.co.jp/","cat":"electronics","layer":2,"tags":["中古PC","スマホ"],"memo":"中古スマホ・タブレット・PCの専門ショップ"},{"name":"エアトリ","url":"https://domhotel.airtrip.jp/","cat":"travel","layer":2,"tags":["旅行","航空券"],"memo":"航空券・ホテルの検索・予約サービス"},{"name":"エノテカ","url":"https://enoteca.co.jp/","cat":"food","layer":2,"tags":["ワイン"],"memo":"アサヒG運営のワイン専門通販。60店舗以上"},{"name":"エメフィール","url":"https://emefeel.com/","cat":"fashion","layer":2,"tags":["インナー"],"memo":"プチプラ下着・ランジェリーの専門通販"},{"name":"カジタク","url":"https://www.kajitaku.com/","cat":"other","layer":2,"tags":["家事代行"],"memo":"イオングループの家事代行・ハウスクリーニング"},{"name":"ギフトモール","url":"https://giftmall.co.jp/","cat":"other","layer":2,"tags":["ギフト"],"memo":"贈り物・プレゼント専門のギフト通販"},{"name":"コジマネット","url":"https://kojima.net/","cat":"electronics","layer":2,"tags":["家電"],"memo":"ビックカメラグループの家電通販サイト"},{"name":"コスメデコルテ","url":"https://decorte.com/","cat":"beauty","layer":2,"tags":["コスメ"],"memo":"コーセーの高級コスメブランド公式通販"},{"name":"サンワダイレクト","url":"https://direct.sanwa.co.jp/","cat":"electronics","layer":2,"tags":["PC周辺機器"],"memo":"PC周辺機器・オフィス用品の直販サイト"},{"name":"ショップジャパン","url":"https://shopjapan.co.jp/","cat":"home","layer":2,"tags":["テレビ通販"],"memo":"トゥルースリーパー等のテレビショッピング通販"},{"name":"スカイチケット","url":"https://skyticket.jp/","cat":"travel","layer":2,"tags":["航空券"],"memo":"国内外の格安航空券予約サイト"},{"name":"スポーツオーソリティ","url":"https://sportsauthority.jp/","cat":"sports","layer":2,"tags":["スポーツ用品"],"memo":"総合スポーツ用品の大型チェーン通販"},{"name":"ソフマップ","url":"https://sofmap.com/","cat":"electronics","layer":2,"tags":["家電"],"memo":"新品・中古PC・家電・スマホの販売・買取"},{"name":"ダイソン","url":"https://www.dyson.co.jp/","cat":"electronics","layer":2,"tags":["高額","家電"],"memo":"掃除機・ドライヤー等の高額家電で3%還元"},{"name":"ドクターマーチン","url":"https://jp.drmartens.com/","cat":"fashion","layer":2,"tags":["靴"],"memo":"英国発の定番ブーツ・シューズブランド"},{"name":"ドスパラ","url":"https://dospara.co.jp/","cat":"electronics","layer":2,"tags":["高額","BTO","ビジネス"],"memo":"10万円超のPC購入に。BTOカスタマイズ可"},{"name":"ナラカミーチェ","url":"https://store.naracamicie.jp/","cat":"fashion","layer":2,"tags":["レディース"],"memo":"イタリア発シャツ・ブラウス専門ブランド"},{"name":"ニッセン","url":"https://www.nissen.co.jp/","cat":"fashion","layer":2,"tags":["総合"],"memo":"ファッション・インテリアの総合通販サイト"},{"name":"バルミューダ","url":"https://www.balmuda.com/jp/","cat":"home","layer":2,"tags":["家電","高額"],"memo":"デザイン家電のプレミアムブランド"},{"name":"ファイテン","url":"https://phiten-store.com/","cat":"health","layer":2,"tags":["健康"],"memo":"健康グッズ・ネックレス・サプリの公式通販"},{"name":"ベイクルーズストア","url":"https://baycrews.jp/","cat":"fashion","layer":2,"tags":["セレクト"],"memo":"JOURNAL STANDARD, IENA等のセレクトショップ"},{"name":"ベースフード","url":"https://basefood.co.jp/","cat":"food","layer":2,"tags":["定期購入","健康"],"memo":"完全栄養食の定期購入で継続的に3%還元"},{"name":"マイナビふるさと納税","url":"https://furusato.mynavi.jp/","cat":"furusato","layer":2,"tags":["ふるさと納税"],"memo":"マイナビ運営のふるさと納税ポータル"},{"name":"マウスコンピューター","url":"https://mouse-jp.co.jp/","cat":"electronics","layer":2,"tags":["高額","BTO"],"memo":"BTOパソコン。法人需要にも"},{"name":"マネーフォワード","url":"https://moneyforward.com/","cat":"business","layer":2,"tags":["SaaS","経理"],"memo":"会計ソフトの月額課金。経費で3%還元"},{"name":"ムラサキスポーツ","url":"https://www.murasaki.co.jp/","cat":"sports","layer":2,"tags":["サーフ","スケート"],"memo":"サーフ・スケート・スノーボードの専門通販"},{"name":"ユーキャン","url":"https://u-can.co.jp/","cat":"hobby","layer":2,"tags":["資格","自己投資"],"memo":"資格取得・趣味の通信教育講座"},{"name":"ラクスル","url":"https://raksul.com/","cat":"business","layer":2,"tags":["印刷","ビジネス"],"memo":"名刺・チラシ印刷のビジネス経費で3%還元"},{"name":"ル・クルーゼ","url":"https://lecreuset.co.jp/","cat":"home","layer":2,"tags":["キッチン","ギフト"],"memo":"フランス発の鋳物ホーロー鍋ブランド"},{"name":"ルートインホテルズ","url":"https://route-inn.co.jp/","cat":"travel","layer":2,"tags":["ビジネスホテル"],"memo":"ビジネスホテルチェーンの公式予約"},{"name":"レンティオ","url":"https://www.rentio.jp/","cat":"other","layer":2,"tags":["レンタル"],"memo":"家電を試してから買える。高額家電検討に"},{"name":"ワコール","url":"https://store.wacoal.jp/","cat":"fashion","layer":2,"tags":["インナー"],"memo":"下着・ランジェリーの直営公式通販サイト"},{"name":"伊藤久右衛門","url":"https://itohkyuemon.co.jp/","cat":"food","layer":2,"tags":["ギフト","京都"],"memo":"宇治抹茶スイーツの老舗。贈り物に人気"},{"name":"出前館","url":"https://demae-can.com/","cat":"food","layer":2,"tags":["日常使い"],"memo":"マクドナルド・ケンタッキー・ピザハット・ガスト・吉野家等の大手チェーンもAmazon Pay決済可"},{"name":"劇団四季","url":"https://shiki.jp/","cat":"hobby","layer":2,"tags":["チケット"],"memo":"ミュージカル・演劇のチケット購入"},{"name":"匠本舗","url":"https://skynet-c.jp/","cat":"food","layer":2,"tags":["グルメ","高額"],"memo":"カニ・おせち料理の厳選特産品通販"},{"name":"好日山荘","url":"https://kojitusanso.jp/","cat":"sports","layer":2,"tags":["登山","アウトドア"],"memo":"登山・アウトドア用品の老舗専門店通販"},{"name":"東京シャツ","url":"https://shop.e-shirt.jp/","cat":"fashion","layer":2,"tags":["ビジネス"],"memo":"形態安定ビジネスワイシャツ専門の通販"},{"name":"無印良品","url":"https://www.muji.com/jp/","cat":"home","layer":2,"tags":["インテリア","日用品"],"memo":"無印良品の公式オンラインストア"},{"name":"特選松阪牛やまと","url":"https://www.matsuzaka-steak.com/","cat":"food","layer":2,"tags":["高額","ギフト"],"memo":"A4-A5ランク松阪牛の産地直送通販"},{"name":"腕時計のななぷれ","url":"https://www.nanaple.com/","cat":"electronics","layer":2,"tags":["時計","高額"],"memo":"高級ブランド腕時計専門店。高額決済向き"},{"name":"花キューピット","url":"https://www.hanamonogatari.com/","cat":"other","layer":2,"tags":["ギフト","花"],"memo":"全国のお花屋さんが届ける花のギフト"},{"name":"青山フラワーマーケット","url":"https://afm-ec.jp/","cat":"other","layer":2,"tags":["ギフト","花"],"memo":"おしゃれなフラワーギフトの専門通販"},{"name":"A.P.C.","url":"https://www.apcjp.com/","cat":"fashion","layer":1},{"name":"AMPLEUR","url":"https://ampleur.jp/","cat":"beauty","layer":1},{"name":"ANA ふるさと納税","url":"https://furusato.ana.co.jp/","cat":"furusato","layer":1},{"name":"ANA・JAL 株主優待番号販売センター","url":"https://kabu-yutai.com/","cat":"travel","layer":1},{"name":"Abahouse","url":"https://abahouse.co.jp/","cat":"fashion","layer":1},{"name":"Ace Bags & Luggage","url":"https://store.ace.jp/","cat":"fashion","layer":1},{"name":"Adam et Rope","url":"https://j-lounge.jp/","cat":"fashion","layer":1},{"name":"Agete","url":"https://agete.com/","cat":"fashion","layer":1},{"name":"Aigle","url":"https://aigle.co.jp/","cat":"sports","layer":1},{"name":"Anayi","url":"https://anayi.com/","cat":"fashion","layer":1},{"name":"And Per Se","url":"https://onward.co.jp/","cat":"fashion","layer":1},{"name":"And Wander","url":"https://andwander.com/","cat":"sports","layer":1},{"name":"BASE","url":"https://thebase.com/","cat":"other","layer":1},{"name":"Barbour","url":"https://barbour.co.jp/","cat":"sports","layer":1},{"name":"Barneys New York","url":"https://barneys.co.jp/","cat":"fashion","layer":1},{"name":"Beauty Cellar","url":"https://bc-store.jp/","cat":"beauty","layer":1},{"name":"Bloom","url":"https://bloom-online.jp/","cat":"fashion","layer":1},{"name":"BookLive! (2025 予定)","url":"https://booklive.jp/","cat":"hobby","layer":1},{"name":"Brooks Brothers","url":"https://brooksbrothers.co.jp/","cat":"fashion","layer":1},{"name":"CLIP STUDIO","url":"https://clipstudio.net/","cat":"hobby","layer":1},{"name":"Calvin Klein","url":"https://calvinklein.co.jp/","cat":"fashion","layer":1},{"name":"Canterbury","url":"https://www.canterbury.jp/","cat":"sports","layer":1},{"name":"Chums","url":"https://chums.jp/","cat":"sports","layer":1},{"name":"Ciaopanic","url":"https://palcloset.jp/","cat":"fashion","layer":1},{"name":"Citizen","url":"https://citizen.jp/","cat":"electronics","layer":1},{"name":"Cole Haan","url":"https://colehaan.co.jp/","cat":"fashion","layer":1},{"name":"Columbia Sportswear","url":"https://columbiasports.co.jp/","cat":"sports","layer":1},{"name":"Cosme Kitchen Village","url":"https://cosmekitchen.jp/","cat":"beauty","layer":1},{"name":"DeLonghi","url":"https://delonghi.co.jp/","cat":"electronics","layer":1},{"name":"Diana","url":"https://dianashoes.com/","cat":"fashion","layer":1},{"name":"Diesel","url":"https://diesel.co.jp/","cat":"fashion","layer":1},{"name":"Disney+","url":"https://disneyplus.com/ja-jp/","cat":"hobby","layer":1},{"name":"Dressterior","url":"https://world.co.jp/","cat":"fashion","layer":1},{"name":"EC カレント","url":"https://ec-current.com/","cat":"electronics","layer":1},{"name":"Ecco","url":"https://jp.ecco.com/","cat":"fashion","layer":1},{"name":"Edifice","url":"https://baycrews.jp/","cat":"fashion","layer":1},{"name":"Emmi","url":"https://emmi.jp/","cat":"fashion","layer":1},{"name":"FATUITE","url":"https://fatuite.com/","cat":"beauty","layer":1},{"name":"FOD","url":"https://fod.fujitv.co.jp/","cat":"hobby","layer":1},{"name":"Frantz","url":"https://frantz.jp/","cat":"food","layer":1},{"name":"Fray I.D","url":"https://usagi-online.com/","cat":"fashion","layer":1},{"name":"Freak's Store","url":"https://freaksstore.com/","cat":"fashion","layer":1},{"name":"Fred Perry","url":"https://fredperry.jp/","cat":"fashion","layer":1},{"name":"Fujiichi","url":"https://fujiichi.jp/","cat":"food","layer":1},{"name":"Furla","url":"https://furla.com/ja-jp/","cat":"fashion","layer":1},{"name":"Gallardagalante","url":"https://palcloset.jp/","cat":"fashion","layer":1},{"name":"Gelato Pique","url":"https://gelatopique.com/","cat":"fashion","layer":1},{"name":"Graniph","url":"https://graniph.com/","cat":"fashion","layer":1},{"name":"Helly Hansen","url":"https://goldwinwebstore.jp/","cat":"sports","layer":1},{"name":"Hulu","url":"https://hulu.jp/","cat":"hobby","layer":1},{"name":"IDEA","url":"https://idea1.jp/","cat":"home","layer":1},{"name":"Iena","url":"https://baycrews.jp/","cat":"fashion","layer":1},{"name":"J.Press","url":"https://onward.co.jp/","cat":"fashion","layer":1},{"name":"JA タウン","url":"https://www.ja-town.com/","cat":"food","layer":1},{"name":"JAL ふるさと納税","url":"https://furusato.jal.co.jp/","cat":"furusato","layer":1},{"name":"JWiFi&Mobile","url":"https://globalwifi.co/","cat":"travel","layer":1},{"name":"Jill Stuart","url":"https://jillstuart-beauty.com/","cat":"fashion","layer":1},{"name":"Jimmy Choo","url":"https://jimmychoo.com/ja-jp/","cat":"fashion","layer":1},{"name":"John Smedley","url":"https://johnsmedley.co.jp/","cat":"fashion","layer":1},{"name":"Journal Standard","url":"https://baycrews.jp/","cat":"fashion","layer":1},{"name":"KAWAJUN","url":"https://kawajun.jp/","cat":"home","layer":1},{"name":"LIVING MOTIF","url":"https://livingmotif.com/","cat":"home","layer":1},{"name":"Lacoste","url":"https://lacoste.jp/","cat":"fashion","layer":1},{"name":"Laduree","url":"https://laduree.jp/","cat":"food","layer":1},{"name":"Lephil","url":"https://www.adore2005.com/lephil/","cat":"fashion","layer":1},{"name":"Lily Brown","url":"https://usagi-online.com/","cat":"fashion","layer":1},{"name":"Lowrys Farm","url":"https://www.dot-st.com/","cat":"fashion","layer":1},{"name":"MIDORI","url":"https://midori-japan.co.jp/","cat":"home","layer":1},{"name":"Mammut","url":"https://mammut.co.jp/","cat":"sports","layer":1},{"name":"Marc Jacobs","url":"https://marcjacobs.jp/","cat":"fashion","layer":1},{"name":"MaxMara","url":"https://maxmara.com/","cat":"fashion","layer":1},{"name":"Mezzo Piano","url":"https://narumiya-online.jp/","cat":"fashion","layer":1},{"name":"Mila Owen","url":"https://usagi-online.com/","cat":"fashion","layer":1},{"name":"Millet","url":"https://millet.jp/","cat":"sports","layer":1},{"name":"Molton Brown","url":"https://moltonbrown.co.jp/","cat":"beauty","layer":1},{"name":"Moussy","url":"https://www.moussy.ne.jp/","cat":"fashion","layer":1},{"name":"Off-White","url":"https://off---white.com/","cat":"fashion","layer":1},{"name":"Onitsuka Tiger","url":"https://onitsukatiger.com/jp/ja-jp/","cat":"sports","layer":1},{"name":"Orobianco","url":"https://orobianco-jp.com/","cat":"fashion","layer":1},{"name":"Plaza","url":"https://dreamplaza.co.jp/","cat":"fashion","layer":1},{"name":"Polo Ralph Lauren","url":"https://ralphlauren.co.jp/","cat":"fashion","layer":1},{"name":"Polo Ralph Lauren Children","url":"https://ralphlauren.co.jp/","cat":"fashion","layer":1},{"name":"Ponte Veccio","url":"https://pontevecchio.jp/","cat":"fashion","layer":1},{"name":"Re:CENO","url":"https://receno.com/","cat":"home","layer":1},{"name":"Refa","url":"https://refa.net/","cat":"electronics","layer":1},{"name":"Regal","url":"https://shoes.regal.co.jp/","cat":"hobby","layer":1},{"name":"Replay","url":"https://replayjeans.jp/","cat":"fashion","layer":1},{"name":"Ron Herman","url":"https://ronherman.jp/","cat":"fashion","layer":1},{"name":"Rope Picnic","url":"https://j-lounge.jp/","cat":"fashion","layer":1},{"name":"Royal Copenhagen","url":"https://royalcopenhagen.jp/","cat":"home","layer":1},{"name":"SOPH.","url":"https://soph.net/","cat":"fashion","layer":1},{"name":"SPRING JAPAN（旧：春秋航空日本）","url":"https://jp.ch.com/","cat":"travel","layer":1},{"name":"Samantha Thavasa","url":"https://samantha.co.jp/","cat":"fashion","layer":1},{"name":"Scotch Grain","url":"https://scotchgrain.co.jp/","cat":"fashion","layer":1},{"name":"Sly","url":"https://www.moussy.ne.jp/","cat":"fashion","layer":1},{"name":"Snidel","url":"https://usagi-online.com/","cat":"fashion","layer":1},{"name":"Spick & Span","url":"https://baycrews.jp/","cat":"fashion","layer":1},{"name":"Star Jewelry","url":"https://star-jewelry.com/","cat":"fashion","layer":1},{"name":"Style Deli","url":"https://style-deli.com/","cat":"fashion","layer":1},{"name":"T-fal","url":"https://t-fal-onlineshop.jp/","cat":"electronics","layer":1},{"name":"TSUTSUMI","url":"https://tsutsumishop.jp/","cat":"fashion","layer":1},{"name":"Takeo Kikuchi","url":"https://world.co.jp/","cat":"fashion","layer":1},{"name":"Tasaki","url":"https://tasaki.co.jp/","cat":"fashion","layer":1},{"name":"TaylorMade","url":"https://taylormadegolf.jp/","cat":"sports","layer":1},{"name":"Timberland","url":"https://timberland.co.jp/","cat":"sports","layer":1},{"name":"Tommy Hilfiger","url":"https://japan.tommy.com/","cat":"fashion","layer":1},{"name":"Tomorrowland","url":"https://tomorrowland.co.jp/","cat":"fashion","layer":1},{"name":"Tory Burch","url":"https://toryburch.co.jp/","cat":"fashion","layer":1},{"name":"Traditional Weatherwear","url":"https://traditional-weatherwear.com/","cat":"sports","layer":1},{"name":"Triumph","url":"https://triumph.com/jp/","cat":"fashion","layer":1},{"name":"Tully's Coffee","url":"https://tullys.co.jp/","cat":"food","layer":1},{"name":"Tumi","url":"https://tumi.co.jp/","cat":"fashion","layer":1},{"name":"T・ジョイ (映画館)","url":"https://tjoy.jp/","cat":"hobby","layer":1},{"name":"U-NEXT","url":"https://unext.jp/","cat":"hobby","layer":1},{"name":"UNiCASE","url":"https://unicase.jp/","cat":"electronics","layer":1},{"name":"Ugg","url":"https://shop.capruggers.com/","cat":"fashion","layer":1},{"name":"Untitled","url":"https://world.co.jp/","cat":"fashion","layer":1},{"name":"Urban Research","url":"https://urban-research.jp/","cat":"fashion","layer":1},{"name":"VERMICULAR","url":"https://vermicular.jp/","cat":"home","layer":1},{"name":"Vendome Aoyama","url":"https://vendome.co.jp/","cat":"fashion","layer":1},{"name":"Verite","url":"https://verite.jp/","cat":"fashion","layer":1},{"name":"Wedgwood","url":"https://wedgwood.jp/","cat":"home","layer":1},{"name":"Wi-Fi テレコム スクエア","url":"https://wifibox.telecomsquare.co.jp/","cat":"travel","layer":1},{"name":"Y-3","url":"https://y-3.com/","cat":"fashion","layer":1},{"name":"Yaman","url":"https://ya-man.com/","cat":"home","layer":1},{"name":"cui-cui","url":"https://cuicui-jewelry.com/","cat":"fashion","layer":1},{"name":"ete","url":"https://ete-jewelry.com/","cat":"fashion","layer":1},{"name":"meeco","url":"https://meeco.mistore.jp/","cat":"beauty","layer":1},{"name":"mora","url":"https://mora.jp/","cat":"hobby","layer":1},{"name":"nojess","url":"https://nojess.net/","cat":"fashion","layer":1},{"name":"sara-La","url":"https://sara-la.jp/","cat":"fashion","layer":1},{"name":"お取り寄せ料亭とみやま","url":"https://www.tomiyama-shop.com/","cat":"food","layer":1},{"name":"かにまみれ","url":"https://kanimamire.com/","cat":"food","layer":1},{"name":"かに本舗","url":"https://skynet-c.jp/","cat":"food","layer":1},{"name":"さくらトラベル","url":"https://sakuratravel.jp/","cat":"travel","layer":1},{"name":"ざこばの朝市","url":"https://www.zakoba.jp/","cat":"food","layer":1},{"name":"ひよ子","url":"https://hiyoko.co.jp/","cat":"food","layer":1},{"name":"まんが王国","url":"https://comic.k-manga.jp/","cat":"hobby","layer":1},{"name":"アーユル・チェアー","url":"https://ayur-chair.com/","cat":"home","layer":1},{"name":"イッタラ","url":"https://iittala.jp/","cat":"home","layer":1},{"name":"イモトの WiFi","url":"https://imotonowifi.jp/","cat":"travel","layer":1},{"name":"イーベスト","url":"https://ebest.co.jp/","cat":"electronics","layer":1},{"name":"オオツカ・プラスワン","url":"https://www.otsuka-plus1.com/shop/","cat":"food","layer":1},{"name":"オシャレウォーカー","url":"https://osharewalker.co.jp/","cat":"fashion","layer":1},{"name":"カドカワストア","url":"https://store.kadokawa.co.jp/","cat":"hobby","layer":1},{"name":"クリックポスト","url":"https://clickpost.jp/","cat":"other","layer":1},{"name":"グリーンパン","url":"https://greenpan.jp/","cat":"home","layer":1},{"name":"ココカラファイン (一時停止中)","url":"https://cocokara-fine.co.jp/","cat":"beauty","layer":1},{"name":"コスメデネット","url":"https://cosme-de.net/","cat":"beauty","layer":1},{"name":"コスメランド","url":"https://cosmeland.jp/","cat":"beauty","layer":1},{"name":"コスメ・デ・ボーテ","url":"https://shop-cosmedebeaute.com/","cat":"beauty","layer":1},{"name":"サプリンクス","url":"https://suplinx.com/","cat":"health","layer":1},{"name":"シマホネット","url":"https://shimaho-net.jp/","cat":"electronics","layer":1},{"name":"スナックミー","url":"https://snaq.me/","cat":"food","layer":1},{"name":"ソムレスタ","url":"https://somresta.jp/","cat":"home","layer":1},{"name":"チェリーテラス","url":"https://cherry-terrace.com/","cat":"home","layer":1},{"name":"テンミニッツ TV","url":"https://10mtv.jp/","cat":"hobby","layer":1},{"name":"ニチレイフーズダイレクト","url":"https://wellness.nichirei.co.jp/","cat":"food","layer":1},{"name":"バイエルオンラインショップ","url":"https://www.shop.bayer.jp/","cat":"health","layer":1},{"name":"パンダスタジオレンタル","url":"https://rental.pandastudio.tv/","cat":"other","layer":1},{"name":"ピッコマ","url":"https://piccoma.com/","cat":"hobby","layer":1},{"name":"ベルコスメ","url":"https://bellecosme.com/","cat":"beauty","layer":1},{"name":"マツモトキヨシ (一時停止中)","url":"https://matsukiyo.co.jp/","cat":"beauty","layer":1},{"name":"マルカワみそ","url":"https://marukawamiso.com/","cat":"food","layer":1},{"name":"マルヤ","url":"https://www.maruya-ec.com/","cat":"food","layer":1},{"name":"ユニセフ","url":"https://unicef.or.jp/","cat":"other","layer":1},{"name":"ヨックモック","url":"https://yokumoku.jp/","cat":"food","layer":1},{"name":"ライズ TOKYO","url":"https://risetokyo.jp/","cat":"home","layer":1},{"name":"レオ＆レア","url":"https://leoandlea.com/","cat":"home","layer":1},{"name":"ワタシプラス","url":"https://watashi-plus.com/","cat":"beauty","layer":1},{"name":"三越・伊勢丹","url":"https://mistore.jp/","cat":"fashion","layer":1},{"name":"京つけものニシダや","url":"https://nishidaya.com/","cat":"food","layer":1},{"name":"今治タオル","url":"https://sara-la.jp/","cat":"fashion","layer":1},{"name":"伊織","url":"https://i-ori.jp/","cat":"fashion","layer":1},{"name":"再春館製薬所","url":"https://saishunkan.co.jp/","cat":"beauty","layer":1},{"name":"北海道ぎょれん","url":"https://gyoren.net/","cat":"food","layer":1},{"name":"北海道北釧水産","url":"https://hokusen.co.jp/","cat":"food","layer":1},{"name":"北海道日本ハムファイターズ","url":"https://fighters.co.jp/","cat":"hobby","layer":1},{"name":"北海道網走水産","url":"https://suisan.co.jp/","cat":"food","layer":1},{"name":"千成亭","url":"https://sennaritei.co.jp/","cat":"food","layer":1},{"name":"大丸松坂屋","url":"https://daimaru-matsuzakaya.jp/","cat":"fashion","layer":1},{"name":"婦人画報のお取り寄せ","url":"https://fujingaho.jp/","cat":"other","layer":1},{"name":"家具 350","url":"https://kagu350.com/","cat":"home","layer":1},{"name":"家具の里","url":"https://kagunosato.com/","cat":"home","layer":1},{"name":"山城物産","url":"https://ocha-yamashiro.com/","cat":"food","layer":1},{"name":"弘文堂ネットストア","url":"https://www.koubundou.co.jp/","cat":"other","layer":1},{"name":"文明堂","url":"https://bunmeido.co.jp/","cat":"food","layer":1},{"name":"新緑園","url":"https://shinryokuen.co.jp/","cat":"food","layer":1},{"name":"日本赤十字社","url":"https://jrc.or.jp/","cat":"other","layer":1},{"name":"明月堂","url":"https://meigetsudo.co.jp/","cat":"food","layer":1},{"name":"板前魂","url":"https://1osechi.com/","cat":"food","layer":1},{"name":"格安航空券センター","url":"https://airticket-center.com/","cat":"travel","layer":1},{"name":"森下仁丹","url":"https://jintan.co.jp/","cat":"beauty","layer":1},{"name":"田島屋味噌","url":"https://tashimayamiso.com/shop/","cat":"food","layer":1},{"name":"祇園辻利","url":"https://gion-tsujiri.co.jp/","cat":"food","layer":1},{"name":"福砂屋","url":"https://fukusaya.co.jp/","cat":"food","layer":1},{"name":"翔泳社","url":"https://shoeisha.co.jp/","cat":"other","layer":1},{"name":"遠藤酒造場","url":"https://endoshuzojo.com/","cat":"food","layer":1},{"name":"銀座・伊東屋","url":"https://ito-ya.co.jp/","cat":"other","layer":1},{"name":"長崎堂","url":"https://www.nagasakido-shop.com/","cat":"food","layer":1},{"name":"高島屋オンライン","url":"https://takashimaya.co.jp/","cat":"fashion","layer":1},{"name":"鼓月","url":"https://kogetsu.com/","cat":"food","layer":1}]};
-
 
 // ════════════════════════════════════════════════
 // SIMULATOR LOGIC
 // ════════════════════════════════════════════════
 const CARDS = {
-  'green':         {name:'グリーン',          rate3:0.03, rateOther:0.01, limit3:500},
+  'green':         {name:'グリーン',            rate3:0.03, rateOther:0.01, limit3:500},
   'gold-preferred':{name:'ゴールド・プリファード', rate3:0.03, rateOther:0.01, limit3:50},
-  'biz-gold':      {name:'Bizゴールド',       rate3:0.03, rateOther:0.01, limit3:500},
-  'biz-platinum':  {name:'Bizプラチナ',       rate3:0.03, rateOther:0.01, limit3:500},
+  'platinum':      {name:'プラチナ',            rate3:0.03, rateOther:0.01, limit3:500},
+  'biz-green':     {name:'ビジネス・グリーン',    rate3:0.03, rateOther:0.01, limit3:500},
+  'biz-gold':      {name:'ビジネス・ゴールド',    rate3:0.03, rateOther:0.01, limit3:500},
+  'biz-platinum':  {name:'ビジネス・プラチナ',    rate3:0.03, rateOther:0.01, limit3:500},
 };
 
 let selectedCard = 'green';
@@ -510,15 +520,70 @@ function calcPoints(cardKey, amount3, amountOther) {
 function calculate() {
   const amount3 = parseInt(document.getElementById('amount3').value) || 0;
   const amountOther = parseInt(document.getElementById('amountOther').value) || 0;
+  const totalSpend = (amount3 + amountOther) * 10000;
 
   // Main KPI for selected card
   const pts = calcPoints(selectedCard, amount3, amountOther);
-  const miles = Math.round(pts * 0.8);
-  const yen = Math.round(miles * 2); // 1マイル≒2円
+  const anaMiles = pts; // ANA: 1,000P → 1,000マイル（MR Plus前提）
+  const anaYen = Math.round(anaMiles * 2); // 1マイル≒2円
 
   document.getElementById('kpiPoints').innerHTML = pts.toLocaleString() + '<span class="kpi-unit"> pt</span>';
-  document.getElementById('kpiMiles').innerHTML = miles.toLocaleString() + '<span class="kpi-unit"> マイル</span>';
-  document.getElementById('kpiYen').innerHTML = yen.toLocaleString() + '<span class="kpi-unit"> 円</span>';
+  document.getElementById('kpiMiles').innerHTML = anaMiles.toLocaleString() + '<span class="kpi-unit"> マイル</span>';
+  document.getElementById('kpiYen').innerHTML = anaYen.toLocaleString() + '<span class="kpi-unit"> 円</span>';
+
+  // 実質ポイント還元率（共通）
+  const pointRate = totalSpend > 0 ? (pts / totalSpend * 100) : 0;
+  document.getElementById('kpiPointRate').innerHTML = pointRate.toFixed(2) + '<span class="rate-kpi-unit">%</span>';
+
+  // 実質マイル還元率
+  const mileRate = totalSpend > 0 ? (anaMiles / totalSpend * 100) : 0;
+  const el_mileRate = document.getElementById('kpiMileRate');
+  if (el_mileRate) el_mileRate.innerHTML = mileRate.toFixed(2) + '<span class="rate-kpi-unit">%</span>';
+
+  // マイル交換先比較
+  const partnerMiles = Math.round(pts * 0.8);  // 1,250P → 1,000マイル
+  const marriottPts = Math.round(pts * 0.99);  // 1,000P → 990pt
+  const hiltonPts = Math.round(pts * 1.25);    // 1,000P → 1,250pt
+
+  const partnerYen = Math.round(partnerMiles * 1.5); // 提携航空 1マイル≒1.5円
+  const marriottYen = Math.round(marriottPts * 0.8); // Marriott 1pt≒0.8円
+  const hiltonYen = Math.round(hiltonPts * 0.5);     // Hilton 1pt≒0.5円
+
+  const anaRateStr = totalSpend > 0 ? (anaMiles / totalSpend * 100).toFixed(2) : '-';
+  const partnerRateStr = totalSpend > 0 ? (partnerMiles / totalSpend * 100).toFixed(2) : '-';
+
+  if (document.getElementById('mileAna')) {
+    document.getElementById('mileAna').textContent = anaMiles.toLocaleString();
+    document.getElementById('mileAnaRate').textContent = anaRateStr;
+    document.getElementById('mileAnaYen').textContent = '≒ ' + anaYen.toLocaleString() + ' 円相当';
+    document.getElementById('milePartner').textContent = partnerMiles.toLocaleString();
+    document.getElementById('milePartnerRate').textContent = partnerRateStr;
+    document.getElementById('milePartnerYen').textContent = '≒ ' + partnerYen.toLocaleString() + ' 円相当';
+    document.getElementById('mileMarriott').textContent = marriottPts.toLocaleString();
+    document.getElementById('mileMarriottYen').textContent = '≒ ' + marriottYen.toLocaleString() + ' 円相当';
+    document.getElementById('mileHilton').textContent = hiltonPts.toLocaleString();
+    document.getElementById('mileHiltonYen').textContent = '≒ ' + hiltonYen.toLocaleString() + ' 円相当';
+
+    // BEST判定（円価値が最大の交換先をハイライト）
+    const values = [
+      {id:'mileCardAna', yen:anaYen},
+      {id:'mileCardPartner', yen:partnerYen},
+      {id:'mileCardMarriott', yen:marriottYen},
+      {id:'mileCardHilton', yen:hiltonYen}
+    ];
+    const maxYen = Math.max(...values.map(v => v.yen));
+    values.forEach(v => {
+      const el = document.getElementById(v.id);
+      const valEl = el.querySelector('.mile-card-value');
+      if (v.yen === maxYen && maxYen > 0) {
+        el.classList.add('best');
+        valEl.classList.add('brand');
+      } else {
+        el.classList.remove('best');
+        valEl.classList.remove('brand');
+      }
+    });
+  }
 
   // Bar Graph: all 4 cards
   const allPts = {};
@@ -554,253 +619,15 @@ function calculate() {
 }
 
 
-// ════════════════════════════════════════════════
-// STORE SEARCH & FILTER
-// ════════════════════════════════════════════════
-let currentCat = 'all';
-let currentLayer = 'all';
-let filteredStores = [...STORES];
-const BATCH_SIZE = 50;
-
-// ════════════════════════════════════════════════
-// FAVORITES (localStorage)
-// ════════════════════════════════════════════════
-const FAV_KEY = 'amex3pct_favorites';
-
-function loadFavorites() {
-  try {
-    return JSON.parse(localStorage.getItem(FAV_KEY)) || [];
-  } catch { return []; }
-}
-
-function saveFavorites(favs) {
-  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
-}
-
-function isFavorite(storeName) {
-  return loadFavorites().includes(storeName);
-}
-
-function toggleFavorite(storeName, btn) {
-  const favs = loadFavorites();
-  const idx = favs.indexOf(storeName);
-  if (idx === -1) {
-    favs.push(storeName);
-    btn.classList.add('active');
-    btn.textContent = '\u2764\uFE0F';
-  } else {
-    favs.splice(idx, 1);
-    btn.classList.remove('active');
-    btn.textContent = '\u2661';
-  }
-  saveFavorites(favs);
-  updateFavCount();
-
-  // お気に入りタブ表示中に解除したらリストを更新
-  if (currentLayer === 'fav') filterStores();
-}
-
-function updateFavCount() {
-  const count = loadFavorites().length;
-  const badge = document.getElementById('favTabCount');
-  if (count > 0) {
-    badge.textContent = count;
-    badge.style.display = 'inline-flex';
-  } else {
-    badge.style.display = 'none';
-  }
-}
-
-function toggleChip(el) {
-  const cat = el.dataset.cat;
-  if (cat === 'all') {
-    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-    el.classList.add('active');
-    currentCat = 'all';
-  } else {
-    document.querySelector('.chip[data-cat="all"]').classList.remove('active');
-    // single select for simplicity
-    document.querySelectorAll('.chip:not([data-cat="all"])').forEach(c => c.classList.remove('active'));
-    el.classList.add('active');
-    currentCat = cat;
-  }
-
-  filterStores();
-}
-
-function setLayer(btn) {
-  document.querySelectorAll('.layer-toggle button').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  currentLayer = btn.dataset.layer;
-
-  filterStores();
-}
-
-let currentPage = 1;
-
-function filterStores() {
-  const query = document.getElementById('searchInput').value.toLowerCase().trim();
-  const favs = loadFavorites();
-
-  filteredStores = STORES.filter(s => {
-    if (currentCat !== 'all' && s.cat !== currentCat) return false;
-    if (currentLayer === 'fav') {
-      if (!favs.includes(s.name)) return false;
-    } else if (currentLayer !== 'all') {
-      if (s.layer !== parseInt(currentLayer)) return false;
-    }
-    if (query && !s.name.toLowerCase().includes(query)) {
-      const tagMatch = s.tags && s.tags.some(t => t.toLowerCase().includes(query));
-      const memoMatch = s.memo && s.memo.toLowerCase().includes(query);
-      if (!tagMatch && !memoMatch) return false;
-    }
-    return true;
-  });
-
-  filteredStores.sort((a, b) => {
-    if (a.layer !== b.layer) return b.layer - a.layer;
-    return a.name.localeCompare(b.name, 'ja');
-  });
-
-  currentPage = 1;
-
-  if (currentLayer === 'fav' && filteredStores.length === 0) {
-    document.getElementById('storeContainer').innerHTML = '<div class="fav-empty">お気に入りに登録された店舗がありません。<br>各店舗の♡をタップして追加できます。</div>';
-    document.getElementById('pagination').innerHTML = '';
-    document.getElementById('storeCount').innerHTML = '<strong>0</strong> 件';
-  } else {
-    renderPage();
-  }
-}
-
-function renderPage() {
-  const total = filteredStores.length;
-  const totalPages = Math.ceil(total / BATCH_SIZE);
-  if (currentPage > totalPages) currentPage = totalPages || 1;
-
-  const start = (currentPage - 1) * BATCH_SIZE;
-  const end = Math.min(start + BATCH_SIZE, total);
-
-  // 件数表示
-  document.getElementById('storeCount').innerHTML =
-    '<strong>' + total + '</strong> 件中 ' + (start + 1) + '〜' + end + ' 件';
-
-  // カード描画
-  const container = document.getElementById('storeContainer');
-  container.innerHTML = '';
-  for (let i = start; i < end; i++) {
-    container.appendChild(createStoreCard(filteredStores[i]));
-  }
-
-  // ページネーション描画
-  renderPagination(totalPages);
-
-  // 店舗セクション先頭へスクロール（ページ遷移時のみ）
-  if (total > BATCH_SIZE) {
-    document.getElementById('storeContainer').scrollIntoView({behavior: 'smooth', block: 'start'});
-  }
-}
-
-function goToPage(page) {
-  currentPage = page;
-  renderPage();
-}
-
-function renderPagination(totalPages) {
-  const pag = document.getElementById('pagination');
-  if (totalPages <= 1) { pag.innerHTML = ''; return; }
-
-  let html = '';
-  html += '<button onclick="goToPage(' + (currentPage - 1) + ')"' + (currentPage === 1 ? ' disabled' : '') + '>&laquo;</button>';
-
-  // ページ番号（最大7個表示）
-  let startP = Math.max(1, currentPage - 3);
-  let endP = Math.min(totalPages, startP + 6);
-  if (endP - startP < 6) startP = Math.max(1, endP - 6);
-
-  if (startP > 1) {
-    html += '<button onclick="goToPage(1)">1</button>';
-    if (startP > 2) html += '<span class="page-info">…</span>';
-  }
-  for (let p = startP; p <= endP; p++) {
-    html += '<button onclick="goToPage(' + p + ')"' + (p === currentPage ? ' class="active"' : '') + '>' + p + '</button>';
-  }
-  if (endP < totalPages) {
-    if (endP < totalPages - 1) html += '<span class="page-info">…</span>';
-    html += '<button onclick="goToPage(' + totalPages + ')">' + totalPages + '</button>';
-  }
-
-  html += '<button onclick="goToPage(' + (currentPage + 1) + ')"' + (currentPage === totalPages ? ' disabled' : '') + '>&raquo;</button>';
-
-  pag.innerHTML = html;
-}
-
-function createStoreCard(store) {
-  const div = document.createElement('div');
-  div.className = 'store-card' + (store.layer === 2 ? ' layer2' : '');
-
-  let badges = '';
-  if (store.layer === 2) {
-    badges += '<span class="badge badge-curated">\u2605 厳選</span>';
-  }
-  const catInfo = CATEGORIES[store.cat];
-  if (catInfo) {
-    badges += '<span class="badge badge-cat">' + catInfo.name + '</span>';
-  }
-  if (store.tags) {
-    store.tags.forEach(t => {
-      badges += '<span class="badge badge-cat">' + t + '</span>';
-    });
-  }
-
-  let memo = '';
-  if (store.memo) {
-    memo = '<div class="store-memo">' + store.memo + '</div>';
-  }
-
-  const faved = isFavorite(store.name);
-  const favClass = faved ? ' active' : '';
-  const favIcon = faved ? '\u2764\uFE0F' : '\u2661';
-
-  div.innerHTML =
-    '<div class="store-badges">' + badges + '</div>' +
-    '<div class="store-header">' +
-      '<div class="store-name">' + store.name + '</div>' +
-      '<button class="fav-btn' + favClass + '" onclick="toggleFavorite(\'' + store.name.replace(/'/g, "\\'") + '\', this)" aria-label="お気に入り">' + favIcon + '</button>' +
-    '</div>' +
-    memo +
-    (store.url ? '<a href="' + store.url + '" target="_blank" rel="noopener noreferrer" class="store-link">サイトを見る \u2192</a>' : '');
-
-  return div;
-}
 
 
 // ════════════════════════════════════════════════
 // INIT
 // ════════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', () => {
+
   calculate();
-  updateFavCount();
 
-  // データ初期化関数
-  function initData(data) {
-    data.categories.forEach(c => { CATEGORIES[c.id] = {name: c.name, icon: c.icon}; });
-    STORES = data.stores;
-    const sub = document.querySelector('.hero .subtitle');
-    if (sub) sub.textContent = 'Amazon Pay対応 ' + data.meta.totalStores.toLocaleString() + '店舗を無料検索';
-    filterStores();
-  }
-
-  // まずインラインデータで即表示
-  if (INLINE_DATA && INLINE_DATA.stores) {
-    initData(INLINE_DATA);
-  }
-
-  // fetch成功時は最新データで上書き（サーバー経由時のみ）
-  fetch('data.json')
-    .then(r => r.json())
-    .then(data => { initData(data); })
-    .catch(() => {});
 });
 </script>
 </body>
