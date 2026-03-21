@@ -818,7 +818,6 @@ function setLayer(btn) {
 }
 
 let currentPage = 1;
-let userNavigated = false;
 
 function filterStores() {
   const query = document.getElementById('searchInput').value.toLowerCase().trim();
@@ -877,16 +876,12 @@ function renderPage() {
   // ページネーション描画
   renderPagination(totalPages);
 
-  // 店舗セクション先頭へスクロール（ユーザー操作時のみ）
-  if (userNavigated && total > BATCH_SIZE) {
-    document.getElementById('storeContainer').scrollIntoView({behavior: 'smooth', block: 'start'});
-  }
-  userNavigated = true;
 }
 
 function goToPage(page) {
   currentPage = page;
   renderPage();
+  document.getElementById('storeContainer').scrollIntoView({behavior: 'smooth', block: 'start'});
 }
 
 function renderPagination(totalPages) {
