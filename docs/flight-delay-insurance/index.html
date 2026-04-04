@@ -422,6 +422,34 @@
             .step-item { gap: 12px; }
             .step-num { min-width: 40px; height: 40px; font-size: 1rem; }
         }
+        /* ネット保険比較テーブル */
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            background: var(--card);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .compare-table thead { background: var(--navy); color: white; }
+        .compare-table th {
+            padding: 12px 14px;
+            font-weight: 600;
+            text-align: left;
+            font-size: 0.8rem;
+        }
+        .compare-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.6;
+            vertical-align: top;
+        }
+        .compare-table tbody tr:last-child td { border-bottom: none; }
+        .compare-table tbody tr:hover { background: rgba(0,0,0,0.02); }
+        @media (max-width: 600px) {
+            .compare-table { font-size: 0.78rem; }
+            .compare-table th, .compare-table td { padding: 10px 10px; }
+        }
     </style>
 </head>
 <body>
@@ -844,7 +872,7 @@
                         <td class="family-yes">○同額</td>
                         <td><span class="badge-auto">自動</span></td>
                         <td><span class="badge-na">—</span></td>
-                        <td>自動付帯＋家族同額。国内は要確認</td>
+                        <td>自動付帯＋家族同額</td>
                     </tr>
                     <tr>
                         <td><a href="https://www.cr.mufg.jp/amex/service/other/insurance/pdf/AMEXplatinum.pdf" target="_blank" rel="noopener">MUFGプラチナ AMEX</a></td>
@@ -1000,7 +1028,7 @@
                         <td class="family-no">×</td>
                         <td><span class="badge-use">利用</span></td>
                         <td><span class="badge-use">利用</span></td>
-                        <td>本人のみ。国内金額は要確認</td>
+                        <td>本人のみ</td>
                     </tr>
                     <tr>
                         <td><a href="https://www.americanexpress.com/content/dam/amex/jp/assets/pdfs/benefits/Platinum_regulations.pdf" target="_blank" rel="noopener">AMEXプラチナ</a></td>
@@ -1035,8 +1063,7 @@
             <strong>💡 表の読み方</strong>
             ・<span class="badge-auto">自動</span> ＝ カードを持っているだけで補償が有効<br>
             ・<span class="badge-use">利用</span> ＝ 旅行代金をそのカードで決済しないと補償されない<br>
-            ・★印 ＝ 定額払い（宿泊・交通・食事の合計上限額）<br>
-            ・「要確認」＝ 公式PDFで最終確認が必要な項目
+            ・★印 ＝ 定額払い（宿泊・交通・食事の合計上限額）
         </div>
     </div>
 </section>
@@ -1107,7 +1134,7 @@
                 </tr>
                 <tr>
                     <td><strong>テロの扱い</strong></td>
-                    <td><span class="icon-maybe">△</span> カードにより異なる（要確認）</td>
+                    <td><span class="icon-maybe">△</span> カードにより異なる</td>
                     <td><span class="icon-maybe">△</span> 約款上は<strong>「テロ行為を除く」と明記</strong>（ただし解除条項あり）</td>
                 </tr>
                 <tr>
