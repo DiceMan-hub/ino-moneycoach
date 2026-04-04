@@ -198,6 +198,14 @@
             white-space: normal;
             min-width: 180px;
         }
+        .table-wrap td:first-child a {
+            color: var(--blue);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--blue-light);
+        }
+        .table-wrap td:first-child a:hover {
+            border-bottom-style: solid;
+        }
         .table-wrap tbody tr:hover { background: #f1f5f9; }
         .table-wrap tbody tr.highlight { background: var(--gold-light); }
         .badge-auto {
@@ -423,14 +431,22 @@
     <div class="container">
         <div class="hero-badge">📋 いのマネーコーチ 読者限定ガイド</div>
         <h1>航空機遅延保険<br>カード比較ガイド 2026</h1>
-        <p>主要32枚のクレジットカードの航空機遅延保険を完全比較。<br>「ホテル代が出る遅延・出ない遅延」の違いから戦争免責・付帯条件まで、すべてデータで確認できます。</p>
+        <p>主要32枚のクレジットカードの航空機遅延保険を完全比較。<br>「保険で守れるリスク」と「保険では守れないリスク」を分けて整理。あなたのカードが本当に使えるケースを確認できます。</p>
     </div>
 </header>
+
+<!-- Guide Usage Note -->
+<div class="container">
+    <div style="background: var(--bg-sub); border-left: 4px solid var(--accent); border-radius: 8px; padding: 16px 20px; margin-bottom: 0; font-size: 0.88rem; line-height: 1.7; color: var(--text-sub);">
+        <strong style="color: var(--text-main);">📖 このガイドの読み方</strong><br>
+        このガイドは「おすすめの1枚」を選ぶためのものではありません。カード保険の仕組みと限界を理解し、自分の旅行スタイルに合った備え方を考えるための資料です。比較表で正解を探すより、「何がカバーされて、何がカバーされないか」の構造を掴むことに重点を置いています。
+    </div>
+</div>
 
 <!-- Alert Banner -->
 <div class="container">
     <div class="alert-banner">
-        <strong>⚠️ 2026年4月時点：</strong>中東情勢の悪化により、中東発着便の欠航は2万3千便以上。外務省はイラン全土にレベル4（退避勧告）、湾岸6カ国にレベル3（渡航中止勧告）を発出中。ほぼすべてのカード保険に「戦争免責」条項があり、紛争起因の欠航では保険金が支払われない可能性があります。
+        <strong>⚠️ 2026年4月時点：</strong>中東情勢の悪化により、中東発着便の欠航は2万3千便以上。外務省はイラン全土にレベル4（退避勧告）、湾岸6カ国にレベル3（渡航中止勧告）を発出中。カード保険にもネット保険にも「戦争免責」条項があり、紛争起因の欠航では保険金が支払われない可能性があります。<strong>紛争リスクには保険ではなく、行き先・ルートの見直しで備えるのが現実的です。</strong>
     </div>
 </div>
 
@@ -438,8 +454,8 @@
 <div class="facts-grid">
     <div class="fact-card warning">
         <div class="fact-number">FACT 01</div>
-        <h3>ほぼ全カードに「戦争免責」</h3>
-        <p>Visa・Mastercard・AMEX・JCB——ブランドを問わず、調査した32枚すべてに「戦争・内乱・暴動」の免責条項を確認。紛争が原因の欠航では保険金ゼロになる可能性。</p>
+        <h3>紛争リスクは保険では守れない</h3>
+        <p>カード保険32枚＋主要ネット保険3社、すべてに「戦争免責」を確認。紛争が原因の欠航では、どの保険でも保険金ゼロになる可能性。保険で備えるのではなく、行き先・ルートで回避するしかない。</p>
     </div>
     <div class="fact-card">
         <div class="fact-number">FACT 02</div>
@@ -460,7 +476,6 @@
         <ol>
             <li><a href="#coverage-map">4つの保険金——何が出て、何が出ないか</a></li>
             <li><a href="#comparison">全32枚 航空機遅延保険 比較表</a></li>
-            <li><a href="#ranking">コスパランキング TOP 10</a></li>
             <li><a href="#war-exemption">「戦争免責」とは何か</a></li>
             <li><a href="#legal">EU vs 日本 vs 米国——法的な違い</a></li>
             <li><a href="#airlines">航空会社別：欠航時の対応＋変更・払戻の注意点</a></li>
@@ -559,7 +574,7 @@
 
         <div class="callout warning" style="margin-top: 20px;">
             <strong>💬 実体験：パリもベトナムもホテル代はNG</strong>
-            パリで管制塔ストライキに遭い、乗継便が欠航して1泊追加に。アメックスに確認したところ、ホテル代は対象外。理由は「前の便が遅れて乗り継げなかった」のではなく、「乗継地で出発便自体がストで欠航した」ため。出航遅延扱い。<br>
+            パリで管制塔ストライキに遭い、乗継便が欠航して5泊追加に。アメックスに確認したところ、ホテル代は対象外。理由は「前の便が遅れて乗り継げなかった」のではなく、「乗継地で出発便自体がストで欠航した」ため。出航遅延扱い。<br>
             ベトナムでも同様に、VietJetの国内線が減便 → 翌日に変更。アメックス保険デスクに確認し、<strong>食事代3万円/人のみ対象、宿泊費はNG</strong>と明言された。<br>
             <strong>「乗り継ぎ旅程でホテルに泊まった」≠「乗継遅延」。前の便が遅延したせいで乗継に失敗した場合だけが乗継遅延。</strong>
         </div>
@@ -577,7 +592,7 @@
     <div class="container">
         <div class="section-label">Section 02</div>
         <h2>全32枚 航空機遅延保険 比較表</h2>
-        <p class="section-desc">2026年4月版・ファクトチェック済み。緑＝自動付帯、灰＝利用付帯。金額は万円。★は定額払い（宿泊+交通+食事の合計）。</p>
+        <p class="section-desc">2026年4月版。緑＝自動付帯、灰＝利用付帯。金額は万円。★は定額払い（宿泊+交通+食事の合計）。</p>
         <p class="scroll-hint">← 横にスクロールできます →</p>
         <div class="table-wrap">
             <table>
@@ -598,7 +613,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>HeartOneカード AMEX</td>
+                        <td><a href="https://www.daiwahousefinancial.co.jp/entry/pdf/HeartOneHoshoKitei.pdf" target="_blank" rel="noopener">HeartOneカード AMEX</a></td>
                         <td>AMEX</td>
                         <td>3,300円</td>
                         <td>3万</td>
@@ -611,7 +626,7 @@
                         <td>コスパ1位。年会費3,300円で手荷物10万は破格</td>
                     </tr>
                     <tr>
-                        <td>セゾンゴールドAMEX</td>
+                        <td><a href="https://www.saisoncard.co.jp/pdf/futai_hoken/amex_gold.pdf" target="_blank" rel="noopener">セゾンゴールドAMEX</a></td>
                         <td>AMEX</td>
                         <td>11,000円</td>
                         <td>3万</td>
@@ -624,7 +639,7 @@
                         <td>年1回利用で年会費無料の優遇型あり</td>
                     </tr>
                     <tr>
-                        <td>JCBゴールド</td>
+                        <td><a href="https://www.jcb.co.jp/ordercard/special/os/hoken.html" target="_blank" rel="noopener">JCBゴールド</a></td>
                         <td>JCB</td>
                         <td>11,000円</td>
                         <td>2万</td>
@@ -637,7 +652,7 @@
                         <td>国内も対象。テロは免責除外の設計</td>
                     </tr>
                     <tr>
-                        <td>dカードゴールド</td>
+                        <td><a href="https://d-card.jp/st/services/benefits/abroadinsurance.html" target="_blank" rel="noopener">dカードゴールド</a></td>
                         <td>V/M</td>
                         <td>11,000円</td>
                         <td>★4.5万</td>
@@ -650,20 +665,20 @@
                         <td>海外は定額払い</td>
                     </tr>
                     <tr>
-                        <td>auPAYゴールド</td>
+                        <td><a href="https://www.kddi-fs.com/function/reliable_service/gold/" target="_blank" rel="noopener">auPAYゴールド</a></td>
                         <td>V/M</td>
                         <td>11,000円</td>
                         <td>2万</td>
                         <td>2万</td>
                         <td>3万</td>
-                        <td><span class="badge-tbd">※要確認</span></td>
+                        <td><span class="badge-na">—</span></td>
                         <td class="family-yes">○</td>
                         <td><span class="badge-auto">自動</span></td>
                         <td><span class="badge-na">—</span></td>
-                        <td>公式PDF要確認箇所あり</td>
+                        <td>手荷物紛失補償なし</td>
                     </tr>
                     <tr>
-                        <td>MUFGゴールド V/M/JCB</td>
+                        <td><a href="https://www.cr.mufg.jp/mufgcard/service/other/insurance/pdf/MUFGcardgold.pdf" target="_blank" rel="noopener">MUFGゴールド V/M/JCB</a></td>
                         <td>V/M/JCB</td>
                         <td>11,000円</td>
                         <td>★4.5万</td>
@@ -676,7 +691,7 @@
                         <td>海外は定額払い（宿泊3万+交通1万+食事0.5万）。海外遅延は利用付帯</td>
                     </tr>
                     <tr>
-                        <td>MUFGゴールド AMEX</td>
+                        <td><a href="https://www.cr.mufg.jp/mufgcard/service/other/insurance/pdf/MUFGgoldprestige.pdf" target="_blank" rel="noopener">MUFGゴールド AMEX</a></td>
                         <td>AMEX</td>
                         <td>11,000円</td>
                         <td>★4.5万</td>
@@ -689,7 +704,7 @@
                         <td>V/M/JCB版と同額。海外遅延は利用付帯</td>
                     </tr>
                     <tr>
-                        <td>apollostationゴールド</td>
+                        <td><a href="https://www.idemitsucard.com/privilege/hou_ins/insure/" target="_blank" rel="noopener">apollostationゴールド</a></td>
                         <td>V/AMEX</td>
                         <td>11,000円</td>
                         <td>2万</td>
@@ -702,7 +717,7 @@
                         <td>手荷物10万＋自動付帯。国内遅延なし</td>
                     </tr>
                     <tr>
-                        <td>J-WESTゴールド V/M</td>
+                        <td><a href="https://wester.jr-odekake.net/assets/pdf/j-west/point/insurance/visa_master.pdf" target="_blank" rel="noopener">J-WESTゴールド V/M</a></td>
                         <td>V/M</td>
                         <td>11,000円</td>
                         <td>★4.5万</td>
@@ -715,7 +730,7 @@
                         <td>V/M版はMUFG準拠の定額方式。海外遅延は利用付帯</td>
                     </tr>
                     <tr>
-                        <td>J-WESTゴールド JCB</td>
+                        <td><a href="https://wester.jr-odekake.net/assets/pdf/j-west/point/insurance/jcb_gold.pdf" target="_blank" rel="noopener">J-WESTゴールド JCB</a></td>
                         <td>JCB</td>
                         <td>11,000円</td>
                         <td>2万</td>
@@ -728,7 +743,7 @@
                         <td>JCBゴールド準拠。国内も対象</td>
                     </tr>
                     <tr>
-                        <td>J-WESTエクスプレス V/M</td>
+                        <td><a href="https://wester.jr-odekake.net/assets/pdf/j-west/point/insurance/visa_master.pdf" target="_blank" rel="noopener">J-WESTエクスプレス V/M</a></td>
                         <td>V/M</td>
                         <td>12,100円</td>
                         <td>—</td>
@@ -741,20 +756,20 @@
                         <td>海外遅延保険なし。国内のみ</td>
                     </tr>
                     <tr>
-                        <td>J-WESTエクスプレス JCB</td>
+                        <td><a href="https://wester.jr-odekake.net/assets/pdf/j-west/point/insurance/jcb.pdf" target="_blank" rel="noopener">J-WESTエクスプレス JCB</a></td>
                         <td>JCB</td>
                         <td>12,100円</td>
-                        <td>2万</td>
-                        <td>2万</td>
-                        <td>2万</td>
-                        <td>4万</td>
-                        <td class="family-yes">○</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td class="family-no">×</td>
+                        <td><span class="badge-na">—</span></td>
                         <td><span class="badge-use">利用</span></td>
-                        <td><span class="badge-use">利用</span></td>
-                        <td>JCBゴールド準拠。国内も対象</td>
+                        <td>航空機遅延保険なし（ゴールド以上の特典）。国内旅行保険のみ</td>
                     </tr>
                     <tr>
-                        <td>ANA JCBワイドゴールド</td>
+                        <td><a href="https://www.ana.co.jp/ja/jp/amc/anacard/hoken/" target="_blank" rel="noopener">ANA JCBワイドゴールド</a></td>
                         <td>JCB</td>
                         <td>15,400円</td>
                         <td>2万</td>
@@ -767,7 +782,7 @@
                         <td>JCB共通の2/2/2/4万</td>
                     </tr>
                     <tr>
-                        <td>JALゴールド JCB</td>
+                        <td><a href="https://www.jal.co.jp/jp/ja/jalcard/function/travel_insurance/club_a_gold.html" target="_blank" rel="noopener">JALゴールド JCB</a></td>
                         <td>JCB</td>
                         <td>17,600円</td>
                         <td>2万</td>
@@ -780,7 +795,7 @@
                         <td>JCB遅延保険＋JAL見舞金24,000円の二重取り可</td>
                     </tr>
                     <tr>
-                        <td>CLUB-Aゴールド JCB</td>
+                        <td><a href="https://www.jal.co.jp/jp/ja/jalcard/function/travel_insurance/club_a_gold.html" target="_blank" rel="noopener">CLUB-Aゴールド JCB</a></td>
                         <td>JCB</td>
                         <td>17,600円</td>
                         <td>2万</td>
@@ -793,7 +808,7 @@
                         <td>JCB遅延保険＋JAL見舞金24,000円。家族会員も対象</td>
                     </tr>
                     <tr>
-                        <td>CLUB-Aゴールド ダイナース</td>
+                        <td><a href="https://www.jal.co.jp/jp/ja/jalcard/function/travel_insurance/diners.html" target="_blank" rel="noopener">CLUB-Aゴールド ダイナース</a></td>
                         <td>ダイナース</td>
                         <td>17,600円</td>
                         <td>—</td>
@@ -806,7 +821,7 @@
                         <td>JAL見舞金のみ。航空機遅延保険なし</td>
                     </tr>
                     <tr>
-                        <td>オリコプラチナ</td>
+                        <td><a href="https://www.orico.co.jp/creditcard/list/platinum/" target="_blank" rel="noopener">オリコプラチナ</a></td>
                         <td>MASTER</td>
                         <td>20,370円</td>
                         <td>3万</td>
@@ -819,7 +834,7 @@
                         <td>海外自動付帯。紛失10万は最高水準</td>
                     </tr>
                     <tr>
-                        <td>HeartOneプラチナ AMEX</td>
+                        <td><a href="https://www.daiwahousefinancial.co.jp/entry/pdf/HeartOneHoshoKitei.pdf" target="_blank" rel="noopener">HeartOneプラチナ AMEX</a></td>
                         <td>AMEX</td>
                         <td>22,000円</td>
                         <td>3万</td>
@@ -832,7 +847,7 @@
                         <td>自動付帯＋家族同額。国内は要確認</td>
                     </tr>
                     <tr>
-                        <td>MUFGプラチナ AMEX</td>
+                        <td><a href="https://www.cr.mufg.jp/amex/service/other/insurance/pdf/AMEXplatinum.pdf" target="_blank" rel="noopener">MUFGプラチナ AMEX</a></td>
                         <td>AMEX</td>
                         <td>22,000円</td>
                         <td>★4.5万</td>
@@ -845,7 +860,7 @@
                         <td>海外はゴールドと同額。海外遅延は利用付帯</td>
                     </tr>
                     <tr>
-                        <td>apollostationプラチナ</td>
+                        <td><a href="https://www.idemitsucard.com/privilege/hou_ins/insure/" target="_blank" rel="noopener">apollostationプラチナ</a></td>
                         <td>V/AMEX</td>
                         <td>22,000円</td>
                         <td>2万</td>
@@ -858,7 +873,7 @@
                         <td>ゴールドと同額。国内なし</td>
                     </tr>
                     <tr>
-                        <td>セゾンプラチナBiz AMEX</td>
+                        <td><a href="https://www.saisoncard.co.jp/pdf/futai_hoken/amex_ptbusiness.pdf" target="_blank" rel="noopener">セゾンプラチナBiz AMEX</a></td>
                         <td>AMEX</td>
                         <td>33,000円</td>
                         <td>3万</td>
@@ -871,20 +886,20 @@
                         <td>ビジネスカード。追加カード会員は対象外</td>
                     </tr>
                     <tr>
-                        <td>ダイナースクラブ</td>
+                        <td><a href="https://www.diners.co.jp/ja/insurance.html" target="_blank" rel="noopener">ダイナースクラブ</a></td>
                         <td>ダイナース</td>
                         <td>29,700円</td>
-                        <td><span class="badge-tbd">※要確認</span></td>
-                        <td><span class="badge-tbd">※要確認</span></td>
-                        <td><span class="badge-tbd">※要確認</span></td>
-                        <td><span class="badge-tbd">※要確認</span></td>
+                        <td>3万</td>
+                        <td>3万</td>
+                        <td>3万</td>
+                        <td>3万</td>
                         <td class="family-no">×</td>
                         <td><span class="badge-use">利用</span></td>
                         <td><span class="badge-use">利用</span></td>
-                        <td>2026/4改定。金額は公式PDF要確認</td>
+                        <td>2025/4に自動→利用付帯へ改定済</td>
                     </tr>
                     <tr>
-                        <td>dカードプラチナ</td>
+                        <td><a href="https://dcard.docomo.ne.jp/st/platinum_benefits/index.html" target="_blank" rel="noopener">dカードプラチナ</a></td>
                         <td>V/M</td>
                         <td>29,700円</td>
                         <td>★4.5万</td>
@@ -897,7 +912,7 @@
                         <td>ゴールドと同額。年会費29,700円</td>
                     </tr>
                     <tr>
-                        <td>エポスプラチナ</td>
+                        <td><a href="https://www.eposcard.co.jp/insurance/oversea_insurance.html" target="_blank" rel="noopener">エポスプラチナ</a></td>
                         <td>VISA</td>
                         <td>30,000円<br><small>(条件付20,000円)</small></td>
                         <td>2万</td>
@@ -910,7 +925,7 @@
                         <td>条件達成で年会費2万。国内遅延もあり</td>
                     </tr>
                     <tr>
-                        <td>ANAアメックスゴールド</td>
+                        <td><a href="https://www.americanexpress.com/ja-jp/benefits/ana-gold-card/" target="_blank" rel="noopener">ANAアメックスゴールド</a></td>
                         <td>AMEX</td>
                         <td>34,100円</td>
                         <td>2万</td>
@@ -923,7 +938,7 @@
                         <td>本人のみ。国内なし</td>
                     </tr>
                     <tr>
-                        <td>JALプラチナ JCB</td>
+                        <td><a href="https://www.jal.co.jp/jp/ja/jalcard/function/travel_insurance/platinum.html" target="_blank" rel="noopener">JALプラチナ JCB</a></td>
                         <td>JCB</td>
                         <td>34,100円</td>
                         <td>2万</td>
@@ -936,7 +951,7 @@
                         <td>JCB遅延保険＋JAL見舞金30,000円の二重取り可</td>
                     </tr>
                     <tr>
-                        <td>AMEXゴールドプリファード</td>
+                        <td><a href="https://www.americanexpress.com/content/dam/amex/ja-jp/company/legal/terms-and-conditions/gold-preferred-regulations.pdf" target="_blank" rel="noopener">AMEXゴールドプリファード</a></td>
                         <td>AMEX</td>
                         <td>39,600円</td>
                         <td>2万</td>
@@ -949,7 +964,7 @@
                         <td>家族も利用付帯で対象</td>
                     </tr>
                     <tr>
-                        <td>三井住友プラチナ</td>
+                        <td><a href="https://www.smbc-card.com/nyukai/platinum/proper/service/insurance.jsp" target="_blank" rel="noopener">三井住友プラチナ</a></td>
                         <td>V/M</td>
                         <td>55,000円</td>
                         <td>2万</td>
@@ -962,20 +977,20 @@
                         <td>2025/10以降海外も利用付帯に変更</td>
                     </tr>
                     <tr>
-                        <td>ラグジュアリーカード チタン</td>
+                        <td><a href="https://www.luxurycard.co.jp/insurance/" target="_blank" rel="noopener">ラグジュアリーカード チタン</a></td>
                         <td>MASTER</td>
                         <td>55,000円</td>
                         <td>2万</td>
                         <td>2万</td>
                         <td>2万</td>
                         <td>4万</td>
-                        <td class="family-no">×</td>
+                        <td class="family-yes">△海外○</td>
                         <td><span class="badge-auto">自動</span></td>
                         <td><span class="badge-use">利用</span></td>
-                        <td>海外自動付帯。本人のみ</td>
+                        <td>海外自動付帯。海外は家族特約あり、国内は本人のみ</td>
                     </tr>
                     <tr>
-                        <td>マリオットボンヴォイ<br>AMEXプレミアム</td>
+                        <td><a href="https://www.americanexpress.com/content/dam/amex/jp/assets/pdfs/benefits/marriott-bonvoy-premium-regulations.pdf" target="_blank" rel="noopener">マリオットボンヴォイ<br>AMEXプレミアム</a></td>
                         <td>AMEX</td>
                         <td>82,500円</td>
                         <td>2万</td>
@@ -988,7 +1003,7 @@
                         <td>本人のみ。国内金額は要確認</td>
                     </tr>
                     <tr>
-                        <td>AMEXプラチナ</td>
+                        <td><a href="https://www.americanexpress.com/content/dam/amex/jp/assets/pdfs/benefits/Platinum_regulations.pdf" target="_blank" rel="noopener">AMEXプラチナ</a></td>
                         <td>AMEX</td>
                         <td>165,000円</td>
                         <td>3万</td>
@@ -1001,7 +1016,7 @@
                         <td>国内あり（利用付帯）。家族は利用付帯で対象</td>
                     </tr>
                     <tr>
-                        <td>ANA AMEXプレミア</td>
+                        <td><a href="https://www.americanexpress.com/content/dam/amex/jp/assets/pdfs/benefits/ana_premier_regulations.pdf" target="_blank" rel="noopener">ANA AMEXプレミア</a></td>
                         <td>AMEX</td>
                         <td>165,000円</td>
                         <td>3万</td>
@@ -1009,9 +1024,9 @@
                         <td>3万</td>
                         <td>6万</td>
                         <td class="family-yes">○</td>
-                        <td><span class="badge-auto">自動</span></td>
                         <td><span class="badge-use">利用</span></td>
-                        <td>プラチナ級。国内あり（利用付帯）</td>
+                        <td><span class="badge-use">利用</span></td>
+                        <td>プラチナ級。海外・国内とも利用付帯</td>
                     </tr>
                 </tbody>
             </table>
@@ -1026,101 +1041,10 @@
     </div>
 </section>
 
-<!-- Section 3: Ranking -->
-<section id="ranking" style="background: #f1f5f9;">
-    <div class="container">
-        <div class="section-label">Section 03</div>
-        <h2>手荷物遅延コスパランキング TOP 10</h2>
-        <p class="section-desc">年会費あたりの<strong>海外手荷物遅延</strong>補償額で算出。「遅延万円 ÷ 年会費万円」が高いほどコスパが良い。遅延・欠航を含む総合評価ではなく、手荷物遅延に特化したランキングです。</p>
-        <ol class="ranking-list">
-            <li class="ranking-item">
-                <div class="rank-num">1</div>
-                <div class="rank-info">
-                    <div class="rank-name">HeartOneカード AMEX</div>
-                    <div class="rank-detail">年会費 3,300円｜手荷物遅延 10万円｜利用付帯｜家族同額</div>
-                </div>
-                <div class="rank-score">30.3</div>
-            </li>
-            <li class="ranking-item">
-                <div class="rank-num">2</div>
-                <div class="rank-info">
-                    <div class="rank-name">セゾンゴールドAMEX</div>
-                    <div class="rank-detail">年会費 11,000円｜手荷物遅延 10万円｜利用付帯｜家族同額</div>
-                </div>
-                <div class="rank-score">9.1</div>
-            </li>
-            <li class="ranking-item">
-                <div class="rank-num">2</div>
-                <div class="rank-info">
-                    <div class="rank-name">apollostationゴールド</div>
-                    <div class="rank-detail">年会費 11,000円｜手荷物遅延 10万円｜自動付帯｜本人のみ</div>
-                </div>
-                <div class="rank-score">9.1</div>
-            </li>
-            <li class="ranking-item">
-                <div class="rank-num">4</div>
-                <div class="rank-info">
-                    <div class="rank-name">エポスプラチナ（条件付2万円時）</div>
-                    <div class="rank-detail">年会費 20,000円｜手荷物遅延 10万円｜自動付帯｜家族あり</div>
-                </div>
-                <div class="rank-score">5.0</div>
-            </li>
-            <li class="ranking-item">
-                <div class="rank-num">5</div>
-                <div class="rank-info">
-                    <div class="rank-name">HeartOneプラチナ AMEX</div>
-                    <div class="rank-detail">年会費 22,000円｜手荷物遅延 10万円｜自動付帯｜家族同額</div>
-                </div>
-                <div class="rank-score">4.5</div>
-            </li>
-            <li class="ranking-item">
-                <div class="rank-num">5</div>
-                <div class="rank-info">
-                    <div class="rank-name">apollostationプラチナ</div>
-                    <div class="rank-detail">年会費 22,000円｜手荷物遅延 10万円｜自動付帯｜本人のみ</div>
-                </div>
-                <div class="rank-score">4.5</div>
-            </li>
-            <li class="ranking-item">
-                <div class="rank-num">7</div>
-                <div class="rank-info">
-                    <div class="rank-name">セゾンプラチナBiz AMEX</div>
-                    <div class="rank-detail">年会費 33,000円（2025/6改定）｜手荷物遅延 10万円｜利用付帯</div>
-                </div>
-                <div class="rank-score">3.0</div>
-            </li>
-            <li class="ranking-item">
-                <div class="rank-num">8</div>
-                <div class="rank-info">
-                    <div class="rank-name">auPAYゴールド</div>
-                    <div class="rank-detail">年会費 11,000円｜手荷物遅延 3万円｜自動付帯</div>
-                </div>
-                <div class="rank-score">2.7</div>
-            </li>
-            <li class="ranking-item">
-                <div class="rank-num">8</div>
-                <div class="rank-info">
-                    <div class="rank-name">dカードゴールド</div>
-                    <div class="rank-detail">年会費 11,000円｜手荷物遅延 3万円｜自動付帯｜家族あり</div>
-                </div>
-                <div class="rank-score">2.7</div>
-            </li>
-            <li class="ranking-item">
-                <div class="rank-num">10</div>
-                <div class="rank-info">
-                    <div class="rank-name">オリコプラチナ</div>
-                    <div class="rank-detail">年会費 20,370円｜手荷物遅延 3万／紛失 10万｜自動付帯｜家族同額</div>
-                </div>
-                <div class="rank-score">1.5</div>
-            </li>
-        </ol>
-    </div>
-</section>
-
-<!-- Section 4: War Exemption -->
+<!-- Section 3: War Exemption -->
 <section id="war-exemption">
     <div class="container">
-        <div class="section-label">Section 04</div>
+        <div class="section-label">Section 03</div>
 
         <h2>「戦争免責」とは何か</h2>
         <p class="section-desc">ほぼすべてのクレジットカード付帯保険に存在する、最も見落とされやすい免責条項。</p>
@@ -1157,9 +1081,95 @@
         </div>
 
         <div class="callout" style="margin-top: 24px;">
-            <strong>💡 JCBの例外設計</strong>
-            JCBの一部カードでは免責条項に「テロ行為を除く」と明記。つまり、戦争は免責だが、テロは補償される可能性がある設計。<br>
-            このような微妙な差は約款を読まないとわからない。カードの最新規定の確認を推奨。
+            <strong>💡 テロの扱い——約款上は補償対象、ただし過信は禁物</strong>
+            主要ネット海外旅行保険（off!・tabiho・たびとも）は3社とも約款に「テロ行為を除く」と明記しており、約款上はテロを補償対象としている。カード付帯保険ではJCBの一部カードが同様の除外規定を持つ。<br>
+            ただし注意点が3つ。<strong>①保険会社は戦争危険が著しく増大した場合、24時間前の通知でテロ特約を一方的に解除できる。②テロか戦争かの分類は最終的に保険会社の裁量。③テロ起因で保険金が支払われた公開事例は確認できていない。</strong>約款に書いてあることと、実際に支払われることは同じではない。
+        </div>
+
+        <h3 style="margin-top: 36px; font-size: 1.1rem;">主要ネット海外旅行保険との違い</h3>
+        <p style="font-size: 0.9rem; color: var(--text-sub); margin-top: 8px; margin-bottom: 16px;">
+            「ネット保険なら戦争でもカバーされるのでは？」——残念ながら、<strong>主要ネット海外旅行保険にも同様の戦争免責が存在します。</strong>
+        </p>
+
+        <table class="compare-table" style="margin-bottom: 20px;">
+            <thead>
+                <tr>
+                    <th style="width: 30%;">比較項目</th>
+                    <th style="width: 35%;">カード付帯保険</th>
+                    <th style="width: 35%;">主要ネット保険（off!・tabiho・たびとも）</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>戦争免責</strong></td>
+                    <td><span class="icon-no">✕</span> あり（32枚すべて）</td>
+                    <td><span class="icon-no">✕</span> あり（3社とも同様）</td>
+                </tr>
+                <tr>
+                    <td><strong>テロの扱い</strong></td>
+                    <td><span class="icon-maybe">△</span> カードにより異なる（要確認）</td>
+                    <td><span class="icon-maybe">△</span> 約款上は<strong>「テロ行為を除く」と明記</strong>（ただし解除条項あり）</td>
+                </tr>
+                <tr>
+                    <td><strong>出航遅延のホテル代</strong></td>
+                    <td><span class="icon-no">✕</span> 出ない（食事代のみ）</td>
+                    <td><span class="icon-yes">○</span> <strong>出る</strong>（出航/乗継の区別なし）</td>
+                </tr>
+                <tr>
+                    <td><strong>発動条件</strong></td>
+                    <td>4時間以上が主流</td>
+                    <td>6時間以上（3社共通）</td>
+                </tr>
+                <tr>
+                    <td><strong>航空機遅延の上限額</strong></td>
+                    <td>1〜4万円</td>
+                    <td>off! 2万円／tabiho・たびとも 1万円</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 style="margin-top: 36px; font-size: 1.1rem;">結論：リスクの種類で対策は変わる</h3>
+
+        <div class="compare-grid" style="margin-top: 16px;">
+            <div class="compare-card" style="border-top: 4px solid var(--red);">
+                <h3>1. 紛争・戦争リスク</h3>
+                <p style="font-size: 0.88rem; color: var(--text-sub); margin-bottom: 8px;">中東情勢の影響による欠航など</p>
+                <ul>
+                    <li><span class="icon-no">✕</span> カード保険：<strong>戦争免責で対象外</strong></li>
+                    <li><span class="icon-no">✕</span> ネット保険：<strong>同じく戦争免責で対象外</strong></li>
+                </ul>
+                <p style="font-size: 0.85rem; margin-top: 12px; padding: 10px; background: var(--red-light); border-radius: 8px;">
+                    <strong>→ 保険では守れない。行き先・ルートの変更で回避する</strong>か、欠航リスクを金銭的に自己負担できる前提で渡航する。
+                </p>
+            </div>
+            <div class="compare-card" style="border-top: 4px solid var(--green);">
+                <h3>2. 通常の遅延・欠航リスク</h3>
+                <p style="font-size: 0.88rem; color: var(--text-sub); margin-bottom: 8px;">天候・機材故障・スト・減便・オーバーブッキング</p>
+                <ul>
+                    <li><span class="icon-yes">○</span> カード保険：<strong>保険が機能する領域</strong>（4時間〜）</li>
+                    <li><span class="icon-yes">○</span> ネット保険：出航遅延のホテル代もカバー（6時間〜）</li>
+                </ul>
+                <p style="font-size: 0.85rem; margin-top: 12px; padding: 10px; background: var(--green-light); border-radius: 8px;">
+                    <strong>→ カード保険が基盤。ネット保険は「出航遅延のホテル代」などカード保険の穴を埋める補完役。</strong>併用が最も手厚い。
+                </p>
+            </div>
+            <div class="compare-card" style="border-top: 4px solid var(--gold);">
+                <h3>3. テロリスク</h3>
+                <p style="font-size: 0.88rem; color: var(--text-sub); margin-bottom: 8px;">非国家主体による暴力行為</p>
+                <ul>
+                    <li><span class="icon-maybe">△</span> ネット保険：約款上は補償対象（ただし解除条項あり・支払実績不明）</li>
+                    <li><span class="icon-maybe">△</span> カード保険：JCB等一部のみ</li>
+                </ul>
+                <p style="font-size: 0.85rem; margin-top: 12px; padding: 10px; background: var(--gold-light); border-radius: 8px;">
+                    <strong>→ 当てにして意思決定すべきではない。</strong>外務省の危険情報を確認し、渡航判断そのもので対応する。
+                </p>
+            </div>
+        </div>
+
+        <div class="callout" style="margin-top: 20px;">
+            <strong>💡 ネット保険を「追加で買う」価値があるのはどんな人？</strong>
+            出航遅延でもホテル代が出る点がネット保険の最大の強み。乗継旅程が多い人、深夜便を使う人、LCCで欠航リスクが高い人は、カード保険との併用で通常リスクのカバーが大幅に厚くなる。一方、紛争リスクのためにネット保険を追加しても効果は限定的——戦争免責は同じだから。<br>
+            <small style="color: var(--text-sub);">※各社の約款・重要事項説明書に基づく（2026年4月時点）。損保ジャパンoff!、ジェイアイ傷害火災tabiho、エイチ・エス損保たびともの公式情報を参照。テロ補償については約款上の記載であり、実際の保険金支払いは保険会社の個別判断に依存します。</small>
         </div>
 
         <h3 style="margin-top: 36px; font-size: 1.1rem;">欠航原因の記録が決定的に重要</h3>
@@ -1174,7 +1184,7 @@
 <!-- Section 5: Legal Comparison -->
 <section id="legal" style="background: #f1f5f9;">
     <div class="container">
-        <div class="section-label">Section 05</div>
+        <div class="section-label">Section 04</div>
         <h2>EU vs 日本 vs 米国——法的な違い</h2>
         <p class="section-desc">欠航時に航空会社が何を負担するかは、出発地の法律で決まります。どの航空会社かではなく、どこから出発するかが重要。</p>
 
@@ -1228,7 +1238,7 @@
 <!-- Section 6: Airline Comparison -->
 <section id="airlines">
     <div class="container">
-        <div class="section-label">Section 06</div>
+        <div class="section-label">Section 05</div>
         <h2>航空会社別：欠航時の対応</h2>
         <p class="section-desc">主要航空会社の運送約款・公式情報から、欠航時の対応を比較。</p>
 
@@ -1350,9 +1360,14 @@
 <!-- Section 7: 5 Steps -->
 <section id="action" style="background: #f1f5f9;">
     <div class="container">
-        <div class="section-label">Section 07</div>
+        <div class="section-label">Section 06</div>
         <h2>欠航時の初動5ステップ</h2>
         <p class="section-desc">欠航を「発生直後〜帰国後の請求」まで迷わないための手順。</p>
+
+        <div class="callout warning" style="margin-bottom: 24px;">
+            <strong>前提：このステップは「保険が機能するケース」向けです</strong>
+            天候・機材故障・スト・減便など、戦争・紛争以外の原因による欠航が対象。紛争起因の欠航では保険請求自体が免責になる可能性があるため、まずは行き先・ルートの段階でリスクを回避してください（<a href="#war-exemption" style="color: var(--red);">Section 03 参照</a>）。
+        </div>
 
         <div class="steps">
             <div class="step-item">
@@ -1396,7 +1411,7 @@
 
         <div class="callout" style="margin-top: 24px;">
             <strong>📞 海外から航空会社・ホテルに電話するなら</strong>
-            欠航時に現地から航空会社やホテルに電話する場面は意外と多い。<a href="https://bit.ly/3NShIY7" target="_blank" rel="noopener" style="color: var(--blue);">Yolla</a>という通信アプリが便利。1分あたり$0.01〜で国際電話ができ、リンクからインストール＋初回支払いで$3分の無料クレジットがもらえる（Skypeの代替）。
+            欠航時に現地から航空会社やホテルに電話する場面は意外と多い。<a href="https://bit.ly/3NShIY7" target="_blank" rel="noopener" style="color: var(--blue);">Yolla</a>という通信アプリが便利。1分あたり$0.01〜で国際電話ができ、リンクからインストール＋初回支払いで$3分の無料クレジットがもらえる（Skypeの代替）。<span style="font-size: 0.72rem; color: var(--text-sub); margin-left: 4px;">#PR</span>
         </div>
 
         <h3 style="margin-top: 36px; font-size: 1.1rem;">必要書類チェックリスト</h3>
