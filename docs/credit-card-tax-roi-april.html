@@ -6,35 +6,35 @@
 <title>クレジットカード納税活用 実質リターン分析（2026年4月）</title>
 <style>
   :root {
-    --brand: #4DD9CF;
-    --brand-dark: #0d9488;
-    --brand-darker: #115e59;
-    --brand-light: #99f6e4;
-    --brand-bg: #f0fdfa;
-    --green: #10b981;
-    --green-light: #d1fae5;
-    --green-bg: #ecfdf5;
+    --brand: #14C1BD;
+    --brand-dark: #0E8A87;
+    --brand-darker: #0A6B69;
+    --brand-light: #E8F8F8;
+    --brand-bg: #F0FAFA;
+    --green: #388E3C;
+    --green-light: #E8F5E9;
+    --green-bg: #F1F8F1;
     --yellow: #f59e0b;
     --yellow-light: #fef3c7;
     --yellow-bg: #fffbeb;
-    --red: #ef4444;
-    --red-light: #fee2e2;
-    --red-bg: #fef2f2;
+    --red: #D32F2F;
+    --red-light: #FFEBEE;
+    --red-bg: #FFF5F5;
     --blue: #3b82f6;
     --blue-light: #dbeafe;
     --blue-bg: #eff6ff;
-    --gray: #6b7280;
-    --gray-light: #f3f4f6;
-    --dark: #111827;
-    --tier-s: #0d9488;
+    --gray: #444444;
+    --gray-light: #F5F5F5;
+    --dark: #222222;
+    --tier-s: #0A6B69;
     --tier-a: #2563eb;
     --tier-b: #d97706;
-    --tier-c: #dc2626;
+    --tier-c: #D32F2F;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
-    background: #f8fafc;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+    background: #FAFAFA;
     color: var(--dark);
     line-height: 1.7;
     padding: 0 16px;
@@ -93,17 +93,17 @@
   .fee-card .desc { font-size: 13px; color: var(--gray); margin-top: 8px; }
 
   .fee-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; }
-  .fee-table th { background: #e6faf8; padding: 10px 16px; font-size: 13px; font-weight: 600; text-align: left; color: var(--brand-darker); }
+  .fee-table th { background: #E8F8F8; padding: 10px 16px; font-size: 13px; font-weight: 600; text-align: left; color: var(--brand-darker); }
   .fee-table td { padding: 10px 16px; font-size: 14px; border-top: 1px solid #f1f5f9; }
   .fee-table td:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; }
 
   /* Simulator */
-  .sim-wrap { background: linear-gradient(135deg, var(--brand-darker) 0%, #0f766e 100%); border-radius: 20px; padding: 32px 28px; color: #fff; }
+  .sim-wrap { background: linear-gradient(135deg, #1D1D1F 0%, #0A6B69 100%); border-radius: 20px; padding: 32px 28px; color: #fff; }
   .sim-wrap h2 { font-size: 20px; font-weight: 800; margin-bottom: 4px; border: none; color: #fff; }
   .sim-sub { font-size: 13px; color: var(--brand-light); margin-bottom: 24px; }
   .sim-controls { display: flex; gap: 24px; flex-wrap: wrap; align-items: flex-start; margin-bottom: 28px; }
   .sim-input-group { flex: 1; min-width: 280px; }
-  .sim-input-group label { font-size: 12px; color: #a7f3d0; display: block; margin-bottom: 8px; }
+  .sim-input-group label { font-size: 12px; color: #B2E8E7; display: block; margin-bottom: 8px; }
   .sim-amount-wrap { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
   .sim-amount-wrap input {
     width: 120px; padding: 10px 14px; border: 2px solid var(--brand-dark); border-radius: 10px;
@@ -111,7 +111,7 @@
     text-align: right; outline: none; font-variant-numeric: tabular-nums;
   }
   .sim-amount-wrap input:focus { border-color: var(--brand); }
-  .sim-amount-wrap span { font-size: 18px; font-weight: 700; color: #a7f3d0; }
+  .sim-amount-wrap span { font-size: 18px; font-weight: 700; color: #B2E8E7; }
   .sim-presets { display: flex; gap: 6px; flex-wrap: wrap; }
   .sim-presets button {
     padding: 6px 12px; border: 1px solid var(--brand-dark); border-radius: 8px; background: transparent;
@@ -124,7 +124,7 @@
     font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.15s;
   }
   .sim-tax-toggle button.active { background: var(--brand-dark); color: #fff; }
-  .sim-type-group label { font-size: 12px; color: #a7f3d0; display: block; margin-bottom: 8px; }
+  .sim-type-group label { font-size: 12px; color: #B2E8E7; display: block; margin-bottom: 8px; }
 
   .sim-card {
     background: rgba(255,255,255,0.07); border-radius: 14px; padding: 16px 20px;
@@ -142,17 +142,17 @@
   .sim-info { flex: 1; min-width: 0; }
   .sim-card-name { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
   .sim-card-status { font-size: 12px; }
-  .sim-card-status.ok { color: var(--brand); }
+  .sim-card-status.ok { color: var(--green); }
   .sim-card-status.ng { color: #f87171; }
   .sim-card-status.partial { color: #fbbf24; }
   .sim-profit-area { text-align: right; flex-shrink: 0; min-width: 120px; }
   .sim-profit { font-size: 22px; font-weight: 800; font-variant-numeric: tabular-nums; }
-  .sim-profit.pos { color: var(--brand); }
+  .sim-profit.pos { color: var(--green); }
   .sim-profit.neg { color: #f87171; }
   .sim-profit.na { color: #64748b; font-size: 14px; }
   .sim-roi { font-size: 11px; color: var(--brand-light); margin-top: 2px; }
   .sim-progress { width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; margin-top: 6px; }
-  .sim-progress-bar { height: 100%; border-radius: 2px; background: var(--brand); transition: width 0.3s; }
+  .sim-progress-bar { height: 100%; border-radius: 2px; background: var(--green); transition: width 0.3s; }
   .sim-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
   .sim-stat { background: rgba(255,255,255,0.07); border-radius: 12px; padding: 16px; text-align: center; }
   .sim-stat-label { font-size: 11px; color: var(--brand-light); margin-bottom: 4px; }
@@ -200,7 +200,7 @@
     transition: width 0.6s ease;
     min-width: 2px;
   }
-  .chart-bar.positive { background: linear-gradient(90deg, var(--brand), var(--brand-dark)); }
+  .chart-bar.positive { background: linear-gradient(90deg, #14C1BD, #0A6B69); }
   .chart-bar.negative { background: linear-gradient(90deg, #fca5a5, #ef4444); }
   .chart-bar.neutral { background: linear-gradient(90deg, #fcd34d, #f59e0b); }
   .chart-bar.travel { background: linear-gradient(90deg, #f59e0b, #d97706); }
@@ -214,7 +214,7 @@
   .chart-legend-dot.pts { background: var(--brand); }
   .chart-legend-dot.travel { background: #d97706; }
   .cta-banner {
-    background: linear-gradient(135deg, var(--brand-bg), #e0f7fa);
+    background: linear-gradient(135deg, var(--brand-bg), #E8F8F8);
     border: 2px solid var(--brand);
     border-radius: 16px;
     padding: 20px 24px;
@@ -336,7 +336,7 @@
   .bonus-table tbody td { padding: 12px 10px; font-size: 13px; border-top: 1px solid #f1f5f9; text-align: center; vertical-align: middle; }
   .bonus-table tbody td:nth-child(2) { text-align: left; font-weight: 600; }
   .bonus-table tbody tr:hover { background: var(--brand-bg); }
-  .badge-purple { background: #ccfbf1; color: var(--brand-darker); }
+  .badge-purple { background: #D4F5F4; color: var(--brand-darker); }
 
   .bonus-card { background: #fff; border-radius: 14px; padding: 20px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.04); margin-bottom: 12px; }
   .bonus-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
@@ -344,12 +344,12 @@
   .bonus-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
 
   .stretch-tip {
-    background: linear-gradient(135deg, var(--brand-bg) 0%, #ccfbf1 100%);
+    background: linear-gradient(135deg, var(--brand-bg) 0%, #D4F5F4 100%);
     border: 2px solid var(--brand);
     border-radius: 16px; padding: 20px 24px; margin-top: 20px;
   }
   .stretch-tip h4 { font-size: 15px; font-weight: 700; margin-bottom: 12px; color: var(--brand-darker); }
-  .stretch-row { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid #d1e7e4; }
+  .stretch-row { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid #B2E8E7; }
   .stretch-row:last-child { border-bottom: none; }
   .stretch-card-name { width: 200px; font-size: 13px; font-weight: 600; flex-shrink: 0; }
   .stretch-arrow { color: var(--brand-dark); font-weight: 700; font-size: 13px; flex: 1; }
@@ -401,6 +401,11 @@
       <div class="chart-value pos">+153,300</div>
     </div>
     <div class="chart-row">
+      <div class="chart-label">Amexビジネスゴールド★裏紹介</div>
+      <div class="chart-bar-wrap"><div class="chart-bar-stack" style="width:66%"><div class="chart-bar positive" style="width:75%"></div><div class="chart-bar travel" style="width:25%"></div></div></div>
+      <div class="chart-value pos">+166,100</div>
+    </div>
+    <div class="chart-row">
       <div class="chart-label">Amexゴールドプリファード</div>
       <div class="chart-bar-wrap"><div class="chart-bar positive" style="width:52%"></div></div>
       <div class="chart-value pos">+129,300</div>
@@ -419,11 +424,6 @@
       <div class="chart-label">ANA VISAプレミアム</div>
       <div class="chart-bar-wrap"><div class="chart-bar positive" style="width:26%"></div></div>
       <div class="chart-value pos">+64,100</div>
-    </div>
-    <div class="chart-row">
-      <div class="chart-label">Amexビジネスゴールド★裏紹介</div>
-      <div class="chart-bar-wrap"><div class="chart-bar-stack" style="width:25%"><div class="chart-bar positive" style="width:46%"></div><div class="chart-bar travel" style="width:54%"></div></div></div>
-      <div class="chart-value pos">+63,200</div>
     </div>
     <div class="chart-row">
       <div class="chart-label">三井住友PP</div>
@@ -619,6 +619,14 @@
         <div class="card-profit">還元率 3.2% / 必要額 400万円</div>
         <div class="card-note"><strong style="color:var(--tier-a)">紹介経由185,500マイル（マイ友込み）→ 37.1万円相当</strong><br>ANA移行上限なし。税金時0.5%に半減だが利益額は大きい<br><span style="color:var(--gray)">年会費165,000円。400万/3ヶ月のハードル</span></div>
       </div>
+      <div class="tier-card a">
+        <div class="card-top">
+          <div class="card-name">Amex<br>ビジネスゴールド★裏紹介</div>
+          <div class="card-roi pos">+166,100円</div>
+        </div>
+        <div class="card-profit">還元率 2.8% / 必要額 600万円（フル）</div>
+        <div class="card-note"><strong style="color:var(--tier-a)">600万フルで160,000pt＋旅行特典8万円。利益額はBizGold紹介超え</strong><br>200万:+63,200 / 400万:+95,900 / 600万:+166,100（段階的に増加）<br><span style="color:var(--gray)">50万で4万TC＋無条件無料2泊。決済条件達成で+2泊</span></div>
+      </div>
     </div>
   </div>
 
@@ -629,14 +637,6 @@
       <div class="tier-desc">条件付きで有効</div>
     </div>
     <div class="tier-cards">
-      <div class="tier-card b">
-        <div class="card-top">
-          <div class="card-name">Amex<br>ビジネスゴールド★裏紹介</div>
-          <div class="card-roi pos">+63,200円</div>
-        </div>
-        <div class="card-profit">還元率 3.2% / 必要額 200万円</div>
-        <div class="card-note"><strong style="color:var(--tier-b)">裏紹介ルートの旅行特典8万円（4万TC＋無料4泊）が強み</strong><br>ポイント自体は少ないが、50万からでも旅行特典のみ獲得可能<br><span style="color:var(--gray)">400万/600万で追加利用ボーナスあり（最大160,000pt）</span></div>
-      </div>
       <div class="tier-card b">
         <div class="card-top">
           <div class="card-name">ANAアメックス<br>（一般）</div>
@@ -774,8 +774,19 @@
         <td style="font-weight:800;color:var(--green)">+126,400</td>
         <td>3.2%</td>
       </tr>
-      <tr>
+      <tr class="highlight-row">
         <td>6</td>
+        <td>Amexビジネスゴールド★（裏紹介600万）</td>
+        <td style="font-size:11px">MR→Delta+旅行8万</td>
+        <td>600万</td>
+        <td>+270,500</td>
+        <td style="color:var(--red)">-45,000</td>
+        <td style="color:var(--red)">-59,400</td>
+        <td style="font-weight:800;color:var(--green)">+166,100</td>
+        <td>2.8%</td>
+      </tr>
+      <tr>
+        <td>7</td>
         <td>JAL VISA Club-Aゴールド</td>
         <td style="font-size:11px">JALマイル(2.0円)</td>
         <td>150万</td>
@@ -786,7 +797,7 @@
         <td>4.5%</td>
       </tr>
       <tr>
-        <td>7</td>
+        <td>8</td>
         <td>ANA VISAプレミアム</td>
         <td style="font-size:11px">ANAマイル(2.0円)</td>
         <td>100万</td>
@@ -795,17 +806,6 @@
         <td style="color:var(--red)">-9,900</td>
         <td style="font-weight:700;color:var(--green)">+64,100</td>
         <td>6.4%</td>
-      </tr>
-      <tr>
-        <td>8</td>
-        <td>Amexビジネスゴールド★（裏紹介）</td>
-        <td style="font-size:11px">MR→Delta+旅行8万</td>
-        <td>200万</td>
-        <td>+98,000</td>
-        <td style="color:var(--red)">-15,000</td>
-        <td style="color:var(--red)">-19,800</td>
-        <td style="font-weight:700;color:var(--green)">+63,200</td>
-        <td>3.2%</td>
       </tr>
       <tr>
         <td>9</td>
@@ -884,9 +884,9 @@
     ※ ANAアメプレミアム：185,500マイル×2.0円−年会費165,000円＝元の利益+206,000円（400万/3ヶ月。マイ友込み）<br>
     ※ ANAアメ一般：35,500マイル×2.0円−年会費7,700円＝元の利益+63,300円（70万/3ヶ月。マイ友込み）<br>
     ※ BizPlat★特別紹介：290,000pt×1.5円+5万HC−年会費165,000円＝元の利益+320,000円（〜5/11）<br>
-    ※ BizGold★裏紹介：45,000pt×1.5円+旅行特典8万円−年会費49,500円＝元の利益+98,000円（200万利用時）<br>
+    ※ BizGold★裏紹介（600万フル）：160,000pt×1.5円+旅行8万円−年会費49,500円＝元の利益+270,500円。200万:+63,200 / 400万:+95,900 / 600万:+166,100<br>
     ※ ANAダイナース：54,000マイル×2.0円−年会費33,000円＝元の利益+75,000円（Aコース200万/3ヶ月。マイ友含む。4月〜新キャンペーン）<br>
-    ※ JAL Club-Aゴールド：50,000マイル×2.0円−年会費17,600円＝元の利益+82,400円（100万/3ヶ月。搭乗ボーナス含む）<br>
+    ※ JAL Club-Aゴールド：50,000マイル×2.0円−年会費17,600円＝元の利益+82,400円（150万/3ヶ月。搭乗5kマイル含む）<br>
     ※ Visa Infinite：110,000pt×1.2円−年会費99,000円＝元の利益+33,000円（100万/3ヶ月。税金2%ボーナス終了後）
   </div>
 </div>
@@ -1243,11 +1243,11 @@
       </tr>
       <tr>
         <td>4</td>
-        <td>Amexビジネスゴールド（紹介250万）</td>
+        <td>Amexビジネスゴールド（紹介300万）</td>
         <td>ツギツギ無料宿泊1泊</td>
         <td>年300万円</td>
         <td>2〜4万円</td>
-        <td><span class="badge badge-purple">あと50万</span></td>
+        <td><span class="badge badge-green">○ 達成</span></td>
       </tr>
       <tr>
         <td>5</td>
@@ -1311,7 +1311,7 @@
     </div>
     <div class="stretch-row">
       <div class="stretch-card-name">Amexビジネスゴールド（紹介）</div>
-      <div class="stretch-arrow">250万（紹介条件）→ <strong>+50万</strong> → 300万達成</div>
+      <div class="stretch-arrow">300万（紹介条件）で<strong>自動達成</strong></div>
       <div class="stretch-reward">無料宿泊 2〜4万円</div>
     </div>
     <div class="stretch-row">
@@ -1366,8 +1366,8 @@
 
   <div class="highlight-box warn">
     <h4>Amexビジネスプラチナ★：全額税金は大赤字</h4>
-    <p>裏紹介ルートでも最大特典260,000ptのうち、<strong>Amazon利用の140,000pt</strong>は税金支払いでは取得不可。<br>
-    全額税金の場合、利益は+205,400円→<strong style="color:var(--red)">-4,600円（赤字）に転落</strong>。必ずAmazon100万円と併用すること。<br>
+    <p>特別紹介ルートでも最大特典290,000ptのうち、<strong>Amazon利用の140,000pt</strong>は税金支払いでは取得不可。<br>
+    全額税金の場合、利益は+250,400円→<strong style="color:var(--red)">+40,400円に激減</strong>。必ずAmazon100万円と併用すること。<br>
     <span style="font-size:12px;color:var(--gray)">※ 140,000pt × 1.5円(デルタ換算) = 210,000円の逸失</span></p>
   </div>
 
@@ -1432,7 +1432,7 @@
       <li><strong>ANAカードの入会特典にはマイ友プログラムを含む</strong>：ANA VISAプレミアム(+5,400マイル)、ANAアメックスゴールド(+2,000マイル)、ANAダイナース(+2,000マイル)</li>
       <li><strong>ANAダイナース（4月〜大幅変更）</strong>：50,000期間限定マイル一括付与は3/31終了。新Aコースは段階付与で最大54,000マイル（マイ友込み）。年会費は33,000円に改定済み。ANA Payチャージでpt加算の新サービス開始</li>
       <li><strong>三井住友Visa Infinite</strong>：税金2%ボーナスキャンペーン(~3/31)は終了。常設入会特典は100万/3ヶ月で100,000pt。5月〜Olive Infiniteへの切替キャンペーンあり</li>
-      <li><strong>JAL Club-Aゴールド</strong>：条件緩和。100万/3ヶ月で最大50,000マイル（4/30 Web受付まで）</li>
+      <li><strong>JAL Club-Aゴールド</strong>：150万/3ヶ月で最大50,000マイル（Visaボーナス30k+ショッピング15k+搭乗5k）。4/30 Web受付まで</li>
       <li><strong>Amexビジネスゴールド紹介</strong>：4月〜キャンペーン条件変更。80万/4ヶ月+250万/8ヶ月の段階方式。最大170,000pt（対象加盟店50kpt含む）</li>
       <li><strong>三井住友PP</strong>：紹介特典4月限定16,000pt（通常12,000pt）に増量中。分割払い手数料全額pt還元は4/30終了</li>
     </ul>
@@ -1470,16 +1470,16 @@ const cards = [
   },
   {
     name: 'Amexビジネスゴールド★裏紹介',
-    required: 200,
+    required: 600,
     annualFee: 49500,
-    firstYearProfit: 63200, // 裏紹介：45kpt×1.5+旅行8万-年会費-還元低下-手数料
+    firstYearProfit: 166100, // 裏紹介600万フル：160kpt×1.5+旅行8万-年会費-還元低下-手数料
     taxRate: 0.005,
     taxRateValue: 0.75, // 0.5%MR × 1.5円(Delta) = 0.75%
     normalRate: 0.01,
     normalRateValue: 1.5, // 1%MR × 1.5円
     rateReductionPerMan: 75,
-    bonusTotal: 147500, // 45kpt×1.5円+旅行8万
-    note: '裏紹介★200万。旅行特典8万(4万TC+無料4泊)込み'
+    bonusTotal: 320000, // 160kpt×1.5円+旅行8万
+    note: '裏紹介★600万フル。160kpt+旅行8万(4万TC+無料4泊)。200万:+63k/400万:+96k'
   },
   {
     name: 'Amexビジネスプラチナ★',
@@ -1764,7 +1764,7 @@ function calculate() {
           <div class="sim-card-name">${r.name}</div>
           <div class="sim-card-status ${statusClass}">${r.status}</div>
           ${!r.achieved ? `<div class="sim-progress"><div class="sim-progress-bar" style="width:${progressPct}%"></div></div>` : ''}
-          <div style="font-size:11px;color:#5eead4;margin-top:2px">${r.note}</div>
+          <div style="font-size:11px;color:#14C1BD;margin-top:2px">${r.note}</div>
         </div>
         <div class="sim-profit-area">
           <div class="sim-profit ${r.achieved ? profitClass : 'na'}">${profitStr}</div>
