@@ -319,6 +319,25 @@
   /* Footer */
   .footer { text-align: center; padding: 32px 0; font-size: 12px; color: var(--brand-dark); border-top: 2px solid var(--brand); }
 
+  /* Accordion */
+  .accordion { margin-bottom: 48px; }
+  .accordion-trigger {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    width: 100%; padding: 20px 24px; border: 2px solid var(--brand); border-radius: 16px;
+    background: var(--brand-bg); cursor: pointer; font-size: 17px; font-weight: 700;
+    color: var(--brand-darker); transition: all 0.2s;
+  }
+  .accordion-trigger:hover { background: var(--brand-light); }
+  .accordion-trigger .arrow { font-size: 20px; transition: transform 0.3s; flex-shrink: 0; }
+  .accordion-trigger.open .arrow { transform: rotate(180deg); }
+  .accordion-trigger .badge-count {
+    background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+    padding: 2px 10px; border-radius: 100px; flex-shrink: 0;
+  }
+  .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+  .accordion-body.open { max-height: none; }
+  .accordion-body-inner { padding-top: 32px; }
+
   /* ROI table */
   .roi-table { width: 100%; border-collapse: separate; border-spacing: 0; background: #fff; border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
   .roi-table thead th { background: var(--brand-darker); color: #fff; padding: 14px 10px; font-size: 11px; font-weight: 600; text-align: center; white-space: nowrap; }
@@ -381,92 +400,11 @@
   <div class="date">2026年4月8日時点 ｜ マイル移行統一換算版 ｜ Amex BizGold紹介＋裏紹介併記</div>
 </div>
 
-<!-- 初年度利益のバーチャート -->
-<div class="section">
-  <h2 class="section-title"><span class="num">1</span>初年度利益ビジュアル（税金利用時・マイル移行後）</h2>
-  <div class="chart-container">
-    <div class="chart-row">
-      <div class="chart-label">Amexビジネスプラチナ★</div>
-      <div class="chart-bar-wrap"><div class="chart-bar-stack" style="width:100%"><div class="chart-bar positive" style="width:80%"></div><div class="chart-bar travel" style="width:20%"></div></div></div>
-      <div class="chart-value pos">+250,400</div>
-    </div>
-    <div class="chart-row">
-      <div class="chart-label">ANAアメックスゴールド</div>
-      <div class="chart-bar-wrap"><div class="chart-bar positive" style="width:62%"></div></div>
-      <div class="chart-value pos">+156,100</div>
-    </div>
-    <div class="chart-row">
-      <div class="chart-label">Amexビジネスゴールド（紹介）</div>
-      <div class="chart-bar-wrap"><div class="chart-bar positive" style="width:61%"></div></div>
-      <div class="chart-value pos">+153,300</div>
-    </div>
-    <div class="chart-row">
-      <div class="chart-label">Amexビジネスゴールド★裏紹介</div>
-      <div class="chart-bar-wrap"><div class="chart-bar-stack" style="width:66%"><div class="chart-bar positive" style="width:75%"></div><div class="chart-bar travel" style="width:25%"></div></div></div>
-      <div class="chart-value pos">+166,100</div>
-    </div>
-    <div class="chart-row">
-      <div class="chart-label">Amexゴールドプリファード</div>
-      <div class="chart-bar-wrap"><div class="chart-bar positive" style="width:52%"></div></div>
-      <div class="chart-value pos">+129,300</div>
-    </div>
-    <div class="chart-row">
-      <div class="chart-label">ANAアメックスプレミアム</div>
-      <div class="chart-bar-wrap"><div class="chart-bar positive" style="width:50%"></div></div>
-      <div class="chart-value pos">+126,400</div>
-    </div>
-    <div class="chart-row">
-      <div class="chart-label">JAL Club-Aゴールド</div>
-      <div class="chart-bar-wrap"><div class="chart-bar positive" style="width:27%"></div></div>
-      <div class="chart-value pos">+67,550</div>
-    </div>
-    <div class="chart-row">
-      <div class="chart-label">ANA VISAプレミアム</div>
-      <div class="chart-bar-wrap"><div class="chart-bar positive" style="width:26%"></div></div>
-      <div class="chart-value pos">+64,100</div>
-    </div>
-    <div class="chart-row">
-      <div class="chart-label">三井住友PP</div>
-      <div class="chart-bar-wrap"><div class="chart-bar positive" style="width:22%"></div></div>
-      <div class="chart-value pos">+55,440</div>
-    </div>
-    <div class="chart-row">
-      <div class="chart-label">ANAアメックス（一般）</div>
-      <div class="chart-bar-wrap"><div class="chart-bar positive" style="width:20%"></div></div>
-      <div class="chart-value pos">+49,370</div>
-    </div>
-    <div class="chart-row">
-      <div class="chart-label">三井住友BizオーナーズPP</div>
-      <div class="chart-bar-wrap"><div class="chart-bar positive" style="width:18%"></div></div>
-      <div class="chart-value pos">+44,550</div>
-    </div>
-    <div class="chart-row">
-      <div class="chart-label">ANAダイナースクラブ</div>
-      <div class="chart-bar-wrap"><div class="chart-bar positive" style="width:14%"></div></div>
-      <div class="chart-value pos">+35,200</div>
-    </div>
-    <div class="chart-row">
-      <div class="chart-label">三井住友Visa Infinite</div>
-      <div class="chart-bar-wrap"><div class="chart-bar positive" style="width:9%"></div></div>
-      <div class="chart-value pos">+23,100</div>
-    </div>
-    <div class="chart-row">
-      <div class="chart-label">マリオットBonvoyプレミアム</div>
-      <div class="chart-bar-wrap"><div class="chart-bar negative" style="width:10%"></div></div>
-      <div class="chart-value neg">-24,725</div>
-    </div>
-  </div>
-  <div class="chart-legend">
-    <div class="chart-legend-item"><div class="chart-legend-dot pts"></div>ポイント利益</div>
-    <div class="chart-legend-item"><div class="chart-legend-dot travel"></div>旅行特典（TC・無料宿泊）</div>
-  </div>
-</div>
-
 <!-- Interactive Simulator -->
 <div class="section">
   <div class="sim-wrap">
-    <h2>納税額シミュレーター</h2>
-    <div class="sim-sub">あなたの納税額を入力すると、各カードの初年度利益・還元率を自動計算します</div>
+    <h2>あなたの納税額でシミュレーション</h2>
+    <div class="sim-sub">納税額と通常利用額を入力 → 各カードの初年度利益・還元率を自動計算</div>
 
     <div class="sim-controls">
       <div class="sim-input-group">
@@ -534,6 +472,87 @@
   </div>
 </div>
 
+<!-- 初年度利益のバーチャート -->
+<div class="section">
+  <h2 class="section-title"><span class="num">1</span>初年度利益ビジュアル（税金利用時・マイル移行後）</h2>
+  <div class="chart-container">
+    <div class="chart-row">
+      <div class="chart-label">Amexビジネスプラチナ★</div>
+      <div class="chart-bar-wrap"><div class="chart-bar-stack" style="width:100%"><div class="chart-bar positive" style="width:80%"></div><div class="chart-bar travel" style="width:20%"></div></div></div>
+      <div class="chart-value pos">+250,400</div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">ANAアメックスプレミアム</div>
+      <div class="chart-bar-wrap"><div class="chart-bar positive" style="width:66%"></div></div>
+      <div class="chart-value pos">+166,200</div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">Amexビジネスゴールド★裏紹介</div>
+      <div class="chart-bar-wrap"><div class="chart-bar-stack" style="width:66%"><div class="chart-bar positive" style="width:75%"></div><div class="chart-bar travel" style="width:25%"></div></div></div>
+      <div class="chart-value pos">+166,100</div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">ANAアメックスゴールド</div>
+      <div class="chart-bar-wrap"><div class="chart-bar positive" style="width:62%"></div></div>
+      <div class="chart-value pos">+156,100</div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">Amexビジネスゴールド（紹介）</div>
+      <div class="chart-bar-wrap"><div class="chart-bar positive" style="width:61%"></div></div>
+      <div class="chart-value pos">+153,300</div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">Amexゴールドプリファード</div>
+      <div class="chart-bar-wrap"><div class="chart-bar positive" style="width:52%"></div></div>
+      <div class="chart-value pos">+129,300</div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">JAL Club-Aゴールド</div>
+      <div class="chart-bar-wrap"><div class="chart-bar positive" style="width:27%"></div></div>
+      <div class="chart-value pos">+67,550</div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">三井住友PP</div>
+      <div class="chart-bar-wrap"><div class="chart-bar positive" style="width:22%"></div></div>
+      <div class="chart-value pos">+55,440</div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">ANAアメックス（一般）</div>
+      <div class="chart-bar-wrap"><div class="chart-bar positive" style="width:20%"></div></div>
+      <div class="chart-value pos">+49,370</div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">ANAダイナースクラブ</div>
+      <div class="chart-bar-wrap"><div class="chart-bar positive" style="width:18%"></div></div>
+      <div class="chart-value pos">+45,200</div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">三井住友BizオーナーズPP</div>
+      <div class="chart-bar-wrap"><div class="chart-bar positive" style="width:18%"></div></div>
+      <div class="chart-value pos">+44,550</div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">三井住友Visa Infinite</div>
+      <div class="chart-bar-wrap"><div class="chart-bar positive" style="width:9%"></div></div>
+      <div class="chart-value pos">+23,100</div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">マリオットBonvoyプレミアム</div>
+      <div class="chart-bar-wrap"><div class="chart-bar negative" style="width:10%"></div></div>
+      <div class="chart-value neg">-24,725</div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">ANA VISAプレミアム</div>
+      <div class="chart-bar-wrap"><div class="chart-bar negative" style="width:30%"></div></div>
+      <div class="chart-value neg">-75,900</div>
+    </div>
+  </div>
+  <div class="chart-legend">
+    <div class="chart-legend-item"><div class="chart-legend-dot pts"></div>ポイント利益</div>
+    <div class="chart-legend-item"><div class="chart-legend-dot travel"></div>旅行特典（TC・無料宿泊）</div>
+  </div>
+</div>
+
 <!-- 8. 推奨ランキング -->
 <div class="section">
   <h2 class="section-title"><span class="num">2</span>納税活用 推奨ティアランキング</h2>
@@ -552,14 +571,6 @@
         </div>
         <div class="card-profit">利益 +55,440円 / 必要額 40万円</div>
         <div class="card-note">税金でも1%維持。40万で手軽に達成可能。投下資金効率No.1<br>Vpt→ANA(60%)で1.2円/pt換算。紹介特典16,000pt（4月限定増量）<br><strong style="color:var(--tier-s)">2年目〜：年間利用ボーナス（100万ごと10,000pt、税金カウント○）</strong></div>
-      </div>
-      <div class="tier-card s">
-        <div class="card-top">
-          <div class="card-name">ANA VISAプレミアム</div>
-          <div class="card-roi pos">手数料差引 +2.01%</div>
-        </div>
-        <div class="card-profit">利益 +64,100円 / 必要額 100万円</div>
-        <div class="card-note">税金でも1.5%ANAマイル直接獲得（マイル換算3.0%）。マイル派の最適解<br>マイル移行手続き不要</div>
       </div>
       <div class="tier-card s">
         <div class="card-top">
@@ -614,10 +625,10 @@
       <div class="tier-card a">
         <div class="card-top">
           <div class="card-name">ANAアメックス<br>プレミアム</div>
-          <div class="card-roi pos">+126,400円</div>
+          <div class="card-roi pos">+166,200円</div>
         </div>
-        <div class="card-profit">還元率 3.2% / 必要額 400万円</div>
-        <div class="card-note"><strong style="color:var(--tier-a)">紹介経由185,500マイル（マイ友込み）→ 37.1万円相当</strong><br>ANA移行上限なし。税金時0.5%に半減だが利益額は大きい<br><span style="color:var(--gray)">年会費165,000円。400万/3ヶ月のハードル</span></div>
+        <div class="card-profit">還元率 4.2% / 必要額 400万円</div>
+        <div class="card-note"><strong style="color:var(--tier-a)">紹介経由200,000マイル＋マイ友5,400 → 41.1万円相当</strong><br>ANA移行上限なし。税金時0.5%に半減だが利益額は大きい<br><span style="color:var(--gray)">年会費165,000円。400万/3ヶ月。〜4/14（通常130k→期間限定200k）</span></div>
       </div>
       <div class="tier-card a">
         <div class="card-top">
@@ -648,10 +659,10 @@
       <div class="tier-card b">
         <div class="card-top">
           <div class="card-name">ANAダイナース<br>クラブ</div>
-          <div class="card-roi pos">+35,200円</div>
+          <div class="card-roi pos">+45,200円</div>
         </div>
-        <div class="card-profit">還元率 1.8% / 必要額 200万円</div>
-        <div class="card-note"><strong style="color:var(--tier-b)">4月〜キャンペーン刷新。Aコース最大54,000マイル（マイ友込み）</strong><br>1pt=1ANAマイル・上限なし・手数料無料。ポイント有効期限なし<br><span style="color:var(--gray)">年会費33,000円(4月改定)。ANA Payチャージで200円=1pt加算（新サービス）</span></div>
+        <div class="card-profit">還元率 2.3% / 必要額 200万円</div>
+        <div class="card-note"><strong style="color:var(--tier-b)">4月〜キャンペーン刷新。Aコース最大59,000マイル（マイ友込み）</strong><br>1pt=1ANAマイル・上限なし・手数料無料。ポイント有効期限なし<br><span style="color:var(--gray)">年会費33,000円(4月改定)。⚠7/16〜税金pt加算変更予定</span></div>
       </div>
     </div>
   </div>
@@ -681,13 +692,107 @@
       </div>
       <div class="tier-card c">
         <div class="card-top">
+          <div class="card-name">ANA VISA<br>プレミアム</div>
+          <div class="card-roi neg">赤字 -75,900円</div>
+        </div>
+        <div class="card-profit">必要額 100万円 / 年会費96,800円</div>
+        <div class="card-note">入会特典が10,000マイルに大幅縮小。年会費を回収不能<br><strong style="color:var(--green)">ただし税金でも1.5%ANAマイル直接獲得（手数料差引+2.01%）は全カード最高</strong><br><span style="color:var(--gray)">2年目以降の継続利用価値は高い。入会特典目的では非推奨</span></div>
+      </div>
+      <div class="tier-card c">
+        <div class="card-top">
           <div class="card-name">マリオットBonvoy<br>プレミアムAmex</div>
           <div class="card-roi neg">赤字 -24,725円</div>
         </div>
         <div class="card-profit">必要額 150万円 / 年会費82,500円</div>
         <div class="card-note">税金での還元が1/6に激減（マイル換算0.42%）。年会費を回収不能<br>マリオットpt→マイル=0.83円/ptのため税金では最も不利<br><span style="color:var(--gray)">無料宿泊は年400万+継続が必要（改定後）</span></div>
       </div>
+      <div class="tier-card c">
+        <div class="card-top">
+          <div class="card-name">Amex<br>プラチナ（プロパー）</div>
+          <div class="card-roi pos">+130,400円</div>
+        </div>
+        <div class="card-profit">還元率 3.3% / 必要額 400万円</div>
+        <div class="card-note"><strong style="color:var(--tier-b)">紹介経由230,000pt＋3万円TC → 計37.5万円相当。入会特典額はトップクラス</strong><br>税金時0.5%に半減＋年会費165,000円がネック。利益額はANAアメG以下<br><span style="color:var(--gray)">150万/4ヶ月+400万/8ヶ月。FHR・センチュリオンラウンジ等の付帯価値は別途</span></div>
+      </div>
+      <div class="tier-card c">
+        <div class="card-top">
+          <div class="card-name">JCB<br>プラチナ</div>
+          <div class="card-roi neg">赤字 -1,950円</div>
+        </div>
+        <div class="card-profit">必要額 50万円 / 年会費27,500円</div>
+        <div class="card-note">入会特典は最大104,150円相当だが<strong style="color:var(--red)">大半がスマホ決済20%還元・HoteLuxクーポン等で税金では取得不可</strong><br>税金で確実に取れるのは年会費相当27,500ptのみ。OkiDoki還元率0.5%で手数料負け<br><span style="color:var(--gray)">4/1〜9/30。コンシェルジュ・PP付帯。税金以外の利用前提</span></div>
+      </div>
     </div>
+  </div>
+</div>
+
+<!-- 要注意 -->
+<div class="section">
+  <h2 class="section-title"><span class="num">3</span>税金だけでは取れない特典（要注意）</h2>
+
+  <div class="highlight-box warn">
+    <h4>Amexビジネスプラチナ★：Amazon併用しないと21万円の損</h4>
+    <p>最大特典290,000ptのうち、<strong>Amazon利用の140,000pt（=21万円相当）</strong>は税金支払いでは取得不可。<br>
+    全額税金の場合：特別紹介ルートなら+250,400円→<strong style="color:var(--yellow)">+40,400円</strong>（赤字は免れるが21万円逸失）。<br>
+    公式紹介ルートなら<strong style="color:var(--red)">-4,600円（赤字）</strong>。どちらもAmazon100万円との併用が前提。<br>
+    <span style="font-size:12px;color:var(--gray)">※ 140,000pt × 1.5円(デルタ換算) = 210,000円の逸失</span></p>
+  </div>
+
+  <div class="table-scroll">
+  <table class="caveat-table">
+    <thead>
+      <tr>
+        <th>カード</th>
+        <th>税金で取得不可</th>
+        <th>逸失額（マイル換算）</th>
+        <th>対応策</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ANA VISAプレミアム</td>
+        <td>ANA Pay 1,500 + 搭乗 3,000マイル</td>
+        <td>9,000円</td>
+        <td>ANA Pay利用＋搭乗で回収可能</td>
+      </tr>
+      <tr>
+        <td>Amexビジネスゴールド★裏紹介</td>
+        <td>追加利用ボーナス(400万:2.5万/600万:5万)</td>
+        <td>最大112,500円<span style="font-size:11px;color:var(--gray)">（×1.5円）</span></td>
+        <td>決済額を積み増し（税金でも可）</td>
+      </tr>
+      <tr style="background:#fef2f2">
+        <td style="color:var(--red)">Amexビジネスプラチナ★</td>
+        <td style="color:var(--red);font-weight:700">Amazon 140,000pt</td>
+        <td style="color:var(--red);font-weight:700">210,000円<span style="font-size:11px">（×1.5円）</span></td>
+        <td>Amazon100万円が必須</td>
+      </tr>
+      <tr>
+        <td>三井住友PP</td>
+        <td>タッチ決済7,000+20%還元10,000Vpt</td>
+        <td>20,400円<span style="font-size:11px;color:var(--gray)">（×1.2円）</span></td>
+        <td>少額タッチ決済で別途取得可</td>
+      </tr>
+      <tr>
+        <td>JAL Club-Aゴールド</td>
+        <td>入会搭乗ボーナス 5,000マイル</td>
+        <td>10,000円</td>
+        <td>JAL搭乗で取得</td>
+      </tr>
+      <tr>
+        <td>Amexプラチナ（プロパー）</td>
+        <td>対象加盟店20万円利用 30,000pt</td>
+        <td>45,000円<span style="font-size:11px;color:var(--gray)">（×1.5円）</span></td>
+        <td>レストラン・旅行等の対象店で利用</td>
+      </tr>
+      <tr style="background:#fef2f2">
+        <td style="color:var(--red)">JCBプラチナ</td>
+        <td style="color:var(--red);font-weight:700">スマホ決済30,000pt＋HoteLux50,000円</td>
+        <td style="color:var(--red);font-weight:700">80,000円</td>
+        <td>スマホ決済＋対象ホテル予約で別途取得</td>
+      </tr>
+    </tbody>
+  </table>
   </div>
 </div>
 
@@ -697,9 +802,19 @@
   <a class="cta-ig" href="https://www.instagram.com/ino_moneycoach/" target="_blank">Instagram @ino_moneycoach にDMください</a>
 </div>
 
+<!-- 根拠層（折りたたみ） -->
+<div class="accordion">
+  <button class="accordion-trigger" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+    <span>詳細データ・計算根拠を見る</span>
+    <span class="badge-count">7セクション</span>
+    <span class="arrow">▼</span>
+  </button>
+  <div class="accordion-body">
+  <div class="accordion-body-inner">
+
 <!-- 4. 初年度リターン比較 -->
 <div class="section">
-  <h2 class="section-title"><span class="num">3</span>初年度リターン比較：通常利用 vs 税金利用</h2>
+  <h2 class="section-title"><span class="num">A</span>初年度リターン比較：通常利用 vs 税金利用</h2>
   <p style="font-size:13px;color:var(--gray);margin-bottom:8px">入会特典のマイル移行後価値から年会費を引いた「元の利益」を、税金で条件達成した場合で再計算</p>
   <p style="font-size:12px;color:var(--gray);margin-bottom:20px">計算式：税金時利益 ＝ 元の利益 − 還元率低下分 − カード納付手数料（国税0.99%）</p>
 
@@ -732,6 +847,28 @@
       </tr>
       <tr class="highlight-row">
         <td>2</td>
+        <td>ANAアメックスプレミアム</td>
+        <td style="font-size:11px">MR→ANA(2.0円)</td>
+        <td>400万</td>
+        <td>+245,800</td>
+        <td style="color:var(--red)">-40,000</td>
+        <td style="color:var(--red)">-39,600</td>
+        <td style="font-weight:800;color:var(--green)">+166,200</td>
+        <td>4.2%</td>
+      </tr>
+      <tr class="highlight-row">
+        <td>3</td>
+        <td>Amexビジネスゴールド★（裏紹介600万）</td>
+        <td style="font-size:11px">MR→Delta+旅行8万</td>
+        <td>600万</td>
+        <td>+270,500</td>
+        <td style="color:var(--red)">-45,000</td>
+        <td style="color:var(--red)">-59,400</td>
+        <td style="font-weight:800;color:var(--green)">+166,100</td>
+        <td>2.8%</td>
+      </tr>
+      <tr class="highlight-row">
+        <td>4</td>
         <td>ANAアメックスゴールド</td>
         <td style="font-size:11px">MR→ANA(2.0円)</td>
         <td>200万</td>
@@ -742,18 +879,7 @@
         <td>7.8%</td>
       </tr>
       <tr class="highlight-row">
-        <td>3</td>
-        <td>Amexゴールドプリファード</td>
-        <td style="font-size:11px">MR→Delta(1.5円)</td>
-        <td>150万</td>
-        <td>+155,400</td>
-        <td style="color:var(--red)">-11,250</td>
-        <td style="color:var(--red)">-14,850</td>
-        <td style="font-weight:800;color:var(--green)">+129,300</td>
-        <td>8.6%</td>
-      </tr>
-      <tr class="highlight-row">
-        <td>4</td>
+        <td>5</td>
         <td>Amexビジネスゴールド（紹介）</td>
         <td style="font-size:11px">MR→Delta(1.5円)</td>
         <td>300万</td>
@@ -764,26 +890,15 @@
         <td>5.1%</td>
       </tr>
       <tr class="highlight-row">
-        <td>5</td>
-        <td>ANAアメックスプレミアム</td>
-        <td style="font-size:11px">MR→ANA(2.0円)</td>
-        <td>400万</td>
-        <td>+206,000</td>
-        <td style="color:var(--red)">-40,000</td>
-        <td style="color:var(--red)">-39,600</td>
-        <td style="font-weight:800;color:var(--green)">+126,400</td>
-        <td>3.2%</td>
-      </tr>
-      <tr class="highlight-row">
         <td>6</td>
-        <td>Amexビジネスゴールド★（裏紹介600万）</td>
-        <td style="font-size:11px">MR→Delta+旅行8万</td>
-        <td>600万</td>
-        <td>+270,500</td>
-        <td style="color:var(--red)">-45,000</td>
-        <td style="color:var(--red)">-59,400</td>
-        <td style="font-weight:800;color:var(--green)">+166,100</td>
-        <td>2.8%</td>
+        <td>Amexゴールドプリファード</td>
+        <td style="font-size:11px">MR→Delta(1.5円)</td>
+        <td>150万</td>
+        <td>+155,400</td>
+        <td style="color:var(--red)">-11,250</td>
+        <td style="color:var(--red)">-14,850</td>
+        <td style="font-weight:800;color:var(--green)">+129,300</td>
+        <td>8.6%</td>
       </tr>
       <tr>
         <td>7</td>
@@ -798,17 +913,6 @@
       </tr>
       <tr>
         <td>8</td>
-        <td>ANA VISAプレミアム</td>
-        <td style="font-size:11px">ANAマイル(2.0円)</td>
-        <td>100万</td>
-        <td>+74,000</td>
-        <td>0</td>
-        <td style="color:var(--red)">-9,900</td>
-        <td style="font-weight:700;color:var(--green)">+64,100</td>
-        <td>6.4%</td>
-      </tr>
-      <tr>
-        <td>9</td>
         <td>三井住友プラチナプリファード</td>
         <td style="font-size:11px">Vpt→ANA(1.2円)</td>
         <td>40万</td>
@@ -819,7 +923,7 @@
         <td style="font-weight:700;color:var(--tier-s)">13.9%</td>
       </tr>
       <tr>
-        <td>10</td>
+        <td>9</td>
         <td>ANAアメックス（一般）</td>
         <td style="font-size:11px">MR→ANA(2.0円)</td>
         <td>70万</td>
@@ -828,6 +932,17 @@
         <td style="color:var(--red)">-6,930</td>
         <td style="font-weight:700;color:var(--green)">+49,370</td>
         <td>7.1%</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>ANAダイナースクラブ</td>
+        <td style="font-size:11px">ダイナースpt→ANA(2.0円)</td>
+        <td>200万</td>
+        <td>+85,000</td>
+        <td style="color:var(--red)">-20,000</td>
+        <td style="color:var(--red)">-19,800</td>
+        <td style="font-weight:700;color:var(--green)">+45,200</td>
+        <td>2.3%</td>
       </tr>
       <tr>
         <td>11</td>
@@ -842,17 +957,6 @@
       </tr>
       <tr>
         <td>12</td>
-        <td>ANAダイナースクラブ</td>
-        <td style="font-size:11px">ダイナースpt→ANA(2.0円)</td>
-        <td>200万</td>
-        <td>+75,000</td>
-        <td style="color:var(--red)">-20,000</td>
-        <td style="color:var(--red)">-19,800</td>
-        <td style="font-weight:700;color:var(--green)">+35,200</td>
-        <td>1.8%</td>
-      </tr>
-      <tr>
-        <td>13</td>
         <td>三井住友Visa Infinite</td>
         <td style="font-size:11px">Vpt→ANA(1.2円)</td>
         <td>100万</td>
@@ -862,8 +966,30 @@
         <td style="font-weight:700;color:var(--green)">+23,100</td>
         <td>2.3%</td>
       </tr>
+      <tr>
+        <td>13</td>
+        <td>Amexプラチナ（プロパー）</td>
+        <td style="font-size:11px">MR→Delta(1.5円)+TC</td>
+        <td>400万</td>
+        <td>+210,000</td>
+        <td style="color:var(--red)">-40,000</td>
+        <td style="color:var(--red)">-39,600</td>
+        <td style="font-weight:700;color:var(--green)">+130,400</td>
+        <td>3.3%</td>
+      </tr>
       <tr class="danger-row">
-        <td>14</td>
+        <td>15</td>
+        <td>JCBプラチナ</td>
+        <td style="font-size:11px">OkiDoki(1.0円)</td>
+        <td>50万</td>
+        <td>+3,000</td>
+        <td>0</td>
+        <td style="color:var(--red)">-4,950</td>
+        <td style="font-weight:800;color:var(--red)">-1,950</td>
+        <td style="color:var(--red)">赤字</td>
+      </tr>
+      <tr class="danger-row">
+        <td>16</td>
         <td>マリオットBonvoyプレミアム</td>
         <td style="font-size:11px">MBpt→マイル(0.83円)</td>
         <td>150万</td>
@@ -873,27 +999,40 @@
         <td style="font-weight:800;color:var(--red)">-24,725</td>
         <td style="color:var(--red)">赤字</td>
       </tr>
+      <tr class="danger-row">
+        <td>17</td>
+        <td>ANA VISAプレミアム</td>
+        <td style="font-size:11px">ANAマイル(2.0円)</td>
+        <td>100万</td>
+        <td>-66,000</td>
+        <td>0</td>
+        <td style="color:var(--red)">-9,900</td>
+        <td style="font-weight:800;color:var(--red)">-75,900</td>
+        <td style="color:var(--red)">赤字</td>
+      </tr>
     </tbody>
   </table>
   </div>
 
   <div style="margin-top:12px;font-size:12px;color:var(--gray)">
     ★ = 裏紹介ルート前提。還元率 = 税金時利益 ÷ 必要利用額<br>
-    ※ マイル換算：ANAマイル=JALマイル=2.0円 / デルタマイル=1.5円 / Vpt=1.2円(ANA60%) / マリオットpt=0.83円<br>
+    ※ マイル換算：ANAマイル=JALマイル=2.0円 / デルタマイル=1.5円 / Vpt=1.2円(ANA60%) / マリオットpt=0.83円 / OkiDoki=1.0円<br>
     ※ BizGold紹介：170,000pt×1.5円−年会費49,500円＝元の利益+207,000円（300万/10ヶ月）<br>
-    ※ ANAアメプレミアム：185,500マイル×2.0円−年会費165,000円＝元の利益+206,000円（400万/3ヶ月。マイ友込み）<br>
+    ※ ANAアメプレミアム：205,400マイル×2.0円−年会費165,000円＝元の利益+245,800円（紹介200k+マイ友5.4k。400万/3ヶ月。〜4/14期間限定）<br>
     ※ ANAアメ一般：35,500マイル×2.0円−年会費7,700円＝元の利益+63,300円（70万/3ヶ月。マイ友込み）<br>
     ※ BizPlat★特別紹介：290,000pt×1.5円+5万HC−年会費165,000円＝元の利益+320,000円（〜5/11）<br>
     ※ BizGold★裏紹介（600万フル）：160,000pt×1.5円+旅行8万円−年会費49,500円＝元の利益+270,500円。200万:+63,200 / 400万:+95,900 / 600万:+166,100<br>
-    ※ ANAダイナース：54,000マイル×2.0円−年会費33,000円＝元の利益+75,000円（Aコース200万/3ヶ月。マイ友含む。4月〜新キャンペーン）<br>
+    ※ ANAダイナース：59,000マイル×2.0円−年会費33,000円＝元の利益+85,000円（Aコース200万/3ヶ月。マイ友込み。特典②5kpt含む。⚠7/16〜税金pt変更）<br>
     ※ JAL Club-Aゴールド：50,000マイル×2.0円−年会費17,600円＝元の利益+82,400円（150万/3ヶ月。搭乗5kマイル含む）<br>
-    ※ Visa Infinite：110,000pt×1.2円−年会費99,000円＝元の利益+33,000円（100万/3ヶ月。税金2%ボーナス終了後）
+    ※ Visa Infinite：110,000pt×1.2円−年会費99,000円＝元の利益+33,000円（100万/3ヶ月。税金2%ボーナス終了後）<br>
+    ※ Amexプラチナ：230,000pt×1.5円+3万TC−年会費165,000円＝元の利益+210,000円（150万/4ヶ月+400万/8ヶ月）<br>
+    ※ JCBプラチナ：年会費相当27,500pt+利用分3,000pt−年会費27,500円＝元の利益+3,000円（50万/入会3ヶ月。税金で取れるのは年会費相当ptのみ。4/1〜9/30）
   </div>
 </div>
 
 <!-- 1. 手数料 -->
 <div class="section">
-  <h2 class="section-title"><span class="num">4</span>カード納付の手数料</h2>
+  <h2 class="section-title"><span class="num">B</span>カード納付の手数料</h2>
   <div class="fee-grid">
     <div class="fee-card">
       <h3>国税（所得税・消費税等）</h3>
@@ -919,7 +1058,7 @@
 
 <!-- マイル移行前提の換算レート -->
 <div class="section">
-  <h2 class="section-title"><span class="num">★</span>マイル移行前提の換算レート</h2>
+  <h2 class="section-title"><span class="num">C</span>マイル移行前提の換算レート</h2>
   <p style="font-size:13px;color:var(--gray);margin-bottom:16px">各カードで獲得できるポイント種別が異なるため、<strong>全てマイルへの移行を前提</strong>に円換算を統一</p>
 
   <div class="table-scroll">
@@ -996,7 +1135,7 @@
 
 <!-- 2. 各カードの税金納付条件 -->
 <div class="section">
-  <h2 class="section-title"><span class="num">5</span>税金納付時のポイント還元条件</h2>
+  <h2 class="section-title"><span class="num">D</span>税金納付時のポイント還元条件</h2>
 
   <div class="highlight-box info">
     <h4>全カード共通</h4>
@@ -1141,7 +1280,7 @@
 
 <!-- 3. 実質還元率（手数料差引後） -->
 <div class="section">
-  <h2 class="section-title"><span class="num">6</span>税金納付の実質還元率（手数料差引後）</h2>
+  <h2 class="section-title"><span class="num">E</span>税金納付の実質還元率（手数料差引後）</h2>
   <p style="font-size:13px;color:var(--gray);margin-bottom:16px">入会特典を除く通常利用ベース。マイル移行換算後の値から国税手数料0.99%を差し引いた実質リターン</p>
 
   <div class="legend">
@@ -1201,7 +1340,7 @@
 
 <!-- 6. 決済額連動の別枠特典 -->
 <div class="section">
-  <h2 class="section-title"><span class="num">7</span>決済額連動の別枠特典（ポイント以外）</h2>
+  <h2 class="section-title"><span class="num">F</span>決済額連動の別枠特典（ポイント以外）</h2>
   <p style="font-size:13px;color:var(--gray);margin-bottom:20px">ポイント/マイル還元とは別に、決済額の閾値で獲得できる特典。税金支払いもカウント対象のものが多い</p>
 
   <div class="table-scroll">
@@ -1360,66 +1499,9 @@
   </div>
 </div>
 
-<!-- 7. 要注意 -->
-<div class="section">
-  <h2 class="section-title"><span class="num">8</span>税金だけでは取れない特典（要注意）</h2>
-
-  <div class="highlight-box warn">
-    <h4>Amexビジネスプラチナ★：全額税金は大赤字</h4>
-    <p>特別紹介ルートでも最大特典290,000ptのうち、<strong>Amazon利用の140,000pt</strong>は税金支払いでは取得不可。<br>
-    全額税金の場合、利益は+250,400円→<strong style="color:var(--red)">+40,400円に激減</strong>。必ずAmazon100万円と併用すること。<br>
-    <span style="font-size:12px;color:var(--gray)">※ 140,000pt × 1.5円(デルタ換算) = 210,000円の逸失</span></p>
-  </div>
-
-  <div class="table-scroll">
-  <table class="caveat-table">
-    <thead>
-      <tr>
-        <th>カード</th>
-        <th>税金で取得不可</th>
-        <th>逸失額（マイル換算）</th>
-        <th>対応策</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>ANA VISAプレミアム</td>
-        <td>ANA Pay 1,500 + 搭乗 3,000マイル</td>
-        <td>9,000円</td>
-        <td>ANA Pay利用＋搭乗で回収可能</td>
-      </tr>
-      <tr>
-        <td>Amexビジネスゴールド★裏紹介</td>
-        <td>追加利用ボーナス(400万:2.5万/600万:5万)</td>
-        <td>最大112,500円<span style="font-size:11px;color:var(--gray)">（×1.5円）</span></td>
-        <td>決済額を積み増し（税金でも可）</td>
-      </tr>
-      <tr style="background:#fef2f2">
-        <td style="color:var(--red)">Amexビジネスプラチナ★</td>
-        <td style="color:var(--red);font-weight:700">Amazon 140,000pt</td>
-        <td style="color:var(--red);font-weight:700">210,000円<span style="font-size:11px">（×1.5円）</span></td>
-        <td>Amazon100万円が必須</td>
-      </tr>
-      <tr>
-        <td>三井住友PP</td>
-        <td>タッチ決済7,000+20%還元10,000Vpt</td>
-        <td>20,400円<span style="font-size:11px;color:var(--gray)">（×1.2円）</span></td>
-        <td>少額タッチ決済で別途取得可</td>
-      </tr>
-      <tr>
-        <td>JAL Club-Aゴールド</td>
-        <td>入会搭乗ボーナス 5,000マイル</td>
-        <td>10,000円</td>
-        <td>JAL搭乗で取得</td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
-</div>
-
 <!-- 9. 注意事項 -->
 <div class="section">
-  <h2 class="section-title"><span class="num">9</span>注意事項</h2>
+  <h2 class="section-title"><span class="num">G</span>注意事項</h2>
   <div class="highlight-box info">
     <h4>免責・前提条件</h4>
     <ul>
@@ -1430,20 +1512,18 @@
       <li><strong>マイル移行前提の換算レート</strong>：ANAマイル=JALマイル=ダイナースpt=2.0円 / デルタマイル=1.5円 / Vpt=1.2円(ANA60%) / マリオットpt=0.83円</li>
       <li>Amexプロパー→ANA移行(1pt=2.0円)を選ぶ場合、年40,000マイル上限のため本分析の数値より高くなるが移行に複数年かかる</li>
       <li><strong>ANAカードの入会特典にはマイ友プログラムを含む</strong>：ANA VISAプレミアム(+5,400マイル)、ANAアメックスゴールド(+2,000マイル)、ANAダイナース(+2,000マイル)</li>
-      <li><strong>ANAダイナース（4月〜大幅変更）</strong>：50,000期間限定マイル一括付与は3/31終了。新Aコースは段階付与で最大54,000マイル（マイ友込み）。年会費は33,000円に改定済み。ANA Payチャージでpt加算の新サービス開始</li>
+      <li><strong>ANAダイナース（4月〜大幅変更）</strong>：50,000期間限定マイル一括付与は3/31終了。新Aコースは最大59,000マイル（マイ友込み。特典②5kpt含む=2年目年会費引落条件）。年会費33,000円。<strong style="color:var(--red)">⚠2026年7月16日〜税金pt加算ルール変更予定</strong></li>
       <li><strong>三井住友Visa Infinite</strong>：税金2%ボーナスキャンペーン(~3/31)は終了。常設入会特典は100万/3ヶ月で100,000pt。5月〜Olive Infiniteへの切替キャンペーンあり</li>
       <li><strong>JAL Club-Aゴールド</strong>：150万/3ヶ月で最大50,000マイル（Visaボーナス30k+ショッピング15k+搭乗5k）。4/30 Web受付まで</li>
-      <li><strong>Amexビジネスゴールド紹介</strong>：4月〜キャンペーン条件変更。80万/4ヶ月+250万/8ヶ月の段階方式。最大170,000pt（対象加盟店50kpt含む）</li>
+      <li><strong>Amexビジネスゴールド紹介</strong>：4月〜キャンペーン条件変更。80万/4ヶ月+200万/8ヶ月+300万/10ヶ月の段階方式。最大170,000pt</li>
       <li><strong>三井住友PP</strong>：紹介特典4月限定16,000pt（通常12,000pt）に増量中。分割払い手数料全額pt還元は4/30終了</li>
     </ul>
   </div>
 </div>
 
-<div class="cta-banner">
-  <p>各カードの紹介入会・ANAマイ友プログラムで最もお得に入会できます</p>
-  <div class="cta-sub">紹介経由で入会特典が大幅アップするカードが多数あります</div>
-  <a class="cta-ig" href="https://www.instagram.com/ino_moneycoach/" target="_blank">Instagram @ino_moneycoach にDMください</a>
-</div>
+  </div><!-- accordion-body-inner -->
+  </div><!-- accordion-body -->
+</div><!-- accordion -->
 
 <div class="footer">
   クレジットカード納税活用 実質リターン分析 &mdash; 2026年4月8日更新（初版 3月3日）<br>
@@ -1511,14 +1591,14 @@ const cards = [
     name: 'ANAダイナースクラブ',
     required: 200,
     annualFee: 33000,
-    firstYearProfit: 35200,
+    firstYearProfit: 45200,
     taxRate: 0.005,
     taxRateValue: 1.0, // 0.5%ダイナースpt × 2.0円(ANA)
     normalRate: 0.01,
     normalRateValue: 2.0, // 1%pt × 2.0円
     rateReductionPerMan: 100, // (1%-0.5%) × 10000 × 2.0円 = 100
-    bonusTotal: 108000, // 54,000マイル × 2円
-    note: 'Aコース200万/3ヶ月。年会費33,000円(4月改定)。マイ友込み54kマイル'
+    bonusTotal: 118000, // 59,000マイル × 2円（入会2k+特典①30k+特典②5k+通常20k+マイ友2k）
+    note: 'Aコース200万/3ヶ月。年会費33,000円。マイ友込み59kマイル。⚠7/16〜税金pt変更'
   },
   {
     name: 'JAL Club-Aゴールド',
@@ -1563,14 +1643,14 @@ const cards = [
     name: 'ANA VISAプレミアム',
     required: 100,
     annualFee: 96800,
-    firstYearProfit: 64100, // ANAマイル(2.0円)換算
+    firstYearProfit: -75900, // 入会特典10kマイルに大幅縮小
     taxRate: 0.015,
     taxRateValue: 3.0, // 1.5%ANAマイル × 2.0円
     normalRate: 0.015,
     normalRateValue: 3.0,
     rateReductionPerMan: 0,
-    bonusTotal: 170800, // 85,400マイル × 2円
-    note: '100万/3ヶ月。ANAマイル直接獲得。税金でも1.5%維持'
+    bonusTotal: 30800, // 15,400マイル × 2円（入会10k+マイ友5.4k）
+    note: '入会特典10kマイルに縮小。年会費96,800円で赤字。ただし税金1.5%維持は最強'
   },
   {
     name: '三井住友プラチナプリファード',
@@ -1602,14 +1682,14 @@ const cards = [
     name: 'ANAアメックスプレミアム',
     required: 400,
     annualFee: 165000,
-    firstYearProfit: 126400, // MR→ANA(2.0円)換算
+    firstYearProfit: 166200, // MR→ANA(2.0円)換算
     taxRate: 0.005,
     taxRateValue: 1.0, // 0.5%MR × 2.0円(ANA) = 1.0%
     normalRate: 0.01,
     normalRateValue: 2.0,
     rateReductionPerMan: 100,
-    bonusTotal: 371000, // 185,500マイル × 2円
-    note: '紹介経由185.5kマイル。400万/3ヶ月。MR→ANA 1:1(上限なし)。マイ友込み'
+    bonusTotal: 410800, // 205,400マイル × 2円（紹介200k+マイ友5.4k）
+    note: '紹介200kマイル+マイ友5.4k。400万/3ヶ月。〜4/14期間限定。ANA移行上限なし'
   },
   {
     name: 'ANAアメックス（一般）',
@@ -1633,7 +1713,7 @@ const cards = [
     taxRateValue: 0.415, // 0.5%MBpt × 0.83円
     normalRate: 0.03,
     normalRateValue: 2.49, // 3%MBpt × 0.83円
-    rateReductionPerMan: 208,
+    rateReductionPerMan: 207.5,
     bonusTotal: 103750, // 125,000pt × 0.83円
     note: '150万/6ヶ月。MBpt→マイル(0.83円)。税金で1/6激減。赤字'
   }
