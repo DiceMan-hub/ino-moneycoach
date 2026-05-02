@@ -1,2 +1,16 @@
+# OS
 .DS_Store
+
+# 機密情報
 *.env
+.env*
+*.key
+*.pem
+*.secret
+credentials.*
+*secret*
+*credential*
+
+# APIキー等が混入しやすいファイル
+*.log
+config.local.*
