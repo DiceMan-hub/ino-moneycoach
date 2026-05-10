@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FHR / THC 完全攻略ガイド｜予約のコツから上振れ事例まで</title>
+<style>
+:root{
+  --brand:#14C1BD; --brand-dark:#0E8F8C; --brand-deep:#0B7876;
+  --brand-light:#E8F8F8; --brand-lighter:#F5FBFB;
+  --ink:#1E3150; --body:#2A2A2A; --sub:#444; --muted:#666; --faint:#999;
+  --rule:#DADADA; --rule-soft:#EDEDED;
+  --bg:#FFFFFF; --bg-alt:#F5F5F5;
+  --red:#D32F2F; --red-bg:#FFEBEE;
+  --green:#388E3C; --green-bg:#E8F5E9;
+  --warning:#F57C00; --warning-bg:#FFF3E0;
+  --font:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font); color:var(--body); background:var(--bg);
+  margin:0; line-height:1.8; font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+.container{max-width:840px; margin:0 auto; padding:24px 20px 80px}
+
+.hero{
+  background:linear-gradient(135deg,#F5FBFB 0%,#E8F8F8 100%);
+  border-radius:20px; padding:40px 28px;
+  margin-bottom:40px; position:relative; overflow:hidden;
+  border:1px solid rgba(20,193,189,0.18);
+}
+.hero::before{
+  content:""; position:absolute; top:-40px; right:-40px;
+  width:160px; height:160px; border-radius:50%;
+  background:radial-gradient(circle,rgba(20,193,189,0.18) 0%,transparent 70%);
+}
+.hero .eyebrow{
+  display:inline-block; background:var(--brand); color:#fff;
+  font-weight:800; font-size:12px; letter-spacing:0.14em;
+  padding:6px 14px; border-radius:9999px; margin-bottom:16px;
+}
+.hero h1{
+  font-size:30px; font-weight:900; color:var(--ink); margin:0 0 14px;
+  line-height:1.4;
+}
+.hero .lead{color:var(--sub); font-size:16px; margin:0; line-height:1.8}
+
+.toc{background:var(--bg-alt); border-radius:14px; padding:24px 28px; margin-bottom:48px}
+.toc h2{font-size:14px; font-weight:800; color:var(--ink); margin:0 0 14px; letter-spacing:0.14em; text-transform:uppercase}
+.toc ol{margin:0; padding-left:24px}
+.toc li{margin:8px 0; font-size:15px}
+.toc a{color:var(--ink); text-decoration:none; font-weight:600}
+.toc a:hover{color:var(--brand-dark)}
+
+h2.section{
+  font-size:24px; font-weight:800; color:var(--ink);
+  margin:56px 0 20px; padding:8px 0 8px 18px;
+  border-left:5px solid var(--brand); line-height:1.4;
+}
+h3{font-size:19px; font-weight:700; color:var(--ink); margin:36px 0 14px; line-height:1.5}
+h4{font-size:16px; font-weight:700; color:var(--ink); margin:24px 0 10px}
+p{margin:0 0 14px}
+strong{color:var(--ink); font-weight:700}
+ul,ol{padding-left:22px; margin:0 0 16px}
+li{margin:6px 0}
+li::marker{color:var(--brand-dark)}
+
+.callout{
+  background:var(--brand-light); border-left:4px solid var(--brand);
+  padding:16px 20px; border-radius:0 10px 10px 0;
+  margin:20px 0; font-size:15px;
+}
+.callout strong{color:var(--brand-deep)}
+.callout.warning{background:var(--warning-bg); border-color:var(--warning)}
+.callout.warning strong{color:#B85A00}
+.callout.tip{background:var(--bg-alt); border-color:var(--ink)}
+.callout.tip strong{color:var(--ink)}
+.callout.fire{
+  background:linear-gradient(135deg,#FFF3E0,#FFE0B2);
+  border-color:#F57C00;
+}
+
+.table-wrap{overflow-x:auto; margin:20px 0}
+table{width:100%; border-collapse:collapse; font-variant-numeric:tabular-nums; font-size:14px}
+th,td{padding:12px 14px; text-align:left; border-bottom:1px solid var(--rule-soft); vertical-align:top}
+th{background:var(--ink); color:#fff; font-weight:700; letter-spacing:0.04em; font-size:13px}
+tr:nth-child(even) td{background:var(--bg-alt)}
+table strong{color:var(--brand-deep)}
+
+.kpi-row{
+  display:grid; gap:14px; margin:24px 0;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+}
+.kpi-card{
+  background:var(--brand-light); border-radius:12px;
+  padding:20px 16px; text-align:center;
+  border:1px solid rgba(20,193,189,0.18);
+}
+.kpi-card .num{font-size:30px; font-weight:900; color:var(--brand-deep); line-height:1.2}
+.kpi-card .label{font-size:13px; font-weight:600; color:var(--muted); margin-top:6px}
+
+.compare-card{
+  background:var(--bg); border:2px solid var(--brand);
+  border-radius:16px; padding:24px 26px;
+  margin:20px 0;
+}
+.compare-card h3{margin-top:0; color:var(--brand-deep)}
+
+.code-block{
+  background:var(--ink); color:#E8F8F8;
+  font-family:ui-monospace,Menlo,Consolas,monospace;
+  font-size:14px; line-height:1.7;
+  padding:20px 24px; border-radius:12px;
+  margin:20px 0; overflow-x:auto;
+  white-space:pre;
+}
+.code-block .accent{color:var(--brand)}
+
+.case-card{
+  background:linear-gradient(135deg,#F5FBFB,#E8F8F8);
+  border:1px solid rgba(20,193,189,0.25);
+  border-radius:16px; padding:26px 28px;
+  margin:24px 0;
+}
+.case-card .badge{
+  display:inline-block; background:var(--brand); color:#fff;
+  padding:4px 12px; border-radius:9999px;
+  font-size:12px; font-weight:800; letter-spacing:0.1em;
+  margin-bottom:12px;
+}
+.case-card h3{margin-top:0; color:var(--ink)}
+
+a{color:var(--brand-deep); text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:3px}
+a:hover{color:var(--ink)}
+
+.cta{
+  background:linear-gradient(135deg,var(--ink) 0%,#2A4570 100%);
+  color:#fff; border-radius:18px; padding:32px 28px;
+  margin:48px 0 0; text-align:center;
+}
+.cta h2{font-size:20px; font-weight:800; margin:0 0 12px; color:#fff; padding:0; border:0}
+.cta p{color:rgba(255,255,255,0.85); margin:0 0 20px; font-size:15px}
+.cta a.btn{
+  display:inline-block; background:var(--brand); color:#fff;
+  padding:14px 32px; border-radius:9999px;
+  font-weight:800; text-decoration:none; font-size:15px;
+  letter-spacing:0.04em;
+}
+.cta a.btn:hover{background:var(--brand-dark)}
+
+footer{
+  margin-top:48px; padding-top:24px;
+  border-top:1px solid var(--rule-soft);
+  text-align:center; font-size:13px; color:var(--faint); line-height:1.7;
+}
+
+.related{
+  background:var(--bg-alt); border-radius:14px;
+  padding:24px 26px; margin:28px 0;
+  border-left:4px solid var(--brand);
+}
+.related h3{margin-top:0; color:var(--ink)}
+.related .price{
+  display:inline-block; background:var(--brand-light); color:var(--brand-deep);
+  font-weight:800; font-size:13px; padding:4px 10px;
+  border-radius:6px; margin-left:8px;
+}
+
+@media (max-width:600px){
+  .container{padding:16px 14px 60px}
+  .hero{padding:28px 20px}
+  .hero h1{font-size:22px}
+  h2.section{font-size:20px; padding-left:14px}
+  h3{font-size:17px}
+  .toc{padding:18px 20px}
+  th,td{padding:10px 10px; font-size:13px}
+  .kpi-card .num{font-size:24px}
+  .code-block{font-size:12px; padding:16px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="hero">
+    <span class="eyebrow">いの紹介 限定特典 ②</span>
+    <h1>🏨 FHR / THC 完全攻略ガイド<br>～予約のコツから上振れ事例まで～</h1>
+    <p class="lead">アメックス・ビジネス・プラチナの特典のなかでも、使えば使うほど「バグってる」と実感するのがFHRとTHC。note記事では控えめに書いた部分も含めて、このガイドでは<strong>本音ベース</strong>で全部お話しします。実際にわたしたちが体験した「上振れ」も全部載せてます😊</p>
+    <p class="lead" style="margin-top:12px; font-size:14px;">📘 あわせてどうぞ：<a href="https://note.com/ino_moneycoach/n/nc07030ede427" target="_blank" rel="noopener">THC（ザ・ホテル・コレクション）攻略note 最新版</a> — 体験記ベースのスイートスポット解説note。本ガイドより詳しい事例ベースで学びたい方向け。</p>
+  </header>
+
+  <nav class="toc">
+    <h2>目次</h2>
+    <ol>
+      <li><a href="#sec1">FHR / THC とは？（違いと基本）</a></li>
+      <li><a href="#sec2">予約の方法とコツ</a></li>
+      <li><a href="#sec3">特典を最大化するテクニック</a></li>
+      <li><a href="#sec4">実際の体験レポ・上振れ事例</a></li>
+      <li><a href="#sec5">FSG（フリー・ステイ・ギフト）攻略</a></li>
+      <li><a href="#sec6">おすすめFHR / THCホテル（国内・海外）</a></li>
+      <li><a href="#summary">まとめ：FHR / THCで年会費の元を取る方程式</a></li>
+    </ol>
+  </nav>
+
+  <h2 class="section" id="sec1">1. FHR / THC とは？（違いと基本）</h2>
+
+  <h3>FHR（ファイン・ホテルズ＆リゾーツ）</h3>
+  <p>世界1,600以上の高級ホテルが対象。プラチナカード以上だけが使える、アメックスの最上位ホテルプログラムです。</p>
+  <p><strong>FHRで付いてくる特典（全部です）👇</strong></p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>特典</th><th>内容</th></tr></thead>
+      <tbody>
+        <tr><td>🛏️ 部屋アップグレード</td><td>空室状況に応じて、予約した部屋より上のカテゴリにアップグレード</td></tr>
+        <tr><td>🍳 朝食2名無料</td><td>ホテルのレストランで毎朝2名分無料。相場は国内で1名4,000〜8,000円、東南アジアで1名2,000〜4,000円</td></tr>
+        <tr><td>💵 100ドルホテルクレジット</td><td>館内レストラン・スパ・ミニバー等で使える約1.5万円分のクレジット</td></tr>
+        <tr><td>⏰ 16時レイトCO確約</td><td>「空室次第」ではなく<strong>確約</strong>。これがFHR最大の強み</td></tr>
+        <tr><td>🔑 アーリーチェックイン</td><td>12時チェックイン（空室次第）</td></tr>
+        <tr><td>📶 Wi-Fi無料</td><td>館内Wi-Fi無料</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout"><strong>💡 ここが重要</strong>　16時レイトCOが「<strong>確約</strong>」なのは、世界中のホテルプログラムを見渡してもFHRくらいです。ヒルトンのダイヤモンドでもマリオットのチタンでも、レイトCOは「空室次第」。FHRだけが「確約」してくれます。</div>
+
+  <h3>THC（ザ・ホテル・コレクション）</h3>
+  <p>FHRより手頃な価格帯のホテルが対象。</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>特典</th><th>内容</th></tr></thead>
+      <tbody>
+        <tr><td>💵 100ドルホテルクレジット</td><td><strong>2泊以上</strong>の予約で、館内で使える約1.5万円分のクレジット</td></tr>
+        <tr><td>🛏️ 部屋アップグレード</td><td>空室状況に応じて、予約した部屋より上のカテゴリにアップグレード</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>FHRと比べると特典は控えめですが、<strong>1泊あたりの宿泊費が安めのホテルが多い</strong>ので、トータルコスパが良いケースもあります。</p>
+
+  <h3>FHR vs THC 使い分けの結論</h3>
+  <div class="code-block">記念日・特別な旅行 → <span class="accent">FHR一択</span>（アップグレード＋朝食＋100ドルCで体験価値が爆上がり）
+出張・サクッと1泊  → <span class="accent">THC</span>（2泊以上なら100ドルCが付く。コスパ重視）
+迷ったら            → <span class="accent">FHR</span>（1泊でも100ドルC＋朝食が付くので確実にお得）</div>
+
+  <h2 class="section" id="sec2">2. 予約の方法とコツ</h2>
+
+  <h3>予約手順（超カンタンです）</h3>
+  <ol>
+    <li><strong>アメックストラベルオンライン</strong>にログイン</li>
+    <li>「FHR」または「THC」のタブから検索</li>
+    <li>日程・人数を入れて検索</li>
+    <li>ホテルを選んで予約確定</li>
+  </ol>
+  <p><strong>以上です。</strong>電話じゃなくてオンラインでサクッと完結します。</p>
+  <div class="callout"><strong>💡 コンシェルジュ経由もアリ</strong>　「このエリアでFHR対象のホテル、おすすめどこですか？」とプラチナ・セクレタリーに電話すると、条件に合ったホテルを提案してくれます。初めてで迷うなら電話が楽です。</div>
+
+  <h3>予約のベストタイミング</h3>
+  <ul>
+    <li><strong>2〜3ヶ月前</strong>がベスト。早すぎると料金が高め、直前だと空室がない</li>
+    <li><strong>平日泊</strong>のほうがアップグレード確率が格段に高い</li>
+    <li><strong>閑散期</strong>（1月・2月・6月・11月）はホテル側に余裕があるので、アップグレードされやすい</li>
+  </ul>
+
+  <h3>キャンセルポリシー（意外とハードル低い）</h3>
+  <div class="callout"><strong>💡 ここが嬉しい</strong>　FHR/THCは多くの場合、キャンセルポリシーが厳しくありません。チェックイン24〜72時間前まで無料キャンセルできるホテルがほとんどなので、「とりあえず押さえておいて、予定が変わったらキャンセル」がしやすいのは大きなメリットです。</div>
+  <ul>
+    <li><strong>チェックイン24〜72時間前</strong>まで無料キャンセル可能なケースが多い</li>
+    <li>期限を過ぎると<strong>1泊分のキャンセル料</strong>が発生する場合がある</li>
+    <li>ホテルごとに異なるので、<strong>予約確定画面で必ず確認</strong>してください</li>
+    <li>気になるホテルがあったら、<strong>先に予約して後から検討</strong>できるのがFHR/THCの良いところ</li>
+  </ul>
+
+  <h3>直接予約との料金比較</h3>
+  <p>「FHRって高いんでしょ？」——正直、<strong>素の宿泊料金だけ見るとFHRのほうが高いこともあります。</strong>でも特典を加味すると逆転します。</p>
+  <h4>例：フォーシーズンズKL（わたしたちの実例）</h4>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>項目</th><th>直接予約</th><th>FHR予約</th></tr></thead>
+      <tbody>
+        <tr><td>宿泊料金</td><td>約4.5万円</td><td>約4.9万円</td></tr>
+        <tr><td>朝食2名</td><td>別途8,000円</td><td><strong>無料</strong></td></tr>
+        <tr><td>100ドルクレジット</td><td>なし</td><td><strong>約1.5万円分</strong></td></tr>
+        <tr><td>16時チェックアウト</td><td>不確定</td><td><strong>確約</strong></td></tr>
+        <tr><td>アップグレード</td><td>不確定</td><td><strong>スイートに！（後述）</strong></td></tr>
+        <tr><td><strong>実質コスト</strong></td><td><strong>5.3万円+</strong></td><td><strong>実質2.6万円</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>料金差はわずか4,000円。でも特典差は2万円以上。</strong>これがFHRの破壊力です😳</p>
+
+  <h2 class="section" id="sec3">3. 特典を最大化するテクニック</h2>
+
+  <h3>テクニック① ホテル上級会員ステータスとの「二重取り」</h3>
+  <p>プラチナカードを持っているだけで付与される上級会員資格と、FHRの特典は<strong>併用できます。</strong>これがヤバいんです。</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>ホテルチェーン</th><th>付与ステータス</th><th>二重取りできる特典</th></tr></thead>
+      <tbody>
+        <tr><td>マリオット系</td><td>ゴールドエリート</td><td>14時レイトCO＋25%ボーナスポイント＋アップグレード</td></tr>
+        <tr><td>ヒルトン系</td><td>ゴールド</td><td>朝食無料（FHRでも付くので確実にダブル確定）＋アップグレード</td></tr>
+        <tr><td>プリンス系</td><td>プラチナ</td><td>アーリーCI＋レイトCO＋アップグレード</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout fire"><strong>🔥 特にヒルトン系はバグ級</strong>　FHRの朝食無料＋ヒルトンゴールドの朝食無料が重複するので、朝食が確実に付きます。さらにヒルトンゴールドのポイントも貯まる。FHRで泊まりながらヒルトンのポイントも稼げるって、普通に考えておかしいですよね😂</div>
+
+  <div class="callout warning"><strong>⚠️ マリオット系ゴールドの「14時レイトCO」はFHR16時確約に吸収されます</strong><br><br>FHR経由でマリオット系ホテルを予約した場合、<strong>FHR独自の「16時レイトCO確約」が優先</strong>され、マリオット側の「14時レイトCO」は実質的に無効化（吸収）されます。併用で18時まで延長されることはないので、レイトCOは「16時確約のみ」と理解してください。<br><br>ただし、<strong>25%ボーナスポイント＋アップグレード（空室次第）は併用で効きます</strong>。FHR の100ドルクレジット＋朝食2名＋16時レイトCO ＋ マリオット側の25%ボーナスポイント＋アップグレード の<strong>5点同時取得</strong>が、マリオット系FHR物件のスイートスポットです。</div>
+
+  <div class="callout warning"><strong>⚠️ 注意</strong>　マリオット系のFHRホテルでBonvoyポイントが付くかどうかはホテルにより異なります。チェックイン時にBonvoy番号を伝えておくと安心です。</div>
+
+  <h3>テクニック② 100ドルクレジットの賢い使い方</h3>
+  <p>100ドル（約15,000円）は<strong>使い切らないと消えます。</strong>残額の返金はありません。なので計画的に使いましょう。</p>
+  <p><strong>おすすめの使い方（優先順）：</strong></p>
+  <ol>
+    <li>🍽️ <strong>ホテル内レストランでのランチ・ディナー</strong> — 一番使いやすい。チェックアウト日のランチに充てるのが定番</li>
+    <li>💆 <strong>スパ・マッサージ</strong> — 高級ホテルのスパは1回1.5〜3万円するので、100ドルCでかなり助かる</li>
+    <li>🧺 <strong>ランドリーサービス</strong> — 出張時に意外と重宝</li>
+  </ol>
+  <div class="callout"><strong>💡 わたしたちの定番</strong>　チェックイン日の夕食は外で食べて、翌日のブランチ（朝食無料とは別枠）やチェックアウト前のランチに100ドルCを使い切る。フォーシーズンズKLでは点心ランチに使って最高でした🥟</div>
+  <div class="callout warning"><strong>⚠️ ミニバー・ルームサービスは多くの場合対象外</strong>　100ドルクレジットは「ホテル運営のレストラン・スパ等」が対象で、<strong>ミニバー・ルームサービス・テナント飲食店・外部委託スパは対象外</strong>のホテルが多いです。チェックイン時に「100ドルクレジットの対象施設リストをください」とフロントに確認して、使える場所を明確にしておくのが確実です。</div>
+
+  <h3>テクニック③ 16時レイトCOの活用法</h3>
+  <p>FHR最大の武器です。通常のチェックアウトは10〜12時。16時まで延長できるということは、<strong>実質半日分のホテル滞在が無料で増える</strong>ということ。</p>
+  <p><strong>こんな使い方が最高です：</strong></p>
+  <ul>
+    <li>✈️ <strong>深夜便の前に</strong>：16時CO→空港へ→22時〜の深夜便。ホテルでゆっくり荷造りできるので身体がラク</li>
+    <li>💼 <strong>ビジネス利用</strong>：午前中にミーティング→ホテルに戻ってワークスペースとして使う→16時CO</li>
+    <li>🏊 <strong>リゾート滞在</strong>：最終日もプール・ジム・サウナをフル活用してからCO</li>
+    <li>💰 <strong>100ドルCの消化</strong>：16時まで時間があるので、CO前にランチでクレジットを使い切れる</li>
+  </ul>
+  <h4>金額換算すると</h4>
+  <ul>
+    <li>一般的なFHRホテル（1泊5万円）の場合：1時間あたり約2,500円 × 5時間 ＝ <strong>約12,500円分の価値</strong></li>
+    <li>フォーシーズンズKLのスイート（1泊13万円）の場合：1時間あたり約6,200円 × 5時間 ＝ <strong>約31,000円分の価値</strong></li>
+  </ul>
+
+  <h3>テクニック④ アップグレードの確率を上げるコツ</h3>
+  <p>FHRのアップグレードは「空室次第」ですが、確率を上げる方法はあります。</p>
+  <p><strong>確率が上がる条件：</strong></p>
+  <ol>
+    <li>📅 <strong>平日にチェックイン</strong>（金・土は満室率が高くアップグレードされにくい）</li>
+    <li>📅 <strong>閑散期を狙う</strong>（1-2月、6月、11月あたり）</li>
+    <li>⏰ <strong>チェックイン時間を遅めにする</strong>（15時以降。早い時間だとまだ部屋の割り当てが確定していない）</li>
+    <li>🎉 <strong>特別なお祝いを伝える</strong>（誕生日・記念日・ハネムーン→予約時のリクエスト欄に記載）</li>
+    <li>😊 <strong>チェックイン時にフレンドリーに</strong>（「FHRで予約しています。アップグレードの可能性はありますか？」と笑顔で聞く）</li>
+  </ol>
+  <div class="callout"><strong>💡 裏技</strong>　ホテルの公式アプリでチェックイン前に部屋の割り当てを確認できることがあります。予約より上のカテゴリが表示されていたら、アップグレード可能性のサイン✨</div>
+
+  <h3>テクニック⑤ FHR + トラベルクレジット（年2万円）の組み合わせ</h3>
+  <p>ビジネスプラチナには<strong>毎年カード継続で2万円のトラベルクレジット</strong>（アメックストラベルオンラインで4万円以上の予約に適用）が付きます。</p>
+  <div class="code-block">FHR 5万円のホテルを予約
+  - トラベルクレジット → <span class="accent">-2万円</span>
+  - 100ドルクレジット → <span class="accent">-1.5万円</span>
+  - 朝食2名（相場8,000〜12,000円） → <span class="accent">-1万円</span>
+──────────────
+実質負担：<span class="accent">約0.5万円</span>
+
+しかもアップグレード＋16時CO付き😳</div>
+  <p><strong>5万円のホテルに実質5,000円で泊まれて、スイートにアップグレードされることもある。</strong>これ、冷静に考えておかしいですよね😂</p>
+  <div class="callout warning"><strong>⚠️ 注意</strong>　トラベルクレジットは年1回です。年間で最も価値の高いFHR予約にぶつけるのがベスト。</div>
+
+  <h2 class="section" id="sec4">4. 実際の体験レポ・上振れ事例</h2>
+
+  <div class="case-card">
+    <span class="badge">事例 ①</span>
+    <h3>フォーシーズンズ・クアラルンプール 🇲🇾</h3>
+    <p><strong>これが今までで一番の上振れでした。</strong></p>
+    <div class="table-wrap">
+      <table>
+        <tbody>
+          <tr><td>予約料金</td><td>約49,000円（最安の部屋）</td></tr>
+          <tr><td>アップグレード先</td><td><strong>ワンベッドルーム スイート（通常1泊13万円台）</strong></td></tr>
+          <tr><td>アップグレード幅</td><td><strong>4〜5段階アップ</strong></td></tr>
+          <tr><td>朝食</td><td>2名無料（オールデイダイニング）</td></tr>
+          <tr><td>100ドルクレジット</td><td>ハンバーガー・パスタ＋ミシュラン中華（Yun House）の点心に充当</td></tr>
+          <tr><td>16時CO</td><td>確約。午後もスイートでゆっくり</td></tr>
+          <tr><td>アーリーチェックイン</td><td>1時間前倒しでチェックイン</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h4>実質コスト計算</h4>
+    <div class="code-block">宿泊料金：     49,000円
+- 100ドルC：   <span class="accent">-15,000円</span>
+- 朝食（相場）：<span class="accent">-8,000円</span>
+───────────────
+実質負担：      <span class="accent">26,000円</span>
+
+受けた体験の価値：13万円のスイート＋食事＋16時CO ≒ 約16万円</div>
+    <p><strong>約2.6万円の負担で、16万円相当の体験。</strong>上振れ率は約6倍です。</p>
+    <p>9階の角部屋で、KLCCパークの噴水とKLタワーが一望。<strong>お風呂に入りながらKLの夜景が楽しめるビューバス付き</strong>で、これは本当に忘れられない体験でした✨</p>
+    <div class="callout"><strong>💡 なぜここまでアップグレードされたか（推測）</strong>　平日チェックイン＋閑散期＋FHR予約の組み合わせ。フォーシーズンズはFHRゲストを大切にするブランドとして知られています。いつもこの規模のアップグレードがあるわけではありませんが、FHRだからこそ起きた事例です。</div>
+  </div>
+
+  <h3>事例②：日常的なFHR利用（4ヶ月で4〜5回）</h3>
+  <p>わたしたちは4ヶ月で4〜5回FHR/THCを利用しています。すべてのステイでアップグレードされるわけではありませんが、<strong>100ドルクレジットと朝食は確実に付く</strong>ので、毎回しっかり回収できています。</p>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">¥6〜7.5万</div><div class="label">100ドルC × 4〜5回</div></div>
+    <div class="kpi-card"><div class="num">¥4〜6万</div><div class="label">朝食2名 × 4〜5回</div></div>
+    <div class="kpi-card"><div class="num">¥10〜13.5万</div><div class="label">4ヶ月の回収額</div></div>
+  </div>
+  <p><strong>これだけで年会費の実質コスト（45,500円）を余裕で超えます。</strong>FHR/THCを年に3回以上使う人なら、他の特典を一切使わなくても元が取れてしまう計算です。</p>
+
+  <h3>1泊あたりの実質コスト計算テンプレート</h3>
+  <p>自分のFHR予約で「実質いくらだったか」を計算するときは、このテンプレートを使ってください。</p>
+  <div class="code-block">宿泊料金：         ○○○円
+- 100ドルC（約15,000円）：-15,000円
+- 朝食2名（相場で計算）：  -○,○○○円
+- トラベルC（使った場合）：-20,000円
+───────────────────────
+実質負担：         ○○○円
+
+受けた体験価値：
+  アップグレード先の通常料金：○○○円
+  16時CO延長分（1時間×単価×延長時間）：○○○円
+  合計体験価値：    ○○○円</div>
+
+  <h2 class="section" id="sec5">5. FSG（フリー・ステイ・ギフト）攻略</h2>
+
+  <h3>FSGとは</h3>
+  <p>カードを更新するだけで、<strong>毎年自動的に高級ホテル1泊2名まで無料で宿泊できる</strong>宿泊券が届きます。ビジネスプラチナの場合は、決済額の条件なし（ゴールドプリファードは年200万円利用が条件）。</p>
+  <p>しかも<strong>プラチナ会員は2つのリストのホテルが両方使えます</strong>：</p>
+  <ul>
+    <li><strong>プレミアムFSGリスト</strong>（プラチナ専用）→ 高級ホテル中心</li>
+    <li><strong>ゴールドプリファードFSGリスト</strong> → こちらも利用可能</li>
+  </ul>
+  <p>つまり選べるホテルの数がめちゃくちゃ多い。</p>
+
+  <h3>2026年度の対象ホテル（注目ピックアップ）</h3>
+
+  <h4>プレミアムFSG（プラチナ専用）の注目ホテル</h4>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>ホテル</th><th>エリア</th><th>通常1泊の相場</th><th>おすすめポイント</th></tr></thead>
+      <tbody>
+        <tr><td><strong>キャノピー by ヒルトン大阪梅田</strong> 🆕</td><td>大阪</td><td>約3.4万〜17万円</td><td><strong>今回追加で最高単価。</strong>週末は17万円にも。ヒルトンゴールドの朝食無料と併用可</td></tr>
+        <tr><td><strong>キャノピー by ヒルトン沖縄宮古島</strong> 🆕</td><td>沖縄</td><td>約3.2万〜9.7万円</td><td><strong>2026年4月開業。</strong>ピカピカの新ホテルに無料で泊まれる</td></tr>
+        <tr><td><strong>ザ・プリンス パークタワー東京</strong></td><td>東京</td><td>約4万〜8万円</td><td>東京タワービュー。プリンスプラチナのレイトCOと併用可</td></tr>
+        <tr><td><strong>ザ・プリンス 箱根芦ノ湖</strong></td><td>箱根</td><td>約3万〜6万円</td><td>温泉リゾート。のんびり過ごしたい人に</td></tr>
+        <tr><td><strong>ヒルトン京都</strong></td><td>京都</td><td>約2.2万〜10万円超</td><td>京都の好立地。紅葉シーズン以外が狙い目</td></tr>
+        <tr><td><strong>東京マリオットホテル</strong></td><td>東京</td><td>時期により変動</td><td>マリオットゴールド特典との二重取り</td></tr>
+        <tr><td><strong>ウェスティンホテル横浜</strong></td><td>横浜</td><td>時期により変動</td><td>対象外日が少ない＝予約しやすい！</td></tr>
+        <tr><td><strong>ヒルトン沖縄宮古島リゾート</strong></td><td>沖縄</td><td>時期により変動</td><td>リゾート満喫。ヒルトンゴールドの朝食無料と併用</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>ゴールドプリファードFSG（プラチナ会員も利用可）の注目ホテル</h4>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>ホテル</th><th>エリア</th><th>通常1泊の相場</th><th>おすすめポイント</th></tr></thead>
+      <tbody>
+        <tr><td><strong>沖縄プリンス オーシャンビューぎのわん</strong> 🆕</td><td>沖縄</td><td>約1.8万〜6.6万円</td><td>リゾート感あり。プリンスプラチナ特典併用可</td></tr>
+        <tr><td><strong>福岡プリンスホテル ももち浜</strong> 🆕</td><td>福岡</td><td>約1.9万〜3.7万円</td><td><strong>2026年3月開業。</strong>最新ホテルを無料で</td></tr>
+        <tr><td><strong>アロフト東京銀座</strong> 🆕</td><td>東京</td><td>時期により変動</td><td>おしゃれカジュアル。出張の1泊に</td></tr>
+        <tr><td><strong>モクシー京都</strong> 🆕</td><td>京都</td><td>約1.6万〜8.1万円</td><td>桜・紅葉時期は8万円超え！その時期に使えたら超お得</td></tr>
+        <tr><td><strong>アロフト大阪堂島</strong> 🆕</td><td>大阪</td><td>約2.6万〜4.9万円</td><td>デザイン性高い。週末は5万近くに</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>FSGの予約タイミング（超重要）</h3>
+  <div class="callout warning"><strong>📅 4月に動いてください。マジで。</strong></div>
+  <p><strong>FSG対象ホテルのリストは毎年4月に新年度版へ更新</strong>され、そこから新年度の予約受付がスタートします。届いたらすぐ動くべき理由：</p>
+  <ul>
+    <li><strong>人気ホテルの空室はすぐ埋まる</strong>（特にキャノピー系、プリンスパークタワー、沖縄リゾート系）</li>
+    <li><strong>除外日が多いホテルもある</strong>（ヒルトン系は4月初旬・GW・お盆・年末年始・2月が除外）</li>
+    <li><strong>夏休みの沖縄を狙うなら4月中に予約必須</strong></li>
+  </ul>
+  <div class="callout"><strong>💡 わたしたちの戦略</strong>　リスト更新を確認したら、第1候補〜第3候補までを早い段階で押さえに行く。希望日が確定しているなら4月のうちに動くのがベストです。</div>
+
+  <h3>ホテル上級会員特典との併用（FSG最大のコツ）</h3>
+  <p>FSGは<strong>ホテル・メンバーシップの特典と併用可能</strong>と公式に明記されています。つまり：</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>ホテルチェーン</th><th>付与ステータス</th><th>FSGと併用で得られる特典</th></tr></thead>
+      <tbody>
+        <tr><td>ヒルトン系</td><td>ゴールド</td><td><strong>朝食2名無料</strong>＋ 部屋アップグレード（空室次第）</td></tr>
+        <tr><td>マリオット系</td><td>ゴールドエリート</td><td>14時レイトCO ＋ 25%ボーナスポイント ＋ アップグレード（空室次第）</td></tr>
+        <tr><td>プリンス系</td><td>プラチナメンバー</td><td>アーリーCI ＋ レイトCO ＋ アップグレード</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout fire"><strong>🔥 特にヒルトン系FSGが最強</strong><br>FSG（1泊無料）＋ ヒルトンゴールド（朝食2名無料＋アップグレード）＝ <strong>完全無料で高級ホテルに朝食付きで泊まれる。</strong><br><br>キャノピー by ヒルトン大阪梅田（通常5〜17万円）でこれが実現したら、控えめに言って破壊力がすごいです。</div>
+
+  <h3>2泊する場合の連泊テクニック</h3>
+  <p>対象ホテルの多くで、<strong>2連泊以上すると5,000円のホテルクレジット</strong>が付きます。</p>
+  <div class="code-block">FSG（1泊無料）＋ 2泊目（自費）
+→ <span class="accent">5,000円ホテルクレジット付与</span>
+→ ヒルトンゴールドなら朝食も2日とも無料
+
+つまり2泊目の実費は「宿泊料金 - 5,000円 - 朝食代」で、かなりお得に😊</div>
+  <div class="callout warning"><strong>⚠️ 必ず電話で「FSG専用の連泊プラン」を予約</strong>　5,000円ホテルクレジットは <strong>FSG専用の連泊プランで予約した場合のみ</strong> 適用されます。<strong>各ホテルへ直接電話</strong>して「FSG（フリー・ステイ・ギフト）の2泊目を申し込みたい」と伝えてください。<br><br>自分でホテル公式アプリ・Webサイト・OTAなどから2泊目を予約してしまうと、<strong>5,000円クレジットの対象外</strong>になる可能性が高いです。1泊目（FSG無料分）と2泊目を別予約にしてしまった場合も同様。</div>
+  <div class="callout warning"><strong>⚠️ 補足</strong>　一部のホテルはそもそも5,000円クレジット非対象です。対象かどうかは各ホテルの欄に「【2泊目】5,000円分」の記載があるか確認してください。</div>
+
+  <h3>FSGリスト（全ホテル一覧）</h3>
+  <p>👉 <strong>プラチナ向けプレミアムFSG：</strong> <a href="https://bit.ly/46jQ3FD">https://bit.ly/46jQ3FD</a></p>
+  <p>👉 <strong>ゴールド・プリファード向けFSG：</strong> <a href="https://bit.ly/4s0L1pY">https://bit.ly/4s0L1pY</a></p>
+  <p><em>※ビジネス・プラチナ会員は両方のリストが利用可能です。</em></p>
+
+  <h2 class="section" id="sec6">6. おすすめFHR / THCホテル（国内・海外）</h2>
+
+  <h3>コスパ最強ホテル（特典込みの実質負担が安い）</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>ホテル</th><th>エリア</th><th>FHR料金目安</th><th>実質負担目安</th><th>ポイント</th></tr></thead>
+      <tbody>
+        <tr><td>東南アジアのフォーシーズンズ各地</td><td>KL・バンコク等</td><td>4〜6万円</td><td><strong>1〜2万円台</strong></td><td>円安でもFHR特典で逆転。100ドルCと朝食で半額以下に</td></tr>
+        <tr><td>国内のコンラッド・ヒルトン系FHR</td><td>東京・大阪等</td><td>5〜8万円</td><td><strong>2〜4万円</strong></td><td>ヒルトンゴールドとの二重取りでさらにお得</td></tr>
+        <tr><td>マリオット系FHR（リッツ・カールトン等）</td><td>各地</td><td>6〜10万円</td><td><strong>3〜6万円</strong></td><td>Bonvoyポイントも貯まる</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>東南アジアが穴場な理由</h3>
+  <p><strong>円安（1ドル150円前後）の今こそ、東南アジアFHRが最強です。</strong>理由：</p>
+  <ol>
+    <li><strong>宿泊料金が安い</strong>（フォーシーズンズでも1泊4〜6万円台で泊まれる）</li>
+    <li><strong>100ドルクレジットの購買力が段違い</strong>（FHRの100ドルCは世界共通の米ドル建て。現地の物価が安い東南アジアでは、日本なら1回のランチで消える100ドルが、ルームサービスのディナー＋カクテル＋アフタヌーンティーまでカバーできる）</li>
+    <li><strong>アップグレード確率が高い</strong>（敷地が広く客室数に対するスイート比率が高いホテルが多い）</li>
+    <li><strong>サービスレベルが高い</strong>（東南アジアのラグジュアリーホテルはホスピタリティが最高峰）</li>
+  </ol>
+  <div class="callout"><strong>💡 わたしたちの実感</strong>　日本のFHRホテルで5万円使うより、東南アジアのFHRホテルで5万円使ったほうが体験価値は2〜3倍になります。フォーシーズンズKLでの13万円スイートアップグレードは、まさにその好例です✈️</div>
+
+  <h2 class="section" id="summary">📋 まとめ：FHR / THCで年会費の元を取る方程式</h2>
+  <div class="code-block">FHR年3回利用の場合：
+
+100ドルC × 3回 ＝ 約45,000円
+朝食2名 × 3回 ＝ 約24,000〜36,000円
+トラベルC         ＝ 20,000円
+───────────────────
+合計回収：<span class="accent">89,000〜101,000円</span>
+
+→ 年会費の実質コスト45,500円を大幅に超える ✅
+→ アップグレードがあればさらに上振れ 🔥</div>
+  <p><strong>FHR / THCは「使ったぶんだけ確実にお得になる」特典です。</strong>100ドルクレジットと朝食は空室に関係なく確定でもらえるので、使えば使うほど回収額が積み上がります。</p>
+  <p>note記事では控えめに書きましたが、<strong>FHRこそがビジネスプラチナの真の主役</strong>だとわたしたちは思っています。ぜひフル活用してくださいね😊</p>
+
+  <h2 class="section">🎯 さらに深く学びたい方へ — 関連note記事</h2>
+  <p>このガイドは「ビジネスプラチナ申込特典」として配布しているもので、<strong>FHR / THCの入門〜中級レベル</strong>を扱っています。さらに深く・実例ベースで学びたい方には、以下のnote記事も用意しています。</p>
+
+  <div class="related">
+    <h3>🏨 THC（ザ・ホテル・コレクション）を体験記ベースで深く学びたい方へ</h3>
+    <p><strong>THC完全攻略 Vol.1</strong><span class="price">¥4,980→¥7,980</span></p>
+    <p>THCの「<strong>3階スイートスポット理論</strong>」（1階：朝食／2階：割引／3階：F&amp;B増幅）を、わたしたち（いの＆ぴよた）が実際に滞在した <strong>8事例の体験記</strong>（VIUミラノ／コンラッドバリ／リスボン×2／ポルト×2／金沢／JWソウル）と組み合わせて解説します。THC×ホテル上級会員の二重取り基本まで、本ガイドでは触れきれなかった事例ベースの読み物として位置づけています。</p>
+    <p style="margin:0; font-size:14px; color:var(--muted)">📅 公開予定：2026/5/4（先行・先着50名 ¥4,980）／5/31以降 ¥7,980<br>📌 ゴールドプリファード・Goldカード保有の方にも有効です</p>
+  </div>
+
+  <div class="related">
+    <h3>📘 アメックストラベルオンラインを体系的に整理したい方へ</h3>
+    <p><strong>Amexトラベルオンライン活用ガイド（仮）</strong><span class="price">企画中</span></p>
+    <p>「事前決済 vs 現地決済」「FHR / THC / 通常予約の使い分け」「主要ホテルチェーンのロイヤリティ反映」など、アメックストラベルオンラインの予約導線をまとめる方向で企画しています。決済修行ガイドの姉妹商品として準備中で、内容・価格・公開時期は確定次第お知らせします。</p>
+    <p style="margin:0; font-size:14px; color:var(--muted)">📅 公開予定：2026年5月以降（リサーチ中）</p>
+  </div>
+
+  <p style="text-align:center; margin-top:30px">公開タイミングは <a href="https://bit.ly/3OO74SN">noteフォロー</a> でお知らせします。</p>
+
+  <div class="cta">
+    <h2>💬 わからないことがあれば</h2>
+    <p>いつでもDMで聞いてください。一緒にFHRを使い倒しましょう🔥</p>
+    <a href="https://www.instagram.com/ino_moneycoach/" class="btn">Instagram DMで質問する</a>
+  </div>
+
+  <footer>
+    <p>※ このガイドの内容は2026年4月時点の情報に基づいています。FHR/THCの対象ホテルや特典内容は変更される場合があります。最新情報はアメックストラベルオンラインでご確認ください。</p>
+    <p>※ ホテルのアップグレードは空室状況により確約されるものではありません。体験事例は個人の実績であり、同じ結果を保証するものではありません。</p>
+  </footer>
+
+</div>
+</body>
+</html>

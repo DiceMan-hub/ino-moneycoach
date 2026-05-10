@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>決済修行ロードマップ｜4ヶ月400万円で29万ptフル獲得する計画表</title>
+<style>
+:root{
+  --brand:#14C1BD; --brand-dark:#0E8F8C; --brand-deep:#0B7876;
+  --brand-light:#E8F8F8; --brand-lighter:#F5FBFB;
+  --ink:#1E3150; --body:#2A2A2A; --sub:#444; --muted:#666; --faint:#999;
+  --rule:#DADADA; --rule-soft:#EDEDED;
+  --bg:#FFFFFF; --bg-alt:#F5F5F5;
+  --red:#D32F2F; --red-bg:#FFEBEE;
+  --green:#388E3C; --green-bg:#E8F5E9;
+  --warning:#F57C00; --warning-bg:#FFF3E0;
+  --gold:#C9A84C;
+  --font:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font); color:var(--body); background:var(--bg);
+  margin:0; line-height:1.8; font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+.container{max-width:840px; margin:0 auto; padding:24px 20px 80px}
+
+.hero{
+  background:linear-gradient(135deg,#F5FBFB 0%,#E8F8F8 100%);
+  border-radius:20px; padding:40px 28px;
+  margin-bottom:40px; position:relative; overflow:hidden;
+  border:1px solid rgba(20,193,189,0.18);
+}
+.hero::before{
+  content:""; position:absolute; top:-40px; right:-40px;
+  width:160px; height:160px; border-radius:50%;
+  background:radial-gradient(circle,rgba(20,193,189,0.18) 0%,transparent 70%);
+}
+.hero .eyebrow{
+  display:inline-block; background:var(--brand); color:#fff;
+  font-weight:800; font-size:12px; letter-spacing:0.14em;
+  padding:6px 14px; border-radius:9999px; margin-bottom:16px;
+}
+.hero h1{font-size:30px; font-weight:900; color:var(--ink); margin:0 0 14px; line-height:1.4}
+.hero .lead{color:var(--sub); font-size:16px; margin:0; line-height:1.8}
+
+.toc{background:var(--bg-alt); border-radius:14px; padding:24px 28px; margin-bottom:48px}
+.toc h2{font-size:14px; font-weight:800; color:var(--ink); margin:0 0 14px; letter-spacing:0.14em; text-transform:uppercase}
+.toc ol{margin:0; padding-left:24px}
+.toc li{margin:8px 0; font-size:15px}
+.toc a{color:var(--ink); text-decoration:none; font-weight:600}
+.toc a:hover{color:var(--brand-dark)}
+
+h2.section{
+  font-size:24px; font-weight:800; color:var(--ink);
+  margin:56px 0 20px; padding:8px 0 8px 18px;
+  border-left:5px solid var(--brand); line-height:1.4;
+}
+h3{font-size:19px; font-weight:700; color:var(--ink); margin:36px 0 14px; line-height:1.5}
+h4{font-size:16px; font-weight:700; color:var(--ink); margin:24px 0 10px}
+p{margin:0 0 14px}
+strong{color:var(--ink); font-weight:700}
+ul,ol{padding-left:22px; margin:0 0 16px}
+li{margin:6px 0}
+li::marker{color:var(--brand-dark)}
+
+.callout{
+  background:var(--brand-light); border-left:4px solid var(--brand);
+  padding:16px 20px; border-radius:0 10px 10px 0;
+  margin:20px 0; font-size:15px;
+}
+.callout strong{color:var(--brand-deep)}
+.callout.warning{background:var(--warning-bg); border-color:var(--warning)}
+.callout.warning strong{color:#B85A00}
+.callout.tip{background:var(--bg-alt); border-color:var(--ink)}
+.callout.tip strong{color:var(--ink)}
+.callout.fire{background:linear-gradient(135deg,#FFF3E0,#FFE0B2); border-color:#F57C00}
+
+.table-wrap{overflow-x:auto; margin:20px 0}
+table{width:100%; border-collapse:collapse; font-variant-numeric:tabular-nums; font-size:14px}
+th,td{padding:12px 14px; text-align:left; border-bottom:1px solid var(--rule-soft); vertical-align:top}
+th{background:var(--ink); color:#fff; font-weight:700; letter-spacing:0.04em; font-size:13px}
+tr:nth-child(even) td{background:var(--bg-alt)}
+table strong{color:var(--brand-deep)}
+
+/* 達成ライン階段 */
+.tier-row{display:grid; gap:14px; margin:24px 0; grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.tier-card{
+  background:var(--bg); border:2px solid var(--rule-soft);
+  border-radius:14px; padding:20px 18px;
+  text-align:center; position:relative;
+}
+.tier-card.bronze{border-color:#C8A06B}
+.tier-card.silver{border-color:#C0C0C0}
+.tier-card.gold{border-color:var(--gold); background:linear-gradient(135deg,#FFFCF0,#FFF6D9)}
+.tier-card.platinum{border-color:var(--brand); background:var(--brand-light)}
+.tier-card .label{font-size:13px; font-weight:700; letter-spacing:0.1em; color:var(--muted); margin-bottom:8px}
+.tier-card .pt{font-size:28px; font-weight:900; color:var(--ink); line-height:1.1}
+.tier-card .yen{font-size:13px; color:var(--muted); margin-top:6px}
+.tier-card .level{font-size:11px; color:var(--brand-dark); margin-top:8px; font-weight:700}
+
+.kpi-row{display:grid; gap:14px; margin:24px 0; grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+.kpi-card{
+  background:var(--brand-light); border-radius:12px; padding:20px 16px; text-align:center;
+  border:1px solid rgba(20,193,189,0.18);
+}
+.kpi-card .num{font-size:30px; font-weight:900; color:var(--brand-deep); line-height:1.2}
+.kpi-card .label{font-size:13px; font-weight:600; color:var(--muted); margin-top:6px}
+
+.code-block{
+  background:var(--ink); color:#E8F8F8;
+  font-family:ui-monospace,Menlo,Consolas,monospace;
+  font-size:14px; line-height:1.7;
+  padding:20px 24px; border-radius:12px;
+  margin:20px 0; overflow-x:auto; white-space:pre;
+}
+.code-block .accent{color:var(--brand)}
+
+/* チェックリスト */
+.checklist{list-style:none; padding:0; margin:0 0 16px}
+.checklist li{
+  position:relative; padding:12px 14px 12px 42px;
+  background:var(--bg); border:1px solid var(--rule-soft);
+  border-radius:8px; margin-bottom:8px; font-size:14px;
+}
+.checklist li::before{
+  content:""; position:absolute; left:14px; top:14px;
+  width:18px; height:18px; border:2px solid var(--brand);
+  border-radius:4px; background:#fff;
+}
+
+/* Month block */
+.month-block{
+  background:var(--bg); border:2px solid var(--brand-light);
+  border-left:5px solid var(--brand);
+  border-radius:14px; padding:24px 26px;
+  margin:24px 0;
+}
+.month-block .month-num{
+  display:inline-block; background:var(--brand); color:#fff;
+  font-weight:900; font-size:13px; letter-spacing:0.1em;
+  padding:4px 12px; border-radius:9999px; margin-bottom:10px;
+}
+.month-block h3{margin-top:0; color:var(--ink)}
+.month-block .target{
+  background:var(--brand-light); padding:10px 14px;
+  border-radius:8px; font-weight:700; color:var(--brand-deep);
+  margin:12px 0; font-size:15px;
+}
+
+/* Q&A details */
+details.faq{
+  border:1px solid var(--rule-soft); border-radius:12px;
+  padding:0; margin-bottom:12px; background:#fff; overflow:hidden;
+}
+details.faq[open]{border-color:var(--brand)}
+details.faq summary{
+  padding:16px 20px; cursor:pointer; font-weight:700;
+  color:var(--ink); list-style:none; position:relative; padding-right:48px;
+}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary::after{
+  content:"+"; position:absolute; right:20px; top:50%;
+  transform:translateY(-50%); font-size:24px; color:var(--brand);
+  font-weight:300; transition:transform 0.2s;
+}
+details.faq[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+details.faq .answer{padding:0 20px 18px}
+
+a{color:var(--brand-deep); text-decoration:underline; text-underline-offset:3px}
+a:hover{color:var(--ink)}
+
+.cta{
+  background:linear-gradient(135deg,var(--ink) 0%,#2A4570 100%);
+  color:#fff; border-radius:18px; padding:32px 28px;
+  margin:48px 0 0; text-align:center;
+}
+.cta h2{font-size:20px; font-weight:800; margin:0 0 12px; color:#fff; padding:0; border:0}
+.cta p{color:rgba(255,255,255,0.85); margin:0 0 20px; font-size:15px}
+.cta a.btn{
+  display:inline-block; background:var(--brand); color:#fff;
+  padding:14px 32px; border-radius:9999px;
+  font-weight:800; text-decoration:none; font-size:15px; letter-spacing:0.04em;
+}
+.cta a.btn:hover{background:var(--brand-dark)}
+
+footer{margin-top:48px; padding-top:24px; border-top:1px solid var(--rule-soft); text-align:center; font-size:13px; color:var(--faint); line-height:1.7}
+
+@media (max-width:600px){
+  .container{padding:16px 14px 60px}
+  .hero{padding:28px 20px}
+  .hero h1{font-size:22px}
+  h2.section{font-size:20px; padding-left:14px}
+  h3{font-size:17px}
+  .toc{padding:18px 20px}
+  th,td{padding:10px 10px; font-size:13px}
+  .kpi-card .num,.tier-card .pt{font-size:22px}
+  .code-block{font-size:12px; padding:16px}
+  .month-block{padding:20px 18px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="hero">
+    <span class="eyebrow">いの紹介 限定特典 ③</span>
+    <h1>💳 決済修行ロードマップ<br>4ヶ月400万円で29万ptフル獲得する計画表</h1>
+    <p class="lead">いの経由でアメックスビジネスプラチナに入会された方への限定特典です🎁<br>㊙キャンペーン（2026年3月9日〜5月11日）の入会特典29万ポイントを<strong>最大限に獲得する</strong>ための具体的な決済計画をまとめました。</p>
+  </header>
+
+  <nav class="toc">
+    <h2>目次</h2>
+    <ol>
+      <li><a href="#sec1">まず全体像を把握しよう</a></li>
+      <li><a href="#sec2">Amazon 100万円攻略（最重要セクション）</a></li>
+      <li><a href="#sec3">200万円ライン攻略</a></li>
+      <li><a href="#sec4">400万円フル達成 攻略（上級編）</a></li>
+      <li><a href="#sec5">月別ロードマップ（テンプレート）</a></li>
+      <li><a href="#sec6">注意点・FAQ</a></li>
+      <li><a href="#summary">まとめ｜まずはAmazon 100万、次に200万ライン</a></li>
+    </ol>
+  </nav>
+
+  <h2 class="section" id="sec1">📌 まず全体像を把握しよう</h2>
+
+  <div class="callout warning">
+    <strong>⚠️ スタート前の必須準備</strong>　「メンバーシップ・リワード・プラス」＋「対象加盟店ボーナスポイントプログラム」への登録<br><br>
+    どちらも<strong>無料</strong>ですが、ゴールド・プリファードと違い<strong>自動的には登録されません</strong>。未登録のままだとAmazon等の対象加盟店でのボーナスポイント加算が受けられない可能性があります。5分ほどで完了するので、決済修行を始める前に必ず済ませてください。<br><br>
+    公式：<a href="https://www.americanexpress.com/ja-jp/point/membership-rewards-plus/index.html/#procedure">メンバーシップ・リワード・プラス（登録手順）</a>
+  </div>
+
+  <h3>入会特典の一覧</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>条件</th><th>ポイント</th></tr></thead>
+      <tbody>
+        <tr><td>入会だけで</td><td>30,000pt</td></tr>
+        <tr><td>Amazon 100万円利用（4ヶ月以内）</td><td>140,000pt</td></tr>
+        <tr><td>200万円利用（4ヶ月以内）</td><td>60,000pt</td></tr>
+        <tr><td>400万円利用（4ヶ月以内）</td><td>20,000pt</td></tr>
+        <tr><td>通常ポイント（400万円×1%）</td><td>40,000pt</td></tr>
+        <tr><td><strong>合計</strong></td><td><strong>290,000pt</strong></td></tr>
+        <tr><td>＋ 50万円利用（4ヶ月以内）→ トラベルクレジット</td><td><strong>50,000円分</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>達成ライン別ポイント表</h3>
+  <p>ここがめちゃくちゃ大事です✨<br>400万フル達成できなくても<strong>十分に元は取れます</strong>。自分がどこまで狙えそうか、まずここで確認してみてください。</p>
+
+  <div class="tier-row">
+    <div class="tier-card bronze">
+      <div class="label">入会のみ</div>
+      <div class="pt">30,000pt</div>
+      <div class="yen">マイル換算 約9万円</div>
+      <div class="level">★☆☆☆</div>
+    </div>
+    <div class="tier-card silver">
+      <div class="label">＋ Amazon 100万</div>
+      <div class="pt">170,000pt</div>
+      <div class="yen">約51万円＋TC5万円</div>
+      <div class="level">★★☆☆</div>
+    </div>
+    <div class="tier-card gold">
+      <div class="label">＋ 200万円決済</div>
+      <div class="pt">230,000pt</div>
+      <div class="yen">約69万円＋TC5万円</div>
+      <div class="level">★★★☆</div>
+    </div>
+    <div class="tier-card platinum">
+      <div class="label">＋ 400万円フル</div>
+      <div class="pt">290,000pt</div>
+      <div class="yen">約87万円＋TC5万円</div>
+      <div class="level">★★★★</div>
+    </div>
+  </div>
+
+  <div class="callout"><strong>💡 TCについて</strong>　TC＝トラベルクレジット5万円分は、4ヶ月以内の合計利用が50万円を超えた時点で付与されます。Amazon 100万円ラインを通過する時点で自動的にクリアできるので、追加の手間は不要です。</div>
+
+  <div class="callout"><strong>💡 200万円ラインで十分元が取れる</strong>　200万円ラインの23万pt＋トラベルクレジット5万円分だけでも、マイル換算69万円＋現金5万円相当。年会費を経費計上した場合の実質コスト（年45,500円）の16年分です。ここまで来れば十分すぎるほど元が取れますよ😊</div>
+
+  <h3>4ヶ月タイムライン</h3>
+  <p>入会月を Month 1 として、月別の目標イメージはこんな感じ。</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>月</th><th>テーマ</th><th>目標金額（フル400万の場合）</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Month 1</strong></td><td>カード設定＋Amazon集中＋固定費切り替え</td><td><strong>120万円</strong></td></tr>
+        <tr><td><strong>Month 2</strong></td><td>Amazon Pay拡大＋日常決済の定着</td><td><strong>100万円</strong></td></tr>
+        <tr><td><strong>Month 3</strong></td><td>大型出費の計画実行（納税・旅行など）</td><td><strong>100万円</strong></td></tr>
+        <tr><td><strong>Month 4</strong></td><td>最終追い込み＋残額調整</td><td><strong>80万円</strong></td></tr>
+        <tr><td><strong>合計</strong></td><td></td><td><strong>400万円</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout warning"><strong>⚠️ 補足</strong>　これは「フル400万を狙う場合」の理想形です。200万ライン狙いなら月50万ペースでOK。自分のペースで大丈夫です。</div>
+
+  <h2 class="section" id="sec2">🛒 Amazon 100万円攻略（最重要セクション）</h2>
+
+  <h3>なぜAmazon 100万が最もコスパがいいのか</h3>
+  <p>計算してみてください。</p>
+  <div class="code-block">140,000pt ÷ 100万円 ＝ <span class="accent">14%還元</span></div>
+  <p><strong>14%還元ですよ。</strong>通常のカード決済が1%還元であることを考えると、14倍。これは入会特典の中で<strong>圧倒的にポイント効率が高い</strong>条件です。</p>
+  <p>他の条件と比較するとこうなります。</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>条件</th><th>ポイント</th><th>利用額</th><th>還元率</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Amazon 100万円</strong></td><td><strong>140,000pt</strong></td><td><strong>100万円</strong></td><td><strong>14.0%</strong></td></tr>
+        <tr><td>200万円利用</td><td>60,000pt</td><td>200万円</td><td>3.0%</td></tr>
+        <tr><td>400万円利用</td><td>20,000pt</td><td>400万円</td><td>0.5%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout fire"><strong>🔥 最優先ミッション</strong>　まずはAmazon 100万円を最優先で達成してください。これが決済修行の最重要ミッションです。</div>
+
+  <h3>方法①：Amazon直接購入で積み上げる</h3>
+  <p>普段の買い物をできるだけAmazonに集約するだけで、かなり積み上がります。</p>
+  <ul>
+    <li><strong>日用品のまとめ買い</strong>（洗剤、ペーパー類、食品、飲料）</li>
+    <li><strong>書籍・Kindle本</strong>（ビジネス書、技術書）</li>
+    <li><strong>家電・ガジェット・PC周辺機器</strong></li>
+    <li><strong>消耗品・オフィス用品</strong>（文具、インク、備品）</li>
+    <li><strong>Amazonギフトカード残高チャージ</strong>（アメックスでギフトカードを購入→残高化。後からAmazon Pay決済にも使えます。残高上限30万円）</li>
+    <li><strong>Apple Gift Card</strong>（自分用＋家族用に。定価と同じ金額で買えるので損はゼロ）</li>
+  </ul>
+  <div class="callout"><strong>💡 ポイント</strong>　ギフトカード残高チャージは「いつか必ず使うお金を先に入れておく」という感覚です。期限も10年あるので、無理に使い切る必要はありません。</div>
+
+  <h3>方法②：Amazon Pay対応ECサイトの活用（これが超重要！）</h3>
+  <p>「Amazonで100万円も買うものないよ…」と思いましたよね？</p>
+  <p>ここが盲点なんですが、<strong>Amazon Pay対応のECサイトでの買い物もAmazon利用としてカウントされます</strong>。というのもAmazon Pay決済は前述のAmazonギフト残高から支払うからです！</p>
+  <p>Amazon Pay対応サイトは<strong>300店舗以上（独自調査）</strong>あって、こんなジャンルが揃ってます：</p>
+
+  <h4>🛍️ ファッション</h4>
+  <p>BEAMS / UNITED ARROWS / JOURNAL STANDARD / SHIPS / nano・universe / URBAN RESEARCH / BAYFLOW / coen … など</p>
+
+  <h4>🏠 ふるさと納税</h4>
+  <p>さとふる / ふるなび / ふるさとプレミアム</p>
+  <div class="callout fire"><strong>🔥 ふるさと納税は超おすすめ！</strong>　控除上限額いっぱいまで使えば、30〜50万円の決済を「実質2,000円の自己負担」で積み上げられます。しかも返礼品ももらえる。Amazon 100万への最短ルートのひとつです。</div>
+
+  <h4>🍽️ 食品・グルメ</h4>
+  <p>出前館の一部の店舗など</p>
+
+  <p>👉 <strong>Amazon Pay対応ショップの詳細リストと検索方法は、こちらの記事で詳しくまとめています：</strong></p>
+  <p><a href="https://note.com/ino_moneycoach/n/nc31ec6750943">【更新版】アメックス決済修行ガイド｜年間最大10万ptの差がつく戦略</a></p>
+
+  <h3>Amazon 100万円の月別積み上げ例</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>月</th><th>Amazon直接</th><th>Amazon Pay（ECサイト）</th><th>合計</th><th>累計</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Month 1</strong></td><td>日用品まとめ買い10万＋ギフトカード10万</td><td>ふるさと納税10万</td><td><strong>30万円</strong></td><td>30万円</td></tr>
+        <tr><td><strong>Month 2</strong></td><td>日用品5万＋家電・ガジェット5万</td><td>ふるさと納税15万</td><td><strong>25万円</strong></td><td>55万円</td></tr>
+        <tr><td><strong>Month 3</strong></td><td>日用品5万＋書籍・消耗品5万</td><td>ファッション10万＋食品5万</td><td><strong>25万円</strong></td><td>80万円</td></tr>
+        <tr><td><strong>Month 4</strong></td><td>日用品5万＋ギフトカード5万</td><td>ふるさと納税10万</td><td><strong>20万円</strong></td><td><strong>100万円 ✅</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout"><strong>💡 ポイント</strong>　ふるさと納税を分散して入れるのがコツ。一気にやるより、月ごとに分けて寄付先を選ぶほうが返礼品も楽しめます😊</div>
+
+  <h2 class="section" id="sec3">🎯 200万円ライン攻略</h2>
+  <p>Amazon 100万円を達成したら、次は<strong>200万円ライン</strong>を目指しましょう。<br>ここで追加の60,000ptが入るので、合計170,000pt → <strong>230,000pt</strong>に跳ね上がります。</p>
+
+  <h3>基本戦略：Amazon 100万 ＋ 日常決済100万</h3>
+  <p>残りの100万円は、<strong>いつもの生活費をカードに集約するだけ</strong>でかなり到達できます。</p>
+
+  <h3>日常決済の洗い出しチェックリスト</h3>
+  <p>「自分は月にいくらカード払いできるか？」を把握するためのリストです。✅をつけてみてください。</p>
+
+  <h4>📌 固定費（毎月自動で積み上がる）</h4>
+  <ul class="checklist">
+    <li>通信費（スマホ・Wi-Fi）：約_______円/月</li>
+    <li>サブスク（Netflix, Spotify, iCloud等）：約_______円/月</li>
+    <li>保険料（生命保険・損害保険等）：約_______円/月</li>
+    <li>家賃（カード払い可能な場合）：約_______円/月</li>
+    <li>電気・ガス・水道（カード払い可能な場合）：約_______円/月</li>
+    <li>駐車場代：約_______円/月</li>
+    <li>ジム・習い事：約_______円/月</li>
+  </ul>
+
+  <h4>📌 変動費（意識して集約する）</h4>
+  <ul class="checklist">
+    <li>食費（スーパー・コンビニ）：約_______円/月</li>
+    <li>外食：約_______円/月</li>
+    <li>日用品：約_______円/月</li>
+    <li>ガソリン：約_______円/月</li>
+    <li>交通費（電車・タクシー・Suicaチャージ）：約_______円/月</li>
+    <li>被服費：約_______円/月</li>
+    <li>美容院・医療費：約_______円/月</li>
+  </ul>
+
+  <h4>📌 事業経費（個人事業主・法人の方）</h4>
+  <ul class="checklist">
+    <li>仕入れ：約_______円/月</li>
+    <li>広告費（Google広告・Meta広告等）：約_______円/月</li>
+    <li>ツール代（SaaS・クラウドサービス等）：約_______円/月</li>
+    <li>交通費・出張費：約_______円/月</li>
+    <li>外注費：約_______円/月</li>
+    <li>オフィス関連（家賃・備品）：約_______円/月</li>
+  </ul>
+
+  <h4>📌 大型出費（4ヶ月以内に予定しているもの）</h4>
+  <ul class="checklist">
+    <li>家電の買い替え：約_______円</li>
+    <li>旅行・宿泊：約_______円</li>
+    <li>納税（所得税・消費税・住民税・事業税等）：約_______円</li>
+    <li>車検・自動車保険：約_______円</li>
+    <li>引っ越し・家具：約_______円</li>
+    <li>その他大型購入：約_______円</li>
+  </ul>
+
+  <div class="callout"><strong>💡 全部足してみてください。</strong>　意外と「あれ、月25万以上ある…？」という方が多いです。4ヶ月なら100万円はそう遠くないはず😊</div>
+
+  <h3>200万円ラインの月別目標</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>月</th><th>Amazon枠</th><th>日常決済枠</th><th>月合計</th><th>累計</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Month 1</strong></td><td>30万</td><td>20万（固定費切り替え＋日常）</td><td><strong>50万円</strong></td><td>50万円</td></tr>
+        <tr><td><strong>Month 2</strong></td><td>25万</td><td>25万（日常決済定着）</td><td><strong>50万円</strong></td><td>100万円</td></tr>
+        <tr><td><strong>Month 3</strong></td><td>25万</td><td>25万（日常＋中型出費）</td><td><strong>50万円</strong></td><td>150万円</td></tr>
+        <tr><td><strong>Month 4</strong></td><td>20万</td><td>30万（追い込み）</td><td><strong>50万円</strong></td><td><strong>200万円 ✅</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="section" id="sec4">🚀 400万円フル達成 攻略（上級編）</h2>
+  <p>200万→400万の追加200万円をどう作るか。正直ここはハードルが上がります。<br>でも「<strong>事業決済</strong>」がある方なら、十分に射程圏内です。</p>
+
+  <h3>追加200万円の作り方</h3>
+
+  <h4>📌 事業決済を集約する（最も効果的）</h4>
+  <ul>
+    <li>仕入れ代金</li>
+    <li>広告費（Google・Meta・Yahoo!広告）→ ビジネス・バッキングで年間最大3万円CBもつく</li>
+    <li>外注費・業務委託費</li>
+    <li>SaaS・クラウドサービス（AWS、Adobe、Figma等）</li>
+    <li>事務所家賃（カード払い可能な場合）</li>
+  </ul>
+  <p>→ 事業規模によっては、これだけで月50万＝4ヶ月200万は十分いけます。</p>
+
+  <h4>📌 納税での活用</h4>
+  <p>税金のクレジットカード払いは、4ヶ月の決済額を一気に押し上げる手段です。</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>税目</th><th>標準納期</th><th>目安金額</th></tr></thead>
+      <tbody>
+        <tr><td>自動車税(種別割)</td><td>5月31日</td><td>3万〜10万円</td></tr>
+        <tr><td>軽自動車税</td><td>5月31日</td><td>約1万円</td></tr>
+        <tr><td>住民税(1期)</td><td>6月30日</td><td>年額の1/4</td></tr>
+        <tr><td>固定資産税(2期)</td><td>7月31日(自治体による)</td><td>年額の1/4</td></tr>
+        <tr><td>事業税(1期)</td><td>8月31日</td><td>売上による</td></tr>
+        <tr><td>住民税(2期)</td><td>8月31日</td><td>年額の1/4</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">※ 納期が土日祝にあたる場合は翌営業日に繰り下げ。固定資産税の納期は自治体ごとに異なります（東京23区は4・7・12・2月の4期）。</p>
+  <div class="callout warning"><strong>⚠️ 注意</strong>　クレカ納税の手数料は<strong>国税が約0.99%（税込・1万円ごとに99円）</strong>、<strong>地方税は約0.83%（税込・1万円ごとに約83円）</strong>です。100万円の納税で国税約9,900円・地方税約8,300円。入会特典のポイント還元を考えれば4ヶ月以内なら十分にペイします。<br><br>例：国税100万円の納税 → 手数料9,900円 → 通常ポイント10,000pt（1%）＋入会特典ボーナス → <strong>手数料以上のリターン</strong></div>
+
+  <h4>📌 FHR/THCでホテル宿泊</h4>
+  <p>ファイン・ホテル・アンド・リゾーツ（FHR）やザ・ホテル・コレクション（THC）は、ビジネスプラチナの最強特典のひとつ。決済額の積み上げと同時に<strong>使うだけでお得</strong>です。</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>特典</th><th>内容</th></tr></thead>
+      <tbody>
+        <tr><td>100ドルクレジット</td><td>ホテル内レストラン等で使える</td></tr>
+        <tr><td>朝食2名無料</td><td>毎朝（1人5,000円相当×2名）</td></tr>
+        <tr><td>アーリーCI</td><td>12時〜</td></tr>
+        <tr><td>レイトCO</td><td>16時まで</td></tr>
+        <tr><td>部屋アップグレード</td><td>空き状況による</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>1回の宿泊で20万円前後使いつつ、100ドルクレジット＋朝食で<strong>実質3〜5万円分の特典</strong>がつきます。旅行や出張の予定があるなら、FHR経由で予約するだけでWin-Winです🏨</p>
+  <p>わたしたちも4ヶ月で4〜5回利用して約20万円。100ドルクレジットと朝食だけで数万円分得してます😊</p>
+
+  <h4>📌 ギフトカード戦略</h4>
+  <p>「使い道はあるけど、今すぐは必要ない」というお金をギフトカードで先に確保する方法です。</p>
+  <ul>
+    <li><strong>Apple Gift Card</strong> → App Store、iCloud、Apple製品に使える。家族へのプレゼントにも◎</li>
+    <li><strong>Amazonギフトカード</strong> → 残高チャージ＋Amazon Pay決済に</li>
+  </ul>
+  <div class="callout warning"><strong>⚠️ 注意</strong>　ギフトカードは自分が確実に使う分だけにしてください。「ポイントのために不要なものを買う」のは本末転倒です。<br><br>また、<strong>短期間に高額のギフトカードを一気にチャージしないこと</strong>。アメックスは不正利用検知が厳しく、急なチャージや高額連続決済は不審な動きとして警戒され、<strong>カードが一時停止される</strong>ことがあります。分散して購入し、用途と整合する金額にとどめてください。</div>
+
+  <h3>💡 フル達成できなくても大丈夫</h3>
+  <p>ここがいちばん伝えたいことです。</p>
+  <p><strong>400万円はあくまで「MAX」の条件。</strong>追加でもらえるのは20,000ptです。</p>
+  <p>200万円ラインの23万ptと比べて、追加200万円の決済で増えるのは60,000pt（通常ポイント含む）。還元率は3%。もちろんあるに越したことはないですが、<strong>無理して400万を目指すより、200万円ラインを確実に取るほうがずっと大事</strong>です。</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>ライン</th><th>獲得pt</th><th>追加決済額</th><th>追加分の還元率</th></tr></thead>
+      <tbody>
+        <tr><td>Amazon 100万</td><td>170,000pt</td><td>100万円</td><td>14.0%</td></tr>
+        <tr><td>200万円</td><td>230,000pt</td><td>+100万円</td><td>6.0%</td></tr>
+        <tr><td>400万円</td><td>290,000pt</td><td>+200万円</td><td>3.0%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout"><strong>💡 結論</strong>　200万ラインの23万ptで十分すぎるほど元は取れます。焦らず、自分のペースでいきましょう😊</div>
+
+  <h2 class="section" id="sec5">📅 月別ロードマップ（テンプレート）</h2>
+
+  <div class="month-block">
+    <span class="month-num">MONTH 1</span>
+    <h3>カード設定＋Amazon集中＋固定費切り替え</h3>
+    <div class="target">🎯 目標：120万円（フル400万）/ 50万円（200万ライン）</div>
+
+    <h4>カード設定（初日〜3日目）</h4>
+    <ul class="checklist">
+      <li>カードが届いたらすぐにアメックスアプリをダウンロード＆登録</li>
+      <li>Apple Pay / Google Pay に登録</li>
+      <li>プライオリティ・パスの申し込み（アプリから）</li>
+      <li>ホテルステータスの連携（マリオット・ヒルトン・プリンス）</li>
+      <li>コンシェルジュの電話番号をスマホに登録</li>
+      <li>カードの暗証番号を設定</li>
+    </ul>
+
+    <h4>固定費の切り替え（1週目）</h4>
+    <ul class="checklist">
+      <li>スマホ料金のカードを変更</li>
+      <li>Wi-Fi/ネット回線のカードを変更</li>
+      <li>サブスク全部のカードを変更（Netflix, Spotify, Amazon Prime等）</li>
+      <li>保険のカードを変更（可能なもの）</li>
+      <li>電気・ガス・水道のカードを変更（可能なもの）</li>
+      <li>その他固定費のカード変更</li>
+    </ul>
+
+    <h4>Amazon集中（1ヶ月通して）</h4>
+    <ul class="checklist">
+      <li>Amazon残高にギフトカードでチャージ（まとまった金額）</li>
+      <li>日用品のまとめ買い（3ヶ月分くらい）</li>
+      <li>書籍・消耗品・オフィス用品</li>
+      <li>ふるさと納税（さとふる・ふるなびでAmazon Pay決済）</li>
+      <li>Apple Gift Cardの購入（必要な分だけ）</li>
+    </ul>
+
+    <h4>大型決済（あれば）</h4>
+    <ul class="checklist">
+      <li>納税のタイミングを確認（自動車税5/31、住民税1期6/30、固定資産税2期7/31、事業税1期8/31）</li>
+      <li>事業経費の支払いカードを変更</li>
+    </ul>
+  </div>
+
+  <div class="month-block">
+    <span class="month-num">MONTH 2</span>
+    <h3>Amazon Pay拡大＋日常決済の定着</h3>
+    <div class="target">🎯 目標：100万円（フル400万）/ 50万円（200万ライン）</div>
+
+    <h4>Amazon Pay拡大</h4>
+    <ul class="checklist">
+      <li>Amazon Pay対応ECサイトでの買い物を意識する</li>
+      <li>ファッション（BEAMS, UNITED ARROWSなど）の買い物はAmazon Payで</li>
+      <li>ふるさと納税の2回目以降の寄付</li>
+      <li>決済修行ガイド記事のショップリストをチェック</li>
+    </ul>
+
+    <h4>日常決済の定着</h4>
+    <ul class="checklist">
+      <li>普段のスーパー・コンビニでの買い物もアメックスで</li>
+      <li>外食もすべてアメックスで（使えない店は現金 or 他カード）</li>
+      <li>ガソリンスタンドのカードを変更</li>
+      <li>タクシー・交通系ICのチャージをアメックスで</li>
+    </ul>
+
+    <h4>事業決済（該当者のみ）</h4>
+    <ul class="checklist">
+      <li>広告費の支払いカードを変更</li>
+      <li>外注費・SaaS利用料の支払いカードを変更</li>
+    </ul>
+
+    <h4>進捗確認</h4>
+    <ul class="checklist">
+      <li>アメックスアプリで累計利用額を確認</li>
+      <li>Amazon関連の累計を確認（Amazon 100万円への進捗）</li>
+    </ul>
+  </div>
+
+  <div class="month-block">
+    <span class="month-num">MONTH 3</span>
+    <h3>大型出費の計画実行</h3>
+    <div class="target">🎯 目標：100万円（フル400万）/ 50万円（200万ライン）</div>
+
+    <h4>大型出費の実行</h4>
+    <ul class="checklist">
+      <li>旅行の予約・支払い（FHR/THC経由がおすすめ）</li>
+      <li>家電の買い替え（予定があれば）</li>
+      <li>納税の支払い（住民税1期など、期限内のもの）</li>
+      <li>その他の大型購入</li>
+    </ul>
+
+    <h4>Amazon枠の積み上げ継続</h4>
+    <ul class="checklist">
+      <li>日用品の追加購入</li>
+      <li>ふるさと納税の追加寄付</li>
+      <li>Amazon Pay対応サイトでの買い物</li>
+    </ul>
+
+    <h4>ビジネスプラチナ特典の活用開始</h4>
+    <ul class="checklist">
+      <li>FHR/THCでホテル予約（出張・旅行に合わせて）</li>
+      <li>ビジネス・ダイニングで会食（コース1名分無料）</li>
+      <li>アメックスオファーのチェック（不定期のCBクーポン）</li>
+    </ul>
+
+    <h4>進捗確認</h4>
+    <ul class="checklist">
+      <li>累計利用額の確認（200万円ラインへの進捗）</li>
+      <li>Amazon 100万円達成 or 残りの確認</li>
+    </ul>
+  </div>
+
+  <div class="month-block">
+    <span class="month-num">MONTH 4</span>
+    <h3>最終追い込み＋残額確認</h3>
+    <div class="target">🎯 目標：80万円（フル400万）/ 50万円（200万ライン）</div>
+
+    <h4>残額の正確な把握</h4>
+    <ul class="checklist">
+      <li>アメックスアプリで累計利用額を確認</li>
+      <li>Amazon 100万円の残額を確認</li>
+      <li>200万円ラインまでの残額を確認</li>
+      <li>400万円ラインまでの残額を確認（余裕があれば）</li>
+    </ul>
+
+    <h4>最終調整</h4>
+    <ul class="checklist">
+      <li>Amazon残額がある場合 → ギフトカードチャージで埋める</li>
+      <li>200万円に少し足りない場合 → 日用品のまとめ買い or ギフトカード</li>
+      <li>400万円を狙う場合 → 事業決済の前倒し・納税の活用</li>
+    </ul>
+
+    <div class="callout warning"><strong>⚠️ 注意</strong>　利用日 vs 明細反映日のズレに注意！最終月は余裕をもって決済を完了させる。返品・キャンセルがあると利用額から差し引かれます。最終月の返品は要注意。</div>
+  </div>
+
+  <h2 class="section" id="sec6">❓ 注意点・FAQ</h2>
+
+  <details class="faq">
+    <summary>Q. ポイント加算のタイミングは？</summary>
+    <div class="answer">
+      <p>利用日ではなく<strong>明細に反映された日</strong>が基準です。カード利用から明細反映まで数日〜数週間かかる場合があります。特に月末に大きな決済をする場合は、翌月に反映されることがあるので余裕をもって決済してください。</p>
+      <div class="callout warning"><strong>⚠️ 重要</strong>　4ヶ月目の最終週に駆け込み決済をすると、明細反映が間に合わないリスクがあります。最終月は2週間前までに主要な決済を終えておくのが安心です。</div>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary>Q. Amazon残高チャージは対象になる？</summary>
+    <div class="answer">
+      <p><strong>はい、対象です。</strong>アメックスでAmazonギフトカードを購入して残高にチャージする行為は、Amazon利用としてカウントされます。わたしも30万円分チャージしました。</p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary>Q. ギフトカード購入は対象になる？</summary>
+    <div class="answer">
+      <p><strong>Amazonで購入するギフトカード（Apple Gift Card、Amazonギフトカード等）は、Amazon利用としてカウントされます。</strong>ただし、コンビニ等の店頭で購入するギフトカードはAmazon利用にはなりません（通常の決済としてはカウントされます）。</p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary>Q. 返品した場合はどうなる？</summary>
+    <div class="answer">
+      <p><strong>返品分は利用額から差し引かれます。</strong>100万円ギリギリで達成した後に返品すると、条件未達になる可能性があるので注意してください。少し余裕をもって超えておくのがおすすめです。</p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary>Q. 4ヶ月の起算日はいつ？</summary>
+    <div class="answer">
+      <p><strong>カード入会日（承認日）から4ヶ月間</strong>です。例えば3月15日に入会した場合、7月14日までが対象期間になります。正確な期間はアメックスのアプリまたはウェルカムキットで確認してください。</p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary>Q. Amazon Pay対応サイトでの購入は「Amazon利用」に含まれる？</summary>
+    <div class="answer">
+      <p><strong>はい、含まれます。</strong>Amazon Payで決済した金額はAmazon利用としてカウントされます。これが100万円達成の大きなカギになります。</p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary>Q. 家族カード（追加カード）の利用分は本会員の決済額に合算される？</summary>
+    <div class="answer">
+      <p><strong>はい、合算されます。</strong>追加カード4枚の利用分もすべて本会員の決済額としてカウントされるので、家族にカードを渡して日常の買い物に使ってもらうだけでも積み上がります。</p>
+    </div>
+  </details>
+
+  <h2 class="section" id="summary">🏁 まとめ｜まずはAmazon 100万、次に200万ライン</h2>
+  <div class="code-block">🥇 最優先：Amazon 100万円 → <span class="accent">14万pt（還元率14%）</span>
+🥈 次の目標：200万円ライン → <span class="accent">23万pt（十分すぎるリターン）</span>
+🥉 余裕があれば：400万円フル → <span class="accent">29万pt（事業決済がカギ）</span></div>
+
+  <p><strong>400万ムリでも全然大丈夫です。</strong><br>200万円ラインの23万ptでも、マイル換算で69万円分。年会費の15年分です。</p>
+  <p>大事なのは「400万円に届かないからダメだ…」と思わないこと。<strong>入会しただけで3万pt、Amazon 100万で17万pt。</strong>ここまでは多くの方が到達できるラインです。</p>
+  <p>このロードマップを使って、<strong>自分のペースで、できるところから</strong>積み上げていってくださいね✨</p>
+
+  <div class="cta">
+    <h2>💬 わからないことがあれば</h2>
+    <p>いつでもDMで聞いてください。一緒にプラチナを使い倒しましょう！</p>
+    <a href="https://www.instagram.com/ino_moneycoach/" class="btn">Instagram DMで質問する</a>
+  </div>
+
+  <footer>
+    <p>⚠️ この記事の情報は2026年4月時点のものです。ポイント加算条件・対象取引の詳細はアメリカン・エキスプレス公式サイトおよびカード会員規約をご確認ください。税務に関する記載は一般的な情報であり、個別の税務アドバイスではありません。</p>
+  </footer>
+
+</div>
+</body>
+</html>
