@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>三井住友カード Olive Infinite 完全ガイド｜特典・年会費無料条件・Visa Infiniteとの違い — ino_moneycoach</title>
+<meta name="description" content="2026年5月開始の「Oliveフレキシブルペイ Visa Infinite」を、特典・年会費が無料になる条件・既存の三井住友カード Visa Infinite（単体）との違い・選び方フローまで1ページで整理。どんな人に向くかをペルソナ別に解説します。">
+<style>
+:root{
+  --brand:#14C1BD; --brand-dark:#0E8F8C; --brand-deep:#0B7876;
+  --brand-light:#E8F8F8; --brand-lighter:#F5FBFB;
+  --ink:#1E3150; --body:#2A2A2A; --sub:#444; --muted:#666; --faint:#999;
+  --rule:#DADADA; --rule-soft:#EDEDED;
+  --bg:#FFFFFF; --bg-alt:#F5F5F5; --bg-page:#DCDCDC;
+  --red:#D32F2F; --red-bg:#FFEBEE; --green:#388E3C; --green-bg:#E8F5E9;
+  --warning:#F57C00; --warning-bg:#FFF3E0;
+  --navy:#1E3150; --navy-light:#EAEEF5;
+  --font:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  --r-sm:4px; --r-md:6px; --r-lg:12px; --r-xl:20px; --r-full:9999px;
+  --sh-sm:0 1px 3px rgba(0,0,0,.08); --sh-md:0 2px 12px rgba(0,0,0,.12);
+  --ls-wide:.04em; --ls-label:.14em;
+}
+*,*::before,*::after{box-sizing:border-box;}
+body{font-family:var(--font); color:var(--body); background:var(--bg-page); margin:0; line-height:1.7;}
+.container{max-width:980px; margin:0 auto; background:var(--bg); padding:0 28px 80px; box-shadow:var(--sh-md);}
+
+/* ---- header ---- */
+header.site-header{border-bottom:4px solid var(--brand); padding:32px 0 18px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:12px;}
+.site-header .brand{font:900 18px var(--font); color:var(--ink); letter-spacing:var(--ls-wide);}
+.site-header .updated{font:600 12px var(--font); color:var(--muted);}
+
+h1.article-title{font:900 32px/1.4 var(--font); color:var(--ink); margin:32px 0 10px;}
+.article-lead{font:500 16px/1.8 var(--font); color:var(--sub); margin:0 0 18px;}
+.tagrow{margin-bottom:8px;}
+.tag{display:inline-block; background:var(--brand-light); color:var(--brand-deep); padding:5px 12px; border-radius:var(--r-full); font:700 11px var(--font); letter-spacing:var(--ls-wide); margin:0 6px 6px 0;}
+.tag.navy{background:var(--navy-light); color:var(--navy);}
+
+/* ---- section headings ---- */
+h2{font:800 24px var(--font); color:var(--ink); margin:56px 0 18px; padding-left:16px; border-left:5px solid var(--brand); display:flex; align-items:baseline; gap:10px;}
+h2 .num{font:900 15px var(--font); color:var(--brand); }
+h3{font:700 19px var(--font); color:var(--ink); margin:32px 0 12px;}
+
+/* ---- hero summary (TL;DR) ---- */
+.hero-summary{background:var(--bg-alt); border-top:5px solid var(--brand); border-radius:0 0 var(--r-lg) var(--r-lg); padding:26px 30px; margin:24px 0 8px;}
+.hero-summary .label{font:800 12px var(--font); color:var(--brand-deep); letter-spacing:.12em; margin-bottom:16px;}
+.hero-summary ol{padding:0; margin:0; counter-reset:sum; list-style:none;}
+.hero-summary ol li{font:600 16px/1.65 var(--font); color:var(--ink); margin-bottom:14px; position:relative; padding-left:40px; counter-increment:sum;}
+.hero-summary ol li:last-child{margin-bottom:0;}
+.hero-summary ol li::before{content:counter(sum); position:absolute; left:0; top:1px; width:26px; height:26px; border-radius:50%; background:var(--brand); color:#fff; font:800 13px var(--font); text-align:center; line-height:26px;}
+.hero-summary strong{color:var(--brand-deep);}
+
+/* ---- kpi row ---- */
+.kpi-row{display:grid; gap:14px; margin:20px 0; grid-template-columns:repeat(auto-fit,minmax(160px,1fr));}
+.kpi-card{background:var(--bg-alt); border-radius:var(--r-lg); padding:20px 16px; text-align:center; border:1px solid var(--rule-soft);}
+.kpi-card .num{font:900 26px var(--font); color:var(--brand-deep); line-height:1.2;}
+.kpi-card .label{font:600 13px var(--font); color:var(--muted); margin-top:6px;}
+
+/* ---- callouts ---- */
+.callout{background:var(--brand-light); border-left:5px solid var(--brand); padding:16px 20px; border-radius:0 var(--r-md) var(--r-md) 0; margin:22px 0; font:500 15px/1.75 var(--font); color:var(--body);}
+.callout.warning{background:var(--warning-bg); border-color:var(--warning);}
+.callout.negative{background:var(--red-bg); border-color:var(--red);}
+.callout strong{color:var(--ink);}
+
+/* ---- perk grid ---- */
+.perk-grid{display:grid; gap:16px; margin:20px 0; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
+.perk-card{background:var(--bg); border:1px solid var(--rule-soft); border-radius:var(--r-lg); padding:18px 20px;}
+.perk-card h4{font:700 15px var(--font); color:var(--ink); margin:0 0 8px; display:flex; align-items:center; gap:8px;}
+.perk-card h4::before{content:""; width:4px; height:18px; background:var(--brand); border-radius:2px; flex:none;}
+.perk-card p{font:500 14px/1.65 var(--font); color:var(--sub); margin:0;}
+.perk-card .value{display:inline-block; background:var(--brand-light); color:var(--brand-deep); padding:3px 9px; border-radius:var(--r-sm); font:700 12px var(--font); margin-top:10px;}
+
+/* ---- tables ---- */
+.tablewrap{overflow-x:auto; margin:20px 0; border-radius:var(--r-lg); border:1px solid var(--rule-soft);}
+table{width:100%; border-collapse:collapse; font-variant-numeric:tabular-nums; min-width:560px;}
+th,td{padding:13px 16px; text-align:left; border-bottom:1px solid var(--rule-soft); font:500 14px/1.6 var(--font); vertical-align:top;}
+thead th{background:var(--ink); color:#fff; font-weight:700; letter-spacing:var(--ls-wide); position:sticky; top:0;}
+thead th.olive{background:var(--brand-deep);}
+thead th.single{background:var(--navy);}
+tbody tr:nth-child(even) td{background:var(--bg-alt);}
+td.itemname{font-weight:700; color:var(--ink); white-space:nowrap;}
+.win{color:var(--brand-deep); font-weight:700;}
+.dim{color:var(--faint);}
+.same-table th,.same-table td{font-size:13px; padding:10px 14px;}
+
+/* ---- two-col compare ---- */
+.compare-twocol{display:grid; gap:16px; margin:20px 0; grid-template-columns:1fr 1fr;}
+.compare-twocol .col{padding:22px; border-radius:var(--r-lg);}
+.compare-twocol .col.a{background:var(--brand-light); border:1.5px solid var(--brand);}
+.compare-twocol .col.b{background:var(--bg-alt); border:1.5px solid var(--rule);}
+.compare-twocol h4{font:800 17px var(--font); color:var(--ink); margin:0 0 14px; padding-bottom:10px; border-bottom:2px solid var(--rule-soft); display:flex; align-items:center; gap:8px;}
+.compare-twocol .col.a h4{border-color:var(--brand);}
+.compare-twocol ul{padding-left:20px; margin:0;}
+.compare-twocol li{font:500 14px/1.7 var(--font); margin-bottom:6px;}
+.compare-twocol .col .who{font:700 12px var(--font); color:var(--brand-deep); letter-spacing:var(--ls-wide); display:block; margin-bottom:4px;}
+.compare-twocol .col.b .who{color:var(--navy);}
+
+/* ---- persona cards ---- */
+.persona-card{border:1px solid var(--rule-soft); border-radius:var(--r-lg); padding:20px 22px; margin:16px 0; background:var(--bg);}
+.persona-card .ptag{display:inline-block; background:var(--navy); color:#fff; font:800 12px var(--font); padding:4px 12px; border-radius:var(--r-full); letter-spacing:var(--ls-wide); margin-bottom:10px;}
+.persona-card h4{font:800 17px var(--font); color:var(--ink); margin:0 0 10px;}
+.persona-card .pgrid{display:grid; grid-template-columns:90px 1fr; gap:6px 14px; font:500 14px/1.6 var(--font); color:var(--sub);}
+.persona-card .pgrid .k{font-weight:700; color:var(--muted);}
+.persona-card .effect{margin-top:14px; padding:12px 16px; background:var(--brand-light); border-radius:var(--r-md); font:700 15px/1.6 var(--font); color:var(--brand-deep);}
+.persona-card .effect .big{font-size:20px; font-weight:900;}
+
+/* ---- decision flow ---- */
+.flow{margin:24px 0;}
+.flow-q{background:var(--ink); color:#fff; border-radius:var(--r-md); padding:16px 20px; font:700 16px var(--font); position:relative;}
+.flow-q .qn{display:inline-block; background:var(--brand); color:#fff; width:24px; height:24px; line-height:24px; text-align:center; border-radius:50%; font:900 13px var(--font); margin-right:10px;}
+.flow-branch{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:12px 0 18px;}
+.flow-arrow{text-align:center; color:var(--rule); font-size:20px; margin:2px 0;}
+.flow-res{padding:16px 18px; border-radius:var(--r-md); font:500 14px/1.55 var(--font);}
+.flow-res .yn{display:block; font:800 12px var(--font); letter-spacing:var(--ls-wide); margin-bottom:6px;}
+.flow-res.go{background:var(--brand-light); border:1.5px solid var(--brand);}
+.flow-res.go .yn{color:var(--brand-deep);}
+.flow-res.go strong{color:var(--brand-deep); font-size:16px;}
+.flow-res.next{background:var(--bg-alt); border:1.5px dashed var(--rule);}
+.flow-res.next .yn{color:var(--muted);}
+.flow-res.alt{background:var(--navy-light); border:1.5px solid var(--navy);}
+.flow-res.alt .yn{color:var(--navy);}
+.flow-res.alt strong{color:var(--navy); font-size:16px;}
+
+/* ---- nl cta ---- */
+.nl-cta{background:var(--navy); border-radius:var(--r-lg); padding:30px 32px; margin:48px 0 0; text-align:center;}
+.nl-cta h3{color:#fff; font:800 20px var(--font); margin:0 0 10px;}
+.nl-cta p{color:#cdd6e6; font:500 14px/1.7 var(--font); margin:0 0 18px;}
+.nl-cta a{display:inline-block; background:var(--brand); color:#fff; text-decoration:none; font:800 15px var(--font); padding:13px 30px; border-radius:var(--r-full);}
+
+/* ---- sources ---- */
+.sources{background:var(--bg-alt); border-radius:var(--r-lg); padding:20px 24px; margin:24px 0; font:500 13px/1.9 var(--font); color:var(--sub);}
+.sources a{color:var(--brand-deep); word-break:break-all;}
+.sources .label{font:800 12px var(--font); color:var(--ink); letter-spacing:var(--ls-wide); display:block; margin-bottom:8px;}
+
+footer.site-footer{margin-top:64px; padding-top:24px; border-top:1px solid var(--rule-soft); color:var(--faint); font:500 12px/1.8 var(--font); text-align:center;}
+
+@media(max-width:680px){
+  .container{padding:0 16px 60px;}
+  h1.article-title{font-size:25px;}
+  h2{font-size:20px;}
+  .compare-twocol{grid-template-columns:1fr;}
+  .flow-branch{grid-template-columns:1fr;}
+  .persona-card .pgrid{grid-template-columns:80px 1fr;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="site-header">
+    <div class="brand">@ino_moneycoach</div>
+    <div class="updated">最終更新 2026-06-01</div>
+  </header>
+
+  <div class="tagrow">
+    <span class="tag">Olive Infinite</span>
+    <span class="tag navy">三井住友カード Visa Infinite</span>
+    <span class="tag">カード選び</span>
+  </div>
+  <h1 class="article-title">Olive Infinite とは？特典・年会費が無料になる条件・Visa Infinite との違いを徹底比較</h1>
+  <p class="article-lead">
+    2026年5月26日、三井住友銀行・三井住友カードが「Oliveフレキシブルペイ Visa Infinite」をスタートしました。
+    既存の「三井住友カード Visa Infinite（クレジット単体）」と<strong>同じ年会費¥99,000</strong>で並走するため、「どちらを選べばいいの？」が分かりにくくなっています。
+    このページで、特典・年会費が無料になる条件・2枚の違い・選び方フローを1ページに整理します。
+  </p>
+
+  <!-- ============ TL;DR ============ -->
+  <div class="hero-summary">
+    <div class="label">📌 まず結論（3行）</div>
+    <ol>
+      <li>2枚は<strong>年会費・還元率・ラウンジ・保険などコア特典がほぼ同じ</strong>。決定的な差は「銀行口座一体型かどうか」だけ。</li>
+      <li>金融資産<strong>5,000万円以上</strong>あるなら Olive Infinite で<strong>年会費が無料化</strong>＝コア特典を実質¥0で受け取れる。</li>
+      <li>迷ったら<strong>「銀行口座を三井住友にまとめるか」で決まる</strong>。まとめるなら Olive、まとめないなら Visa Infinite（単体）で十分。</li>
+    </ol>
+  </div>
+
+  <!-- ============ 1. 基本スペック ============ -->
+  <h2><span class="num">01</span>Olive Infinite の基本スペック</h2>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">¥99,000</div><div class="label">年会費（税込）</div></div>
+    <div class="kpi-card"><div class="num">1.0%</div><div class="label">基本還元率（200円=2pt）</div></div>
+    <div class="kpi-card"><div class="num">満18歳〜</div><div class="label">申込対象（クレモード20歳〜）</div></div>
+    <div class="kpi-card"><div class="num">300万〜<br>9,999万円</div><div class="label">利用枠（個別審査）</div></div>
+  </div>
+  <div class="callout">
+    <strong>サービス開始 2026年5月26日</strong>／ブランドは Visa Infinite（タッチ決済対応）。
+    カードはプラスチック → <strong>メタルカードを2026年秋リリース予定</strong>。
+  </div>
+
+  <h3>フレキシブルペイ（Olive特有・1枚で4モード切替）</h3>
+  <div class="perk-grid">
+    <div class="perk-card"><h4>クレジットモード</h4><p>後払い・ポイント還元1.0%。</p></div>
+    <div class="perk-card"><h4>デビットモード</h4><p>即時引落・ポイント還元あり。</p></div>
+    <div class="perk-card"><h4>ポイント払いモード</h4><p>Vポイントで支払い。</p></div>
+    <div class="perk-card"><h4>追加カードモード</h4><p>家族・副財布として複数枚運用。</p></div>
+  </div>
+  <div class="callout">
+    既存の三井住友カード Visa Infinite は<strong>クレジット専用</strong>で銀行口座一体型ではありません。
+    <strong>ここが2枚の最大の構造差</strong>です。
+  </div>
+
+  <h3>主要特典</h3>
+  <div class="perk-grid">
+    <div class="perk-card"><h4>コンシェルジュ</h4><p>24時間365日（電話／メール／LINE／Web）。テン・グループ・ジャパンが提供。</p></div>
+    <div class="perk-card"><h4>SHARE LOUNGE</h4><p>ギフトチケットを<strong>月4枚進呈</strong>（全国40店舗以上）。</p><span class="value">¥84,480/年相当（推計）</span></div>
+    <div class="perk-card"><h4>プライオリティ・パス</h4><p>プレステージ会員・回数無制限。<strong>家族カード会員も無料で利用可</strong>（別途登録要）。同伴者は有料。</p></div>
+    <div class="perk-card"><h4>旅行傷害保険</h4><p>海外・国内とも<strong>最高1億円</strong>（付帯内訳は公式で要確認）。</p></div>
+    <div class="perk-card"><h4>航空便遅延保険</h4><p><strong>標準付帯</strong>。一般カードでは付かないことが多い差別化要素。</p></div>
+    <div class="perk-card"><h4>お買物安心保険</h4><p>年間最高500万円。</p></div>
+    <div class="perk-card"><h4>ホテルステータスマッチ</h4><p>IHG ワン リワーズ ゴールドエリート／マリーナベイ・サンズ サンズ リワーズ。</p></div>
+    <div class="perk-card"><h4>選べる特典</h4><p><strong>3個まで選択可</strong>（Olive一般・ゴールド・プラチナプリファードの仕組みを拡張）。</p></div>
+    <div class="perk-card"><h4>ファインダイニング by 招待日和</h4><p>2名コース料金で1名無料。</p></div>
+    <div class="perk-card"><h4>ミュージアム・パス</h4><p>国内7カ所提携。</p></div>
+    <div class="perk-card"><h4>リワードアップ</h4><p>加盟店利用で<strong>+1〜9pt</strong>追加。</p></div>
+    <div class="perk-card"><h4>限定イベント</h4><p>例：CYCLE by Mauro Colagreco など Olive Infinite 限定枠。</p></div>
+  </div>
+
+  <h3>銀行特典（Olive共通＋Infinite拡張）</h3>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">月10回無料</div><div class="label">他行宛振込手数料</div></div>
+    <div class="kpi-card"><div class="num">月10回無料</div><div class="label">コンビニATM手数料（セブン／ローソン／ゆうちょ／イオン）</div></div>
+  </div>
+
+  <!-- ============ 2. 年会費無料条件 ============ -->
+  <h2><span class="num">02</span>年会費が無料になる条件（Olive Infinite固有・2段構造）</h2>
+  <p class="article-lead" style="margin-bottom:14px;">既存 Visa Infinite には<strong>年会費無料条件はありません</strong>。Olive版は「資産を集めるとカード年会費が消える」富裕層向け設計です。</p>
+  <div class="compare-twocol">
+    <div class="col a">
+      <h4>① 初回適用（いずれか）</h4>
+      <ul>
+        <li>Olive口座の<strong>円普通預金 500万円以上</strong></li>
+        <li><strong>SBI証券 預り資産 500万円以上</strong></li>
+        <li>円普通預金＋SBI証券 預り資産の<strong>合計 5,000万円以上</strong></li>
+      </ul>
+    </div>
+    <div class="col b">
+      <h4>② 2回目以降（追加要件）</h4>
+      <ul>
+        <li>上記①の3条件に加え…</li>
+        <li><strong>カード年間利用 100万円以上</strong>が追加で必要</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout warning">
+    <strong>注意</strong>：2回目以降の無料化には「資産」＋「カード利用100万円」の<strong>両輪</strong>が必要です。資産だけ置いておけば永久に無料、というわけではありません。
+  </div>
+
+  <h3>クレカ積立（SBI証券）— 資産残高で還元率が階段状に上がる</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>SBI証券＋円預金 合計残高</th><th>Olive上乗せ</th><th class="olive">クレカ積立 還元率</th></tr></thead>
+      <tbody>
+        <tr><td class="itemname">3,000万円未満</td><td>+0%</td><td class="win">4.0%</td></tr>
+        <tr><td class="itemname">3,000万〜5,000万円未満</td><td>+1.0%</td><td class="win">5.0%</td></tr>
+        <tr><td class="itemname">5,000万円以上</td><td>+2.0%</td><td class="win">6.0%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font:500 13px var(--font); color:var(--muted); margin-top:-8px;">※ この最大6%枠は既存 Visa Infinite でも同じく適用可。</p>
+
+  <h3>入会特典・継続特典（2枚とも同条件）</h3>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">100,000pt</div><div class="label">入会特典：3ヶ月で100万円利用</div></div>
+    <div class="kpi-card"><div class="num">40,000pt</div><div class="label">継続：年400万円達成</div></div>
+    <div class="kpi-card"><div class="num">110,000pt</div><div class="label">継続：年700万円達成</div></div>
+  </div>
+  <div class="callout warning">
+    <strong>継続特典は「到達型」</strong>（利用額に比例して増えるのではなく、年間利用額で2段階の<strong>いずれか一方</strong>）。<br>
+    ・年400万円以上 → 40,000pt／・年700万円以上 → 110,000pt<br>
+    ・<strong>100万〜300万円台は付与なし</strong>。500・600万円も40,000ptのまま（700万円で初めて110,000ptに跳ねる）。
+  </div>
+
+  <h3>継続特典を加味した「実質還元率」</h3>
+  <p class="article-lead" style="margin-bottom:14px;">基本還元1.0%に継続特典を上乗せすると、使うほど実質還元率が上がります（2年目以降の通常運用時／1pt=1円換算）。</p>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>年間利用額</th><th>通常還元(1.0%)</th><th>継続特典</th><th class="olive">実質還元率</th></tr></thead>
+      <tbody>
+        <tr><td class="itemname">400万円</td><td>40,000pt</td><td>40,000pt</td><td class="win">2.0%</td></tr>
+        <tr><td class="itemname">700万円</td><td>70,000pt</td><td>110,000pt</td><td class="win">約2.57%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font:500 13px var(--font); color:var(--muted); margin-top:-8px;">※ 入会特典は除外（初年度はさらに高い）。SBI証券のクレカ積立額は継続特典の利用額カウントに含まれません。実質還元率は通常のカード決済額に対する数値です。</p>
+
+  <!-- ============ 3. 比較 ============ -->
+  <h2><span class="num">03</span>Olive Infinite vs Visa Infinite（単体）</h2>
+
+  <h3>🔑 決定的な違い（ここで選ぶ）</h3>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th>項目</th><th class="olive">Olive Infinite</th><th class="single">Visa Infinite（単体）</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="itemname">年会費無料条件</td><td class="win">資産5,000万円等で無料化</td><td class="dim">無し</td></tr>
+        <tr><td class="itemname">本体構造</td><td class="win">銀行口座一体型</td><td class="dim">クレジット単体</td></tr>
+        <tr><td class="itemname">支払モード</td><td class="win">4モード（クレ／デビット／ポイント／追加）</td><td class="dim">クレジットのみ</td></tr>
+        <tr><td class="itemname">銀行特典</td><td class="win">他行振込・ATM 月10回無料</td><td class="dim">なし</td></tr>
+        <tr><td class="itemname">選べる特典</td><td class="win">3個まで選択可</td><td class="dim">仕組みなし</td></tr>
+        <tr><td class="itemname">メタルカード</td><td class="win">2026年秋リリース予定</td><td class="dim">なし</td></tr>
+        <tr><td class="itemname">申込年齢</td><td>満18歳〜（クレモード20歳〜）</td><td>満20歳〜（本人安定収入）</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>= ほぼ同じ項目（差にならない）</h3>
+  <div class="tablewrap">
+    <table class="same-table">
+      <thead><tr><th>項目</th><th>2枚共通の内容</th></tr></thead>
+      <tbody>
+        <tr><td class="itemname">年会費</td><td>¥99,000</td></tr>
+        <tr><td class="itemname">基本還元率</td><td>1.0%（200円=2pt）</td></tr>
+        <tr><td class="itemname">コンシェルジュ</td><td>あり（Olive版はテン・グループ・ジャパン／単体は専用デスク）</td></tr>
+        <tr><td class="itemname">SHARE LOUNGE</td><td>月4枚進呈</td></tr>
+        <tr><td class="itemname">プライオリティ・パス</td><td>プレステージ会員・回数無制限（家族カード会員も無料）</td></tr>
+        <tr><td class="itemname">SMBCパーク栄／D'sラウンジトーキョー</td><td>利用可（Infiniteランクのみ／一般・ゴールド・プラチナプリファードは対象外）</td></tr>
+        <tr><td class="itemname">旅行傷害保険</td><td>海外・国内 最高1億円</td></tr>
+        <tr><td class="itemname">航空便遅延保険</td><td>標準付帯</td></tr>
+        <tr><td class="itemname">お買物安心保険</td><td>年500万円</td></tr>
+        <tr><td class="itemname">ファインダイニング by 招待日和</td><td>あり</td></tr>
+        <tr><td class="itemname">ホテルステータスマッチ</td><td>IHG Gold／マリーナベイ・サンズ</td></tr>
+        <tr><td class="itemname">入会特典</td><td>3ヶ月100万円 → 100K pt</td></tr>
+        <tr><td class="itemname">継続特典</td><td>年400万→40K／年700万→110K pt</td></tr>
+        <tr><td class="itemname">クレカ積立（SBI証券）</td><td>最大6.0%（資産運用条件達成時）</td></tr>
+        <tr><td class="itemname">利用枠</td><td>300万〜9,999万円</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>構造差のサマリ</h3>
+  <div class="compare-twocol">
+    <div class="col a">
+      <h4>🟢 Olive Infinite</h4>
+      <span class="who">向く人：富裕層（5,000万円超）＋銀行口座を集約したい層</span>
+      <ul>
+        <li><strong>強み</strong>：年会費無料化／フレキシブルペイ／選べる特典／メタル予定</li>
+        <li><strong>弱み</strong>：銀行口座移管が前提・Olive非ユーザーは始めるコストが高い</li>
+        <li>既存Olive一般／ゴールド／プラチナプリファードからの昇格は容易</li>
+      </ul>
+    </div>
+    <div class="col b">
+      <h4>🔵 Visa Infinite（単体）</h4>
+      <span class="who">向く人：クレカ単体でステータス・特典が欲しい層</span>
+      <ul>
+        <li><strong>強み</strong>：シンプル運用／複数年の実績</li>
+        <li><strong>弱み</strong>：銀行特典なし／年会費無料条件なし</li>
+        <li>Olive Infinite への横移行は別審査</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============ 4. ペルソナ ============ -->
+  <h2><span class="num">04</span>メリットを最大化できる人</h2>
+
+  <div class="persona-card">
+    <span class="ptag">ペルソナ A</span>
+    <h4>富裕層リテンション型（年会費無料化を狙う）</h4>
+    <div class="pgrid">
+      <span class="k">条件</span><span>金融資産5,000万円以上／SBI証券で運用 or 移管OK／円預金500万円を置ける</span>
+      <span class="k">使い方</span><span>Olive＋SBI証券に資産集約 → 年会費が無料化。SHARE LOUNGE・ステータスマッチ・PPを実質¥0で享受</span>
+    </div>
+    <div class="effect">コア特典を年会費¥0で享受できる。富裕層は実質Olive一択</div>
+  </div>
+
+  <div class="persona-card">
+    <span class="ptag">ペルソナ B</span>
+    <h4>高年収サラリーマン型（年400万円利用）</h4>
+    <div class="pgrid">
+      <span class="k">条件</span><span>年収1,500万円〜／家計・経費を1枚に集約できる</span>
+      <span class="k">使い方</span><span>入会3ヶ月100万円→100K pt、年400万円→継続40K pt。SHARE LOUNGE＋PP＋銀行特典で家計効率化</span>
+    </div>
+    <div class="effect">年¥124,480（継続40K＋SHARE LOUNGE）− 年会費¥99,000 = <span class="big">+¥25,480</span>＋非数値特典</div>
+  </div>
+
+  <div class="persona-card">
+    <span class="ptag">ペルソナ C</span>
+    <h4>出張族・経営者型（年700万円利用）</h4>
+    <div class="pgrid">
+      <span class="k">条件</span><span>経費集中・出張頻度高／年700万円を1枚に集約できる</span>
+      <span class="k">使い方</span><span>入会100K＋継続110K = 年210K pt。SHARE LOUNGE／PP／コンシェルで出張ストレス削減、メタルで対面印象UP</span>
+    </div>
+    <div class="effect">Pt価値¥210,000＋SHARE LOUNGE¥84,480 − 年会費 = <span class="big">+¥195,480以上</span></div>
+  </div>
+
+  <div class="persona-card">
+    <span class="ptag">ペルソナ D</span>
+    <h4>銀行ヘビーユーザー型</h4>
+    <div class="pgrid">
+      <span class="k">条件</span><span>給与受取＋複数口座＋他行振込が月数回／フレキシブルペイを活かしたい</span>
+      <span class="k">使い方</span><span>給与・ローン・公共料金をOlive集約。振込・ATM月10回無料、ポイント払い／デビットを副財布に</span>
+    </div>
+    <div class="effect">振込・ATM削減 <span class="big">年¥10,000〜30,000</span>（年会費を払う価値は資産集約の利便性次第）</div>
+  </div>
+
+  <div class="callout negative">
+    <strong>合わないケース（NG）</strong><br>
+    ・年間カード利用が<strong>300万円未満</strong>（継続40Kに届かず年会費回収が難しい）<br>
+    ・SHARE LOUNGE／PPを年4回も使わない（東京・大阪以外在住は要注意）<br>
+    ・銀行口座を三井住友に集約する気がない（銀行系特典が空振り）<br>
+    ・<strong>既に Visa Infinite を保有</strong>（重複保有のメリットは薄い）
+  </div>
+
+  <!-- ============ 5. 選び方フロー ============ -->
+  <h2><span class="num">05</span>選び方フロー（3問チェック）</h2>
+  <div class="flow">
+    <div class="flow-q"><span class="qn">Q1</span>金融資産5,000万円以上を Olive＋SBI証券に集約できる？</div>
+    <div class="flow-branch">
+      <div class="flow-res go"><span class="yn">YES →</span><strong>Olive Infinite</strong><br>年会費無料・実質コスト¥0</div>
+      <div class="flow-res next"><span class="yn">NO ↓</span>Q2へ</div>
+    </div>
+    <div class="flow-arrow">▼</div>
+    <div class="flow-q"><span class="qn">Q2</span>銀行口座を三井住友（Olive）に集約する意志がある？</div>
+    <div class="flow-branch">
+      <div class="flow-res go"><span class="yn">YES →</span><strong>Olive Infinite</strong><br>フレキシブルペイ＋銀行特典</div>
+      <div class="flow-res next"><span class="yn">NO ↓</span>Q3へ</div>
+    </div>
+    <div class="flow-arrow">▼</div>
+    <div class="flow-q"><span class="qn">Q3</span>既に Visa Infinite を保有 or 申込予定がある？</div>
+    <div class="flow-branch">
+      <div class="flow-res alt"><span class="yn">YES →</span><strong>Visa Infinite（単体）</strong><br>重複保有メリットは薄い</div>
+      <div class="flow-res next"><span class="yn">NO →</span>どちらでも可。「選べる特典3個」「メタル」を重視するかで分岐</div>
+    </div>
+  </div>
+
+  <h3>ペルソナ別おすすめ</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>こんな人</th><th>おすすめ</th><th>理由</th></tr></thead>
+      <tbody>
+        <tr><td class="itemname">富裕層（資産5,000万円超）</td><td class="win">Olive Infinite</td><td>年会費が無料化できる</td></tr>
+        <tr><td class="itemname">高年収サラリーマン（年400万円）</td><td>Olive Infinite／単体 どちらも</td><td>銀行特典の要否次第</td></tr>
+        <tr><td class="itemname">出張族・経営者（年700万円）</td><td>どちらでも可</td><td>継続Pt枠は両方同じ（既存Olive会員は昇格が自然）</td></tr>
+        <tr><td class="itemname">銀行ヘビーユーザー</td><td class="win">Olive Infinite</td><td>振込・ATM月10回無料が活きる</td></tr>
+        <tr><td class="itemname">18-19歳の富裕層子女</td><td class="win">Olive Infinite</td><td>カード保持のみ可（単体は20歳〜）</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>「両方持つ」は基本NG</h3>
+  <div class="callout">
+    年会費¥198,000に対し特典がほぼ重複します（SHARE LOUNGE／PP／コンシェル／旅行保険）。<br>
+    検討の余地があるのは、既存の単体版で継続ポイントを積み済みで、Olive版を<strong>「銀行特典＋メタルカード」用に追加</strong>したい場合くらい。基本は1枚に絞るのが合理的です。
+  </div>
+
+  <!-- ============ NL CTA ============ -->
+  <div class="nl-cta">
+    <h3>カード選びをもう一段深く</h3>
+    <p>還元率の最大化・特典の使い倒し方を、ニュースレターで毎週ひとつ深掘りしています。登録は無料です。</p>
+    <a href="https://ino-moneycoach.com/newsletter">ニュースレターを購読する</a>
+  </div>
+
+  <!-- ============ sources ============ -->
+  <div class="sources">
+    <span class="label">一次資料</span>
+    ・公式LP：<a href="https://www.smbc.co.jp/kojin/olive-account/olive-infinite/">smbc.co.jp/kojin/olive-account/olive-infinite/</a><br>
+    ・発表PDF（2026-05-26）：<a href="https://www.smbc-card.com/company/news/26/news0002151.pdf">smbc-card.com/company/news/26/news0002151.pdf</a><br>
+    ・PR TIMES：<a href="https://prtimes.jp/main/html/rd/p/000000104.000134306.html">prtimes.jp/main/html/rd/p/000000104.000134306.html</a><br>
+    ・既存 Visa Infinite 公式：<a href="https://www.smbc-card.com/nyukai/card/infinite.jsp">smbc-card.com/nyukai/card/infinite.jsp</a>
+  </div>
+
+  <footer class="site-footer">
+    最終更新 2026-06-01／数値は公式LP・発表PDF（2026年5月26日時点）に基づきます。<br>
+    年会費・特典・条件は改定される場合があります。お申し込み前に必ず公式サイトで最新の内容をご確認ください。
+  </footer>
+
+</div>
+</body>
+</html>
