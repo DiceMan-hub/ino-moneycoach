@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>カルーセル — アメックス3%還元 完全攻略</title>
+<style>
+  :root {
+    --brand: #14C1BD;
+    --brand-light: #E8F8F8;
+    --bg: #FFFFFF;
+    --bg-alt: #F5F5F5;
+    --text-h: #222222;
+    --text-body: #333333;
+    --text-sub: #444444;
+    --text-muted: #999999;
+    --border: #E5E5E7;
+    --negative: #D32F2F;
+    --negative-bg: #FFEBEE;
+    --positive: #388E3C;
+    --positive-bg: #E8F5E9;
+    --shadow: 0 1px 3px rgba(0,0,0,.06);
+    --radius: 8px;
+    --radius-sm: 5px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #E5E5E7;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Kaku Gothic ProN', sans-serif;
+    color: var(--text-body);
+    padding: 20px;
+  }
+
+  .controls {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .controls button {
+    padding: 12px 32px;
+    background: var(--brand);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: opacity .15s;
+  }
+  .controls button:hover { opacity: .9; }
+
+  .slides-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .slide-group { text-align: center; }
+  .slide-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    font-weight: 600;
+    letter-spacing: .04em;
+  }
+
+  /* ── Slide: 4:5 aspect ratio ── */
+  .slide {
+    width: 432px;
+    height: 540px;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 36px 28px;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.08);
+  }
+
+  .slide-number {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: .04em;
+  }
+
+  .watermark {
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: .03em;
+  }
+
+  /* ── Common ── */
+  .section-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-h);
+    line-height: 1.3;
+  }
+  .section-sub {
+    font-size: 13px;
+    color: var(--text-sub);
+    margin-top: 4px;
+  }
+  .top-accent {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--brand);
+  }
+
+  .badge {
+    display: inline-block;
+    border: 1.5px solid var(--brand);
+    color: var(--brand);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    padding: 4px 14px;
+    border-radius: 100px;
+  }
+  .badge-new {
+    display: inline-block;
+    background: var(--brand);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-right: 4px;
+  }
+  .badge-update {
+    display: inline-block;
+    background: var(--positive-bg);
+    color: var(--positive);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+
+  .callout {
+    display: flex;
+    align-items: start;
+    gap: 8px;
+    padding: 10px 12px;
+    border-radius: var(--radius);
+    background: var(--brand-light);
+    border: 1px solid var(--brand);
+  }
+  .callout-icon {
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .callout-text {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-body);
+    line-height: 1.5;
+  }
+
+  /* ══════════════════════════════════ */
+  /* SLIDE 1: COVER                   */
+  /* ══════════════════════════════════ */
+  .s1 {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: var(--bg);
+  }
+  .s1 .main-title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--text-h);
+    margin: 16px 0 6px;
+  }
+  .s1 .main-title .accent {
+    color: var(--brand);
+  }
+  .s1 .main-sub {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-sub);
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+  .s1 .save-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--brand-light);
+    border: 1px solid var(--border);
+    padding: 7px 18px;
+    border-radius: 100px;
+    font-size: 13px;
+    color: var(--text-sub);
+    font-weight: 500;
+  }
+
+  /* ══════════════════════════════════ */
+  /* SLIDE 2: HOW 3% WORKS            */
+  /* ══════════════════════════════════ */
+  .s2 { justify-content: center; gap: 8px; }
+  .rate-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: var(--radius);
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+  }
+  .rate-row.highlight {
+    background: var(--brand-light);
+    border-color: var(--brand);
+  }
+  .rate-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-body);
+  }
+  .rate-label small {
+    display: block;
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-top: 1px;
+  }
+  .rate-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-h);
+    white-space: nowrap;
+  }
+  .rate-value.brand { color: var(--brand); }
+
+  /* Limit table */
+  .limit-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+    margin-top: 4px;
+  }
+  .limit-table th {
+    font-weight: 600;
+    color: var(--text-muted);
+    padding: 4px 2px;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: .02em;
+  }
+  .limit-table td {
+    text-align: center;
+    padding: 5px 2px;
+    font-weight: 600;
+    color: var(--text-body);
+    font-size: 11px;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+  }
+  .limit-table td.warn {
+    background: var(--negative-bg);
+    color: var(--negative);
+    font-weight: 700;
+  }
+
+  /* ══════════════════════════════════ */
+  /* SLIDE 3: OFFICIAL STORES          */
+  /* ══════════════════════════════════ */
+  .s3 { justify-content: center; gap: 8px; }
+  .store-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+  }
+  .store-item {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 10px 6px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-body);
+    line-height: 1.3;
+  }
+  .store-item .store-icon {
+    font-size: 22px;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .store-item.brand-bg {
+    background: var(--brand-light);
+    border-color: var(--brand);
+  }
+
+  /* ══════════════════════════════════ */
+  /* SLIDE 4: AMAZON PAY STORES        */
+  /* ══════════════════════════════════ */
+  .s4 { justify-content: center; gap: 6px; }
+  .category-group {
+    margin-bottom: 2px;
+  }
+  .category-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--brand);
+    letter-spacing: .04em;
+    margin-bottom: 3px;
+    padding-left: 2px;
+  }
+  .category-stores {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .category-stores .store-chip {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 5px 10px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-body);
+  }
+
+  /* ══════════════════════════════════ */
+  /* SLIDE 5: SIMULATION               */
+  /* ══════════════════════════════════ */
+  .s5 { justify-content: center; gap: 6px; }
+  .sim-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 11px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .sim-table th {
+    background: var(--bg-alt);
+    font-weight: 600;
+    color: var(--text-muted);
+    padding: 6px 4px;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: .02em;
+    border-bottom: 1px solid var(--border);
+  }
+  .sim-table td {
+    text-align: center;
+    padding: 7px 4px;
+    font-weight: 500;
+    color: var(--text-body);
+    border-bottom: 1px solid var(--border);
+  }
+  .sim-table tr:last-child td { border-bottom: none; }
+  .sim-table td.total {
+    font-weight: 700;
+    color: var(--text-h);
+  }
+  .sim-table td.brand { color: var(--brand); font-weight: 700; }
+
+  /* ══════════════════════════════════ */
+  /* SLIDE 6: MILE CONVERSION          */
+  /* ══════════════════════════════════ */
+  .s6 { justify-content: center; gap: 8px; }
+  .mile-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: var(--radius);
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+  }
+  .mile-row.best {
+    background: var(--brand-light);
+    border-color: var(--brand);
+  }
+  .mile-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-body);
+  }
+  .mile-label small {
+    display: block;
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-top: 1px;
+  }
+  .mile-value {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-h);
+    text-align: right;
+    white-space: nowrap;
+  }
+  .mile-value.brand { color: var(--brand); }
+
+  /* ══════════════════════════════════ */
+  /* SLIDE 7: CARD SELECTION           */
+  /* ══════════════════════════════════ */
+  .s7 { justify-content: center; gap: 6px; }
+  .pick-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border-radius: var(--radius);
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+  }
+  .pick-row.highlight {
+    background: var(--brand-light);
+    border-color: var(--brand);
+  }
+  .pick-persona {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-body);
+    line-height: 1.4;
+  }
+  .pick-card {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-h);
+    text-align: right;
+    white-space: nowrap;
+  }
+  .pick-card .fee {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-top: 1px;
+  }
+
+  /* ══════════════════════════════════ */
+  /* SLIDE 8: CAUTIONS                 */
+  /* ══════════════════════════════════ */
+  .s8 { justify-content: center; gap: 10px; }
+  .caution-card {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 10px;
+    align-items: start;
+    padding: 12px 12px;
+    border-radius: var(--radius);
+    background: var(--negative-bg);
+    border: 1px solid rgba(211,47,47,.2);
+  }
+  .caution-icon {
+    font-size: 18px;
+    text-align: center;
+    padding-top: 1px;
+  }
+  .caution-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-h);
+    margin-bottom: 3px;
+  }
+  .caution-desc {
+    font-size: 12px;
+    color: var(--text-sub);
+    line-height: 1.5;
+  }
+
+  /* ══════════════════════════════════ */
+  /* SLIDE 9: SIMULATOR INTRO          */
+  /* ══════════════════════════════════ */
+  .s9 { justify-content: center; gap: 10px; }
+  .sim-feature {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: var(--radius);
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+  }
+  .sim-feature-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    background: var(--brand-light);
+  }
+  .sim-feature-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-h);
+  }
+  .sim-feature-desc {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 1px;
+  }
+  .sim-mockup {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    text-align: center;
+  }
+  .sim-mockup-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-h);
+    margin-bottom: 6px;
+  }
+  .sim-mockup-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    font-size: 12px;
+    color: var(--text-sub);
+    border-bottom: 1px dashed var(--border);
+  }
+  .sim-mockup-row:last-child { border-bottom: none; }
+  .sim-mockup-val {
+    font-weight: 700;
+    color: var(--brand);
+  }
+
+  /* ══════════════════════════════════ */
+  /* SLIDE 10: CTA                     */
+  /* ══════════════════════════════════ */
+  .s10 {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+  .s10 .cta-headline {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-h);
+    line-height: 1.6;
+    max-width: 360px;
+  }
+  .s10 .cta-product {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 340px;
+  }
+  .s10 .cta-product-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-h);
+    margin-bottom: 4px;
+  }
+  .s10 .cta-product-desc {
+    font-size: 12px;
+    color: var(--text-sub);
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+  .s10 .cta-price {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--brand);
+  }
+  .s10 .cta-btn {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 14px 36px;
+    border-radius: var(--radius);
+    background: var(--brand);
+    color: #fff;
+    letter-spacing: .03em;
+  }
+  .s10 .cta-sub {
+    font-size: 13px;
+    color: var(--text-sub);
+  }
+  .s10 .cta-free-note {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .s10 .save-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--brand-light);
+    border: 1px solid var(--border);
+    padding: 7px 18px;
+    border-radius: 100px;
+    font-size: 13px;
+    color: var(--text-sub);
+    font-weight: 500;
+  }
+
+  /* ── Download per slide ── */
+  .dl-btn {
+    margin-top: 8px;
+    padding: 8px 20px;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    color: var(--text-sub);
+    border-radius: var(--radius);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background .15s;
+  }
+  .dl-btn:hover { background: var(--border); }
+
+  @media print {
+    body { background: none; }
+    .controls, .dl-btn, .slide-label { display: none; }
+    .slide { box-shadow: none; border-radius: 0; page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<div class="controls">
+  <button onclick="downloadAll()">全スライドをJPGでダウンロード</button>
+</div>
+
+<div class="slides-wrapper">
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 1: COVER                             -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="slide-group">
+  <div class="slide-label">SLIDE 1 / 10 — 表紙</div>
+  <div class="slide s1" id="slide1">
+    <div class="top-accent"></div>
+    <span class="slide-number">1/10</span>
+    <div class="badge">2026年最新版</div>
+    <div class="main-title">アメックス<br><span class="accent">3%還元</span><br>完全攻略</div>
+    <div class="main-sub">Amazon Pay対応<br>300+店舗で最大3%還元</div>
+    <div class="save-badge">&#x1F4CC; 保存して後で見返せます</div>
+    <div class="watermark">@ino_moneycoach</div>
+  </div>
+  <button class="dl-btn" onclick="downloadSlide('slide1', 1)">JPG</button>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 2: HOW 3% WORKS                      -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="slide-group">
+  <div class="slide-label">SLIDE 2 / 10 — 3%還元の仕組み</div>
+  <div class="slide s2" id="slide2">
+    <div class="top-accent"></div>
+    <span class="slide-number">2/10</span>
+    <div class="section-title">ポイント還元率 最大化のコツ</div>
+    <div class="section-sub">全カード共通の仕組み</div>
+
+    <div style="display:flex;flex-direction:column;gap:6px;margin-top:10px;">
+      <div class="rate-row">
+        <div class="rate-label">通常利用<small>すべての決済</small></div>
+        <div class="rate-value">100円=1P <span style="font-size:12px;font-weight:500;color:var(--text-muted);">（1%）</span></div>
+      </div>
+      <div class="rate-row highlight">
+        <div class="rate-label">ボーナスポイント対象店<small>Amazon, Yahoo, JAL 等</small></div>
+        <div class="rate-value brand">100円=3P <span style="font-size:12px;font-weight:500;color:var(--brand);">（3%）</span></div>
+      </div>
+      <div class="rate-row">
+        <div class="rate-label">Amexトラベルオンライン<small>公式旅行予約サイト</small></div>
+        <div class="rate-value">100円=4P <span style="font-size:12px;font-weight:500;color:var(--text-muted);">（4%）</span></div>
+      </div>
+    </div>
+
+    <div style="margin-top:10px;">
+      <div style="font-size:11px;font-weight:600;color:var(--text-muted);letter-spacing:.04em;margin-bottom:4px;">3%ボーナス 年間上限比較</div>
+      <table class="limit-table">
+        <tr>
+          <th>グリーン</th>
+          <th>GP</th>
+          <th>プラチナ</th>
+          <th>Bizゴールド</th>
+          <th>Bizプラチナ</th>
+        </tr>
+        <tr>
+          <td>500万</td>
+          <td class="warn">50万</td>
+          <td>500万</td>
+          <td>500万</td>
+          <td>500万</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="callout" style="margin-top:8px;">
+      <div class="callout-icon">&#x1F4A1;</div>
+      <div class="callout-text">GPは50万円上限。大きく使うならグリーン・プラチナ・Biz系が有利</div>
+    </div>
+
+    <div class="watermark">@ino_moneycoach</div>
+  </div>
+  <button class="dl-btn" onclick="downloadSlide('slide2', 2)">JPG</button>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 3: OFFICIAL 3% STORES                -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="slide-group">
+  <div class="slide-label">SLIDE 3 / 10 — 公式3%対象店</div>
+  <div class="slide s3" id="slide3">
+    <div class="top-accent"></div>
+    <span class="slide-number">3/10</span>
+    <div class="section-title">公式ボーナスポイント対象店</div>
+    <div class="section-sub">これらの店舗で100円=3ポイント</div>
+
+    <div class="store-grid" style="margin-top:12px;">
+      <div class="store-item">
+        <span class="store-icon">&#x1F6D2;</span>
+        Amazon
+      </div>
+      <div class="store-item">
+        <span class="store-icon">&#x1F6CD;&#xFE0F;</span>
+        Yahoo!<br>ショッピング
+      </div>
+      <div class="store-item">
+        <span class="store-icon">&#x2708;&#xFE0F;</span>
+        JAL
+      </div>
+      <div class="store-item">
+        <span class="store-icon">&#x1F3E8;</span>
+        一休.com
+      </div>
+      <div class="store-item">
+        <span class="store-icon">&#x1F4F1;</span>
+        App Store<br>& iTunes
+      </div>
+      <div class="store-item">
+        <span class="store-icon">&#x1F354;</span>
+        Uber Eats
+      </div>
+      <div class="store-item">
+        <span class="store-icon">&#x1F4BB;</span>
+        ヨドバシ<br>カメラ
+      </div>
+      <div class="store-item">
+        <span class="store-icon">&#x1F30F;</span>
+        HIS
+      </div>
+      <div class="store-item brand-bg">
+        <span class="store-icon">&#x1F48E;</span>
+        Amex<br>トラベル
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:10px;">
+      <div class="callout-icon">&#x1F449;</div>
+      <div class="callout-text">実はこれ以外にも3%で使える店がある…<br>次のスライドで紹介</div>
+    </div>
+
+    <div class="watermark">@ino_moneycoach</div>
+  </div>
+  <button class="dl-btn" onclick="downloadSlide('slide3', 3)">JPG</button>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 4: AMAZON PAY 300+ STORES            -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="slide-group">
+  <div class="slide-label">SLIDE 4 / 10 — Amazon Pay 300+店舗</div>
+  <div class="slide s4" id="slide4">
+    <div class="top-accent"></div>
+    <span class="slide-number">4/10</span>
+    <div style="display:flex;gap:6px;align-items:center;margin-bottom:6px;">
+      <span class="badge-new">NEW</span>
+      <span class="badge-update">2026年3月更新</span>
+    </div>
+    <div class="section-title">Amazon Pay対応で<br>+300店舗が3%還元</div>
+
+    <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px;">
+      <div class="category-group">
+        <div class="category-label">&#x1F4BB; PC・家電</div>
+        <div class="category-stores">
+          <span class="store-chip">ダイソン</span>
+          <span class="store-chip">ドスパラ</span>
+          <span class="store-chip">マウスコンピューター</span>
+        </div>
+      </div>
+      <div class="category-group">
+        <div class="category-label">&#x1F455; ファッション</div>
+        <div class="category-stores">
+          <span class="store-chip">BEAMS</span>
+          <span class="store-chip">UNITED ARROWS</span>
+          <span class="store-chip">Paul Smith</span>
+        </div>
+      </div>
+      <div class="category-group">
+        <div class="category-label">&#x2708;&#xFE0F; 旅行</div>
+        <div class="category-stores">
+          <span class="store-chip">JTB</span>
+          <span class="store-chip">るるぶトラベル</span>
+          <span class="store-chip">アパホテル</span>
+        </div>
+      </div>
+      <div class="category-group">
+        <div class="category-label">&#x1F3E0; ふるさと納税</div>
+        <div class="category-stores">
+          <span class="store-chip">ふるさとチョイス</span>
+          <span class="store-chip">さとふる</span>
+          <span class="store-chip">ふるなび</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:10px;">
+      <div class="callout-icon">&#x1F50D;</div>
+      <div class="callout-text">全店舗を無料で検索できるシミュレーターを公開中<br>&#x2192; プロフィールリンクから</div>
+    </div>
+
+    <div class="watermark">@ino_moneycoach</div>
+  </div>
+  <button class="dl-btn" onclick="downloadSlide('slide4', 4)">JPG</button>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 5: SIMULATION                        -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="slide-group">
+  <div class="slide-label">SLIDE 5 / 10 — 試算例</div>
+  <div class="slide s5" id="slide5">
+    <div class="top-accent"></div>
+    <span class="slide-number">5/10</span>
+    <div class="section-title">年間200万円利用した場合</div>
+    <div class="section-sub">内訳：通常150万円 + 3%対象50万円</div>
+
+    <div style="margin-top:10px;">
+      <table class="sim-table">
+        <tr>
+          <th></th>
+          <th>通常分<br><span style="font-weight:400;font-size:9px;">150万×1%</span></th>
+          <th>3%分<br><span style="font-weight:400;font-size:9px;">50万×3%</span></th>
+          <th>合計</th>
+          <th>実質<br>還元率</th>
+        </tr>
+        <tr>
+          <td style="font-weight:600;text-align:left;padding-left:8px;">グリーン</td>
+          <td>15,000</td>
+          <td>15,000</td>
+          <td class="total">30,000P</td>
+          <td class="brand">1.5%</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;text-align:left;padding-left:8px;">GP</td>
+          <td>15,000</td>
+          <td>15,000</td>
+          <td class="total">30,000P</td>
+          <td class="brand">1.5%</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;text-align:left;padding-left:8px;">プラチナ</td>
+          <td>15,000</td>
+          <td>15,000</td>
+          <td class="total">30,000P</td>
+          <td class="brand">1.5%</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;text-align:left;padding-left:8px;">Bizゴールド</td>
+          <td>15,000</td>
+          <td>15,000</td>
+          <td class="total">30,000P</td>
+          <td class="brand">1.5%</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;text-align:left;padding-left:8px;">Bizプラチナ</td>
+          <td>15,000</td>
+          <td>15,000</td>
+          <td class="total">30,000P</td>
+          <td class="brand">1.5%</td>
+        </tr>
+      </table>
+    </div>
+
+    <div style="font-size:11px;color:var(--text-muted);margin-top:6px;line-height:1.5;">
+      ※ 同条件なら全カード同結果。差が出るのは「3%対象50万超」と「付帯特典」
+    </div>
+
+    <div style="margin-top:6px;background:var(--brand-light);border:1px solid var(--brand);border-radius:var(--radius);padding:8px 12px;">
+      <div style="font-size:11px;font-weight:600;color:var(--text-h);margin-bottom:2px;">3%対象100万円利用の場合</div>
+      <div style="font-size:11px;color:var(--text-sub);line-height:1.5;">
+        GP: 50万まで3% + 50万は1% = <strong>20,000P</strong><br>
+        他4カード: 100万すべて3% = <strong style="color:var(--brand);">30,000P</strong>（差額1万P）
+      </div>
+    </div>
+
+    <div class="watermark">@ino_moneycoach</div>
+  </div>
+  <button class="dl-btn" onclick="downloadSlide('slide5', 5)">JPG</button>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 6: MILE CONVERSION                   -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="slide-group">
+  <div class="slide-label">SLIDE 6 / 10 — ポイントの使い道</div>
+  <div class="slide s6" id="slide6">
+    <div class="top-accent"></div>
+    <span class="slide-number">6/10</span>
+    <div class="section-title">貯めたポイントの使い道</div>
+    <div class="section-sub">交換先で価値が大きく変わります</div>
+
+    <div style="display:flex;flex-direction:column;gap:6px;margin-top:12px;">
+      <div class="mile-row best">
+        <div class="mile-label">ANAマイル<small>1,000P → 1,000マイル</small></div>
+        <div class="mile-value brand">実質 1.625%還元</div>
+      </div>
+      <div class="mile-row">
+        <div class="mile-label">提携航空会社マイル<small>1,250P → 1,000マイル</small></div>
+        <div class="mile-value">実質 1.3%還元</div>
+      </div>
+      <div class="mile-row">
+        <div class="mile-label">Marriott Bonvoyポイント<small>1,000P → 990pt</small></div>
+        <div class="mile-value">ホテル宿泊に</div>
+      </div>
+      <div class="mile-row">
+        <div class="mile-label">Hilton Honorsポイント<small>1,000P → 1,250pt</small></div>
+        <div class="mile-value">ホテル宿泊に</div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:10px;">
+      <div class="callout-icon">&#x2708;&#xFE0F;</div>
+      <div class="callout-text">ANAマイル → 特典航空券に使えば価値は2倍以上に。<br>3%還元との組み合わせが最強</div>
+    </div>
+
+    <div style="font-size:10px;color:var(--text-muted);margin-top:4px;text-align:center;">
+      ※ ANA移行にはメンバーシップ・リワード・プラス（年3,300円）への登録が必要
+    </div>
+
+    <div class="watermark">@ino_moneycoach</div>
+  </div>
+  <button class="dl-btn" onclick="downloadSlide('slide6', 6)">JPG</button>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 7: CARD SELECTION                    -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="slide-group">
+  <div class="slide-label">SLIDE 7 / 10 — カード選び</div>
+  <div class="slide s7" id="slide7">
+    <div class="top-accent"></div>
+    <span class="slide-number">7/10</span>
+    <div class="section-title">あなたに合うカードは？</div>
+    <div class="section-sub">利用スタイルで最適な1枚が変わります</div>
+
+    <div style="display:flex;flex-direction:column;gap:6px;margin-top:12px;">
+      <div class="pick-row highlight">
+        <div class="pick-persona">Amazon/Yahoo多め＋年50万以下</div>
+        <div class="pick-card">ゴールド<br>プリファード<span class="fee">年39,600円</span></div>
+      </div>
+      <div class="pick-row">
+        <div class="pick-persona">3%対象店を年50万超使う</div>
+        <div class="pick-card">グリーン<br>or プラチナ<span class="fee">年13,200円 / 165,000円</span></div>
+      </div>
+      <div class="pick-row">
+        <div class="pick-persona">事業経費で3%還元したい</div>
+        <div class="pick-card">Bizゴールド<span class="fee">年36,300円</span></div>
+      </div>
+      <div class="pick-row">
+        <div class="pick-persona">経費＋出張が多い法人代表</div>
+        <div class="pick-card">Bizプラチナ<span class="fee">年165,000円</span></div>
+      </div>
+      <div class="pick-row highlight">
+        <div class="pick-persona">旅行・ダイニング特典重視</div>
+        <div class="pick-card">GP or<br>プラチナ<span class="fee">年39,600円 / 165,000円</span></div>
+      </div>
+    </div>
+
+    <div style="font-size:10px;color:var(--text-muted);margin-top:6px;text-align:center;">
+      ※ 年会費は税込・2026年3月時点
+    </div>
+
+    <div class="watermark">@ino_moneycoach</div>
+  </div>
+  <button class="dl-btn" onclick="downloadSlide('slide7', 7)">JPG</button>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 8: CAUTIONS                          -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="slide-group">
+  <div class="slide-label">SLIDE 8 / 10 — 注意点</div>
+  <div class="slide s8" id="slide8">
+    <div class="top-accent"></div>
+    <span class="slide-number">8/10</span>
+    <div class="section-title">申し込む前に知っておくべきこと</div>
+    <div class="section-sub">3つの注意点</div>
+
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px;">
+      <div class="caution-card">
+        <div class="caution-icon">&#x26A0;&#xFE0F;</div>
+        <div>
+          <div class="caution-title">GPの3%上限は年50万円</div>
+          <div class="caution-desc">ゴールドプリファードのみ、ボーナスポイント対象加盟店での年間利用上限が50万円。超過分は通常の1%還元に戻ります。</div>
+        </div>
+      </div>
+      <div class="caution-card">
+        <div class="caution-icon">&#x26A0;&#xFE0F;</div>
+        <div>
+          <div class="caution-title">ANAマイル移行は年4万マイル上限</div>
+          <div class="caution-desc">年間移行上限は40,000マイル。別途、参加登録費5,500円/年が必要です。</div>
+        </div>
+      </div>
+      <div class="caution-card">
+        <div class="caution-icon">&#x26A0;&#xFE0F;</div>
+        <div>
+          <div class="caution-title">ポイント半減の加盟店あり</div>
+          <div class="caution-desc">コンビニ・スーパー・ドラッグストア・ガソリンスタンド等は200円=1Pとなり、還元率が0.5%に半減します。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="watermark">@ino_moneycoach</div>
+  </div>
+  <button class="dl-btn" onclick="downloadSlide('slide8', 8)">JPG</button>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 9: SIMULATOR INTRO                   -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="slide-group">
+  <div class="slide-label">SLIDE 9 / 10 — シミュレーター紹介</div>
+  <div class="slide s9" id="slide9">
+    <div class="top-accent"></div>
+    <span class="slide-number">9/10</span>
+    <div class="section-title">無料シミュレーター公開中</div>
+    <div class="section-sub">プロフィールリンクから無料で使えます</div>
+
+    <div class="sim-mockup" style="margin-top:10px;">
+      <div class="sim-mockup-title">3%還元シミュレーター</div>
+      <div class="sim-mockup-row">
+        <span>カード</span>
+        <span class="sim-mockup-val">ゴールドプリファード</span>
+      </div>
+      <div class="sim-mockup-row">
+        <span>年間利用額</span>
+        <span class="sim-mockup-val">200万円</span>
+      </div>
+      <div class="sim-mockup-row">
+        <span>獲得ポイント</span>
+        <span class="sim-mockup-val">30,000P</span>
+      </div>
+      <div class="sim-mockup-row">
+        <span>ANAマイル換算</span>
+        <span class="sim-mockup-val">30,000マイル</span>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:6px;margin-top:10px;">
+      <div class="sim-feature">
+        <div class="sim-feature-icon">&#x1F4B3;</div>
+        <div>
+          <div class="sim-feature-title">カード別ポイント自動計算</div>
+          <div class="sim-feature-desc">5カード対応・年間上限も自動反映</div>
+        </div>
+      </div>
+      <div class="sim-feature">
+        <div class="sim-feature-icon">&#x2708;&#xFE0F;</div>
+        <div>
+          <div class="sim-feature-title">ANAマイル・円価値換算</div>
+          <div class="sim-feature-desc">ポイントの実質価値がすぐ分かる</div>
+        </div>
+      </div>
+      <div class="sim-feature">
+        <div class="sim-feature-icon">&#x1F50D;</div>
+        <div>
+          <div class="sim-feature-title">Amazon Pay 300+店舗を検索</div>
+          <div class="sim-feature-desc">カテゴリ・キーワードで対象店を探せる</div>
+        </div>
+      </div>
+      <div class="sim-feature">
+        <div class="sim-feature-icon">&#x2B50;</div>
+        <div>
+          <div class="sim-feature-title">お気に入り機能</div>
+          <div class="sim-feature-desc">よく使う店舗をブックマーク</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="watermark">@ino_moneycoach</div>
+  </div>
+  <button class="dl-btn" onclick="downloadSlide('slide9', 9)">JPG</button>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 10: CTA                              -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="slide-group">
+  <div class="slide-label">SLIDE 10 / 10 — CTA</div>
+  <div class="slide s10" id="slide10">
+    <div class="top-accent"></div>
+    <span class="slide-number">10/10</span>
+
+    <div class="cta-headline">
+      3%還元を<br>最大限に活用するなら
+    </div>
+
+    <div class="cta-product">
+      <div class="cta-product-name">アメックス決済修行ガイド</div>
+      <div class="cta-product-desc">Amazon Pay活用法・ギフトカード37種<br>356+店舗リスト完全収録</div>
+      <div class="cta-price">&yen;2,980</div>
+    </div>
+
+    <div class="cta-btn">ガイドを読む &#x2192;</div>
+    <div class="cta-sub">&#x2191; プロフィールリンクから</div>
+
+    <div class="cta-free-note">まずは無料シミュレーターで試算してみてね</div>
+
+    <div class="save-badge">&#x1F4CC; この投稿を保存しておくと便利です</div>
+
+    <div class="watermark">@ino_moneycoach</div>
+  </div>
+  <button class="dl-btn" onclick="downloadSlide('slide10', 10)">JPG</button>
+</div>
+
+</div><!-- /slides-wrapper -->
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script>
+function downloadSlide(id, num) {
+  const el = document.getElementById(id);
+  html2canvas(el, {
+    scale: 2.5,
+    backgroundColor: '#FFFFFF',
+    useCORS: true,
+  }).then(canvas => {
+    const link = document.createElement('a');
+    link.download = `carousel_amex_3percent_${num}.jpg`;
+    link.href = canvas.toDataURL('image/jpeg', 0.95);
+    link.click();
+  });
+}
+
+async function downloadAll() {
+  const btn = document.querySelector('.controls button');
+  btn.textContent = 'ダウンロード中...';
+  btn.disabled = true;
+  for (let i = 1; i <= 10; i++) {
+    await new Promise(resolve => {
+      const el = document.getElementById('slide' + i);
+      html2canvas(el, {
+        scale: 2.5,
+        backgroundColor: '#FFFFFF',
+        useCORS: true,
+      }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = `carousel_amex_3percent_${i}.jpg`;
+        link.href = canvas.toDataURL('image/jpeg', 0.95);
+        link.click();
+        setTimeout(resolve, 500);
+      });
+    });
+  }
+  btn.textContent = '全スライドをJPGでダウンロード';
+  btn.disabled = false;
+}
+</script>
+
+</body>
+</html>
