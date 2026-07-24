@@ -1,9 +1,21 @@
 #!/usr/bin/env python3
-"""note記事ベースの店舗リスト → data.json 変換スクリプト"""
+"""note記事ベースの店舗リスト → data.plain.json（平文の中間ビルド成果物）変換スクリプト
+
+セキュリティ上の注意（2026-07 修正）:
+  このスクリプトと ALL_STORES の平文データは意図的に docs/（GitHub Pagesの
+  公開ルート）の外（scripts/）に置いている。docs/ 配下は
+  .github/workflows/pages.yml が拡張子フィルタなしで丸ごとデプロイするため、
+  平文の店舗リストを含むファイルは docs/ 配下に絶対に置かない・コミットしない。
+
+  生成した data.plain.json は暗号化用の中間ファイルであり、コミットしない
+  （.gitignore 対象）。公開用の暗号化データを作るには、このスクリプトの後に
+  scripts/amex-3percent-simulator/encrypt_data.mjs を実行し、
+  docs/amex-3percent-simulator/data.json（暗号文）を生成すること。
+"""
 import json
 from pathlib import Path
 
-OUTPUT_PATH = Path(__file__).parent / "data.json"
+OUTPUT_PATH = Path(__file__).parent / "data.plain.json"
 
 CATEGORIES = [
     {"id": "electronics", "name": "PC・家電", "icon": "💻"},

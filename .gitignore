@@ -14,3 +14,7 @@ credentials.*
 # APIキー等が混入しやすいファイル
 *.log
 config.local.*
+
+# amex-3percent-simulator: 平文の中間ビルド成果物（暗号化前の店舗データ）。
+# docs/配下の暗号化済みdata.jsonの元になる一時ファイル。絶対にコミットしない。
+scripts/amex-3percent-simulator/data.plain.json

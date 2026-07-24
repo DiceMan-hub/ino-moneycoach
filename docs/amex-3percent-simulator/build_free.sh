@@ -1,5 +1,5 @@
 #!/bin/bash
-# simulator_pro.html → index.html (無料版) を生成
+# simulator-55292a97.html (PRO, 非公開URL) → index.html (無料版) を生成
 #
 # ルール:
 #   PRO-START 〜 PRO-END       → 削除（PRO専用機能）
@@ -9,7 +9,7 @@
 #
 # 使い方: bash build_free.sh
 
-SRC="simulator_pro.html"
+SRC="simulator-55292a97.html"
 DST="index.html"
 DIR="$(cd "$(dirname "$0")" && pwd)"
 
